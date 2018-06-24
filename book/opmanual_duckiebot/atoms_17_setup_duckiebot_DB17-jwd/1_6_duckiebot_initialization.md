@@ -268,7 +268,7 @@ Do the basic SSH config.
 
 See: The procedure is documented in [](+software_reference#ssh-local-configuration).
 
-### Create key pair for `![username]`
+### Create key pair
 
 Next, create a private/public key pair for the user; call it `![username]@![robot name]`.
 
@@ -286,7 +286,7 @@ instead of
 
 where you can chose `![abc]` to be any alias / shortcut.
 
-### Add `![username]`'s public key to Github
+### Add the public key to Github
 
 Add the public key to your Github account.
 
