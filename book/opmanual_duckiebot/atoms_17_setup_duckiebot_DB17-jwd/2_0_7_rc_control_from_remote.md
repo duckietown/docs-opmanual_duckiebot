@@ -33,7 +33,7 @@ See: The procedure is documented in [](#clone-software-repo).
 
 Then, you should build the repository.
 
-See: This procedure is documented in [](#build-repo).
+See: This procedure is documented in [](+opmanual_duckiebot#build-repo).
 
 ## Rebuild the machines files {#create-robot-config}
 
