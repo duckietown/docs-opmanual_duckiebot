@@ -108,7 +108,7 @@ Comment: Huh I don't know - this is great for usability, but horrible for securi
 
 Do the basic SSH config.
 
-See: The procedure is documented in [](#ssh-local-configuration).
+See: The procedure is documented in [](+software_reference#ssh-local-configuration).
 
 
 ### Create key pair for `![username]`

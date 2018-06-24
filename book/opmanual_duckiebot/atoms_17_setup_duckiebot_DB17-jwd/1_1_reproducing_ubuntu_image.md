@@ -403,7 +403,7 @@ You may need to do the following (but might be done already through `raspi-confi
 
 Do the basic SSH config.
 
-See: The procedure is documented in [](#ssh-local-configuration).
+See: The procedure is documented in [](+software_reference#ssh-local-configuration).
 
 Note: this is not in the aug10 image.
 

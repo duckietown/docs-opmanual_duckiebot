@@ -113,4 +113,4 @@ Symptom: `roslaunch` fails with an error similar to the following:
 Resolution: You have not followed the instructions that told you to add the `HostKeyAlgorithms`
 option. Delete `~/.ssh/known_hosts` and fix your configuration.
 
-See: The procedure is documented in [](#ssh-local-configuration).
+See: The procedure is documented in [](+software_reference#ssh-local-configuration).
