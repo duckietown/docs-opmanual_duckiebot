@@ -360,7 +360,7 @@ Use the `raspistill` command to capture the file `out.jpg`:
 
 Then download `out.jpg` to your computer using `scp` for inspection.
 
-See: For instructions on how to use `scp`, see [](#howto-download-file-with-scp).
+See: For instructions on how to use `scp`, see [](+software_reference#howto-download-file-with-scp).
 
 ## Final touches: duckie logo {#installing-duckietown-logo}
 

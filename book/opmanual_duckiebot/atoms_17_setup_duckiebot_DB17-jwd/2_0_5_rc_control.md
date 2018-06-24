@@ -79,7 +79,7 @@ Comment: I got no error on first execution on the Raspberry Pi
 
 Clone the relevant `duckiefleet` repository into `~/duckiefleet`.
 
-See [](#duckiefleet-directory) to find the right `duckiefleet` repository.
+See [](+software_devel#duckiefleet-directory) to find the right `duckiefleet` repository.
 
 In `~/.bashrc` set `DUCKIEFLEET_ROOT` to point to the directory:
 
@@ -99,11 +99,11 @@ You have already a copy of the vehicles database in the folder `robots` of `DUCK
 Copy the file `emma.robot.yaml` to `![robotname].robot.yaml`, where `![robotname]`
 is your robot's hostname. Then edit the copied file to represent your Duckiebot.
 
-See: For information about the format, see [](#scuderia).
+See: For information about the format, see [](+software_devel#scuderia).
 
 Generate the machines file.
 
-See: The procedure is listed here: [](#machines).
+See: The procedure is listed here: [](+software_devel#machines).
 
 Finally, push your robot configuration to the duckiefleet repo.
 

@@ -1,6 +1,6 @@
 # Parking demo instructions {#parking-demo-instructions status=beta}
 
-TODO: JT image sizes, knowledge graph, 
+TODO for Jacopo Tani: image sizes, knowledge graph. 
 
 
 This is the description for the Duckietown parking demo.
@@ -40,7 +40,7 @@ Here, describe the assumptions about the Duckietown, including:
 
 * 4 april tags, which should be placed according to the figure below. From the (0,0) point at the bottom left of the figure below (assuming $x$ is the horizontal axis while $y$ is the vertical axis): place tag n.126 at  $(10 cm,0)$, tag n.128 at (20cm,0), tag n.129 at (30cm,0) and tag n.131 at (40cm,0).
 
-    Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](#duckietowns). Here, merely point to them.
+    Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](+opmanual_duckietown#duckietowns). Here, merely point to them.
 
 ![Duckietown parking lot](https://raw.githubusercontent.com/duckietown/Software/devel-parking/catkin_ws/src/50-misc-additional-functionality/parking/report/map_0_1.png "Duckietown parking lot")
 

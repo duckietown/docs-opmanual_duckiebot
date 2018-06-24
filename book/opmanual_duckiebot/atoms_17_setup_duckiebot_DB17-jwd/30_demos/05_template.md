@@ -29,7 +29,7 @@ Here, describe the assumptions about the Duckietown, including:
 * Instrastructure (traffic lights, wifi networks, ...) required
 * Weather (lights, ...)
 
-Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](#duckietowns). Here, merely point to them.
+Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](+opmanual_duckietown#duckietowns). Here, merely point to them.
 
 
 ## Duckiebot setup notes {#demo-template-duckiebot-setup}

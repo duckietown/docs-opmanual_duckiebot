@@ -7,7 +7,7 @@ Note: This camera calibration procedure is outdated. See [](#camera-calib) for t
 Requires: You can see the camera image on the laptop. The procedure is documented in
 [](#rc-cam-launched-remotely).
 
-Requires: You have all the repositories (described in [](#fall2017-git)) cloned properly and you have your environment variables set properly.
+Requires: You have all the repositories cloned properly and you have your environment variables set properly.
 
 Results: Calibration for the robot camera.
 

@@ -25,7 +25,7 @@ Requires: [Calibrating](#wheel-calibration) the gain parameter to **0.6**.
 Assumption about Duckietown:
 
 * A duckietown with white and yellow lanes. No obstacles on the lane.
-* Layout conform to Duckietown Appearance [Specifications](#duckietown_parts)
+* Layout conform to Duckietown Appearance [Specifications](+opmanual_duckietown#duckietown_parts)
 * Required tiles types: straight tile, turn tile
 * Additional tile types:3-way/4-way intersection
 * Configurated Wifi network or Duckietown Wifi network

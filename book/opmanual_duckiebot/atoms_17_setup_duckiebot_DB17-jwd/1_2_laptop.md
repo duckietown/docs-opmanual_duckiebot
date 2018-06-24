@@ -139,6 +139,6 @@ Optional but very encouraged: install the duckuments system.
 This will allow you to have a local copy of the documentation
 and easily submit questions and changes.
 
-See: The procedure is documented in [](#duckumentation-installing-docs-system).
+See: The procedure is documented in [](+duckumentation#duckumentation-installing-docs-system).
 
 

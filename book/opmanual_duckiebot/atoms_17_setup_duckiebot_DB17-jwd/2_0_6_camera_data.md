@@ -78,7 +78,7 @@ You can see a list of published topics with the command:
 
     duckiebot $ rostopic list
 
-See also: For more information about `rostopic`, see [](#rostopic).
+See also: For more information about `rostopic`, see [](+software_reference#rostopic).
 
 You should see the following topics:
 
