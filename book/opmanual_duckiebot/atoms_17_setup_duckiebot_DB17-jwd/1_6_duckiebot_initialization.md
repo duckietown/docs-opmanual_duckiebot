@@ -58,7 +58,7 @@ This will create a file of 11 GB in size.
 
 Next, burn the image on disk.
 
-See: The procedure of how to burn an image is explained in [](#howto-burn-image).
+See: The procedure of how to burn an image is explained in [](+software_reference#howto-burn-image).
 
 ## Turn on the Duckiebot
 
@@ -117,7 +117,7 @@ The password is `ubuntu`.
 
 By default, the robot boots into Byobu.
 
-Please see [](#byobu) for an introduction to Byobu.
+Please see [](+software_reference#byobu) for an introduction to Byobu.
 
 Doubt: Not sure it's a good idea to boot into Byobu. -??
 
@@ -272,7 +272,7 @@ See: The procedure is documented in [](+software_reference#ssh-local-configurati
 
 Next, create a private/public key pair for the user; call it `![username]@![robot name]`.
 
-See: The procedure is documented in [](#howto-create-key-pair).
+See: The procedure is documented in [](+software_reference#howto-create-key-pair).
 
 ### Add SSH alias {#setup-ssh-alias}
 
@@ -290,7 +290,7 @@ where you can chose `![abc]` to be any alias / shortcut.
 
 Add the public key to your Github account.
 
-See: The procedure is documented in [](#howto-add-pubkey-to-github).
+See: The procedure is documented in [](+software_reference#howto-add-pubkey-to-github).
 
 If the step is done correctly, the following command should succeed and give you a welcome message:
 
@@ -299,13 +299,13 @@ If the step is done correctly, the following command should succeed and give you
 
 ### Local Git configuration
 
-See: This procedure is in [](#howto-git-local-config).
+See: This procedure is in [](+software_reference#howto-git-local-config).
 
 ### Set up the laptop-Duckiebot connection
 
 Make sure that you can login passwordlessly to your user from the laptop.
 
-See: The procedure is explained in [](#howto-login-without-password).
+See: The procedure is explained in [](+software_reference#howto-login-without-password).
 In this case, we have:
  `![local]` = laptop, `![local-user]` = your local user on the laptop,
  `![remote]` = `![robot name]`, `![remote-user]` = `![username]`.

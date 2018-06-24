@@ -51,7 +51,7 @@ Then decompress using the command `xz`:
 
 Next, burn the image on to the SD card.
 
-See: This procedure is explained in [](#howto-burn-image).
+See: This procedure is explained in [](+software_reference#howto-burn-image).
 
 
 ### Verify that the SD card was created correctly
@@ -175,7 +175,7 @@ Then, download and install the Edimax driver from [this repository](https://gith
 
 Install ROS.
 
-See: The procedure is given in [](#install-ROS).
+See: The procedure is given in [](+software_reference#install-ROS).
 
 ## Wireless configuration (old version) {status=deprecated}
 
@@ -463,13 +463,13 @@ duplicate all of the work that you just did. Luckily this is easy. Just power do
 and put the SD card back in your laptop.
 
 See: The procedure of how to burn an image is explained in
-[](#howto-burn-image); except you will invert the `if` and `of` destinations.
+[](+software_reference#howto-burn-image); except you will invert the `if` and `of` destinations.
 
 You may want to subsequently shrink the image, for example if your friends have smaller SD cards than you.
 
-See: The procedure of how to shrink an image is explained in [](#howto-shrink-image).
+See: The procedure of how to shrink an image is explained in [](+software_reference#howto-shrink-image).
 
 
 ## TODO: Git LFS
 
-Note: We should install Git LFS on the Raspberry Pi, but so far AC did not have any luck. See [](#git-lfs-install).
+Note: We should install Git LFS on the Raspberry Pi, but so far AC did not have any luck. See [](+class_fall2017_projects#git-lfs-install).

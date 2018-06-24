@@ -14,7 +14,7 @@ Result: A verified log.
 
 Note: it is recommended that you log to your USB and not to your SD card.
 
-See: To mount your USB see [](#mounting-usb).
+See: To mount your USB see [](+software_reference#mounting-usb).
 
 ## Run something on the Duckiebot
 
@@ -39,19 +39,19 @@ and verify that indeed your camera is streaming imagery.
 
 ### Option: Full Logging
 
-To log everything that is being published, on the Duckiebot in a new terminal (See [](#byobu)):
+To log everything that is being published, on the Duckiebot in a new terminal (See [](+software_reference#byobu)):
 
     duckiebot $ make log-full
 
-where here we are assuming that you are logging to the USB and have followed [](#mounting-usb).
+where here we are assuming that you are logging to the USB and have followed [](+software_reference#mounting-usb).
 
 ### Option: Log Minimal
 
-To log only the imagery, camera_info, the control commands and a few other essential things, on the Duckiebot in a new terminal (See [](#byobu)):
+To log only the imagery, camera_info, the control commands and a few other essential things, on the Duckiebot in a new terminal (See [](+software_reference#byobu)):
 
     duckiebot $ make log-minimal
 
-where here we are assuming that you are logging to the USB and have followed [](#mounting-usb).
+where here we are assuming that you are logging to the USB and have followed [](+software_reference#mounting-usb).
 
 
 ## Verify a log {#verify-a-log status=beta}

@@ -11,7 +11,7 @@ Requires: You can read the camera data from ROS. The procedure is documented in
 [](#read-camera-data).
 
 Requires: You know how to get around in Byobu. You can find the Byobu tutorial
-in [](#byobu).
+in [](+software_reference#byobu).
 
 Results: You can run the joystick demo from your laptop and see the camera
   image on the laptop.
@@ -53,7 +53,7 @@ duckiebot $ source environment.sh
 
 On the laptop, this time create **four** Byobu windows.
 
-See: A quick reference about Byobu commands is in [](#byobu).
+See: A quick reference about Byobu commands is in [](+software_reference#byobu).
 
 You will use the four windows as follows:
 
@@ -117,7 +117,7 @@ Launch `rviz` by using these commands:
     laptop $ source set_ros_master.sh ![robot name]
     laptop $ rviz
 
-See also: For more information about `rviz`, see [](#rviz).
+See also: For more information about `rviz`, see [](+software_reference#rviz).
 
 In the `rviz` interface, click "Add" on the lower left, then the "By topic"
 tag, then select the "Image" topic by the name

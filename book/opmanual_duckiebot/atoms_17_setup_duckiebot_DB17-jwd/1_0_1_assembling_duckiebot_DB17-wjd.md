@@ -722,7 +722,7 @@ Duckiebot to the configuration DB17-d.">
      <img src="howto_upgrade_db17d_milestone.jpg" style='width: 30em'/>
 </div>
 
-- Mount your USB drive as explained in [](#mounting-usb).
+- Mount your USB drive as explained in [](+software_reference#mounting-usb).
 
 
 

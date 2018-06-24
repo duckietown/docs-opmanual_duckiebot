@@ -73,7 +73,7 @@ Other utilities:
 
 Install ROS on your laptop.
 
-See: The procedure is given in [](#install-ROS).
+See: The procedure is given in [](+software_reference#install-ROS).
 
 
 ## Other suggested software
@@ -115,13 +115,13 @@ See: The procedure is documented in [](+software_reference#ssh-local-configurati
 
 Next, create a private/public key pair for the user; call it `![username]@![robot name]`.
 
-See: The procedure is documented in [](#howto-create-key-pair).
+See: The procedure is documented in [](+software_reference#howto-create-key-pair).
 
 ### Add `![username]`'s public key to Github
 
 Add the public key to your Github account.
 
-See: The procedure is documented in [](#howto-add-pubkey-to-github).
+See: The procedure is documented in [](+software_reference#howto-add-pubkey-to-github).
 
 If the step is done correctly, this command should succeed:
 
@@ -131,7 +131,7 @@ If the step is done correctly, this command should succeed:
 
 Set up Git locally.
 
-See: The procedure is described in [](#howto-git-local-config).
+See: The procedure is described in [](+software_reference#howto-git-local-config).
 
 ## Installation of the duckuments system
 

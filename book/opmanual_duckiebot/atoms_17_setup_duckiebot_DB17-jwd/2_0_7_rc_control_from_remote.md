@@ -67,7 +67,7 @@ example. Note that remotely launching nodes from your laptop doesn't mean that
 the nodes are running on your laptop. They are still running on the Raspberry Pi in this
 case.
 
-See also: For more information about `roslaunch`, see [](#roslaunch).
+See also: For more information about `roslaunch`, see [](+software_reference#roslaunch).
 
 ## Watch the program output using `rqt_console`
 

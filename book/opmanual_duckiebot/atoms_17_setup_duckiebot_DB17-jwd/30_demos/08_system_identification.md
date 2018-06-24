@@ -33,7 +33,7 @@ The Duckietown is not needed for the wheels calibration.
 
 Mount the USB drive.
 
-See: The procedure is documented in [](#mounting-usb).
+See: The procedure is documented in [](+software_reference#mounting-usb).
 
 
 ## Pre-flight checklist {#demo-sysid-pre-flight}
@@ -66,7 +66,7 @@ Activate ROS:
 
 
 
-Step 2: Mount the USB Storage: To do this,y ou can use procedure is documented in [](#mounting-usb) in the duckiebook or run the following commands on your duckiebot.
+Step 2: Mount the USB Storage: To do this,y ou can use procedure is documented in [](+software_reference#mounting-usb) in the duckiebook or run the following commands on your duckiebot.
 
     duckiebot $ roscd calibration
     duckiebot $ bash mount_usb

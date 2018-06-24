@@ -6,7 +6,7 @@
 Requires: You have configured the Duckiebot.
 The procedure is documented in [](#setup-duckiebot).
 
-Requires: You know [the basics of ROS](#introduction_to_ros) (launch files, `roslaunch`, topics, `rostopic`).
+Requires: You know [the basics of ROS](+software_reference#introduction_to_ros) (launch files, `roslaunch`, topics, `rostopic`).
 
 Results: You know that the camera works under ROS.
 
@@ -23,7 +23,7 @@ See: The procedure is documented in [](#camera-hardware-check).
 
 On the laptop, create two Byobu windows.
 
-See: A quick reference about Byobu commands is in [](#byobu).
+See: A quick reference about Byobu commands is in [](+software_reference#byobu).
 
 You will use the two windows as follows:
 
@@ -59,7 +59,7 @@ In the terminal you should not see any red message, but only happy messages like
     [INFO] [1502539384.040615]: [/![robot name]/camera_node] Published the first image.
 
 
-See also: For more information about `roslaunch` and "launch files", see [](#roslaunch).
+See also: For more information about `roslaunch` and "launch files", see [](+software_reference#roslaunch).
 
 ## Second window: view published topics
 

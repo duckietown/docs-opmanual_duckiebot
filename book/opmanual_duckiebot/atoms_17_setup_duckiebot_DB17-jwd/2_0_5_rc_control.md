@@ -7,7 +7,7 @@ Requires: Laptop configured, according to [](#setup-laptop).
 Requires: You have configured the Duckiebot. The procedure is documented in [](#setup-duckiebot).
 
 Requires: You have created a Github account and configured public keys,
-both for the laptop and for the Duckiebot. The procedure is documented in [](#github-access).
+both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).
 
 Results: You can run the joystick demo.
 
@@ -30,7 +30,7 @@ Note: you must not clone the repository using the URL starting with `https`. Lat
 
 Symptom: It asks for a password.
 
-Resolution: You missed some of the steps described in [](#github-access).
+Resolution: You missed some of the steps described in [](+software_reference#github-access).
 
 Symptom: Other weird errors.
 
@@ -66,7 +66,7 @@ Then, build the workspace using:
 
     duckiebot $ catkin_make -C catkin_ws/
 
-See also: For more information about `catkin_make`, see [](#catkin_make).
+See also: For more information about `catkin_make`, see [](+software_reference#catkin_make).
 
 Note: there is a known bug, for which it fails the first time on the Raspberry Pi. Try again; it will work.
 
