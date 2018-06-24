@@ -14,7 +14,7 @@ The acquisition process is explained in [](#acquiring-parts-c1).
 Requires: Soldering `DB17-lc` parts.
 The soldering process is explained in [](#soldering-boards-c1).
 
-Requires: Having assembled PWM Hat on the Duckiebot with configuration `DB17-wjd`. The assembly process is explained in [](+opmanual_duckiebot##assembling-duckiebot-c1).
+Requires: Having assembled PWM Hat on the Duckiebot with configuration `DB17-wjd`. The assembly process is explained in [](#assembling-duckiebot-c1).
 
 Requires: Time: about 15 minutes.
 

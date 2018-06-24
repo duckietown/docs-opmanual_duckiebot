@@ -1,11 +1,11 @@
 # Camera calibration {#camera-calib-old status=draft}
 
-Note: This camera calibration procedure is outdated. See [](+opmanual_duckiebot#camera-calib) for the updated procedure.
+Note: This camera calibration procedure is outdated. See [](#camera-calib) for the updated procedure.
 
 <div class='requirements' markdown='1'>
 
 Requires: You can see the camera image on the laptop. The procedure is documented in
-[](+opmanual_duckiebot#rc-cam-launched-remotely).
+[](#rc-cam-launched-remotely).
 
 Requires: You have all the repositories cloned properly and you have your environment variables set properly.
 

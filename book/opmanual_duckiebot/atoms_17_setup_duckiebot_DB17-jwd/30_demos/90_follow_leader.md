@@ -4,9 +4,9 @@ This is the description of the follow the leader demo.
 
 <div class='requirements' markdown="1">
 
-Requires: Wheels calibration completed.[wheel calibration](+opmanual_duckiebot#wheel-calibration)
+Requires: Wheels calibration completed.[wheel calibration](#wheel-calibration)
 
-Requires: Camera calibration completed.[Camera calibration](+opmanual_duckiebot#camera-calib)
+Requires: Camera calibration completed.[Camera calibration](#camera-calib)
 
 Requires: Lane following demo works.[Lane following demo](opmanual_duckiebot#demo-lane-following)
 

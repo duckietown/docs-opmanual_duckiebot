@@ -5,7 +5,7 @@ Assigned: Andrea Censi
 <div class='requirements' markdown='1'>
 
 Requires: You can run the joystick demo from the Raspberry Pi.
-The procedure is documented in [](+opmanual_duckiebot#rc-control)).
+The procedure is documented in [](#rc-control)).
 
 Results: You can run the joystick demo from your laptop.
 
@@ -33,7 +33,7 @@ See: The procedure is documented in [](#clone-software-repo).
 
 Then, you should build the repository.
 
-See: This procedure is documented in [](+opmanual_duckiebot#build-repo).
+See: This procedure is documented in [](#build-repo).
 
 ## Rebuild the machines files {#create-robot-config}
 

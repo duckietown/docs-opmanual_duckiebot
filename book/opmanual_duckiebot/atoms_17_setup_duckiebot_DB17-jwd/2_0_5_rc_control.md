@@ -2,9 +2,9 @@
 
 <div class='requirements' markdown='1'>
 
-Requires: Laptop configured, according to [](+opmanual_duckiebot#setup-laptop).
+Requires: Laptop configured, according to [](#setup-laptop).
 
-Requires: You have configured the Duckiebot. The procedure is documented in [](+opmanual_duckiebot#setup-duckiebot).
+Requires: You have configured the Duckiebot. The procedure is documented in [](#setup-duckiebot).
 
 Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).

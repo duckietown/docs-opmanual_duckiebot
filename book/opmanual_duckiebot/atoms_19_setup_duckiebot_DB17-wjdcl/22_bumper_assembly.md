@@ -8,7 +8,7 @@ TODO for Jacopo Tani: update configurations
 
 Requires: Duckiebot `DB17-lc` parts.
 
-Requires: Having the Duckiebot with configuration `DB17-wjd` assembled. The assembly process is explained in [](+opmanual_duckiebot##assembling-duckiebot-c1).
+Requires: Having the Duckiebot with configuration `DB17-wjd` assembled. The assembly process is explained in [](#assembling-duckiebot-c1).
 
 Requires: Time: about 15 minutes.
 

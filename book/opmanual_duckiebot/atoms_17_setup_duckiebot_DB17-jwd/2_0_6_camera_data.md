@@ -4,7 +4,7 @@
 <div class='requirements' markdown='1'>
 
 Requires: You have configured the Duckiebot.
-The procedure is documented in [](+opmanual_duckiebot#setup-duckiebot).
+The procedure is documented in [](#setup-duckiebot).
 
 Requires: You know [the basics of ROS](+software_reference#introduction_to_ros) (launch files, `roslaunch`, topics, `rostopic`).
 
@@ -110,7 +110,7 @@ You should see a large sequence of numbers being printed to your terminal.
 That's the "image" --- as seen by a machine.
 
 If you are Neo, then this already makes sense. If you are not Neo, in
-[](+opmanual_duckiebot#rc-cam-launched-remotely), you will learn how to visualize the image stream
+[](#rc-cam-launched-remotely), you will learn how to visualize the image stream
 on the laptop  using `rviz`.
 
 
