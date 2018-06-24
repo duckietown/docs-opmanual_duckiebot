@@ -4,7 +4,7 @@
 
 Requires: [](#read-camera-data)
 
-Requires: [](#rc-control)
+Requires: [](+opmanual_duckiebot#rc-control))
 
 Result: A verified log.
 

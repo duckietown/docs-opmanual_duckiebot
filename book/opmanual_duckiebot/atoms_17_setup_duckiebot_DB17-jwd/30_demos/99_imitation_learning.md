@@ -4,11 +4,11 @@ This is the description of lane following demo.
 
 <div class='requirements' markdown="1">
 
-Requires: Wheels calibration completed.[wheel calibration](#wheel-calibration)
+Requires: Wheels calibration completed.[wheel calibration](+opmanual_duckiebot#wheel-calibration)
 
-Requires: Camera calibration completed.[Camera calibration](#camera-calib)
+Requires: Camera calibration completed.[Camera calibration](+opmanual_duckiebot#camera-calib)
 
-Requires: Joystick demo has been successfully launched.[Joystick demo](#rc-control)
+Requires: Joystick demo has been successfully launched.[Joystick demo](+opmanual_duckiebot#rc-control))
 
 Requires: One Movidius Neural Compute Stick. The ETH team only has two sticks. If you want to try out, contact Yang Shaohui or Wang Tianlu.
 

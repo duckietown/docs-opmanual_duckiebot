@@ -730,7 +730,7 @@ Duckiebot to the configuration DB17-d.">
 
 Q: If we have the bumpers, at what point should we add them?
 
-A: You shouldn't have the bumpers at this point. The function of the bumpers is to keep the LEDs in place, i.e., they belong to `DB17-l` configuration. These instructions cover the `DB17-wjd` configurations. You will find the bumper assembly instructions in [](#assembling-duckiebot-c1).
+A: You shouldn't have the bumpers at this point. The function of the bumpers is to keep the LEDs in place, i.e., they belong to `DB17-l` configuration. These instructions cover the `DB17-wjd` configurations. You will find the bumper assembly instructions in [](+opmanual_duckiebot##assembling-duckiebot-c1).
 
 Q: Yeah but I still have the bumpers and am reading this page. So?
 

@@ -4,15 +4,15 @@ This is the description of lane following demo.
 
 <div class='requirements' markdown="1">
 
-Requires: Wheels calibration completed [wheel calibration](#wheel-calibration)
+Requires: Wheels calibration completed [wheel calibration](+opmanual_duckiebot#wheel-calibration)
 
-Requires: Camera calibration completed [Camera calibration](#camera-calib)
+Requires: Camera calibration completed [Camera calibration](+opmanual_duckiebot#camera-calib)
 
-Requires: Joystick demo has been successfully launched [Joystick demo](#rc-control)
+Requires: Joystick demo has been successfully launched [Joystick demo](+opmanual_duckiebot#rc-control))
 
 Requires: Duckiebot in configuration [DB17-jwd](#duckiebot-configurations)
 
-Requires: [Calibrating](#wheel-calibration) the gain parameter to **0.6**.
+Requires: [Calibrating](+opmanual_duckiebot#wheel-calibration) the gain parameter to **0.6**.
 
 </div>
 
@@ -38,7 +38,7 @@ Environment of demo:
 
 * Make sure the camera is heading ahead.
 * Duckiebot in configuration [DB17-jwd](#duckiebot-configurations)
-* [Calibrating](#wheel-calibration) the gain parameter to **0.6**.
+* [Calibrating](+opmanual_duckiebot#wheel-calibration) the gain parameter to **0.6**.
 
 
 ## Pre-flight checklist {#demo-lane-following-pre-flight}
@@ -83,7 +83,7 @@ Step 2: Open rviz.
 Step 3: Look at the .../image_with_lines image output. Apply the anti-instagram callibration by pushing the X button on the joystick. Check if you see enough segments. If not enough segments are visible, press X button on joystick for Anti-Instagram relaunch. Check if you see more segments and the color of the segments are according to the color of the lines in Duckietown
 
 Solution 2:
-* Check the extrinsic and intrinsic [calibration](#camera-calib)
+* Check the extrinsic and intrinsic [calibration](+opmanual_duckiebot#camera-calib)
 
 ### Demo does not compile
 

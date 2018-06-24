@@ -4,7 +4,7 @@ This is the description of anti-instagram demo.
 
 <div class='requirements' markdown="1">
 
-Requires: Camera calibration completed. [Camera calibration](#camera-calib)
+Requires: Camera calibration completed. [Camera calibration](+opmanual_duckiebot#camera-calib)
 
 Requires: Lane-following demo has been successfully launched. [Lane-following demo](opmanual_duckiebot#demo-lane-following)
 

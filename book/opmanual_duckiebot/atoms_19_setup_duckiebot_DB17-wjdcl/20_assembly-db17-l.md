@@ -62,7 +62,7 @@ To power the PWM/Servo HAT from the battery, plugin a short (30cm) angled male U
 
 ## Assembling the Bumper Set (`DB17-l2`)
 
-For instructions on how to assemble your bumpers set, refer to: [](#bumper-assembly).
+For instructions on how to assemble your bumpers set, refer to: [](+opmanual_duckiebot#bumper-assembly).
 
 ## Assembling the LED HAT and LEDs (`DB17-l3`)
 

@@ -4,11 +4,11 @@ This is the description of the indefinite navigation demo.
 
 <div class='requirements' markdown="1">
 
-Requires: Wheels calibration completed.[wheel calibration](#wheel-calibration)
+Requires: Wheels calibration completed.[wheel calibration](+opmanual_duckiebot#wheel-calibration)
 
-Requires: Camera calibration completed.[Camera calibration](#camera-calib)
+Requires: Camera calibration completed.[Camera calibration](+opmanual_duckiebot#camera-calib)
 
-Requires: Joystick demo has been successfully launched.[Joystick demo](#rc-control)
+Requires: Joystick demo has been successfully launched.[Joystick demo](+opmanual_duckiebot#rc-control))
 
 Requires: Fully set up Duckietown (including April tags for intersections)
 
@@ -55,7 +55,7 @@ Step 1: On the Duckiebot, navigate to the `/DUCKIETOWN_ROOT/` directory, run the
 
 Wait until everything has been launched. Press X to start anti-instagram. Pressing R1 will start the autonomous lane following and L1 can be used to revert back to manual control.
 
-In the current open-loop intersection navigation, no Duckiebot will successfully run the demo the first time. Parameter tuning is a must. The only two parameters that should be adjusted are the gain and trim, previously defined during the [wheel calibration procedure](#wheel-calibration).
+In the current open-loop intersection navigation, no Duckiebot will successfully run the demo the first time. Parameter tuning is a must. The only two parameters that should be adjusted are the gain and trim, previously defined during the [wheel calibration procedure](+opmanual_duckiebot#wheel-calibration).
 
 The parameter pair which makes your bot go straight will unlikely work for the lane following due to the current controller design. Start with your parameter pair obtained from wheel calibration. If your Duckiebot stays too long on a curve during crossing an intersection, decrease your gain in steps of 0.05. If the Duckiebot doesn't make the turn enough long, increase your gain in steps of 0.05.
 

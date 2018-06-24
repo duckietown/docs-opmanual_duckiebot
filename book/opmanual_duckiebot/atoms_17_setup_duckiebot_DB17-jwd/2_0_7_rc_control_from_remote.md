@@ -5,7 +5,7 @@ Assigned: Andrea Censi
 <div class='requirements' markdown='1'>
 
 Requires: You can run the joystick demo from the Raspberry Pi.
-The procedure is documented in [](#rc-control).
+The procedure is documented in [](+opmanual_duckiebot#rc-control)).
 
 Results: You can run the joystick demo from your laptop.
 

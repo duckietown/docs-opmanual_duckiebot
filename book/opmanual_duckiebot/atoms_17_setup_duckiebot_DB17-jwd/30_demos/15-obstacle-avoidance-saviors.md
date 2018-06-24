@@ -6,11 +6,11 @@ This is the description of the saviors obstacle avoidance demo.
 
 Requires: Duckiebot in configuration DB17-wjd.
 
-Requires: [Camera calibration](#camera-calib) completed. 
+Requires: [Camera calibration](+opmanual_duckiebot#camera-calib) completed. 
 
-Requires: [Wheel calibration](#wheel-calibration) completed. 
+Requires: [Wheel calibration](+opmanual_duckiebot#wheel-calibration) completed. 
 
-Requires: [Joystick demo](#rc-control) successfully launched. 
+Requires: [Joystick demo](+opmanual_duckiebot#rc-control)) successfully launched. 
 
 </div>
 

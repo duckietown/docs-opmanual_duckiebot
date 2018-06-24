@@ -6,9 +6,9 @@ This demo allows multiple Duckiebots that stop at an intersection to coordinate 
 
 Requires: Duckiebot in configuration DB-wj
 
-Requires: Camera calibration completed. [camera calibration](#camera-calib)
+Requires: Camera calibration completed. [camera calibration](+opmanual_duckiebot#camera-calib)
 
-Requires: Wheel calibration completed. [wheel calibration](#wheel-calibration)
+Requires: Wheel calibration completed. [wheel calibration](+opmanual_duckiebot#wheel-calibration)
 
 Requires: Object Detection setup.
 
