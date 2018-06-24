@@ -8,7 +8,7 @@ Requires: Wheels calibration completed.[wheel calibration](#wheel-calibration)
 
 Requires: Camera calibration completed.[Camera calibration](#camera-calib)
 
-Requires: Lane following demo works.[Lane following demo](#demo-lane-following)
+Requires: Lane following demo works.[Lane following demo](opmanual_duckiebot#demo-lane-following)
 
 Requires: Circle grid tags on Duckiebots.
 
