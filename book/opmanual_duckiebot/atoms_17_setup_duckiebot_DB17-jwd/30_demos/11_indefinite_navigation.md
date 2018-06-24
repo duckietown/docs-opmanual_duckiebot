@@ -21,7 +21,7 @@ Requires: A motor gain of approximately 0.65 (strong influence in open-loop inte
 [link 1 of lane following](https://photos.google.com/share/AF1QipMEwYvBW5hl3_l4M0f9on3RSKJmYftbWxo0nSyW7EMTBWs7iXRc_fHEc5mouSMSxA/photo/AF1QipPOmXr0yu__d_J0Wefp1Gm6sNTtptUk57FvS6Fo?key=M1ZWc2k0Nnl4ckFjd3dwRmV0WmdMSzFWU0xmOXh3)
 -->
 
-<div figure-id="fig:demo-indefinite-navigation">
+<div figure-id="fig:demo-indefinite-navigation-video">
     <figcaption>Demo: indefinite navigation
     </figcaption>
     <dtvideo src='vimeo:247596730'/>
