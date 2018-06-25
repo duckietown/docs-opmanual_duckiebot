@@ -183,7 +183,7 @@ A longer (300 mm) camera cable [](#fig:long_camera_cable) makes assembling the D
 
 ## DC Motor HAT
 
-We use the DC Stepper motor HAT ([](#fig:motor_hat)) to control the DC motors that drive the wheels. This item will require [soldering](0_5_soldering_boards_c0.md) to be functional. This HAT has dedicate PWM and H-bridge for driving the motors.
+We use the DC Stepper motor HAT ([](#fig:motor_hat)) to control the DC motors that drive the wheels. This item will require [soldering](#soldering-boards-c0) to be functional. This HAT has dedicate PWM and H-bridge for driving the motors.
 
 <div figure-id="fig:motor_hat" figure-caption="The Stepper Motor HAT">
      <img src="motor_hat.png" style='width: 15em'/>
