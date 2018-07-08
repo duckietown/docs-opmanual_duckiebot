@@ -18,7 +18,7 @@ Requires: Tools: Solderer
 
 Requires: Experience: some novice-level experience with soldering.
 
-Requires: Time: 30 minutes
+Requires: Time: 30 minutes omom
 
 Results: Soldered DC Motor HAT
 
