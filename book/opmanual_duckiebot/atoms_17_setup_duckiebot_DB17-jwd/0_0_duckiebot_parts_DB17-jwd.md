@@ -4,6 +4,8 @@ Note: We are currently revising the Duckiebot configurations for the upcoming se
 
 TODO for Jacopo Tani: update configurations
 
+<!--
+
 The trip begins with acquiring the parts. Here, we provide a link to all bits and pieces that are needed to build a Duckiebot, along with their price tag. If you are wondering what is the difference between different Duckiebot configurations, read [this](#duckiebot-configurations).
 
 In general, keep in mind that:
@@ -29,7 +31,11 @@ Next steps: After receiving these components, you are ready to do some [solderin
 
 </div>
 
+-->
+
 ## Bill of materials
+
+See our [Kickstarter](https://tinyurl.com/ydyrvbk4) page to obtain the hardware and support the Duckietown Foundation! 
 
 <!--
 (<s>[4 Spacers (M3x5)](https://tinyurl.com/y9sjzm4r)</s><s>USD</s>)
@@ -37,6 +43,7 @@ Next steps: After receiving these components, you are ready to do some [solderin
 (We can make the minimal configuration cheaper by USD20 removing the 16GB Class 10 MicroSD Card and stick with default)
 -->
 
+<!--
 <div markdown="1">
 
  <col2 id='materials' figure-id="tab:materials" figure-caption="Bill of materials">
@@ -67,6 +74,7 @@ Next steps: After receiving these components, you are ready to do some [solderin
  </col2>
 
 </div>
+-->
 
 <!--
 <col2 figure-id="tab:materials-optionals" figure-caption="Bill of optional materials">
