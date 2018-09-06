@@ -41,6 +41,12 @@ sure to follow them in the following order.
 ## What is in the box {#bom-db18}
 Explain what the pieces are
 
+All the pieces in your Duckiebox are shown in [](#fig:duckiebot_components_db18)
+
+<div figure-id="fig:duckiebot_components_db18" figure-caption="Components in Duckiebot package.">
+     <img src="placeholder.png" style='width: 30em'/>
+</div>
+
 TODO: Gianmarco Bernasconi write
 
 ### Preliminary Steps
@@ -51,17 +57,12 @@ Unbox all of your components, and put aside the black battery holder from the Ma
 
 #### Step B
 
-Peel the plastic cover from all the chassis parts on both sides.
+Take the rear bumper bracers and the back bumper. The back bumper will be mounted in the last steps as a press fit to the rear bumper bracers. Try to fit the bracers into the holes of the back bumper, if you struggle peel off the plastic cover from *one* side. If this does not help, peel off the plastic cover from both sided.
+Peel the plastic cover from all the chassis parts (except the bumper bracers) on both sides.
 
 ## Motors {#howto-mount-motors-db18}
 
-Open the Magician Chassis package ([](#fig:duckiebot_components_db18)) and take out the following components:
-
-<div figure-id="fig:duckiebot_components_db18" figure-caption="Components in Duckiebot package.">
-     <img src="placeholder.png" style='width: 30em'/>
-</div>
-
-TODO: remove all Magician Chassis references
+From the Duckiebox package take the following components:
 
 - Chassis-bottom (1x)
 - DC Motors (2x)
@@ -70,8 +71,6 @@ TODO: remove all Magician Chassis references
 - M3 nuts (4x)
 
 [](#fig:howto-mount-motors-parts-db18) shows the components needed to complete this part of the tutorial.
-
-
 
 <div figure-id="fig:howto-mount-motors-parts-db18" figure-caption="Components needed to mount the motors.">
      <img src="howto_mount_motors_parts.jpg" style='width: 30em'/>
@@ -113,7 +112,6 @@ to secure the holders to the bottom plate of the chassis as shown in [](#fig:how
 
 Repeat for the opposite side and check that the outcome is the same as in [](#fig:howto-mount-motors-milestone)
 
-
 <div figure-id="fig:howto-mount-motors-milestone-db18" figure-caption="The motors are attached to the bottom plate of the chassis.">
    <img src="howto-mount-motors-milestone-db18.jpg" style='width: 30em'/>
 </div>
@@ -121,7 +119,6 @@ Repeat for the opposite side and check that the outcome is the same as in [](#fi
 #### Step 5
 
 Tilt your bottom plate and pass the cables of the motors through the central hole. Keep the cables coming from each motor separated ([](#fig:howto-mount-motors-milestone)).
-
 
 <div figure-id="fig:howto-mount-motors-4" figure-caption="Cables through central hole.">
    <img src="howto-mount-motors-4.jpg" style='width: 30em'/>
@@ -135,7 +132,7 @@ The Duckiebot is driven by controlling the wheels attached to the DC motors.
 Still, it requires a _passive_ support on the back. In this configuration an omni-directional wheel is
 attached to the bottom plate of the chassis to provide such support.
 
-From the Magician Chassis package take the following components:
+From the Duckiebox package take the following components:
 
 - Steel omni-directional wheel (1x)
 - M3x25 metal spacers (2x)
@@ -359,9 +356,12 @@ From the Duckiebot kit take the following components:
 - Duckietown Hut (1x)
 - M2.5x12 nylon spacers (4x)
 - M2.5 nylon nuts (4x)
-- USB to micro USB cables
+- USB to micro USB cables (2x)
+- Set of three female to female(F/F) jumper wires (1x)
 
 [](#fig:howto-assemble-hut-parts) shows the components needed to complete this part of the tutorial.
+
+Note: It is cleaner if you do not separate each cable, but leave them in two sets of three.
 
 <div figure-id="fig:howto-assemble-hut-parts" figure-caption="The parts needed to assemble the Raspberry Pi and the Hut.">
      <img src="placeholder.jpg" style='width: 30em'/>
@@ -380,23 +380,29 @@ Place the spacers on the bottom part of the Duckietown hut, as in [](#fig:howto-
 
 #### Step 2
 
-From the top of the Duckietown Hut, scure using the M2.5 nylon nuts. Plug in the USB cables in the two micro USB ports.
+From the top of the Duckietown Hut, secure using the M2.5 nylon nuts.
 
 #### Step 3
 
-Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera cable through the slit in the Duckietown Hut. Them plug in the Duckietown Hut, by making sure that the Raspberry Pi pins fit into the Hut connector.
+Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera cable through the slit in the Duckietown Hut. Them plug in the Duckietown Hut, by making sure that the Raspberry Pi pins fit into the Hut connector. Plug in the USB cables in the two micro USB ports.
 
 <div figure-id="fig:howto-assemble-hut-2" figure-caption="Position of the nylon spacers.">
      <img src="howto_assemble_hut_2.jpg" style='width: 30em'/>
 </div>
 
+#### Step 4
 
+Take one of the two sets of F/F jumper wires, and attach it to the Duckietown Hut as shown in [](#fig:howto-assemble-hut-3). It is important to use the pins named: "5Vusb, ADR LED and GND", do *not* use the pin labelled "5Vraspi". Take note of which color have you connected to each pin.
+
+<div figure-id="fig:howto-assemble-hut-3" figure-caption="Position of the nylon spacers.">
+     <img src="placeholder.jpg" style='width: 30em'/>
+</div>
 
 
 ### Check the outcome
 
 [](#fig:howto-assemble-rpi3-milestone) shows how the Raspberry Pi 3 should look like at this point.
-TODO: picture with cables aswell
+TODO: picture with F/F jumper cables and usb cables aswell
 
 <div figure-id="fig:howto-assemble-rpi3-milestone" figure-caption="The Raspberry Pi assembly.">
    <img src="placeholder.jpg" style='width: 30em'/>
@@ -406,7 +412,7 @@ TODO: picture with cables aswell
 
 ## Camera mount {#howto-mount-cameramount}
 
-From the Magician Chassis package take the following components:
+From the Duckiebox package take the following components:
 
 - Top plate (1x)
 - Camera mount (1x)
@@ -665,7 +671,6 @@ Take the back plate and place the countersunk screws on the side where the holes
      <img src="howto_mount_circlegrid_holder_2.png" style='width: 30em'/>
 </div>
 
-TODO: figure collage
 
 #### Step 3
 
@@ -686,7 +691,7 @@ From the previously prepared pieces take the following components:
 From the Duckiebot kit take the following components:
 
 - Front bumper (1x)
-- Set of three female to female jumper wires (2x)
+- Set of three female to female jumper wires (1x)
 
 [](#fig:howto-mount-front-bumper-parts) shows the components needed to complete this upgrade.
 
@@ -699,10 +704,9 @@ Note: It is cleaner if you do not separate each cable, but leave them in two set
 ### Step-by-step guide
 
 #### Step 1
-Place the front bumper in front of the chassis. Then locate the pins and take note of which color you use for each connection (5V, Data and Ground) ([](#fig:howto-mount-front-bumper-1)).
+Place the front bumper in front of the chassis. Then locate the pins on the front bumper, you should have taken note of the connection you have done on the Duckietown Hut ([](#fig:howto-mount-front-bumper-1)).
 
 Note: Pay attention to place the front bumper oriented as in the picture.
-
 
 <div figure-id="fig:howto-mount-front-bumper-1" figure-caption="The parts needed to mount the front bumper.">
      <img src="howto_mount_front_bumper_1.jpg" style='width: 30em'/>
@@ -720,19 +724,11 @@ Note: The ziptie in the picture is not mandatory but can be used to ease cable m
 
 #### Step 3
 
-Connect the two set of cables to the connectors. The connector on the right ([](#fig:howto-mount-front-bumper-3) perspective, namely the green blue and yellow wires in the picture), will go to the Raspberry Pi while the connector on the left (red white and black wires in the picture) will go to the back bumper.
+Now we need to connect the two set of wires to the front bumper.
+The set of cables coming from the Raspberry Pi must be connected on the right ([](#fig:howto-mount-front-bumper-3) perspective, namely the green blue and yellow wires in the picture), while the connector on the left (red white and black wires in the picture) will go to the back bumper. Again take note of which color you used for which pin in the left connector.
+
 <div figure-id="fig:howto-mount-front-bumper-3" figure-caption="Front bumper connections.">
      <img src="howto_mount_front_bumper_3.jpg" style='width: 30em'/>
-</div>
-
-#### Step 4
-
-Connect the cable to the Raspberry Pi according to the connections made in the front bumper. There are 4 pins and only 3 wires, use the *pins closer to the center* of the board, as in [](#fig:howto-mount-front-bumper-4)
-
-TODO: move this earlier and retake image
-
-<div figure-id="fig:howto-mount-front-bumper-4" figure-caption="Raspberry Pi wire connection.">
-     <img src="howto_mount_front_bumper_4.jpg" style='width: 30em'/>
 </div>
 
 #### Step 5
