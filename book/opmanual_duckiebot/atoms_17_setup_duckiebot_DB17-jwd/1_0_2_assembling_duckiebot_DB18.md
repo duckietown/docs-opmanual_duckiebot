@@ -1,4 +1,4 @@
-# Assembling the Duckiebot (`DB18`)  {#assembling-duckiebot-db18 status=draft}
+# Assembling the Duckiebot (`DB18`)  {#assembling-duckiebot-db18 status=ready}
 
 Point of contact: Gianmarco Bernasconi, Jacopo Tani
 
