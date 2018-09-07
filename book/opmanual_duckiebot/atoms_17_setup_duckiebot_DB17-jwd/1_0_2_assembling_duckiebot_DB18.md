@@ -41,13 +41,13 @@ sure to follow them in the following order.
 ## What is in the box {#bom-db18}
 Explain what the pieces are
 
-All the pieces in your Duckiebox are shown in [](#fig:duckiebot_components_db18)
-
-<div figure-id="fig:duckiebot_components_db18" figure-caption="Components in Duckiebot package.">
-     <img src="placeholder.png" style='width: 30em'/>
+All the pieces in your Duckiebox are shown in [](#fig:duckiebot-components-db18). Note that you might have a different battery than in the picture, or different USB to micro USB cables, but the instructions can be followed anyway.
+<div figure-id="fig:duckiebot-components-db18" figure-caption="Components in Duckiebot package.">
+     <img src="duckiebot_components_db18.jpg" style='width: 30em'/>
 </div>
 
-TODO: Gianmarco Bernasconi write
+If you have got extra pieces, such as an extra heatsink or screws and nuts, just keep them apart, they could turn out to be useful in the future!
+
 
 ### Preliminary Steps
 
@@ -340,9 +340,8 @@ Locate the SD card holder on the Raspberry Pi (on the bottom). Then insert the m
 [](#fig:howto-mount-rpi-milestone-db18) shows how the Raspberry Pi should look like now.
 
 <div figure-id="fig:howto-mount-rpi-milestone-db18" figure-caption="The heat sinks installed on the Raspberry Pi 3.">
-   <img src="placeholder.jpg" style='width: 30em'/>
+   <img src="howto_mount_rpi_milestone_db18.jpg" style='width: 30em'/>
 </div>
-
 
 
 ## Raspberry Pi and Hut {#howto-prepare-rpi-hut-assemble}
@@ -364,7 +363,7 @@ From the Duckiebot kit take the following components:
 Note: It is cleaner if you do not separate each cable, but leave them in two sets of three.
 
 <div figure-id="fig:howto-assemble-hut-parts" figure-caption="The parts needed to assemble the Raspberry Pi and the Hut.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+     <img src="howto_assemble_hut_parts.jpg" style='width: 30em'/>
 </div>
 
 
@@ -395,17 +394,17 @@ Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera c
 Take one of the two sets of F/F jumper wires, and attach it to the Duckietown Hut as shown in [](#fig:howto-assemble-hut-3). It is important to use the pins named: "5Vusb, ADR LED and GND", do *not* use the pin labelled "5Vraspi". Take note of which color have you connected to each pin.
 
 <div figure-id="fig:howto-assemble-hut-3" figure-caption="Position of the nylon spacers.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+     <img src="howto_assemble_hut_3.jpg" style='width: 30em'/>
 </div>
 
 
 ### Check the outcome
 
-[](#fig:howto-assemble-rpi3-milestone) shows how the Raspberry Pi 3 should look like at this point.
+[](#fig:howto-assemble-rpi3-hut-milestone) shows how the Raspberry Pi 3 should look like at this point.
 TODO: picture with F/F jumper cables and usb cables aswell
 
-<div figure-id="fig:howto-assemble-rpi3-milestone" figure-caption="The Raspberry Pi assembly.">
-   <img src="placeholder.jpg" style='width: 30em'/>
+<div figure-id="fig:howto-assemble-rpi3-hut-milestone" figure-caption="The Raspberry Pi assembly.">
+   <img src="howto_assemble_rpi3_hut_milestone.jpg" style='width: 30em'/>
 </div>
 
 
@@ -504,7 +503,7 @@ From the Duckiebot kit take the following components:
 [](#fig:howto-mount-camera-parts-db18) shows the components needed to complete this part of the tutorial.
 
 <div figure-id="fig:howto-mount-camera-parts-db18" figure-caption="The parts needed to add the camera to the top plate.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+     <img src="howto_mount_camera_parts.jpg" style='width: 30em'/>
 </div>
 
 ### Step-by-step guide
@@ -631,7 +630,7 @@ Fasten the top plate using the M3x10 screws, as in ([](#fig:howto-assemble-chass
 Use a zip tie to help with cable management ([](#fig:howto-assemble-chassis-7)).
 
 <div figure-id="fig:howto-assemble-chassis-7" figure-caption="Cable management.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+     <img src="howto_assemble_chassis_7.jpg" style='width: 30em'/>
 </div>
 
 ## Circle grid holder {#howto-mount-circlegrid-holder}
@@ -692,13 +691,14 @@ From the Duckiebot kit take the following components:
 
 - Front bumper (1x)
 - Set of three female to female jumper wires (1x)
+- M3x6 Screws (2x)
 
 [](#fig:howto-mount-front-bumper-parts) shows the components needed to complete this upgrade.
 
 Note: It is cleaner if you do not separate each cable, but leave them in two sets of three.
 
 <div figure-id="fig:howto-mount-front-bumper-parts" figure-caption="The parts needed to mount the front bumper.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+     <img src="howto_mount_front_bumper_parts.jpg" style='width: 30em'/>
 </div>
 
 ### Step-by-step guide
@@ -742,6 +742,10 @@ Place the cabled front bumper in front of the chassis, with your fingers slightl
 <div figure-id="fig:howto-mount-front-bumper-6" figure-caption="Front bumper upper part placement..">
      <img src="howto_mount_front_bumper_6.jpg" style='width: 30em'/>
 </div>
+
+#### Part 6
+
+Insert and fasten the screws trough the top plate in the front chassis spacers.
 
 
 ## Back bumper assembly {#howto-mount-back-bumper}
@@ -802,7 +806,7 @@ From the Duckiebot kit take the following components:
 [](#fig:howto-mount-battery-duckie-parts) shows the components needed to complete this tutorial.
 
 <div figure-id="fig:howto-mount-battery-duckie-parts" figure-caption="The parts needed to mount the battery.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+     <img src="howto_mount_battery_duckie_parts.jpg" style='width: 30em'/>
 </div>
 
 ### Step-by-step instructions
@@ -814,7 +818,7 @@ Place the battery and fix it using a zip tie, then connect the USB cables, as in
 Note: **Do not** unplug/replug the bumper wires when the power is on. You could break the bumpers!
 
 <div figure-id="fig:howto-mount-battery-duckie-1" figure-caption="The parts needed to mount the battery.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+     <img src="howto_mount_battery_duckie_1.jpg" style='width: 30em'/>
 </div>
 
 #### Step 2
