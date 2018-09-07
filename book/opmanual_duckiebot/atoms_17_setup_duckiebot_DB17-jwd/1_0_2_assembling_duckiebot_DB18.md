@@ -591,13 +591,11 @@ Insert the *right*-motor cable on the *right* side of the Hut connector ([](#fig
      <img src="howto_assemble_chassis_2.jpg" style='width: 30em'/>
 </div>
 
+For reference, look at the example in [](#fig:howto-wire-motors-db18), where the *left* motor (driving perspective) has the *red* wire soldered on the bottom, so it goes on the *external left* connector. Similarly, the *right* motor (driving perspective) has the *black* wire soldered on the bottom, so it goes on the *external right* connector.
 
 
-For reference, look at the example in [](#fig:howto-assemble-chassis-3), where the *left* motor (driving perspective) has the *red* wire soldered on the bottom, so it goes on the *external left* connector. Similarly, the *right* motor (driving perspective) has the *black* wire soldered on the bottom, so it goes on the *external right* connector.
-
-TODO: help for explicative image
-<div figure-id="fig:howto-assemble-chassis-3" figure-caption="Explicative image.">
-     <img src="placeholder.jpg" style='width: 30em'/>
+<div figure-id="fig:howto-wire-motors-db18" figure-caption="Explicative image.">
+     <img src="howto_wire_motors_db18.png" style='width: 30em'/>
 </div>
 
 
