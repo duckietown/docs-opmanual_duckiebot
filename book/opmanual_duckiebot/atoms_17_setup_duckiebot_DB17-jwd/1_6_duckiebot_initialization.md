@@ -1,4 +1,4 @@
-# Duckiebot Initialization {#setup-duckiebot status=beta}
+# `DB17` Duckiebot Initialization {#setup-duckiebot status=beta}
 
 Assigned: Andrea Censi
 
