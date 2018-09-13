@@ -142,7 +142,7 @@ From the Duckiebox package take the following components:
 
 - Steel omni-directional wheel (1x)
 - M3x25 metal spacers (2x)
-- M3x10 screws (2x)
+- M3x10 (or M3x8) screws (2x)
 
 
 [](#fig:howto-mount-omniwheel-parts-db18) shows the components needed to complete this part of the tutorial.
@@ -150,9 +150,6 @@ From the Duckiebox package take the following components:
 <div figure-id="fig:howto-mount-omniwheel-parts-db18" figure-caption="The components for the omni-directional wheel assembly.">
      <img src="howto_mount_omniwheel_parts-db18.jpg" style='width: 25em'/>
 </div>
-
-
-
 
 ### Step 1
 
@@ -464,7 +461,7 @@ From the previously prepared pieces take the following components:
 From the Duckiebot kit take the following components:
 
 - M2.5x10 Nylon screws (4x)
-- M2.5x10 Nylon spacers (4x)
+- M2.5x4 Nylon spacers (4x)
 
 [](#fig:howto-assemble-rpi-top-parts) shows the components needed to complete this part of the tutorial.
 
@@ -751,14 +748,11 @@ Insert and fasten the screws trough the top plate in the front chassis spacers.
 
 ## Back bumper assembly {#howto-mount-back-bumper}
 
-From the previously prepared pieces take the following components:
+From the previously prepared assemblies, and from the Duckiebox, take the following components:
 
 - Assembled chassis (1x)
 - Back bumper assembly (1x)
-
-From the Duckiebot kit take the following components:
-
-- M3x10 screws (1x)
+- (sometimes, if you are unlucky, M3 screw (1x) and nut. You shouldn't need it.)
 
 [](#fig:howto-mount-back-bumper-parts) shows the components needed to complete this upgrade.
 
