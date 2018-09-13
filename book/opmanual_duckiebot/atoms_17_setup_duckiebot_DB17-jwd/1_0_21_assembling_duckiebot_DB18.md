@@ -64,6 +64,14 @@ Some bumper bracers have a plastic protective film which is a residue of the man
 
 Peel the plastic cover from all the chassis parts (except the bumper bracers) on both sides.
 
+### Step D
+
+Note that two amongst all of your metal screws are special. They are "countersunk" screws. Keep these aside. They will be needed in [Part 15: Back bumper assembly](#howto-mount-back-bumper).
+
+<div figure-id="fig:countersunk-screws-db18" figure-caption="Countersunk screws have a tapered head.">
+     <img src="countersunk-screws-db18.jpg" style='width: 35em'/>
+</div>
+
 ## Motors {#howto-mount-motors-db18}
 
 From the Duckiebox package take the following components:
