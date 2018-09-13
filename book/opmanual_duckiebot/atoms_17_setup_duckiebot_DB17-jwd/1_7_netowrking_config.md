@@ -1,4 +1,4 @@
-# Networking aka the hardest part {#sec:duckiebot_network status=ready}
+# `DB17` Networking aka the hardest part {#sec:duckiebot_network status=ready}
 
 <div class='requirements' markdown="1">
 
