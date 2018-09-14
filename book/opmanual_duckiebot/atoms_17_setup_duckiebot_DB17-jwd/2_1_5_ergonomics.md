@@ -1,4 +1,4 @@
-# Interlude: Ergonomics {#ergonomics status=beta}
+# Interlude: Ergonomics {#ergonomics status=ready}
 
 Assigned: Andrea Censi
 

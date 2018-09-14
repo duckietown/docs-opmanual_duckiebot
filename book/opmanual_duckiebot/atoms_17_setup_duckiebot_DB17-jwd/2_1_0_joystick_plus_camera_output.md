@@ -1,4 +1,4 @@
-# RC+camera remotely {#rc-cam-launched-remotely status=ready}
+# `DB17`: RC and camera, remotely {#rc-cam-launched-remotely status=ready}
 
 Assigned: Andrea Censi
 

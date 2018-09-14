@@ -1,4 +1,4 @@
-# Camera calibration {#camera-calib-old status=draft}
+# `DB17`: Camera calibration {#camera-calib-old status=beta}
 
 Note: This camera calibration procedure is outdated. See [](#camera-calib) for the updated procedure.
 

@@ -1,9 +1,5 @@
 # Duckiebot configurations {#duckiebot-configurations status=ready}
 
-Note: We are currently revising the Duckiebot configurations for the upcoming semester, when Duckietown 1.0 will be officially released. Stay tuned!
-
-TODO for Jacopo Tani: update configurations
-
 <div class='requirements' markdown="1">
 
 Requires: nothing
@@ -12,7 +8,50 @@ Results: Knowledge of Duckiebot configuration naming conventions and their respe
 
 </div>
 
-We define different Duckiebot configurations depending on their time of use and hardware components. This is a good starting point if you are wondering what parts you should obtain to get started.
+We define different Duckiebot configurations depending on their time of use and hardware components.
+
+
+## Duckiebot version 2018, or `DB18` {#duckiebot-config-db18}
+
+The `DB18` is the latest version of the Duckiebot. You have a `DB18` Duckiebot if, e.g., you have pledged to the Kickstarter.
+
+There are two configuration of the `DB18`.
+
+### The `DB18` configuration
+
+The main configuration is labeled plainly as `DB18` and is designed to operate on any Duckietown. You have the `DB18` if, e.g., you are a student attending the 2018 graduate level classes in ETH or the University of Montreal, or you have pledged to Summer 2018 Kickstarter.
+
+The `DB18` supports different power bank models depending on the geographical region, but all these solutions are functionally equivalent, although their form factor is different.
+
+You can recognize a `DB18` from previous versions for having only one board in addition to the Raspberry Pi, a backplate, and the computational stack mounted in the bottom deck.
+
+You can acquire the `DB18` hardware by contacting the [Duckietown Foundation](mailto:info@duckietown.org).
+
+<div figure-id="fig:db18-battery1" figure-caption="A Duckiebot `DB18` assembly.">
+   <img src="howto_assemble_finish_milestone.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:db18-battery2" figure-caption="Another Duckiebot `DB18` assembly, with a different battery.">
+   <img src="howto_assemble_finish_milestone-2.jpg" style='width: 25em'/>
+</div>
+
+### The `DB18-Robotarium` configuration
+
+The `DB18-Robotarium` configuration adds to the `DB18` the hardware necessary to operate in Robotariums: continuously operating Duckietowns. They are otherwise identical to the `DB18`.
+
+The additional hardware consists of a top localization April Tag infrastructure and an "auto-charging" mod, which allows Duckiebots to dock to charging stations and estimate the residual battery charge.  
+
+Robotariums are experimental Duckietown features, currently under development. You will find `DB18-Robotarium` models in university research labs.
+
+If you are interested in obtaining `DB18-Robotarium` Duckiebots, or in building your Duckietown Robotarium, contact the [Duckietown Foundation](mailto:info@duckietown.org).
+
+<div figure-id="fig:db18-robotarium" figure-caption="A Duckiebot in `DB18-Robotarium` configuration.">
+   <img src="a-glimpse-in-the-robotariums.png" style='width: 25em'/>
+</div>
+
+## Duckiebot versions 2017, or `DB17` {#duckiebot-config-db17}
+
+The `DB17` supports several different configurations.
 
 Once you have decided which configuration best suits your needs, you can proceed to the detailed descriptions for [`DB17-wjd`](#acquiring-parts-c0) or [`DB17-wjdlc`](#acquiring-parts-c1) Duckiebot.
 

@@ -1,11 +1,4 @@
-# Soldering boards (`DB17`) {#soldering-boards-c0 status=deprecated}
-
-Assigned: Shiying Li
-
-<!--
-Shiying: how long does it take to solder the stuff described in this chapter? (I guessed 30 mins, change it with the real number)
-
--->
+# Soldering boards (only `DB17`) {#soldering-boards-c0 status=ready}
 
 <div class='requirements' markdown="1">
 

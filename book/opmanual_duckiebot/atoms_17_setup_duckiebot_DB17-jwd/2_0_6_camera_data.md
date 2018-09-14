@@ -1,4 +1,4 @@
-# Reading from the camera {#read-camera-data status=beta}
+# `DB17`: Reading from the camera {#read-camera-data status=ready}
 
 
 <div class='requirements' markdown='1'>

@@ -1,6 +1,6 @@
 # `DB18` Duckiebot Initialization {#setup-duckiebot-db18 status=draft}
 
-Assigned: Breandan Considine
+Assigned: Breandan Considine, Liam Paull
 
 <div class='requirements' markdown="1">
 
