@@ -1,18 +1,15 @@
 # Acquiring the parts (`DB17-jwd`) {#acquiring-parts-c0 status=ready}
 
-Note: We are currently revising the Duckiebot configurations for the upcoming semester, when Duckietown 1.0 will be officially released. Stay tuned!
-
-TODO for Jacopo Tani: update configurations
-
-The trip begins with acquiring the parts. Here, we provide a link to all bits and pieces that are needed to build a Duckiebot, along with their price tag. If you are wondering what is the difference between different Duckiebot configurations, read [this](#duckiebot-configurations).
+The trip begins with acquiring the parts. Here, we provide a link to all bits and pieces that are needed to build a `DB17-jwd` Duckiebot, along with their price tag. If you are wondering what is the difference between different Duckiebot configurations, read [this](#duckiebot-configurations).
 
 In general, keep in mind that:
 
 - The links might expire, or the prices might vary.
 - Shipping times and fees vary, and are not included in the prices shown below.
+- International deliveries are subject to additional custom clearances and import fees.
 - Substitutions are OK for the mechanical components,
   and not OK for all the electronics, unless you are OK in writing
-  some software.
+  some software. Limited technical support will be offered for hardware customizations.
 - Buying the parts for more than one Duckiebot makes each one cheaper than buying only one.
 - For some components, the links we provide contain more bits than actually needed.
 
@@ -21,7 +18,7 @@ In general, keep in mind that:
 
 Requires: Cost: USD 174 + Shipping Fees (minimal configuration `DB17`)
 
-Requires: Time: 15 days (average shipping for cheapest choice of components)
+Requires: Time: 15 days (average shipping to the USA for cheapest choice of components)
 
 Results: A kit of parts ready to be assembled in a `DB17` or `DB17-wjd` configuration.
 

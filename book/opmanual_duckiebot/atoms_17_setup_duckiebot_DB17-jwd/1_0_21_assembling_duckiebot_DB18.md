@@ -18,7 +18,7 @@ Results: An assembled Duckiebot in configuration `DB18`.
 
 Note: The [FAQ](#op-assembly-db18-faq) section at the bottom of this page may already answer some of you comments, questions or doubts.
 
-This section comprises 16 parts. Most parts build upon previous steps, so make
+There are 16 parts in this procedure. Most parts build upon previous steps, so make
 sure to follow them in the following order:
 
 - [Part 1: What is in the box?](#bom-db18)
@@ -52,7 +52,7 @@ If you have got extra pieces, such as an extra heat sink or screws and nuts, jus
 
 ### Step A
 
-Unbox all of your components, and put aside anything that is not shown in []([](#fig:duckiebot-components-db18). You might have some redundant components like a black battery holder and motor encoders, in addition to spares.
+Unbox all of your components, and put aside anything that is not shown in [](#fig:duckiebot-components-db18). You might have some redundant components like a black battery holder and motor encoders, in addition to spares.
 
 ### Step B
 
@@ -339,7 +339,8 @@ cables have the text on different sides and with different orientation, **do not
 
 ### Step 4
 
-Locate the SD card holder on the Raspberry Pi (on the bottom). Then insert the micro SD card as in [](#fig:howto-mount-rpi-4)
+Find the SD card holder on the Raspberry Pi (on the bottom of it). Then insert the micro SD card as in [](#fig:howto-mount-rpi-4). Note that SD cards might vary in appearance, the figure is just for reference.
+
 <div figure-id="fig:howto-mount-rpi-4" figure-caption="Open the camera cable plug.">
      <img src="howto_mount_rpi_4.png" style='width: 25em'/>
 </div>
@@ -633,7 +634,7 @@ Fasten the top plate using the M3x10 screws, as in ([](#fig:howto-assemble-chass
 
 ### Step 6
 
-Use a zip tie to help with cable management ([](#fig:howto-assemble-chassis-7)).
+You can use a zip tie to help with cable management ([](#fig:howto-assemble-chassis-7)). Tip: you can use one zipties to keep the camera cable down and the USB cables below from touching the wheels.
 
 <div figure-id="fig:howto-assemble-chassis-7" figure-caption="Cable management.">
      <img src="howto_assemble_chassis_7.jpg" style='width: 25em'/>
@@ -656,7 +657,7 @@ From the Duckiebot kit take the following components:
      <img src="howto_mount_circlegrid_holder_parts.png" style='width: 25em'/>
 </div>
 
-
+Note: You could have a back plate of a different color with respect to the picture, e.g., black or white. THey are all functionally equivalent.
 
 ### Step 1
 
@@ -720,13 +721,13 @@ Note: Pay attention to place the front bumper oriented as in the picture.
 
 ### Step 2
 
-Pass the electric F/F cables through the top chassis (cable management). Avoid anything touching the wheels ([](#fig:howto-mount-front-bumper-2)).
+Pass the electric F/F cables through the top chassis for cable management purposes. Try avoid any cable from touching the wheels ([](#fig:howto-mount-front-bumper-2)).
 
 <div figure-id="fig:howto-mount-front-bumper-2" figure-caption="Cable management.">
      <img src="howto_mount_front_bumper_2.png" style='width: 25em'/>
 </div>
 
-Note: The ziptie in the picture is not mandatory but can be used to ease cable management
+Note: The ziptie can be in a different position than shown in the picture.
 
 ### Step 3
 
@@ -739,7 +740,7 @@ The set of cables coming from the Raspberry Pi must be connected on the right ([
 
 ### Step 5
 
-Place the cabled front bumper in front of the chassis, with your fingers slightly lift the top plate and insert the front bumper. It is a form fit, the connector on the lower part must go in the circular hole (see [](#fig:howto-mount-front-bumper-5)), while the two top connectors will lock in just behind the camera mount (refer to [](#fig:howto-mount-front-bumper-6)).
+Place the cabled front bumper in front of the chassis, with your fingers slightly lift the top plate and insert the front bumper. It is a form fit, the connector on the lower part must go in the circular hole (see [](#fig:howto-mount-front-bumper-5)), while the two top connectors will lock in just behind the camera mount (refer to [](#fig:howto-mount-front-bumper-6)). You might need to apply some pressure once found the correct alignment for the components to "lock in".
 
 <div figure-id="fig:howto-mount-front-bumper-5" figure-caption="Front bumper bottom part placement.">
      <img src="howto_mount_front_bumper_5.jpg" style='width: 25em'/>
@@ -760,15 +761,13 @@ From the previously prepared assemblies, and from the Duckiebox, take the follow
 
 - Assembled chassis (1x)
 - Back bumper assembly (1x)
-- (sometimes, if you are unlucky, M3 screw (1x) and nut. You shouldn't need it.)
+- (Optional) M3 screws (2x) and nuts.
 
 [](#fig:howto-mount-back-bumper-parts) shows the components needed to complete this upgrade.
 
 <div figure-id="fig:howto-mount-back-bumper-parts" figure-caption="The parts needed to mount the back bumper.">
      <img src="howto_mount_back_bumper_parts.png" style='width: 25em'/>
 </div>
-
-### Step-by-step instructions
 
 ### Step 1
 
@@ -786,9 +785,23 @@ The back bumper is press fit to the bumper bracers, place it as in [](#fig:howto
      <img src="howto_mount_back_bumper_3.png" style='width: 25em'/>
 </div>
 
+If you cannot get the bumper to fit, check if the bumper bracer has plastic protective films on both sides. In case, remove one - try again - and in case remove the other one too.
+
+If you experience a loose fit instead, you can use two M3 screws and nuts to secure the back bumper.
+
+<figure class="flow-subfigures">  
+    <figcaption>(Optional) How to secure the back bumper in case of loose fit.</figcaption>
+    <figure>
+        <img style='width:15em' src="howto_secure_back_bumper.jpg"/>
+    </figure>
+    <figure>  
+        <img style='width:15em' src="howto_secure_back_bumper-2.jpg"/>
+    </figure>
+</figure>
+
 ### Check the outcome
 
-[](#fig:howto-assemble-back-bumper-milestone) shows how the current assebly should look like at this point.
+[](#fig:howto-assemble-back-bumper-milestone) shows how the current assembly should look like at this point.
 
 <div figure-id="fig:howto-assemble-back-bumper-milestone" figure-caption="The Duckiebot assembly.">
    <img src="howto_mount_back_bumper_milestone.png" style='width: 25em'/>
@@ -812,8 +825,6 @@ From the Duckiebot kit take the following components:
      <img src="howto_mount_battery_duckie_parts.jpg" style='width: 25em'/>
 </div>
 
-### Step-by-step instructions
-
 ### Step 1
 
 Place the battery and fix it using a zip tie, then connect the USB cables, as in [](#fig:howto-mount-battery-duckie-1).
@@ -832,14 +843,24 @@ Note: Be careful not to hurt the Duckie.
 
 ### Check the outcome
 
-[](#fig:howto-assemble-finish-milestone) shows how the final assembly should look like. Congratulations!
+[](#fig:howto-assemble-finish-milestone) and [](#fig:howto-assemble-finish-milestone-2) show how the final assembly should look like. Congratulations!
 
-<div figure-id="fig:howto-assemble-finish-milestone" figure-caption="The final Duckiebot assembly.">
+<div figure-id="fig:howto-assemble-finish-milestone" figure-caption="The final Duckiebot assembly, with shorter form factor battery.">
    <img src="howto_assemble_finish_milestone.jpg" style='width: 25em'/>
 </div>
 
+<div figure-id="fig:howto-assemble-finish-milestone-2" figure-caption="The final Duckiebot assembly, with longer form factor battery.">
+   <img src="howto_assemble_finish_milestone-2.jpg" style='width: 25em'/>
+</div>
+
+Note: as a final check, verify that no cable is touching the wheels. You can use the provided zip ties to ensure that cables stay out of the way.
+
 ## FAQ {#op-assembly-db18-faq}
 
-Q: I found it hard to mount the omni-directional wheel (the holes weren't lining up).
+Q: I found it hard to mount the omni-directional wheel / the back bumper / the Raspberry Pi because the holes weren't lining up.
 
 A: Sometimes in life you have to push a little to make things happen. (But don't push too much or things will break!)
+
+Q: My battery is different from the one shown in the pictures! Did I get the wrong box?
+
+A: If there is a duckie in or on your box, you most probably got the right one. We support different battery models. All supported models are functionally equivalent, although the form factor varies.

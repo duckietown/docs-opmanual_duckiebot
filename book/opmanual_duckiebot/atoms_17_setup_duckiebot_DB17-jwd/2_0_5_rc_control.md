@@ -1,4 +1,4 @@
-# Software setup and RC remote control {#rc-control status=beta}
+# `DB17`: Software setup and RC remote control {#rc-control status=ready}
 
 <div class='requirements' markdown='1'>
 
@@ -9,7 +9,7 @@ Requires: You have configured the Duckiebot. The procedure is documented in [](#
 Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).
 
-Results: You can run the joystick demo.
+Results: You can run the "joystick" demo.
 
 </div>
 

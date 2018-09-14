@@ -1,4 +1,4 @@
-# Taking and verifying a log {#take-a-log status=outdated}
+# `DB17`: Taking and verifying a log {#take-a-log status=outdated}
 
 <div class='requirements' markdown='1'>
 

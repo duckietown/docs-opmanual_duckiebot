@@ -1,4 +1,4 @@
-# RC control launched remotely {#rc-launched-remotely status=beta}
+# `DB17`: RC control launched remotely {#rc-launched-remotely status=ready}
 
 Assigned: Andrea Censi
 

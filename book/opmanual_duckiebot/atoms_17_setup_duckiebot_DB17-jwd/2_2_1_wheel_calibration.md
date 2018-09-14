@@ -12,6 +12,8 @@ when you command it to. Set the maximum speed of the Duckiebot.
 
 </div>
 
+TODO: Jacopo Tani - separate theory from demo instructions
+
 ## Introduction
 
 The motors used on the Duckiebots are called "Voltage-controlled motors".

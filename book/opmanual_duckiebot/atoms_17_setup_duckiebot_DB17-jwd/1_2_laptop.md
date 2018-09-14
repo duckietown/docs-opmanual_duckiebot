@@ -1,4 +1,4 @@
-# Installing Ubuntu on laptops {#setup-laptop status=beta}
+# `DB17`: Installing Ubuntu on laptops {#setup-laptop status=beta}
 
 Assigned: Andrea Censi
 
@@ -140,5 +140,3 @@ This will allow you to have a local copy of the documentation
 and easily submit questions and changes.
 
 See: The procedure is documented in [](+duckumentation#duckumentation-installing-docs-system).
-
-

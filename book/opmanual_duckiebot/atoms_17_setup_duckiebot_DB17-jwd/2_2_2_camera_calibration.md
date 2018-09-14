@@ -1,5 +1,4 @@
-
-# Camera calibration and validation {#camera-calib status=ready}
+# `DB17`: Camera calibration and validation {#camera-calib status=ready}
 
 Here is an updated, more practical extrinsic calibration and validation procedure.
 

@@ -1,4 +1,4 @@
-# Preparing the power cable (`DB17`) {#power-cable-prep-c0 status=deprecated}
+# Preparing the power cable (only `DB17`) {#power-cable-prep-c0 status=ready}
 
 In configuration `DB17` we will need a cable to power the DC motor HAT from the battery. The keen observer might have noticed that such a cable was not included in the [`DB17` Duckiebot parts](#acquiring-parts-c0) chapter. Here, we create this cable by splitting open any USB-A cable, identifying and stripping the power wires, and using them to power the DC motor HAT. If you are unsure about the definitions of the different Duckiebot configurations, read [](#duckiebot-configurations).
 
