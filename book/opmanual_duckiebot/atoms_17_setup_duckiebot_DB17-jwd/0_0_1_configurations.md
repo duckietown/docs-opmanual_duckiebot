@@ -27,11 +27,11 @@ You can recognize a `DB18` from previous versions for having only one board in a
 
 You can acquire the `DB18` hardware by contacting the [Duckietown Foundation](mailto:info@duckietown.org).
 
-<div figure-id="fig:db18-battery1" figure-caption="A Duckiebot `DB18` assembly.">
+<div figure-id="fig:db18-battery1" figure-caption="A Duckiebot DB18 assembly.">
    <img src="howto_assemble_finish_milestone.jpg" style='width: 25em'/>
 </div>
 
-<div figure-id="fig:db18-battery2" figure-caption="Another Duckiebot `DB18` assembly, with a different battery.">
+<div figure-id="fig:db18-battery2" figure-caption="Another Duckiebot DB18 assembly, with a different battery.">
    <img src="howto_assemble_finish_milestone-2.jpg" style='width: 25em'/>
 </div>
 
@@ -45,7 +45,7 @@ Robotariums are experimental Duckietown features, currently under development. Y
 
 If you are interested in obtaining `DB18-Robotarium` Duckiebots, or in building your Duckietown Robotarium, contact the [Duckietown Foundation](mailto:info@duckietown.org).
 
-<div figure-id="fig:db18-robotarium" figure-caption="A Duckiebot in `DB18-Robotarium` configuration.">
+<div figure-id="fig:db18-robotarium" figure-caption="A Duckiebot in DB18-Robotarium configuration.">
    <img src="a-glimpse-in-the-robotariums.png" style='width: 25em'/>
 </div>
 
