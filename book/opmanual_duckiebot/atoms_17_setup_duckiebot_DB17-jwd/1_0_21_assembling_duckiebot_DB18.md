@@ -1,4 +1,4 @@
-# Assembling the Duckiebot (`DB18`)  {#assembling-duckiebot-db18 status=ready}
+# `DB18`: Assembling the Duckiebot {#assembling-duckiebot-db18 status=ready}
 
 Point of contact: Gianmarco Bernasconi, Jacopo Tani
 
@@ -618,7 +618,7 @@ Now flip the chassis top plate assembly, it should look like in [](#fig:howto-as
 
 ### Step 4
 
-Place the second rear bumper bracer on top of the chassis spacers in the back of the chassis, again the holes should align ([](#fig:howto-assemble-chassis-5)). If you experience a slight misalignment, carefully pass an M3 screw through the top plate and the top bumper bracer first, then move the standoff until you can plug the screw in.  
+Place the second rear bumper bracer on top of the chassis spacers in the back of the chassis, again the holes should align ([](#fig:howto-assemble-chassis-5)). If you experience a slight misalignment, carefully pass an M3 screw through the top plate and the top bumper bracer first, then move the standoff until you can plug the screw in.
 
 <div figure-id="fig:howto-assemble-chassis-5" figure-caption="Rear bumper bracer positioning.">
      <img src="howto_assemble_chassis_5.jpg" style='width: 25em'/>
@@ -789,12 +789,12 @@ If you cannot get the bumper to fit, check if the bumper bracer has plastic prot
 
 If you experience a loose fit instead, you can use two M3 screws and nuts to secure the back bumper.
 
-<figure class="flow-subfigures">  
+<figure class="flow-subfigures">
     <figcaption>(Optional) How to secure the back bumper in case of loose fit.</figcaption>
     <figure>
         <img style='width:15em' src="howto_secure_back_bumper.jpg"/>
     </figure>
-    <figure>  
+    <figure>
         <img style='width:15em' src="howto_secure_back_bumper-2.jpg"/>
     </figure>
 </figure>
