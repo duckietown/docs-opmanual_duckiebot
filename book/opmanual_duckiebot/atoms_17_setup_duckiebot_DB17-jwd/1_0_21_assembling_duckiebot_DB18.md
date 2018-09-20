@@ -1,7 +1,7 @@
 # Assembling the Duckiebot (`DB18`)  {#assembling-duckiebot-db18 status=ready}
 
 Point of contact: Gianmarco Bernasconi, Jacopo Tani
-Put one motor between the holders as 
+
 Once you have received the parts, it is time to assemble them in a Duckiebot. Here, we provide the assembly instructions for the configuration `DB18`.
 
 <div class='requirements' markdown="1">
