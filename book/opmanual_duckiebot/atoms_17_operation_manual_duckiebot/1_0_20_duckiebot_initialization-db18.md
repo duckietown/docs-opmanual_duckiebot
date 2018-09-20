@@ -12,29 +12,41 @@ Results: A correctly configured Duckiebot SD card in configuration `DB18`. After
 
 </div>
 
+## Install the Duckietown Shell
+
+Install the most updated version of the Duckietown Shell, this is explained in [](#dt-shell-intro).
+
+If you already installed the Duckietown Shell, make sure it is updated by running
+
+```
+$ dts update
+```
+
+## 
+
 ## Burn the SD card {#burn-sd-card}
 
-First you must install the [Duckietown Shell Environment](https://github.com/duckietown/duckietown-shell). To do so follow the instruction in the [Duckietown Shell README](https://github.com/duckietown/duckietown-shell/blob/master/README.md).
+Plug the SD card in the computer using the card reader. Then initalize it by running the command:
 
-Next execute the command:
+```
+laptop $ dts init_sd_card
+```
 
-​    laptop $ dts init_sd_card
-
-and follow the instructions. 
+and follow the instructions:
 
 - When you are asked if you should overwrite your SSH identity file select <kbd>y</kbd>
 
-- Enter a username (default is `duckie` - we will call this `![username])
+- Enter a username (default is `duckie` - we will call this `![username]`)
 
 - Enter a password to login to robot via ssh (default is `quackquack`)
 
-- Enter a hostname for your robot = the "name" of your robot (default is `duckiebot` - we will call this `![hostname])
+- Enter a hostname for your robot = the "name" of your robot (default is `duckiebot` - we will call this `![hostname]`)
 
-- Enter a  WiFi SSID for your robot to connect to by default (default is `duckietown` - we will call this `![wifi-ssid])
+- Enter a  WiFi SSID for your robot to connect to by default (default is `duckietown` - we will call this `![wifi-ssid]`)
 
 - Enter the Wifi password (default is `quackquack`)
 
-- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid])
+- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`)
 
 - Enter the password for your Duckiebot Wifi (default is `quackquack`)
 
@@ -59,12 +71,18 @@ You know that your Pi has successfully booted when you can see it broadcasting a
 
 If you connect to the newtork `![hostname]-XXXX` or to the network that the Duckiebot connects to by default ![wifi-ssid], then you should be able to ping your robot with:
 
-​    laptop $ ping ![hostname].local
+```
+laptop $ ping ![hostname].local
+```
 
 You should see output similar to the following:
 
-​    PING duckiebot-not-configured.local (![X.X.X.X]): 56 data bytes
-​    64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
-​    64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
-​    ![...]
+​    
+
+```
+PING duckiebot-not-configured.local (![X.X.X.X]): 56 data bytes
+64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
+64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
+![...]
+```
 
