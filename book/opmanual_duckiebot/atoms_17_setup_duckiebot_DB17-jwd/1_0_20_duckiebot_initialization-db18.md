@@ -15,7 +15,7 @@ Results: A correctly configured Duckiebot SD card in configuration `DB18`. After
 
 ## Install the Duckietown Shell
 
-Install the most updated version of the Duckietown Shell, this is explained in [](#dt-shell-intro).
+Install the most updated version of the Duckietown Shell, this is explained in [](+software_devel#dt-shell-intro).
 
 If you already installed the Duckietown Shell, make sure it is updated by running
 
