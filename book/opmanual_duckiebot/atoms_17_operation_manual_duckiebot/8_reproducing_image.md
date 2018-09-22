@@ -1,4 +1,6 @@
-# `DB17`: Reproducing the image {#duckiebot-ubuntu-image status=ready}
+# Reproducing the image {#duckiebot-ubuntu-image status=ready}
+
+Note: This is likely out of date
 
 <!--comment-->
 
@@ -237,24 +239,24 @@ describes how to connect to the `duckietown` wireless network:
     permissions=
     secondaries=
     timestamp=1502254646
-
+    
     [wifi]
     mac-address-blacklist=
     mac-address-randomization=0
     mode=infrastructure
     ssid=duckietown
-
+    
     [wifi-security]
     group=
     key-mgmt=wpa-psk
     pairwise=
     proto=
     psk=quackquack
-
+    
     [ipv4]
     dns-search=
     method=auto
-
+    
     [ipv6]
     addr-gen-mode=stable-privacy
     dns-search=
@@ -276,7 +278,7 @@ Contents:
     permissions=
     secondaries=
     timestamp=1502023843
-
+    
     [wifi]
     band=a
     # Put the Edimax MAC address here
@@ -286,11 +288,11 @@ Contents:
     mode=ap
     seen-bssids=
     ssid=duckiebot-not-configured
-
+    
     [ipv4]
     dns-search=
     method=shared
-
+    
     [ipv6]
     addr-gen-mode=stable-privacy
     dns-search=
@@ -441,7 +443,7 @@ Add the following lines to `~ubuntu/.bashrc`:
     echo "1) Do not use the user 'ubuntu' for development - create your own user."
     echo "2) Change the name of the robot from 'duckiebot' to something else."
     echo ""
-
+    
     export EDITOR=vim
 
 ## Check that all required packages were installed

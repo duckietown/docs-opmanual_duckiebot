@@ -1,14 +1,11 @@
-# `DB17`: Reading from the camera {#read-camera-data status=ready}
+# See What Your Duckiebot Sees {#read-camera-data status=ready}
 
 
 <div class='requirements' markdown='1'>
 
-Requires: You have configured the Duckiebot.
-The procedure is documented in [](#setup-duckiebot).
 
-Requires: You know [the basics of ROS](+software_reference#introduction_to_ros) (launch files, `roslaunch`, topics, `rostopic`).
 
-Results: You know that the camera works under ROS.
+Requires: You have configured the Duckiebot. The procedure is documented in [](#setup-duckiebot).
 
 </div>
 
@@ -17,7 +14,7 @@ Results: You know that the camera works under ROS.
 
 It might be useful to do a quick camera hardware check.
 
-See: The procedure is documented in [](#camera-hardware-check).
+See: The procedure is documented in [](#howto-mount-camera).
 
 ## Create two windows
 

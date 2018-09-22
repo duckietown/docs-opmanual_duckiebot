@@ -1,10 +1,12 @@
-# `DB18` Duckiebot Initialization {#setup-duckiebot-db18 status=draft}
+# Duckiebot Initialization {#setup-duckiebot status=ready}
 
 Assigned: Breandan Considine, Liam Paull
 
+This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](docs.duckietown.org/17/). 
+
 <div class='requirements' markdown="1">
 
-Requires: An SD card of dimensions at least 16 GB.
+Requires: An SD card of size at least 16 GB.
 
 Requires: A computer with a **Ubuntu OS**, an internet connection, an SD card reader, and 16 GB of free space.
 
@@ -14,7 +16,7 @@ Results: A correctly configured Duckiebot SD card in configuration `DB18`. After
 
 ## Install the Duckietown Shell
 
-Install the most updated version of the Duckietown Shell, this is explained in [](#dt-shell-intro).
+Install the most updated version of the Duckietown Shell, this is explained in [the duckietown-shell README](https://github.com/duckietown/duckietown-shell/blob/master/README.md).
 
 If you already installed the Duckietown Shell, make sure it is updated by running
 
@@ -67,17 +69,19 @@ Now insert the SD card into the Raspberry pi and push the button on the battery 
 
 Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or more since some things are being configured. Do not power the robot off (by holding the battery button) while this is in process. 
 
-You know that your Pi has successfully booted when you can see it broadcasting a network with an SSID of `![hostname]-XXXX` where `XXXX` are some random numbers and letters at the end of SSID to prevent name conflicts.
 
-If you connect to the newtork `![hostname]-XXXX` or to the network that the Duckiebot connects to by default ![wifi-ssid], then you should be able to ping your robot with:
+
+You know that your Pi has successfully booted when you can see it broadcasting a network with an SSID of `![hostname]-abcd` where `abcd` are some random numbers and letters at the end of SSID to prevent name conflicts.
+
+
+
+If you connect to the newtork `![hostname]-abcd` or to the network that the Duckiebot connects to by default ![wifi-ssid], then you should be able to ping your robot with:
 
 ```
 laptop $ ping ![hostname].local
 ```
 
-You should see output similar to the following:
-
-​    
+You should see output similar to the following:​    
 
 ```
 PING duckiebot-not-configured.local (![X.X.X.X]): 56 data bytes
@@ -86,3 +90,36 @@ PING duckiebot-not-configured.local (![X.X.X.X]): 56 data bytes
 ![...]
 ```
 
+
+
+## SSH to the Duckiebot
+
+Next, try to log in using SSH
+
+```
+laptop $ ssh ![username]@![hostname].local
+```
+
+and enter your password.
+
+It is recommended that you immediately give ownership of your home folder to your user. You can do this by running the following on your Duckiebot
+
+```
+duckiebot $ sudo chown -R ![username]:![username] .
+```
+
+You should place your SSH key onto the robot so that you don't need to enter it in the future. This can be done with:
+
+```
+laptop $ ssh-copy-id -i ~/.ssh/mykey ![username]@![hostname].local
+```
+
+now you should be able to retry the ssh command and see that it logs directly into your robot. 
+
+Doubt: This doesn't seem to work 100% of the time. 
+
+
+
+## Connect to the Internet
+
+See: [](#duckiebot_network)

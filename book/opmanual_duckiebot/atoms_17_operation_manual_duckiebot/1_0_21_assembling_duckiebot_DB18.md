@@ -1,14 +1,14 @@
-# `DB18`: Assembling the Duckiebot {#assembling-duckiebot-db18 status=ready}
+# Assembling the Duckiebot {#assembling-duckiebot-db18 status=ready}
 
-Point of contact: Gianmarco Bernasconi, Jacopo Tani
+Assigned: Gianmarco Bernasconi, Jacopo Tani
 
-Once you have received the parts, it is time to assemble them in a Duckiebot. Here, we provide the assembly instructions for the configuration `DB18`.
+This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](docs.duckietown.org/17/).
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB18` parts. The acquisition process is explained in [](#acquiring-parts-c0).
+Requires: Duckiebot `DB18` parts. The acquisition process is explained in [](#duckiebot-configurations).
 
-Requires: An SD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot-db18).
+Requires: An SD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot).
 
 Requires: Time: about 1-1.5 hours (45 minutes for an experienced Duckiebot builder).
 
@@ -124,7 +124,7 @@ Note: tighten the motors firmly, as a wobbly motor might cause troubles later on
 
 ### Step 4
 
-Repeat for the opposite side and check that the outcome is the same as in [](#fig:howto-mount-motors-milestone)
+Repeat for the opposite side and check that the outcome is the same as in [](#fig:howto-mount-motors-milestone-db18)
 
 <div figure-id="fig:howto-mount-motors-milestone-db18" figure-caption="The motors are attached to the bottom plate of the chassis.">
    <img src="howto-mount-motors-milestone-db18.jpg" style='width: 25em'/>
@@ -132,7 +132,7 @@ Repeat for the opposite side and check that the outcome is the same as in [](#fi
 
 ### Step 5
 
-Tilt your bottom plate and pass the cables of the motors through the central hole. Keep the cables coming from each motor separated ([](#fig:howto-mount-motors-milestone)).
+Tilt your bottom plate and pass the cables of the motors through the central hole. Keep the cables coming from each motor separated ([](#fig:howto-mount-motors-4)).
 
 <div figure-id="fig:howto-mount-motors-4" figure-caption="Cables through central hole.">
    <img src="howto-mount-motors-4.jpg" style='width: 25em'/>
@@ -204,7 +204,7 @@ In the bottom part, secure the omni-directional wheel using the screws.
 
 ### Check the outcome
 
-[](#fig:howto-mount-standoffs-milestone) shows how the omni-directional wheel should be attached to the plate.
+[](#fig:howto-assembly-omniwheel-milestone) shows how the omni-directional wheel should be attached to the plate.
 
 <div figure-id="fig:howto-assembly-omniwheel-milestone" figure-caption="The omniwheel attached to the plate.">
    <img src="howto_assemble_omniwheel_milestone.jpg" style='width: 25em'/>

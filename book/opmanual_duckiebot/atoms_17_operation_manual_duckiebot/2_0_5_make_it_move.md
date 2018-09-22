@@ -1,111 +1,38 @@
-# `DB17`: Software setup and RC remote control {#rc-control status=ready}
+# Making Your Duckiebot Move {#rc-control status=ready}
+
+Assigned: Breandan Considine, Liam Paull
+
+This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown='1'>
 
-Requires: Laptop configured, according to [](#setup-laptop).
+
+Requires: Laptop configured, according to [](#laptop-setup).
 
 Requires: You have configured the Duckiebot. The procedure is documented in [](#setup-duckiebot).
 
 Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).
 
-Results: You can run the "joystick" demo.
+Results: You can make your robot move.
 
 </div>
 
-
-## Clone the Duckietown repository {#clone-software-repo}
-
-Clone the repository in the directory `~/duckietown`:
-
-    duckiebot $ git clone git@github.com:duckietown/Software.git ~/duckietown
-
-For the above to succeed you should have a Github account already set up.
-
-It should not ask for a password.
-
-Note: you must not clone the repository using the URL starting with `https`. Later steps will fail.
-
-### Troubleshooting
-
-Symptom: It asks for a password.
-
-Resolution: You missed some of the steps described in [](+software_reference#github-access).
-
-Symptom: Other weird errors.
-
-Resolution: Probably the time is not set up correctly. Use `ntpdate` as above:
-
-    $ sudo ntpdate -u us.pool.ntp.org
-
-Or see the hints in the troubleshooting section on the previous page.
+## Option 1 - Pure Docker {#make-it-move_docker status=draft}
 
 
-## Update the system
 
-The software used for the Duckiebots changes every day, this means that also the dependencies
-change. In order to check whether your system meets all the requirements for running the software
-and install all the missing packages (if any), we can run the following script:
-
-    duckiebot $ cd ~/duckietown
-    duckiebot $ /bin/bash ./dependencies_for_duckiebot.sh
-
-This command will install only the packages that are not already installed in your system.
-
-## Set up the ROS environment on the Duckiebot {#build-repo}
-
-All the following commands should be run in the `~/duckietown` directory:
-
-    duckiebot $ cd ~/duckietown
-
-Now we are ready to make the workspace. First you need to source the baseline ROS environment:
-
-    duckiebot $ source /opt/ros/kinetic/setup.bash
-
-Then, build the workspace using:
-
-    duckiebot $ catkin_make -C catkin_ws/
-
-See also: For more information about `catkin_make`, see [](+software_reference#catkin_make).
-
-Note: there is a known bug, for which it fails the first time on the Raspberry Pi. Try again; it will work.
-
-Comment: I got no error on first execution on the Raspberry Pi
-
-<!-- (you have to be under the `catkin_ws` folder to invoke `catkin_make`) -->
+## Option 2 - Docker + ROS {#make-it-move_docker_ros status=draft}
 
 
-## Clone the duckiefleet repository {#clone-duckiefleet}
 
-Clone the relevant `duckiefleet` repository into `~/duckiefleet`.
-
-See [](+software_devel#duckiefleet-directory) to find the right `duckiefleet` repository.
-
-In `~/.bashrc` set `DUCKIEFLEET_ROOT` to point to the directory:
-
-    export DUCKIEFLEET_ROOT=~/duckiefleet
-
-Also, make sure that you execute `~/.bashrc` in the current shell by running the command:
-
-    source ~/.bashrc
+## Option 3 - Pure ROS {#make-it-move_ros}
 
 
-## Add your vehicle data to the robot database {#edit-machines-file}
 
-Next, you need to add your robot to the vehicles database.  This is not optional and required in order to launch any ROS scripts.
+## Troubleshooting 
 
-You have already a copy of the vehicles database in the folder `robots` of `DUCKIEFLEET_ROOT`.
-
-Copy the file `emma.robot.yaml` to `![robotname].robot.yaml`, where `![robotname]`
-is your robot's hostname. Then edit the copied file to represent your Duckiebot.
-
-See: For information about the format, see [](+software_devel#scuderia).
-
-Generate the machines file.
-
-See: The procedure is listed here: [](+software_devel#machines).
-
-Finally, push your robot configuration to the duckiefleet repo.
+Add the date thing
 
 ## Test that the joystick is detected {#test-joystick}
 
@@ -117,20 +44,6 @@ To make sure that the joystick is detected, run:
     duckiebot $ ls /dev/input/
 
 and check if there is a device called `js0` on the list.
-
-<div class='check' markdown="1">
-
-Make sure that your user is in the group `input` and `i2c`:
-
-    duckiebot $ groups
-    ![username] sudo input i2c
-
-If `input` and `i2c` are not in the list, you missed a step. Ohi ohi!
-You are not following the instructions carefully!
-
-See: Consult again [](#create-user-on-duckiebot).
-
-</div>
 
 To test whether or not the joystick itself is working properly, run:
 
@@ -164,12 +77,18 @@ knob controls throttle - right controls steering.
 
 This is the expected result of the commands:
 
+```
 <col2>
-    <s>left joystick up</s>     <s>forward</s>
-    <s>left joystick down</s>   <s>backward</s>
-    <s>right joystick left</s>  <s>turn left (positive yaw)</s>
-    <s>right joystick right</s> <s>turn right (negative yaw)</s>
+<span>left joystick up</span>     
+<span>forward</span>
+<span>left joystick down</span>   
+<span>backward</span>
+<span>right joystick left</span>  
+<span>turn left (positive yaw)</span>
+<span>right joystick right</span> 
+<span>turn right (negative yaw)</span>
 </col2>
+```
 
 It is possible you will have to unplug and replug the joystick or just push lots of buttons on your joystick until it wakes up. Also make sure that the mode switch on the top of your joystick is set to "X", not "D".
 
@@ -219,3 +138,53 @@ As an alternative you can use the `poweroff` command:
     duckiebot $ sudo poweroff
 
 Warning: If you disconnect frequently the cable at the Raspberry Pi's end, you might damage the port.
+
+
+
+## Watch the program output using `rqt_console`
+
+Also, you might have notice that the terminal where you launch the launch file
+is not printing all the printouts like the previous example. This is one of
+the limitation of remote launch.
+
+Don't worry though, we can still see the printouts using `rqt_console`.
+
+On the laptop, open a new terminal window, and run:
+
+```
+laptop $ export ROS_MASTER_URI=http://![robot name].local:11311/
+laptop $ rqt_console
+```
+
+You should see a nice interface listing all the printouts in real time,
+completed with filters that can help you find that message you are looking for
+in a sea of messages.
+If `rqt_console` does not show any message, check out the *Troubleshooting* section below.
+
+You can use <kbd>Ctrl</kbd>-<kbd>C</kbd> at the terminal where `roslaunch` was executed to stop all the
+nodes launched by the launch file.
+
+See also: For more information about `rqt_console`, see [](+software_reference#rqt_console).
+
+## Troubleshooting
+
+Symptom: `rqt_console` does not show any message.
+
+Resolution: Open `rqt_console`. Go to the Setup window (top-right corner).
+Change the "Rosout Topic" field from `/rosout_agg` to `/rosout`. Confirm.
+
+
+
+Symptom: `roslaunch` fails with an error similar to the following:
+
+```
+remote[![robot name].local-0]: failed to launch on ![robot name]:
+
+Unable to establish ssh connection to [![username]@![robot name].local:22]:
+Server u'![robot name].local' not found in known_hosts.
+```
+
+Resolution: You have not followed the instructions that told you to add the `HostKeyAlgorithms`
+option. Delete `~/.ssh/known_hosts` and fix your configuration.
+
+See: The procedure is documented in [](+software_reference#ssh-local-configuration).
