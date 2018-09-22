@@ -106,12 +106,5 @@ You should see a large sequence of numbers being printed to your terminal.
 
 That's the "image" --- as seen by a machine.
 
-If you are Neo, then this already makes sense. If you are not Neo, in
-[](#rc-cam-launched-remotely), you will learn how to visualize the image stream
-on the laptop  using `rviz`.
 
 
-use <kbd>Ctrl</kbd>-<kbd>C</kbd> to stop `rostopic`.
-
-
-TODO: Physically focus the camera.

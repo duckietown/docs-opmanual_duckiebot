@@ -5,9 +5,7 @@
 ​    
 
 Requires: You can see the camera image on the laptop. The procedure is documented in
-[](#rc-cam-launched-remotely).
-
-Requires: You have all the repositories cloned properly and you have your environment variables set properly.
+[](#read-camera-data).
 
 Results: Calibration for the robot camera.
 
