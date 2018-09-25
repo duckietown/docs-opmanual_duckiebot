@@ -4,8 +4,7 @@ Assigned: Andrea Daniele
 
 <div class='requirements' markdown='1'>
 
-Requires: You can run the joystick demo remotely. The procedure is documented
-in [](#rc-control).
+Requires: You can make your robot move as described in [](#sec:rc-control).
 
 Results:  Calibrate the wheels of the Duckiebot such that it goes in a straight line
 when you command it to. Set the maximum speed of the Duckiebot.

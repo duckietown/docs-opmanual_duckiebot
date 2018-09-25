@@ -10,6 +10,14 @@ Requires: You have a problem!
 
 </div>
 
+
+
+## Docker {#sec-docker-troubleshooting}
+
+Symptom: `docker: Error response from daemon: Conflict. The container name "/![container_name]" is already in use by container "![container_hash]". You have to remove (or rename) that container to be able to reuse that name.`
+
+Resolution: Stop (`docker stop ![container_name]`) if running and then remove (`docker rm ![container_name]`) the container with the  
+
 ## The Raspberry Pi does not turn ON
 
 Symptom: The red LED on the Raspberry Pi is OFF

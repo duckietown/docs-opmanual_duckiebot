@@ -18,6 +18,8 @@ Results: A laptop ready to be used for Duckietown.
 
 Having Ubuntu installed natively on your laptop is recommended but not strictly required.  
 
+
+
 ## Installing Ubuntu 16.04
 
 Install Ubuntu 16.04.3.
@@ -43,6 +45,14 @@ If you choose a different username, you will need to change all the commands lat
 
 TODO: Breandan, is 18.04 supported?
 
+#### Dual Booting
+
+TODO:
+
+
+
+
+
 ## Minimal Laptop Requirements
 
 These installation steps make sure that you have a minimal "sane" environment, which includes:
@@ -55,12 +65,10 @@ These installation steps make sure that you have a minimal "sane" environment, w
 
 Installs pip, git, git-lfs, docker, duckietown-shell:
 
-    $ sudo apt install -y python-pip git git-lfs
-    
-    $ sudo apt install -y docker.io
-    $ sudo adduser `whoami` docker
-    
-    $ sudo pip install --no-cache-dir -U duckietown-shell
+    laptop $ sudo apt install -y python-pip git git-lfs
+    laptop $ sudo apt install -y docker.io
+    laptop $ sudo adduser `whoami` docker
+    laptop $ sudo pip install --no-cache-dir -U duckietown-shell
 
 Note: you need to *log in and out* to have the group change take effect.
 
@@ -68,25 +76,54 @@ Note: you need to *log in and out* to have the group change take effect.
 
 Installs pip, git, git-lfs, docker, duckietown-shell:
 
-    $ sudo apt-get install software-properties-common  curl
-    $ sudo add-apt-repository ppa:git-core/ppa
-    $ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-    $ sudo apt-get install  -y python-pip git git-lfs
-    
-    $ curl -fsSL https://get.docker.com | sudo bash
-    $ sudo usermod -aG docker `whoami`
-    
-    $ sudo pip install --no-cache-dir -U duckietown-shell
+    laptop $ sudo apt-get install software-properties-common  curl
+    laptop $ sudo add-apt-repository ppa:git-core/ppa
+    laptop $ curl -s https://packagecloud.io/install/repositories/github/git-laptop lfs/script.deb.sh | sudo bash
+    laptop $ sudo apt-get install  -y python-pip git git-lfs
+    laptop $ curl -fsSL https://get.docker.com | sudo bash
+    laptop $ sudo usermod -aG docker `whoami`
+    laptop $ sudo pip install --no-cache-dir -U duckietown-shell
 
 Note: you need to *log in and out* to have the group change take effect.
 
+### Installation on Mac OSX 
 
-### Installation in other operating systems
+TODO: Liam
 
 You will need to find the instructions for git, git-lfs, docker.
 
 To install the shell, use:
 
-    $ sudo pip install --no-cache-dir -U duckietown-shell
+```
+laptop $ sudo pip install --no-cache-dir -U duckietown-shell
+```
 
-The shell itself does not require any other dependency beside standard cross-platform Python libraries.
+You will also need the latest version of XQuartz:
+
+```
+laptop $ brew cask install xquartz
+```
+
+or download from [here](https://www.xquartz.org/) and follow the instructions.
+
+after installing XQuartz, run it in the command line with:
+
+```
+laptop $ open -a XQuartz
+```
+
+Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set. 
+
+It is also recommended that you add the following lines to your `.bashrc` file (or run them before you want to use `X11` forwarding):
+
+`export IP=&#36;(ifconfig en0 | grep inet | awk '&#36;1=="inet" {print &#36;2}')`
+
+`xhost + &#36;IP`
+
+these will find your IP and hten allow incoming connections to it in order to be able to pop up windows from within docker containers. 
+
+### Installation in other operating systems
+
+At your own risk.
+
+

@@ -2,7 +2,7 @@
 
 <div class='requirements' markdown="1">
 
-Requires: nothing
+Requires: Nothing
 
 Results: Knowledge of Duckiebot configuration naming conventions and their respective functionalities.
 

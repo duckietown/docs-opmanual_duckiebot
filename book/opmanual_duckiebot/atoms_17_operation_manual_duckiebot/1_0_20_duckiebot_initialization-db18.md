@@ -8,7 +8,7 @@ This page is for the `DB18` configuration used in classes in 2018. For last year
 
 Requires: An SD card of size at least 16 GB.
 
-Requires: A computer with a **Ubuntu OS**, an internet connection, an SD card reader, and 16 GB of free space.
+Requires: A computer with a **Ubuntu OS** (for flashing the SD card), an internet connection, an SD card reader, and 16 GB of free space.
 
 Results: A correctly configured Duckiebot SD card in configuration `DB18`. After assembling the Duckiebot, this will allow you to start it, connect to the internet, and get going.
 
@@ -27,6 +27,8 @@ $ dts update
 ## 
 
 ## Burn the SD card {#burn-sd-card}
+
+warning: this currently only works on Ubuntu OS
 
 Plug the SD card in the computer using the card reader. Then initalize it by running the command:
 
@@ -123,3 +125,25 @@ Doubt: This doesn't seem to work 100% of the time.
 ## Connect to the Internet
 
 See: [](#duckiebot_network)
+
+
+
+## Troubleshooting {#initialization-troubleshooting}
+
+Symptom: The Pi hangs when you do `docker pull` commands or otherwise and sometimes shuts off
+
+Resolution: An older version of the SD card image had the docker container `cjimti/iotwifi` running but this was found to be causing difficulties. SSH into your robot by some method and then execute:
+
+```
+duckiebot $ docker rm $(docker stop $(docker ps -a -q --filter ancestor=cjimti/iotwifi --format="{{.ID}}"))
+duckiebot $ sudo systemctl unmask wpa_supplicant
+duckiebot $ sudo systemctl restart networking.service
+```
+
+
+
+Symptom: You still have to enter your password when you login
+
+Resolution:
+
+TODO: Breandan Considine
