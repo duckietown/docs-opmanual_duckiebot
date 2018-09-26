@@ -29,7 +29,7 @@ laptop $ ssh ![username]@![hostname].local
 on your duckiebot run:
 
 ```
-duckiebot $ docker run -dit --privileged --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
+duckiebot $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
 
 ```
 

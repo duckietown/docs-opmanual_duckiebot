@@ -114,7 +114,9 @@ laptop $ ssh-copy-id -i ~/.ssh/mykey ![username]@![hostname].local
 
 now you should be able to retry the ssh command and see that it logs directly into your robot. 
 
-Doubt: This doesn't seem to work 100% of the time. 
+Doubt: This doesn't seem to work.
+
+TODO: Breandan Considine fix when we have time 
 
 
 
