@@ -78,7 +78,7 @@ Installs pip, git, git-lfs, docker, duckietown-shell:
 
     laptop $ sudo apt-get install software-properties-common  curl
     laptop $ sudo add-apt-repository ppa:git-core/ppa
-    laptop $ curl -s https://packagecloud.io/install/repositories/github/git-laptop lfs/script.deb.sh | sudo bash
+    laptop $ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
     laptop $ sudo apt-get install  -y python-pip git git-lfs
     laptop $ curl -fsSL https://get.docker.com | sudo bash
     laptop $ sudo usermod -aG docker `whoami`
