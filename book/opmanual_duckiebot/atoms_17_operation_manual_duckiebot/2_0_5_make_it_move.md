@@ -47,6 +47,8 @@ Use your joystick to make your robot move.
 
 #### Controlling your robot with your keyboard
 
+
+
 ##### Ubuntu 
 
 on your laptop run:
@@ -60,22 +62,26 @@ laptop $ dts keyboard_control ![DUCKIEBOT_NAME]
 Once the container has loaded type:
 
 ```
-laptop (root) $ ./runkeyboarddemo.sh &amp;
+laptop (root) $ ./runkeyboarddemo.sh $&$
 ```
 
-(The `&amp;` at the end gets you your terminal back so that you can do other things if you like - for example anything in the `rpi-gui-tools`)
+(The "&" at the end gets you your terminal back so that you can do other things if you like - for example anything in the `rpi-gui-tools`)
 
 This will pop open a window where you can use arrows to control the robot.
 
 The following keys are supported:
 
-| KEYS       | FUNCTION                             |
-| ---------- | ------------------------------------ |
+
+
+|    KEYS    | FUNCTION                             |
+| :--------: | ------------------------------------ |
 | ARROW_KEYS | Steer your Duckiebot                 |
-| q          | Quit the program                     |
-| a          | Turn on line-following aka autopilot |
-| s          | Stop line-following                  |
-| i          | Toggle Anti-instagram                |
+|     q      | Quit the program                     |
+|     a      | Turn on line-following aka autopilot |
+|     s      | Stop line-following                  |
+|     i      | Toggle Anti-instagram                |
+
+
 
 ##### OSX
 
@@ -103,9 +109,13 @@ Then when the container has started
 duckiebot (root) $ make demo joystick
 ```
 
+
+
 #### Controlling your robot with a joystick
 
 You can now use your joystick to move things around
+
+
 
 #### Controlling your robot with the keyboard
 

@@ -50,9 +50,9 @@ and follow the instructions:
 
 - Enter the Wifi password (default is `quackquack`)
 
-- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`)
+- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`) - now not used
 
-- Enter the password for your Duckiebot Wifi (default is `quackquack`)
+- Enter the password for your Duckiebot Wifi (default is `quackquack`) - now not used
 
 - You will then have to enter your laptop's `sudo` password to run Etcher
 
@@ -73,11 +73,7 @@ Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or
 
 
 
-You know that your Pi has successfully booted when you can see it broadcasting a network with an SSID of `![hostname]-abcd` where `abcd` are some random numbers and letters at the end of SSID to prevent name conflicts.
-
-
-
-If you connect to the newtork `![hostname]-abcd` or to the network that the Duckiebot connects to by default ![wifi-ssid], then you should be able to ping your robot with:
+If you connect to your robot by some method in [](#sec:duckiebot_network) you should be able to "ping" it:
 
 ```
 laptop $ ping ![hostname].local
@@ -86,7 +82,7 @@ laptop $ ping ![hostname].local
 You should see output similar to the following:​    
 
 ```
-PING duckiebot-not-configured.local (![X.X.X.X]): 56 data bytes
+PING ![hostname].local (![X.X.X.X]): 56 data bytes
 64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
 64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
 ![...]
