@@ -16,58 +16,92 @@ It might be useful to do a quick camera hardware check.
 
 See: The procedure is documented in [](#howto-mount-camera).
 
-## Create two windows
-
-On the laptop, create two Byobu windows.
-
-See: A quick reference about Byobu commands is in [](+software_reference#byobu).
-
-You will use the two windows as follows:
-
-- In the first window, you will launch the nodes that control the camera.
-- In the second window, you will launch programs to monitor the data flow.
 
 
-Note: You could also use multiple *terminals* instead of one terminal with multiple Byobu
-windows. However, using Byobu is the best practice to learn.
-
-## First window: launch the camera nodes
-
-In the first window, we will launch the nodes that control the camera.
-All the following commands should be run in the `~/duckietown` directory:
-
-    duckiebot $ cd ~/duckietown
-
-Activate ROS:
-
-    duckiebot $ source environment.sh
-
-Run the launch file called `camera.launch`:
-
-    duckiebot $ roslaunch duckietown camera.launch veh:=![robot name]
-
-At this point, you should see the red LED on the camera light up continuously.
-
-In the terminal you should not see any red message, but only happy messages like the following:
-
-    ![...]
-    [INFO] [1502539383.948237]: [/![robot name]/camera_node] Initialized.
-    [INFO] [1502539383.951123]: [/![robot name]/camera_node] Start capturing.
-    [INFO] [1502539384.040615]: [/![robot name]/camera_node] Published the first image.
+## Viewing a Single Image
 
 
-See also: For more information about `roslaunch` and "launch files", see [](+software_reference#roslaunch).
 
-## Second window: view published topics
+### Start the HTTP File Server
 
-Switch to the second window.
-All the following commands should be run in the `~/duckietown` directory:
+on the duckiebot run:
 
-    duckiebot $ cd ~/duckietown
+```
+duckiebot $ docker run -d --name file-server -v /data:/data -p 8082:8082 duckietown/rpi-simple-server
+```
 
-Activate the ROS environment:
 
-    duckiebot $ source environment.sh
+
+### Create an image
+
+Then write an image to file on the duckiebot:
+
+```
+duckiebot $ docker run -d --name picam -v /data:/data -p 8081:8081 --privileged duckietown/rpi-docker-python-picamera
+```
+
+Then point your browser to `[!DUCKIEBOT_HOSTNAME].local:8081/image.jpg` and verify that it is the output from your camera. 
+
+Now stop the `picam` container:
+
+```
+duckiebot $ docker stop picam
+```
+
+
+
+## Viewing an Image Stream on Your Laptop
+
+Start publishing images through ROS on the duckiebot:
+
+```
+duckiebot $ docker run -it --name ros-picam --net host --privileged duckietown/ros-picam
+```
+
+ You should see a bunch of output that ends with:
+
+```
+WARN: [/duckiebot/cam_info_reader_node] ==============CompressedImage
+INFO: [/duckiebot/camera_node] Initializing......
+INFO: [/duckiebot/camera_node] ~framerate_high = 30 
+INFO: [/duckiebot/camera_node] ~framerate_low = 15 
+INFO: [/duckiebot/camera_node] ~res_w = 640 
+INFO: [/duckiebot/camera_node] ~res_h = 480 
+INFO: [/duckiebot/camera_node] Initialized.
+INFO: [/duckiebot/camera_node] Start capturing.
+INFO: [/duckiebot/camera_node] Published the first image.
+```
+
+Now on  your laptop run:
+
+```
+laptop $ dts update
+laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+```
+
+The container will start and then:
+
+```
+laptop $ rqt_image_view
+```
+
+Should open a window where you can view the image (you have to select the right topic from the dropdown menu). 
+
+
+
+## Verifying the Output
+
+In a new terminal ssh into your robot and run the base image (if you don't have one running already):
+
+#### Docker
+
+```
+duckiebot $ docker run -it --net host --privileged base --name base duckiebot/rpi-duckiebot-base
+```
+
+ #### ROS
+
+simply ssh into your robot.
 
 ### List topics
 

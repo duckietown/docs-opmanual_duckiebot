@@ -91,4 +91,12 @@ Since we are primarily using the internet to pull Docker images, we can simply c
 laptop $ docker save duckietown/![image-name] | ssh -C ![username]@![hostname].local docker load
 ```
 
-Then the image will be available on your Duckiebot
+Then the image will be available on your Duckiebot.
+
+If you can connect to your laptop (.e.g through a router) but you don't have internet access then forge ahead for now but everytime you see a:
+
+```
+duckiebot $ docker run ...
+```
+
+Note that you will have to do this procedure or pulling onto your laptop and send to your Duckiebot in order to get the latest version of the image. 
