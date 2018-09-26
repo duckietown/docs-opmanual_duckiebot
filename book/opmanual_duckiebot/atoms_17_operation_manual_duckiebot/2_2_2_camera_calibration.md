@@ -15,10 +15,8 @@ Results: Calibration for the robot camera.
 
 ### Setup
 
-Download and print a PDF of the calibration checkerboard 
-
-TODO:link to checkerboard pattern
-
+Download and print a PDF of the calibration checkerboard
+([A4 intrinsic](github:org=duckietown,repo=duckiefleet,path=calibrations/Calibration_pattern_A4_intrinsic.pdf), [A3 extrinsic](github:org=duckietown,repo=duckiefleet,path=calibrations/calibration_pattern_A3.pdf), [US Letter](github:org=duckietown,repo=Software,branch=master17,path=duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf)).
 Fix the checkerboard to a planar surface.
 
 <div figure-id="fig:calibration_checkerboard" figure-caption="">
@@ -27,25 +25,35 @@ Fix the checkerboard to a planar surface.
 
 Note: the squares must have side equal to 0.031 m = 3.1 cm.
 
+Download and print a PDF of the calibration checkerboard 
+
+Fix the checkerboard to a planar surface.
+
 ### Calibration
 
 Make sure your Duckiebot is on, and both your laptop and Duckiebot are connected to the duckietown network.
 
-#### Step 1
+#### Docker
 
-Open two terminals on the laptop.
+On your laptop run 
 
-#### Step 2
+```
+laptop $ dts update (if necessary)
+laptop $ dts install calibrate_duckiebot (if necessary)
+laptop $ dts calibrate_duckiebot ![DUCKIEBOT_NAME]
+```
 
-In the first terminal, log in into your robot using SSH and launch the camera process:
+
+
+#### ROS
+
+Open two terminals on the laptop. In the first terminal, log in into your robot using SSH and launch the camera process:
 
 ```
 duckiebot $ cd ![duckietown root]
 duckiebot $ source environment.sh
 duckiebot $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
 ```
-
-#### Step 3
 
 In the second laptop terminal run the camera calibration:
 
@@ -56,7 +64,9 @@ laptop $ source set_ros_master.sh ![robot name]
 laptop $ roslaunch duckietown intrinsic_calibration.launch veh:=![robot name]
 ```
 
-You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
+
+
+Whether you did the Docker way or the ROS way you should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
 <div figure-id="fig:intrinsic_callibration_pre" figure-caption="">
      <img src="intrinsic_callibration_pre.png" style='width: 30em'/>
@@ -102,10 +112,12 @@ If you are satisfied with the calibration, you can save the results by pressing 
 This will automatically save the calibration results on your Duckiebot:
 
 ```
-![duckiefleet root]/calibrations/camera_intrinsic/![robot name].yaml
+/data/calibrations/camera_intrinsic/![robot name].yaml
 ```
 
-#### 
+
+
+
 
 ## Extrinsic Camera Calibration {#extrinsic-camera-calibration}
 
