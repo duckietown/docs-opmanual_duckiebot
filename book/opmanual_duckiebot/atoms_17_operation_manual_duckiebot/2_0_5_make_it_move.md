@@ -18,69 +18,30 @@ Results: You can make your robot move.
 
 </div>
 
+
 ## Option 1 - Pure Docker {#make-it-move_docker status=draft}
 
 ssh into your robot:
 
-```
-laptop $ ssh ![username]@![hostname].local
-```
+
+    laptop $ ssh ![username]@![hostname].local
+
 
 on your duckiebot run:
 
-```
-duckiebot $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
 
-```
+    duckiebot $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
+    duckiebot $ docker run -dit --privileged --net host duckietown/rpi-duckiebot-joystick-demo
 
 
 
 #### Controling your robot with a joystick
 
-```
-duckiebot $ docker run -dit --privileged --net host duckietown/rpi-duckiebot-joystick-demo
-```
 
 Use your joystick to make your robot move. 
 
 
-
 #### Controlling your robot with your keyboard
-
-
-
-##### Ubuntu 
-
-on your laptop run:
-
-```
-laptop $ dts update (if necessary)
-laptop $ dts install keyboard_control (if necessary)
-laptop $ dts keyboard_control ![DUCKIEBOT_NAME]
-```
-
-Once the container has loaded type:
-
-```
-laptop (root) $ ./runkeyboarddemo.sh $&$
-```
-
-(The "&" at the end gets you your terminal back so that you can do other things if you like - for example anything in the `rpi-gui-tools`)
-
-This will pop open a window where you can use arrows to control the robot.
-
-The following keys are supported:
-
-
-
-|    KEYS    | FUNCTION                             |
-| :--------: | ------------------------------------ |
-| ARROW_KEYS | Steer your Duckiebot                 |
-|     q      | Quit the program                     |
-|     a      | Turn on line-following aka autopilot |
-|     s      | Stop line-following                  |
-|     i      | Toggle Anti-instagram                |
-
 
 
 ##### OSX
@@ -89,26 +50,62 @@ TODO: Currently doesn't work
 
 on your laptop run:
 
-```
-laptop $ docker run -it --net host --privileged --env ROS_MASTER=[DUCKIEBOT_NAME_GOES_HERE] --env="QT_X11_NO_MITSHM=1" -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix duckietown/rpi-duckiebot-keyboard-demo
-```
+
+    laptop $ docker run -it --net host --privileged --env ROS_MASTER=[DUCKIEBOT_NAME_GOES_HERE] --env="QT_X11_NO_MITSHM=1" -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix duckietown/rpi-duckiebot-keyboard-demo
+
+
+
+
+##### Ubuntu 
+
+on your laptop run:
+
+
+    laptop $ dts update (if necessary)
+    laptop $ dts install keyboard_control (if necessary)
+    laptop $ dts keyboard_control ![DUCKIEBOT_NAME]
+
+
+Once the container has loaded type:
+
+
+    laptop $ (docker) ./runkeyboarddemo.sh &amp;
+
+
+(The "&amp;" at the end gets you your terminal back so that you can do other things if you like - for example anything in the `rpi-gui-tools`)
+
+This will pop open a window where you can use arrows to control the robot.
+
+The following keys are supported:
+
+<col2 figure-id="tab:virtual_keyboard" figure-caption="Keyboard joystick functions" class="labels-row1">
+    <span>Keys</span>
+    <span>Function</span>
+    <span>ARROW_KEYS</span>
+    <span>Steer your Duckiebot</span>
+    <span>q</span>
+    <span>Quit</span>
+    <span>a</span>
+    <span>Turn on Lane Following</span>
+    <span>s</span>
+    <span>Stop Lane Following</span>
+    <span>i</span>
+    <span>Toggle Anti-instagram</span>
+</col2>
 
 
 
 ## Option 2 - Docker + ROS {#make-it-move_docker_ros status=draft}
 
+
 Run the base image on the duckiebot:
 
-```
-duckiebot $ docker run -it --net host --privileged --name base duckietown/rpi-duckiebot-base /bin/bash
-```
+    duckiebot $ docker run -it --net host --privileged --name base duckietown/rpi-duckiebot-base /bin/bash
+
 
 Then when the container has started 
 
-```
-duckiebot (root) $ make demo joystick
-```
-
+    duckiebot $ (docker)  make demo joystick
 
 
 #### Controlling your robot with a joystick
@@ -116,15 +113,12 @@ duckiebot (root) $ make demo joystick
 You can now use your joystick to move things around
 
 
-
 #### Controlling your robot with the keyboard
 
 If you have cloned the repo on your laptop and installed ROS, then you can start the keyboard controller interface with
 
-```
-laptop $ make virjoy-![DUCKIEBOT_NAME]
-```
 
+    laptop $ make virjoy-![DUCKIEBOT_NAME]
 
 
 ## Option 3 - Pure ROS {#make-it-move_ros}
@@ -135,25 +129,22 @@ laptop $ make virjoy-![DUCKIEBOT_NAME]
 
 SSH into the Raspberry Pi and run the following from the `duckietown` directory:
 
-```
-duckiebot $ cd ~/duckietown
-duckiebot $ source environment.sh
-```
 
-<!-- duckiebot $ source set_ros_master.sh -->
+    duckiebot $ cd ~/duckietown
+    duckiebot $ source environment.sh
+
 
 The `environment.sh` setups the ROS environment at the terminal (so you can use
 commands like `rosrun` and `roslaunch`).
 
-<!-- The `set_ros_master.sh` script by default sets the Raspberry Pi as its own ROS master. -->
 
 Now make sure the motor shield is connected.
 
 Run the command:
 
-```
-duckiebot $ make demo-joystick
-```
+
+    duckiebot $ make demo-joystick
+
 
 If there is no "red" output in the command line then pushing the left joystick
 knob controls throttle - right controls steering.
@@ -166,38 +157,21 @@ Close the program using <kbd>Ctrl</kbd>-<kbd>C</kbd>.
 
 ssh into your robot and run:
 
-```
-duckiebot $ make demo-joystick
-```
+
+    duckiebot $ make demo-joystick
+
 
 Now on your laptop run:
 
-```
-laptop $ make virjoy-![DUCKIEBOT_NAME]
-```
 
-Note: you need to have `pygame` installed, see the [README]
+    laptop $ make virjoy-![DUCKIEBOT_NAME]
+
+
+Note: you need to have `pygame` installed, see the [README](https://github.com/duckietown/Software/tree/master18/misc/virtualJoy)
 
 Note: not currently supported on Mac OSX
 
 
-
-## Expected Joystick Behavior
-
-This is the expected result of the commands:
-
-```
-<col2>
-<span>left joystick up</span>     
-<span>forward</span>
-<span>left joystick down</span>   
-<span>backward</span>
-<span>right joystick left</span>  
-<span>turn left (positive yaw)</span>
-<span>right joystick right</span> 
-<span>turn right (negative yaw)</span>
-</col2>
-```
 
 It is possible you will have to unplug and replug the joystick or just push lots of buttons on your joystick until it wakes up. Also make sure that the mode switch on the top of your joystick is set to "X", not "D".
 
@@ -211,9 +185,8 @@ Symptom: When do a `docker run` command you get a response like: `Error response
 
 Resolution: you need to set the date on your robot to something close to reality. This can be done in an automated fashion (e.g. `ntpdate` ) but a bulletproof way is to run:
 
-```
-duckiebot $ date -s "YYYY-MM-DD HH:MM:SS"
-```
+
+    duckiebot $ date -s "YYYY-MM-DD HH:MM:SS"
 
 
 
@@ -286,9 +259,8 @@ Don't worry though, we can still see the printouts using `rqt_console`.
 
 On the laptop run:
 
-```
-laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
-```
+
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
 
 
@@ -296,11 +268,9 @@ laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
 On the laptop, open a new terminal window, and run:
 
-```
-laptop $ export ROS_MASTER_URI=http://![robot name].local:11311/
-laptop $ rqt_console
-```
 
+    laptop $ export ROS_MASTER_URI=http://![robot name].local:11311/
+    laptop $ rqt_console
 
 
 Either way, You should see a nice interface listing all the printouts in real time,
@@ -313,7 +283,7 @@ nodes launched by the launch file.
 
 See also: For more information about `rqt_console`, see [](+software_reference#rqt_console).
 
-### Troubleshooting
+##### Troubleshooting
 
 Symptom: `rqt_console` does not show any message.
 
@@ -322,12 +292,12 @@ Change the "Rosout Topic" field from `/rosout_agg` to `/rosout`. Confirm.
 
 Symptom: `roslaunch` fails with an error similar to the following:
 
-```
-remote[![robot name].local-0]: failed to launch on ![robot name]:
 
-Unable to establish ssh connection to [![username]@![robot name].local:22]:
-Server u'![robot name].local' not found in known_hosts.
-```
+    remote[![robot name].local-0]: failed to launch on ![robot name]:
+
+    Unable to establish ssh connection to [![username]@![robot name].local:22]:
+    Server u'![robot name].local' not found in known_hosts.
+
 
 Resolution: You have not followed the instructions that told you to add the `HostKeyAlgorithms`
 option. Delete `~/.ssh/known_hosts` and fix your configuration.
