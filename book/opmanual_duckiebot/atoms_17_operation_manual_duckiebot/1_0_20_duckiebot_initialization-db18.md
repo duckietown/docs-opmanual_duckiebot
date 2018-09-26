@@ -50,7 +50,7 @@ and follow the instructions:
 
 - Enter the Wifi password (default is `quackquack`)
 
-- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`)
+- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`). Note that this feature is not currently implemented.
 
 - Enter the password for your Duckiebot Wifi (default is `quackquack`)
 
@@ -61,9 +61,51 @@ and follow the instructions:
 - When asked "Are you sure?" select <kbd>y</kbd>
 
 
-When the SD card is completely written, you should arrive at `Press any key to continue`. Do so and the script will exit. You can then remove the SD card from your laptop. 
+When the SD card is completely written, you should arrive at `Press any key to continue`. Do so and the script will exit. 
 
+If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can add their details before removing the SD card from your laptop. The SD card writing procedure should have created two new drives on your computer: `root` and `HyperiotOS`. In `HypriotOS` edit the file `user-data`. Find the lines with the SSID and password that you filled in already: 
+``` 
+- content: |
+      country=CA
+      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+      update_config=1
+      network={
+          ssid="![wifi-ssid]"
+          psk="![wifi-password]"
+          key_mgmt=WPA-PSK
+      }
+    path: /etc/wpa_supplicant/wpa_supplicant.conf
+```
+You can add as many network configurations as you want. If you expect that two networks will be available at the same time, you can give them priority (a higher value means a network is more desirable):
+``` 
+- content: |
+      country=CA
+      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+      update_config=1
+      network={
+          ssid="![wifi-ssid]"
+          psk="![wifi-password]"
+          key_mgmt=WPA-PSK
+          priority=1
+      }
+      network={
+          ssid="![duckietown-wifi-ssid]"
+          psk="![duckietown-wifi-password]"
+          key_mgmt=WPA-PSK
+          priority=3
+      }
+      network={
+          ssid="![home-wifi-ssid]"
+          psk="![home-wifi-password]"
+          key_mgmt=WPA-PSK
+          priority=2
+      }
+    path: /etc/wpa_supplicant/wpa_supplicant.conf
+```
 
+You can then eject (safe remove) the drives and remove the SD card from your laptop. 
+
+Warning: this will work only if done **before the first boot**. If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
 
 ## Booting the Duckiebot {#duckiebot-boot}
 
@@ -73,15 +115,13 @@ Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or
 
 
 
-You know that your Pi has successfully booted when you can see it broadcasting a network with an SSID of `![hostname]-abcd` where `abcd` are some random numbers and letters at the end of SSID to prevent name conflicts.
-
-
-
-If you connect to the newtork `![hostname]-abcd` or to the network that the Duckiebot connects to by default ![wifi-ssid], then you should be able to ping your robot with:
+You know that your Pi has successfully booted when you are able to ping your robot with:
 
 ```
 laptop $ ping ![hostname].local
 ```
+
+Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use Bridged connection (typically NAT is used by default).
 
 You should see output similar to the following:​    
 
