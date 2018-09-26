@@ -17,27 +17,37 @@ reference another page. -AD
 For the theoretical treatment of the odometry calibration see [](+learning_materials#odometry_calibration)
 
 
-## Perform the Calibration
+
+## Step 1: Make your robot move
+
+Follow instructions in [](#sec:rc-control)
+
+
+
+## Step 2
+
+
+
+### Docker + ROS
+
+Get a base container running on your robot if you don't have one already:
+
+```
+duckiebot $ docker run -it --net host --privileged --name base duckietown/rpi-duckiebot-base /bin/bash
+```
+
+
+
+
+
+
+## Step 3: Perform the Calibration
 
 ### Calibrating the `trim` parameter
 
 The trim parameter is set to $0.00$ by default, under the assumption that both motors and wheels are perfectly identical. You can change the value of the trim parameter by running the command:
 
     duckiebot $ rosservice call /![robot name]/inverse_kinematics_node/set_trim -- ![trim value]
-
-To calibrate the trim parameter use the following steps:
-
-#### Step 1
-
-Make sure that your Duckiebot is ON and connected to the network.
-
-#### Step 2
-
-On your Duckiebot, launch the joystick process:
-
-    duckiebot $ roslaunch duckietown joystick.launch veh:=![robot name]
-
-#### Step 3
 
 Use some tape to create a straight line on the floor ([](#fig:wheel_calibration_line)).
 
@@ -46,12 +56,8 @@ Use some tape to create a straight line on the floor ([](#fig:wheel_calibration_
 </div>
 
 
-#### Step 4
-
 Place your Duckiebot on one end of the tape. Make sure that the Duckiebot is
 perfectly centered with respect to the line.
-
-#### Step 5
 
 Command your Duckiebot to go straight for about 2 meters. Observe the Duckiebot
 from the point where it started moving and annotate on which side of the tape
@@ -60,9 +66,6 @@ the Duckiebot drifted ([](#fig:wheel_calibration_lr_drift)).
 <div figure-id="fig:wheel_calibration_lr_drift" figure-caption="Left/Right drift">
   <img src="wheel_calibration_lr_drift.jpg" style='width: 30em'/>
 </div>
-
-#### Step 6
-
 Measure the distance between the center of the tape and the center of the axle of
 the Duckiebot after it traveled for about 2 meters ([](#fig:wheel_calibration_measuring_drift)).
 
@@ -74,27 +77,20 @@ Make sure that the ruler is orthogonal to the tape.
 
 If the Duckiebot drifted by less than $10$ centimeters you can stop calibrating the trim parameter. A drift of $10$ centimeters in a $2$ meters run is good enough for Duckietown. If the Duckiebot drifted by more than $10$ centimeters, continue with the next step.
 
-
-#### Step 7
-
 If the Duckiebot drifted to the left side of the tape, decrease the value of $r$, by running, for example:
 
     duckiebot $ rosservice call /![robot name]/inverse_kinematics_node/set_trim -- -0.1
-
-In order to run this command you should create another $ssh$ connection to the duckiebot as the joystick process should be still running.
-
-#### Step 8
 
 If the Duckiebot drifted to the right side of the tape, increase the value of
 $r$, by running, for example:
 
     duckiebot $ rosservice call /![robot name]/inverse_kinematics_node/set_trim -- 0.1
 
-In order to run this command you should create another $ssh$ connection to the duckiebot as the joystick process should be still running.
 
-#### Step 9
 
-Repeat the steps 4-8.
+Repeat this process until the robot drives straight
+
+
 
 ### Calibrating the `gain` parameter
 
@@ -143,6 +139,8 @@ When you are all done, save the parameters by running:
     duckiebot $ rosservice call /![robot name]/inverse_kinematics_node/save_calibration
 
 The first time you save the parameters, this command will create the file
+
+TODO: need to verify where it's stored
 
     ![DUCKIEFLEET_ROOT]/calibrations/kinematics/![robot name].yaml
 

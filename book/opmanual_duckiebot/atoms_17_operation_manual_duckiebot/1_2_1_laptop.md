@@ -116,9 +116,9 @@ Go to "Preferences" and in the security tab make sure that the checkbox next to 
 
 It is also recommended that you add the following lines to your `.bashrc` file (or run them before you want to use `X11` forwarding):
 
-`export IP=&#36;(ifconfig en0 | grep inet | awk '&#36;1=="inet" {print &#36;2}')`
+`export IP=`&#36;`(ifconfig en0 | grep inet | awk '&#36;1=="inet" {print &#36;2}')`
 
-`xhost + &#36;IP`
+`xhost + `&#36;`IP`
 
 these will find your IP and hten allow incoming connections to it in order to be able to pop up windows from within docker containers. 
 
