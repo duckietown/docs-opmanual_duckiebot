@@ -20,9 +20,9 @@ Install the most updated version of the Duckietown Shell, this is explained in [
 
 If you already installed the Duckietown Shell, make sure it is updated by running
 
-```
-$ dts update
-```
+
+    $ dts update
+
 
 ## 
 
@@ -32,9 +32,9 @@ warning: this currently only works on Ubuntu OS
 
 Plug the SD card in the computer using the card reader. Then initalize it by running the command:
 
-```
-laptop $ dts init_sd_card
-```
+
+    laptop $ dts init_sd_card
+
 
 and follow the instructions:
 
