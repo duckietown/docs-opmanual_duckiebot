@@ -151,18 +151,18 @@ You will also need the latest version of XQuartz.
 
 You can install using `brew` as follows:
 
-```
-laptop $ brew cask install xquartz
-```
+
+    laptop $ brew cask install xquartz
+
 
 Or, download from [here](https://www.xquartz.org/) and follow the instructions.
 
 
 After installing XQuartz, run it in the command line with:
 
-```
-laptop $ open -a XQuartz
-```
+
+    laptop $ open -a XQuartz
+
 
 Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set. 
 
@@ -179,7 +179,7 @@ Alternatively, you can run them each time before you want to use `X11` forwardin
 
 ### Docker {#laptop-setup-mac-docker}
 
-TODO: to write
+Follow [these instructions](https://docs.docker.com/docker-for-mac/install/) 
 
 ### Duckietown Shell {#laptop-setup-mac-shell}
 
@@ -196,8 +196,6 @@ Note: do not use `sudo pip` to install the Duckietown Shell.
 Log out and in. This command should succeed:
 
     laptop $ dts version
-
-
 
 
 

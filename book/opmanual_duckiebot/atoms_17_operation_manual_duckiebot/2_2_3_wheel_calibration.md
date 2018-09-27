@@ -20,28 +20,31 @@ For the theoretical treatment of the odometry calibration see [](+learning_mater
 
 ## Step 1: Make your robot move
 
-Follow instructions in [](#sec:rc-control)
+Follow instructions in [](#sec:rc-control) to make your robot movable either with a joystick or the keyboard. 
 
+Note: Whatever container you used in [](#sec:rc-control) needs to have the `-v /data:/data` flag set or the calibration will not persist on your Duckiebot.
 
 
 ## Step 2
 
 
+### Docker 
+
+If you just finished the [camera calibration step](#camera-calib) then you have a docker terminal ready to use on your laptop.  
+
 
 ### Docker + ROS
 
+
 Get a base container running on your robot if you don't have one already:
 
-```
-duckiebot $ docker run -it --net host --privileged --name base duckietown/rpi-duckiebot-base /bin/bash
-```
 
-
-
+    duckiebot $ docker run -it --net host --privileged  duckietown/rpi-duckiebot-base
 
 
 
 ## Step 3: Perform the Calibration
+
 
 ### Calibrating the `trim` parameter
 
@@ -140,10 +143,8 @@ When you are all done, save the parameters by running:
 
 The first time you save the parameters, this command will create the file
 
-TODO: need to verify where it's stored
 
-    ![DUCKIEFLEET_ROOT]/calibrations/kinematics/![robot name].yaml
+### Final Check to make sure it's stored
 
-#### Committing {#committing-calib status=outdated}
 
-You can add and commit it to the repository. Then you should create a pull request in the [duckiefleet repo](https://github.com/duckietown/duckiefleet).
+Assuming your are running an HTTP server, point your browser to `http://![duckiebot name].local:8082/config/calibrations/kinematics/![duckiebot_name].yaml`

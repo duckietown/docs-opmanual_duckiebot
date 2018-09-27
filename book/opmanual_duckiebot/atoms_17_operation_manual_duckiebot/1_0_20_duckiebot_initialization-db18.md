@@ -2,7 +2,7 @@
 
 Assigned: Breandan Considine, Liam Paull
 
-This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](docs.duckietown.org/17/). 
+This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](http://docs.duckietown.org/DT17/). 
 
 <div class='requirements' markdown="1">
 
@@ -16,6 +16,7 @@ Requires: Duckietown Token set up as in  [](#dt-account).
 
 Results: A correctly configured Duckiebot SD card in configuration `DB18`. After assembling the Duckiebot, this will allow you to start it, connect to the internet, and get going.
 
+
 </div>
 
 
@@ -27,29 +28,23 @@ Plug the SD card in the computer using the card reader.
 
 Then initalize it by running the command:
 
-```
-laptop $ dts init_sd_card
-```
 
-and follow the instructions:
+    laptop $ dts init_sd_card [options]
 
-- When you are asked if you should overwrite your SSH identity file select <kbd>y</kbd>.
+The options are:
 
-- Enter a username (default is `duckie` - we will call this `![username]`).
+    --hostname         default: duckiebot
+    --wifi-ssid        default: duckietown
+    --wifi-password    default: quackquack
+    --linux-username   default: duckie
+    --linux-password   default: quackquack
+    
+For example, if your home network is "mynetwork" with password "mypassword", and you want to call your duckiebot "mybot", use:
 
-- Enter a password to login to robot via ssh (default is `quackquack`).
+    laptop $ dts init_sd_card --wifi-ssid mynetwork --wifi-password mypassword --hostname mybot
 
-- Enter a hostname for your robot = the "name" of your robot (default is `duckiebot` - we will call this `![hostname]`).
 
-- Enter a  WiFi SSID for your robot to connect to by default (default is `duckietown` - we will call this `![wifi-ssid]`).
-
-- Enter the Wifi password (default is `quackquack`).
-
-- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`) - now not used
-
-- Enter the password for your Duckiebot Wifi (default is `quackquack`) - now not used
-
-XXX: what is the meaning of "now not used"?
+Then follow the instructions that appear on screen:
 
 - You will then have to enter your laptop's `sudo` password to run Etcher.
 
@@ -58,6 +53,13 @@ XXX: what is the meaning of "now not used"?
 - When asked "Are you sure?" select <kbd>y</kbd>.
 
 When the SD card is completely written, you should arrive at `Press any key to continue`. Do so and the script will exit. You can then remove the SD card from your laptop. 
+
+
+
+Note: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
+
+
+If the procedure fails with errors about directories not mounted, be patient and do it again, this time leaving the SD card in.
 
 
 ## Booting the Duckiebot {#duckiebot-boot}
@@ -92,32 +94,31 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 
 ## SSH to the Duckiebot
 
-Next, try to log in using SSH
+Next, try to log in using SSH, using
 
 ```
-laptop $ ssh ![username]@![hostname].local
+laptop $ ssh ![hostname]
 ```
 
-and enter your password.
+This should succeed without password. 
+
+If it doesn't check that `~/.ssh/config` contains something like:
+
+    Host ![hostname]
+        User duckie
+        Hostname ![hostname].local
+        IdentityFile ~/.ssh/DT18_key_00
+    
+This configuration was added by the `init_sd_card` command.
+
+
+### Workarounds
 
 It is recommended that you immediately give ownership of your home folder to your user. You can do this by running the following on your Duckiebot:
 
 ```
 duckiebot $ sudo chown -R ![username]:![username] .
 ```
-
-You should place your SSH key onto the robot so that you don't need to enter it in the future. This can be done with:
-
-```
-laptop $ ssh-copy-id -i ~/.ssh/mykey ![username]@![hostname].local
-```
-
-now you should be able to retry the ssh command and see that it logs directly into your robot. 
-
-Doubt: This doesn't seem to work.
-
-TODO: Breandan Considine fix when we have time 
-
 
 
 ## Connect to the Internet
