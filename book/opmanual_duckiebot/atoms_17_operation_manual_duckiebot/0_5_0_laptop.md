@@ -51,7 +51,7 @@ See: For instructions, see for example [this online tutorial][tutorial].
 
 Installs pip, git, git-lfs, docker, duckietown-shell:
 
-    laptop $ sudo apt install -y python-pip git git-lfs
+    laptop $ sudo apt install -y python-pip git git-lfs curl wget 
     
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
@@ -82,11 +82,31 @@ Log out and in. This command should succeed:
 
 Other useful packages:
 
-    laptop $ sudo apt install vim byobu openssh-server nfs-common
+    laptop $ sudo apt install vim byobu openssh-server nfs-common zsh
 
 Edit `~/.profile` and add:
 
     export EDITOR=vim
+    
+### Z shell
+
+    $ sudo apt install zsh
+    $ chsh -s /usr/bin/zsh
+    
+Install `oh-my-zsh`:
+
+    $ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" 
+ 
+Edit `~/.zshrc` and set a different theme using:
+
+    ZSH_THEME="bureau"
+
+You can find other themes [at this page](https://github.com/robbyrussell/oh-my-zsh/wiki/themes).
+
+Also add the line:
+
+    . ~/profile 
+
 
 #### Passwordless sudo
 
@@ -102,6 +122,11 @@ into
 
     %sudo   ALL=(ALL:ALL) NOPASSWD: ALL
 
+### Other packages useful for development
+
+
+    $ sudo apt install iotop atop htop
+    
 ### For virtual machines
 
 For VMWare, install this:
