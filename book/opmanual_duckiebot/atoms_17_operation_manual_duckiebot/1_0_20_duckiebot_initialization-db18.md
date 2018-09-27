@@ -2,7 +2,7 @@
 
 Assigned: Breandan Considine, Liam Paull
 
-This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](docs.duckietown.org/17/). 
+This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](http://docs.duckietown.org/DT17/). 
 
 <div class='requirements' markdown="1">
 
@@ -10,58 +10,55 @@ Requires: An SD card of size at least 16 GB.
 
 Requires: A computer with a **Ubuntu OS** (for flashing the SD card), an internet connection, an SD card reader, and 16 GB of free space.
 
+Requires: Duckietown Shell, Docker, etc, as configured in [](#laptop-setup).
+
+Requires: Duckietown Token set up as in  [](#dt-account).
+
 Results: A correctly configured Duckiebot SD card in configuration `DB18`. After assembling the Duckiebot, this will allow you to start it, connect to the internet, and get going.
+
 
 </div>
 
-## Install the Duckietown Shell
-
-Install the most updated version of the Duckietown Shell, this is explained in [the duckietown-shell README](https://github.com/duckietown/duckietown-shell/blob/master/README.md).
-
-If you already installed the Duckietown Shell, make sure it is updated by running
-
-```
-$ dts update
-```
-
-## 
 
 ## Burn the SD card {#burn-sd-card}
 
-warning: this currently only works on Ubuntu OS
+Warning: this currently only works on Ubuntu. Mac is not supported.
 
-Plug the SD card in the computer using the card reader. Then initalize it by running the command:
+Plug the SD card in the computer using the card reader. 
 
-```
-laptop $ dts init_sd_card
-```
+Then initalize it by running the command:
 
-and follow the instructions:
 
-- When you are asked if you should overwrite your SSH identity file select <kbd>y</kbd>
+    laptop $ dts init_sd_card [options]
 
-- Enter a username (default is `duckie` - we will call this `![username]`)
+The options are:
 
-- Enter a password to login to robot via ssh (default is `quackquack`)
+    --hostname         default: duckiebot
+    --wifi-ssid        default: duckietown
+    --wifi-password    default: quackquack
+    --linux-username   default: duckie
+    --linux-password   default: quackquack
+    
+For example, if your home network is "mynetwork" with password "mypassword", and you want to call your duckiebot "mybot", use:
 
-- Enter a hostname for your robot = the "name" of your robot (default is `duckiebot` - we will call this `![hostname]`)
+    laptop $ dts init_sd_card --wifi-ssid mynetwork --wifi-password mypassword --hostname mybot
 
-- Enter a  WiFi SSID for your robot to connect to by default (default is `duckietown` - we will call this `![wifi-ssid]`)
 
-- Enter the Wifi password (default is `quackquack`)
+Then follow the instructions that appear on screen:
 
-- Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`). Note that this feature is not currently implemented.
 
-- Enter the password for your Duckiebot Wifi (default is `quackquack`) - now not used
+- You will then have to enter your laptop's `sudo` password to run Etcher.
 
-- You will then have to enter your laptop's `sudo` password to run Etcher
+- Select the drive at `/dev/mmcblk0` by pressing <kbd>Enter</kbd>.
 
-- Select the drive at `/dev/mmcblk0` by pressing <kbd>Enter</kbd>
-
-- When asked "Are you sure?" select <kbd>y</kbd>
-
+- When asked "Are you sure?" select <kbd>y</kbd>.
 
 When the SD card is completely written, you should arrive at `Press any key to continue`. Do so and the script will exit. 
+
+
+Note: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
+
+If the procedure fails with errors about directories not mounted, be patient and do it again, this time leaving the SD card in.
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can add their details before removing the SD card from your laptop. The SD card writing procedure should have created two new drives on your computer: `root` and `HyperiotOS`. In `HypriotOS` edit the file `user-data`. Find the lines with the SSID and password that you filled in already: 
 ``` 
@@ -107,12 +104,18 @@ You can then eject (safe remove) the drives and remove the SD card from your lap
 
 Warning: this will work only if done **before the first boot**. If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
 
+
 ## Booting the Duckiebot {#duckiebot-boot}
 
-Now insert the SD card into the Raspberry pi and push the button on the battery to power things up. You should immediately see the **green** light next to where the SD card was inserted start to blink with activity. If not stop, there is a problem with the SD card (or possible the Pi but this is unlikely).
+Now insert the SD card into the Raspberry PI and push the button on the battery to power things up. 
 
-Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or more since some things are being configured. Do not power the robot off (by holding the battery button) while this is in process. 
+You should immediately see the **green** light next to where the SD card was inserted start to blink with activity. 
 
+If not, stop, as there is a problem with the SD card (or possibly the PI, but this is unlikely).
+
+WAllow the robot time to boot. On first boot it may take up to 5 mins or more since some things are being configured. 
+
+Do not power the robot off (by holding the battery button) while this is in process. 
 
 
 You know that your Pi has successfully booted when you are able to ping your robot with the command bellow or with some method in [](#sec:duckiebot_network):
@@ -136,32 +139,31 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 
 ## SSH to the Duckiebot
 
-Next, try to log in using SSH
+Next, try to log in using SSH, using
 
 ```
-laptop $ ssh ![username]@![hostname].local
+laptop $ ssh ![hostname]
 ```
 
-and enter your password.
+This should succeed without password. 
 
-It is recommended that you immediately give ownership of your home folder to your user. You can do this by running the following on your Duckiebot
+If it doesn't check that `~/.ssh/config` contains something like:
+
+    Host ![hostname]
+        User duckie
+        Hostname ![hostname].local
+        IdentityFile ~/.ssh/DT18_key_00
+    
+This configuration was added by the `init_sd_card` command.
+
+
+### Workarounds
+
+It is recommended that you immediately give ownership of your home folder to your user. You can do this by running the following on your Duckiebot:
 
 ```
 duckiebot $ sudo chown -R ![username]:![username] .
 ```
-
-You should place your SSH key onto the robot so that you don't need to enter it in the future. This can be done with:
-
-```
-laptop $ ssh-copy-id -i ~/.ssh/mykey ![username]@![hostname].local
-```
-
-now you should be able to retry the ssh command and see that it logs directly into your robot. 
-
-Doubt: This doesn't seem to work.
-
-TODO: Breandan Considine fix when we have time 
-
 
 
 ## Connect to the Internet
@@ -172,7 +174,7 @@ See: [](#duckiebot_network)
 
 ## Troubleshooting {#initialization-troubleshooting}
 
-Symptom: The Pi hangs when you do `docker pull` commands or otherwise and sometimes shuts off
+Symptom: The Pi hangs when you do `docker pull` commands or otherwise and sometimes shuts off.
 
 Resolution: An older version of the SD card image had the docker container `cjimti/iotwifi` running but this was found to be causing difficulties. SSH into your robot by some method and then execute:
 

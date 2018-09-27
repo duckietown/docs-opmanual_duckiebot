@@ -19,7 +19,7 @@ Results: You can make your robot move.
 </div>
 
 
-## Option 1 - Pure Docker {#make-it-move_docker status=draft}
+## Option 1 - Pure Docker {#make-it-move_docker status=beta}
 
 ssh into your robot:
 
@@ -31,7 +31,7 @@ on your duckiebot run:
 
 
     duckiebot $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
-    duckiebot $ docker run -dit --privileged --net host duckietown/rpi-duckiebot-joystick-demo
+    duckiebot $ docker run -dit --privileged --net host -v /data:/data duckietown/rpi-duckiebot-joystick-demo
 
 
 
@@ -46,33 +46,16 @@ Use your joystick to make your robot move.
 
 ##### OSX
 
-TODO: Currently doesn't work
-
 on your laptop run:
-
-
-    laptop $ docker run -it --net host --privileged --env ROS_MASTER=[DUCKIEBOT_NAME_GOES_HERE] --env="QT_X11_NO_MITSHM=1" -e DISPLAY=$IP:0 -v /tmp/.X11-unix:/tmp/.X11-unix duckietown/rpi-duckiebot-keyboard-demo
-
-
-
-
-##### Ubuntu 
-
-on your laptop run:
-
 
     laptop $ dts update (if necessary)
     laptop $ dts install keyboard_control (if necessary)
     laptop $ dts keyboard_control ![DUCKIEBOT_NAME]
 
 
-Once the container has loaded type:
+Note: Currently not working for Mac OSX - the window pops up but the robot won't move - this is expected for now
 
-
-    laptop $ (docker) ./runkeyboarddemo.sh &amp;
-
-
-(The "&amp;" at the end gets you your terminal back so that you can do other things if you like - for example anything in the `rpi-gui-tools`)
+TODO: Liam fix this
 
 This will pop open a window where you can use arrows to control the robot.
 
@@ -95,7 +78,7 @@ The following keys are supported:
 
 
 
-## Option 2 - Docker + ROS {#make-it-move_docker_ros status=draft}
+## Option 2 - Docker + ROS {#make-it-move_docker_ros status=beta}
 
 
 Run the base image on the duckiebot:
@@ -105,7 +88,7 @@ Run the base image on the duckiebot:
 
 Then when the container has started 
 
-    duckiebot $ (docker)  make demo joystick
+    duckiebot $ (docker)  roslaunch duckietown joystick.launch veh:=![duckiebot name]
 
 
 #### Controlling your robot with a joystick
@@ -121,7 +104,7 @@ If you have cloned the repo on your laptop and installed ROS, then you can start
     laptop $ make virjoy-![DUCKIEBOT_NAME]
 
 
-## Option 3 - Pure ROS {#make-it-move_ros}
+## Option 3 - Pure ROS {#make-it-move_ros status=deprecated}
 
 
 
