@@ -37,7 +37,7 @@ Make sure your Duckiebot is on, and both your laptop and Duckiebot are connected
 Make sure your camera is on and the images are being published to ROS:
 
 
-    duckiebot $ docker run -it --name ros-picam --net host --privileged duckietown/ros-picam
+    duckiebot $ docker run -it --name ros-picam --net host --privileged -v /data:/data duckietown/ros-picam 
     
 
 On your laptop run 
@@ -47,6 +47,7 @@ On your laptop run
     laptop $ dts install calibrate (if necessary)
     laptop $ dts calibrate ![DUCKIEBOT_NAME]
 
+hit <kdb>Enter</kbd>
 
 #### ROS {status=deprecated}
 
@@ -64,7 +65,7 @@ In the second laptop terminal run the camera calibration:
     laptop $ cd ![duckietown root]
     laptop $ source environment.sh
     laptop $ source set_ros_master.sh ![robot name]
-    laptop $ roslaunch duckietown intrinsic_calibration.launch veh:=![robot name]
+    laptop $ roslaunch duckietown intrinsic_calibration.launch veh:=![duckiebot name]
 
 
 Whether you did the Docker way or the ROS way you should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
@@ -113,16 +114,16 @@ If you are satisfied with the calibration, you can save the results by pressing 
 This will automatically save the calibration results on your Duckiebot:
 
 ```
-/data/calibrations/camera_intrinsic/![robot name].yaml
+/data/config calibrations/camera_intrinsic/![duckiebot name].yaml
 ```
 
-
-
+If you are running the file server through docker you can view or download the calibration file at the address: `http://![duckiebot name].local:8082/config/calibrations/camera_intrinsic/![duckiebot name].yaml`
 
 
 ## Extrinsic Camera Calibration {#extrinsic-camera-calibration}
 
-## Setup {#camera-calib-jan18-extrinsics-setup}
+
+### Setup {#camera-calib-jan18-extrinsics-setup}
 
 Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). Note that the axis of the wheels should be aligned with the y-axis ([](#fig:extrinsic_setup2)).
 
@@ -137,17 +138,37 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
   <img src="extrinsic_view.jpg" style='width: 30em'/>
 </div>
 
-## Extrinsic calibration procedure {#camera-calib-jan18-extrinsics}
+
+
+### Calibration
+
+
+### Docker
+
+If you ran `dts calibrate ![duckiebot name]` then the same terminal will immediately take you into the extrinsic calibration step. After the following Setup step, push <kbd>Enter</kbd>.
+
+
+### ROS - Extrinsic calibration procedure {#camera-calib-jan18-extrinsics status=deprecated}
 
 Run the following on the Duckiebot:
 
     duckiebot $ rosrun complete_image_pipeline calibrate_extrinsics
+    
+Followed by the following command for verification:
 
-That's it!
+    duckiebot $ rosrun complete_image_pipeline single_image_pipeline
 
-No laptop is required.
 
-You can also look at the output files produced, to make sure it looks reasonable.
+### Verifying the Results
+
+#### Docker
+
+If you are running the file server you can view or download the files at `http://![duckiebot name].local:8082/`
+In that directory there are the results of the testing and the actual calibration files. The calibration file is at `http://![duckiebot name].local:8082/config/calibrations/camera_extrinsic/![duckiebot name].yaml`
+
+You can also see the output of the diagnostics at `http://![duckiebot name].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/`
+
+
 It should look like [](#fig:calibrate_extrinsics1).
 
 
@@ -163,8 +184,10 @@ are not square. This is the rectification used in the lane localization pipeline
 
 2. In `rectified_full_ratio_auto` the image is not stretched. The camera matrix is preserved. This means that the aspect ratio is the same. In particular note the April tags are square. If you do something with April tags, you need this rectification.
 
+<!-- Currently not working
+ ## Camera validation by simulation {#camera-calib-jan18-simulation}
 
-## Camera validation by simulation {#camera-calib-jan18-simulation}
+TODO: Add this to container
 
 You can run the following command to make sure that the camera calibration is reasonable:
 
@@ -187,21 +210,15 @@ It usual achieves impressive calibration results!
     <figcaption>Output of <code>validate_calibration</code>: localization
     in simulated environment.</figcaption>
 </div>
+-->
 
 
-## Camera validation by running one-shot localization {#camera-calib-jan18-oneshot}
+Next Place the robot in a lane.
 
-Place the robot in a lane.
 
-Run the following command:
-
-    duckiebot $ rosrun complete_image_pipeline single_image_pipeline
 
 What this does is taking one snapshot and performing localization on that single image.
 The output will be useful to check that everything is ok.
-
-
-### Example of correct results
 
 [](#fig:oneshot1_all) is an example in which the calibration was correct, and the robot
 localizes perfectly.
@@ -211,11 +228,9 @@ localizes perfectly.
     <figcaption>Output when camera is properly calibrated.</figcaption>
 </div>
 
-### Example of failure
 
-This is an example in which the calibration is incorrect.
 
-Look at the output in the bottom left: clearly the perspective is distorted,
+Look at the output in the bottom left of [](fig:incorrect1): clearly the perspective is distorted,
 and there is no way for the robot to localize given the perspective points.
 
 <div figure-id="fig:incorrect1">
@@ -224,7 +239,6 @@ and there is no way for the robot to localize given the perspective points.
 </div>
 
 
-## The importance of validation
 
 Validation is useful because otherwise it is hard to detect wrong calibrations.
 
