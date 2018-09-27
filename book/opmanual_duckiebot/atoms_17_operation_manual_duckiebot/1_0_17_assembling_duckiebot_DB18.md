@@ -124,7 +124,7 @@ Note: tighten the motors firmly, as a wobbly motor might cause troubles later on
 
 ### Step 4
 
-Repeat for the opposite side and check that the outcome is the same as in [](#fig:howto-mount-motors-milestone-db18)
+Repeat for the opposite side and check that the outcome is the same as in [](#fig:howto-mount-motors-milestone-db18).
 
 <div figure-id="fig:howto-mount-motors-milestone-db18" figure-caption="The motors are attached to the bottom plate of the chassis.">
    <img src="howto-mount-motors-milestone-db18.jpg" style='width: 25em'/>

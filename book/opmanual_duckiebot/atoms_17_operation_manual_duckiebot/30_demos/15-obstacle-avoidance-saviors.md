@@ -97,4 +97,4 @@ S: Might be due to processes not running fast enough. Check if CPU load is too h
 
 ## Further Reading {#demo-saviors-further}
 
-More information and details about our software packages can be found in our [README on Github](https://github.com/duckietown/Software/blob/devel-saviors-23feb/catkin_ws/src/25-devel-saviors/obst_avoid/README.md) or in our [Final Report](+class_fall2017_projects#saviors-final-report).
+More information and details about our software packages can be found in our [README on Github](https://github.com/duckietown/Software/blob/devel-saviors-23feb/catkin_ws/src/25-devel-saviors/obst_avoid/README.md) or in our [Final Report](+fall2017_projects#saviors-final-report).

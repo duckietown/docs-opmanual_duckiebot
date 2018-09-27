@@ -52,7 +52,7 @@ and follow the instructions:
 
 - Enter the Duckiebot SSID of the network that the robot will broadcast (default is `![hostname]` - we will call this `![duckiebot-ssid]`). Note that this feature is not currently implemented.
 
-- Enter the password for your Duckiebot Wifi (default is `quackquack`)
+- Enter the password for your Duckiebot Wifi (default is `quackquack`) - now not used
 
 - You will then have to enter your laptop's `sudo` password to run Etcher
 
@@ -115,7 +115,7 @@ Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or
 
 
 
-You know that your Pi has successfully booted when you are able to ping your robot with:
+You know that your Pi has successfully booted when you are able to ping your robot with the command bellow or with some method in [](#sec:duckiebot_network):
 
 ```
 laptop $ ping ![hostname].local
@@ -126,7 +126,7 @@ Note that you should be connected to the same network as the robot in order to d
 You should see output similar to the following:​    
 
 ```
-PING duckiebot-not-configured.local (![X.X.X.X]): 56 data bytes
+PING ![hostname].local (![X.X.X.X]): 56 data bytes
 64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
 64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
 ![...]
@@ -158,7 +158,9 @@ laptop $ ssh-copy-id -i ~/.ssh/mykey ![username]@![hostname].local
 
 now you should be able to retry the ssh command and see that it logs directly into your robot. 
 
-Doubt: This doesn't seem to work 100% of the time. 
+Doubt: This doesn't seem to work.
+
+TODO: Breandan Considine fix when we have time 
 
 
 

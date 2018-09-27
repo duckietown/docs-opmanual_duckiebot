@@ -15,6 +15,14 @@ Result: A Duckiebot that you can connect to and that is connected to the interne
 
 The instructions here are ordered in terms of preference, the first being the most preferable and best. 
 
+
+
+By default on boot your robot will look for a network with a "Duckietown" SSID (unless you changed it in the SD card flashing instructions [](#burn-sd-card)). You can connect to your robot wirelessly by connecting to that router. 
+
+This page describes how to get your robot connected to the wide-area network (internet).
+
+
+
 ## Testing if your Duckiebot is Connected to the Internet
 
 Some networks block pings from passing through, so a better way is to execute:
@@ -44,11 +52,7 @@ Saving to: ‘STDOUT’
 
 If you are working from your home, for example, you simply need to make the Duckiebot connect to your home network. You may have input the proper SSID and pwd when you initialized the SD card, in which case, your Duckiebot should be connected to the internet already. 
 
-If you didn't enter the right SSID and password for your network or you want to change it you can do:
-
-```
-laptop $ curl -w "\n" -d '{"ssid":"![WIFI_SSID]", "psk":"![WIFI_PASSWORD]"}' -H "Content-Type: application/json" -X POST ![hostname]:8080/connect
-```
+If you didn't enter the right SSID and password for your network or you want to change you need to connect to your robot somehow (e.g. with ethernet) and then edit the file `/etc/wpa_supplicant/wpa_supplicant.conf`
 
 This is the best option. 
 
