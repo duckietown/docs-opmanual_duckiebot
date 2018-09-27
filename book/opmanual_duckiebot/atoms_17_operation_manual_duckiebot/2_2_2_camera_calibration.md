@@ -47,7 +47,7 @@ On your laptop run
     laptop $ dts install calibrate (if necessary)
     laptop $ dts calibrate ![DUCKIEBOT_NAME]
 
-hit <kdb>Enter</kbd>
+hit <kbd>Enter</kbd>
 
 #### ROS {status=deprecated}
 
@@ -230,7 +230,7 @@ localizes perfectly.
 
 
 
-Look at the output in the bottom left of [](fig:incorrect1): clearly the perspective is distorted,
+Look at the output in the bottom left of [](#fig:incorrect1): clearly the perspective is distorted,
 and there is no way for the robot to localize given the perspective points.
 
 <div figure-id="fig:incorrect1">
