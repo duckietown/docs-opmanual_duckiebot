@@ -26,27 +26,28 @@ See: The procedure is documented in [](#howto-mount-camera).
 
 on the duckiebot run:
 
-```
-duckiebot $ docker run -d --name file-server -v /data:/data -p 8082:8082 duckietown/rpi-simple-server
-```
 
+    duckiebot $ docker run -d --name file-server -v /data:/data -p 8082:8082 duckietown/rpi-simple-server
+
+
+Note: If you have the latest version of the SD card you don't need this because it's run on by default
 
 
 ### Create an image
 
 Then write an image to file on the duckiebot:
 
-```
-duckiebot $ docker run -d --name picam -v /data:/data -p 8081:8081 --privileged duckietown/rpi-docker-python-picamera
-```
+
+    duckiebot $ docker run -d --name picam -v /data:/data -p 8081:8081 --privileged duckietown/rpi-docker-python-picamera
+
 
 Then point your browser to `[!DUCKIEBOT_HOSTNAME].local:8081/image.jpg` and verify that it is the output from your camera. 
 
 Now stop the `picam` container:
 
-```
-duckiebot $ docker stop picam
-```
+
+    duckiebot $ docker stop picam
+
 
 
 
@@ -54,9 +55,9 @@ duckiebot $ docker stop picam
 
 Start publishing images through ROS on the duckiebot:
 
-```
-duckiebot $ docker run -it --name ros-picam --net host --privileged duckietown/ros-picam
-```
+
+    duckiebot $ docker run -it --name ros-picam --net host --privileged -v /data:/data duckietown/ros-picam 
+
 
  You should see a bunch of output that ends with:
 
@@ -74,16 +75,16 @@ INFO: [/duckiebot/camera_node] Published the first image.
 
 Now on  your laptop run:
 
-```
-laptop $ dts update
-laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
-```
+
+    laptop $ dts update
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+
 
 The container will start and then:
 
-```
-laptop $ rqt_image_view
-```
+
+    laptop $ rqt_image_view
+
 
 Should open a window where you can view the image (you have to select the right topic from the dropdown menu). 
 
@@ -95,11 +96,11 @@ In a new terminal ssh into your robot and run the base image (if you don't have 
 
 #### Docker
 
-```
-duckiebot $ docker run -it --net host --privileged base --name base duckiebot/rpi-duckiebot-base
-```
 
- #### ROS
+    duckiebot $ docker run -it --net host --privileged base --name base duckiebot/rpi-duckiebot-base
+
+
+#### ROS{status=deprecated}
 
 simply ssh into your robot.
 

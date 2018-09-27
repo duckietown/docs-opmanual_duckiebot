@@ -31,7 +31,7 @@ on your duckiebot run:
 
 
     duckiebot $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
-    duckiebot $ docker run -dit --privileged --net host duckietown/rpi-duckiebot-joystick-demo
+    duckiebot $ docker run -dit --privileged --net host -v /data:/data duckietown/rpi-duckiebot-joystick-demo
 
 
 
@@ -88,7 +88,7 @@ Run the base image on the duckiebot:
 
 Then when the container has started 
 
-    duckiebot $ (docker)  make demo joystick
+    duckiebot $ (docker)  roslaunch duckietown joystick.launch veh:=![duckiebot name]
 
 
 #### Controlling your robot with a joystick
