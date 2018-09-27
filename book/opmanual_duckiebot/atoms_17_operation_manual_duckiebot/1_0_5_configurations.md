@@ -51,6 +51,7 @@ If you are interested in obtaining `DB18-Robotarium` Duckiebots, or in building 
 
 ## Duckiebot versions 2017, or `DB17` {#duckiebot-config-db17}
 
+
 In the  `DB17` version, we had several several different configurations.
 
 The configurations are defined with a root: `DB17-`, indicating the "bare bones" Duckiebot used in the Fall 2017 synchronized course, and an appendix `y` which can be the union (in any order) of any or all of the elements of the optional hardware set $\aset{O} = \{$`w`, `j`, `d`, `p`, `l`, `c`$\}$.
@@ -73,5 +74,5 @@ The elements of $\aset{O}$ are labels identifying optional hardware that aids in
 
 Note: During the Fall 2017 course, three Duckietown Engineering Co. branches (Zurich, Montreal, Chicago) are using these configuration naming conventions. Moreover, all institutions release hardware to their Engineers in training in two phases.
 
-For information on acquiring the parts for these older configurations please see [`DB17-wjd`](http://docs.duckietown.org/17/opmanual_duckiebot/out/acquiring-parts-c0.html) or [`DB17-wjdlc`](http://docs.duckietown.org/17/opmanual_duckiebot/out/acquiring-parts-c1.html).
+For information on acquiring the parts for these older configurations please see [`DB17-wjd`](https://docs.duckietown.org/DT17/opmanual_duckiebot/out/acquiring_parts_c0.html) or [`DB17-wjdlc`](https://docs.duckietown.org/DT17/opmanual_duckiebot/out/acquiring_parts_c1.html).
 
