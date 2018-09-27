@@ -34,35 +34,37 @@ Make sure your Duckiebot is on, and both your laptop and Duckiebot are connected
 
 #### Docker
 
+Make sure your camera is on and the images are being published to ROS:
+
+
+    duckiebot $ docker run -it --name ros-picam --net host --privileged duckietown/ros-picam
+    
+
 On your laptop run 
 
-```
-laptop $ dts update (if necessary)
-laptop $ dts install calibrate_duckiebot (if necessary)
-laptop $ dts calibrate_duckiebot ![DUCKIEBOT_NAME]
-```
+
+    laptop $ dts update (if necessary)
+    laptop $ dts install calibrate (if necessary)
+    laptop $ dts calibrate ![DUCKIEBOT_NAME]
 
 
-
-#### ROS
+#### ROS {status=deprecated}
 
 Open two terminals on the laptop. In the first terminal, log in into your robot using SSH and launch the camera process:
 
-```
-duckiebot $ cd ![duckietown root]
-duckiebot $ source environment.sh
-duckiebot $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
-```
+
+    duckiebot $ cd ![duckietown root]
+    duckiebot $ source environment.sh
+    duckiebot $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
+
 
 In the second laptop terminal run the camera calibration:
 
-```
-laptop $ cd ![duckietown root]
-laptop $ source environment.sh
-laptop $ source set_ros_master.sh ![robot name]
-laptop $ roslaunch duckietown intrinsic_calibration.launch veh:=![robot name]
-```
 
+    laptop $ cd ![duckietown root]
+    laptop $ source environment.sh
+    laptop $ source set_ros_master.sh ![robot name]
+    laptop $ roslaunch duckietown intrinsic_calibration.launch veh:=![robot name]
 
 
 Whether you did the Docker way or the ROS way you should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
