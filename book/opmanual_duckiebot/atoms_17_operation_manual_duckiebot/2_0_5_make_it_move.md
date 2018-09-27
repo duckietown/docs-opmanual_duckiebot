@@ -88,7 +88,7 @@ Run the base image on the duckiebot:
 
 Then when the container has started 
 
-    duckiebot $ (docker)  make demo joystick
+    duckiebot $ (docker)  make demo-joystick
 
 
 #### Controlling your robot with a joystick
