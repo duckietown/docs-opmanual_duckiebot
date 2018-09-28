@@ -62,7 +62,7 @@ keyboard control
 
 On your laptop run:
 
-    laptop $ dts keyboard_control ![DUCKIEBOT_NAME]
+    laptop $ dts keyboard_control ![Duckiebot name]
 
 Note: Currently not working for Mac OSX - the window pops up but the robot won't move - this is expected for now
 
@@ -99,7 +99,7 @@ Run the base image on the duckiebot:
 
 Then when the container has started 
 
-    duckiebot $ (docker)  roslaunch duckietown joystick.launch veh:=![duckiebot name]
+    duckiebot $ (docker)  roslaunch duckietown joystick.launch veh:=![Duckiebot name]
 
 
 #### Controlling your robot with a joystick
@@ -112,7 +112,7 @@ You can now use your joystick to move things around
 If you have cloned the repo on your laptop and installed ROS, then you can start the keyboard controller interface with
 
 
-    laptop $ make virjoy-![DUCKIEBOT_NAME]
+    laptop $ make virjoy-![Duckiebot name]
 
 
 ## Option 3 - Pure ROS {#make-it-move_ros status=deprecated}
@@ -158,7 +158,7 @@ ssh into your robot and run:
 Now on your laptop run:
 
 
-    laptop $ make virjoy-![DUCKIEBOT_NAME]
+    laptop $ make virjoy-![Duckiebot name]
 
 
 Note: you need to have `pygame` installed, see the [README](https://github.com/duckietown/Software/tree/master18/misc/virtualJoy)
@@ -254,7 +254,7 @@ Don't worry though, we can still see the printouts using `rqt_console`.
 On the laptop run:
 
 
-    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+    laptop $ dts start_gui_tools ![Duckiebot name]
 
 
 

@@ -1,4 +1,4 @@
-# See What Your Duckiebot Sees {#read-camera-data status=ready}
+# See what your Duckiebot sees {#read-camera-data status=ready}
 
 
 <div class='requirements' markdown='1'>
@@ -68,7 +68,7 @@ You should see of output that ends with:
 Now start the GUI tools container in a different terminal:
 
 
-    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+    laptop $ dts start_gui_tools ![Duckiebot name]
 
 
 The container will start. At the prompt, run:
@@ -80,7 +80,7 @@ The container will start. At the prompt, run:
 The command should open a window where you can view the image.
 You have to select the right topic from the dropdown menu. 
 
-## Verifying the output by 
+## Verifying the output by using the ROS utilities
 
 Close the `rqt_image_view` window and type the next commands in the same
 window.
