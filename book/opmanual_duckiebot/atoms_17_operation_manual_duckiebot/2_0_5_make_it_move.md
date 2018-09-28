@@ -2,7 +2,7 @@
 
 Assigned: Breandan Considine, Liam Paull
 
-This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](docs.duckietown.org/DT17/).
+This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](https://docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown='1'>
 
