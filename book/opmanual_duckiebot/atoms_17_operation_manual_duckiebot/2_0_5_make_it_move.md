@@ -29,15 +29,13 @@ and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` s
     
 Use the following command to run the container that contains `roscore`:
 
-    laptop $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
+    laptop $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
     
 If this is the first time you run this, it might take some time to download the container.
 
 Verify that the container is running by either using [the Portainer interface](#docker-setup-portainer-interface)
 or by using `docker ps`. 
-
-
-go back and open [the Portainer interface] 
+ 
 
 
     
@@ -96,7 +94,7 @@ The following keys are supported:
 
 Run the base image on the duckiebot:
 
-    duckiebot $ docker run -it --net host --privileged --name base duckietown/rpi-duckiebot-base /bin/bash
+    duckiebot $ docker run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
 
 
 Then when the container has started 
