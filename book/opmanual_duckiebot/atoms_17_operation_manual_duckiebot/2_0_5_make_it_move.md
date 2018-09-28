@@ -8,28 +8,28 @@ This page is for the `DB18` configuration used in classes in 2018. For last year
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
-Requires: You have configured the Duckiebot. The procedure is documented in [](#setup-duckiebot).
+Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
-Requires: You have created a Github account and configured public keys,
-both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).
-
-Requires: You have configured Docker communication as in [](#docker-setup).
+Requires: You have configured Docker communication as documented in [](#docker-setup).
 
 Results: You can make your robot move.
 
 </div>
 
 
-## Option 1 - Pure Docker {#make-it-move_docker status=beta}
+<!--Requires: You have created a Github account and configured public keys,
+both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).-->
 
-These commands assume that you have completed the steps in [](#docker-setup),
-and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
+
+
+## Option 1 - Pure Docker {#make-it-move_docker status=beta}
+ 
 
 ### Run the `roscore` container 
     
 Use the following command to run the container that contains `roscore`:
 
-    laptop $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
+    laptop $ docker -H ![Duckiebot name].local run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
     
 If this is the first time you run this, it might take some time to download the container.
 
@@ -43,7 +43,7 @@ or by using `docker ps`.
 
 Use the following command to run the joystick demo:
 
-    laptop $ docker run -dit --privileged --name joystick --net host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
+    laptop $ docker -H ![Duckiebot name].local run -dit  --device /dev/input/js0 --device /dev/i2c-1 --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
 
 
 ### Controlling your robot with a joystick
@@ -94,12 +94,12 @@ The following keys are supported:
 
 Run the base image on the duckiebot:
 
-    duckiebot $ docker run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
+    duckiebot $ docker -H ![Duckiebot name].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
 
 
 Then when the container has started 
 
-    duckiebot $ (docker)  roslaunch duckietown joystick.launch veh:=![Duckiebot name]
+    container $  roslaunch duckietown joystick.launch veh:=![Duckiebot name]
 
 
 #### Controlling your robot with a joystick

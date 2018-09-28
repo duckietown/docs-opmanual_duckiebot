@@ -1,4 +1,4 @@
-# Setting up the Docker  workflow {#docker-setup status=ready}
+# Setting up the Docker workflow {#docker-setup status=ready}
 
 Assigned: Andrea Censi
 
@@ -23,24 +23,18 @@ The following commands can be run on your laptop but will affect the Duckiebot.
 Note: It is never needed to log in to the Duckiebot via `ssh`, though that could be an alternative workflow.
  
 
-### Set `DOCKER_HOST` to point to the Duckiebot
+You can set the variable `DOCKER_HOST` to point to the Duckiebot:
 
+    laptop $ export DOCKER_HOST=![Duckiebot name].local
+ 
+If you do, then you may omit every instance of the switch `-H ![Duckiebot name].local`.   
 
-Set the variable `DOCKER_HOST` to point to the Duckiebot's IP address:
-
-    laptop $ export DOCKER_HOST=tcp://![X.X.X.X]:2375
     
-Unfortunately, we cannot put hostnames in the `DOCKER_HOST` variable.
-
-You can use the following, after installing `mysql-server`
-
-    laptop $ export DOCKER_HOST=tcp://`resolveip -s ![hostname].local`:2375
-
 ### Seeing which containers are running using `docker ps`
 
 To test the connection, run `docker ps`:
 
-    laptop $ docker ps
+    laptop $ docker -H ![Duckiebot name].local ps
     
     CONTAINER ID        IMAGE                                   ...
     84b6454111fd        resin/raspberrypi3-alpine-python:slim   ...
@@ -48,8 +42,8 @@ To test the connection, run `docker ps`:
     dc34165b0e39        portainer/portainer:linux-arm           ...
 
 
-This shows what containers are running on the Duckiebot. (The information presented is
-more limited than Portainer.)
+This shows what containers are running on the Duckiebot. The information presented is
+more limited than in Portainer.
 
 ### A third way: `ctop`
 
@@ -63,7 +57,7 @@ Another cool alternative is `ctop`, which you can install [from here][ctop-insta
 
 Warning: the container `duckietown/rpi-health` is not yet in the default config. Until it is you have to run it, using: 
 
-    laptop $ docker run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health
+    laptop $ docker -H ![Duckiebot name].local run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health
 
 If some of the containers are marked as "unhealthy", fix the problem before continuing.
 

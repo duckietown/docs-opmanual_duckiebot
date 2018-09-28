@@ -14,7 +14,7 @@ when you command it to. Set the maximum speed of the Duckiebot.
 Comment: It might be helpful to talk about the ROS Parameter Server here, or at least
 reference another page. -AD
 
-For the theoretical treatment of the odometry calibration see [](+learning_materials#odometry_calibration)
+For the theoretical treatment of the odometry calibration see [](+learning_materials#odometry_calibration).
 
 
 
@@ -39,7 +39,7 @@ If you just finished the [camera calibration step](#camera-calib) then you have 
 Get a base container running on your robot if you don't have one already:
 
 
-    duckiebot $ docker run -it --net host --privileged  duckietown/rpi-duckiebot-base
+    duckiebot $ docker -H ![Duckiebot name].local run -it --net host --privileged  duckietown/rpi-duckiebot-base:master18
 
 
 
@@ -69,6 +69,8 @@ the Duckiebot drifted ([](#fig:wheel_calibration_lr_drift)).
 <div figure-id="fig:wheel_calibration_lr_drift" figure-caption="Left/Right drift">
   <img src="wheel_calibration_lr_drift.jpg" style='width: 30em'/>
 </div>
+
+
 Measure the distance between the center of the tape and the center of the axle of
 the Duckiebot after it traveled for about 2 meters ([](#fig:wheel_calibration_measuring_drift)).
 
