@@ -12,7 +12,7 @@ Requires: A computer with a **Ubuntu OS** (for flashing the SD card), an interne
 
 Requires: Duckietown Shell, Docker, etc, as configured in [](#laptop-setup).
 
-Requires: Duckietown Token set up as in  [](#dt-account).
+Requires: Duckietown Token set up as in [](#dt-account).
 
 Results: A correctly configured Duckiebot SD card in configuration `DB18`. After assembling the Duckiebot, this will allow you to start it, connect to the internet, and get going.
 
@@ -141,13 +141,12 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 
 Next, try to log in using SSH, using
 
-```
-laptop $ ssh ![hostname]
-```
+    laptop $ ssh ![hostname]
+
 
 This should succeed without password. 
 
-If it doesn't check that `~/.ssh/config` contains something like:
+If it doesn't work, check that `~/.ssh/config` contains something like:
 
     Host ![hostname]
         User duckie
@@ -161,9 +160,9 @@ This configuration was added by the `init_sd_card` command.
 
 It is recommended that you immediately give ownership of your home folder to your user. You can do this by running the following on your Duckiebot:
 
-```
-duckiebot $ sudo chown -R ![username]:![username] .
-```
+
+    duckiebot $ sudo chown -R ![username]:![username] .
+
 
 
 ## Connect to the Internet
@@ -178,11 +177,11 @@ Symptom: The Pi hangs when you do `docker pull` commands or otherwise and someti
 
 Resolution: An older version of the SD card image had the docker container `cjimti/iotwifi` running but this was found to be causing difficulties. SSH into your robot by some method and then execute:
 
-```
-duckiebot $ docker rm $(docker stop $(docker ps -a -q --filter ancestor=cjimti/iotwifi --format="{{.ID}}"))
-duckiebot $ sudo systemctl unmask wpa_supplicant
-duckiebot $ sudo systemctl restart networking.service
-```
+
+    duckiebot $ docker rm $(docker stop $(docker ps -a -q --filter ancestor=cjimti/iotwifi --format="{{.ID}}"))
+    duckiebot $ sudo systemctl unmask wpa_supplicant
+    duckiebot $ sudo systemctl restart networking.service
+
 
 
 
