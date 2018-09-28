@@ -33,7 +33,6 @@ Fix the checkerboard to a planar surface.
 
 Make sure your Duckiebot is on, and both your laptop and Duckiebot are connected to the duckietown network.
 
-
 These commands assume that you have completed the steps in [](#docker-setup),
 and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
  
@@ -50,7 +49,7 @@ On your laptop run:
 
     laptop $ dts calibrate ![DUCKIEBOT_NAME]
 
-Hit <kbd>Enter</kbd>
+Hit <kbd>Enter</kbd>.
 
 
 #### ROS {status=deprecated}
