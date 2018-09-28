@@ -22,9 +22,10 @@ Fix the checkerboard to a planar surface.
      <img src="calibration_checkerboard.png" style='width: 20em'/>
 </div>
 
-Note: the squares must have side equal to 0.031 m = 3.1 cm.
+Download and print a PDF of the calibration checkerboard.
 
-Download and print a PDF of the calibration checkerboard 
+Note: the squares must have side equal to 0.031 m = 3.1 cm. Please measure this, as having the wrong size will make your Duckiebot crash.
+
 
 Fix the checkerboard to a planar surface.
 
@@ -32,22 +33,25 @@ Fix the checkerboard to a planar surface.
 
 Make sure your Duckiebot is on, and both your laptop and Duckiebot are connected to the duckietown network.
 
+
+These commands assume that you have completed the steps in [](#docker-setup),
+and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
+ 
+ 
 #### Docker
 
-Make sure your camera is on and the images are being published to ROS:
+Make sure your camera is on and the images are being published to ROS
+using the `rpi-duckiebot-ros-picam` container:
 
-
-    duckiebot $ docker run -it --name ros-picam --net host --privileged -v /data:/data duckietown/ros-picam 
+    laptop $ docker run -it --name ros-picam --net host --privileged -v /data:/data duckietown/rpi-duckiebot-ros-picam:master18 
     
 
-On your laptop run 
+On your laptop run:
 
-
-    laptop $ dts update (if necessary)
-    laptop $ dts install calibrate (if necessary)
     laptop $ dts calibrate ![DUCKIEBOT_NAME]
 
-hit <kbd>Enter</kbd>
+Hit <kbd>Enter</kbd>
+
 
 #### ROS {status=deprecated}
 
