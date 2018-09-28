@@ -198,13 +198,11 @@ Followed by the following command for verification:
 
 ### Verifying the Results
 
-If you are running the file server you can view or download the files at 
+You can view or download the files at 
 
     http://![Duckiebot name].local:8082/
     
-    
-TODO: and what if not? need to put here instructions, or make it a default container.
-
+ 
 In that directory there are the results of the testing and the actual calibration files. The calibration file is at 
 
     http://![Duckiebot name].local:8082/config/calibrations/camera_extrinsic/![Duckiebot name].yaml

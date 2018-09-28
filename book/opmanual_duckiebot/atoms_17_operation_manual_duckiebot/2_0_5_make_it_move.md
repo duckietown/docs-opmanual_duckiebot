@@ -217,6 +217,7 @@ Symptom: The left joystick does not work.
 Resolution: If the green light on the right to the "mode" button is on, click the "mode" button to turn the light off. The "mode" button toggles between left joystick or the cross on the left.
 
 
+<!--
 
 ## The proper shutdown procedure for the Raspberry Pi
 
@@ -239,7 +240,7 @@ As an alternative you can use the `poweroff` command:
 
 Warning: If you disconnect frequently the cable at the Raspberry Pi's end, you might damage the port.
 
-
+-->
 
 ## Watch the program output using `rqt_console`
 
