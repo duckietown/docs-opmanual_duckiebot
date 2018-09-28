@@ -110,6 +110,8 @@ Put one motor between the holders as shown in [](#fig:howto-mount-motors-2).
 
 Note: Orient the motors so that their wires are inwards (i.e., towards the center of the plate).
 
+Note: Use your screwdriver.
+
 
 ### Step 3
 
@@ -303,6 +305,8 @@ From the Duckiebot kit take the following components:
 - Camera cable (1x)
 - Micro SD card (1x)
 
+Note: You might have two heat sinks, make sure you use the one in the picture (should be the bigger one).
+
 [](#fig:howto-mount-rpi-parts) shows the components needed to complete this part of the tutorial.
 
 <div figure-id="fig:howto-mount-rpi-parts" figure-caption="The heat sinks and the Raspberry Pi 3B+.">
@@ -363,7 +367,7 @@ From the previously prepared pieces take the following components:
 
 From the Duckiebot kit take the following components:
 
-- Duckietown Hut (1x)
+- Duckiebot Hut (1x)
 - M2.5x12 nylon spacers (4x)
 - M2.5 nylon nuts (4x)
 - USB to micro USB cables (2x)
@@ -379,7 +383,7 @@ Note: It is cleaner if you do not separate each cable, but leave them in two set
 
 ### Step 1
 
-Place the spacers on the bottom part of the Duckietown hut, as in [](#fig:howto-assemble-hut-1)
+Place the spacers on the bottom part of the Duckiebot hut, as in [](#fig:howto-assemble-hut-1)
 
 <div figure-id="fig:howto-assemble-hut-1" figure-caption="Position of the nylon spacers.">
      <img src="howto_assemble_hut_1.png" style='width: 25em'/>
@@ -387,11 +391,11 @@ Place the spacers on the bottom part of the Duckietown hut, as in [](#fig:howto-
 
 ### Step 2
 
-From the top of the Duckietown Hut, secure using the M2.5 nylon nuts.
+From the top of the Duckiebot Hut, secure using the M2.5 nylon nuts.
 
 ### Step 3
 
-Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera cable through the slit in the Duckietown Hut. Then plug in the Duckietown Hut, by making sure that the Raspberry Pi pins fit into the Hut connector. Finally, plug in the USB cables in the two micro USB ports.
+Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera cable through the slit in the Duckiebot Hut. Then plug in the Duckiebot Hut, by making sure that the Raspberry Pi pins fit into the Hut connector. 
 
 <div figure-id="fig:howto-assemble-hut-2" figure-caption="Position of the nylon spacers.">
      <img src="howto_assemble_hut_2.jpg" style='width: 25em'/>
@@ -407,7 +411,7 @@ Take one of the two sets of F/F jumper wires, and attach it to the Duckietown Hu
 
 ### Step 5
 
-Finally, attach the two USB cable to the power plugs, as in [](#fig:assembly-db18-power-cables). Note that the color of the USB cables might vary, so don't worry if yours are not exactly as those shown in the picture below.
+Finally, attach the two USB cable to the power plugs, as in [](#fig:assembly-db18-power-cables). Note that the color of the USB cables might vary, so don't worry if yours are not exactly as those shown in the picture below. The two USB cables could also be uncomfortably short. If your powerbank/battery comes with longer cables you might want to use them instead.
 
 <div figure-id="fig:assembly-db18-power-cables" figure-caption="Plugging in the power cables.">
      <img src="assembly-db18-power-cables.jpg" style='width: 25em'/>
@@ -471,6 +475,8 @@ From the Duckiebot kit take the following components:
 
 - M2.5x10 Nylon screws (4x)
 - M2.5x4 Nylon spacers (4x)
+
+Note: By this moment you probably have both M2.5 and M3 Nylon screws. Make sure you use the M2.5 ones. Do not force the M3 screws.
 
 [](#fig:howto-assemble-rpi-top-parts) shows the components needed to complete this part of the tutorial.
 
