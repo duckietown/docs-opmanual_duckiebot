@@ -1,11 +1,10 @@
-# Making Your Duckiebot Move {#sec:rc-control status=ready}
+# Making your Duckiebot move {#rc-control status=ready}
 
 Assigned: Breandan Considine, Liam Paull
 
 This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](https://docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown='1'>
-
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
@@ -14,6 +13,8 @@ Requires: You have configured the Duckiebot. The procedure is documented in [](#
 Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).
 
+Requires: You have configured Docker communication as in [](#docker-setup).
+
 Results: You can make your robot move.
 
 </div>
@@ -21,37 +22,49 @@ Results: You can make your robot move.
 
 ## Option 1 - Pure Docker {#make-it-move_docker status=beta}
 
-ssh into your robot:
+These commands assume that you have completed the steps in [](#docker-setup),
+and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
+
+### Run the `roscore` container 
+    
+Use the following command to run the container that contains `roscore`:
+
+    laptop $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
+    
+If this is the first time you run this, it might take some time to download the container.
+
+Verify that the container is running by either using [the Portainer interface](#docker-setup-portainer-interface)
+or by using `docker ps`. 
 
 
-    laptop $ ssh ![username]@![hostname].local
+go back and open [the Portainer interface] 
 
 
-on your duckiebot run:
+    
+### Run the joystick demo
+
+Use the following command to run the joystick demo:
+
+    laptop $ docker run -dit --privileged --name joystick --net host -v /data:/data duckietown/rpi-duckiebot-joystick-demo
 
 
-    duckiebot $ docker run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore
-    duckiebot $ docker run -dit --privileged --net host -v /data:/data duckietown/rpi-duckiebot-joystick-demo
+### Controlling your robot with a joystick
 
 
+If you have a joystick, you can use it to make your robot move.
 
-#### Controling your robot with a joystick
+Otherwise, you can use the following instructions to run the demo with 
+keyboard control 
 
 
-Use your joystick to make your robot move. 
-
-
-#### Controlling your robot with your keyboard
+### Controlling your robot with your keyboard
 
 
 ##### OSX
 
-on your laptop run:
+On your laptop run:
 
-    laptop $ dts update (if necessary)
-    laptop $ dts install keyboard_control (if necessary)
     laptop $ dts keyboard_control ![DUCKIEBOT_NAME]
-
 
 Note: Currently not working for Mac OSX - the window pops up but the robot won't move - this is expected for now
 
