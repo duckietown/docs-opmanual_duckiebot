@@ -147,4 +147,4 @@ The first time you save the parameters, this command will create the file
 ### Final Check to make sure it's stored
 
 
-Assuming your are running an HTTP server, point your browser to `http://![duckiebot name].local:8082/config/calibrations/kinematics/![duckiebot_name].yaml`
+Assuming your are running an HTTP server, point your browser to `http://![Duckiebot name].local:8082/config/calibrations/kinematics/![Duckiebot name].yaml`
