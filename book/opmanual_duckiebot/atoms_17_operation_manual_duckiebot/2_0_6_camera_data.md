@@ -50,6 +50,7 @@ the container `rpi-duckiebot-ros-picam`:
 
     laptop $ docker run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18 
 
+Note: you need `-v /data:/data` because of the calibration procedure later.
 
 You should see of output that ends with:
 
