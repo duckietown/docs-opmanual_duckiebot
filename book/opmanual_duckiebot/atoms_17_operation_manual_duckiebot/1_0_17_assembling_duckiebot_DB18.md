@@ -241,6 +241,7 @@ From the Duckiebot kit take the following components:
 ### Step 1
 
 Insert two M3x8 screws in the designated holes and place the rear bumper on them, they should align as in [](#fig:howto-mount-spacers-1). A litte forcing might be necessary.
+
 <div figure-id="fig:howto-mount-spacers-1" figure-caption="Place the screws and the rear bumper bracer.">
      <img src="howto_mount_spacers_1.png" style='width: 25em'/>
 </div>
@@ -587,7 +588,7 @@ From the Duckiebot kit take the following components:
 
 ### Step 1
 
-Place the top chassis assembly over the bottom chassis assembly as in [](#fig:howto-assemble-chassis-1)
+Place the top chassis assembly over the bottom chassis assembly as in [](#fig:howto-assemble-chassis-1).
 
 <div figure-id="fig:howto-assemble-chassis-1" figure-caption="The parts needed to add the battery to the Duckiebot.">
      <img src="howto_assemble_chassis_1.jpg" style='width: 25em'/>
@@ -632,7 +633,7 @@ Place the second rear bumper bracer on top of the chassis spacers in the back of
 
 ### Step 5
 
-Fasten the top plate using the M3x10 screws, as in ([](#fig:howto-assemble-chassis-6)).
+Fasten the top plate using the M3x10 screws, as in([](#fig:howto-assemble-chassis-6).
 
 <div figure-id="fig:howto-assemble-chassis-6" figure-caption="How to fasten the chassis.">
      <img src="howto_assemble_chassis_6.jpg" style='width: 25em'/>
