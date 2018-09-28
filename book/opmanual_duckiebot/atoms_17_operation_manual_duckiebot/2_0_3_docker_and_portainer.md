@@ -92,3 +92,14 @@ Search for the `status` and `status_msgs` output:
 The throttling and under-voltage warnings have to do with the power
 supply. Note that the PI can be damaged by inadequate power supply,
 so fix these as soon as possible.
+
+
+## Building workflow {#docker-setup-building-workflow}
+
+Finally, we want to make sure that the Docker daemon on the robot
+can build successfully.
+
+To verify that, follow [the `rpi-duckiebot-simple-python` tutorial available here][here].
+
+
+[here]: https://github.com/duckietown/rpi-duckiebot-simple-python

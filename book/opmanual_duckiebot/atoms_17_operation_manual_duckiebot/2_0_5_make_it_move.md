@@ -45,7 +45,7 @@ go back and open [the Portainer interface]
 
 Use the following command to run the joystick demo:
 
-    laptop $ docker run -dit --privileged --name joystick --net host -v /data:/data duckietown/rpi-duckiebot-joystick-demo
+    laptop $ docker run -dit --privileged --name joystick --net host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
 
 
 ### Controlling your robot with a joystick
