@@ -134,3 +134,24 @@ If the numbers do not change while using the joystick then follow this guide at 
 Resolution: The controller might be connected to another Duckiebot nearby. Turn off the
 controller, go to a room with no other Duckiebots around and turn the controller back
 on. Retry.
+
+
+## Hanging {#troubleshooting-hanging} 
+
+Symptom: The Pi hangs when you do `docker pull` commands or otherwise and sometimes shuts off.
+
+Resolution: An older version of the SD card image had the docker container `cjimti/iotwifi` running but this was found to be causing difficulties. SSH into your robot by some method and then execute:
+
+
+    duckiebot $ docker rm $(docker stop $(docker ps -a -q --filter ancestor=cjimti/iotwifi --format="{{.ID}}"))
+    duckiebot $ sudo systemctl unmask wpa_supplicant
+    duckiebot $ sudo systemctl restart networking.service
+
+
+
+
+Symptom: You still have to enter your password when you login
+
+Resolution:
+
+TODO: Breandan Considine
