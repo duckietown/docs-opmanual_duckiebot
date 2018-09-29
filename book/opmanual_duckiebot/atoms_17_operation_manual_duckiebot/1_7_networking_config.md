@@ -5,11 +5,11 @@ This page is for the `DB18` configuration used in classes in 2018. For last year
 <div class='requirements' markdown="1">
 
 
-Requires: A Duckiebot that is initialized according to [](#setup-duckiebot)
+Requires: A Duckiebot that is initialized according to [](#setup-duckiebot).
 
-Requires: Patience (channel your inner Yoda)
+Requires: Patience (channel your inner Yoda).
 
-Result: A Duckiebot that you can connect to and that is connected to the internet
+Result: A Duckiebot that you can connect to and that is connected to the internet.
 
 </div>
 

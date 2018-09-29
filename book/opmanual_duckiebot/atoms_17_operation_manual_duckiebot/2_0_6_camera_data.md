@@ -5,6 +5,8 @@
 
 Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
+Requires: You have configured Docker communication as documented in [](#docker-setup).
+
 </div>
 
 
@@ -24,7 +26,7 @@ and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` s
 Start the container `rpi-docker-python-picamera`. It reads the camera
 image and makes it available to a browser.
 
-    laptop $ docker run -d --name picam  -p 8081:8081 --device /dev/vchiq duckietown/rpi-docker-python-picamera:master18
+    laptop $ docker -H ![Duckiebot name].local run -d --name picam -p 8081:8081 --device /dev/vchiq duckietown/rpi-docker-python-picamera:master18
 
 
 Then point your browser to the address 
@@ -48,7 +50,7 @@ Start publishing images through ROS on the Duckiebot using
 the container `rpi-duckiebot-ros-picam`:
 
 
-    laptop $ docker run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18 
+    laptop $ docker -H ![Duckiebot name].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18 
 
 Note: you need `-v /data:/data` because of the calibration procedure later.
 
