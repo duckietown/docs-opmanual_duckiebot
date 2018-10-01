@@ -118,7 +118,7 @@ Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or
 Do not power the robot off (by holding the battery button) while this is in process. 
 
 
-You know that your Pi has successfully booted when you are able to ping your robot with the command bellow or with some method in [](#sec:duckiebot_network):
+You know that your Pi has successfully booted when you are able to ping your robot with the command bellow or with some method in [](#duckiebot-network):
 
 ```
 laptop $ ping ![hostname].local
