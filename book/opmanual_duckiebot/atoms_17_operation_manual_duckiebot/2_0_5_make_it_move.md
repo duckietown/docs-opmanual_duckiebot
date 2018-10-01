@@ -43,7 +43,7 @@ or by using `docker ps`.
 
 Use the following command to run the joystick demo:
 
-    laptop $ docker -H ![Duckiebot name].local run -dit  --device /dev/input/js0 --device /dev/i2c-1 --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
+    laptop $ docker -H ![Duckiebot name].local run -dit --privileged --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
 
 
 ### Controlling your robot with a joystick
