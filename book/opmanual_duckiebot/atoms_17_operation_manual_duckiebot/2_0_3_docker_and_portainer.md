@@ -91,19 +91,21 @@ To test the connection, run `docker ps`:
 This shows what containers are running on the Duckiebot. The information presented is
 more limited than in Portainer.
 
-### A third way: `ctop`
+
+<!--
+ ### A third way: `ctop`
 
 Another cool alternative is `ctop`, which you can install [from here][ctop-install].
 
 [ctop-install]: https://github.com/bcicen/ctop
-
+-->
 
 
 ## Health checks {#docker-setup-health-checks}
 
 Warning: the container `duckietown/rpi-health` arrived only recently in the default config (Sep 27). If you have a previous SD card, you have to run it, using: 
 
-    laptop $ docker -H ![Duckiebot name].local run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health
+    laptop $ docker -H ![Duckiebot name].local run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health:master18
 
 If some of the containers are marked as "unhealthy", fix the problem before continuing.
 
