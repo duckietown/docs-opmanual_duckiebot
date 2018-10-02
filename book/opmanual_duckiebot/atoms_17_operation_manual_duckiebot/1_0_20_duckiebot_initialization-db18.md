@@ -109,6 +109,8 @@ Warning: this will work only if done **before the first boot**. If you want to a
 
 Now insert the SD card into the Raspberry PI and push the button on the battery to power things up. 
 
+Warning: Don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
+
 You should immediately see the **green** light next to where the SD card was inserted start to blink with activity. 
 
 If not, stop, as there is a problem with the SD card (or possibly the PI, but this is unlikely).
