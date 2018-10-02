@@ -1,5 +1,5 @@
 ---
-name: [generic] General problem with a step in the documentation
+name: General problem with a step in the documentation
 about: Use this template if you cannot find a more specific one
 
 ---
