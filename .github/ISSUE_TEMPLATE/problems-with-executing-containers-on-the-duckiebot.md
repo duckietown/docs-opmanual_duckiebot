@@ -20,6 +20,24 @@ about: Use this template to report problems related to running containers on the
 
 *What happened instead?*
 
+
+### Diagnostics
+
+What does the `rpi-health` diagnostics say?
+(You can find these in Portainer, or at `http://duckiebot.local:8085`.)
+
+- [ ] I don't know because I didn't look.
+
+or 
+
+- [ ] Error: PI is throttled
+- [ ] Error: Under-voltage
+- [ ] Error: Frequency capped
+- [ ] Warning: PI throttling occurred in the past.
+- [ ] Warning: Under-voltage occurred in the past.
+- [ ] Warning: Frequency capped occurred in the past.
+- [ ] None of the above
+
 ### Error report
 
 *Please report here the **complete** error message.*  
