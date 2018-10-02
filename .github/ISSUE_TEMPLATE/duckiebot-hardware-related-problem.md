@@ -27,7 +27,10 @@ What hardware was involved?
 
 - [x] Raspberry PI 3B+
 - [ ] Raspberry PI 3B
-- [ ] Motor hat version DB18
+- [ ] Motor hat version 2018A
+- [ ] Motor hat version 2018B
+- [ ] Motor hat version 2018C
+- [ ] Motor hat version 2018D (v 1.1)
 - [ ] Motor hat version DB17 (Adafruit)
 - [ ] PI Camera
 - [ ] HDMI and monitor
