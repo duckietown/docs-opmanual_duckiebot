@@ -1,4 +1,4 @@
-# Laptop Setup {#laptop-setup status=beta}
+# Laptop Setup {#laptop-setup status=ready}
 
 Assigned: Andrea Censi
 
