@@ -4,23 +4,23 @@ about: Use this template to report problems related to running containers on the
 
 ---
 
-**Context**
+### Context
 
 *What were you doing? Where were you in the manual?*
 
-**Command line**
+### Command line
 
 *What command line did you run?*
 
      $ docker ...
 
-**Problem**
+###  Problem
 
 *What did you expect?*
 
 *What happened instead?*
 
-**Error report**
+### Error report
 
 *Please report here the **complete** error message.*  
 
@@ -28,6 +28,6 @@ about: Use this template to report problems related to running containers on the
 
 You can find the container log in the Portainer interface.
 
-** Other notes **
+### Other notes
 
 Other comments?
