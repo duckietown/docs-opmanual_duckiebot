@@ -1,28 +1,36 @@
 ---
-name: General problem with documentation
-about: Create a report to help us improve the documentation
+name: [generic] General problem with a step in the documentation
+about: Use this template if you cannot find a more specific one
 
 ---
 
-**Where did this happen**
-A clear and concise description of what the bug is.
+### Context
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+*What step were you trying in the documentation?*
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+*What command line were you running?*
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem. But text is preferred!
+### Problem
 
-**Versions (please complete the following information):**
- - Duckietown version: [e.g. DT18, DT17]
+*What happened?*
+
+*What did you expect to happen?*
 
 
-**Additional context**
-Add any other context about the problem here.
+### System information
+
+Duckietown version: *[DT18, DT17, ...]*
+
+Duckiebot version: *[DB18, DB17, ...]*
+
+Computer OS: *[Ubuntu 18.x, OS X, etc.]*
+
+
+### Additional notes
+
+Add any other notes about the problem here.
+
+### Screenshots
+
+*If necessary, add screenshots to help explain your problem.*
+**Note: text is preferred.**
