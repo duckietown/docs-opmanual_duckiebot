@@ -22,16 +22,17 @@ about: Use this form to report an issue with the hardware
 
 Raspberry PI version:  [RPI3B+, ...]
 
-Motor hat version: [...]
 
-What was connected to the PI?
+What hardware was involved?
 
+- [x] Raspberry PI 3B+
+- [ ] Raspberry PI 3B
 - [ ] Motor hat version DB18
 - [ ] Motor hat version DB17 (Adafruit)
 - [ ] PI Camera
 - [ ] HDMI and monitor
 - [ ] LAN cable
-- [ ] Other USB peripherals (Joystick, keyboard, etc.)
+- [ ] Other USB peripherals (joystick, keyboard, etc.)
 
 *How was the raspberry Pi powered?*
 
