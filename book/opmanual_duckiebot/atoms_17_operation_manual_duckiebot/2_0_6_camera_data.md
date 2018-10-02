@@ -31,7 +31,7 @@ image and writes it to `/data`.
 
 Then point your browser to the address 
 
-    http://[!DUCKIEBOT_HOSTNAME].local:8082/image.jpg 
+    http://[!DUCKIEBOT_HOSTNAME].local:8081/image.jpg 
     
 and verify that it is the output from your camera.
 
