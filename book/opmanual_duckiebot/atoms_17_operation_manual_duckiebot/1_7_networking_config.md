@@ -59,13 +59,16 @@ This method assumes that you can connect your laptop to a network but it is one 
 
 ### Ubuntu
 
-1. Connect your laptop to the network
+   
+If the previous command does not work, you may need to change the system date. To do so, run the following command:
 
+   $ date -s "2018-09-18 15:00:00"
+1. Connect your laptop to a wireless network.
 2. Connect the Duckiebot to your laptop via an ethernet cable.
 
 3. Make a new ethernet connection:
 
-4. 1. Network Settings… (or run the command nm-connection-editor)
+4. 1. Network Settings… (or run the command `nm-connection-editor`)
    2. Click "Add"
    3. Type -> Ethernet
    4. Connection Name: "Shared to Duckiebot"
@@ -74,12 +77,33 @@ This method assumes that you can connect your laptop to a network but it is one 
    7. Select “Shared to other computers”
    8. Click apply.
 
+Now, you should be able to SSH to your Duckiebot:
 
+```
+laptop $ ssh duckie@[DUCKIEBOT_NAME].local
+```
+
+Check whether you can access the internet from your Duckiebot:
+
+```
+duckiebot $ sudo curl google.com
+```
+
+Now, try to pull a Docker image:
+
+```
+duckiebot $ sudo docker pull duckietown/rpi-simple-server # This should complete successfully 
+```
+
+If the previous command does not work, you may need to change the system date. To do so, run the following command:
+
+```
+duckiebot $ sudo date -s "2018-09-18 15:00:00" # Where this is the current date in YYYY-MM-DD HH-mm-ss
+```
 
 ### Mac
 
 Untested instructions [here](https://medium.com/@tzhenghao/how-to-ssh-into-your-raspberry-pi-with-a-mac-and-ethernet-cable-636a197d055)
-
 
 
 ## Option 3: Push Docker Images from Laptop {#duckiebot-network-push status=beta}
