@@ -59,10 +59,6 @@ This method assumes that you can connect your laptop to a network but it is one 
 
 ### Ubuntu
 
-   
-If the previous command does not work, you may need to change the system date. To do so, run the following command:
-
-   $ date -s "2018-09-18 15:00:00"
 1. Connect your laptop to a wireless network.
 2. Connect the Duckiebot to your laptop via an ethernet cable.
 
