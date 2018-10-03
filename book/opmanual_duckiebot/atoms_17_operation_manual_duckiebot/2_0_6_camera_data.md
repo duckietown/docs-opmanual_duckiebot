@@ -22,25 +22,25 @@ See: The procedure is documented in [](#howto-mount-camera).
 
 These commands assume that you have completed the steps in [](#docker-setup),
 and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
- 
+
 Start the container `rpi-docker-python-picamera`. It reads the camera
 image and writes it to `/data`.
 
     laptop $ docker -H ![Duckiebot name].local run -d --name picam -p 8081:8081 --device /dev/vchiq duckietown/rpi-docker-python-picamera:master18
 
 
-Then point your browser to the address 
+Then point your browser to the address
 
-    http://[!DUCKIEBOT_HOSTNAME].local:8082/image.jpg 
-    
+    http://![hostname].local:8081/image.jpg
+
 and verify that it is the output from your camera.
 
-If the image is all black, check that you have removed the lens cap. 
+If the image is all black, check that you have removed the lens cap.
 
 
 Now stop the `picam` container:
 
-    laptop $ docker stop picam
+    laptop $ docker -H ![Duckiebot name].local stop picam
 
 
 
@@ -50,7 +50,7 @@ Start publishing images through ROS on the Duckiebot using
 the container `rpi-duckiebot-ros-picam`:
 
 
-    laptop $ docker -H ![Duckiebot name].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18 
+    laptop $ docker -H ![Duckiebot name].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18
 
 Note: you need `-v /data:/data` because of the calibration procedure later.
 
@@ -58,10 +58,10 @@ You should see of output that ends with:
 
     WARN: [/duckiebot/cam_info_reader_node] ==============CompressedImage
     INFO: [/duckiebot/camera_node] Initializing......
-    INFO: [/duckiebot/camera_node] ~framerate_high = 30 
-    INFO: [/duckiebot/camera_node] ~framerate_low = 15 
-    INFO: [/duckiebot/camera_node] ~res_w = 640 
-    INFO: [/duckiebot/camera_node] ~res_h = 480 
+    INFO: [/duckiebot/camera_node] ~framerate_high = 30
+    INFO: [/duckiebot/camera_node] ~framerate_low = 15
+    INFO: [/duckiebot/camera_node] ~res_w = 640
+    INFO: [/duckiebot/camera_node] ~res_h = 480
     INFO: [/duckiebot/camera_node] Initialized.
     INFO: [/duckiebot/camera_node] Start capturing.
     INFO: [/duckiebot/camera_node] Published the first image.
@@ -80,14 +80,14 @@ The container will start. At the prompt, run:
 
 
 The command should open a window where you can view the image.
-You have to select the right topic from the dropdown menu. 
+You have to select the right topic from the dropdown menu.
 
 ## Verifying the output by using the ROS utilities
 
 Close the `rqt_image_view` window and type the next commands in the same
 window.
 
- 
+
 ### List topics
 
 You can see a list of published topics with the command:
@@ -103,7 +103,7 @@ You should see at least the following topics:
     /![robot name]/camera_node/image/raw
     /rosout
     /rosout_agg
-    
+
 There might be other topics if you started other demos.
 
 ### Show topics frequency
@@ -128,6 +128,3 @@ You can view the messages in real time with the command `rostopic echo`:
 You should see a large sequence of numbers being printed to your terminal.
 
 That's the "image" --- as seen by a machine.
-
-
-
