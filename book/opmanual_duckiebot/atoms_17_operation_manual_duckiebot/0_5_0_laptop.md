@@ -107,7 +107,7 @@ You can find other themes [at this page](https://github.com/robbyrussell/oh-my-z
 
 Also add the line:
 
-    . ~/profile 
+    . ~/.profile 
 
 
 #### Passwordless sudo
