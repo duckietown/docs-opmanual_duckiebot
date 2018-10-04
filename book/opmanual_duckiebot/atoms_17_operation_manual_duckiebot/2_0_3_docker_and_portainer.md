@@ -35,7 +35,7 @@ Until everything is downloaded the Portainer interface will not start.
 
 To debug this, login to the robot:
 
-    laptop $ ssh ![Duckiebot name]
+    laptop $ ssh ![hostname]
 
 and then look at the logs:
 
@@ -71,16 +71,16 @@ Note: It is never needed to log in to the Duckiebot via `ssh`, though that could
 
 You can set the variable `DOCKER_HOST` to point to the Duckiebot:
 
-    laptop $ export DOCKER_HOST=![Duckiebot name].local
+    laptop $ export DOCKER_HOST=![hostname].local
  
-If you do, then you may omit every instance of the switch `-H ![Duckiebot name].local`.   
+If you do, then you may omit every instance of the switch `-H ![hostname].local`.   
 
     
 ### Seeing which containers are running using `docker ps`
 
 To test the connection, run `docker ps`:
 
-    laptop $ docker -H ![Duckiebot name].local ps
+    laptop $ docker -H ![hostname].local ps
     
     CONTAINER ID        IMAGE                                   ...
     84b6454111fd        resin/raspberrypi3-alpine-python:slim   ...
@@ -105,7 +105,7 @@ Another cool alternative is `ctop`, which you can install [from here][ctop-insta
 
 Warning: the container `duckietown/rpi-health` arrived only recently in the default config (Sep 27). If you have a previous SD card, you have to run it, using: 
 
-    laptop $ docker -H ![Duckiebot name].local run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health:master18
+    laptop $ docker -H ![hostname].local run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health:master18
 
 If some of the containers are marked as "unhealthy", fix the problem before continuing.
 
