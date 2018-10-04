@@ -223,8 +223,7 @@ From the previously prepared pieces take the following components:
 
 From the Duckiebot kit take the following components:
 
-- M3x6 screws (2x)
-- M3x10 screws (2x)
+- M3x8 screws (4x)
 - M3x25 metal spacers (2x)
 - M3x30 metal spacers (2x)
 - 1x Rear bumper bracer
@@ -459,7 +458,7 @@ Insert the M3x10 screws from the opposite side of the camera mount (see [](#fig:
 
 ### Step 3
 
-Fasten using M3 nuts ([](#fig:howto-mount-camera-mount-3))).
+Fasten using M3 nuts ([](#fig:howto-mount-camera-mount-3))). Make sure that the camera is facing forward direction as perfectly as possible.
 
 <div figure-id="fig:howto-mount-camera-mount-3" figure-caption="How to fasten the camera mount.">
      <img src="howto_mount_camera_mount_3.jpg" style='width: 25em'/>
