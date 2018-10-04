@@ -26,12 +26,12 @@ and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` s
 Start the container `rpi-docker-python-picamera`. It reads the camera
 image and writes it to `/data`.
 
-    laptop $ docker -H ![Duckiebot name].local run -d --name picam -p 8081:8081 --device /dev/vchiq duckietown/rpi-docker-python-picamera:master18
+    laptop $ docker -H ![Duckiebot name].local run -d --name picam  --device /dev/vchiq duckietown/rpi-docker-python-picamera:master18
 
 
 Then point your browser to the address
 
-    http://![hostname].local:8081/image.jpg
+    http://![hostname].local:8082/image.jpg
 
 and verify that it is the output from your camera.
 
