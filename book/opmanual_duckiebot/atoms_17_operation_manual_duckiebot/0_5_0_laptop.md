@@ -2,8 +2,6 @@
 
 Assigned: Andrea Censi
 
-test
-
 This page is for the `DB18` configuration used in classes in 2018. 
 
 For last year's instructions, see [here](https://docs.duckietown.org/DT17/).
@@ -53,17 +51,21 @@ See: For instructions, see for example [this online tutorial][tutorial].
 
 ### Basic dependencies {#laptop-setup-ubuntu-18-basic}
 
-Installs pip, git, git-lfs, docker, duckietown-shell:
+Installs pip, git, git-lfs, curl, wget:
 
     laptop $ sudo apt install -y python-pip git git-lfs curl wget 
     
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
+Installs Docker:
+
     laptop $ sudo apt install -y docker.io
+    
+Adds user to "docker" group:
+
     laptop $ sudo adduser `whoami` docker
     
-
-Note: you need to *log in and out* to have the group change take effect.
+Note: you need to *log out and in* for the group change take effect.
 
 
 ### Duckietown Shell {#laptop-setup-ubuntu-18-shell}
