@@ -24,7 +24,10 @@ What hardware was involved?
 
 - [x] Raspberry PI 3B+
 - [ ] Raspberry PI 3B
-- [ ] Motor hat version DB18
+- [ ] Motor hat version 2018A
+- [ ] Motor hat version 2018B
+- [ ] Motor hat version 2018C
+- [ ] Motor hat version 2018D (v 1.1)
 - [ ] Motor hat version DB17 (Adafruit)
 - [ ] PI Camera
 - [ ] HDMI and monitor
@@ -47,4 +50,4 @@ What hardware was involved?
 
 *Describe what test you have performed after realizing the fault.*
 
-*Example: After realizing that the motors don’t turn I replaced the HAT and the motors were turning. I then put back the old HAT and the motors stopped working.*
+*Example: After realizing that the motors don’t turn I replaced the HAT and the motors were turning. I then put back the old HAT and the motors stopped working.* 

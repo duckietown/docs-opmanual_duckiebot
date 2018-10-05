@@ -1,4 +1,4 @@
-# Laptop Setup {#laptop-setup status=beta}
+# Laptop Setup {#laptop-setup status=ready}
 
 Assigned: Andrea Censi
 
@@ -34,6 +34,8 @@ These installation steps make sure that you have a minimal "sane" environment, w
 
 Having Ubuntu installed natively on your laptop is recommended but not strictly required.
 
+If you are running Ubuntu in a VM make sure that you are using a Bridged network adapter (for example VirtualBox uses NAT by default). This allows you to be on the same subnetwork as your Duckiebot.
+
 TODO: give some pointers for VM.
  
  
@@ -49,17 +51,21 @@ See: For instructions, see for example [this online tutorial][tutorial].
 
 ### Basic dependencies {#laptop-setup-ubuntu-18-basic}
 
-Installs pip, git, git-lfs, docker, duckietown-shell:
+Installs pip, git, git-lfs, curl, wget:
 
     laptop $ sudo apt install -y python-pip git git-lfs curl wget 
     
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
+Installs Docker:
+
     laptop $ sudo apt install -y docker.io
+    
+Adds user to "docker" group:
+
     laptop $ sudo adduser `whoami` docker
     
-
-Note: you need to *log in and out* to have the group change take effect.
+Note: you need to *log out and in* for the group change take effect.
 
 
 ### Duckietown Shell {#laptop-setup-ubuntu-18-shell}
@@ -105,7 +111,7 @@ You can find other themes [at this page](https://github.com/robbyrussell/oh-my-z
 
 Also add the line:
 
-    . ~/profile 
+    . ~/.profile 
 
 
 #### Passwordless sudo
