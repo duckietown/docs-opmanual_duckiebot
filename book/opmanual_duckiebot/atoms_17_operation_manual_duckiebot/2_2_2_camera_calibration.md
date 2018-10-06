@@ -54,13 +54,13 @@ and in particular that you set `DOCKER_HOST` correctly.
 Make sure your camera is on and the images are being published to ROS
 using the `rpi-duckiebot-ros-picam` container:
 
-    laptop $ docker -H ![Duckiebot name].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data duckietown/rpi-duckiebot-ros-picam:master18
+    laptop $ docker -H ![hostname].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data duckietown/rpi-duckiebot-ros-picam:master18
 
 Note in particular the switch `-v /data:/data`. It was not really needed before, but now it is essential because it is this container that will save the intrinsic calibration files to the `/data` directory.   
 
 On your laptop run:
 
-    laptop $ dts calibrate ![Duckiebot name]
+    laptop $ dts calibrate ![hostname]
 
 Hit <kbd>Enter</kbd> and follow the instructions.
 
@@ -140,10 +140,10 @@ If you are satisfied with the calibration, you can save the results by pressing 
 This will automatically save the calibration results on your Duckiebot:
 
 ```
-/data/config/calibrations/camera_intrinsic/![Duckiebot name].yaml
+/data/config/calibrations/camera_intrinsic/![hostname].yaml
 ```
 
-If you are running the file server through docker you can view or download the calibration file at the address: `http://![Duckiebot name].local:8082/config/calibrations/camera_intrinsic/![Duckiebot name].yaml`
+If you are running the file server through docker you can view or download the calibration file at the address: `http://![Duckiebot name].local:8082/config/calibrations/camera_intrinsic/![hostname].yaml`
 
 
 ### Keeping your calibration valid
@@ -176,7 +176,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 If you ran
 
-    $ dts calibrate ![Duckiebot name]
+    $ dts calibrate ![hostname]
 
 then the same terminal will immediately take you into the extrinsic calibration step. After the following Setup step, push <kbd>Enter</kbd>.
 
@@ -200,16 +200,16 @@ Followed by the following command for verification:
 
 You can view or download the files at
 
-    http://![Duckiebot name].local:8082/
+    http://![hostname].local:8082/
 
 
 In that directory there are the results of the testing and the actual calibration files. The calibration file is at
 
-    http://![Duckiebot name].local:8082/config/calibrations/camera_extrinsic/![Duckiebot name].yaml
+    http://![hostname].local:8082/config/calibrations/camera_extrinsic/![Duckiebot name].yaml
 
 You can also see the output of the diagnostics at
 
-    http://![Duckiebot name].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/
+    http://![hostname].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/
 
 
 It should look like [](#fig:calibrate_extrinsics1).
@@ -266,7 +266,7 @@ The output will be useful to check that everything is ok.
 
 You can see the output of the diagnostics at
 
-    http://![Duckiebot name].local:8082/out-pipeline-![Duckiebot name]-YYYYMMDDHHMMSS/
+    http://![hostname].local:8082/out-pipeline-![hostname]-YYYYMMDDHHMMSS/
 
 [](#fig:oneshot1_all) is an example in which the calibration was correct, and the robot
 localizes perfectly.
