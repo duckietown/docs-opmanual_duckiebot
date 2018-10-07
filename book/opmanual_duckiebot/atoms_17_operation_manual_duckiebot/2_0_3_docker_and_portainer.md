@@ -35,7 +35,7 @@ Until everything is downloaded the Portainer interface will not start.
 
 To debug this, login to the robot:
 
-    laptop $ ssh ![hostname]
+    laptop $ ssh ![hostname].local
 
 and then look at the logs:
 
