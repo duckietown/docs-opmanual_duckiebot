@@ -149,7 +149,7 @@ From another computer, you can see the contents of `/data` by visiting the URL:
     
 Otherwise, you can login via SSH and take a look at the contents of `/data`:
 
-    laptop $ ssh ![hostname] ls /data  
+    laptop $ ssh ![hostname].local ls /data  
  
 
 
