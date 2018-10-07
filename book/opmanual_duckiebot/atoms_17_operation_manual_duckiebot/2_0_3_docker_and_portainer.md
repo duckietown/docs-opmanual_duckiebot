@@ -35,7 +35,7 @@ Until everything is downloaded the Portainer interface will not start.
 
 To debug this, login to the robot:
 
-    laptop $ ssh ![linux-username]@![hostname].local
+    laptop $ ssh ![hostname]
 
 and then look at the logs:
 
@@ -149,7 +149,7 @@ From another computer, you can see the contents of `/data` by visiting the URL:
     
 Otherwise, you can login via SSH and take a look at the contents of `/data`:
 
-    laptop $ ssh ![linux-username]@![hostname].local ls /data  
+    laptop $ ssh ![hostname] ls /data  
  
 
 
