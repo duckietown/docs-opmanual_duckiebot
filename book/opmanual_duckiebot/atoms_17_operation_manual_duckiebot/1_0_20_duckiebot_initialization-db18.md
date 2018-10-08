@@ -28,24 +28,31 @@ Plug the SD card in the computer using the card reader.
 
 Then initalize it by running the command:
 
-
     laptop $ dts init_sd_card [options]
 
-The options are:
+The important options are:
 
     --hostname         default: duckiebot
-    --wifi-ssid        default: duckietown
-    --wifi-password    default: quackquack
     --linux-username   default: duckie
     --linux-password   default: quackquack
-    
-For example, if your home network is "mynetwork" with password "mypassword", and you want to call your duckiebot "mybot", use:
+    --wifi             default: duckietown:quackquack
+    --country          default: US
 
-    laptop $ dts init_sd_card --wifi-ssid mynetwork --wifi-password mypassword --hostname mybot
+For a full list of the options, run 
 
+    laptop $ dts init_sd_card --help
 
-Then follow the instructions that appear on screen:
+If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (not there should be no space after the commas):
 
+    laptop $ dts init_sd_card --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
+
+If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
+
+If you are using a 16GB SD card, also add the `--compress` option.
+
+Note: \[For ETH Zurich students only\] To connect to the netoworks on campus use the `--ethz-username` and `--ethz-password` options. Keep in mind that the ETH network prevents hostname resolution so, in general, you won't be able to connect to yout Duckiebot despite it being connected to the internet.
+
+After you run the  `dts init_sd_card` command with your options follow the instructions that appear on screen:
 
 - You will then have to enter your laptop's `sudo` password to run Etcher.
 
@@ -55,55 +62,11 @@ Then follow the instructions that appear on screen:
 
 When the SD card is completely written, you should arrive at `Press any key to continue`. Do so and the script will exit. 
 
-
 Note: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
 
 If the procedure fails with errors about directories not mounted, be patient and do it again, this time leaving the SD card in.
 
-If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can add their details before removing the SD card from your laptop. The SD card writing procedure should have created two new drives on your computer: `root` and `HyperiotOS`. In `HypriotOS` edit the file `user-data`. Find the lines with the SSID and password that you filled in already. If you are attending the duckietown class in another university, be sure to also change the country code (e.g. ETH Zurich --> CH): 
-``` 
-- content: |
-      country=CA
-      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-      update_config=1
-      network={
-          ssid="![wifi-ssid]"
-          psk="![wifi-password]"
-          key_mgmt=WPA-PSK
-      }
-    path: /etc/wpa_supplicant/wpa_supplicant.conf
-```
-You can add as many network configurations as you want. If you expect that two networks will be available at the same time, you can give them priority (a higher value means a network is more desirable):
-``` 
-- content: |
-      country=CA
-      ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-      update_config=1
-      network={
-          ssid="![wifi-ssid]"
-          psk="![wifi-password]"
-          key_mgmt=WPA-PSK
-          priority=1
-      }
-      network={
-          ssid="![duckietown-wifi-ssid]"
-          psk="![duckietown-wifi-password]"
-          key_mgmt=WPA-PSK
-          priority=3
-      }
-      network={
-          ssid="![home-wifi-ssid]"
-          psk="![home-wifi-password]"
-          key_mgmt=WPA-PSK
-          priority=2
-      }
-    path: /etc/wpa_supplicant/wpa_supplicant.conf
-```
-
-You can then eject (safe remove) the drives and remove the SD card from your laptop. 
-
-Warning: this will work only if done **before the first boot**. If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
-
+On successful end of the procedure, you can eject (safe remove) the drives and remove the SD card from your laptop. 
 
 ## Booting the Duckiebot {#duckiebot-boot}
 
