@@ -60,7 +60,7 @@ Note: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 t
 
 If the procedure fails with errors about directories not mounted, be patient and do it again, this time leaving the SD card in.
 
-If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can add their details before removing the SD card from your laptop. The SD card writing procedure should have created two new drives on your computer: `root` and `HyperiotOS`. In `HypriotOS` edit the file `user-data`. Find the lines with the SSID and password that you filled in already: 
+If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can add their details before removing the SD card from your laptop. The SD card writing procedure should have created two new drives on your computer: `root` and `HyperiotOS`. In `HypriotOS` edit the file `user-data`. Find the lines with the SSID and password that you filled in already. If you are attending the duckietown class in another university, be sure to also change the country code (e.g. ETH Zurich --> CH): 
 ``` 
 - content: |
       country=CA
