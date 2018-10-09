@@ -30,7 +30,7 @@ Run on the laptop:
 
     laptop $ cd ![Duckietown root]
     laptop $ source environment.sh
-    laptop $ source set_ros_master.sh ![robot name]
+    laptop $ source set_ros_master.sh ![hostname]
     laptop $ rqt_image_view
 
 and verify that indeed your camera is streaming imagery.
