@@ -19,16 +19,29 @@ about: Use this template if you cannot find a more specific one
 
 ### System information
 
-Duckietown version: *[DT18, DT17, ...]*
+Duckietown version: 
 
-Duckiebot version: *[DB18, DB17, ...]*
+- [ ] DT18 
+- [ ] DT17
 
-Computer OS: *[Ubuntu 18.x, OS X, etc.]*
+Duckiebot version: 
 
+- [ ] DB18
+- [ ] DB17
+- [ ] other: ___
 
+Computer OS: 
+
+- [ ] Ubuntu 18.04, native installation
+- [ ] Ubuntu 16.04, virtual machine
+- [ ] Ubuntu 18.04, native installation
+- [ ] Ubuntu 16.04, virtual machine
+- [ ] OS X
+- [ ] other: ___
+ 
 ### Additional notes
 
-Add any other notes about the problem here.
+*Add any other notes about the problem here.*
 
 ### Screenshots
 
