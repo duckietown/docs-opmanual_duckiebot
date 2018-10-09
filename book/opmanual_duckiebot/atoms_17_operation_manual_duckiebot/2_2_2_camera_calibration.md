@@ -143,7 +143,7 @@ This will automatically save the calibration results on your Duckiebot:
 /data/config/calibrations/camera_intrinsic/![hostname].yaml
 ```
 
-If you are running the file server through docker you can view or download the calibration file at the address: `http://![Duckiebot name].local:8082/config/calibrations/camera_intrinsic/![hostname].yaml`
+If you are running the file server through docker you can view or download the calibration file at the address: `http://![hostname].local:8082/config/calibrations/camera_intrinsic/![hostname].yaml`
 
 
 ### Keeping your calibration valid
@@ -176,7 +176,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 If you ran
 
-    $ dts calibrate ![hostname]
+  laptop  $ dts calibrate ![hostname]
 
 then the same terminal will immediately take you into the extrinsic calibration step. After the following Setup step, push <kbd>Enter</kbd>.
 
@@ -205,7 +205,7 @@ You can view or download the files at
 
 In that directory there are the results of the testing and the actual calibration files. The calibration file is at
 
-    http://![hostname].local:8082/config/calibrations/camera_extrinsic/![Duckiebot name].yaml
+    http://![hostname].local:8082/config/calibrations/camera_extrinsic/![hostname].yaml
 
 You can also see the output of the diagnostics at
 

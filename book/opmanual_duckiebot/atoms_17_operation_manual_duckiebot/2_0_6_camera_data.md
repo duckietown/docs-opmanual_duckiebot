@@ -39,7 +39,7 @@ If the image is all black, check that you have removed the lens cap.
 
 Now stop the `picam` container:
 
-    laptop $ docker -H ![Duckiebot name].local stop picam
+    laptop $ docker -H ![hostname].local stop picam
 
 
 
@@ -97,9 +97,9 @@ See also: For more information about `rostopic`, see [](+software_reference#rost
 
 You should see at least the following topics:
 
-    /![robot name]/camera_node/camera_info
-    /![robot name]/camera_node/image/compressed
-    /![robot name]/camera_node/image/raw
+    /![hostname]/camera_node/camera_info
+    /![hostname]/camera_node/image/compressed
+    /![hostname]/camera_node/image/raw
     /rosout
     /rosout_agg
 
