@@ -39,7 +39,7 @@ To debug this, login to the robot:
 
 and then look at the logs:
 
-    $ tail -f /var/log/syslog
+    $ sudo tail -f /var/log/syslog
     
 You should see messages like this: 
 
