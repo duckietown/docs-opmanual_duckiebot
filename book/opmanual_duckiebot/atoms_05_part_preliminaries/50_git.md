@@ -32,6 +32,10 @@ These options tell Git who you are:
 
 ## Git tips
 
+### Fork a repository
+
+To fork (creating a copy of a repository, that does not belong to you), you simply have to go to the repository's webpage dashboard and click fork on the upper right corner.
+
 ### Clone a repository
 
 To clone a repository, either copy the HTTPS or SSH link given on the repository's webpage. Then invoke following command to download the git repository onto the local computer (actual directory you are in right now).
@@ -40,9 +44,40 @@ To clone a repository, either copy the HTTPS or SSH link given on the repository
     
 If you have SSH setup properly, you can directly download it. If you are using the HTTPS then github will ask for your credentials.
 
-### Fork a repository
+### Create a new branch
 
-To fork (creating a copy of a repository, that does not belong to you), you simply have to go to the repository's webpage dashboard and click fork on the upper right corner.
+After you successfully cloned a repository, you may want to work on your own branch in order not to cause any chaos in the master branch. For this, you can branch out from the master or any other branches by invoking the command
+
+    $ git checkout -b ![branch-name]
+    
+To see which branch you are working on you can either use both of these commands
+
+    $ git branch
+    $ git status
+    
+The latter provides more information on which files you might have changed, which are staged for a new commit or that you are up-to-date (everything is ok).
+
+### Commit and Push changes
+
+After you edited some files, you want to push your changes from the local to the remote location. In order to do so, first do a double-check on which files you have changed and if things look legitimate. Invoke
+
+    $ git status
+    
+and check the output. There will be several files, that show up in red. These are files you have changed, but not yet added for a future commit. Most of the time you want to push all your changes so you add them to your commit by executing
+
+    $ git add --all
+    
+If you do not want to add all files, single files can be added. Then you need to specify each single file
+
+    $ git add /path/to/file/main.py
+    
+After you solved this, add a commit message to let collaborators know, what you have changed:
+
+    $ git commit -m "Your Commit message"
+    
+If everything went smooth without any issues you are ready to push your changes to your branch:
+
+    $ git push origin ![branch-name]
 
 ### Fetch new branches
 
