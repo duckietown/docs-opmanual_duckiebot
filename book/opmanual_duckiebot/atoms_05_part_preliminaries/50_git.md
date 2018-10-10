@@ -61,9 +61,18 @@ To delete a local branch execute (you cannot be on the branch that you are going
 To delete a remote branch you need to push the delete command:
 
     $ git push origin --delete ![branch-name]
+    
+### Open a pull request
+
+If you are working on another branch than the master or if you forked a repository and want to propose changes you made into the master, you can open a so-called `pull-request`. In order to do so, press the corresponding tab in the dashboard of a repository and then press the green button `New pull request`. You will be asked which branch from which fork you want to merge.
+    
+## Submitting issues
+
+If you are experiencing issues with any code or content of a repository (such as this operating manual you are reading right now), you can submit issues. For doing so go to the dashboard of the corresponding repository and press the `Issues` tab where you can open a new request. 
+
+For example you encounter a bug or a mistake in this operating manual, please visit this [repository](https://github.com/duckietown/docs-opmanual_duckiebot/issues) to open a new issue.
 
 ## Git troubleshooting
-
 
 ### Problem 1: https instead of ssh:
 
@@ -92,7 +101,7 @@ Solution:
     $ git remote add origin git@github.com:duckietown/Software.git
 
 
-### Problem 1: `git push` complains about upstream
+### Problem 2: `git push` complains about upstream
 
 The symptom is:
 
