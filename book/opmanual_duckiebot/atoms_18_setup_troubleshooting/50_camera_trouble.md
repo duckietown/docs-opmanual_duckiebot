@@ -19,9 +19,9 @@ Some people bent the cable too much breaking it.
 
 ## You see a black image like this:
 
-<!-- <figure id="Cap on photo">
+<figure id="Cap on photo">
     <figcaption>What you see if you leave the camera cap on.</figcaption>
      <img src="capon.png" style='width: 30em'/>
-</figure> -->
+</figure>
 
 ### Resolution: Remove the cap.
