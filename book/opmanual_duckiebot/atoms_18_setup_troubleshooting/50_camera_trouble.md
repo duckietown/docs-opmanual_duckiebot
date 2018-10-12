@@ -14,7 +14,8 @@ If it's not running something went wrong with your initialization. Try:<br>
 
     laptop $ docker -H ![hostname].local run -dit --privileged --name dt18_01_health_stats_rpi-simple-server_1 --net host --restart unless-stopped duckietown/rpi-simple-server:master18
 
-* Remove the battery pack and check the camera cable for damage. Some people bent the cable too much breaking it.
+###Remove the battery pack and check the camera cable for damage. 
+Some people bent the cable too much breaking it.
 
 ## You see a black image like this:
 
@@ -23,4 +24,4 @@ If it's not running something went wrong with your initialization. Try:<br>
      <img src="capon.png" style='width: 30em'/>
 </figure>
 
-Resolution: Remove the cap.
+###Resolution: Remove the cap.
