@@ -69,11 +69,11 @@ and check the output. There will be several files, that show up in red. These ar
     
 If you do not want to add all files, single files can be added. Then you need to specify each single file
 
-    $ git add /path/to/file/main.py
+    $ git add ![file-path]
     
 After you solved this, add a commit message to let collaborators know, what you have changed:
 
-    $ git commit -m "Your Commit message"
+    $ git commit -m "![commit-message]"
     
 If everything went smooth without any issues you are ready to push your changes to your branch:
 
