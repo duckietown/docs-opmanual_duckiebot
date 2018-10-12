@@ -2,15 +2,17 @@
 
 Assigned: Russell
 
-## Cannot connect to ![hostname].local:8082/image.jpg
+## Cannot see image.jpg in web browser
 
 * Got to your Portainer.io and make sure the picam container is running
-    + You can run with
-        laptop $  docker -H ![hostname].local run -d --name picam --device /dev/vchiq -v /data:/data duckietown/rpi-docker-python-picamera:master18
+    + You can run with<br>
+
+    laptop $  docker -H ![hostname].local run -d --name picam --device /dev/vchiq -v /data:/data duckietown/rpi-docker-python-picamera:master18
 
 * Make sure dt18_01_health_stats_rpi-simple-server_1 container is running.
-    + If it's not running something went wrong with your initialization. Try:
-        laptop $ docker -H ![hostname].local run -dit --privileged --name dt18_01_health_stats_rpi-simple-server_1 --net host --restart unless-stopped duckietown/rpi-simple-server:master18
+    + If it's not running something went wrong with your initialization. Try:<br>
+
+    laptop $ docker -H ![hostname].local run -dit --privileged --name dt18_01_health_stats_rpi-simple-server_1 --net host --restart unless-stopped duckietown/rpi-simple-server:master18
 
 * Remove the battery pack and check the camera cable for damage. Some people bent the cable too much breaking it.
 
