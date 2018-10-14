@@ -125,7 +125,7 @@ This configuration was added by the `init_sd_card` command.
 
 By default your Duckiebot uses an SSH key that is the same for all Duckiebots. That means that anyone can access your Duckiebot. If you want to prevent this (in particular if you have your university internet credentials on the Duckiebot), then remove this key by running
 
-    laptop $ ssh ![hostname] rm /home/![linux-username]/.ssh/authorized_keys
+    laptop $ ssh ![hostname] rm .ssh/authorized_keys
 
 The ![linux-username] is `duckie` by default unless you changed it while initializing your SD Card. 
 
