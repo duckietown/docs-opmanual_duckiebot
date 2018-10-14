@@ -127,8 +127,6 @@ By default your Duckiebot uses an SSH key that is the same for all Duckiebots. T
 
     laptop $ ssh ![hostname] rm .ssh/authorized_keys
 
-The ![linux-username] is `duckie` by default unless you changed it while initializing your SD Card. 
-
 After this you will be prompted for your password every time you connect to your Duckiebot. If the password which you set in the SD card initialization process was not strong enough, or you kept the default password, we recommend you change it now.
  
 ## Rebooting the PI {#setup-duckiebot-reboot}
