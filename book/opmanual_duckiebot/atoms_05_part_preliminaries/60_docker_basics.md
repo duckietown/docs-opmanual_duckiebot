@@ -67,8 +67,6 @@ However, be careful not to delete something you might actually need. Keep in min
 
 If you want to look into the heart and soul of your images, you can use the commands `docker image history` and `docker image inspect` to get a detailed view.
 
-TODO: Add information on how to change the storage place for images
-
 ### Working with containers
 
 Containers are the run-time equivalent of images. When you want to start a container, Docker picks up the image you specify, creates a file system from its layers, attaches all devices and directories you want, "boots" it up, sets up the environment up and starts a pre-determined process in this container. All that magic happens with you running a single command: `docker run`. You don't even need to have pulled the image beforehand, if Docker can't find it locally, it will look for it on DockerHub. Here's a simple example:
