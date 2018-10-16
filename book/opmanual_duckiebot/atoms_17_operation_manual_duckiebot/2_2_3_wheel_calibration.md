@@ -39,7 +39,7 @@ If you just finished the [camera calibration step](#camera-calib) then you have 
 Get a base container running on your robot if you don't have one already:
 
 
-    laptop $ docker -H ![hostname].local run -it --net host --privileged  duckietown/rpi-duckiebot-base:master18
+    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data duckietown/rpi-duckiebot-base:master18
 
 
 
