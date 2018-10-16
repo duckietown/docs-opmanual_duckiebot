@@ -119,14 +119,14 @@ Often we will ask you to run containers with more sophisticated options than wha
 
 Here's an explanation of some of the options we use most often in Duckietown:
 
-<col4 figure-id="tab:docker-run-tab" class="labels-row1" markdown="1">
-    <figcaption><code>docker run</code> options</figcaption>
+<div figure-id="tab:docker-run-tab" markdown="1">
+  <col4  class="labels-row1" >
     <span>Short command </span>
     <span>Full command</span>
     <span>Example</span>
     <span>Explanation</span>
-    <span><code>-i</code></span>
-    <span><code>--interactive</code></span>
+    <span>`-i`</span>
+    <span>`--interactive`</span>
     <span></span>
     <span>Keep STDIN open even if not attached, typically used together with `-t`.</span>
     <span>`-t`</span>
@@ -169,7 +169,9 @@ Here's an explanation of some of the options we use most often in Duckietown:
     <span>`--help`</span>
     <span></span>
     <span>Prints information about these and other options.</span>
-</col4>
+  </col4>
+  <figcaption><code>docker run</code> options</figcaption>
+</div>
 
 ### Some other useful commands
 
