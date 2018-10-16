@@ -14,11 +14,11 @@ Containers are often compared to virtual machines (VMs). The main difference is 
     <figcaption>Comparison between containers and VMs (from [docker.com](https://docs.docker.com/get-started/))</figcaption>
     <figure>
         <figcaption>Using containers</figcaption>
-        <img style='width:20em' src="images/docker-containerVM.png"/>
+        <img style='width:10em' src="images/docker-containerVM.png"/>
     </figure>
     <figure>  
         <figcaption>Using VMs</figcaption>
-        <img style='width:20em' src="images/docker-containerVM2.png"/>
+        <img style='width:10em' src="images/docker-containerVM2.png"/>
     </figure>
 </figure>  
 
@@ -252,5 +252,5 @@ Here are some resources you can look up:
 
 - [Duckietown Containerization manual](+software_devel#part:docker-devel);
 - [Docker official Get Started tutorial](https://docs.docker.com/get-started/);
-- [Docker Curriculum(https://docker-curriculum.com/);
+- [Docker Curriculum](https://docker-curriculum.com/);
 - *Docker Deep Dive*, by Nigel Poulton.
