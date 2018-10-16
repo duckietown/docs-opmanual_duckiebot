@@ -14,11 +14,11 @@ Containers are often compared to virtual machines (VMs). The main difference is 
     <figcaption>Comparison between containers and VMs (from [docker.com](https://docs.docker.com/get-started/))</figcaption>
     <figure>
         <figcaption>Using containers</figcaption>
-        <img style='width:20em' src="images/docker-containerVM.png"/>
+        <img style='width:10em' src="images/docker-containerVM.png"/>
     </figure>
     <figure>  
         <figcaption>Using VMs</figcaption>
-        <img style='width:20em' src="images/docker-containerVM2.png"/>
+        <img style='width:10em' src="images/docker-containerVM2.png"/>
     </figure>
 </figure>  
 
@@ -178,13 +178,13 @@ Often we will ask you to run containers with more sophisticated options than wha
     <span>Sets a name for the container. If you don't specify one, a random name will be generated.</span>
     <span>`-v`</span>
     <span>`--volume`</span>
-    <span>Bind mount a volume, exposes a folder on your host (`/home/myuser/data`) as a folder in your container (`/data`). Be very careful when using this.</span>
+    <span>Bind mount a volume, exposes a folder on your host as a folder in your container. Be very careful when using this.</span>
     <span>`-p`</span>
     <span>`--publish`</span>
-    <span>Publish a container's port(s) to the host, necessary when you need a port to communicate with a program in your container. Your host's port `8082` will be mapped to the container's `8080`.</span>
+    <span>Publish a container's port(s) to the host, necessary when you need a port to communicate with a program in your container.</span>
     <span>`-d`</span>
     <span>`--device`</span>
-    <span>Similar to `-v` but for devices. This grants the container access to the `/dev/mmcblk0` device. Be very careful when using this.</span>
+    <span>Similar to `-v` but for devices. This grants the container access to a device you specify. Be very careful when using this.</span>
     <span></span>
     <span>`--privileged`</span>
     <span>Give extended privileges to this container. That includes access to **all** devices. Be **extremely** careful when using this.</span>
@@ -203,7 +203,7 @@ Often we will ask you to run containers with more sophisticated options than wha
 
 ### Examples {nonumber}
 
-Set the containe name to `joystick`: 
+Set the container name to `joystick`: 
 
     --name joystick
     
@@ -252,5 +252,5 @@ Here are some resources you can look up:
 
 - [Duckietown Containerization manual](+software_devel#part:docker-devel);
 - [Docker official Get Started tutorial](https://docs.docker.com/get-started/);
-- [Docker Curriculum(https://docker-curriculum.com/);
+- [Docker Curriculum](https://docker-curriculum.com/);
 - *Docker Deep Dive*, by Nigel Poulton.
