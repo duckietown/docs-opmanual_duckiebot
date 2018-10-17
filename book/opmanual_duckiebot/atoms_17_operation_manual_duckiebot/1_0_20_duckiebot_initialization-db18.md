@@ -42,7 +42,7 @@ For a full list of the options, run
 
     laptop $ dts init_sd_card --help
 
-If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (not there should be no space after the commas):
+If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
     laptop $ dts init_sd_card --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
