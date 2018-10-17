@@ -8,7 +8,7 @@ Assigned: Aleks
 
 You have to completely reinstall `dts` and its commands. Do that by:
 
-1. Delete the `~/.dt-shell folder`
+1. Delete the `~/.dt-shell` folder
 2. Uninstall `dts` by running `pip uninstall duckietown-shell`
 3. Reinstall `dts` by following the procedure in [Laptop Setup](#laptop-setup)
 
