@@ -4,17 +4,19 @@ Assigned: Russell Buchanan
 
 ## Cannot see image.jpg in web browser
 
-### Go to your Portainer.io and make sure the picam container is running
+### Resolution: make sure the picam container is running
 You can run with:
 
     laptop $ docker -H ![hostname].local run -d --name picam --device /dev/vchiq -v /data:/data duckietown/rpi-docker-python-picamera:master18
 
-### Make sure dt18_01_health_stats_rpi-simple-server_1 container is running.
+### Resolution: make sure dt18_01_health_stats_rpi-simple-server_1 container is running.
 If it's not running something went wrong with your initialization. Try:
 
     laptop $ docker -H ![hostname].local run -dit --privileged --name dt18_01_health_stats_rpi-simple-server_1 --net host --restart unless-stopped duckietown/rpi-simple-server:master18
 
-### Remove the battery pack and check the camera cable for damage. 
+However you likely either shutdown or disconnected it from the internet during initialization. The only fix is to re-flash the SD card.
+
+### Resolution: remove the battery pack and check the camera cable for damage. 
 Some people bent the cable too much breaking it.
 
 ## You see a black image like this:

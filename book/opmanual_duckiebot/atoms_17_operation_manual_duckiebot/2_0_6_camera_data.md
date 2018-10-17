@@ -12,14 +12,10 @@ Requires: You have configured Docker communication as documented in [](#docker-s
 
 ## Check the camera hardware
 
-It might be useful to do a quick camera hardware check.
-
-See: The procedure is documented in [](#howto-mount-camera).
+It might be useful to do a quick camera hardware check as documented in [](#howto-mount-camera).
 
 
 ## Viewing a Single Image
-
-
 These commands assume that you have completed the steps in [](#docker-setup),
 and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
 
@@ -34,14 +30,11 @@ Then point your browser to the address
 
 and verify that it is the output from your camera.
 
-If the image is all black, check that you have removed the lens cap.
-
-
 Now stop the `picam` container:
 
     laptop $ docker -H ![hostname].local stop picam
 
-
+warning The `picam` container is just for this example to verify your camera works. You should leave this container stopped if you plan to use the camera in other containers.
 
 ## Viewing an Image Stream on Your Laptop
 

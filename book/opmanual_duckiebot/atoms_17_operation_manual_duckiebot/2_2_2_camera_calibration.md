@@ -174,9 +174,9 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 ### Docker
 
-If you ran
+If you ran:
 
-  laptop  $ dts calibrate ![hostname]
+    laptop $ dts calibrate ![hostname]
 
 then the same terminal will immediately take you into the extrinsic calibration step. After the following Setup step, push <kbd>Enter</kbd>.
 

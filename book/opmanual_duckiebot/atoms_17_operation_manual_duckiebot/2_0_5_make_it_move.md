@@ -93,7 +93,7 @@ The following keys are supported:
 
 Run the base image on the duckiebot:
 
-    duckiebot $ docker -H ![hostname].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
+    laptop $ docker -H ![hostname].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
 
 
 Then when the container has started 
