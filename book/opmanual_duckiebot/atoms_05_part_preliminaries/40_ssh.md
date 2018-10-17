@@ -1,4 +1,4 @@
-# Secure Shell {#preliminaries-secure-shell status=draft}
+# Secure Shell (SSH) {#preliminaries-secure-shell status=draft}
 
 Assigned: OPEN
 

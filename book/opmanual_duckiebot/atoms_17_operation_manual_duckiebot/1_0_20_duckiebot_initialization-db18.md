@@ -46,9 +46,11 @@ If you plan on connecting with the Duckiebot over different networks (e.g. at ho
 
     laptop $ dts init_sd_card --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
-If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
-
 If you are using a 16GB SD card, also add the `--compress` option.
+
+Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland)
+
+If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
 
 Note: \[For ETH Zurich students only\] To connect to the netoworks on campus use the `--ethz-username` and `--ethz-password` options. Keep in mind that the ETH network prevents hostname resolution so, in general, you won't be able to connect to yout Duckiebot despite it being connected to the internet.
 
@@ -56,7 +58,7 @@ After you run the  `dts init_sd_card` command with your options follow the instr
 
 - You will then have to enter your laptop's `sudo` password to run Etcher.
 
-- Select the drive at `/dev/mmcblk0` by pressing <kbd>Enter</kbd>.
+- Select the drive with the correct size (usually `/dev/mmcblk0`) by pressing <kbd>Enter</kbd>.
 
 - When asked "Are you sure?" select <kbd>y</kbd>.
 
@@ -131,6 +133,7 @@ After this you will be prompted for your password every time you connect to your
  
 ## Rebooting the PI {#setup-duckiebot-reboot}
 
+Warning: Do not test these commands now if you just booted up your duckiebot for the first time. It is likely not finished initializing and shutting down the duckiebot or disconnecting its internet access could interrupt the process and require you to re-flash the SD card.
 
 To reboot:
 
