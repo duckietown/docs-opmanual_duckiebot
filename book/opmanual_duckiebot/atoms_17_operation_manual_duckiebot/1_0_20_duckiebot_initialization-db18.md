@@ -52,7 +52,7 @@ Make sure to set your country correctly with the `--country` option. (Ex. CA for
 
 If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
 
-Note: \[For ETH Zurich students only\] To connect to the netoworks on campus use the `--ethz-username` and `--ethz-password` options. Keep in mind that the ETH network prevents hostname resolution so, in general, you won't be able to connect to yout Duckiebot despite it being connected to the internet.
+Note: \[For ETH Zurich students only\] To connect to the netoworks on campus use the `--ethz-username` and `--ethz-password` options. Keep in mind that the ETH network prevents hostname resolution so, in general, you won't be able to connect to your Duckiebot despite it being connected to the internet.
 
 After you run the  `dts init_sd_card` command with your options follow the instructions that appear on screen:
 
