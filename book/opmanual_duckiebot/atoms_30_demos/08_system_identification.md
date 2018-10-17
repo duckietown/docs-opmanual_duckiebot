@@ -3,14 +3,17 @@
 TODO for Jacopo Tani: fix broken refs
 
 
-This is the description of the wheels calibration procedure. In order to complete the procedure, you need your Duckiebot in configuration DB17-lc with its camera calibrated and the same chessboard as for the camera calibration.
-In the first step, you will put your Duckiebot in front of the chessboard and send specific commands to the wheels. By recording the chessboard, the Duckiebot will know its position at any time. On your computer, you will then use this informations to calculate the parameters of the kinematics of you Duckiebot. These parameters will be stored on a yaml file.
+This is the description of the odometry optimisation procedure. In order to complete the procedure, you need your Duckiebot in configuration DB18-B-11 with its wheel and camera calibrated, also you need the same checkerboard as for the camera calibration.
+
+In the first step, you will put your Duckiebot in front of the checkerboard and send specific commands to the wheels. Using the checkerboard, the duckiebot will be able to localize itself. On your computer, you will then use these informations to optimize the the calibration parameters of your Duckiebot. These parameters will be stored in a yaml file.
+
+Requires: Camera and wheel calibration completed
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot in configuration DB17-lc
+Requires: Duckiebot in configuration DB18 B-l1
 
-Requires: Camera calibration completed
+Requires: Camera calibration completed. Better to have wheel's calibrated, but not necessary.
 
 </div>
 
@@ -44,34 +47,31 @@ Check: the USB drive is mounted
 
 Check: the camera is calibrated
 
-Check: the chessboard has the correct dimensions (31 mm squares)
+Check: the checkerboard has the correct dimensions (31 mm squares)
 
 
 ## Demo instructions {#demo-sysid-run}
 
+Check if DOCKER_HOST variable is set by using
 
-Everything should be run from branch: devel-sysid. When your are on the devel-sysid branch, rebuild the Workspace  using:
+    echo $DOCKER_HOST
+if not, then set it using
 
-    duckiebot $ catkin_make -C catkin_ws/
+```shell
+export DOCKER_HOST=hostname.local
+```
+Now, run the docker container `sysid` on your bot using the following commands
 
-Step 1: Run the following commands:
-
-Make sure you are in the Duckietown folder:
-
-    duckiebot $ cd ~/duckietown
-
-Activate ROS:
-
-    duckiebot $ source environment.sh
-
-
-
-Step 2: Mount the USB Storage: To do this,y ou can use procedure is documented in [](+software_reference#mounting-usb) in the duckiebook or run the following commands on your duckiebot.
+```shell
+docker -H hostname.local run -it --net host --privileged --name sysid duckietown/devel-sys-id:master18 /bin/bash
+```
+Step 2: Mount the USB Storage: To do this, you can use procedure is documented in [](+software_reference#mounting-usb) in the duckiebook or run the following commands on your duckiebot.
 
     duckiebot $ roscd calibration
+    duckiebot $ sudo mkdir /media/logs
     duckiebot $ bash mount_usb
 
-Step 3: Place the Duckiebot in front of the chessboard at a distance of slightly more than 1 meter in front of the checkerboard (~2 duckie tiles), as shown in the image ([](#fig:calibration_setup))..
+Step 3: Place the Duckiebot in front of the checkerboard at a distance of slightly more than 1 meter in front of the checkerboard as shown in the image ([](#fig:calibration_setup)).
 The heading has to be set iteratively to maximize the time the duckiebot sees the checkerboard.
 
 <div figure-id="fig:calibration_setup" figure-caption="The calibration setup">
@@ -80,12 +80,18 @@ The heading has to be set iteratively to maximize the time the duckiebot sees th
 
 Step 4: Run the calibration procedure
 
-    duckiebot $ roslaunch calibration commands.launch veh:=![robot name]
+    duckiebot $ roslaunch calibration commands.launch veh:=![robot name] vFin:=![vFin] Nstep:=![Nstep] k1:=![k1] k2:=![k2] omega:=![omega] duration:=![duration]
+
+Here, vFin is final command value for straight calibration. Default for vFin is 0.5 <br/>
+      Nstep is step size for the straight calibration. Default for Nstep is 180 <br/>
+      K1 denotes the mean command for the sine calibration. Default for K1 is 0.2 <br/>
+      K2 denotes the amplitude of the sine curve. Default for K2 is 0.06 <br/>
+      omega is angular velocity. Default for omega is 0.007 <br/>
+      Duration denotes duration for the sine calibration. Default for duration is 2000 <br/>
 
 The Duckietown should go forward and then stop.
 
 Step 5 When the Duckiebot has stopped, you have 10 seconds to replace it again at a distance of approximately 1 meters of the chessboard. Wait for the Duckiebot to move forward again.
-
 
 When the Duckiebot stops, and the node shuts down, you have 2 different alternatives to copy the rosbag to the computer. (6a or 6b)
 
@@ -100,31 +106,56 @@ Step 6b: cd to folder where you want to put the rosbag
     laptop $ cd /media/logs
     laptop $ get robot_name_calibration.bag
 
-Step 7: On your computer, go in the Duckietown folder:
+Step 7: Get the calibration folder (required) from the duckiebot to the laptop using scp
 
-    laptop $ cd ~/duckietown
+       scp -r ![ROBOT_HOST_NAME]:/data/config/calibrations/ ~/duckietown_sysid
+
+It will create a folder named duckietown_sysid in your home directory, where all the calibration files will be stored.
+
+Step 8: On your computer, create a duckietown folder and clone the git repository duckietown/Software in the duckietown folder using the following commands:
+
+    laptop $ mkdir duckietown
+    laptop $ cd duckietown
+    if by SSH laptop $ git clone git@github.com:duckietown/Software.git
+    if by HTTP laptop $ git clone https://github.com/duckietown/Software.git
+
+Check that you will have a folder `Software` in the duckietown folder. If you enter the `cd Software`, you will be on master branch by default. For this tutorial you have to go to the `devel-sysid-tutorial` branch.
 
 Activate ROS:
 
     laptop $ source environment.sh
+    laptop $ cd catkin_ws
+    laptop $ catkin_make
 
-Step 8: Run the calibration process with
+This catkin_make is done in the catkin_ws folder on the `devel-sysid-tutorial` git branch.
 
-    laptop $ roslaunch calibration calibration.launch veh:=robot name  path:=/absolute/path/to/the/rosbag/folder/
+
+Step 9: Run the calibration process with
+
+    laptop $ roslaunch calibration calibration.launch veh:=robot name  path:=/absolute/path/into/the/rosbag/folder/
 
 (path example: path:=/home/user_name/sysid/) Do not forget the backslash at the end of the path.(Common mistake: path not starting from /home, forgetting the last / in the path)
 
-Step 9: Once the command has finished, the parameters of your Duckiebot are stored in the folder
+Step 10: Once the command has finished, the parameters of your Duckiebot are stored in the folder
 
-    ![DUCKIEFLEET_ROOT]/calibrations/kinematics/![robot name].yaml
+    ~/duckietown_sysid/kinematics/![robot name].yaml
 
-Step 10: Push the duckiefleet changes to git and pull from the duckiebot
+Step 11: Load the generated file with optimised parameters into the duckiebot, using the following set of commands:
+Note that it is just delete, copy and paste of the parameters file, you can use any other way. One of the way is shown by the code below.
 
-Step 11: Run the Validation: Duckiebot should first drive straight for 1m (in 5s) then turn a full circle to the left (in 8s) and then a full circle to the right (in 8s)
+    scp -r ~/duckietown_sysid/kinematics hostname:/data
 
-    duckiebot $ roslaunch calibration test.launch
+On the duckiebot type:
+
+    sudo rm -rf /data/config/calibrations/kinematics
+    sudo mv /data/kinematics config/calibrations
+
+Step 12 (Optional): Run the Validation: Duckiebot should first drive straight for 1m (in 5s) then turn a full circle to the left (in 8s) and then a full circle to the right (in 8s)
+
+    duckiebot $ roslaunch calibration test.launch veh:=hostname
 
 known issue: the baseline is rather overestimated at the moment, thus the duckiebot will probably turn more than a circle
+
 
 ## Troubleshooting {#demo-sysid-troubleshooting}
 
