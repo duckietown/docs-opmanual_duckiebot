@@ -103,9 +103,9 @@ Step 6b: cd to folder where you want to put the rosbag
     laptop $ cd /media/logs
     laptop $ get robot_name_calibration.bag
 
-Step 7: Get the calibration folder (required) from the duckiebot to the laptop using scp
+Step 7: Get the files from the calibration folder (required) of the duckiebot to your laptop using scp
 
-       scp -r ![ROBOT_HOST_NAME]:/data/config/calibrations/ ~/duckietown_sysid
+       scp -r ![HOST_NAME]:/data/config/calibrations/\{kinematics,camera_extrinsic,camera_intrinsic\} ~/duckietown_sysid
 
 It will create a folder named duckietown_sysid in your home directory, where all the calibration files will be stored.
 
