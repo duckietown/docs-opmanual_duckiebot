@@ -1,8 +1,5 @@
 # Demo system ID {#demo-sysid status=beta}
 
-TODO for Jacopo Tani: fix broken refs
-
-
 This is the description of the odometry optimisation procedure. In order to complete the procedure, you need your Duckiebot in configuration DB18 untill unit B-11 with its wheel and camera calibrated, also you need the same checkerboard as for the camera calibration.
 
 In the first step, you will put your Duckiebot in front of the checkerboard and send specific commands to the wheels. Using the checkerboard, the duckiebot will be able to localize itself. On your computer, you will then use these informations to optimize the the calibration parameters of your Duckiebot. These parameters will be stored in a yaml file.
