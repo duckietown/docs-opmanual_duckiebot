@@ -120,9 +120,9 @@ Check that you will have a folder `Software` in the duckietown folder. If you en
 
 Activate ROS:
 
-    laptop $ source environment.sh
     laptop $ cd catkin_ws
     laptop $ catkin_make
+    laptop $ source environment.sh
 
 This catkin_make is done in the catkin_ws folder on the `devel-sysid-tutorial` git branch.
 
