@@ -27,3 +27,9 @@ Some people bent the cable too much breaking it.
 </figure>
 
 ### Resolution: Remove the cap.
+
+
+## Cannot change camera focus
+
+### Need to break the glue
+By default pi-cams come with the lens glued in place. Apply a bit more force the first time you adjust the lens.
