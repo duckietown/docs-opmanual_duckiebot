@@ -51,7 +51,7 @@ Load the new container:
 
     laptop $ docker -H ![hostname].local run -it --net host --priviliged --v /data:/data --name lane_follower raabuchanan/rap-duckietown-controls:master18 /bin/bash
 
-This will load the `lane_follower` container and ssh your terminal into the container. You will be at ![DUCKIEBOT_ROOT] which is probably `/home/software`.
+This will load the `lane_follower` container and ssh your terminal into the container. You will be at `![DUCKIEBOT_ROOT]` which is probably `/home/software`.
 
 ### Step 2
 
@@ -59,7 +59,7 @@ Launch the lane follower with ROS;
 
     container $ roslaunch duckietown_demos lane_following.launch
 
-Note: If ROS can't find the lanch file you may need to source the catkin workspace. try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
+Note: If ROS can't find the lanch file you may need to source the catkin workspace,<br> try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
 
 This launches several nodes and may take up to a minute to initialize everything. 
 
@@ -94,7 +94,7 @@ First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqV
 Et voilà! We are ready to drive around autonomously.
 
 
-### Step 4
+### Step 5
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
