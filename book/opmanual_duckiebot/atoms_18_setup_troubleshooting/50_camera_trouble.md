@@ -1,6 +1,6 @@
 # Camera troubleshooting {#setup-troubleshooting-camera status=draft}
 
-Assigned: Russell Buchanan
+Maintainer: Russell Buchanan
 
 ## Cannot see image.jpg in web browser
 
