@@ -59,9 +59,9 @@ Launch the lane follower with ROS;
 
     container $ roslaunch duckietown_demos lane_following.launch
 
-Note: If ROS can't find the lanch file you may need to source the catkin workspace,<br> try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
+Note: If ROS can't find the lanch file you may need to source the catkin workspace, try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
 
-This launches several nodes and may take up to a minute to initialize everything. 
+This launches several nodes and may take up to a minute to initialize everything.
 
 ### Step 3
 
@@ -100,7 +100,6 @@ If you have a joystick you can skip this next command, otherwise we need to run 
 
     laptop $ dts keyboard_control ![hostname]
 
-
 |        Controls      | Joystick |  Keyboard |
 |----------------------|:--------:|:---------:|
 | Start Lane Following |  __R1__  |   __a__   |
@@ -110,20 +109,19 @@ If you have a joystick you can skip this next command, otherwise we need to run 
 
 Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a __normal__ lane. Enjoy the demo.
 
-
 ## Troubleshooting {#demo-lane-following-troubleshooting}
 
 ### The duckiebot does not move
 
 * Check if you can manually drive the duckiebot
-    * Try re launching `dts keyboard control`
+  * Try re launching `dts keyboard control`
 * Check if ROS messages are received on the robot on the `![hostname]/joy` topic
 
 ### The Duckiebot does not stay in a straight lane
 
 * Check `rqt_image_view` and look at image_with_lines.
-    * Check if you see enough segments. If not enough segments are visible, reset the Anti-Instagram filter.
-    * Check if you see more segments and the color of the segments are according to the color of the lines in Duckietown
+  * Check if you see enough segments. If not enough segments are visible, reset the Anti-Instagram filter.
+  * Check if you see more segments and the color of the segments are according to the color of the lines in Duckietown
 * Check your camera [calibrations](#camera-calib) are good.
 
 ### The Duckiebot does not drive nicely through intersections
@@ -135,7 +133,6 @@ This feature is not implemented for this demo. The duckiebot assumes only normal
 Solution (advanced):
 
 Set alternative controller gains. While running the demo on the Duckiebot use the following to set the gains to the alternative values:
-
 
     laptop $ rosparam set /![hostname]/lane_controller_node/k_d -45
 
