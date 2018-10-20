@@ -39,7 +39,7 @@ Assumption about Duckietown:
 
 * Turn on joystick (if applicable).
 * Turn on battery of the duckiebot.
-* Place duckiebot in lane so that enough of the lane markers are visible to the camera.
+* Place duckiebot in lane so that enough of the lane lines are visible to the camera.
 * Verify you can ping your duckiebot over the network.
 * __IMPORTANT__ Make sure no containers are runing on the duckiebot which use either the camera or joystick. We will run these ROS nodes together in a new container.
 
@@ -85,7 +85,7 @@ Run command:
 
     laptop $ rosparam set /![hostname]/line_detector_node/verbose true
 
-so that line_detector_node will publish the image_with_lines.
+so that `line_detector_node` will publish the image_with_lines.
 
 Now select the `/![hostname]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
 
@@ -120,12 +120,14 @@ Start the lane following. The Duckiebot should drive autonomously in the lane. I
 * Check if ROS messages are received on the robot on the `![hostname]/joy` topic
 
 ### The Duckiebot does not stay in a straight lane
+
 * Check `rqt_image_view` and look at image_with_lines.
     * Check if you see enough segments. If not enough segments are visible, reset the Anti-Instagram filter.
     * Check if you see more segments and the color of the segments are according to the color of the lines in Duckietown
 * Check your camera [calibrations](#camera-calib) are good.
 
 ### The Duckiebot does not drive nicely through intersections
+
 This feature is not implemented for this demo. The duckiebot assumes only normal lanes during this demo.
 
 ### The Duckiebot cuts white line while driving on inner curves (avanced)
@@ -141,7 +143,7 @@ Set alternative controller gains. While running the demo on the Duckiebot use th
 
 Those changes are only active while running the demo and need to be repeated at every start of the demo if needed. If this improved the performance of your Duckiebot, you should think about permenantly change the default values in your catkin_ws.
 
-
 ## Demo failure demonstration {#demo-lane-following-failure}
+
 The Anti-Instagram performs some self calibrations on startup, but if this happens when the robot cannot see the lane it will be poorly calibrated. This means it won't see enough lane segments, particularily around curves like in this [video](https://drive.google.com/open?id=1Hy6EjQ8QakfZliiSp_j2NV78_VpyPvCq).
 To solve the problem Anti-Instagram needs to be relaunched. In the last part of the video the **X** button on the joystick is pressed and the Anti-Instagram node gets relaunched. We can see in RVIZ that the number of detected line segments gets increased drastically after the recalibration.
