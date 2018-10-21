@@ -1,6 +1,10 @@
 # Camera troubleshooting {#setup-troubleshooting-camera status=draft}
 
+<<<<<<< HEAD
 Maintainer: Russell Buchanan
+=======
+Assigned: Russell Buchanan
+>>>>>>> upstream/master
 
 ## Cannot see image.jpg in web browser
 
@@ -33,3 +37,10 @@ Some people bent the cable too much breaking it.
 
 ### Need to break the glue
 By default pi-cams come with the lens glued in place. Apply a bit more force the first time you adjust the lens.
+## `libGL error` when running `dts start_gui_tools`
+
+If you have an error like that when running `dts start_gui_tools` or another command with a GUI on the Duckiebot, then you are likely having issues with an NVIDIA graphics card:
+
+`libGL error: No matching fbConfigs or visuals found libGL error: failed to load driver: swrast nvidia docker`
+
+This could occur on a computer that has two grpahics cards: e.g. a discrete NVIDIA GPU, and an integrated Intel card. In order to run these commands you will have to switch to the Intel card. Please follow the official guidelines for your OS and grpahics card to find out how to do that.
