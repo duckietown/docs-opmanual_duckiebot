@@ -1,10 +1,6 @@
 # Camera troubleshooting {#setup-troubleshooting-camera status=draft}
 
-<<<<<<< HEAD
 Maintainer: Russell Buchanan
-=======
-Assigned: Russell Buchanan
->>>>>>> upstream/master
 
 ## Cannot see image.jpg in web browser
 
