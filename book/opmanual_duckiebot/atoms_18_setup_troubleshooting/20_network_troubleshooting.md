@@ -75,14 +75,16 @@ Check the file ~.ssh/config, make sure you add your ssh key there, incase it doe
 
 The `init_sd_card` should generate a para in the above file in the following format:
 
-`# --- init_sd_card generated ---
-Host duckiebot
-    User duckie
-    Hostname duckiebot.local
-    IdentityFile /home/user/.ssh/DT18_key_00
-    StrictHostKeyChecking no
-# ------------------------------`
+    # --- init_sd_card generated ---
+    Host duckiebot
+        User duckie
+        Hostname duckiebot.local
+        IdentityFile /home/user/.ssh/DT18_key_00
+        StrictHostKeyChecking no
+    # ------------------------------
 
-       ssh-keygen -f "/home/user/.ssh/known_hosts" -R hostname.local
+Do:
+
+    $ ssh-keygen -f "/home/user/.ssh/known_hosts" -R hostname.local
        
 It will generate a key for you, if it doesn't exists.
