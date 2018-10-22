@@ -13,7 +13,7 @@ IMP: Check if you and duciebot intent to connect to the same network.
 
 You can derive conclusions by following next few steps, and decide based upon it:
 
-Step 1: Check that your rpi is responsive. Check for the led blinking on the rpi.</br>
+Step 1: Check that your rpi is responsive. Check for the led blinking on the rpi.
 
 Step 2: Connect your duckiebot with the laptop using the ethernet cable. Check if you are able to ping the robot. This will provide you an hint if there is an issue with the robot or wifi.
 
