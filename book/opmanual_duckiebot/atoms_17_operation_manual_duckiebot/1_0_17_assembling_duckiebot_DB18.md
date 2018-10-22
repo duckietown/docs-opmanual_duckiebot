@@ -662,6 +662,8 @@ From the Duckiebot kit take the following components:
 - Back plate (1x)
 - Circle pattern sticker (1x)
 
+Note: In the picture, nylon screws are used. However you probably used them to assemble the omniwheel, then use the metal screws.
+
 [](#fig:howto-mount-circlegrid-holder-parts) shows the components needed to complete this upgrade.
 
 <div figure-id="fig:howto-mount-circlegrid-holder-parts" figure-caption="The parts needed to mount the circle grid holder.">
