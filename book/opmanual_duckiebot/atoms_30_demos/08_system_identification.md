@@ -90,18 +90,11 @@ The Duckietown should go forward and then stop.
 
 Step 5 When the Duckiebot has stopped, you have 10 seconds to replace it again at a distance of approximately 1 meters of the chessboard. Wait for the Duckiebot to move forward again.
 
-When the Duckiebot stops, and the node shuts down, you have 2 different alternatives to copy the rosbag to the computer. (6a or 6b)
+When the Duckiebot stops, and the node shuts down, you have to umount the usb drive from the duckiebot using the following command.
 
-Step 6a:
     duckiebot $ sudo umount /media/logs
 
-And put the USB drive in your computer.
-
-Step 6b: cd to folder where you want to put the rosbag
-
-    laptop $ sftp robot_name
-    laptop $ cd /media/logs
-    laptop $ get robot_name_calibration.bag
+Now, plug out the usb from your duckiebot and put it in your laptop to copy the .bag file.
 
 Step 7: Get the files from the calibration folder (required) of the duckiebot to your laptop using scp
 
