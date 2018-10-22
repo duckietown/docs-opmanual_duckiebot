@@ -1,6 +1,8 @@
-# Lane following {#demo-lane-following status=beta}
+# Lane following {#demo-lane-following status=ready}
 
 This is the description of lane following demo.
+
+Maintainer: Russell Buchanan
 
 <div class='requirements' markdown="1">
 
@@ -9,10 +11,6 @@ Requires: Wheels calibration completed [wheel calibration](#wheel-calibration)
 Requires: Camera calibration completed [Camera calibration](#camera-calib)
 
 Requires: Joystick demo has been successfully launched [Joystick demo](#rc-control))
-
-Requires: Duckiebot in configuration [DB17-jwd](#duckiebot-configurations)
-
-Requires: [Calibrating](#wheel-calibration) the gain parameter to **0.6**.
 
 </div>
 
@@ -24,78 +22,111 @@ Requires: [Calibrating](#wheel-calibration) the gain parameter to **0.6**.
 
 Assumption about Duckietown:
 
-* A duckietown with white and yellow lanes. No obstacles on the lane.
-* Layout conform to Duckietown Appearance [Specifications](+opmanual_duckietown#duckietown_parts)
+* A Duckietown with white and yellow lanes. No obstacles on the lane.
+* Layout conform to Duckietown Appearance [Specifications](+opmanual_duckietown#duckietown-specs)
 * Required tiles types: straight tile, turn tile
 * Additional tile types:3-way/4-way intersection
-* Configurated Wifi network or Duckietown Wifi network
-
-Environment of demo:
-
-* Good lightning
+* Configurated wireless network for communicating with Duckiebot.
+* Good consistent lighting, avoid natural lighting.
 
 ## Duckiebot setup notes {#demo-lane-following-duckiebot-setup}
 
 * Make sure the camera is heading ahead.
-* Duckiebot in configuration [DB17-jwd](#duckiebot-configurations)
-* [Calibrating](#wheel-calibration) the gain parameter to **0.6**.
+* Duckiebot in configuration [DB18-jwd](#duckiebot-configurations)
 
 
 ## Pre-flight checklist {#demo-lane-following-pre-flight}
 
-Check: Turn on joystick.
-Check: Turn on battery of the duckiebot.
-Check: Duckiebot drives correctly with joystick.
+* Turn on joystick (if applicable).
+* Turn on battery of the duckiebot.
+* Place duckiebot in lane so that enough of the lane lines are visible to the camera.
+* Verify you can ping your duckiebot over the network.
+* __IMPORTANT__ Make sure no containers are runing on the duckiebot which use either the camera or joystick. We will run these ROS nodes together in a new container.
 
 ## Demo instructions {#demo-lane-following-run}
 
-Step 1: On duckiebot, in /DUCKIERTOWN_ROOT/ directory, run command:
+### Step 1
 
-    duckiebot $ make demo-lane-following
+Load the new container:
 
-Wait a while so that everything has been launched.
-Drive around with joystick to check if connection is working.
+    laptop $ docker -H ![hostname].local run -it --net host --priviliged --v /data:/data --name lane_follower raabuchanan/rap-duckietown-controls:master18 /bin/bash
 
-Step 2: Press X to recalibrate Anti-Instagram.
+This will load the `lane_follower` container and ssh your terminal into the container. You will be at `![DUCKIEBOT_ROOT]` which is probably `/home/software`.
 
-Step 3: Start the autonomous lane following by pressing the **R1** button on joystick. to start autonomous.
+### Step 2
 
-Step 4: The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a __normal__ lane. Enjoy the demo.
+Launch the lane follower with ROS;
 
-Step 5: Stop the autonomous driving by pressing **L1** button on the joystick and switch to joystick control.
+    container $ roslaunch duckietown_demos lane_following.launch
 
+Note: If ROS can't find the lanch file you may need to source the catkin workspace, try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
+
+This launches several nodes and may take up to a minute to initialize everything.
+
+### Step 3
+
+Now we will verify that `lane_filter_node` is working. On your laptop set your `ROS_MASTER_URI` to your duckiebot.
+
+Ex.
+
+    laptop $ export ROS_MASTER_URI=http://![hostname].local:11311/
+
+Now with `rostopic list` we can see al lthe topics being published. Pro tip: use `rqt_graph` to get an overall picture of how all the nodes fit together. Elipses are nodes, small rectangles are topics and big rectangles are namespaces.
+
+Let's take a look at the Anti-Instagram filter. This is the custom duckietown filter which detectes duckietown lanes.
+
+    laptop $ rqt_image_view
+
+Select the `/![hostname]/camera_node/image/compressed` topic from the drop down and you should see the video stream.
+
+### Step 4
+
+Run command:
+
+    laptop $ rosparam set /![hostname]/line_detector_node/verbose true
+
+so that `line_detector_node` will publish the image_with_lines.
+
+Now select the `/![hostname]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
+
+First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqVm3TSj7Sowc8) of the expected behavior.
+
+Et voilà! We are ready to drive around autonomously.
+
+
+### Step 5
+
+If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
+
+    laptop $ dts keyboard_control ![hostname]
+
+|        Controls      | Joystick |  Keyboard |
+|----------------------|:--------:|:---------:|
+| Start Lane Following |  __R1__  |   __a__   |
+| Stop Lane Following  |  __L1__  |   __s__   |
+| Reset Anti-Instagram |  __X__   |   __i__   |
+
+
+Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a __normal__ lane. Enjoy the demo.
 
 ## Troubleshooting {#demo-lane-following-troubleshooting}
-### The Duckiebot does not drive nicely across intersections
-This is not a valid failure. The Duckiebot assumes only normal lanes during this demo. There is no module concerning the intersections. Therefore, weird behavior at intersections is expected and normal because there are no lines. The demo is only to demonstrate the lane following.
 
-### The Duckiebot does not drive nicely in the lane
-Solution 1:
+### The duckiebot does not move
 
-Step 1: Turn on line segments.
+* Check if you can manually drive the duckiebot
+  * Try re launching `dts keyboard control`
+* Check if ROS messages are received on the robot on the `![hostname]/joy` topic
 
-    laptop $ rosparam set /'robotname'/line_detector_node/verbose true
+### The Duckiebot does not stay in a straight lane
 
-Step 2: Open rviz.
+* Check `rqt_image_view` and look at image_with_lines.
+  * Check if you see enough segments. If not enough segments are visible, reset the Anti-Instagram filter.
+  * Check if you see more segments and the color of the segments are according to the color of the lines in Duckietown
+* Check your camera [calibrations](#camera-calib) are good.
 
-    laptop $ rviz
+### The Duckiebot does not drive nicely through intersections
 
-Step 3: Look at the .../image_with_lines image output. Apply the anti-instagram callibration by pushing the X button on the joystick. Check if you see enough segments. If not enough segments are visible, press X button on joystick for Anti-Instagram relaunch. Check if you see more segments and the color of the segments are according to the color of the lines in Duckietown
-
-Solution 2:
-* Check the extrinsic and intrinsic [calibration](#camera-calib)
-
-### Demo does not compile
-
-Solution:
-
-* Run `what-the-duck` and follow instructions.
-
-### Duckiebot drives not with joystick
-Solution:
-
-* Turn joystick on and off multiple times.
-* Check if battery is powered on.
+This feature is not implemented for this demo. The duckiebot assumes only normal lanes during this demo.
 
 ### The Duckiebot cuts white line while driving on inner curves (avanced)
 
@@ -103,14 +134,13 @@ Solution (advanced):
 
 Set alternative controller gains. While running the demo on the Duckiebot use the following to set the gains to the alternative values:
 
+    laptop $ rosparam set /![hostname]/lane_controller_node/k_d -45
 
-    duckiebot $ rosparam set /robot_name/lane_controller_node/k_d -45
-
-    duckiebot $ rosparam set /robot_name/lane_controller_node/k_theta -11
+    laptop $ rosparam set /![hostname]/lane_controller_node/k_theta -11
 
 Those changes are only active while running the demo and need to be repeated at every start of the demo if needed. If this improved the performance of your Duckiebot, you should think about permenantly change the default values in your catkin_ws.
 
-
 ## Demo failure demonstration {#demo-lane-following-failure}
 
-If Anti-Instagram is badly calibrated, the duckiebot will not see enough line segments. This is especially a problem in the curve and the duckiebot will leave the lane. An example of this failure can be seen in this [video](https://drive.google.com/open?id=1Hy6EjQ8QakfZliiSp_j2NV78_VpyPvCq) for which we had a bad Anti-Instagram calibration. Hence, the Duckiebot sees not enough line segments and the lane following fails in the curve. To solve the problem Anti-Instagram needs to be relaunched. In the last part of the video the **X** button on the joystick is pressed and the Anti-Instagram node gets relaunched. We can see in RVIZ that the number of detected line segments gets increased drastically after the recalibration.
+The Anti-Instagram performs some self calibrations on startup, but if this happens when the robot cannot see the lane it will be poorly calibrated. This means it won't see enough lane segments, particularily around curves like in this [video](https://drive.google.com/open?id=1Hy6EjQ8QakfZliiSp_j2NV78_VpyPvCq).
+To solve the problem Anti-Instagram needs to be relaunched. In the last part of the video the **X** button on the joystick is pressed and the Anti-Instagram node gets relaunched. We can see in RVIZ that the number of detected line segments gets increased drastically after the recalibration.

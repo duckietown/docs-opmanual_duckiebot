@@ -1,6 +1,6 @@
 # Camera troubleshooting {#setup-troubleshooting-camera status=draft}
 
-Assigned: Russell Buchanan
+Maintainer: Russell Buchanan
 
 ## Cannot see image.jpg in web browser
 
@@ -28,6 +28,11 @@ Some people bent the cable too much breaking it.
 
 ### Resolution: Remove the cap.
 
+
+## Cannot change camera focus
+
+### Need to break the glue
+By default pi-cams come with the lens glued in place. Apply a bit more force the first time you adjust the lens.
 ## `libGL error` when running `dts start_gui_tools`
 
 If you have an error like that when running `dts start_gui_tools` or another command with a GUI on the Duckiebot, then you are likely having issues with an NVIDIA graphics card:
