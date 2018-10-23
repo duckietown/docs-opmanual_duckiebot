@@ -6,6 +6,10 @@ Assigned: Selcuk
 
 ## The Duckiebot does not move {#troubleshooting-controller status=beta}
 
+Symptom: Duckiebot goes backwards, eventhough I press forward.
+
+Resolution: Please revert the polarities (plus and minus cables) that goes to the motor driver for both robots.
+
 Symptom: I can SSH into my Duckiebot and run the joystick demo but the joystick does not move the wheels.
 
 Resolution: Press the button on the side of the battery ([](#fig:troubleshooting-battery-button)).
