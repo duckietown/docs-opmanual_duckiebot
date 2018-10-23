@@ -29,7 +29,7 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
     
 Use the following command to run the container that contains `roscore`:
 
-    laptop $ docker -H ![hostname].local run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
+    laptop $ docker -H ![hostname].local run -dit --privileged --name roscore --net host -v /data:/data --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
     
 If this is the first time you run this, it might take some time to download the container.
 
