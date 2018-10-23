@@ -60,7 +60,7 @@ export DOCKER_HOST=hostname.local
 Now, run the docker container `sysid` on your bot using the following commands
 
 ```shell
-docker -H hostname.local run -it --net host --privileged --name sysid duckietown/devel-sys-id:master18 /bin/bash
+docker -H hostname.local run -it --net host --privileged -v /data:/data --name sysid duckietown/devel-sys-id:master18 /bin/bash
 ```
 Step 2: Mount the USB Storage: To do this, you can use procedure is documented in [](+software_reference#mounting-usb) in the duckiebook or run the following commands on your duckiebot.
 
@@ -79,12 +79,12 @@ Step 4: Run the calibration procedure
 
     duckiebot $ roslaunch calibration commands.launch veh:=![robot name] vFin:=![vFin] Nstep:=![Nstep] k1:=![k1] k2:=![k2] omega:=![omega] duration:=![duration]
 
-Here, vFin is final command value for straight calibration. Default for vFin is 0.5 <br/>
-      Nstep is step size for the straight calibration. Default for Nstep is 180 <br/>
+Here, vFin denotes final command value for straight calibration. Default for vFin is 0.5 <br/>
+      Nstep denotes step size for the straight calibration. Default for Nstep is 180 <br/>
       K1 denotes the mean command for the sine calibration. Default for K1 is 0.2 <br/>
       K2 denotes the amplitude of the sine curve. Default for K2 is 0.06 <br/>
       omega is angular velocity. Default for omega is 0.007 <br/>
-      Duration denotes duration for the sine calibration. Default for duration is 2000 <br/>
+      Duration denotes duration for the sine calibration. Default for duration is 2000 ms<br/>
 
 The Duckietown should go forward and then stop.
 
