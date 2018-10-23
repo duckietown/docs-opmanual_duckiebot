@@ -86,6 +86,9 @@ The following keys are supported:
     <span>Toggle Anti-instagram</span>
 </col2>
 
+Note: If the above doesn't work, try running the command line interface version with:
+
+    laptop $ dts keyboard_control ![hostname] --cli
 
 
 ## Option 2 - Docker + ROS {#make-it-move_docker_ros status=beta}
