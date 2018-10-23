@@ -49,7 +49,7 @@ Assumption about Duckietown:
 
 Load the new container:
 
-    laptop $ docker -H ![hostname].local run -it --net host --priviliged --v /data:/data --name lane_follower raabuchanan/rap-duckietown-controls:master18 /bin/bash
+    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_follower raabuchanan/rpi-duckiebot-controls:master18 /bin/bash
 
 This will load the `lane_follower` container and ssh your terminal into the container. You will be at `![DUCKIEBOT_ROOT]` which is probably `/home/software`.
 
