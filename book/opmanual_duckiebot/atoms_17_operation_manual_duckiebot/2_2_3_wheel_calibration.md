@@ -32,7 +32,7 @@ Note: Whatever container you used in [](#sec:rc-control) needs to have the `-v /
 
 If you just finished the [camera calibration step](#camera-calib) then you have a docker terminal ready to use on your laptop.  
 
-**Note:** you can now use `laptop $ dts calibrate_wheels ![hostname]` to run wheel calibration only.
+Note: you can now use `laptop $ dts calibrate_wheels ![hostname]` to run wheel calibration only.
 
 ### Docker + ROS
 
