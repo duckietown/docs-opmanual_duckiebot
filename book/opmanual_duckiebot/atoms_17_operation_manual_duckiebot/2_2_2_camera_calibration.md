@@ -157,7 +157,7 @@ Warning: Do not use the lens cover anymore; removing the lens cover changes the 
 
 
 ### Setup {#camera-calib-jan18-extrinsics-setup}
-**Note:** you can now use `calibrate_extrinsics ![hostname]` to run extrinsic calibration only.
+**Note:** you can now use `dts calibrate_extrinsics ![hostname]` to run extrinsic calibration only.
 
 Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). Note that the axis of the wheels should be aligned with the y-axis.
 
