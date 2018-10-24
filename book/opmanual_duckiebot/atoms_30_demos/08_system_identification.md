@@ -37,8 +37,8 @@ Check: the checkerboard has the correct dimensions (31 mm squares)
 
 Note: In case you experience dependencies errors latter while `roslaunch`ing to the calibration script, please make sure to install dependencies for your computer by running `dependencies_common.sh` and `dependencies_for_laptop.sh`. These executables are located under the Software repository. This software repository will be cloned by you in the step 7 below. Dependencies can be run in the Software repository by 
 
-    laptop $./dependencies_common.sh
-    laptop $./dependencies_for_laptop.sh
+    laptop $ ./dependencies_common.sh
+    laptop $ ./dependencies_for_laptop.sh
 
 ## Demo instructions {#demo-sysid-run}
 
