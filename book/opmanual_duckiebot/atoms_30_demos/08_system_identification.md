@@ -106,6 +106,7 @@ It will create a folder named duckietown_sysid in your home directory, where all
 
 **Step 7**: On your computer, create a duckietown folder and clone the git repository [duckietown/Software](https://github.com/duckietown/Software) in the duckietown folder using the following commands:
 
+    laptop $ cd ~
     laptop $ mkdir duckietown
     laptop $ cd duckietown
     if by SSH laptop $ git clone git@github.com:duckietown/Software.git
@@ -117,7 +118,7 @@ Note that at this point you must have the ROS installed on your local computer
 
 Activate ROS:
 
-    laptop $ cd catkin_ws
+    laptop $ cd ~/duckietown/Software/catkin_ws
     laptop $ catkin_make
     laptop $ cd ..
     laptop $ source environment.sh
