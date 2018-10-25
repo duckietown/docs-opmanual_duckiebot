@@ -100,7 +100,7 @@ Now, plug out the USB from your duckiebot and plug it in your laptop to copy the
 
 **Step 6**: Get the files from the calibration folder (required) of your duckiebot to your laptop using
 
-        laptop $ scp -r ![ROBOT_NAME]:/data/config/calibrations/\{kinematics,camera_extrinsic,camera_intrinsic\} ~/duckietown_sysid
+        laptop $ scp -r ![ROBOT_NAME]:/data/config/calibrations/ ~/duckietown_sysid
 
 It will create a folder named duckietown_sysid in your home directory, where all the calibration files will be stored. Please make sure that you do copy the calibrations folder to the local `~/duckietown_sysid`
 
