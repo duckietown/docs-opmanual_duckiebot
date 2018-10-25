@@ -139,8 +139,8 @@ At the end you will receive two plots showing the open loop predictions of the d
 
 Please verify that the trim and gain values that you see in your terminal is written to the kinematic calibration file under `~/duckietown_sysid/kinematics/![ROBOT_NAME].yaml`. To transfer the kinematic calibration file back to your duckiebot execute
 
-    laptop $ scp -r ~/duckietown_sysid/kinematics ![ROBOT_NAME]:/data
-
+    duckiebot $ scp -r ![LOCAL_PC_USERNAME]@![LOCAL_PC_NAME]:~/duckietown_sysid/kinematics /data
+    
 To replace the old kinematic file with the new one, on your duckiebot type:
 
     duckiebot $ sudo rm -rf /data/config/calibrations/kinematics
