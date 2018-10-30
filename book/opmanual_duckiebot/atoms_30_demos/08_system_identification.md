@@ -1,19 +1,16 @@
 # Demo system ID {#demo-sysid status=beta}
 
-TODO for Jacopo Tani: fix broken refs
+This document provides an operation manual for performing an offline optimization of the odometry parameters. The odometry optimization is conducted in two steps. First, we execute a sequence of commands on the duckiebot and record its motion with the on-board camera. Then, we feed these information to an optimization script in our local computer to compute the odometry parameters. These parameters will be stored in the kinematics yaml file.
 
+In order to complete the procedure, you need your duckiebot in configuration DB18 until unit B-11 with its camera calibrated. In addition, you need the checkerboard that you used during your camera calibration.
 
-This is the description of the odometry optimisation procedure. In order to complete the procedure, you need your Duckiebot in configuration DB18 untill unit B-11 with its wheel and camera calibrated, also you need the same checkerboard as for the camera calibration.
-
-In the first step, you will put your Duckiebot in front of the checkerboard and send specific commands to the wheels. Using the checkerboard, the duckiebot will be able to localize itself. On your computer, you will then use these informations to optimize the the calibration parameters of your Duckiebot. These parameters will be stored in a yaml file.
-
-Requires: Camera and wheel calibration completed
+Requires: Camera calibration, ROS installation on local computer
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot in configuration DB18 section B-11
+Requires: The duckiebot in configuration DB18 section B-11
 
-Requires: Camera calibration completed. Better to have wheel's calibrated, but not necessary.
+Requires: Camera calibration completed.
 
 </div>
 
@@ -26,135 +23,135 @@ Requires: Camera calibration completed. Better to have wheel's calibrated, but n
 </div>
 
 
-
-## Duckietown setup notes {#demo-sysid-duckietown-setup}
-
-The Duckietown is not needed for the wheels calibration.
-
-
-## Duckiebot setup notes {#demo-sysid-duckiebot-setup}
-
-Mount the USB drive.
-
-See: The procedure is documented in [](+software_reference#mounting-usb).
-
-
 ## Pre-flight checklist {#demo-sysid-pre-flight}
 
-Check: the Duckiebot has sufficient battery
+Check: the duckiebot has sufficient battery
 
 Check: the USB drive is mounted
 
 Check: the camera is calibrated
 
+Check: ROS is installed on your local computer
+
 Check: the checkerboard has the correct dimensions (31 mm squares)
 
+Note: In case you experience dependencies errors latter while `roslaunch`ing to the calibration script, please make sure to install dependencies for your computer by running `dependencies_common.sh` and `dependencies_for_laptop.sh`. These executables are located under the Software repository. This software repository will be cloned by you in the step 7 below. Dependencies can be run in the Software repository by 
+
+    laptop $ ./dependencies_common.sh
+    laptop $ ./dependencies_for_laptop.sh
 
 ## Demo instructions {#demo-sysid-run}
 
-Check if DOCKER_HOST variable is set by using
+**Step 0**: Before starting to the experiment please install ROS on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full  version.
 
-    echo $DOCKER_HOST
-if not, then set it using
+**Step 1**: Now we need to run the docker container to be able to launch the data collection script on our duckiebot. Check if DOCKER_HOST variable is set
 
-```shell
-export DOCKER_HOST=hostname.local
-```
-Now, run the docker container `sysid` on your bot using the following commands
+    laptop $ echo $DOCKER_HOST
 
-```shell
-docker -H hostname.local run -it --net host --privileged --name sysid duckietown/devel-sys-id:master18 /bin/bash
-```
-Step 2: Mount the USB Storage: To do this, you can use procedure is documented in [](+software_reference#mounting-usb) in the duckiebook or run the following commands on your duckiebot.
+in case it is not, then set it
+
+    laptop $ export DOCKER_HOST=![ROBOT_NAME].local
+
+Now, run the docker container `sysid` on your duckiebot
+
+    laptop $ docker -H ![ROBOT_NAME].local run -it --net host --privileged -v /data:/data --name sysid duckietown/devel-sys-id:master18 /bin/bash
+
+**Step 2**: Now we have to mount the USB storage to store the experiment data.
 
     duckiebot $ roscd calibration
     duckiebot $ sudo mkdir /media/logs
     duckiebot $ bash mount_usb
 
-Step 3: Place the Duckiebot in front of the checkerboard at a distance of slightly more than 1 meter in front of the checkerboard as shown in the image ([](#fig:calibration_setup)).
-The heading has to be set iteratively to maximize the time the duckiebot sees the checkerboard.
+**Step 3**: Place your duckiebot in front of the checkerboard at a distance of slightly more than 1 meter in front of the checkerboard as shown in the image ([](#fig:calibration_setup)). __Please make sure that the checkerboard is oriented long side down as shown in the picture__.
+
+You will probably observe that the duckiebot can't drive straight. You can adjust the initial heading of the duckiebot iteratively to maximize the time the duckiebot sees the checkerboard. Having enough data points is important to have a good fit.
 
 <div figure-id="fig:calibration_setup" figure-caption="The calibration setup">
      <img src="calibration_setup.jpg" style='width: 30em'/>
 </div>
 
-Step 4: Run the calibration procedure
+**Step 4**: Run the calibration procedure
 
-    duckiebot $ roslaunch calibration commands.launch veh:=![robot name] vFin:=![vFin] Nstep:=![Nstep] k1:=![k1] k2:=![k2] omega:=![omega] duration:=![duration]
+    duckiebot $ roslaunch calibration commands.launch veh:=![ROBOT_NAME] vFin:=![vFin] Nstep:=![Nstep] k1:=![k1] k2:=![k2] omega:=![omega] duration:=![duration]
 
-Here, vFin is final command value for straight calibration. Default for vFin is 0.5 <br/>
-      Nstep is step size for the straight calibration. Default for Nstep is 180 <br/>
-      K1 denotes the mean command for the sine calibration. Default for K1 is 0.2 <br/>
-      K2 denotes the amplitude of the sine curve. Default for K2 is 0.06 <br/>
-      omega is angular velocity. Default for omega is 0.007 <br/>
-      Duration denotes duration for the sine calibration. Default for duration is 2000 <br/>
+Note that you can configure ramp and sine inputs. We have two parameters that we can configure for the ramp input:
 
-The Duckietown should go forward and then stop.
+`vFin` is final voltage value for the ramp up experiment with default of 0.5 <br/>
+`Nstep` is step size for the ramp up experiment with default of 180 <br/>
 
-Step 5 When the Duckiebot has stopped, you have 10 seconds to replace it again at a distance of approximately 1 meters of the chessboard. Wait for the Duckiebot to move forward again.
+To decrease the duration of the ramp input you could decrease the value of `Nstep`. Also if you would like to decrease the final speed of your duckiebot during the ramp experiment you can set `vFin` to a lower value.
 
-When the Duckiebot stops, and the node shuts down, you have 2 different alternatives to copy the rosbag to the computer. (6a or 6b)
+We have four parameters that we can configure for the sine input:
 
-Step 6a:
+`K1` denotes the mean command for the sine calibration with default of 0.2, <br/>
+`K2` denotes the amplitude of the sine curve with default of 0.06, <br/>
+`omega` is angular velocity with default of 0.007, <br/>
+`duration` denotes duration for the sine calibration with default of 2000 ms.<br/>
+
+After executing the roslauch command the duckiebot should go forward and then stop.
+
+**Step 5**: When the duckiebot stopped, you have 10 seconds to replace it again at a distance of approximately 1 meters from the chessboard. Wait for the duckiebot to move forward again.
+
+When the duckiebot stops and the node shuts down we can proceed to the actual optimization stage. Now you should unmount the USB drive from the duckiebot using the following command.
+
     duckiebot $ sudo umount /media/logs
 
-And put the USB drive in your computer.
+Now, plug out the USB from your duckiebot and plug it in your laptop to copy the .bag file.
 
-Step 6b: cd to folder where you want to put the rosbag
+**Step 6**: Get the files from the calibration folder (required) of your duckiebot to your laptop using
 
-    laptop $ sftp robot_name
-    laptop $ cd /media/logs
-    laptop $ get robot_name_calibration.bag
+        laptop $ scp -r ![ROBOT_NAME]:/data/config/calibrations/ ~/duckietown_sysid
 
-Step 7: Get the calibration folder (required) from the duckiebot to the laptop using scp
+It will create a folder named duckietown_sysid in your home directory, where all the calibration files will be stored. Please make sure that you do copy the calibrations folder to the local `~/duckietown_sysid`
 
-       scp -r ![ROBOT_HOST_NAME]:/data/config/calibrations/ ~/duckietown_sysid
+**Step 7**: On your computer, create a duckietown folder and clone the git repository [duckietown/Software](https://github.com/duckietown/Software) in the duckietown folder using the following commands:
 
-It will create a folder named duckietown_sysid in your home directory, where all the calibration files will be stored.
-
-Step 8: On your computer, create a duckietown folder and clone the git repository duckietown/Software in the duckietown folder using the following commands:
-
+    laptop $ cd ~
     laptop $ mkdir duckietown
     laptop $ cd duckietown
     if by SSH laptop $ git clone git@github.com:duckietown/Software.git
     if by HTTP laptop $ git clone https://github.com/duckietown/Software.git
 
-Check that you will have a folder `Software` in the duckietown folder. If you enter the `cd Software`, you will be on master branch by default. For this tutorial you have to go to the `devel-sysid-tutorial` branch.
+Check that you have a folder `Software` in the duckietown folder. If you execute `cd Software`, you will be on master branch by default. For this tutorial you have to `checkout devel-sysid-tutorial` to be in the right branch.
+
+Note that at this point you must have the ROS installed on your local computer
 
 Activate ROS:
 
-    laptop $ source environment.sh
-    laptop $ cd catkin_ws
+    laptop $ cd ~/duckietown/Software/catkin_ws
     laptop $ catkin_make
+    laptop $ cd ..
+    laptop $ source environment.sh
 
-This catkin_make is done in the catkin_ws folder on the `devel-sysid-tutorial` git branch.
+This catkin_make is executed in the catkin_ws folder on the `devel-sysid-tutorial` git branch.
 
 
-Step 9: Run the calibration process with
+**Step 9**: Run the calibration process with
 
-    laptop $ roslaunch calibration calibration.launch veh:=robot name  path:=/absolute/path/into/the/rosbag/folder/
+    laptop $ roslaunch calibration calibration.launch veh:=ROBOT_NAME  path:=/absolute/path/into/the/rosbag/folder/
 
-(path example: path:=/home/user_name/sysid/) Do not forget the backslash at the end of the path.(Common mistake: path not starting from /home, forgetting the last / in the path)
+An path example would be `path:=/home/user_name/sysid/`. Pay attention to the the backslash at the end of the path and to start your path from `/home`.
 
-Step 10: Once the command has finished, the parameters of your Duckiebot are stored in the folder
+At the end you will receive two plots showing the open loop predictions of the duckiebot's x position, y position and yaw angle using the initial parameters guesses (marked as def on the plots) and the guesses with the optimized parameters (marked as opt). The actual measurements will also be shown on the plots for assessing the performance of both models.
 
-    ~/duckietown_sysid/kinematics/![robot name].yaml
+**Step 10**: Once the command has finished, the parameters of your duckiebot are stored in the folder `~/duckietown_sysid/kinematics/![ROBOT_NAME].yaml`
 
-Step 11: Load the generated file with optimised parameters into the duckiebot, using the following set of commands:
-Note that it is just delete, copy and paste of the parameters file, you can use any other way. One of the way is shown by the code below.
+**Step 11**: Transfer the generated file with optimized parameters into the duckiebot, using the following set of commands:
 
-    scp -r ~/duckietown_sysid/kinematics hostname:/data
+Please verify that the trim and gain values that you see in your terminal is written to the kinematic calibration file under `~/duckietown_sysid/kinematics/![ROBOT_NAME].yaml`. To transfer the kinematic calibration file back to your duckiebot execute
 
-On the duckiebot type:
+    duckiebot $ scp -r ![LOCAL_PC_USERNAME]@![LOCAL_PC_NAME]:~/duckietown_sysid/kinematics /data
+    
+To replace the old kinematic file with the new one, on your duckiebot type:
 
-    sudo rm -rf /data/config/calibrations/kinematics
-    sudo mv /data/kinematics config/calibrations
+    duckiebot $ sudo rm -rf /data/config/calibrations/kinematics
+    duckiebot $ sudo mv /data/kinematics /data/config/calibrations
 
-Step 12 (Optional): Run the Validation: Duckiebot should first drive straight for 1m (in 5s) then turn a full circle to the left (in 8s) and then a full circle to the right (in 8s)
+**Step 12** (Optional): Run the Validation: The duckiebot should first drive straight for 1m in 5s, then turn a full circle to the left and then a full circle to the right.
 
-    duckiebot $ roslaunch calibration test.launch veh:=hostname
+    duckiebot $ roslaunch calibration test.launch veh:=![ROBOT_NAME]
 
-known issue: the baseline is rather overestimated at the moment, thus the duckiebot will probably turn more than a circle
+known issue: the baseline is rather overestimated at the moment, thus your duckiebot will probably turn more than a circle
 
 
 ## Troubleshooting {#demo-sysid-troubleshooting}
@@ -163,11 +160,11 @@ Symptom: No log have been recorded.
 
 Resolution: Try to mount the USB drive.
 
-Symptom: The Duckiebot deviates from the trajectory, so that the chessboard goes out of the camera’s field of view.
+Symptom: The duckiebot deviates from the trajectory, so that the chessboard goes out of the camera’s field of view.
 
 Resolution: You can adjust the parameters of the voltage commands by passing arguments when launching the commands. You can change the parameter vFin and Nstep for the straight line, and the parameter k1, k2, omega and duration for the sinewave.
 
-Sympton: Issues/bugs with copying from USB to computer. USB cannot be unmounted from the duckiebot (mine at least)
+Symptom: Issues/bugs with copying from USB to computer. USB cannot be unmounted from the duckiebot.
 Remounting USB is not possible without rebooting the duck
 After the first sftp get the USB drive becomes „read only“ and no further bags can be recorded
 
