@@ -43,28 +43,28 @@ sure to follow them in the following order:
 All the pieces in your Duckiebox are shown in [](#fig:duckiebot-components-db18). Note that you might have a different battery than in the picture, or different USB to micro USB cables, but the instructions can be followed anyway.
 
 <div figure-id="fig:duckiebot-components-db18" figure-caption="Components in Duckiebot package.">
-     <img src="duckiebot_components_db18.jpg" style='width: 25em'/>
+     <img src="duckiebot_components_db18.jpg" style='width: 37em' />
 </div>
 
 If you have got extra pieces, such as an extra heat sink or screws and nuts, just keep them apart, they could turn out to be useful in the future!
 
 ### Preliminary Steps
 
-### Step A
+#### Step A
 
 Unbox all of your components, and put aside anything that is not shown in [](#fig:duckiebot-components-db18). You might have some redundant components like a black battery holder and motor encoders, in addition to spares.
 
-### Step B
+#### Step B
 
 Take the rear bumper bracers and the back bumper. The back bumper will be mounted in the last steps as a press fit to the rear bumper bracers. Try to fit the bracers into the holes of the back bumper.
 
 Some bumper bracers have a plastic protective film which is a residue of the manufacturing process. If you struggle in the press fitting, peel off the plastic cover from *one* side of the bracer. If this does not help, peel off the plastic cover from both sides.
 
-### Step C
+#### Step C
 
 Peel the plastic cover from all the chassis parts (except the bumper bracers) on both sides.
 
-### Step D
+#### Step D
 
 Note that two amongst all of your metal screws are special. They are "countersunk" screws. Keep these aside. They will be needed in [Part 15: Back bumper assembly](#howto-mount-back-bumper).
 
@@ -152,7 +152,7 @@ From the Duckiebox package take the following components:
 
 - Steel omni-directional wheel (1x)
 - M3x25 metal spacers (2x)
-- M3x10 (or M3x8) screws (2x)
+- M3x6 (or M3x8) screws (2x)
 
 
 [](#fig:howto-mount-omniwheel-parts-db18) shows the components needed to complete this part of the tutorial.
@@ -180,7 +180,10 @@ From the previously prepared pieces take the following components:
 
 From the Duckiebot kit take the following components:
 
-- M3x10 screws (4x)
+- M3x10 nylon screws (2x)
+
+Note: Use the *nylon* screws in this step, to avoid short-circuits later on.
+
 [](#fig:howto-assemble-omniwheel-parts) shows the components needed to complete this part of the tutorial.
 
 <div figure-id="fig:howto-assemble-omniwheel-parts" figure-caption="How to assemble the omni-directional wheel.">
@@ -396,7 +399,7 @@ From the top of the Duckiebot Hut, secure using the M2.5 nylon nuts.
 
 ### Step 3
 
-Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera cable through the slit in the Duckiebot Hut. Then plug in the Duckiebot Hut, by making sure that the Raspberry Pi pins fit into the Hut connector. 
+Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera cable through the slit in the Duckiebot Hut. Then plug in the Duckiebot Hut, by making sure that the Raspberry Pi pins fit into the Hut connector.
 
 <div figure-id="fig:howto-assemble-hut-2" figure-caption="Position of the nylon spacers.">
      <img src="howto_assemble_hut_2.jpg" style='width: 25em'/>
@@ -598,7 +601,7 @@ Place the top chassis assembly over the bottom chassis assembly as in [](#fig:ho
 
 Note: The following is a tricky step. We suggest to align your chackras and read the procedure through before starting.
 
-For each motor, the cable that is soldered closer to the floor (bottom), goes on the *external* connection. The cable soldered on the motor on the plate side goes on the *internal* connection.
+For each motor, the cable that is soldered closer to the floor (bottom), goes on the *internal* connection. The cable soldered on the motor on the plate side goes on the *external* connection.
 
 Insert the *right*-motor cable on the *right* side of the Hut connector ([](#fig:howto-assemble-chassis-2) perspective), and the *left*-motor cable on the *left* side of the Hut connector.
 
@@ -606,7 +609,7 @@ Insert the *right*-motor cable on the *right* side of the Hut connector ([](#fig
      <img src="howto_assemble_chassis_2.jpg" style='width: 25em'/>
 </div>
 
-For reference, look at the example in [](#fig:howto-wire-motors-db18), where the *left* motor (driving perspective) has the *red* wire soldered on the bottom, so it goes on the *external left* connector. Similarly, the *right* motor (driving perspective) has the *black* wire soldered on the bottom, so it goes on the *external right* connector.
+For reference, look at the example in [](#fig:howto-wire-motors-db18), where the *left* motor (driving perspective) has the *red* wire soldered on the bottom, so it goes on the *internal left* connector. Similarly, the *right* motor (driving perspective) has the *black* wire soldered on the bottom, so it goes on the *internal right* connector.
 
 
 <div figure-id="fig:howto-wire-motors-db18" figure-caption="Explicative image.">
@@ -652,11 +655,12 @@ You can use a zip tie to help with cable management ([](#fig:howto-assemble-chas
 From the Duckiebot kit take the following components:
 
 - Back bumper (1x)
-- M3x10 nylon screws (2x)
+- M3x10 screws (2x)
 - M3x10 countersunk screws (2x)
 - M3x25 spacers (2x)
 - Back plate (1x)
 - Circle pattern sticker (1x)
+
 
 [](#fig:howto-mount-circlegrid-holder-parts) shows the components needed to complete this upgrade.
 
@@ -668,7 +672,9 @@ Note: You could have a back plate of a different color with respect to the pictu
 
 ### Step 1
 
-Mount the spacers using the nylon screws, as in [](#fig:howto-mount-circlegrid-holder-1).
+Mount the spacers using the screws, as in [](#fig:howto-mount-circlegrid-holder-1).
+
+Note: in the picture nylon screws are used, if you used them earlier you can use normal metal screws.
 
 <div figure-id="fig:howto-mount-circlegrid-holder-1" figure-caption="How to mount the spacers.">
      <img src="howto_mount_circlegrid_holder_1.png" style='width: 25em'/>
