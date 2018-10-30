@@ -1,4 +1,4 @@
-# Operation Manual - demos {#part:demos status=ready}
+# Demos {#part:demos status=ready}
 
 This part describes a set of demos that demonstrate the functionality of the robots.
 

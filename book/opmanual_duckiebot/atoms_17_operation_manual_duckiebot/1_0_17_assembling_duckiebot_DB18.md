@@ -226,8 +226,7 @@ From the previously prepared pieces take the following components:
 
 From the Duckiebot kit take the following components:
 
-- M3x6 screws (2x)
-- M3x10 screws (2x)
+- M3x8 screws (4x)
 - M3x25 metal spacers (2x)
 - M3x30 metal spacers (2x)
 - 1x Rear bumper bracer
@@ -462,7 +461,7 @@ Insert the M3x10 screws from the opposite side of the camera mount (see [](#fig:
 
 ### Step 3
 
-Fasten using M3 nuts ([](#fig:howto-mount-camera-mount-3))).
+Fasten using M3 nuts ([](#fig:howto-mount-camera-mount-3))). Make sure that the camera is facing forward direction as perfectly as possible.
 
 <div figure-id="fig:howto-mount-camera-mount-3" figure-caption="How to fasten the camera mount.">
      <img src="howto_mount_camera_mount_3.jpg" style='width: 25em'/>
@@ -661,6 +660,7 @@ From the Duckiebot kit take the following components:
 - Back plate (1x)
 - Circle pattern sticker (1x)
 
+Note: In the picture, nylon screws are used. However you probably used them to assemble the omniwheel, then use the metal screws.
 
 [](#fig:howto-mount-circlegrid-holder-parts) shows the components needed to complete this upgrade.
 
@@ -672,9 +672,9 @@ Note: You could have a back plate of a different color with respect to the pictu
 
 ### Step 1
 
-Mount the spacers using the screws, as in [](#fig:howto-mount-circlegrid-holder-1).
+Mount the spacers using the *metal* screws, as in [](#fig:howto-mount-circlegrid-holder-1).
 
-Note: in the picture nylon screws are used, if you used them earlier you can use normal metal screws.
+Note: In the picture, Nylon screws are used. Most likely you used them to fix the omnidirectional wheel to the bottom chassis. You can use metal screws instead.
 
 <div figure-id="fig:howto-mount-circlegrid-holder-1" figure-caption="How to mount the spacers.">
      <img src="howto_mount_circlegrid_holder_1.png" style='width: 25em'/>

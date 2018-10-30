@@ -38,6 +38,8 @@ To find your token, first login to duckietown.org, then open the page:
 
 > [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
 
+Note: It may take up to 5 minutes after first creating your account for a token to be generated.
+
 
 ## Tell the Duckietown Shell your token {#dt-account-set-token}
 

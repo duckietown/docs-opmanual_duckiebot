@@ -29,7 +29,7 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
     
 Use the following command to run the container that contains `roscore`:
 
-    laptop $ docker -H ![Duckiebot name].local run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
+    laptop $ docker -H ![hostname].local run -dit --privileged --name roscore --net host --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
     
 If this is the first time you run this, it might take some time to download the container.
 
@@ -43,7 +43,7 @@ or by using `docker ps`.
 
 Use the following command to run the joystick demo:
 
-    laptop $ docker -H ![Duckiebot name].local run -dit --privileged --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
+    laptop $ docker -H ![hostname].local run -dit --privileged --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
 
 
 ### Controlling your robot with a joystick
@@ -57,12 +57,11 @@ keyboard control
 
 ### Controlling your robot with your keyboard
 
-
-##### OSX
-
 On your laptop run:
 
-    laptop $ dts keyboard_control ![Duckiebot name]
+    laptop $ dts keyboard_control ![hostname]
+
+Note: Make sure you enter the Duckiebot's hostname with the same capitalization that you used when setting up the SD card.
 
 Note: Currently not working for Mac OSX - the window pops up but the robot won't move - this is expected for now
 
@@ -94,12 +93,12 @@ The following keys are supported:
 
 Run the base image on the duckiebot:
 
-    duckiebot $ docker -H ![Duckiebot name].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
+    laptop $ docker -H ![hostname].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
 
 
 Then when the container has started 
 
-    container $  roslaunch duckietown joystick.launch veh:=![Duckiebot name]
+    container $  roslaunch duckietown joystick.launch veh:=![hostname]
 
 
 #### Controlling your robot with a joystick
@@ -112,7 +111,7 @@ You can now use your joystick to move things around
 If you have cloned the repo on your laptop and installed ROS, then you can start the keyboard controller interface with
 
 
-    laptop $ make virjoy-![Duckiebot name]
+    laptop $ make virjoy-![hostname]
 
 
 ## Option 3 - Pure ROS {#make-it-move_ros status=deprecated}
@@ -158,7 +157,7 @@ ssh into your robot and run:
 Now on your laptop run:
 
 
-    laptop $ make virjoy-![Duckiebot name]
+    laptop $ make virjoy-![hostname]
 
 
 Note: you need to have `pygame` installed, see the [README](https://github.com/duckietown/Software/tree/master18/misc/virtualJoy)
@@ -255,7 +254,7 @@ Don't worry though, we can still see the printouts using `rqt_console`.
 On the laptop run:
 
 
-    laptop $ dts start_gui_tools ![Duckiebot name]
+    laptop $ dts start_gui_tools ![hostname]
 
 
 
@@ -264,7 +263,7 @@ On the laptop run:
 On the laptop, open a new terminal window, and run:
 
 
-    laptop $ export ROS_MASTER_URI=http://![robot name].local:11311/
+    laptop $ export ROS_MASTER_URI=http://![hostname].local:11311/
     laptop $ rqt_console
 
 
@@ -288,10 +287,10 @@ Change the "Rosout Topic" field from `/rosout_agg` to `/rosout`. Confirm.
 Symptom: `roslaunch` fails with an error similar to the following:
 
 
-    remote[![robot name].local-0]: failed to launch on ![robot name]:
+    remote[![hostname].local-0]: failed to launch on ![hostname]:
 
-    Unable to establish ssh connection to [![username]@![robot name].local:22]:
-    Server u'![robot name].local' not found in known_hosts.
+    Unable to establish ssh connection to [![username]@![hostname].local:22]:
+    Server u'![hostname].local' not found in known_hosts.
 
 
 Resolution: You have not followed the instructions that told you to add the `HostKeyAlgorithms`
