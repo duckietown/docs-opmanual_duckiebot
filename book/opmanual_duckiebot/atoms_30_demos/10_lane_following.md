@@ -49,21 +49,11 @@ Assumption about Duckietown:
 
 Load the new container:
 
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_follower raabuchanan/rpi-duckiebot-controls:master18 /bin/bash
+    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo
 
-This will load the `lane_follower` container and ssh your terminal into the container. You will be at `![DUCKIEBOT_ROOT]` which is probably `/home/software`.
+This will start the `lane_following_demo` container. You have to wait a while for everything to start working.
 
 ### Step 2
-
-Launch the lane follower with ROS;
-
-    container $ roslaunch duckietown_demos lane_following.launch
-
-Note: If ROS can't find the lanch file you may need to source the catkin workspace, try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
-
-This launches several nodes and may take up to a minute to initialize everything.
-
-### Step 3
 
 Now we will verify that `lane_filter_node` is working. On your laptop set your `ROS_MASTER_URI` to your duckiebot.
 
@@ -79,7 +69,7 @@ Let's take a look at the Anti-Instagram filter. This is the custom duckietown fi
 
 Select the `/![hostname]/camera_node/image/compressed` topic from the drop down and you should see the video stream.
 
-### Step 4
+### Step 3
 
 Run command:
 
@@ -94,7 +84,7 @@ First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqV
 Et voilà! We are ready to drive around autonomously.
 
 
-### Step 5
+### Step 4
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
