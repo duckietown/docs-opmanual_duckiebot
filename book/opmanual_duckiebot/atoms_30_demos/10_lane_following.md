@@ -49,11 +49,7 @@ Assumption about Duckietown:
 
 Load the new container:
 
-<<<<<<< HEAD
     laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo
-=======
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_follower raabuchanan/rpi-duckiebot-controls:master18 /bin/bash
->>>>>>> upstream/master
 
 This will start the `lane_following_demo` container. You have to wait a while for everything to start working.
 
