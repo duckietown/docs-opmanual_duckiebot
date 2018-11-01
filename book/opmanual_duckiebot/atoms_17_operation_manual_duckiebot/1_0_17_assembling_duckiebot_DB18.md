@@ -43,7 +43,7 @@ sure to follow them in the following order:
 All the pieces in your Duckiebox are shown in [](#fig:duckiebot-components-db18). Note that you might have a different battery than in the picture, or different USB to micro USB cables, but the instructions can be followed anyway.
 
 <div figure-id="fig:duckiebot-components-db18" figure-caption="Components in Duckiebot package.">
-     <img src="duckiebot_components_db18.jpg" style='width: 37em' />
+     <img src="duckiebot_components_db18_original.jpg" style='width: 37em' />
 </div>
 
 If you have got extra pieces, such as an extra heat sink or screws and nuts, just keep them apart, they could turn out to be useful in the future!
