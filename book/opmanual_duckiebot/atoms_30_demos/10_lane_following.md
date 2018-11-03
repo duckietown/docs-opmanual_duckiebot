@@ -49,52 +49,38 @@ Assumption about Duckietown:
 
 Load the new container:
 
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_follower raabuchanan/rpi-duckiebot-controls:master18 /bin/bash
+    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo:master18
 
-This will load the `lane_follower` container and ssh your terminal into the container. You will be at `![DUCKIEBOT_ROOT]` which is probably `/home/software`.
+This will start the `lane_following_demo` container. You have to wait a while for everything to start working.
 
 ### Step 2
 
-Launch the lane follower with ROS;
+Now we will verify that `lane_filter_node` is working. On your laptop run `start_gui_tools`.
 
-    container $ roslaunch duckietown_demos lane_following.launch
-
-Note: If ROS can't find the lanch file you may need to source the catkin workspace, try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
-
-This launches several nodes and may take up to a minute to initialize everything.
-
-### Step 3
-
-Now we will verify that `lane_filter_node` is working. On your laptop set your `ROS_MASTER_URI` to your duckiebot.
-
-Ex.
-
-    laptop $ export ROS_MASTER_URI=http://![hostname].local:11311/
-
-Now with `rostopic list` we can see al lthe topics being published. Pro tip: use `rqt_graph` to get an overall picture of how all the nodes fit together. Elipses are nodes, small rectangles are topics and big rectangles are namespaces.
-
-Let's take a look at the Anti-Instagram filter. This is the custom duckietown filter which detectes duckietown lanes.
-
-    laptop $ rqt_image_view
+    laptop $ dts start_gui_tools ![hostname]
 
 Select the `/![hostname]/camera_node/image/compressed` topic from the drop down and you should see the video stream.
 
-### Step 4
+### Step 3
 
-Run command:
+Now we need to make `lane_filter_node` publish all the image topics. First we will open a new terminal on the laptop and log in to the `lane_following_demo` container.
 
-    laptop $ rosparam set /![hostname]/line_detector_node/verbose true
+    laptop $ docker exec -it lane_following_demo /bin/bash
+
+Now we have two terminals logged into the same container. In this new container set the ROS parameter `verbose` to `true`:
+
+    container $ rosparam set /![hostname]/line_detector_node/verbose true
 
 so that `line_detector_node` will publish the image_with_lines.
 
-Now select the `/![hostname]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
+Now select the `/![hostname]/line_detector_node/image_with_lines` in `start_gui_tools` and you should see something like this:
 
 First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqVm3TSj7Sowc8) of the expected behavior.
 
 Et voilà! We are ready to drive around autonomously.
 
 
-### Step 5
+### Step 4
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
