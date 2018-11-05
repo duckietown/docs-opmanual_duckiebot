@@ -60,7 +60,7 @@ Note in particular the switch `-v /data:/data`. It was not really needed before,
 
 On your laptop run:
 
-    laptop $ dts calibrate ![hostname]
+    laptop $ dts duckiebot calibrate_all ![hostname]
 
 Hit <kbd>Enter</kbd> and follow the instructions.
 
@@ -88,7 +88,7 @@ In the second laptop terminal run the camera calibration:
 -->
 
 ## Perform intrinsics calibration {#intrinsic-camera-calibration}
-**Note:** you can now use `dts calibrate_intrinsics ![hostname]` to run intrinsic calibration only. (you will be able to check if ros-picam is running before proceeding with calibration)
+**Note:** you can now use `dts duckiebot calibrate_intrinsics ![hostname]` to run intrinsic calibration only. (you will be able to check if ros-picam is running before proceeding with calibration)
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
@@ -157,7 +157,7 @@ Warning: Do not use the lens cover anymore; removing the lens cover changes the 
 
 
 ### Setup {#camera-calib-jan18-extrinsics-setup}
-**Note:** you can now use `dts calibrate_extrinsics ![hostname]` to run extrinsic calibration only.
+**Note:** you can now use `dts duckiebot calibrate_extrinsics ![hostname]` to run extrinsic calibration only.
 
 Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). Note that the axis of the wheels should be aligned with the y-axis.
 
@@ -178,7 +178,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 If you ran:
 
-    laptop $ dts calibrate ![hostname]
+    laptop $ dts duckiebot calibrate_all ![hostname]
 
 then the same terminal will immediately take you into the extrinsic calibration step. After the following Setup step, push <kbd>Enter</kbd>.
 
