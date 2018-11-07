@@ -9,32 +9,31 @@ Requires: You can see the camera image on the laptop. The procedure is documente
 
 Requires: You have configured Docker communication as documented in [](#docker-setup).
 
+Requires: You have a camera calibration pattern [](#camera-calibration-pattern-materials).
+
 Results: Calibration for the robot camera.
 </div>
 
 
-## Materials
+## Materials {#camera-calibration-pattern-materials}
 
-Download and print a PDF of the calibration checkerboard:
+If you do not have one already, download and print a PDF of the calibration checkerboard:
 
-- [US Letter](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/00-infrastructure/duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf).
-
-TODO: create the A4 version
+- [A3 format](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/00-infrastructure/duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf).
+https://github.com/tanij/Software/blob/master18/hardware/camera_calibration_pattern_A3.pdf
 
 
 <div figure-id="fig:calibration_checkerboard" figure-caption="">
-     <img src="calibration_checkerboard.png" style='width: 20em'/>
+     <img src="a3-calibraion-pattern.png" style='width: 20em'/>
 </div>
-
-Download and print a PDF of the calibration checkerboard.
 
 Note: the squares must have side equal to 0.031 m = 3.1 cm. Please measure this, as having the wrong size will make your Duckiebot crash.
 
-Note: If you live in Europe you probably have A4 paper. Print with scale = 100%. And do measure the sides of the squares before calibration.
+Note: In case your squares are not of the right size, make sure your printer settings are on A3 format, no automatic scaling, 100% size.
 
 Fix the checkerboard to a rigid planar surface that you can move around.
 
-Warning: If the pattern is not rigid the calibration will be useless.
+Warning: If the pattern is not rigid the calibration will be useless. You can, e.g., print on thick paper to achieve this.
 
 
 ### Optional material
