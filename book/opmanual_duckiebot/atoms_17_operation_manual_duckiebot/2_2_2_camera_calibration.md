@@ -9,32 +9,31 @@ Requires: You can see the camera image on the laptop. The procedure is documente
 
 Requires: You have configured Docker communication as documented in [](#docker-setup).
 
+Requires: You have a camera calibration pattern [](#camera-calibration-pattern-materials).
+
 Results: Calibration for the robot camera.
 </div>
 
 
-## Materials
+## Materials {#camera-calibration-pattern-materials}
 
-Download and print a PDF of the calibration checkerboard:
+If you do not have one already, download and print a PDF of the calibration checkerboard:
 
-- [US Letter](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/00-infrastructure/duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf).
+- [A3-format](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/00-infrastructure/duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf).
 
-TODO: create the A4 version
 
 
 <div figure-id="fig:calibration_checkerboard" figure-caption="">
-     <img src="calibration_checkerboard.png" style='width: 20em'/>
+     <img src="a3-calibraion-pattern.png" style='width: 20em'/>
 </div>
-
-Download and print a PDF of the calibration checkerboard.
 
 Note: the squares must have side equal to 0.031 m = 3.1 cm. Please measure this, as having the wrong size will make your Duckiebot crash.
 
-Note: If you live in Europe you probably have A4 paper. Print with scale = 100%. And do measure the sides of the squares before calibration.
+Note: In case your squares are not of the right size, make sure your printer settings are on A3 format, no automatic scaling, 100% size.
 
 Fix the checkerboard to a rigid planar surface that you can move around.
 
-Warning: If the pattern is not rigid the calibration will be useless.
+Warning: If the pattern is not rigid the calibration will be useless. You can, e.g., print on thick paper to achieve this.
 
 
 ### Optional material
@@ -60,7 +59,7 @@ Note in particular the switch `-v /data:/data`. It was not really needed before,
 
 On your laptop run:
 
-    laptop $ dts calibrate ![hostname]
+    laptop $ dts duckiebot calibrate_all ![hostname]
 
 Hit <kbd>Enter</kbd> and follow the instructions.
 
@@ -88,7 +87,7 @@ In the second laptop terminal run the camera calibration:
 -->
 
 ## Perform intrinsics calibration {#intrinsic-camera-calibration}
-**Note:** you can now use `dts calibrate_intrinsics ![hostname]` to run intrinsic calibration only. (you will be able to check if ros-picam is running before proceeding with calibration)
+**Note:** you can now use `dts duckiebot calibrate_intrinsics ![hostname]` to run intrinsic calibration only. (you will be able to check if ros-picam is running before proceeding with calibration)
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
@@ -157,7 +156,7 @@ Warning: Do not use the lens cover anymore; removing the lens cover changes the 
 
 
 ### Setup {#camera-calib-jan18-extrinsics-setup}
-**Note:** you can now use `dts calibrate_extrinsics ![hostname]` to run extrinsic calibration only.
+**Note:** you can now use `dts duckiebot calibrate_extrinsics ![hostname]` to run extrinsic calibration only.
 
 Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). Note that the axis of the wheels should be aligned with the y-axis.
 
@@ -178,7 +177,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 If you ran:
 
-    laptop $ dts calibrate ![hostname]
+    laptop $ dts duckiebot calibrate_all ![hostname]
 
 then the same terminal will immediately take you into the extrinsic calibration step. After the following Setup step, push <kbd>Enter</kbd>.
 
