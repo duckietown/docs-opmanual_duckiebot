@@ -19,8 +19,8 @@ Results: Calibration for the robot camera.
 
 If you do not have one already, download and print a PDF of the calibration checkerboard:
 
-- [A3 format](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/00-infrastructure/duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf).
-https://github.com/tanij/Software/blob/master18/hardware/camera_calibration_pattern_A3.pdf
+- [A3-format](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/00-infrastructure/duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf).
+
 
 
 <div figure-id="fig:calibration_checkerboard" figure-caption="">
