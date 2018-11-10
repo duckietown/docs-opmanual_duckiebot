@@ -12,54 +12,53 @@ Result: A verified log.
 
 ## Preparation
 
-Note: it is recommended that you log to your USB and not to your SD card.
+Note: If you didn't recently burn your SD card, you may not have the folder. SSH into your robot and execute:
 
-See: To mount your USB see [](+software_reference#mounting-usb).
+    duckiebot $ sudo mkdir /data/logs
+
+Note: It is recommended but not required that you log to your USB and not to your SD card.
+
+See: To mount your USB see [here](http://docs.duckietown.org/DT18/software_reference/out/mounting_usb.html).
+
 
 ## Run something on the Duckiebot
 
-For example, if you want to drive the robot around and collect image data you could run:
+For example, if you want to drive the robot around and collect image data. For example run [Lane Following Demo](#demo-lane-following) or the camera and the joystick.
 
-    duckiebot $ make demo-joystick-camera
-
-But anything could do.
-
-## View images on the laptop
-
-Run on the laptop:
-
-    laptop $ cd ![Duckietown root]
-    laptop $ source environment.sh
-    laptop $ source set_ros_master.sh ![hostname]
-    laptop $ rqt_image_view
-
-and verify that indeed your camera is streaming imagery.
+View images on the laptop and verify that indeed your camera is streaming imagery See [](#read-camera-data).
 
 ## Record the log {#record-log}
 
+    laptop $ docker -H ![hostname].local run -it --net host --name logger -v /data/logs:/logs duckietown/rpi-duckiebot-logger:master18
+
+This will only log the imagery, camera_info, the control commands and a few other essential things.
+
 ### Option: Full Logging
 
-To log everything that is being published, on the Duckiebot in a new terminal (See [](+software_reference#byobu)):
+To log everything that is being published, run the above docker container but put `/bin/bash` at the end. When inside run
 
-    duckiebot $ make log-full
+    duckiebot container $ make log-full-docker
 
-where here we are assuming that you are logging to the USB and have followed [](+software_reference#mounting-usb).
 
-### Option: Log Minimal
+## Getting the log
 
-To log only the imagery, camera_info, the control commands and a few other essential things, on the Duckiebot in a new terminal (See [](+software_reference#byobu)):
+If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended). For unmounting instructions see [here](http://docs.duckietown.org/DT18/software_reference/out/mounting_usb.html.
 
-    duckiebot $ make log-minimal
+Otherwise, if you are running the file server, you should see you logs at http://![hostname].local:8082/logs/
 
-where here we are assuming that you are logging to the USB and have followed [](+software_reference#mounting-usb).
+Doubt: I see the folder but not the logs why ?
 
+Otherwise you can copy the logs from your robot onto your laptop. Assuming they are on the same network execute:
+
+    laptop $ scp ![hostname]/data/logs/* ![path-to-local-folder]
+    
+You can also download a specific log instead of all by replacing `*` with the filename.
 
 ## Verify a log {#verify-a-log status=beta}
 
+Either copy the log to your laptop or from within your container do
 
-On the Duckiebot run:
-
-    duckiebot $ rosbag info ![FULL_PATH_TO_BAG] --freq
+    $ rosbag info ![FULL_PATH_TO_BAG] --freq
 
 Then:
 
