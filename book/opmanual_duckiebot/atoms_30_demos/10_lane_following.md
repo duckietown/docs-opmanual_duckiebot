@@ -67,7 +67,7 @@ and you should see all of the rostopics listed there. If you see an output like 
 
 Next run:
 
-    laptop container $ rqt_image_view
+    laptop-container $ rqt_image_view
 
 Select the `/![hostname]/camera_node/image/compressed` topic from the drop down in the popup window and you should see the video stream.
 
@@ -76,7 +76,7 @@ Select the `/![hostname]/camera_node/image/compressed` topic from the drop down 
 Now we need to make `lane_filter_node` publish all the image topics. 
 We can do this by setting the ROS parameter `verbose` to `true`:
 
-    laptop container $ rosparam set /![hostname]/line_detector_node/verbose true
+    laptop-container $ rosparam set /![hostname]/line_detector_node/verbose true
 
 so that `line_detector_node` will publish the image_with_lines.
 
