@@ -37,14 +37,16 @@ This will only log the imagery, camera_info, the control commands and a few othe
 
 To log everything that is being published, run the above docker container but put `/bin/bash` at the end. When inside run
 
-    duckiebot container $ make log-full-docker
+    duckiebot-container $ make log-full-docker
 
 
 ## Getting the log
 
-If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended). For unmounting instructions see [here](http://docs.duckietown.org/DT18/software_reference/out/mounting_usb.html.
+If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended). 
 
-Otherwise, if you are running the file server, you should see you logs at http://![hostname].local:8082/logs/
+See: For unmounting instructions see [here](http://docs.duckietown.org/DT18/software_reference/out/mounting_usb.html).
+
+Otherwise, if you are running the file server, you should see you logs at `http://![hostname].local:8082/logs/`
 
 Doubt: I see the folder but not the logs why ?
 
