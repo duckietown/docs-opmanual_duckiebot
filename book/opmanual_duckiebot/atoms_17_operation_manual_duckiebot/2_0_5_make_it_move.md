@@ -60,7 +60,7 @@ keyboard control
 
 On your laptop run:
 
-    laptop $ dts keyboard_control ![hostname]
+    laptop $ dts duckiebot keyboard_control ![hostname]
 
 Note: Make sure you enter the Duckiebot's hostname with the same capitalization that you used when setting up the SD card.
 
@@ -89,7 +89,7 @@ The following keys are supported:
 
 Note: If the above doesn't work, try running the command line interface version with:
 
-    laptop $ dts keyboard_control ![hostname] --cli
+    laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
 
 ## Option 2 - Docker + ROS {#make-it-move_docker_ros status=beta}
