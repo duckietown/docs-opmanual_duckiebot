@@ -91,7 +91,7 @@ Et voilà! We are ready to drive around autonomously.
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
-    laptop $ dts keyboard_control ![hostname]
+    laptop $ dts duckiebot keyboard_control ![hostname]
 
 |        Controls      | Joystick |  Keyboard |
 |----------------------|:--------:|:---------:|
