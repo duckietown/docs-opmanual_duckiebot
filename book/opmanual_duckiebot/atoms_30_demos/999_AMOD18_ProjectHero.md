@@ -66,11 +66,12 @@ The main parts of the challenge are: the evaluation folder and the challenge.yam
 
 The challenge.yaml file defines the challenge name, metadata about the challenge \(tags,title to display on the server, which dates the challenge should be accessable, a description of the challenge\). This file also defines the associated score and the steps the challenge runs through. These can be defined as follows:
 
+```
 scoring:
   scores:
   - name: score1
     description: temp description
-```
+
 steps:
   step1:
     title: Scoring step
