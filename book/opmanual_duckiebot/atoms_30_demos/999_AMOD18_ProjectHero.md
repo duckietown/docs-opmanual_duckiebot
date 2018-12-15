@@ -2,7 +2,7 @@
 
 To facilitate uniformity across the project as much as possible of the automated regression testing should follow this template.
 
-## Background and information
+## Background and information {#Background-projecthero-info}
 
 The regression testing in the Duckietown project is handled through the same engine as the AI driving olympics challenges. For those we are familiar with making a submission one half of this procedure will be self evident.
 
@@ -150,7 +150,7 @@ What we care about here is the prepare and the score functions. In the prepare f
 
 Thus we have defined a challenge and a solution. Lets now walk through the pipeline of getting a challenge on your local server and submitting to it.
 
-## DEMO: The regression test pipeline
+## DEMO: The regression test pipeline {#demo-projecthero-run}
 
 What follows now is a step by step guide to setting up a local server, defining a challenge, and making a submission to this challenge.
 
