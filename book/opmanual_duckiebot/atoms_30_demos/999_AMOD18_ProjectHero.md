@@ -1,4 +1,4 @@
-# AMOD18 ProejctHero {#demo-projecthero status=draft}
+# AMOD18 Project Hero {#demo-projecthero status=draft}
 
 This is the template for the description of a demo.
 
