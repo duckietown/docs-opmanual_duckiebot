@@ -188,7 +188,7 @@ And now you should be able to navigate to http://localhost:6544 in your browser 
 Use the provided cookiecutter to create a challenge repository for your project. This is done by using the following commands:
 
     laptop $ pip install cookiecutter
-    laptop $ cookiecutter https://github.com/FIXTHIS/duckietown-test-and-validation-challenge
+    laptop $ cookiecutter https://github.com/duckietown/duckietown-hero-challenge-template
 
 Fill in your projects details when prompted and you should now have a folder with the structure described in the evaluation chapter above.
 You know have the template challenge folder. Navigate into this folder and into the evaluation and run:
