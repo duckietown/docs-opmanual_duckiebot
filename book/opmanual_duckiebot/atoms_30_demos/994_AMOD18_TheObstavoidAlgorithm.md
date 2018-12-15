@@ -1,4 +1,4 @@
-# AMOD18 The Obstavoid Algorithm {#demo-theobstavoidalgorithm status=draft}
+# AMOD18 Object Detection {#demo-theobstavoidalgorithm status=draft}
 
 This is the template for the description of a demo.
 
