@@ -1,6 +1,8 @@
-# Regression testing in the context of the Duckietown project.
+# Regression testing in the context of the Duckietown project. {#regression-tests status=beta}
 
 To facilitate uniformity across the project as much as possible of the automated regression testing should follow this template.
+
+## Background and information
 
 The regression testing in the Duckietown project is handled through the same engine as the AI driving olympics challenges. For those we are familiar with making a submission one half of this procedure will be self evident.
 
@@ -152,6 +154,80 @@ Thus we have defined a challenge and a solution. Lets now walk through the pipel
 
 What follows now is a step by step guide to setting up a local server, defining a challenge, and making a submission to this challenge.
 
+### Step 1 (the server)
 First we need to install the local server. You can get the server from 
 
- 
+https://github.com/duckietown/duckietown-challenges-server
+
+Clone this repository. Running a local server requires a mysql database so navigate into your duckietown-challenges-server folder. An run.
+   
+    laptop $ sudo apt-get update
+    laptop $ sudo apt-get install mysql-server
+    laptop $ cd db
+    laptop $ mysql -u root -p < init.sql
+
+Note that your require python2 and a number of up to date packages. Next run the following commands
+
+    laptop $ cd ..
+    laptop $ python2 setup.py develop
+
+During the setup process you might receive errors stating that you are missing python packages. if this is the case you can try running 
+
+    laptop $ pip install *name of missing package*
+
+If this does not work try using Duck Duck Go (not afiliated with Duckietown) to find how to update/install the missing packages. NOTE: if the process complains that you are missing duckietown-challenges or duckietown-shell; jump to step 2 and return here when directed to.
+
+Now you should be able to start the server by running 
+
+    laptop $ pserve --reload deployment/duckietown-server-local.ini
+
+And now you should be able to navigate to http://localhost:6544 in your browser of choice. Open a new terminal before starting the next step.
+
+### Step 2 (the challenge) 
+
+Use the provided cookiecutter to create a challenge repository for your project. This is done by using the following commands:
+
+    laptop $ pip install cookiecutter
+    laptop $ cookiecutter https://github.com/FIXTHIS/duckietown-test-and-validation-challenge
+
+Fill in your projects details when prompted and you should now have a folder with the structure described in the evaluation chapter above.
+You know have the template challenge folder. Navigate into this folder and into the evaluation and run:
+
+    laptop $ pip install -r requirements.txt 
+
+If you already have these installed you can ignore this step. If you came here from the middle of step 1 you should now go back and continuesetting up the server before returning here.
+
+Next matter of business is to develop your evaluation/eval.py and challenge.yaml files as desrcibed above. For this demonstration you can keep them as they are.
+
+Now you need to have your server setup. In a separate tab turn your server on. You can now run the following command to 'upload' your challenge to the local server. Navigate to the evaluation folder in your challenge repo and run:
+
+    laptop $ DTSERVER=http://localhost:6544 make define-challenge
+
+This might take some time. Unless there are errors your challenge is now upladed to the server. Start an evaluator for the challenge using the command.
+
+    laptop $ DTSERVER=http://localhost:6544 dts challenges evaluator
+
+Now you should have a running evaluator. Open a new terminal before starting on the next step.
+
+### Step 3 (the submission)
+
+This assumes you have your project repository from the cookiecutter template provided here:
+
+https://github.com/duckietown/duckietown-project-template
+
+What you need to do now fill in the template-submission inside the sub-\* folder of the project repo as described in the background. In the config file you should specify the path to the library you want to test. Note that the folder has to be single layer. Next you run:
+
+    laptop $ make generate_submissions
+
+Now you should have another directory inside submissions called submission\_\*library name\*. Navigate into this folder and run
+
+    laptop $ make run_regression_local
+
+Now you should see a submission being made to the specified challenge. If everything is correct you should now be able to following how the evaluator is evaluating you challenge either in the terminal window where the evaluator is running or on http://localhost:6544. Once the process is done you should see that you have a new entry on the leaderboard of the defined challenge over on http://localhost:6544. 
+
+CONGRATULATIONS YOU HAVE NOW A FULLY FUNCTIONAL PIPELINE FOR TESTING!
+
+
+
+
+
