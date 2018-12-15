@@ -4,9 +4,10 @@ This document provides an operation manual for performing an offline optimizatio
 
 In order to complete the procedure, you need your duckiebot in configuration DB18 until unit B-11 with its camera calibrated. In addition, you need the checkerboard that you used during your camera calibration.
 
-Requires: Camera calibration, ROS installation on local computer
 
 <div class='requirements' markdown="1">
+
+Requires: Camera calibration, ROS installation on local computer
 
 Requires: The duckiebot in configuration DB18 section B-11
 
@@ -35,7 +36,7 @@ Check: ROS is installed on your local computer
 
 Check: the checkerboard has the correct dimensions (31 mm squares)
 
-Note: In case you experience dependencies errors latter while `roslaunch`ing to the calibration script, please make sure to install dependencies for your computer by running `dependencies_common.sh` and `dependencies_for_laptop.sh`. These executables are located under the Software repository. This software repository will be cloned by you in the step 7 below. Dependencies can be run in the Software repository by 
+Note: In case you experience dependencies errors latter while `roslaunch`ing to the calibration script, please make sure to install dependencies for your computer by running `dependencies_common.sh` and `dependencies_for_laptop.sh`. These executables are located under the Software repository. This software repository will be cloned by you in the step 7 below. Dependencies can be run in the Software repository by
 
     laptop $ ./dependencies_common.sh
     laptop $ ./dependencies_for_laptop.sh
@@ -54,7 +55,8 @@ in case it is not, then set it
 
 Now, run the docker container `sysid` on your duckiebot
 
-    laptop $ docker -H ![ROBOT_NAME].local run -it --net host --privileged -v /data:/data --name sysid duckietown/devel-sys-id:master18 /bin/bash
+    laptop $ docker -H ![ROBOT_NAME].local run -it --memory="800m"
+    --memory-swap="1.8g" --net host --privileged -v /data:/data --name sysid duckietown/devel-sys-id:master18 /bin/bash
 
 **Step 2**: Now we have to mount the USB storage to store the experiment data.
 
@@ -141,7 +143,7 @@ At the end you will receive two plots showing the open loop predictions of the d
 Please verify that the trim and gain values that you see in your terminal is written to the kinematic calibration file under `~/duckietown_sysid/kinematics/![ROBOT_NAME].yaml`. To transfer the kinematic calibration file back to your duckiebot execute
 
     duckiebot $ scp -r ![LOCAL_PC_USERNAME]@![LOCAL_PC_NAME]:~/duckietown_sysid/kinematics /data
-    
+
 To replace the old kinematic file with the new one, on your duckiebot type:
 
     duckiebot $ sudo rm -rf /data/config/calibrations/kinematics
@@ -167,6 +169,11 @@ Resolution: You can adjust the parameters of the voltage commands by passing arg
 Symptom: Issues/bugs with copying from USB to computer. USB cannot be unmounted from the duckiebot.
 Remounting USB is not possible without rebooting the duck
 After the first sftp get the USB drive becomes „read only“ and no further bags can be recorded
+
+Symptom: There are large discontinuities in the recordings despite the fact that the duckiebot does see the checkerboard most of the time.   
+
+Resolution: One possible cause of this problem is insufficient memory. Please make sure to execute `docker run` command with `--memory="800m" --memory-swap="1.8g"` flags which would tell docker to utilize the swap space. Swap space is created and allocated during the initialization process. The swap space allocation is done by default since 5 October 2018. If you had flashed your SD card prior to that, please reflash your SD card. You can verify that you have swap space by executing `top` command in your duckiebot and inspecting `KiB Swap` section.
+
 
 ## Demo failure demonstration {#demo-sysid-failure}
 

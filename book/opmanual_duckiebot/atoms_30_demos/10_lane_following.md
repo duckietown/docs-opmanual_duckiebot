@@ -49,41 +49,34 @@ Assumption about Duckietown:
 
 Load the new container:
 
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_follower raabuchanan/rpi-duckiebot-controls:master18 /bin/bash
+    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" --memory-swap="1.8g" --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo:master18
 
-This will load the `lane_follower` container and ssh your terminal into the container. You will be at `![DUCKIEBOT_ROOT]` which is probably `/home/software`.
+This will start the `lane_following_demo` container. You have to wait a while for everything to start working.
 
 ### Step 2
 
-Launch the lane follower with ROS;
+Now we will verify that `lane_filter_node` is working. On your laptop run `start_gui_tools`.
 
-    container $ roslaunch duckietown_demos lane_following.launch
+    laptop $ dts start_gui_tools ![hostname]
+    
+This will enter you into a container on your laptop that can talk to the ROS on the robot. To verify this do:
 
-Note: If ROS can't find the lanch file you may need to source the catkin workspace, try: `source ![DUCKIEBOT_ROOT]/catkin_ws/devel/setup.bash`
+    laptop container $ rostopic list
+    
+and you should see all of the rostopics listed there. If you see an output like "Cannot communicate with ROS_MASTER" that's a problem
 
-This launches several nodes and may take up to a minute to initialize everything.
+Next run:
+
+    laptop-container $ rqt_image_view
+
+Select the `/![hostname]/camera_node/image/compressed` topic from the drop down in the popup window and you should see the video stream.
 
 ### Step 3
 
-Now we will verify that `lane_filter_node` is working. On your laptop set your `ROS_MASTER_URI` to your duckiebot.
+Now we need to make `lane_filter_node` publish all the image topics. 
+We can do this by setting the ROS parameter `verbose` to `true`:
 
-Ex.
-
-    laptop $ export ROS_MASTER_URI=http://![hostname].local:11311/
-
-Now with `rostopic list` we can see al lthe topics being published. Pro tip: use `rqt_graph` to get an overall picture of how all the nodes fit together. Elipses are nodes, small rectangles are topics and big rectangles are namespaces.
-
-Let's take a look at the Anti-Instagram filter. This is the custom duckietown filter which detectes duckietown lanes.
-
-    laptop $ rqt_image_view
-
-Select the `/![hostname]/camera_node/image/compressed` topic from the drop down and you should see the video stream.
-
-### Step 4
-
-Run command:
-
-    laptop $ rosparam set /![hostname]/line_detector_node/verbose true
+    laptop-container $ rosparam set /![hostname]/line_detector_node/verbose true
 
 so that `line_detector_node` will publish the image_with_lines.
 
@@ -94,11 +87,11 @@ First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqV
 Et voilà! We are ready to drive around autonomously.
 
 
-### Step 5
+### Step 4
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
-    laptop $ dts keyboard_control ![hostname]
+    laptop $ dts duckiebot keyboard_control ![hostname]
 
 |        Controls      | Joystick |  Keyboard |
 |----------------------|:--------:|:---------:|
