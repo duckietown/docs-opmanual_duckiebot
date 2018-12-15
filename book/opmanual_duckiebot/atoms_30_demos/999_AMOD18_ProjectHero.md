@@ -150,7 +150,7 @@ What we care about here is the prepare and the score functions. In the prepare f
 
 Thus we have defined a challenge and a solution. Lets now walk through the pipeline of getting a challenge on your local server and submitting to it.
 
-## The Regression test pipeline
+## DEMO: The regression test pipeline
 
 What follows now is a step by step guide to setting up a local server, defining a challenge, and making a submission to this challenge.
 
