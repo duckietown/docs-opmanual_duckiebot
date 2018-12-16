@@ -1,6 +1,6 @@
 # AMOD18 cSLAM {#demo-cslam status=draft}
 
-This is the description of cSLAM.
+This is the description of the cSLAM (Centralized Simultaneous Localization And Mapping) demo. This demo allows a Duckiebot to localize itself and at the same time to build a map while it moves around the city. The task is achieved by using the camera of the Duckiebot, together with watchtowers located along the path, to detect April tags attached to the tiles, to the traffic signs and to the Duckiebot itself.
 
 <div class='requirements' markdown="1">
 
@@ -27,7 +27,7 @@ First, we show a video of the expected behavior (if the demo is successful).
 Layout of Duckietown:
 
 * Layout
-  - Tiles should be arranged where all path will form a closed loop.
+  - Tiles should be arranged in such a way that the path forms a closed loop.
   - Traffic lights are good to have but not necessary (optional).
   - Any 2 watchtower should observe at least one common April tag and all the April tags should be observed by all the watchtowers.
 * Infrastructure
@@ -45,7 +45,7 @@ Layout of Duckietown:
 
 ## Pre-flight checklist {#demo-cslam-pre-flight}
 
-Check: the Duckiebot has sufficient battery
+Check: the Duckiebot has sufficient battery.
 
 Check: the `ros-picam` container is turned on.
 
@@ -61,6 +61,7 @@ Before starting, please install ROS on your local computer by following the offi
 ### Step 1
 Set up the watchtowers.
 To burn the SD card for each watchtower, the same instructions as for Duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
+
 The `hostname` of each watchtower should be of the form `demowatchtower*01*`, where `*01*` stands for two digits.
 The containers `roscore` and `ros-picam` are required:
 
@@ -70,6 +71,8 @@ The containers `roscore` and `ros-picam` are required:
 It is also necessary to pull the Docker image for the acquistion node:
 
     laptop $ docker -H ![hostname].local pull aleksandarpetrov/cslam-aquisition-rpi
+
+TODO: move the image to duckietown?
 
 ### Step 2
 Print out the April tags and place them on top of Duckiebots and in Duckietown
@@ -88,7 +91,7 @@ Run the pulled Docker images:
 ### Step 5
 Control the Duckiebot manually around Duckietown
 
-    laptop $ dts duckiebot keyboard_control ![hostname]
+    laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
