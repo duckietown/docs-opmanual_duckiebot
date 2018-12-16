@@ -62,7 +62,7 @@ Check: Docker is installed on your local computer.
 ### Step 0
 Before starting, please install ROS on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
 
-Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 
 ### Step 1
 Set up the watchtowers.
@@ -85,8 +85,7 @@ Print out the April tags and place them on top of Duckiebots and in Duckietown
     (Provide location for Benson to place pre-generated April tags)
 
 ### Step 3
-Set up duckietown visualisation by following installation instructions [here] 
-(https://github.com/duckietown/duckietown-visualization).
+Set up duckietown visualisation by following installation instructions [here](https://github.com/duckietown/duckietown-visualization).
 
 Configure the duckietown visualisation to reflect the layout of the Duckietown that has been built. The instructions to configure the visualisation is explained in the `How it works` and `Using duckietown_visualization with your pipeline` section after the installation instructions.
 
