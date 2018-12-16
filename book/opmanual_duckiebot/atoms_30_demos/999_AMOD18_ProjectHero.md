@@ -10,7 +10,7 @@ The regression testing process has two parts, a submission and a challenge. Thes
 
 ### Submission
 
-The submission is the piece of code that will be tested. Generating a submission is simple; the generate\_submission.py script and the submission\_template folder available in the standard Duckitown project repository are all that is required. The contents of the submission\_template folder will be explained shortly. The script looks into your config folder (explained bellow) and generates a new folder submission\_directory which contains a folder for each of the files in your configuration folder. You can then navigate to these subfolders and run make run\_regression or make run\_regression\_local to generate and send your code for testing.
+The submission is the piece of code that will be tested. Generating a submission is simple; the generate\_submission.py script, the config folder and the submission\_template folder available in the standard Duckitown project repository are all that is required. The contents of the submission\_template folder will be explained shortly. The script looks into your config folder (explained bellow) and generates a new folder submission\_directory which contains a folder for each of the files in your configuration folder. You can then navigate to these subfolders and run make run\_regression or make run\_regression\_local to generate and send your code for testing.
 
 #### Submission\_template
 The Submission\_template folder is where you include all the information about submissions, and from which the generate\_submissions script takes the submission specifications. It has the following structure.
@@ -24,7 +24,7 @@ template-submission
 │   submission.yaml
 ```
 
-The Dockerfile, requirements.txt and the Makefile are standard, so these do not need to be changed. The solution.py file is the entry point for the code you want to submit to the test. You can write whatever code you want into the run function of hte Solver class, but the in the end you should call cis.set\_solution\_output\_dict\(dict\) where dict is a dictionary containing all the data you want to output from your code to the evaluator. An example of this can be found bellow. 
+The Dockerfile and the Makefile are standard and need not be changed unless you want to add more than your source code. The solution.py file is the entry point for the code you want to submit to the test. You can write whatever code you want into the run function of hte Solver class, but the in the end you should call cis.set\_solution\_output\_dict\(dict\) where dict is a dictionary containing all the data you want to output from your code to the evaluator. An example of this can be found bellow. 
 
 ```
 #!/usr/bin/env python
@@ -34,10 +34,11 @@ from duckietown_challenges import wrap_solution, ChallengeSolution, ChallengeInt
 class Solver(ChallengeSolution):
     def run(self, cis):
         assert isinstance(cis, ChallengeInterfaceSolution)
-	#here is where your code comes in
+	#here is where your code comes in. EX:
 	import myalgorithm	
 	myclass = myalgorithm.MyClass()
-	data = {'data': myclass.run_my_code()}
+	input_from_evaluator = cis.get_challenge_parameters()
+	data = {'data': myclass.run_my_code(input_from_evaluator)}
 	
 	#Remember to set the solution output
 	cis.set_solution_output_dict(data)
@@ -46,7 +47,7 @@ class Solver(ChallengeSolution):
 if __name__ == '__main__':
     wrap_solution(Solver())
 ```
-We see that I am importing myalgorithm, making an instance of MyClass defined in it, and then calling a function of this class to generate my output data, which I then feed to the set\_solution\_output\_dict method. Now the evaluator code will be able to access the result of calling my code.
+We see that I am importing myalgorithm, making an instance of MyClass defined in it, accessing the input parameters from the evaluator and then calling a function of this class to generate my output data, which I then feed to the set\_solution\_output\_dict method. Now the evaluator code will be able to access the result of calling my code.
 
 The final import file in the submission\_template is hte submission.yaml file. This one looks like this
 
@@ -58,6 +59,11 @@ user-payload: {}
 ```
 
 Here the most important lines are the challenge and the protocol line. The challenge line defines which challenge your submission is associated with and should contain the exact name of the challenge. The protocol likewise needs to match the protocol of the challenge. The user-labe is for you to give your submissions a label if you so desire.
+
+#### config
+
+The config folder should contain a text file for each library you want to create a submission for. In this text file should be the absolute path to one level above the directory where you store your code, and on the second line it should have the name of the directory where you story your code. The generate\_submissions script takes this absolute path and combines it with the directory name to movie a copy of your code into a new submission folder.
+
 
 ### Challenge
 
