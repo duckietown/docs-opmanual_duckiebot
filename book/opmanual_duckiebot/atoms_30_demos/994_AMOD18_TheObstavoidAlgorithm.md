@@ -2,6 +2,8 @@
 
 This is the template for the description of a demo.
 
+bla bla yeah yeah chocolate yeah
+
 First, we describe what is needed, including:
 
 * Robot hardware
