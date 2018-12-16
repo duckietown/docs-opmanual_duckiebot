@@ -209,7 +209,7 @@ Set the container name to `joystick`:
     
 Mount the host's path `/home/myuser/data` to `/data` inside the container:
 
-    -v /home/myuser/data
+    -v /home/myuser/data:/data
     
 Publish port 8080 in the container as 8082 on the host:
 
