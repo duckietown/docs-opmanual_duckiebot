@@ -56,11 +56,20 @@ Check: ROS is installed on your local computer.
 ## Demo instructions {#demo-cslam-run}
 
 ### Step 0
-Before starting, please install ROS on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full  version.
+Before starting, please install ROS on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
 
 ### Step 1
 Set up the watchtowers.
-    (Provide link to set up watchtowers. Building and software initialization)
+To burn the SD card for each watchtower, the same instructions as for Duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
+The `hostname` of each watchtower should be of the form `demowatchtower*01*`, where `*01*` stands for two digits.
+The containers `roscore` and `ros-picam` are required:
+
+    laptop $ docker -H ![hostname].local run -d --privileged --name roscore --network=host -v /data:/data --restart always duckietown/rpi-ros-kinetic-roscore:master18
+    laptop $ docker -H ![hostname].local run -d --name ros-picam --network=host --device /dev/vchiq -v /data:/data --restart always duckietown/rpi-duckiebot-ros-picam:master18
+
+It is also necessary to pull the Docker image for the acquistion node:
+
+    laptop $ docker -H ![hostname].local pull aleksandarpetrov/cslam-aquisition-rpi
 
 ### Step 2
 Print out the April tags and place them on top of Duckiebots and in Duckietown
