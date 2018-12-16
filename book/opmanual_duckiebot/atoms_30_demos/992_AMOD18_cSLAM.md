@@ -10,9 +10,11 @@ Requires: Wheels calibration completed. [Wheel calibration](#wheel-calibration)
 
 Requires: Camera calibration completed. [Camera calibration](#camera-calib)
 
-Requires: Joystick demo has been successfully launched. [Joystick demo](#rc-control))
+Requires: Joystick demo has been successfully launched. [Joystick demo](#rc-control)
 
 Requires: ROS installation on local computer.
+
+Requires: Docker installation on local computer.
 
 Requires: The Duckiebot in configuration DB18 section B-11.
 
@@ -32,10 +34,10 @@ Layout of Duckietown:
   - Any 2 watchtower should observe at least one common April tag and all the April tags should be observed by all the watchtowers.
 * Infrastructure
   - April tags have to be placed on the tiles and traffic signs.
-  - For a detailed map to be visualized, the poses of the April tags in the Duckietown must be known beforehand (optional).
+  - For a detailed map to be visualized, the poses of the April tags in the Duckietown must be known beforehand.
   - Watchtowers have to be spread across the entire Duckietown. Preferably the combined field of view covers the entire Duckietown.
 * Weather
-  - Lighting has to be good for the April tags to be seen clearly by camera.
+  - Lighting has to be bright enough for the April tags to be seen clearly by camera.
   - Assumption: it is always sunny. Rain never occurs in Duckietown.
 
 ## Duckiebot setup notes {#demo-cslam-duckiebot-setup}
@@ -53,10 +55,14 @@ Check: Joystick is turned on.
 
 Check: ROS is installed on your local computer.
 
+Check: Docker is installed on your local computer.
+
 ## Demo instructions {#demo-cslam-run}
 
 ### Step 0
 Before starting, please install ROS on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
+
+Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 ### Step 1
 Set up the watchtowers.
@@ -79,14 +85,15 @@ Print out the April tags and place them on top of Duckiebots and in Duckietown
     (Provide location for Benson to place pre-generated April tags)
 
 ### Step 3
-Pull the Acquisition, Diagnostics, Simulator and Graph pose optimizer Docker images onto your laptop:
+Set up duckietown visualisation by following installation instructions [here] 
+(https://github.com/duckietown/duckietown-visualization).
 
-    laptop $ (fill up)
+Configure the duckietown visualisation to reflect the layout of the Duckietown that has been built. The instructions to configure the visualisation is explained in the `How it works` and `Using duckietown_visualization with your pipeline` section after the installation instructions.
 
 ### Step 4
-Run the pulled Docker images:
-
-    laptop $ (fill up)
+Set up graph optimizer
+    
+    (TODO: Amaury)
 
 ### Step 5
 Control the Duckiebot manually around Duckietown
@@ -98,6 +105,17 @@ Control the Duckiebot manually around Duckietown
 
 ### April tags printed may be of wrong size
 Check that the print April tags are of size 6.5cm as the printer might have done some scaling to the tags.
+
+### Set up Diagnostics tool 
+Check that messages are received frequently
+
+    laptop $ docker pull bensonkuan/cslam-diagnostics
+    
+    laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
+    
+    laptop $ docker run -it --rm --net=host -e ROS_MASTER_IP=http://![rosmaster_name].local:11311 -e ROS_IP=![rosmaster_IP] bensonkuan/cslam-diagnostics
+
+TODO: check ways for other computers to be rosmaster
 
 ## Demo failure demonstration {#demo-cslam-failure}
 
