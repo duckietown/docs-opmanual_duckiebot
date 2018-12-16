@@ -103,7 +103,7 @@ Control the Duckiebot manually around Duckietown
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
 ### April tags printed may be of wrong size
-Check that the print April tags are of size 6.5cm as the printer might have done some scaling to the tags.
+Check that the printed April tags are of size 6.5cm as the printer might have done some scaling to the tags.
 
 ### Set up Diagnostics tool 
 Check that messages are received frequently
