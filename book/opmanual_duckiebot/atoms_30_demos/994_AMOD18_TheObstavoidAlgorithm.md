@@ -9,6 +9,7 @@ With the Obstavoid algorithm, the duckiebot (now denoted as the ‘actor’) wil
 In this demo different scenarios are set up in a simulation, where you can test the Obstavoid algorithm to its full extent.
 
 
+Actor, passing a dynamic obstacle:
 <div figure-id="fig:demo_1_no_cost_grid">
      <img src="994_AMOD18_TheObstavoidAlgorithm/demo_1_no_cost_grid.gif" style='width: 30em'/>
 </div>
@@ -25,6 +26,7 @@ For the actor to stay within its own lane the cost was shaped with a 5th degree 
 By reducing the cost linearly along the driving direction of the road, it is beneficial for the actor to drive forwards. Both road cost and driving cost are independent of time, so these will remain the same for any given driving scenario.
 
 
+Static cost function for lane following and forward motion:
 <div figure-id="fig:cost_function_road_fwd">
      <img src="994_AMOD18_TheObstavoidAlgorithm/cost_function_road_fwd.png" style='width: 30em'/>
 </div>
@@ -35,13 +37,19 @@ On the other hand, obstacles like other duckiebots cannot always be modelled sta
 The costs of each obstacle is modelled as a modified rotationally symmetrical bell curve. By considering the current velocity of a dynamic obstacle and assuming the speed and direction to remain the same, the position of the bell shaped cost function can be predicted for every time instance on the time-dependent cost function.
 
 
-
+Modified bell curve cost function with tuning parameter to change the radial influence:
+<div figure-id="fig:BellCurve">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/BellCurve.gif" style='width: 30em'/>
+</div>
 
 
 By simply adding these static costs with the cost of each obstacle together, a overall final cost is obtained. Once this final cost function has been found, it can now be discretized as a 5 x 6 x 6 grid (width x length x timesteps) in a defined box in front of the actor. The size of this grid has been evaluated, for the solver to be able to compute the trajectory within a 10th of a second, allowing for a sampling frequency of 10 Hz.
 
 
-
+Actor with visualisation of its cost grid. As the road is blocked, the lowest cost is reached by waiting:
+<div figure-id="fig:demo_3_with_cost_grid">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/demo_3_with_cost_grid.gif" style='width: 30em'/>
+</div>
 
 
 ### Solver
@@ -54,21 +62,30 @@ Secondly, in contrast to typical shortest path problems, not only the edge cost 
 As our selected discretization parameters lead to a manageable number of 180 nodes and ca. 1’500 edges, an optimal solution with no heuristics is feasible: The go-to choice for this scenario is Dijkstra’s algorithm. Not only does it guarantee the path of optimal cost, but it determines it with great efficiency. Emerging from the application of the dynamic programming algorithm on a general, shortest path problem, it only pursues to search paths while they are lower in cost than the previously best result. Finally, after applying Dijkstra’s algorithm to our problem, we obtain a time-stamped trajectory over the entire planning horizon.
 
 
-
+A duckie crosses the road, but the Obstavoid Algorithm predicted its movement early enough:
+<div figure-id="fig:demo_4_no_cost_grid">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/demo_4_no_cost_grid.gif" style='width: 30em'/>
+</div>
 
 
 ### Trajectory sampler
 Given this trajectory, the actor now needs to follow it as smoothly as possible. To get a continuous trajectory, the discretely evaluated six time-stamped positions are linearized inbetween. At last, a trajectory follower calculates the linear and angular velocity commands to steer the robot.
 
 
-
+Actor, following the lane:
+<div figure-id="fig:demo_5_no_cost_grid">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/demo_5_no_cost_grid.gif" style='width: 30em'/>
+</div>
 
 
 ### Optimality
 What sets the Obstavoid Algorithm apart from a conventional trajectory optimizer is its inherent versatility: As the entire trajectory generation is one fluent process without any human-made case classifications, the transition between different driving maneuvers and actions happens without discrete switches. With this approach, a great variety of scenarios can be managed automatically, e.g. waiting for a passing maneuver while the other lane is blocked. This dynamic start-and-stop maneuvering strategy directly arises from the problem formulation, as it turns out that waiting before overtaking clearly has a lower cost than a crash or going back-and-forth.
 
 
-
+The Actor is waiting until the other lane is free:
+<div figure-id="fig:demo_2_no_cost_grid">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/demo_2_no_cost_grid.gif" style='width: 30em'/>
+</div>
 
 
 In conclusion, with the Obstavoid Algorithm the human influence on scenario analysis, classification and corresponding trajectory generation shifts towards the high-level tasks of cost-function design, which is finally not only a question of engineering but rather of moral and ethics.
