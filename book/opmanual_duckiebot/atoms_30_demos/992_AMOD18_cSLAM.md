@@ -65,7 +65,7 @@ Before starting, please install ROS Kinetic on your local computer by following 
 
 Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
 
-Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam and follow readme instructions to install everything (make sure you install g2o for python2, see https://github.com/uoip/g2opy/issues/9 for the required modification) 
+Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam and follow readme instructions to install everything (make sure you install g2o for python2) 
 
 ### Step 1: Set up the watchtowers. _You can skip this step for the Thursday demo_
 
