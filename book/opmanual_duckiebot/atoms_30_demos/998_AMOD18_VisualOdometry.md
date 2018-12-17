@@ -41,7 +41,7 @@ Check: Both yout duckiebot and your laptop are connected to the same, stable net
 
 ### Demo instructions {#demo-visualodometry-run}
 
-Step 1: From your computer load the demo container on your duckiebot typing by the command:
+Step 1: From your computer load the demo container on your duckiebot by typing the command:
 
     laptop $ docker -H ![hostname].local run -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
 
