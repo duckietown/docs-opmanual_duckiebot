@@ -49,13 +49,13 @@ Step 1: From your computer load the demo container on your duckiebot typing the 
 Step 2: Start the graphical user interface:
 
     laptop $ dts start_gui_tools ![hostname]
-    
+
 Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop
 
 Step 4: Check that you can visualize the list of topics in the duckiebot from the laptop:
 
     laptop-container $ rostopic list
-    
+
 Step 5: On the same terminal, run `rviz` with the downloaded configuration file
 
     laptop-container $ rosrun rviz rviz -d ![path_to_file]/odometry_rviz_conf.rviz
@@ -64,7 +64,7 @@ Step 6: On a new terminal in the computer, open a virtual joystick to steer the 
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
-Step 7: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick.
+Step 7: Start your Duckiebot by pressing <kbd>a</kbd> in the virtual joystick.
 
 Step 8: Be amazed!
 
@@ -145,7 +145,7 @@ At each frame, we gather one image and we discard the oldest one, so to keep alw
 
 Then we need to match the features, with either `KNN` or using the Hamming distance (default). If KNN is chosen, its matches can be filtered using a first-neighbor-to-second-neighbor ratio threshold. Empirically Bruteforce Hamming distance has proven to outperform KNN in the duckietown environment.
 
-Matches may be further filtered using histogram fitting (activated by default, can be turned off). This means that we fit a gaussian distribution to the lenght and angle of the matches, and we remove the ones further than `x` standard deviations from the average value. These `x` values can be set in the parameters yaml file. 
+Matches may be further filtered using histogram fitting (activated by default, can be turned off). This means that we fit a gaussian distribution to the lenght and angle of the matches, and we remove the ones further than `x` standard deviations from the average value. These `x` values can be set in the parameters yaml file.
 
 Then we divide the feature pairs between far and close regions, to decouple the estimate of the translation vector to the estimate of the rotation matrix (BangleiGuan et.al. 2018).  
 
