@@ -47,8 +47,14 @@ Secondly, in contrast to typical shortest path problems, not only the edge cost 
 
 As our selected discretization parameters lead to a manageable number of 180 nodes and ca. 1’500 edges, an optimal solution with no heuristics is feasible: The go-to choice for this scenario is Dijkstra’s algorithm. Not only does it guarantee the path of optimal cost, but it determines it with great efficiency. Emerging from the application of the dynamic programming algorithm on a general, shortest path problem, it only pursues to search paths while they are lower in cost than the previously best result. Finally, after applying Dijkstra’s algorithm to our problem, we obtain a time-stamped trajectory over the entire planning horizon.
 
+<img src="994_AMOD18_TheObstavoidAlgorithm/demo_4_no_cost_grid.gif" width="80%">
+[A duckie crosses the road, but the Obstavoid Algorithm predicted its movement early enough.]
+
 ### Trajectory sampler
 Given this trajectory, the actor now needs to follow it as smoothly as possible. To get a continuous trajectory, the discretely evaluated six time-stamped positions are linearized inbetween. At last, a trajectory follower calculates the linear and angular velocity commands to steer the robot.
+
+<img src="994_AMOD18_TheObstavoidAlgorithm/demo_5_no_cost_grid.gif" width="80%">
+[Actor, following the lane.]
 
 ### Optimality
 What sets the Obstavoid Algorithm apart from a conventional trajectory optimizer is its inherent versatility: As the entire trajectory generation is one fluent process without any human-made case classifications, the transition between different driving maneuvers and actions happens without discrete switches. With this approach, a great variety of scenarios can be managed automatically, e.g. waiting for a passing maneuver while the other lane is blocked. This dynamic start-and-stop maneuvering strategy directly arises from the problem formulation, as it turns out that waiting before overtaking clearly has a lower cost than a crash or going back-and-forth.
