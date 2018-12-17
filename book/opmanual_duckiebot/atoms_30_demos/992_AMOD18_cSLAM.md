@@ -97,7 +97,7 @@ Then you can run it with `bash watchtowers_setup.sh`.
 
 ### Step 5: Test the watchtowers
 
-Setup the diagnostics tool to check that the messanging status of the watchtowers are `OK` where data was received in the last XX seconds. 
+Setup the diagnostics tool to check that the status of the watchtowers are `OK` where data was received in the last XX seconds. 
 
     laptop $ docker pull bensonkuan/cslam-diagnostics
     laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
@@ -131,13 +131,16 @@ You can then start the container by running:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml up`
 
-Make the Duckibot see an april tag and you should see that you receive messages from it in the Diagnostics tool.
+Make the Duckiebot see an april tag and you should see that you receive messages from it in the Diagnostics tool.
 
 ### Step 7
-Set up duckietown visualisation by following installation instructions [here](https://github.com/duckietown/duckietown-visualization).
+Set up and run the visualization of the map, duckiebots, watchtowers, and traffic signs using the following commands:
 
-Configure the duckietown visualisation to reflect the layout of the Duckietown that has been built. The instructions to configure the visualisation is explained in the `How it works` and `Using duckietown_visualization with your pipeline` section after the installation instructions.
-
+    laptop $ docker pull surirohit/cslam-visualization
+    laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
+    laptop $ docker run -it --rm --net=host -e ROS_MASTER_IP=http://![rosmaster_name].local:11311 -e ROS_IP=![rosmaster_IP] surirohit/cslam-visualization
+    
+TODO: check ways for other computers to be rosmaster (it only allows local computer to be rosmaster now)
 ### Step 8
 Set up graph optimizer
     
