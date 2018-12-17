@@ -43,7 +43,7 @@ Modified bell curve cost function with tuning parameter to change the radial inf
 </div>
 
 
-By simply adding these static costs with the cost of each obstacle together, a overall final cost is obtained. Once this final cost function has been found, it can now be discretized as a 5 x 6 x 6 grid (width x length x timesteps) in a defined box in front of the actor. The size of this grid has been evaluated, for the solver to be able to compute the trajectory within a 10th of a second, allowing for a sampling frequency of 10 Hz.
+By simply adding these static costs with the cost of each obstacle together, an overall final cost is obtained. Once this final cost function has been found, it can now be discretized as a 5 x 6 x 6 grid (width x length x timesteps) in a defined box in front of the actor. The size of this grid has been evaluated, for the solver to be able to compute the trajectory within a 10th of a second, allowing for a sampling frequency of 10 Hz.
 
 
 Actor with visualisation of its cost grid. As the road is blocked, the lowest cost is reached by waiting:
