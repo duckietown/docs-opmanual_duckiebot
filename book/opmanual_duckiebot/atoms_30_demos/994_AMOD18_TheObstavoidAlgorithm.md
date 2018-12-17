@@ -129,7 +129,8 @@ activate the virtual environment
 ```
 $ source venv/bin/activate
 ```
-
+If you have not installed duckietown-world yet, do it now. See installation instructions [here](https://github.com/duckietown/duckietown-world)
+virt
 Step 2: Getting the mplan code
 
 Clone the mplan-repo with the following command. Make sure you are inside the `src` folder of a catkin workspace. If you do not have a catkin workspace set up follow these [instructions](https://github.com/duckietown/duckietown-mplan/wiki/Setting-up-a-catkin-workspace).
@@ -168,16 +169,24 @@ Run `catkin_make` instead if you don't use `python-catkin-tools`.
 
 Next, source your workspace using
 ```
-$ source ../devel/setup.bash
+$ source devel/setup.bash
 ```
 
 Step 3: Running the demo
 
 Run the demo including a visualization in rviz with 
 ```
-$ roslaunch obst_avoid obst_avoid_withviz_1_static_obstacle.launch
+$ roslaunch obst_avoid obst_avoid_withviz.launch
 ```
 
+Step 4: Teleoperating another duckiebot (optional)
+In the next step we will take control of another duckiebot, to see how the actor and the obstavoid algorithm will react to it.
+
+Keep the simulation from before running and in a new terminal launch (don't forget to activate your virtualenvironment and source the catkin workspace)
+```
+$ rosrun obst_avoid duckiebot_teleop_node.py$rosrun rosrun
+```
+Using 'i', 'j', 'l', ',' you can now teleoperate another duckiebot. With 'q', 'w' you can in-/ decrease it's speed. Make sure to keep the terminal selected, else the keyboard inputs will not be processed.
 
 ## Troubleshooting {#demo-theobstavoidalgorithm-troubleshooting}
 
