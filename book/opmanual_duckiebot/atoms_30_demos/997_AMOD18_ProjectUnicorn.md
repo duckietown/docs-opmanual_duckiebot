@@ -1,9 +1,9 @@
-# AMOD18 Project Unicorn {#demo-projectunicorn}
+# AMOD18 Project Unicorn {#demo-projectunicorn status=ready}
 
 This document provides instructions on how to run the intersection navigation demo. 
 
 ### Approach
-As indicated in grey in ([](#fig:software)) there are four major parts in the intersection navigation:
+As indicated in grey in [](#fig:software) there are four major parts in the intersection navigation:
 
 * Estimation of the initial pose relative to the intersection (based on the position of the AprilTags).
 
@@ -48,12 +48,12 @@ The duckiebot will first turn left. After a successful left turn, you have 10 se
 
 </div>
 
-## Video of expected results {#demo-template-expected}
+## Video of expected results {#demo-projectunicorn-expected}
 
 
 First, we show a video of the expected behavior.
 
-## Duckietown setup notes {#demo-template-duckietown-setup}
+## Duckietown setup notes {#demo-projectunicorn-duckietown-setup}
 
 
 The following is assumed:
@@ -62,7 +62,7 @@ The following is assumed:
 * The 3-way and 4-way intersections are built according to duckietown specifications.
 
 
-* AprilTags are placed according to ([](#fig:4-way)).
+* AprilTags are placed according to [](#fig:4-way).
 
 <div figure-id="fig:4-way" figure-caption="Correct position of the Apriltags in a 4-way Intersection" >
      <img src="Intersection4.png" style='width: 30em'/>
@@ -73,7 +73,7 @@ The following is assumed:
 
 
 
-## Duckiebot setup notes {#demo-template-duckiebot-setup}
+## Duckiebot setup notes {#demo-projectunicorn-duckiebot-setup}
 
 The duckiebot passes the intersection calibration test.
 
@@ -82,14 +82,14 @@ The duckiebot passes the intersection calibration test.
 * Calibration test debugging infos.
 
 
-## Laptop setup notes {#demo-template-laptop-setup}
+## Laptop setup notes {#demo-projectunicorn-laptop-setup}
 
 
 Clone the duckietown-intnav folder in your PC:
  
     laptop $ git clone git@github.com:duckietown/duckietown-intnav.git
 
-## Pre-flight checklist {#demo-template-pre-flight}
+## Pre-flight checklist {#demo-projectunicorn-pre-flight}
 
 
 
@@ -99,7 +99,7 @@ Clone the duckietown-intnav folder in your PC:
 
 **Check**: The duckiebot is placed in a lane (with width between 10 - 16 cm), in front of the red line and  approximately perpendicular to it.
 
-## Demo instructions {#demo-template-run}
+## Demo instructions {#demo-projectunicorn-run}
 
 
 Make sure the ros-picam and joystick containers are running on the duckiebot.
@@ -126,12 +126,12 @@ After the duckiebot has crossed the intersection straight, the demo is finished.
 
 Note: If you wish to restart the demo, you have to remove the intnav container before running it again. 
 
-## Troubleshooting {#demo-template-troubleshooting}
+## Troubleshooting {#demo-projectunicorn-troubleshooting}
 
 
 Add here any troubleshooting / tips and tricks required.
 
-## Demo failure demonstration {#demo-template-failure}
+## Demo failure demonstration {#demo-projectunicorn-failure}
 
 
 Finally, put here a video of how the demo can fail, when the assumptions are not respected.
