@@ -59,10 +59,14 @@ First, we show a video of the expected behavior.
 The following is assumed:
 
 
-* The 4 way intersection is built according to duckietown specifications.
+* The 3-way and 4-way intersections are built according to duckietown specifications.
 
 
-* AprilTags are placed according to X.
+* AprilTags are placed according to ([](#fig:4-way)).
+
+<div figure-id="fig:4-way" figure-caption="Correct position of the Apriltags in a 4-way Intersection" >
+     <img src="Intersection4.png" style='width: 30em'/>
+</div>
 
 
 * The lightning conditions are sufficiently bright.
