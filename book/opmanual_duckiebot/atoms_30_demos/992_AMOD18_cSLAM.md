@@ -65,6 +65,8 @@ Before starting, please install ROS Kinetic on your local computer by following 
 
 Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
 
+Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam and follow readme instructions to install everything (make sure you install g2o for python2) 
+
 ### Step 1: Set up the watchtowers. _You can skip this step for the Thursday demo_
 
 To burn the SD card for each watchtower, the same instructions as for Duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
@@ -145,9 +147,15 @@ Set up and run the visualization of the map, duckiebots, watchtowers, and traffi
 Right now, you should see the map loaded and the floor apriltags. The rest will be visible after the next step.
 
 ### Step 8
-Set up graph optimizer
-    
-    (TODO: Amaury)
+Set up graph optimizer  
+
+On a laptop that is connected to the same ROS master as the one where transform are published (using `export ROS_MASTER_URI= your master`), run the following launch:  
+
+    laptop $ roslaunch pose_graph_builder transform_listener.launch  
+
+It will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz thanks to step 7.  
+TODO : make it a docker container  
+TODO : rename the launch file to a better name  
 
 ### Step 9
 Control the Duckiebot manually around Duckietown
@@ -160,11 +168,25 @@ Look at the diagnostic tool to ensure the messaging status of the Duckiebots are
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
+### Rviz visualization makes no sense
+If the positions of your duckies and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
+    - April tag recognition is off and gives out weird transforms  
+    - Time delays between different input (watchtowers, duckies) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
+    - Optimization might take to long because of discrepencies in the graph. Check the argument `verbose` in the optimisation in transform_listener_ros.py 
+
+
 ### April tags printed may be of wrong size
 Check that the printed April tags are of size 6.5cm as the printer might have done some scaling to the tags.
 
 ### Check Diagnostics tool 
 Check that messages are received frequently. Is not device may be suffering from poor connection and will need to restart or configuration for device was done wrongly and it needs to be reconfigured again. Do check that the network signal is strong enough for the devices to communicate with one another.
+
+### How to see the g2o graph
+In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
+In transform_listener_ros.py, you can set the "save_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using g2o_viewer.   
+
+TODO : make this a launch argument (so that we don't have to read through the code)     
+TODO : add a picture of g2o_viewer   
 
 ## Demo failure demonstration {#demo-cslam-failure}
 
