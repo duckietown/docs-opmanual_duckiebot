@@ -1,6 +1,6 @@
 # AMOD18 cSLAM {#demo-cslam status=draft}
 
-This is the description of the cSLAM (Centralized Simultaneous Localization And Mapping) demo. This demo allows a Duckiebot to localize itself and at the same time to build a map while it moves around the city. The task is achieved by using the camera of the Duckiebot, together with watchtowers located along the path, to detect April tags attached to the tiles, to the traffic signs and to the Duckiebot itself.
+This is the description of the cSLAM (Centralized Simultaneous Localization And Mapping) demo. This demo allows a Duckiebot to localize itself, while the watchtowers and duckiebots work together to build a map of the arena. The task is achieved by using the camera of the Duckiebot, together with watchtowers located along the path, to detect April tags attached to the tiles, to the traffic signs and to the Duckiebot itself.
 
 <div class='requirements' markdown="1">
 
@@ -29,9 +29,8 @@ First, we show a video of the expected behavior (if the demo is successful).
 Layout of Duckietown:
 
 * Layout
-  - Tiles should be arranged in such a way that the path forms a closed loop.
   - Traffic lights are good to have but not necessary (optional).
-  - Any 2 watchtower should observe at least one common April tag and all the April tags should be observed by all the watchtowers.
+  - Each floor April tag should have atleast two watchtowers seeing it. It is recommended, but not necessary, that the bipartite graph of watchtowers and April tags are connected.
 * Infrastructure
   - April tags have to be placed on the tiles, traffic signs, and Duckiebots. These tags, should all be unique!
   - For a detailed map to be visualized, the poses of the April tags in the Duckietown must be (approximately) known beforehand.
@@ -53,7 +52,7 @@ Check: The `roscore`, `ros-picam`, and `joystick` containers are turned on.
 
 Check: Keyboard control is launched for this Duckiebot.
 
-Check: ROS is installed on your local computer. _Is this neccessary if everything is Dockerized?_
+Check: ROS is installed on your local computer. TODO: _Is this neccessary if everything is Dockerized?_
 
 Check: Docker is installed on your local computer.
 
@@ -87,6 +86,7 @@ Print out the April tags and place them on top of Duckiebots and in Duckietown
     (Provide location for Benson to place pre-generated April tags)
     
 ### Step 3: Setup a ROS Master machine
+TODO: roscore should be running on server otherwise acquistion won't work
 
 ### Step 4: Configure the watchtowers
 
@@ -94,6 +94,8 @@ In order to start processing data on the watchtowers you need to run the `cslam-
 
 We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `SERVER_HOSTNAME` and `SERVER_IP` in this file to the ones of your ROS Master.
 Then you can run it with `bash watchtowers_setup.sh`.
+
+TODO: Add this is not the server, and that this is needed to lower the load on the server which does the real processing. We should also mention somewhere that we need three different computers - data acquisition, graph optimization, and visualization
 
 ### Step 5: Test the watchtowers
 
@@ -139,8 +141,9 @@ Set up and run the visualization of the map, duckiebots, watchtowers, and traffi
     laptop $ docker pull surirohit/cslam-visualization
     laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
     laptop $ docker run -it --rm --net=host -e ROS_MASTER_IP=http://![rosmaster_name].local:11311 -e ROS_IP=![rosmaster_IP] surirohit/cslam-visualization
-    
-TODO: check ways for other computers to be rosmaster (it only allows local computer to be rosmaster now)
+
+Right now, you should see the map loaded and the floor apriltags. The rest will be visible after the next step.
+
 ### Step 8
 Set up graph optimizer
     
