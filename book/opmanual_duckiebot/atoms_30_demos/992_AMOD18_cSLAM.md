@@ -60,7 +60,7 @@ Check: The watchtowers are powered on
 
 ## Demo instructions {#demo-cslam-run}
 
-### Step 0
+### Step 0: Preliminaries
 Before starting, please install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
 
 Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
@@ -137,7 +137,7 @@ You can then start the container by running:
 
 Make the Duckiebot see an april tag and you should see that you receive messages from it in the Diagnostics tool.
 
-### Step 7
+### Step 7: Set up the visualization
 Set up and run the visualization of the map, duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull surirohit/cslam-visualization
@@ -146,8 +146,7 @@ Set up and run the visualization of the map, duckiebots, watchtowers, and traffi
 
 Right now, you should see the map loaded and the floor apriltags. The rest will be visible after the next step.
 
-### Step 8
-Set up graph optimizer  
+### Step 8: Set up graph optimizer  
 
 On a laptop that is connected to the same ROS master as the one where transform are published (using `export ROS_MASTER_URI= your master`), run the following launch:  
 
@@ -157,7 +156,7 @@ It will listen to the transforms, will build a graph, optimize it and publish th
 TODO : make it a docker container  
 TODO : rename the launch file to a better name  
 
-### Step 9
+### Step 9: The fun part
 Control the Duckiebot manually around Duckietown
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
