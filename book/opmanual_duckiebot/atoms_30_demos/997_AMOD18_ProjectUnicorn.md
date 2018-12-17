@@ -62,10 +62,15 @@ The following is assumed:
 * The 3-way and 4-way intersections are built according to duckietown specifications.
 
 
-* AprilTags are placed according to [](#fig:4-way).
+* AprilTags are placed according to [](#fig:4-way) and [](#fig:3-way).
 
 <div figure-id="fig:4-way" figure-caption="Correct position of the Apriltags in a 4-way Intersection" >
-     <img src="Intersection4.png" style='width: 30em'/>
+     <img src="4-way-map.png" style='width: 30em'/>
+</div>
+
+
+<div figure-id="fig:3-way" figure-caption="Correct position of the Apriltags in a 3-way Intersection" >
+     <img src="3-way-map.png" style='width: 30em'/>
 </div>
 
 
