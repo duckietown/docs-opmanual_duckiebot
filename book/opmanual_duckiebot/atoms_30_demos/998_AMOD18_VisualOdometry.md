@@ -8,7 +8,7 @@ This is the report of the AMOD18 Visual Odometry group. In the first section we 
 
 Requires: 1 Duckiebot in configuration [DB18](#duckiebot-configurations) (make sure there is a Duckie on it)
 
-Requires: 1 External computer to operate the demo, with a [Docker installation](#laptop-setup) and ROS installation to visualize the results.
+Requires: 1 External computer to operate the demo, with a [Docker installation](#laptop-setup)
 
 Requires: [Camera calibration](#camera-calib) completed.
 
@@ -45,34 +45,28 @@ Step 1: From your computer load the demo container on your duckiebot typing the 
 
     laptop $ docker -H ![hostname].local run -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
 
-*Do we need this?*
+
 Step 2: Start the graphical user interface:
 
     laptop $ dts start_gui_tools ![hostname]
     
 Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop
 
-Step 4: Check which is the ROS URI of your duckiebot. Open a new laptop terminal and export it there:
+Step 4: Check that you can visualize the list of topics in the duckiebot from the laptop:
 
-    duckiebot $ echo $ROS_MASTER_URI 
+    laptop-container $ rostopic list
     
-    laptop $ export ROS_MASTER_URI=http://![hostname].local:11311
+Step 5: On the same terminal, run `rviz` with the downloaded configuration file
 
-Step 5: Check that you can visualize the list of topics in the duckiebot from the laptop:
+    laptop-container $ rosrun rviz rviz -d ![path_to_file]/odometry_rviz_conf.rviz
 
-    laptop $ rostopic list
-    
-Step 6: On the same terminal, run `rviz` with the downloaded configuration file
-
-    laptop $ rosrun rviz rviz -d ![path_to_file]/odometry_rviz_conf.rviz
-
-Step 7: On a new terminal in the computer, open a virtual joystick to steer the bot
+Step 6: On a new terminal in the computer, open a virtual joystick to steer the bot
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
-Step 8: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick.
+Step 7: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick.
 
-Step 9: Be amazed!
+Step 8: Be amazed!
 
 
 ### Troubleshooting {#demo-visualodometry-troubleshooting}
