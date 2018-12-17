@@ -8,7 +8,7 @@ With the Obstavoid algorithm, the duckiebot (now denoted as the ‘actor’) wil
 
 In this demo different scenarios are set up in a simulation, where you can test the Obstavoid algorithm to its full extent.
 
-<img src="994_AMOD18_TheObstavoidAlgorithm/demo_1_no_cost_grid.gif">
+
 
 
 
@@ -22,7 +22,7 @@ For the actor to stay within its own lane the cost was shaped with a 5th degree 
 
 By reducing the cost linearly along the driving direction of the road, it is beneficial for the actor to drive forwards. Both road cost and driving cost are independent of time, so these will remain the same for any given driving scenario.
 
-
+<img src="994_AMOD18_TheObstavoidAlgorithm/cost_function_road_fwd.png">
 
 
 
