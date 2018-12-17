@@ -112,8 +112,6 @@ Make sure you have a computer on which the following packages are installed:
 
 Check: Desktop-full installation of ROS - for instructions see [here](http://wiki.ros.org/kinetic/Installation)
 
-Check: duckietown-world - for instructions see [here](https://github.com/duckietown/duckietown-world)
-
 
 ## Demo instructions {#demo-theobstavoidalgorithm-run}
 
@@ -130,7 +128,8 @@ activate the virtual environment
 $ source venv/bin/activate
 ```
 
-If you have not installed duckietown-world yet, do it now. See installation instructions [here](https://github.com/duckietown/duckietown-world)
+Install duckietown-world now in the virtual environment, as we depend on libraries from there - for instructions see [here](https://github.com/duckietown/duckietown-world)
+
 
 ### Step 2: Getting the mplan code
 
@@ -201,8 +200,9 @@ Using 'i', 'j', 'l', ',' you can now teleoperate another duckiebot. With 'q', 'w
 
 ## Troubleshooting {#demo-theobstavoidalgorithm-troubleshooting}
 
-Not needed for us, it always works ;)
-
+ * 1 : Networkx library was not found: Double check that all installations were completed IN the virtual environment, especially the requirements of duckietown-world.
+ * 2 : duckietown-world was not found: Double check that all installations were completed IN the virtual environment, especially the setup of duckietown-world.
+ 
 
 ## Demo failure demonstration {#demo-theobstavoidalgorithm-failure}
 
