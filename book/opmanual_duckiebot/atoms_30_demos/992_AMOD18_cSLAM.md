@@ -94,7 +94,7 @@ TODO: roscore should be running on server otherwise acquistion won't work
 
 In order to start processing data on the watchtowers you need to run the `cslam-aquisition` container. This requires that you know the hostname and the IP address of the machine serving as the ROS Master for this demo. Once you know the hostname you can get its IP address by pinging it.
 
-We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `SERVER_HOSTNAME` and `SERVER_IP` in this file to the ones of your ROS Master.
+We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `SERVER_HOSTNAME` and `SERVER_IP` in this file to the ones of your ROS Master. Also check if `array` contains all your watchtowers.
 Then you can run it with `bash watchtowers_setup.sh`.
 
 TODO: Add this is not the server, and that this is needed to lower the load on the server which does the real processing. We should also mention somewhere that we need three different computers - data acquisition, graph optimization, and visualization
@@ -164,6 +164,11 @@ Control the Duckiebot manually around Duckietown
 Look at the diagnostic tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. 
 
 ### Step 10: Shut everything off
+You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
+
+You can then stop the processing of your Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and executing:
+
+`docker-compose -f docker-compose-duckiebot-x86.yml down`
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
