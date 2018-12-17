@@ -99,9 +99,16 @@ Then you can run it with `bash watchtowers_setup.sh`.
 
 ### Step 5: Test the watchtowers
 
-TODO: Put instructions on how to run the diagnotics tool
+Setup the diagnostics tool to check that the messanging status of the watchtowers are `OK` where data was received in the last 10 seconds. 
 
-The diagnostics tool should show all the watchtowers and `OK` if data was received in the last XX seconds. If some of the watchtowers does not appear in the least, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
+    laptop $ docker pull bensonkuan/cslam-diagnostics
+    laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
+    laptop $ docker run -it --rm --net=host -e ROS_MASTER_IP=http://![rosmaster_name].local:11311 -e ROS_IP=![rosmaster_IP] bensonkuan/cslam-diagnostics
+    
+TODO: check ways for other computers to be rosmaster (it only allows local computer to be rosmaster now)
+
+If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
+
 
 ### Step 6: Setup the Duckiebot
 
@@ -147,6 +154,8 @@ TODO : make it a docker container
 Control the Duckiebot manually around Duckietown
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
+    
+Look at the diagnostic tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. 
 
 ### Step 10: Shut everything off
 
@@ -162,16 +171,8 @@ If the positions of your duckies and watchtower in Rviz make no sense, there is 
 ### April tags printed may be of wrong size
 Check that the printed April tags are of size 6.5cm as the printer might have done some scaling to the tags.
 
-### Set up Diagnostics tool 
-Check that messages are received frequently
-
-    laptop $ docker pull bensonkuan/cslam-diagnostics
-    
-    laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
-    
-    laptop $ docker run -it --rm --net=host -e ROS_MASTER_IP=http://![rosmaster_name].local:11311 -e ROS_IP=![rosmaster_IP] bensonkuan/cslam-diagnostics
-
-TODO: check ways for other computers to be rosmaster
+### Check Diagnostics tool 
+Check that messages are received frequently. Is not device may be suffering from poor connection and will need to restart or configuration for device was done wrongly and it needs to be reconfigured again. Do check that the network signal is strong enough for the devices to communicate with one another.
 
 ### How to see the g2o graph
 In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
