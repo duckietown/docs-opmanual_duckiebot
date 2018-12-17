@@ -65,11 +65,6 @@ What sets the Obstavoid Algorithm apart from a conventional trajectory optimizer
 In conclusion, with the Obstavoid Algorithm the human influence on scenario analysis, classification and corresponding trajectory generation shifts towards the high-level tasks of cost-function design, which is finally not only a question of engineering but rather of moral and ethics.
 
 
-
-<div class='requirements' markdown="1">
-Requires: A computer with ROS-kinetic installed
-</div>
-
 ## Video of expected results {#demo-obstavoid-expected}
 
 First, we show a video of the expected behavior (if the demo is successful).
