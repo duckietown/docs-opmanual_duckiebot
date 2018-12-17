@@ -66,7 +66,7 @@ Step 6: On a new terminal in the computer, open a virtual joystick to steer the 
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
-Step 7: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick.
+Step 7: Start your Duckiebot by pressing <kbd>a</kbd> in the virtual joystick.
 
 Step 8: Be amazed!
 
