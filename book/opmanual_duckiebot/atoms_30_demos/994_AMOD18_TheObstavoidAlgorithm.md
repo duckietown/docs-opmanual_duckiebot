@@ -206,6 +206,8 @@ Not needed for us, it always works ;)
 
 ## Demo failure demonstration {#demo-theobstavoidalgorithm-failure}
 
-Finally, put here a video of how the demo can fail, when the assumptions are not respected.
-idea for scenario: duckie comes out of curve and is detected too late to properly plan ahead
+Our pipeline works with a fixed field of view, which can lead to situations where it is not able to react in time to avoid an obstacle if the obstacle comes to fast from the side.
+<div figure-id="fig:fail_1_to_fast_from_side">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/fail_1_to_fast_from_side.gif" style='width: 30em'/>
+</div>
 
