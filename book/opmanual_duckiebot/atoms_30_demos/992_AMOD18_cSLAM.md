@@ -148,8 +148,8 @@ On a laptop that is connected to the same ROS master as the one where transform 
     laptop $ roslaunch pose_graph_builder transform_listener.launch  
 
 It will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz thanks to step 7.  
-TODO : make it a docker container
-TODO : rename the launch file to a better name
+TODO : make it a docker container  
+TODO : rename the launch file to a better name  
 
 ### Step 9
 Control the Duckiebot manually around Duckietown
@@ -179,7 +179,7 @@ Check that messages are received frequently. Is not device may be suffering from
 In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
 In transform_listener_ros.py, you can set the "save_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using g2o_viewer.   
 
-TODO : make this a launch argument (so that we don't have to read through the code)   
+TODO : make this a launch argument (so that we don't have to read through the code)     
 TODO : add a picture of g2o_viewer   
 
 ## Demo failure demonstration {#demo-cslam-failure}
