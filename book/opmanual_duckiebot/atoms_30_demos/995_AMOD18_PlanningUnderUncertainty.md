@@ -104,7 +104,6 @@ For experimentation. You can edit the following parameters and observe how the p
 - [x] Visualizing of the shortest path planned
 
 
-```
 
 ## More on Planning Under Uncertainty
 
