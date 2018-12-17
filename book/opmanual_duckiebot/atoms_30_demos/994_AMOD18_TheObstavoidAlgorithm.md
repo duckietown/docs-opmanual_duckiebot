@@ -108,16 +108,30 @@ As this is only a demo in the simulation framework `duckietown-world`, no setup 
 
 ## Pre-flight checklist {#demo-theobstavoidalgorithm-pre-flight}
 
-Make sure you have a computer on which the following packages are installed:
+Make sure you have a computer on which the following packages are installed (the installation has only been testes on Naitive Ubuntu 16.04)
 
-Check: Desktop-full installation of ROS - for instructions see [here](http://wiki.ros.org/kinetic/Installation)
+* Check: Desktop-full installation of ROS - for instructions see [here](http://wiki.ros.org/kinetic/Installation)
+* Check: that you have an ssh key for your computer [here](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+* Check: installed pip, virtualenv [here](https://www.saltycrane.com/blog/2010/02/how-install-pip-ubuntu/)
+* Check: installed catkin build [here](https://catkin-tools.readthedocs.io/en/latest/installing.html)
+
 
 
 ## Demo instructions {#demo-theobstavoidalgorithm-run}
 
-Make sure you have the prerequisites installed. We recommend running the whole setup in a virtual environment using `python2.7`.
+### Step 0 - 2 with no effort
+
+If you are *lazy* you can just create a folder on your computer in which we will install everything you need for the demo and which you can easily delete afterwards. Just copy this file [here](https://raw.githubusercontent.com/duckietown/duckietown-mplan/restart/setup/setup_from_blank_folder.bash) in to the folder an run it in your folder with:
+
+```
+$ . ./setup_from_blank_folder.bash
+```
+
+
 
 ### Step 1: Virtual environment setup
+
+Make sure you have the prerequisites installed. We recommend running the whole setup in a virtual environment using `python2.7`.
 
 create a virtual environment with
 ```
