@@ -106,6 +106,7 @@ Setup the diagnostics tool to check that the messanging status of the watchtower
     laptop $ docker run -it --rm --net=host -e ROS_MASTER_IP=http://![rosmaster_name].local:11311 -e ROS_IP=![rosmaster_IP] bensonkuan/cslam-diagnostics
     
 TODO: check ways for other computers to be rosmaster (it only allows local computer to be rosmaster now)
+
 TODO: Make a note of how to revert `xhost +local` because of security issues
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
 
