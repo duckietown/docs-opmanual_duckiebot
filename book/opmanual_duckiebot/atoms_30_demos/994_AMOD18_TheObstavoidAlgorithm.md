@@ -22,8 +22,10 @@ For the actor to stay within its own lane the cost was shaped with a 5th degree 
 
 By reducing the cost linearly along the driving direction of the road, it is beneficial for the actor to drive forwards. Both road cost and driving cost are independent of time, so these will remain the same for any given driving scenario.
 
-<img src="994_AMOD18_TheObstavoidAlgorithm/cost_function_road_fwd.png">
 
+<div figure-id="fig:cost_function_road_fwd">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/cost_function_road_fwd.png" style='width: 30em'/>
+</div>
 
 
 On the other hand, obstacles like other duckiebots cannot always be modelled statically. Consider a situation, where the actor tries to drive around an obstacle, which is blocking the road. It needs to be sure, that no other duckiebot will come across the left lane while conducting a passing maneuver. To be able to predict the future within a certain time horizon, the cost grid needs to be extended to a third dimension, now considering the factor of time.
