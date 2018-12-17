@@ -145,10 +145,11 @@ Set up graph optimizer
 
 On a laptop that is connected to the same ROS master as the one where transform are published (using `export ROS_MASTER_URI= your master`), run the following launch:  
 
-    laptot $ roslaunch pose_graph_builder transform_listener.launch  
+    laptop $ roslaunch pose_graph_builder transform_listener.launch  
 
 It will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz thanks to step 7.  
 TODO : make it a docker container
+TODO : rename the launch file to a better name
 
 ### Step 9
 Control the Duckiebot manually around Duckietown
@@ -165,8 +166,8 @@ Look at the diagnostic tool to ensure the messaging status of the Duckiebots are
 If the positions of your duckies and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
     - April tag recognition is off and gives out weird transforms  
     - Time delays between different input (watchtowers, duckies) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
-    - Optimization might take to long because of discrepencies in the graph. Check the argument `verbose` in the optimisation in tranform_listener_ros.py 
- 
+    - Optimization might take to long because of discrepencies in the graph. Check the argument `verbose` in the optimisation in transform_listener_ros.py 
+
 
 ### April tags printed may be of wrong size
 Check that the printed April tags are of size 6.5cm as the printer might have done some scaling to the tags.
@@ -176,7 +177,7 @@ Check that messages are received frequently. Is not device may be suffering from
 
 ### How to see the g2o graph
 In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
-In tranform_listener_ros.py, you can set the "save_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using g2o_viewer.   
+In transform_listener_ros.py, you can set the "save_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using g2o_viewer.   
 
 TODO : make this a launch argument (so that we don't have to read through the code)   
 TODO : add a picture of g2o_viewer   
