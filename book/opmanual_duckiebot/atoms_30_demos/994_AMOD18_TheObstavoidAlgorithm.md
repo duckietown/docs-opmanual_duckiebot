@@ -9,7 +9,9 @@ With the Obstavoid algorithm, the duckiebot (now denoted as the ‘actor’) wil
 In this demo different scenarios are set up in a simulation, where you can test the Obstavoid algorithm to its full extent.
 
 
-
+<div figure-id="fig:demo_1_no_cost_grid.gif">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/demo_1_no_cost_grid.gif" style='width: 30em'/>
+</div>
 
 
 ## The Obstavoid Algorithm {#demo-theobstavoidalgorithm-explained}
