@@ -8,7 +8,7 @@ This is the report of the AMOD18 Visual Odometry group. In the first section we 
 
 Requires: 1 Duckiebot in configuration [DB18](#duckiebot-configurations) (make sure there is a Duckie on it)
 
-Requires: 1 External computer to operate the demo, with a [Docker installation](#laptop-setup).
+Requires: 1 External computer to operate the demo, with a [Docker installation](#laptop-setup) and ROS installation to visualize the results.
 
 Requires: [Camera calibration](#camera-calib) completed.
 
@@ -22,7 +22,7 @@ First, we show a video of the expected behavior (if the demo is succesful).
 
 ### Duckietown setup notes {#demo-visualodometry-duckietown-setup}
 
-To run this demo, you can setup any generic Duckietown which complies to the appereance specifications presented in [](+opmanual_duckietown#duckietown-specs).  
+To run this demo, you can setup any generic Duckietown which complies to the appereance specifications presented in [the duckietown specs](+opmanual_duckietown#duckietown-specs).  
 
 The only two constraints are that you have good lighting conditions and enough possible features in the field of view of the Duckiebot (they can be anything, really, from duckies to street signs to a replica of the Saturn V).
 
@@ -37,29 +37,42 @@ Check: Your Duckiebot has enough battery to run a demo.
 
 Check: Your performed recently the camera calibration on your Duckiebot.  
 
-
+Check: Both yout duckiebot and your laptop are connected to the same, stable network
 
 ### Demo instructions {#demo-visualodometry-run}
 
 Step 1: From your computer load the demo container on your duckiebot typing the command:
 
-    laptop $ docker -H ![hostname].local rin -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
+    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
 
+*Do we need this?*
 Step 2: Start the graphical user interface:
 
     laptop $ dts start_gui_tools ![hostname]
+    
+Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop
 
-Step 3: Open `rviz` by running:
+Step 4: Check which is the ROS URI of your duckiebot. Open a new laptop terminal and export it there:
 
-    laptop $ some meaningful command
+    duckiebot $ echo $ROS_MASTER_URI 
+    
+    laptop $ export ROS_MASTER_URI=http://![hostname].local:11311
 
-Step 4: On your computer open a virtual joystick to steer the bot
+Step 5: Check that you can visualize the list of topics in the duckiebot from the laptop:
+
+    laptop $ rostopic list
+    
+Step 6: On the same terminal, run `rviz` with the downloaded configuration file
+
+    laptop $ rosrun rviz rviz -d ![path_to_file]/odometry_rviz_conf.rviz
+
+Step 7: On a new terminal in the computer, open a virtual joystick to steer the bot
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
-Step 5: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick.
+Step 8: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick.
 
-Step 6: Be amazed!
+Step 9: Be amazed!
 
 
 ### Troubleshooting {#demo-visualodometry-troubleshooting}
@@ -71,6 +84,12 @@ Resolution: Make sure you tried the virtual joystick demo
 Symptom: The estimated pose is really bad.
 
 Resolution: You might have a too dynamic scene, for the visual odometry to run correctly.
+
+Symptom: The estimated pose is really bad and the scene is dynamic
+
+Resolution: Debug the pipeline by turning on the plotting parameters
+
+*Add videos here*
 
 ### Demo failure demonstration {#demo-visualodometry-failure}
 
@@ -130,13 +149,15 @@ The image gets then downsampled, as this reduces significantly the computational
 
 At each frame, we gather one image and we discard the oldest one, so to keep always the two most recent to perform the pipeline.  
 
-Then we need to match the features, with either `KNN` or using the Hamming distance (default).  
+Then we need to match the features, with either `KNN` or using the Hamming distance (default). If KNN is chosen, its matches can be filtered using a first-neighbor-to-second-neighbor ratio threshold. Empirically Bruteforce Hamming distance has proven to outperform KNN in the duckietown environment.
 
-Once we have the matches we need to filter out the outliers, which again is either done with `KNN` (using the ratio of distance between best and second best match) or using histogram fitting (default). This means that we fit a gaussian distribution to the lenght of the matches, and we remove the ones further than one standard deviation from the center.  
+Matches may be further filtered using histogram fitting (activated by default, can be turned off). This means that we fit a gaussian distribution to the lenght and angle of the matches, and we remove the ones further than `x` standard deviations from the average value. These `x` values can be set in the parameters yaml file. 
 
-Then we divide the feature pairs between far and close regions, to decouple the estimate of the translation vector to the estimate of the rotation matrix (TODO put reference).  
+Then we divide the feature pairs between far and close regions, to decouple the estimate of the translation vector to the estimate of the rotation matrix (BangleiGuan et.al. 2018).  
 
-After having computed the motion matrix, we multiply it to get a new estimate of the pose.
+After having computed the motion matrix, we apply it to the previous duckiebot rotation it to get a new estimate of the pose.
+
+The translation vector is assumed to be always a one-component vector (pointing towards the front direction), and is scaled by a factor of the duckiebot linear velocity command.
 
 #### Software architecture
 
