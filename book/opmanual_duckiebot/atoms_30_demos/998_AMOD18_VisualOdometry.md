@@ -6,11 +6,13 @@ This is the report of the AMOD18 Visual Odometry group. In the first section we 
 
 <div class='requirements' markdown="1">
 
-Requires: 1 Duckiebot in configuration DB18
+Requires: 1 Duckiebot in configuration [DB18](#duckiebot-configurations) (make sure there is a Duckie on it)
 
-Requires: 1 External computer to operate the demo.
+Requires: 1 External computer to operate the demo, with a [Docker installation](#laptop-setup).
 
-Requires: Camera calibration completed.
+Requires: [Camera calibration](#camera-calib) completed.
+
+Requires: [Joystick demo](#rc-control) succesful.
 
 </div>
 
@@ -39,17 +41,25 @@ Check: Your performed recently the camera calibration on your Duckiebot.
 
 ### Demo instructions {#demo-visualodometry-run}
 
-Step 1: From your computer run the demo container on your duckiebot typing the command:
+Step 1: From your computer load the demo container on your duckiebot typing the command:
 
-    laptop $ do something here
+    laptop $ docker -H ![hostname].local rin -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
 
-Step 2: On your computer open a virtual joystick to steer the bot
+Step 2: Start the graphical user interface:
+
+    laptop $ dts start_gui_tools ![hostname]
 
 Step 3: Open `rviz` by running:
 
     laptop $ some meaningful command
 
-Step 4: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick
+Step 4: On your computer open a virtual joystick to steer the bot
+
+    laptop $ dts duckiebot keyboard_control ![hostname]
+
+Step 5: Start your Duckiebot by pressing -<kbd>a</kbd> in the virtual joystick.
+
+Step 6: Be amazed!
 
 
 ### Troubleshooting {#demo-visualodometry-troubleshooting}
@@ -67,7 +77,7 @@ Resolution: You might have a too dynamic scene, for the visual odometry to run c
 Finally, put here a video of how the demo can fail, when the assumptions are not respected.
 
 
-## The AMOD18 Visual Odometry final report
+## The AMOD18 Visual Odometry final report {#final-report-visualodo}
 
 ### Mission and Scope
 
@@ -110,10 +120,27 @@ The following assumptions are made:
 
 #### Visual odometry
 
-The algorithm performes a visual odometry pipeline as follows.  
-First, the image get downsampled (by half), to decrease the computational time. Then feature detection is performed using XXX. On the next image frame, the feature detection is again performed, then the features are matched using XXX. To remove outliers that could generate significant errors XXX is used. After a reliable set of pairs is obtained, the motion between the frames is extracted by XXX. By multiplying the current pose estimate with the obtained matrix, a new estimate of the pose is received.
+The algorithm performes a visual odometry pipeline as follows.
+
+When the `visual_odometry_node` receives an image, the relative callback function gets activated. If the node should be active according to the `FSM`, the pipeline starts.
+
+The image gets converted to an `OpenCV` object. Then the actual algorithm present in `lib-visualodo` is triggered with this image object.  
+
+The image gets then downsampled, as this reduces significantly the computational time. Then relevant features are extracted from the image, using either `SURF`, `SIFT` or `ORB` (by default `ORB` is chosen).  
+
+At each frame, we gather one image and we discard the oldest one, so to keep always the two most recent to perform the pipeline.  
+
+Then we need to match the features, with either `KNN` or using the Hamming distance (default).  
+
+Once we have the matches we need to filter out the outliers, which again is either done with `KNN` (using the ratio of distance between best and second best match) or using histogram fitting (default). This means that we fit a gaussian distribution to the lenght of the matches, and we remove the ones further than one standard deviation from the center.  
+
+Then we divide the feature pairs between far and close regions, to decouple the estimate of the translation vector to the estimate of the rotation matrix (TODO put reference).  
+
+After having computed the motion matrix, we multiply it to get a new estimate of the pose.
 
 #### Software architecture
+
+For the development of this project, we organized the code the following way: all the code needed to handle communications using `ROS` is in the folder `ros-visualodo`. All the logic containing how the algorithms are implemented, is in `lib-visualodo`. This way we enabled an independance between `ROS` and the code itself.  
 
 Nodes:  
 
@@ -123,15 +150,17 @@ visual_odometry_node:
 
   * Output: A pose estimate with respect to a world frame
 
-    Subsribed topics:
+  * Subsribed topics:
 
-      * camera_node/image_compressed
+    - camera_node/image_compressed
 
-      * fsm_node/switch
+    - fsm_node/switch
 
-    Published topics:
+  * Published topics:
 
-      * path
+    - path
+
+
 
 ### Future development
 
