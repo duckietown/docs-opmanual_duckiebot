@@ -170,7 +170,7 @@ Run `catkin_make` instead if you don't use `python-catkin-tools`.
 
 Next, source your workspace using
 ```
-$ source ../devel/setup.bash
+$ source devel/setup.bash
 ```
 
 ### Step 3: Running the demo
