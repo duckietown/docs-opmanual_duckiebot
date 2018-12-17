@@ -8,6 +8,8 @@ With the Obstavoid algorithm, the duckiebot (now denoted as the ‘actor’) wil
 
 In this demo different scenarios are set up in a simulation, where you can test the Obstavoid algorithm to its full extent.
 
+<img src="994_AMOD18_TheObstavoidAlgorithm/demo_1_no_cost_grid.gif" width="80%">
+Actor, passing a dynamic obstacle
 
 ## The Obstavoid Algorithm {#demo-obstavoid-explained}
 
@@ -17,9 +19,10 @@ The Obstavoid algorithm is based on a shortest path optimisation problem, which 
 There are three main goals the actor tries to fulfill when driving in the road. Firstly, the robot tries to stay within its own lane to obey traffic rules. Secondly, it wants to drive forwards, to not cause a traffic jam. Finally, the actor wants to avoid any collisions with an obstacle or other duckies. For the algorithm to work, these three requirements need to be modelled as a cost function for the solver to find an optimal trajectory with minimal cost along its path.
 For the actor to stay within its own lane the cost was shaped with a 5th degree polynomial curve with a global minimum in the center of the right lane. Driving in the wrong lane results in a higher cost as it is not desired but only needed for a passing maneuver or to dodge an obstacle. Getting closer to the edge of the road is punished with an even higher cost as an accident with an innocent duckie would be unforgivable.
 
-[bild road fct polynom]
-
 By reducing the cost linearly along the driving direction of the road, it is beneficial for the actor to drive forwards. Both road cost and driving cost are independent of time, so these will remain the same for any given driving scenario.
+
+<img src="994_AMOD18_TheObstavoidAlgorithm/cost_function_road_fwd.png" width="50%">
+Static cost function for lane following and forward motion
 
 On the other hand, obstacles like other duckiebots cannot always be modelled statically. Consider a situation, where the actor tries to drive around an obstacle, which is blocking the road. It needs to be sure, that no other duckiebot will come across the left lane while conducting a passing maneuver. To be able to predict the future within a certain time horizon, the cost grid needs to be extended to a third dimension, now considering the factor of time.
 
@@ -27,11 +30,12 @@ On the other hand, obstacles like other duckiebots cannot always be modelled sta
 
 The costs of each obstacle is modelled as a modified rotationally symmetrical bell curve. By considering the current velocity of a dynamic obstacle and assuming the speed and direction to remain the same, the position of the bell shaped cost function can be predicted for every time instance on the time-dependent cost function.
 
-[bild bell curve obstacle]
+<img src="994_AMOD18_TheObstavoidAlgorithm/BellCurve.gif" width="50%">
+Modified bell curve cost function with tuning parameter to change the radial influence.
 
 By simply adding these static costs with the cost of each obstacle together, a overall final cost is obtained. Once this final cost function has been found, it can now be discretized as a 5 x 6 x 6 grid (width x length x timesteps) in a defined box in front of the actor. The size of this grid has been evaluated, for the solver to be able to compute the trajectory within a 10th of a second, allowing for a sampling frequency of 10 Hz.
 
-[bild actor mit cost grid rvis]
+<img src="994_AMOD18_TheObstavoidAlgorithm/demo_3_with_cost_grid.gif" width="80%">
 
 ### Solver
 To determine an optimal trajectory through the time-dependent cost grid the problem can be rephrased as a shortest path problem in a three-dimensional volume.
@@ -58,16 +62,17 @@ Requires: A computer with ROS-kinetic installed
 
 ## Video of expected results {#demo-obstavoid-expected}
 
-First, we show a video of the expected behavior (if the demo is succesful).
+First, we show a video of the expected behavior (if the demo is successful).
+
 
 ## Duckietown setup notes {#demo-obstavoid-duckietown-setup}
 
-As this is only a demo in the simulation framework `duckietown-world` no setup of a real duckietown is needed.
+As this is only a demo in the simulation framework `duckietown-world`, no setup of a real duckietown is needed.
 
 
 ## Duckiebot setup notes {#demo-obstavoid-duckiebot-setup}
 
-As this is only a demo in the simulation framework `duckietown-world` no setup on a real duckiebot is needed.
+As this is only a demo in the simulation framework `duckietown-world`, no setup on a real duckiebot is needed.
 
 
 ## Pre-flight checklist {#demo-obstavoid-pre-flight}
@@ -77,6 +82,7 @@ Make sure you have a computer on which the following packages are installed:
 Check: Desktop-full installation of ROS - for instructions see [here](http://wiki.ros.org/kinetic/Installation)
 
 Check: duckietown-world - for instructions see [here](https://github.com/duckietown/duckietown-world)
+
 
 ## Demo instructions {#demo-template-run}
 
@@ -140,6 +146,7 @@ Run the demo including a visualization in rviz with
 ```
 $ roslaunch obst_avoid obst_avoid_withviz_1_static_obstacle.launch
 ```
+
 
 ## Troubleshooting {#demo-obstavoid-troubleshooting}
 
