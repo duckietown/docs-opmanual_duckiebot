@@ -97,7 +97,7 @@ Then you can run it with `bash watchtowers_setup.sh`.
 
 ### Step 5: Test the watchtowers
 
-Setup the diagnostics tool to check that the messanging status of the watchtowers are `OK` where data was received in the last XX seconds. 
+Setup the diagnostics tool to check that the messanging status of the watchtowers are `OK` where data was received in the last 10 seconds. 
 
     laptop $ docker pull bensonkuan/cslam-diagnostics
     laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
