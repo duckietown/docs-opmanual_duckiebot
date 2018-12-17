@@ -86,7 +86,7 @@ This will pop up a new GUI window. Select the 'predicted images' topic from the 
 
 **Step 5**: Move the duckiebot using the joystick demo to different parts of duckietown and see the magic.  
 
-## Troubleshooting & Tips{#demo-projecttbd-troubleshooting}
+## Troubleshooting and Tips{#demo-projecttbd-troubleshooting}
 
 **Problem 1:** The duckiebot is not moving.
 
