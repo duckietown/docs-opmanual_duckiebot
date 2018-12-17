@@ -1,11 +1,15 @@
-
 # Fleet Management {#demo-fleetplan status=draft}
 
 
-This is a demo for the Fleet Management Simulator, the baseline Dispatcher (fleet planning algorithm) and visualization of their output in Rviz.
+This is a demonstration for running the Fleet Management Simulator for comparing different Dispatchers (fleet planning algorithms). We focus our steps to run a baseline Dispatcher with the fplan simulator, which majorly consists of a dynamics engine of duckiebots and a visualization of their output in Rviz. The diagram below shows the architecture of the simulator software stack.
 
+<br />
+<figure>
+<figcaption>Simulator Architecture</figcaption>
+<img  style='width:24em'  src="Simulator_architecture.png"/>
+</figure>
+<br />
 
-  
 <div class='requirements' markdown="1">
 
 Requires: [ROS-Desktop-Full][ROS-installation] installed
@@ -17,27 +21,12 @@ Requires: [duckietown-world][duckietown-world] installed
 [duckietown-world]: https://github.com/duckietown/duckietown-world/
 </div>
 
-  
-
 ## Video of expected results {#demo-fleetplan-expected}
 
 <div figure-id="fig:demo-fleet-management-simultator-video">
-    <figcaption>Demo: Duckietown Fleet Management Simulator
-    </figcaption>
+    <figcaption>Demo: Duckietown Fleet Management Simulator</figcaption>
     <dtvideo src='vimeo:306587628'/>
 </div>
-
-## Duckietown setup notes {#demo-fleetplan-duckietown-setup}
-
-We would delete this section entirely. Unless we add something genuinely needed to put in this part!
-
-## Duckiebot setup notes {#demo-fleetplan-duckiebot-setup}
-
-We would delete this section entirely. Unless we add something genuinely needed to put in this part!
-
-## Pre-flight checklist {#demo-fleetplan-pre-flight}
-
-We would delete this section entirely. Unless we add something genuinely needed to put in this part!
 
 ## Demo instructions {#demo-fleetplan-run}
 
@@ -99,9 +88,3 @@ Check if the submodule is on the correct branch
 
 	laptop $ cd src/duckietown-visualization
 	laptop $ git checkout visualization-fplan
-
-
-## Demo failure demonstration {#demo-fleetplan-failure}
-
-We need to come-up for an idea for this video. Or delete this section as well.
-Finally, put here a video of how the demo can fail, when the assumptions are not respected.
