@@ -24,7 +24,7 @@ First, we show a video of the expected behavior (if the demo is succesful).
 
 To run this demo, you can setup any generic Duckietown which complies to the appereance specifications presented in [the duckietown specs](+opmanual_duckietown#duckietown-specs).  
 
-The only two constraints are that you have good lighting conditions and enough possible features in the field of view of the Duckiebot (they can be anything, really, from duckies to street signs to a replica of the Saturn V).
+The only two constraints are that you have good lighting conditions and enough texture in the field of view of the Duckiebot (it can be anything, really, from duckies to street signs to a replica of the Saturn V).
 
 Note: Most of your environment should be static. Otherwise you might get bad results.
 
@@ -41,21 +41,23 @@ Check: Both yout duckiebot and your laptop are connected to the same, stable net
 
 ### Demo instructions {#demo-visualodometry-run}
 
-Step 1: From your computer load the demo container on your duckiebot typing the command:
+Step 1: From your computer load the demo container on your duckiebot typing by the command:
 
     laptop $ docker -H ![hostname].local run -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
 
 
-Step 2: Start the graphical user interface:
+Step 2: Start the graphical user interface container:
 
     laptop $ dts start_gui_tools ![hostname]
-    
-Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop
+
+Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop-container by running:
+
+    laptop-container $ wget https://raw.githubusercontent.com/duckietown/duckietown-visualodo/master/odometry_rviz_conf.rviz
 
 Step 4: Check that you can visualize the list of topics in the duckiebot from the laptop:
 
     laptop-container $ rostopic list
-    
+
 Step 5: On the same terminal, run `rviz` with the downloaded configuration file
 
     laptop-container $ rosrun rviz rviz -d ![path_to_file]/odometry_rviz_conf.rviz
@@ -79,7 +81,7 @@ Symptom: The estimated pose is really bad.
 
 Resolution: You might have a too dynamic scene, for the visual odometry to run correctly.
 
-Symptom: The estimated pose is really bad and the scene is dynamic
+Symptom: The estimated pose is really bad and the scene is not dynamic
 
 Resolution: Debug the pipeline by turning on the plotting parameters
 
@@ -145,7 +147,7 @@ At each frame, we gather one image and we discard the oldest one, so to keep alw
 
 Then we need to match the features, with either `KNN` or using the Hamming distance (default). If KNN is chosen, its matches can be filtered using a first-neighbor-to-second-neighbor ratio threshold. Empirically Bruteforce Hamming distance has proven to outperform KNN in the duckietown environment.
 
-Matches may be further filtered using histogram fitting (activated by default, can be turned off). This means that we fit a gaussian distribution to the lenght and angle of the matches, and we remove the ones further than `x` standard deviations from the average value. These `x` values can be set in the parameters yaml file. 
+Matches may be further filtered using histogram fitting (activated by default, can be turned off). This means that we fit a gaussian distribution to the lenght and angle of the matches, and we remove the ones further than `x` standard deviations from the average value. These `x` values can be set in the parameters yaml file.
 
 Then we divide the feature pairs between far and close regions, to decouple the estimate of the translation vector to the estimate of the rotation matrix (BangleiGuan et.al. 2018).  
 
