@@ -24,7 +24,7 @@ First, we show a video of the expected behavior (if the demo is succesful).
 
 To run this demo, you can setup any generic Duckietown which complies to the appereance specifications presented in [the duckietown specs](+opmanual_duckietown#duckietown-specs).  
 
-The only two constraints are that you have good lighting conditions and enough possible features in the field of view of the Duckiebot (they can be anything, really, from duckies to street signs to a replica of the Saturn V).
+The only two constraints are that you have good lighting conditions and enough texture in the field of view of the Duckiebot (it can be anything, really, from duckies to street signs to a replica of the Saturn V).
 
 Note: Most of your environment should be static. Otherwise you might get bad results.
 
@@ -41,16 +41,18 @@ Check: Both yout duckiebot and your laptop are connected to the same, stable net
 
 ### Demo instructions {#demo-visualodometry-run}
 
-Step 1: From your computer load the demo container on your duckiebot typing the command:
+Step 1: From your computer load the demo container on your duckiebot by typing the command:
 
     laptop $ docker -H ![hostname].local run -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
 
 
-Step 2: Start the graphical user interface:
+Step 2: Start the graphical user interface container:
 
     laptop $ dts start_gui_tools ![hostname]
 
-Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop
+Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop-container by running:
+
+    laptop-container $ wget https://raw.githubusercontent.com/duckietown/duckietown-visualodo/master/odometry_rviz_conf.rviz
 
 Step 4: Check that you can visualize the list of topics in the duckiebot from the laptop:
 
@@ -79,7 +81,7 @@ Symptom: The estimated pose is really bad.
 
 Resolution: You might have a too dynamic scene, for the visual odometry to run correctly.
 
-Symptom: The estimated pose is really bad and the scene is dynamic
+Symptom: The estimated pose is really bad and the scene is not dynamic
 
 Resolution: Debug the pipeline by turning on the plotting parameters
 
