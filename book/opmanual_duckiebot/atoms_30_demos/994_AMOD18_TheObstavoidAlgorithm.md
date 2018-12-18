@@ -43,7 +43,7 @@ The Obstavoid algorithm is based on a shortest path optimisation problem, which 
 bla bla text
 
 <div figure-id="fig:software_architecture">
-     <img src="994_AMOD18_TheObstavoidAlgorithm/software_architecture.png" width=50%/>
+     <img src="994_AMOD18_TheObstavoidAlgorithm/software_architecture.png" style='width: 30em'/>
 </div>
 
 ### Cost function
