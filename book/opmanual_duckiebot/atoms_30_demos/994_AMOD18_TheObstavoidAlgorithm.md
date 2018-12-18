@@ -38,6 +38,14 @@ Actor, passing a dynamic obstacle:
 
 The Obstavoid algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid. The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
 
+### Software architecture
+
+bla bla text
+
+<div figure-id="fig:software_architecture">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/software_architecture.png" width=50%/>
+</div>
+
 ### Cost function
 There are three main goals the actor tries to fulfill when driving on the road. Firstly, the robot tries to stay within its own lane to obey traffic rules. Secondly, it wants to drive forwards, to not cause a traffic jam and reach its destination. Finally, the actor wants to avoid any collisions with obstacles, e.g. other duckies or duckiebots. For the algorithm to work, these three requirements need to be modelled as a cost function for the solver to find an optimal trajectory with minimal cost along its path.
 For the actor to stay within its own lane the cost was shaped with a 5th degree polynomial curve with a global minimum in the center of the right lane. Driving in the wrong lane results in a higher cost as it is not desired but only needed for a passing maneuver or to dodge an obstacle. Getting closer to the edge of the road is punished with an even higher cost as an accident with an innocent duckie would be unforgivable.
