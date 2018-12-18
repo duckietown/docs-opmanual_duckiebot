@@ -244,3 +244,20 @@ Our pipeline works with a fixed field of view, which can lead to situations wher
      <img src="994_AMOD18_TheObstavoidAlgorithm/fail_1_to_fast_from_side.gif" style='width: 30em'/>
 </div>
 
+For further analysis to the performance of the Obstavoid algorithm, refer to the next chapter.
+
+## Performance analysis {#demo-theobstavoidalgorithm-performance}
+
+%%%%%%%%%%%%%%%
+dt ändere -> duckie schneller, tradeoff: geschwindigkeit - unvorsichtiger
+
+cost grid verfiinere -> meh computation, smootheri trajektorie (screenshot)
+cost grid meh time horizon -> bringt ned viel will mer ehh immer refreshed, aber schützt vor zuekünftigi ereignis (screenshot)
+
+## References {#demo-theobstavoidalgorithm-references}
+
+%%%%%%%%%%%%%%%
+See links for further references:
+
+* Dijkstra TODO
+* General path finding
