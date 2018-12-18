@@ -1,24 +1,24 @@
-# AMOD18 Project TBD {#demo-projecttbd status=draft}
+# AMOD18 Object Detection {#demo-objdet status=draft}
 
-This is the demo for object detection using the camera on the duckiebot. The duckiebot has been trained to detect duckies, duckiebots, traffic lights, QR codes, intersection signs, stop signs, and (traffic) signal signs. The joystick demo (or lane following pipeline) is used to navigate the duckiebot around duckietown.
+This is the demo for object detection using the camera on the Duckiebot. The Duckiebot has been trained to detect duckies, Duckiebots, traffic lights, QR codes, intersection signs, stop signs, and (traffic) signal signs. The joystick demo (or lane following pipeline) is used to navigate the Duckiebot around Duckietown.
 
 
 <div class='requirements' markdown="1">
 
-Requires: Two or more duckiebots initialisation completed.
+Requires: Two or more initialized Duckiebots.
 
-Requires: Camera calibration completed and wheel calibration completed.
+Requires: Camera and wheel calibration completed.
 
 Requires: Joystick demo completed.
 
 Requires: Duckietown with all classified objects.
 </div>
 
-## Video of expected results {#demo-projecttbd-expected}
+## Video of expected results {#demo-objdet-expected}
 
 First, we show a video of the expected behavior (if the demo is succesful).
 
-## Duckietown setup notes {#demo-projecttbd-duckietown-setup}
+## Duckietown setup notes {#demo-objdet-Duckietown-setup}
 
 The Duckietown used for this demo must have the following characteristics.
   + Several duckies placed on the road and at the side of the road.
@@ -27,11 +27,11 @@ The Duckietown used for this demo must have the following characteristics.
   + Traffic lights at intersections
   + No cluttering of objects in one place. Allow enough space between each object.
 
-## Duckiebot setup notes {#demo-projecttbd-duckiebot-setup}
+## Duckiebot setup notes {#demo-objdet-Duckiebot-setup}
 
-No special setup needed for the duckiebot.
+No special setup needed for the Duckiebot.
 
-## Pre-flight checklist {#demo-projecttbd-pre-flight}
+## Pre-flight checklist {#demo-objdet-pre-flight}
 
 The pre-flight checklist for this demo are:
 Check: Battery level is sufficient.
@@ -39,11 +39,11 @@ Check: Joystick container is running.
 Check: Rospicam container is running.
 Check: Put on your smartie pants.
 
-## Demo instructions {#demo-projecttbd-run}
+## Demo instructions {#demo-objdet-run}
 
 Here, give step by step instructions to reproduce the demo.
 
-**Step 1**: When the duckiebot is powered on, make sure all the containers required are running. In your laptop, run
+**Step 1**: When the Duckiebot is powered on, make sure all the containers required are running. In your laptop, run
 
     laptop $ docker -H ![duckie_bot].local ps
 
@@ -51,10 +51,10 @@ to check whether the right containers are running or not. You can also check by 
 
 
 
-**Step 2**: Launch the rospicam container so that we can capture images from the camera of duckiebot.
+**Step 2**: Launch the rospicam container so that we can capture images from the camera of Duckiebot.
 
     laptop $ docker -H ![duckie_bot].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data
-    duckietown/rpi-duckiebot-ros-picam:master18
+    Duckietown/rpi-Duckiebot-ros-picam:master18
 
 This command will run a container and create a ros node inside automatically. This ros node will publish the images captured by the camera to a ros topic.
 
@@ -62,9 +62,9 @@ This command will run a container and create a ros node inside automatically. Th
 
 **Step 3**: Launch the object detector container.
 
-Note: For this command you need the duckiebot's IP address. In order to obtain the duckiebot IP address, you should ping your duckiebot in another terminal and note down the IP address.
+Note: For this command you need the Duckiebot's IP address. In order to obtain the Duckiebot IP address, you should ping your Duckiebot in another terminal and note down the IP address.
 
-    laptop $ docker -H ![duckie_bot].local run -it --name object_detection --network=host -e ROS_MASTER_URI=http://![duckie_bot_IP_Address]:11311/  -e DUCKIEBOT_NAME=![duckie_bot] zgxsin/object_detection:1.6
+    laptop $ docker -H ![duckie_bot].local run -it --name object_detection --network=host -e ROS_MASTER_URI=http://![duckie_bot_IP_Address]:11311/  -e Duckiebot_NAME=![duckie_bot] zgxsin/object_detection:1.6
 
 Notice that we have to set up the ROS_MASTER_URI variable so that the ros nodes can communicate with each other. This command will create a object_detection ros node automatically. It will listen to the camera image topic in step 2 and predict images and send the predicted images to another topic for visualization.
 
@@ -84,17 +84,17 @@ This will pop up a new GUI window. Select the 'predicted images' topic from the 
 
 
 
-**Step 5**: Move the duckiebot using the joystick demo to different parts of duckietown and see the magic.  
+**Step 5**: Move the Duckiebot using the joystick demo to different parts of Duckietown and see the magic.  
 
-## Troubleshooting and Tips{#demo-projecttbd-troubleshooting}
+## Troubleshooting and Tips{#demo-objdet-troubleshooting}
 
 
 
-**Problem 1:** The duckiebot is not moving.
+**Problem 1:** The Duckiebot is not moving.
 
 
 **Solution:** Make sure that the joystick container is running. Note that the command for launching the joystick was changed to
-    laptop $ dts duckiebot keyboard_control ![duckie_bot]
+    laptop $ dts Duckiebot keyboard_control ![duckie_bot]
 
 
 
@@ -120,11 +120,11 @@ This will pop up a new GUI window. Select the 'predicted images' topic from the 
 
 
 
-**Problem 5:** ERROR: unable to contact ROS master at [http://![duckiebot_name].local:11311/]
+**Problem 5:** ERROR: unable to contact ROS master at [http://![Duckiebot_name].local:11311/]
 The traceback for the exception was written to the log file.
 
 
-**Solution:** make sure your laptop and duckiebot are on the same network.
+**Solution:** make sure your laptop and Duckiebot are on the same network.
 
 
 
@@ -138,6 +138,6 @@ The traceback for the exception was written to the log file.
 **Tip 1**: We can check whether everything is working inside this container. Run `rosnode list` to check whether corresponding ros nodes are running. Run `rostopic list` to check whether the corresponding ros topics exist. You can run other ros-related command to do the check as well.
 
 
-## Demo failure demonstration {#demo-projecttbd-failure}
+## Demo failure demonstration {#demo-objdet-failure}
 
 Finally, put here a video of how the demo can fail, when the assumptions are not respected.
