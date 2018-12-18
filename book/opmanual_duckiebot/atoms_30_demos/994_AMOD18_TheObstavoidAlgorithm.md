@@ -9,6 +9,25 @@ With the Obstavoid algorithm, the duckiebot (now denoted as the ‘actor’) wil
 In this demo different scenarios are set up in a simulation, where you can test the Obstavoid algorithm to its full extent.
 
 
+<div class='requirements' markdown="1">
+
+Requires: Desktop-full installation of ROS - see [here](http://wiki.ros.org/kinetic/Installation)
+
+Requires: ssh key for your computer - see [here](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+
+Requires: python 2.7 [here](https://www.python.org/download/releases/2.7/)
+
+Requires: pip installation - see virtualenv [here](https://www.saltycrane.com/blog/2010/02/how-install-pip-ubuntu/)
+
+Requires: installed catkin build [here](https://catkin-tools.readthedocs.io/en/latest/installing.html)
+
+Requires: duckietown-world installation on local computer. [here](https://github.com/duckietown/duckietown-world)
+
+Requires: Docker installation on local computer. TODO
+
+</div>
+
+
 Actor, passing a dynamic obstacle:
 <div figure-id="fig:demo_1_no_cost_grid">
      <img src="994_AMOD18_TheObstavoidAlgorithm/demo_1_no_cost_grid.gif" style='width: 30em'/>
