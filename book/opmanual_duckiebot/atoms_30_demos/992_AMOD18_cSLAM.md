@@ -148,12 +148,15 @@ Right now, you should see the map loaded and the floor apriltags. The rest will 
 
 ### Step 8: Set up graph optimizer  
 
-On a laptop that is connected to the same ROS master as the one where transform are published (using `export ROS_MASTER_URI= your master`), run the following launch:  
+On a laptop that is connected to the same network as the rest:  
 
-    laptop $ roslaunch pose_graph_builder graph_builder.launch  
+    laptop $ docker pull duckietown/cslam-server
+    laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![Rosmaster name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster IP] amaurx/cslam-graphoptimizer:latest /bin/bash
 
-It will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz thanks to step 7.  
-TODO : make it a docker container  
+    container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
+
+This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz thanks to step 7.  
+
 
 ### Step 9: The fun part
 Control the Duckiebot manually around Duckietown
