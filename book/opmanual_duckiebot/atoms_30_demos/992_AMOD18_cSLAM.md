@@ -186,9 +186,11 @@ Check that messages are received frequently. Is not device may be suffering from
 
 ### How to see the g2o graph
 In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
-In graph_builder.launch, you can set the "save_g2o_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using g2o_viewer.   
+In graph_builder.launch, you can set the "save_g2o_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using  [g2o_viewer](#fig:g2o_viewer).   
 
-TODO : add a picture of g2o_viewer   
+<div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
+     <img src="g2o_view.png" style='width: 30em'/>
+</div>
 
 ## Demo failure demonstration {#demo-cslam-failure}
 
