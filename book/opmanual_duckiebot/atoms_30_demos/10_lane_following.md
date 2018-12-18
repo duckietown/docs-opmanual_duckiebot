@@ -23,7 +23,7 @@ Requires: Joystick demo has been successfully launched [Joystick demo](#rc-contr
 Assumption about Duckietown:
 
 * A Duckietown with white and yellow lanes. No obstacles on the lane.
-* Layout conform to Duckietown Appearance [Specifications](+opmanual_duckietown#duckietown-specs)
+* Layout conform to Duckietown Appearance [Specifications](+duckietowns#dt-ops-appearance-specifications)
 * Required tiles types: straight tile, turn tile
 * Additional tile types:3-way/4-way intersection
 * Configurated wireless network for communicating with Duckiebot.
@@ -58,11 +58,11 @@ This will start the `lane_following_demo` container. You have to wait a while fo
 Now we will verify that `lane_filter_node` is working. On your laptop run `start_gui_tools`.
 
     laptop $ dts start_gui_tools ![hostname]
-    
+
 This will enter you into a container on your laptop that can talk to the ROS on the robot. To verify this do:
 
     laptop container $ rostopic list
-    
+
 and you should see all of the rostopics listed there. If you see an output like "Cannot communicate with ROS_MASTER" that's a problem
 
 Next run:
@@ -73,7 +73,7 @@ Select the `/![hostname]/camera_node/image/compressed` topic from the drop down 
 
 ### Step 3
 
-Now we need to make `lane_filter_node` publish all the image topics. 
+Now we need to make `lane_filter_node` publish all the image topics.
 We can do this by setting the ROS parameter `verbose` to `true`:
 
     laptop-container $ rosparam set /![hostname]/line_detector_node/verbose true
