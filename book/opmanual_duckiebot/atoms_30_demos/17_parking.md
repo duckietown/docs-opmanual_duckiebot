@@ -1,6 +1,6 @@
 # Parking demo instructions {#parking-demo-instructions status=beta}
 
-TODO for Jacopo Tani: image sizes, knowledge graph. 
+TODO for Jacopo Tani: image sizes, knowledge graph.
 
 
 This is the description for the Duckietown parking demo.
@@ -40,36 +40,23 @@ Here, describe the assumptions about the Duckietown, including:
 
 * 4 april tags, which should be placed according to the figure below. From the (0,0) point at the bottom left of the figure below (assuming $x$ is the horizontal axis while $y$ is the vertical axis): place tag n.126 at  $(10 cm,0)$, tag n.128 at (20cm,0), tag n.129 at (30cm,0) and tag n.131 at (40cm,0).
 
-    Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](+opmanual_duckietown#duckietowns). Here, merely point to them.
-
 ![Duckietown parking lot](https://raw.githubusercontent.com/duckietown/Software/devel-parking/catkin_ws/src/50-misc-additional-functionality/parking/report/map_0_1.png "Duckietown parking lot")
 
 ## Duckiebot setup notes {#demo-parking-duckiebot-setup}
 
-
-Write here any special setup for the Duckiebot, if needed.
 No special setup needed
-
-Do not write instructions here. The instructions should be somewhere in the appropriate setup part.
-
-
 
 ## Pre-flight checklist {#demo-parking-pre-flight}
 
-
-The pre-flight checklist describes the steps that are sufficient to
-ensure that the demo will be correct:
-
-Check: Ensure that your bot is in the correct configuration (DB17-wjd or DB17-wjdl)
+Check: Ensure that your bot is in the correct configuration (`DB17-wjd` or `DB17-wjdl`)
 
 Check: You have a duck safely secured to your duckiebot
 
 ## Demo instructions {#demo-parking-run}
 
-### Part A: simulation
+### Part A: Simulation
 
 Instructions to reproduce the demo simulation:
-
 
 Step 1: Switch to the parking branch and go to the simulation folder dt-path-planning.
 
@@ -88,8 +75,6 @@ Step 3: Compute a path from entracne (0) to parking space 4 (4). Dubins paht sho
 `./parking_main.py 0 4`
 
 The terminal output should tell you that a collision free path was found in stage 2, the path should be displayed (and all the path pieces in cyan are deleted after stop looking for a better path)
-
-
 
 ### Part B: Duckiebot
 
@@ -156,4 +141,3 @@ We do not have a working demo (in the sense that the duckiebot actually parks it
     roslaunch parking master.launch veh:=myvehicle localization:=true apriltags:=true /camera/raw:=true /camera/raw/rect:=true LED:=false lane_following:=true
 
 Once a path is generated (it will tell you a path has been found via the terminal), press R1 on your controller to enter "parking mode".
-

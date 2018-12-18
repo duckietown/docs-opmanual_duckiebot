@@ -21,11 +21,11 @@ First, we show a video of the expected behavior (if the demo is succesful).
 ## Duckietown setup notes {#demo-objdet-Duckietown-setup}
 
 The Duckietown used for this demo must have the following characteristics.
-  + Several duckies placed on the road and at the side of the road.
-  + Intersection sign, Stop sign and Signal sign.
-  + QR codes on the ground and below the signs mentioned above.
-  + Traffic lights at intersections
-  + No cluttering of objects in one place. Allow enough space between each object.
+* Several duckies placed on the road and at the side of the road.
+* Intersection sign, Stop sign and Signal sign.
+* QR codes on the ground and below the signs mentioned above.
+* Traffic lights at intersections
+* No cluttering of objects in one place. Allow enough space between each object.
 
 ## Duckiebot setup notes {#demo-objdet-Duckiebot-setup}
 
@@ -86,52 +86,51 @@ This will pop up a new GUI window. Select the 'predicted images' topic from the 
 
 **Step 5**: Move the Duckiebot using the joystick demo to different parts of Duckietown and see the magic.  
 
-## Troubleshooting and Tips{#demo-objdet-troubleshooting}
+## Troubleshooting and Tips {#demo-objdet-troubleshooting}
 
 
+Symptom: The Duckiebot is not moving.
 
-**Problem 1:** The Duckiebot is not moving.
 
-
-**Solution:** Make sure that the joystick container is running. Note that the command for launching the joystick was changed to
+Resolution: Make sure that the joystick container is running. Note that the command for launching the joystick was changed to
     laptop $ dts Duckiebot keyboard_control ![duckie_bot]
 
 
 
-**Problem 2:** No images recorded.
+Symptom: No images recorded.
 
 
-**Solution:** Make sure that the rospicam container is running.
+Resolution: Make sure that the rospicam container is running.
 
 
 
-**Problem 3:** The ros nodes cannot communicate with each other.
+Symptom: The ros nodes cannot communicate with each other.
 
 
-**Solution:** If you are using docker on Mac OSX, there seems to be an issue with the network of docker containers. We recommend to use docker on Ubuntu 16.04. We have tested it and everything is fine.
+Resolution: If you are using docker on Mac OSX, there seems to be an issue with the network of docker containers. We recommend to use docker on Ubuntu 16.04. We have tested it and everything is fine.
 (Insert Image).
 
 
 
-**Problem 4:** The storage in the raspberry PI has reached its limit.
+Symptom: The storage in the raspberry PI has reached its limit.
 
 
-**Solution:** Run `docker -H ![duckie_bot].local images` to whether dangling images exist and run `docker -H ![duckie_bot].local  rmi --force image_ID` to remove them.
+Resolution: Run `docker -H ![duckie_bot].local images` to whether dangling images exist and run `docker -H ![duckie_bot].local  rmi --force image_ID` to remove them.
 
 
 
-**Problem 5:** ERROR: unable to contact ROS master at [http://![Duckiebot_name].local:11311/]
+Symptom: ERROR: unable to contact ROS master at [http://![Duckiebot_name].local:11311/]
 The traceback for the exception was written to the log file.
 
 
-**Solution:** make sure your laptop and Duckiebot are on the same network.
+Resolution: make sure your laptop and Duckiebot are on the same network.
 
 
 
-**Problem 6:** docker: Error response from daemon: Conflict. The container name "/object_detection" is already in use by container.
+Symptom: docker: Error response from daemon: Conflict. The container name "/object_detection" is already in use by container.
 
 
-**Solution:** Run the command in the laptop: docker container rm --force object_detection. Repeat step 3.
+Resolution: Run the command in the laptop: docker container rm --force object_detection. Repeat step 3.
 
 
 

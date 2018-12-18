@@ -1,6 +1,6 @@
-# AMOD18 Project Unicorn {#demo-projectunicorn status=ready}
+# AMOD18 Intersection Navigation {#demo-projectunicorn status=ready}
 
-This document provides instructions on how to run the intersection navigation demo. 
+This document provides instructions on how to run the intersection navigation demo.
 
 ### Approach
 As indicated in grey in [](#fig:software) there are four major parts in the intersection navigation:
@@ -91,7 +91,7 @@ The duckiebot passes the intersection calibration test.
 
 
 Clone the duckietown-intnav folder in your PC:
- 
+
     laptop $ git clone git@github.com:duckietown/duckietown-intnav.git
 
 ## Pre-flight checklist {#demo-projectunicorn-pre-flight}
@@ -129,7 +129,7 @@ Once the robot stops (after the left and right turn), you have 10 seconds to ret
 After the duckiebot has crossed the intersection straight, the demo is finished.
 
 
-Note: If you wish to restart the demo, you have to remove the intnav container before running it again. 
+Note: If you wish to restart the demo, you have to remove the intnav container before running it again.
 
 ## Troubleshooting {#demo-projectunicorn-troubleshooting}
 
