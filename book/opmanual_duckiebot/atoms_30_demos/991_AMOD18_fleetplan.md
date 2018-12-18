@@ -1,14 +1,8 @@
-# Fleet Management {#demo-fleetplan status=draft}
+# AMOD18 Fleet Management {#demo-fleetplan status=draft}
 
 
-This is a demonstration for running the Fleet Management Simulator for comparing different Dispatchers (fleet planning algorithms). We focus our steps to run a baseline Dispatcher with the fplan simulator, which majorly consists of a dynamics engine of duckiebots and a visualization of their output in Rviz. The diagram below shows the architecture of the simulator software stack.
+This is a demonstration for running the Fleet Management Simulator for comparing different Dispatching Algoritms (fleet planning algorithms). We focus our steps to run a baseline Dispatcher with the fplan simulator, which majorly consists of a dynamics engine of duckiebots and a visualization of their output in Rviz.
 
-<br />
-<figure>
-<figcaption>Simulator Architecture</figcaption>
-<img  style='width:24em'  src="Simulator_architecture.png"/>
-</figure>
-<br />
 
 <div class='requirements' markdown="1">
 
@@ -19,6 +13,7 @@ Requires: [ROS-Desktop-Full][ROS-installation] installed
 Requires: [duckietown-world][duckietown-world] installed
 
 [duckietown-world]: https://github.com/duckietown/duckietown-world/
+
 </div>
 
 ## Video of expected results {#demo-fleetplan-expected}
@@ -28,7 +23,24 @@ Requires: [duckietown-world][duckietown-world] installed
     <dtvideo src='vimeo:306587628'/>
 </div>
 
+## Simulator Architechture
+
+The diagram below shows the architecture of the simulator software stack.
+
+<br />
+<figure>
+<figcaption>Simulator Architecture</figcaption>
+<img  style='width:24em'  src="Simulator_architecture.png"/>
+</figure>
+<br />
+
+## Demo setup notes 
+
+The fleetplan demo is proposed in the simulation environment using Rviz for visualization
+
 ## Demo instructions {#demo-fleetplan-run}
+
+Running our proposed baseline.
 
 **Step 1**: Download the `duckietown-fplan` respository
 
