@@ -68,3 +68,11 @@ Resolution: Stop (`docker stop ![container_name]`) if running and then remove (`
 ## Docker exits with tls: oversized record received
 
 If Docker exits with the above error when running remote comamnds, the most likely reason is different versions of Docker on your computer and Duckiebot. You can check that by running `docker version` on both devices. If that is indeed the case, you need to upgrade the Docker binaries on your computer. To do that, follow the official instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+
+## I can't run a container because I get `exec user process caused "exec format error"`
+
+An error like this:
+
+`standard_init_linux.go:190: exec user process caused "exec format error"`
+
+despite not being very descriptive typically means that there is a mismatch between the container's processor architecture and the one on your computer. Different processor architectures have different instruction sets and hence binaries compiled for one are generally not executable on another. Raspberry Pis use ARM processors, while most of the laptops use x86 architecture which makes them incompatible. Still, there's hope. Most of the Duckietown Raspberry Pi containers have a piece of magic inside called Qemu which allows emulation of an ARM processor on a x86 machine. You can activate this emulator if you change the default entrypoint of the container by adding `--entrypoint=qemu3-arm-static` to options when running it.

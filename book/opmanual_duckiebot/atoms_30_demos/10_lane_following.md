@@ -49,7 +49,7 @@ Assumption about Duckietown:
 
 Load the new container:
 
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo:master18
+    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" --memory-swap="1.8g" --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo:master18
 
 This will start the `lane_following_demo` container. You have to wait a while for everything to start working.
 
@@ -58,22 +58,29 @@ This will start the `lane_following_demo` container. You have to wait a while fo
 Now we will verify that `lane_filter_node` is working. On your laptop run `start_gui_tools`.
 
     laptop $ dts start_gui_tools ![hostname]
+    
+This will enter you into a container on your laptop that can talk to the ROS on the robot. To verify this do:
 
-Select the `/![hostname]/camera_node/image/compressed` topic from the drop down and you should see the video stream.
+    laptop container $ rostopic list
+    
+and you should see all of the rostopics listed there. If you see an output like "Cannot communicate with ROS_MASTER" that's a problem
+
+Next run:
+
+    laptop-container $ rqt_image_view
+
+Select the `/![hostname]/camera_node/image/compressed` topic from the drop down in the popup window and you should see the video stream.
 
 ### Step 3
 
-Now we need to make `lane_filter_node` publish all the image topics. First we will open a new terminal on the laptop and log in to the `lane_following_demo` container.
+Now we need to make `lane_filter_node` publish all the image topics. 
+We can do this by setting the ROS parameter `verbose` to `true`:
 
-    laptop $ docker exec -it lane_following_demo /bin/bash
-
-Now we have two terminals logged into the same container. In this new container set the ROS parameter `verbose` to `true`:
-
-    container $ rosparam set /![hostname]/line_detector_node/verbose true
+    laptop-container $ rosparam set /![hostname]/line_detector_node/verbose true
 
 so that `line_detector_node` will publish the image_with_lines.
 
-Now select the `/![hostname]/line_detector_node/image_with_lines` in `start_gui_tools` and you should see something like this:
+Now select the `/![hostname]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
 
 First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqVm3TSj7Sowc8) of the expected behavior.
 
@@ -84,7 +91,7 @@ Et voilà! We are ready to drive around autonomously.
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
-    laptop $ dts keyboard_control ![hostname]
+    laptop $ dts duckiebot keyboard_control ![hostname]
 
 |        Controls      | Joystick |  Keyboard |
 |----------------------|:--------:|:---------:|

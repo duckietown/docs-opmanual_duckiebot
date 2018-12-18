@@ -19,10 +19,9 @@ It might be useful to do a quick camera hardware check as documented in [](#howt
 These commands assume that you have completed the steps in [](#docker-setup),
 and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
 
-Start the container `rpi-docker-python-picamera`. It reads the camera
-image and writes it to `/data`.
+Start the container `rpi-python-picamera`. It reads the camera image and writes it to `/data`.
 
-    laptop $ docker -H ![hostname].local run -d --name picam --device /dev/vchiq -v /data:/data duckietown/rpi-docker-python-picamera:master18
+    laptop $ docker -H ![hostname].local run -d --name picam --device /dev/vchiq -v /data:/data duckietown/rpi-python-picamera:master18
 
 Then point your browser to the address
 
