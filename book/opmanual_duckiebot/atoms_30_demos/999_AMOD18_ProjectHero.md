@@ -96,7 +96,7 @@ You know have the template challenge folder. Navigate into this folder and into 
 
 If you already have these installed you can ignore this step. If you came here from the middle of step 1 you should now go back and continuesetting up the server before returning here.
 
-Next matter of business is to develop your evaluation/eval.py and challenge.yaml files as desrcibed above. For this demonstration you can keep them as they are.
+Next matter of business is to develop your `evaluation/eval.py` and `challenge.yaml` files as desrcibed above. For this demonstration you can keep them as they are.
 
 Now you need to have your server setup. In a separate tab turn your server on. You can now run the following command to 'upload' your challenge to the local server. Navigate to the evaluation folder in your challenge repo and run:
 
@@ -118,7 +118,7 @@ What you need to do now fill in the template-submission inside the sub-\* folder
 
     laptop $ make generate_submissions
 
-Now you should have another directory inside submissions called `submission\_\*library name\*`. Navigate into this folder and run
+Now you should have another directory inside submissions called `submission_*library name*`. Navigate into this folder and run
 
     laptop $ make run_regression_local
 
