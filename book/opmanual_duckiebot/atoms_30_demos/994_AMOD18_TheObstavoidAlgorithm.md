@@ -260,7 +260,7 @@ In the next step we will take control of another duckiebot, to see how the actor
 
 Keep the simulation from before running and in a new terminal launch (don't forget to activate your virtualenvironment and source the catkin workspace)
 ```
-$ rosrun obst_avoid duckiebot_teleop_node.py
+$ rosrun duckietown_mplan duckiebot_teleop_node.py
 ```
 Using 'i', 'j', 'l', ',' you can now teleoperate another duckiebot. With 'q', 'w' you can in-/ decrease it's speed. Make sure to keep the terminal selected, else the keyboard inputs will not be processed.
 
@@ -269,7 +269,8 @@ Using 'i', 'j', 'l', ',' you can now teleoperate another duckiebot. With 'q', 'w
 
  * 1 : Networkx library was not found: Double check that all installations were completed IN the virtual environment, especially the requirements of duckietown-world.
  * 2 : duckietown-world was not found: Double check that all installations were completed IN the virtual environment, especially the setup of duckietown-world.
-
+ * 3 : The duckiebot does not see and crashes in obstacles. Have you spawned to many obstacles / actors? We have seen that too many obstacles / actors introduce a delay into the simulation which makes it impossible to avoid them in an effective manner.
+ 
  
 
 ## Demo failure demonstration {#demo-theobstavoidalgorithm-failure}
