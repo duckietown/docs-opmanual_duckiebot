@@ -4,9 +4,9 @@
 
 This demo will show the use of a new fully-functional drive controller. It might replace the current lane follower in the future, as it is able to handle more general driving scenarios, mainly focusing on obstacles.
 
-With the Obstavoid Algorithm, the duckiebot (now denoted as the ‘actor’) will still try to follow its own lane, exactly like the lane follower implemented by default. The advantage of the Obstavoid Algorithm is, that it takes into account every obstacle within a certain visibility range and planning horizon. The module continuously calculates an optimal trajectory to navigate along the road. If an obstacle blocks its way, the algorithm will decide on its own what maneuver will suit the best for the given situation. By predicting the motion of every obstacle and other duckiebots, the actor can, for example, be prepared for an inattentive duckie trying to cross the road, or decide if a passing maneuver is feasible with the current traffic situation, or if it should rather adjust its driving speed to wait until one of the lanes are free.
+With the Obstavoid algorithm, the duckiebot (now denoted as the ‘actor’) will still try to follow its own lane, exactly like the lane follower implemented by default. The advantage of the Obstavoid algorithm is, that it takes into account every obstacle within a certain visibility range and planning horizon. The module continuously calculates an optimal trajectory to navigate along the road. If an obstacle blocks its way, the algorithm will decide on its own what maneuver will suit the best for the given situation. By predicting the motion of every obstacle and other duckiebots, the actor can, for example, be prepared for an inattentive duckie trying to cross the road, or decide if a passing maneuver is feasible with the current traffic situation, or if it should rather adjust its driving speed to wait until one of the lanes are free.
 
-In this demo different scenarios are set up in a simulation, where you can test the Obstavoid Algorithm to its full extent.
+In this demo different scenarios are set up in a simulation, where you can test the Obstavoid algorithm to its full extent.
 
 
 <div class='requirements' markdown="1">
@@ -36,7 +36,7 @@ Actor, passing a dynamic obstacle:
 
 ## The Obstavoid Algorithm {#demo-theobstavoidalgorithm-explained}
 
-The Obstavoid Algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid [[1]](https://networkx.github.io/). The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
+The Obstavoid algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid [[1]](https://networkx.github.io/). The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
 
 
 Example 3D cost grid illustration:
@@ -125,9 +125,9 @@ In conclusion, with the Obstavoid Algorithm the human influence on scenario anal
 Our pipeline is divided up into two main nodes which communicate via topic communication to the simulation (or duckiebot in the future).
 
 **/trajectory_creator_node [frequency: 10hz]**
-* **Input**: */flock_simulator/ state* and */flock_simulator/street_obstruction*: These topics contain position, veloccity and size infromation of all obstacles as well as information about the street the actor is at the moment. 
+* **Input**: */flock_simulator/ state* and */flock_simulator/street_obstruction*: These topics contain position, velocity and size infromation of all obstacles as well as information about the street and where the actor is at the moment. 
 * **Computation**: 
-**cost_grid_populator:** This manipulator uses the information safed in the obstacles and evaulates the cost function at the discretized points of the cost_grid.
+**cost_grid_populator:** This manipulator uses the information stored in the obstacles and evaulates the cost function at the discretized points of the cost_grid.
 **cost_grid_solver:** This manipulator finds an optimal path in the cost_grid while minimizing total cost.
 * **Output:** */obst_avoid/trajectory*: This topic contains a target trajectory for the current cost_grid.
 
@@ -141,11 +141,13 @@ Our pipeline is divided up into two main nodes which communicate via topic commu
 
 To improve the current pipeline on mulitple parts of the code coule be worked on thanks to the modularity:
 
-* *test the pipeline on a real demo*: Currently due to delay and inaccuracies of the duckietown perception pipeline our approach could not have been tested on a real duckiebot. 
+* *test the pipeline on a real demo*: Currently, due to delay and inaccuracies of the duckietown perception pipeline our approach could not have been tested on a real duckiebot. 
 
-* *test different cost_functions*: Currently the pipeline differentiates between static cost (given from things that cannot move) and dynamic cost (moving obstacles such as duckies and duckiebots). These functions could be changed and expanded easily to test different cost modeling strategies
+* *test different cost_functions*: Currently, the pipeline differentiates between static cost (given from things that cannot move) and dynamic cost (moving obstacles such as duckies and duckiebots). These functions could be changed and expanded easily to test different cost modeling strategies
 
+* *test with multiple actors*: Currently, we tested the whole pipeline only with one duckiebot actor. However, it would be interesting to see how mulitple bots would perfrom with this drive controller. For this step a coordination procedure would be needed which could be easily made by the addition of a cost function that models traffic rules. In general any behaviour could be added through the use of a more specific cost function.
 
+Fig. 9: Mplan software architecture
 
 <div figure-id="fig:software_architecture">
      <img src="994_AMOD18_TheObstavoidAlgorithm/software_architecture.png" style='width: 30em'/>
@@ -153,7 +155,7 @@ To improve the current pipeline on mulitple parts of the code coule be worked on
 
 ## Video of expected results {#demo-theobstavoidalgorithm-expected}
 
-First, we show a video of the expected behavior (if the demo is succesful).
+First, we show a video of the expected behavior. TODO, add video link
 
 
 ## Duckietown setup notes {#demo-theobstavoidalgorithm-duckietown-setup}
@@ -174,8 +176,6 @@ Make sure you have a computer on which the following packages are installed (the
 * Check: that you have an ssh key for your computer [here](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 * Check: installed pip, virtualenv [here](https://www.saltycrane.com/blog/2010/02/how-install-pip-ubuntu/)
 * Check: installed catkin build [here](https://catkin-tools.readthedocs.io/en/latest/installing.html)
-
-TODO: make restart branch to master
 
 ## Demo instructions {#demo-theobstavoidalgorithm-run}
 
@@ -232,7 +232,7 @@ Build the workspace from the initial folder
 $ cd ../..
 $ catkin build
 ```
-Run `catkin_make` instead if you don't use `python-catkin-tools`.
+Run `catkin_make` instead if you don't use `python-catkin-tools`. [This has not been tested]
 
 Next, source your workspace using
 ```
@@ -243,7 +243,7 @@ $ source devel/setup.bash
 
 Run the demo including a visualization in rviz with 
 ```
-$ roslaunch duckietown_mplan mplan_withviz_demo.launch demo_num:=5
+$ roslaunch duckietown_mplan mplan_withviz_demo.launch demo_num:=1
 
 ```
 With the parameter `demo_num` you can select a specific scenario. The scenarios are as follows:
@@ -269,6 +269,7 @@ Using 'i', 'j', 'l', ',' you can now teleoperate another duckiebot. With 'q', 'w
 
  * 1 : Networkx library was not found: Double check that all installations were completed IN the virtual environment, especially the requirements of duckietown-world.
  * 2 : duckietown-world was not found: Double check that all installations were completed IN the virtual environment, especially the setup of duckietown-world.
+
  
 
 ## Demo failure demonstration {#demo-theobstavoidalgorithm-failure}
