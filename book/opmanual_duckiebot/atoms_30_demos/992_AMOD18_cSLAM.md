@@ -130,19 +130,18 @@ You will also need the IP address of  this computer. The easiest way is to simpl
 
 In order to start processing data on the watchtowers you need to run the `cslam-aquisition` container. This requires that you know the hostname and the IP address of the machine serving as the ROS Master for this demo. Once you know the hostname you can get its IP address by pinging it. You should have done this already in [Step 3](#demo-cslam-run-3).
 
-We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `SERVER_HOSTNAME` and `SERVER_IP` in this file to the ones of your ROS Master. Also check if `array` contains all your watchtowers.
-Then you can run it with `bash watchtowers_setup.sh`.
+We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `ROS_MASTER_HOSTNAME` and `ROS_MASTER_IP` in this file to the ones of your ROS Master. Note that the `ROS_MASTER_HOSTNAME` should not contain `.local` at the end. Also check if `array` contains all your watchtowers. Then you can run it with `bash watchtowers_setup.sh`.
 
-This step sets up the data acquisition pipeline on each watchtower. This means that each watchtower will now send updates about the AprilTags it sees. A similar step will also be done for each Duckiebot in Step 6.
+This step sets up the data acquisition pipeline on each watchtower. This means that each watchtower will now send updates about the AprilTags it sees. A similar step will also be done for each Duckiebot in [Step 6](#demo-cslam-run-6).
 
 ### Step 5: Test the watchtowers {#demo-cslam-run-5}
 
-Setup the diagnostics tool to check that the status of the watchtowers are `OK` where data was received in the last XX seconds.
+Setup the diagnostics tool to check that the status of the watchtowers are `OK` (AprilTag data was received in the last 5 seconds).
 
     laptop $ docker pull duckietown/cslam-diagnostics
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-diagnostics
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=![ROS_MASTER_IP] duckietown/cslam-diagnostics
 
-Note that the SERVER_HOSTNAME should not contain `.local` at the end.
+Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
 
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
 
