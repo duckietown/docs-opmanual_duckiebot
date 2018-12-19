@@ -222,12 +222,22 @@ You can then stop the processing of Duckiebot images and odometry by pressing <k
 ### I can't connect to something.
 Check if you are on the right network. Check if you can ping the device. Sometimes the network won't resolve hostnames and requires a restart.
 
+### Docker complains about wrong Docker versions
+If you run into this issue when running `watchtowers_setup.sh` or `watchtowers_stop.sh`, please run the script again. This typically resolves the error.
+
+### Docker cannot connect to a remote device
+Try to run the command again. Often it is a temporary issue. If it persists, make sure you are on the correct network, that the device is powered on and that you can ping it.
+
+### The Diagnostics tool doesn't show a device or shows ERROR
+This could be a non-problem. For example, if a watchtower or a Duckiebot doesn't recognize any AprilTags you will not receive messages. You can check that with the test image stream from this device in `rqt_image_view`. Often you simply need to restart the Diagnostics tool.
+
+If the problem persists, use Portainer to check if the `roscore`, `ros-picam`, and `cslam-acquisition` containers are running for this device. Check the logs of `cslam-acquisition` for errors.
+
 ### Rviz visualization makes no sense
 If the positions of your Duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
     - AprilTag recognition is off and gives out weird transforms  
     - Time delays between different input (watchtowers, Duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
     - Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
-
 
 ### AprilTags printed may be of wrong size
 Check that the printed AprilTags are of size 6.5cm as the printer might have done some scaling to the tags.
