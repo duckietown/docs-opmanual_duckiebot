@@ -32,16 +32,16 @@ TODO: Most of this will go away and a reference to the duckietown specs is neede
 
 Layout of Duckietown:
 
-* Layout
-  - Traffic lights are good to have but not necessary (optional).
-  - Each floor AprilTag should have atleast two watchtowers seeing it. It is recommended, but not necessary, that the bipartite graph of watchtowers and AprilTags are connected.
-* Infrastructure
-  - AprilTags have to be placed on the tiles, traffic signs, and Duckiebots. These tags, should all be unique!
-  - For a detailed map to be visualized, the poses of the AprilTags in the Duckietown must be (approximately) known beforehand.
-  - Watchtowers have to be spread across the entire Duckietown. Preferably the combined field of view covers the entire Duckietown.
-* Weather
-  - Lighting has to be bright enough for the AprilTags to be seen clearly by camera.
-  - Assumption: it is always sunny. Rain never occurs in Duckietown.
+### Layout
+  * Traffic lights are good to have but not necessary (optional).
+  * Each floor AprilTag should have at least two watchtowers seeing it. It is recommended, but not necessary, that the bipartite graph of watchtowers and AprilTags are connected.
+### Infrastructure
+  * AprilTags have to be placed on the tiles, traffic signs, and Duckiebots. These tags should all be unique!
+  * For a detailed map to be visualized, the poses of the AprilTags in the Duckietown must be (approximately) known beforehand.
+  * Watchtowers have to be spread across the entire Duckietown. Preferably the combined field of view covers the entire Duckietown.
+### Weather
+  * Lighting has to be bright enough for the AprilTags to be seen clearly by camera.
+  * Assumption: it is always sunny. Rain never occurs in Duckietown.
 
 ## Duckiebot setup notes {#demo-cslam-duckiebot-setup}
 
