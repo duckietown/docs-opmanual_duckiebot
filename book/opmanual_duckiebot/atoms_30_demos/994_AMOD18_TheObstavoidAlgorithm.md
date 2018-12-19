@@ -41,7 +41,7 @@ The Obstavoid algorithm is based on a shortest path optimisation problem, which 
 
 Example 3D cost grid illustration:
 <div figure-id="fig:cost_grid_diagram">
-     <img src="994_AMOD18_TheObstavoidAlgorithm/cost_grid_diagram.jpg" width=50%/>
+     <img src="994_AMOD18_TheObstavoidAlgorithm/cost_grid_diagram.jpg" style='width: 30em'/>
 </div>
 
 
@@ -54,7 +54,7 @@ By reducing the cost linearly along the driving direction of the road, it is ben
 
 Static cost function for lane following and forward motion:
 <div figure-id="fig:cost_function_road_fwd">
-     <img src="994_AMOD18_TheObstavoidAlgorithm/cost_function_road_fwd.png" width=50%/>
+     <img src="994_AMOD18_TheObstavoidAlgorithm/cost_function_road_fwd.png" style='width: 30em'/>
 </div>
 
 
@@ -65,7 +65,7 @@ The costs of each obstacle is modelled as a modified, rotationally symmetrical b
 
 Modified bell curve cost function with tuning parameter to change the radial influence:
 <div figure-id="fig:BellCurve">
-     <img src="994_AMOD18_TheObstavoidAlgorithm/BellCurve.gif" width=50%/>
+     <img src="994_AMOD18_TheObstavoidAlgorithm/BellCurve.gif" style='width: 30em'/>
 </div>
 
 
