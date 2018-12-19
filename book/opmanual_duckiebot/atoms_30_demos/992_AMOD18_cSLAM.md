@@ -1,6 +1,6 @@
 # AMOD18 cSLAM {#demo-cslam status=draft}
 
-<div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
+<div figure-id="fig:cslam_logo">
      <img src="cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
 </div>
 
@@ -210,7 +210,7 @@ Set up and run the visualization of the map, Duckiebots, watchtowers, and traffi
 
 If you managed to get all the way to here, congratulations! Quack, quack, hooray!
 
-Now you can drive a duckiebot around the city and see how it moves on the map. To control the Duckiebot manually around city use the keyboard control:
+Now you can drive a Duckiebot around the city and see how it moves on the map. To control the Duckiebot manually around city use the keyboard control:
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
