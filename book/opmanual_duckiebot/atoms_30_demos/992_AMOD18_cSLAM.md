@@ -38,7 +38,15 @@ There are also more detailed about the code, different configuration parameters 
 
 ## Introduction to cSLAM {#demo-introduction}
 
-TODO: Put a description, illustrations and explanation of what cSLAM is, the different parts of it, how they communicate, what's the general philosophy, etc.
+It can be incredibly useful to have a system that can localize your Duckeibot. Not only in case you lose it, but also if you want to facilitate autonomous Robotarium operations or to evaluate AIDO submissions. And most importantly, it looks cool! And that's exactly what the cSLAM system does.
+
+The goal of cSLAM is to fuse the observations of watchtowers and Duckiebots in a single optimization that tries to predict as accurately as possible the current and past Duckiebot locations. This is then nicely visualized on a 3D model of the city.
+
+cSLAM was designed such that it is modular, scalable, and with minimum overhead on the Duckiebots. It is a complex system, so modular means that you will need to run quite a few Docker containers. On the other hand, it is easy to support and extend. And don't worry, we've automated the bulk of container work. Scalable means that it can easily be extended to large cities. As the system is modular, the processing can be distributed over more computers as a city grows. Finally, the minimum overhead means that we don't run any special code on the Duckiebots, we only expect them to publish image and odometry data. All the processing is offloaded to a computer.
+
+At the core of cSLAM is a pose graph optimization problem. The watchtowers observe AprilTags on the ground, on top of Duckiebots and even on traffic lights. They can then estimate the relative pose of these AprilTags. Duckiebots similarly see tags on the ground and on traffic signs and estimate relative poses. Duckiebots also estimate their own relative pose to their past position by using their odometry data. All these poses, together with the times when they were observed, are combined in a graph optimization problem that is solved by a library called [g2o](https://github.com/RainerKuemmerle/g2o). The solution of this problem is global positions of all the observed AprilTags, and consequently of the Duckiebots.
+
+
 
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
 We have the following basic assumptions that need to be fulfilled in order for the demo to work.
@@ -65,28 +73,26 @@ We have the following basic assumptions that need to be fulfilled in order for t
 
 <div class='check' markdown="1">
 
-Check: The Duckiebot has sufficient battery and is powered on.
+* The Duckiebot has sufficient battery and is powered on.
 
-Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
+* The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
 
-Check: The watchtowers are powered on
+* The watchtowers are powered on
 
-Check: ROS is installed on your local computer. If it is not, install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
+* ROS is installed on your local computer. If it is not, install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
 
-Check: Docker is installed on your local computer. If it is not, install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended that you also have [Docker-compose](https://docs.docker.com/compose/install/)
+* Docker is installed on your local computer. If it is not, install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended that you also have [Docker-compose](https://docs.docker.com/compose/install/)
 
 </div>
+
 
 ## Demo instructions {#demo-cslam-run}
 
 ### Step 0: Preliminaries {#demo-cslam-run-0}
-* Before starting, please install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
 
-* Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
+Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam and follow readme instructions to install everything (make sure you install g2o for python2)
 
-* Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam 
-
-* Make sure all devices you are using are connected to the same WiFi network (typically that would be `duckietown`)
+Make sure all devices you are using are connected to the same WiFi network (typically that would be `duckietown`)
 
 ### Step 1: Set up the watchtowers. _You can skip this step for the demo on Thursday_ {#demo-cslam-run-1}
 
@@ -115,11 +121,7 @@ One of the computers will act as ROS Master. That means that all other nodes and
 
     laptop $ source /opt/ros/kinetic/setup.bash
 
-Then run,
-
-    laptop $ roscore
-
-Make a note of the hostname of the computer running the ROS Master. You will need that later. The hostname can also be seen after running `roscore`, where it will show it in a line similar to:
+Then make a note of the hostname of the computer running the ROS Master. You will need that later. When you run `roscore` this will show in a line similar to:
 
 ```
 auto-starting new master
@@ -127,15 +129,13 @@ process[master]: started with pid [3263]
 ROS_MASTER_URI=http://![hostname]:11311/
 ```
 
-You will also need the IP address of  this computer. The easiest way is to simply ping this hostname (followed by `.local`) from another computer. You can also get the IP address by running `ifconfig` on this computer.
+You will also need the IP address of  this computer. The easiest way is to simply ping this hostname (followed by `.local`) from another computer.
 
 ### Step 4: Configure the watchtowers {#demo-cslam-run-4}
 
-In order to start processing data on the watchtowers you need to run the `cslam-aquisition` container. You already know the hostname and the IP address of the machine serving as the ROS Master for this demo from [Step 3](#demo-cslam-run-3).
+In order to start processing data on the watchtowers you need to run the `cslam-aquisition` container. This requires that you know the hostname and the IP address of the machine serving as the ROS Master for this demo. Once you know the hostname you can get its IP address by pinging it. You should have done this already in [Step 3](#demo-cslam-run-3).
 
-We have made a `bash` script that allows to easily set up all the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `ROS_MASTER_HOSTNAME` and `ROS_MASTER_IP` in this file to the ones of your ROS Master. Note that the `ROS_MASTER_HOSTNAME` should not contain `.local` at the end. Also check if `array` contains all your watchtowers (Once again, you can ignore this for the demo on Thursday.) Then, go to directory `duckietown-cslam/scripts/` and run it  
-
-    laptop $ ./watchtowers_setup.sh
+We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `ROS_MASTER_HOSTNAME` and `ROS_MASTER_IP` in this file to the ones of your ROS Master. Note that the `ROS_MASTER_HOSTNAME` should not contain `.local` at the end. Also check if `array` contains all your watchtowers. Then you can run it with `bash watchtowers_setup.sh`.
 
 This step sets up the data acquisition pipeline on each watchtower. This means that each watchtower will now send updates about the AprilTags it sees. A similar step will also be done for each Duckiebot in [Step 6](#demo-cslam-run-6).
 
@@ -175,7 +175,7 @@ The Duckiebots should have the following 3 containers runnning:
 
 You can start them or check if they are already running via Portainer.
 
-As the Duckiebots usually have other nodes running we spare them processing of images and odometry by offloading this. To do this we need to run an acquisition node container for each one of the Duckiebots any of the computers on the same network. We recommend *not* using the computer serving as the ROS Master. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. You can copy the lines from `acquisition_node_duckiebotHostname` as many times as Duckiebots you have. Here you need to update a few lines for each one of these:
+As the Duckiebots usually have other nodes running we spare them processing of images and odometry by offloading this. To do this we need to run an acquisition node container for each one of the Duckiebots on one of the computers. We recommend *not* using the computer serving as the ROS Master. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. You can copy the lines from `acquisition_node_duckiebotHostname` as many times as Duckiebots you have. Here you need to update a few lines for each one of these:
 
 - Replace `duckiebotHostname` in `acquisition_node_duckiebotHostname`, `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` and `ACQ_DEVICE_NAME=duckiebotHostname` with your Duckiebot's hostname.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_DEVICE_IP` with your Duckiebot's IP address. You can get this if you ping it.
@@ -192,6 +192,8 @@ If you don't have docker-compose installed you can run the same commands in the 
 
      laptop $ docker run -it --name cslam-acquisition --restart always --network host -e ACQ_ROS_MASTER_URI_DEVICE=![duckiebotHostname].local -e ACQ_ROS_MASTER_URI_DEVICE_IP=![XXX.XXX.XXX.XXX] -e ACQ_ROS_MASTER_URI_SERVER=![ROS_MASTER_HOSTNAME].local -e ACQ_ROS_MASTER_URI_SERVER_IP=![XXX.XXX.XXX.XXX] -e ACQ_DEVICE_NAME=![duckiebotHostname] duckietown/cslam-acquisition:x86
 
+TODO: This wasn't working live. I have verified that it works on bag files
+
 ### Step 7: Set up the cSLAM Graph Optimizer {#demo-cslam-run-7}
 
 In folder scripts, there is a yaml file called `apriltagsDB_custom.yaml`.  
@@ -204,32 +206,25 @@ On the ROS master machine defined at step 3, run:
     laptop $ docker pull duckietown/cslam-graphoptimizer
     laptop $ docker run -it --rm --net=host -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-graphoptimizer:latest /bin/bash
 
-    laptop-container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
+    container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
 
-You can also remove the `/bin/bash` and the wrapper will be executed directly. Keeping the `/bin/bash` is helpful for troubleshooting when you want to modify launch parameters.
 This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz in the next step.  
-
 
 ### Step 8: Set up the visualization {#demo-cslam-run-8}
 Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
-    laptop $ xhost +local:root
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-visualization
 
-NOTE: After everything is over, please run:  
- 
-    laptop $ xhost -local:host
-    
 ### Step 9: The fun part {#demo-cslam-run-9}
 
 If you managed to get all the way to here, congratulations! Quack, quack, hooray!
 
 Now you can drive a Duckiebot around the city and see how it moves on the map. To control the Duckiebot manually around city use the keyboard control:
 
-    laptop $ dts duckiebot keyboard_control ![duckiebot_hostname]
+    laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
-Look at the Diagnostics tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 5 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
+Look at the Diagnostics tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 
 ### Step 10: Shut everything off {#demo-cslam-run-10}
 You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
@@ -266,7 +261,7 @@ Resolution: Try to run the command again. Often it is a temporary issue. If it p
 
 Symptom: The Diagnostics tool doesn't show a device or shows ERROR
 
-Resolution: This could be a non-problem. For example, if a watchtower or a Duckiebot doesn't recognize any AprilTags you will not receive messages. You can check that with the test image stream from this device in `rqt_image_view`. If the test image stream shows ids of AprilTags on the image, all you need to do is restart the Diagnostics tool.
+Resolution: This could be a non-problem. For example, if a watchtower or a Duckiebot doesn't recognize any AprilTags you will not receive messages. You can check that with the test image stream from this device in `rqt_image_view`. Often you simply need to restart the Diagnostics tool.
 
 If the problem persists, use Portainer to check if the `roscore`, `ros-picam`, and `cslam-acquisition` containers are running for this device. Check the logs of `cslam-acquisition` for errors.
 
