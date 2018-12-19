@@ -235,9 +235,9 @@ If the problem persists, use Portainer to check if the `roscore`, `ros-picam`, a
 
 ### Rviz visualization makes no sense
 If the positions of your Duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
-    - AprilTag recognition is off and gives out weird transforms  
-    - Time delays between different input (watchtowers, Duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
-    - Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
+* AprilTag recognition is off and gives out weird transforms  
+* Time delays between different input (watchtowers, Duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
+* Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
 
 ### AprilTags printed may be of wrong size
 Check that the printed AprilTags are of size 6.5cm as the printer might have done some scaling to the tags.
