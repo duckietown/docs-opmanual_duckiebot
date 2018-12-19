@@ -41,6 +41,8 @@ Check: Your performed recently the camera calibration on your Duckiebot.
 
 Check: Both yout duckiebot and your laptop are connected to the same, stable network
 
+Check: You have a laptop with ROS installed to visualize the output of the pipeline.
+
 ### Demo setup {#demo-visualodometry-setup}
 
 Either using Portainer or manually from a terminal, start both `ros-picam`,
@@ -125,6 +127,31 @@ Symptom: The estimated pose is really bad and the scene is not dynamic
 Resolution: Debug the pipeline by turning on the plotting parameters
 
 *Debug videos will be added here*
+
+
+### Offline demo {#WHAT GOES HERE?}
+
+If you dont have a duckiebot in hand, or your network is not reliable enough, you can also run this demo offline! Clone the git repository of visual odometry and compile the repository:
+
+    laptop $ cd ~/[path_to_duckietown_software]/catkin_ws/src
+    laptop $ git clone https://github.com/duckietown/duckietown-visualodo.git
+    laptop $ cd ..
+    laptop $ catkin_make
+    laptop $ source devel/setup.bash
+
+Run `rviz` using the custom configuration file as specified in the demo instructions, but this time without exporting the ROS URI address of the duckiebot, as we will run the demo offline in the laptop.
+
+Run the visual odometry node. We will use a rosbag recorded by fellow duckiebot `enbot`, so specify this in the `veh` parameter:
+
+    laptop $ roslaunch duckietown_visualodo visual_odometry_node.launch veh:=enbot
+
+Download our demo rosbag from the following google drive link: https://drive.google.com/open?id=15O9hR6pdOKMOFgbEe-yyJHxieQW1FFyn
+
+Play the rosbag, and visualize the results!
+
+    laptop $ rosbag play [direction_to_download]/offline_demo_vo.bag
+
+Image of the expected results:
 
 ### Demo failure demonstration {#demo-visualodometry-failure}
 
