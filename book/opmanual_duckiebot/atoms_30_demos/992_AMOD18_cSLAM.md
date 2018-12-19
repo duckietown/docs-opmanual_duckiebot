@@ -172,7 +172,7 @@ As the Duckiebots usually have other nodes running we spare them processing of i
 
 You can then start all the containers simulateneously by running:
 
-`docker-compose -f docker-compose-duckiebot-x86.yml up`
+    laptop $ docker-compose -f docker-compose-duckiebot-x86.yml up
 
 Make the Duckiebots see an AprilTag and you should see that you receive messages from them in the Diagnostics tool. You might have to restart the Diagnostics tool to see the updates.
 
@@ -219,7 +219,7 @@ You can stop the `cslam-acquisition` containers on the watchtowers with the `wat
 
 You can then stop the processing of Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> in the terminal running docker-compose and by then running:
 
-`docker-compose -f docker-compose-duckiebot-x86.yml down`
+    laptop $ docker-compose -f docker-compose-duckiebot-x86.yml down
 
 Make sure to execute the following command on your laptop! Otherwise you expose it to security issues!
 
