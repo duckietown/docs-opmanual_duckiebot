@@ -134,32 +134,34 @@ As the Duckiebot usually has other nodes running we spare it processing of image
 - Replace `ROS_MASTER_Hostname` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers. 
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers. 
 
+TODO: MASTER should be removed for macros which are not ROS Masters. For example, duckiebots: `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` 
+
 You can then start the container by running:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml up`
 
-Make the Duckiebot see an AprilTag and you should see that you receive messages from it in the Diagnostics tool.
+Make the Duckiebot see an AprilTag and you should see that you receive messages from it in the Diagnostics tool. You might have to restart the diagnostics tool to see the updates.
 
-### Step 7: Set up the visualization
-Set up and run the visualization of the map, duckiebots, watchtowers, and traffic signs using the following commands:
+TODO: This wasn't working live. I have verified that it works on bag files
 
-    laptop $ docker pull surirohit/cslam-visualization
-    laptop $ xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
-    laptop $ docker run -it --rm --net=host -e ROS_MASTER_IP=http://![rosmaster_name].local:11311 -e ROS_IP=![rosmaster_IP] surirohit/cslam-visualization
+### Step 7: Set up the cSLAM Graph Optimizer 
 
-Right now, you should see the map loaded and the floor apriltags. The rest will be visible after the next step.
+On a laptop that is connected to the same network as the rest:
 
-### Step 8: Set up graph optimizer  
-
-On a laptop that is connected to the same network as the rest:  
+TODO: Let's mention that we should do this on the server and not any laptop  
 
     laptop $ docker pull duckietown/cslam-server
     laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![Rosmaster name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster IP] amaurx/cslam-graphoptimizer:latest /bin/bash
 
     container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
 
-This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz thanks to step 7.  
+This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz in the next step.  
 
+### Step 8: Set up the visualization
+Set up and run the visualization of the map, duckiebots, watchtowers, and traffic signs using the following commands:
+
+    laptop $ docker pull duckietown/cslam-visualization
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
 
 ### Step 9: The fun part
 Control the Duckiebot manually around Duckietown
@@ -174,6 +176,8 @@ You can stop the `cslam-acquisition` containers on the watchtowers with the `wat
 You can then stop the processing of your Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and executing:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml down`
+
+TODO: If this has to be done for each duckiebot, maybe we should have something like docker-compose-<duckiebot_hostname>-x86.yml
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
