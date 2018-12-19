@@ -112,7 +112,7 @@ Now you should have a running evaluator. Open a new terminal before starting on 
 
 This assumes you have your project repository from the cookiecutter template provided here:
 
-[https://github.com/duckietown/duckietown-project-template](https://github.com/duckietown/duckietown-project-template)
+[https://github.com/DaRavenox/duckietown-project-template](https://github.com/DaRavenox/duckietown-project-template)
 
 What you need to do now fill in the template-submission inside the sub-\* folder of the project repo as described in the background. In the config file you should specify the path to the library you want to test. Note that the folder has to be single layer. Next you run:
 
