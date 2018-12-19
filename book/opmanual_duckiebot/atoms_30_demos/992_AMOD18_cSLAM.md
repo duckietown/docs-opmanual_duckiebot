@@ -4,7 +4,7 @@ This is the description of the cSLAM (Centralized Simultaneous Localization And 
 
 <div class='requirements' markdown="1">
 
-Requires: Watchtowers, Tiles, AprilTags (tag family=Tag36h11, size=6.5cm, border=1), Duckiebots (with AprilTags on top of them), Local (duckietown) wireless network.
+Requires: Watchtowers, Tiles, AprilTags (tag family=Tag36h11, size=6.5cm, border=1), duckiebots (with AprilTags on top of them), Local (duckietown) wireless network.
 
 Requires: Wheels calibration completed. [Wheel calibration](#wheel-calibration)
 
@@ -35,13 +35,13 @@ The main cSLAM repository is [here](https://github.com/duckietown/duckietown-csl
 TODO: Put a description, illustrations and explanation of what cSLAM is, the different parts of it, how they communicate, what's the general philosophy, etc.
 
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
-TODO: Most of this will go away and a reference to the duckietown specs is needed
+TODO: Most of this will go away and a reference to the Duckietown specs is needed
 
 ### Layout
   * Traffic lights are good to have but not necessary (optional).
   * Each floor AprilTag should have at least two watchtowers seeing it. It is recommended, but not necessary, that the bipartite graph of watchtowers and AprilTags are connected.
 ### Infrastructure
-  * AprilTags have to be placed on the tiles, traffic signs, and Duckiebots. These tags should all be unique!
+  * AprilTags have to be placed on the tiles, traffic signs, and duckiebots. These tags should all be unique!
   * For a detailed map to be visualized, the poses of the AprilTags in the Duckietown must be (approximately) known beforehand.
   * Watchtowers have to be spread across the entire Duckietown. Preferably the combined field of view covers the entire Duckietown.
 ### Weather
@@ -50,14 +50,14 @@ TODO: Most of this will go away and a reference to the duckietown specs is neede
 
 ## Duckiebot setup notes {#demo-cslam-duckiebot-setup}
 
-* All Duckiebots are required to have an AprilTag mounted on top of them.
-* The bottom side of the AprilTag has to be pointing towards the rear of the Duckiebot.
-* The center of the AprilTag should be aligned as closely as possible to the center of gravity of the Duckiebot.
+* All duckiebots are required to have an AprilTag mounted on top of them.
+* The bottom side of the AprilTag has to be pointing towards the rear of the duckiebot.
+* The center of the AprilTag should be aligned as closely as possible to the center of gravity of the duckiebot.
 
 
 ## Pre-flight checklist {#demo-cslam-pre-flight}
 
-Check: The Duckiebot has sufficient battery and is powered on.
+Check: The duckiebot has sufficient battery and is powered on.
 
 Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each duckiebot.
 
@@ -80,7 +80,7 @@ TODO: Installation instructions probably not important here since they are prere
 
 ### Step 1: Set up the watchtowers. _You can skip this step for the demo on Thursday_
 
-To burn the SD card for each watchtower, the same instructions as for Duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
+To burn the SD card for each watchtower, the same instructions as for duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
 
 The `hostname` of each watchtower should be of the form `demowatchtowerXX`, where `XX` stands for two digits (For example - demowatchtower01, demowatchtower02, and so on).
 The containers `roscore` and `ros-picam` are required:
@@ -93,7 +93,7 @@ It is also necessary to pull the docker image for the cSLAM acquistion node:
     laptop $ docker -H ![hostname].local pull duckietown/cslam-aquisition-rpi
 
 ### Step 2: Setup the AprilTags _You can skip this step for the Thursday demo_
-Print out the AprilTags and place them on top of Duckiebots and in Duckietown
+Print out the AprilTags and place them on top of duckiebots and in Duckietown
     (Provide location for Benson to place pre-generated AprilTags)
 
 ### Step 3: Setup a ROS Master machine
@@ -106,7 +106,7 @@ In order to start processing data on the watchtowers you need to run the `cslam-
 We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `SERVER_HOSTNAME` and `SERVER_IP` in this file to the ones of your ROS Master. Also check if `array` contains all your watchtowers.
 Then you can run it with `bash watchtowers_setup.sh`.
 
-This step sets up the data acquisition pipeline on each watchtower. This means that each watchtower will now send updates about the AprilTags it sees. A similar step will also be done for each Duckiebot in Step 6.
+This step sets up the data acquisition pipeline on each watchtower. This means that each watchtower will now send updates about the AprilTags it sees. A similar step will also be done for each duckiebot in Step 6.
 
 ### Step 5: Test the watchtowers
 
@@ -120,9 +120,9 @@ Note that the SERVER_HOSTNAME should not contain `.local` at the end.
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
 
 
-### Step 6: Setup the Duckiebot
+### Step 6: Setup the duckiebot
 
-The Duckiebot should have the following 3 containers runnning:
+The duckiebot should have the following 3 containers runnning:
 
 - `roscore`
 - `ros_picam`
@@ -132,10 +132,10 @@ You can start them or check if they are already running via Portainer.
 
 TODO: Add links to the parts of the book where it's explained how to run these.
 
-As the Duckiebot usually has other nodes running we spare it processing of images and odometry by offloading this to a computer. To do this we need to run the acquisition node container. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. Here you need to update a few lines:
+As the duckiebot usually has other nodes running we spare it processing of images and odometry by offloading this to a computer. To do this we need to run the acquisition node container. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. Here you need to update a few lines:
 
-- Replace `duckiebotHostname` in `acquisition_node_duckiebotHostname`, `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` and `ACQ_DEVICE_NAME=duckiebotHostname` with your Duckiebot's hostname.
-- Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_DEVICE_IP` with your Duckiebot's IP address. You can get this if you ping it.
+- Replace `duckiebotHostname` in `acquisition_node_duckiebotHostname`, `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` and `ACQ_DEVICE_NAME=duckiebotHostname` with your duckiebot's hostname.
+- Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_DEVICE_IP` with your duckiebot's IP address. You can get this if you ping it.
 - Replace `ROS_MASTER_Hostname` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers.
 
@@ -145,7 +145,7 @@ You can then start the container by running:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml up`
 
-Make the Duckiebot see an AprilTag and you should see that you receive messages from it in the Diagnostics tool. You might have to restart the diagnostics tool to see the updates.
+Make the duckiebot see an AprilTag and you should see that you receive messages from it in the Diagnostics tool. You might have to restart the diagnostics tool to see the updates.
 
 TODO: This wasn't working live. I have verified that it works on bag files
 
@@ -169,16 +169,16 @@ Set up and run the visualization of the map, duckiebots, watchtowers, and traffi
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
 
 ### Step 9: The fun part
-Control the Duckiebot manually around Duckietown
+Control the duckiebot manually around Duckietown
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
-Look at the diagnostic tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
+Look at the diagnostic tool to ensure the messaging status of the duckiebots are `OK` where data was received in the last 10 seconds. If the duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 
 ### Step 10: Shut everything off
 You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
 
-You can then stop the processing of your Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and executing:
+You can then stop the processing of your duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and executing:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml down`
 
@@ -189,8 +189,8 @@ TODO: If this has to be done for each duckiebot, maybe we should have something 
 ### Rviz visualization makes no sense
 If the positions of your duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
     - AprilTag recognition is off and gives out weird transforms  
-    - Time delays between different input (watchtowers, duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
-    - Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
+    - Time delays between different input (watchtowers, duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If different actors are not synchronized or if one has delay, it will lead to bad results  
+    - Optimization might take to long because of discrepancies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
 
 
 ### AprilTags printed may be of wrong size
