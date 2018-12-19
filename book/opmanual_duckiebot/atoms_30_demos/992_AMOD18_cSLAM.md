@@ -63,15 +63,19 @@ We have the following basic assumptions that need to be fulfilled in order for t
 
 ## Pre-flight checklist {#demo-cslam-pre-flight}
 
-Check: The Duckiebot has sufficient battery and is powered on.
+<div class='check' markdown="1">
 
-Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
+* The Duckiebot has sufficient battery and is powered on.
 
-Check: The watchtowers are powered on
+* The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
 
-Check: ROS is installed on your local computer. If it is not, install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
+* The watchtowers are powered on
 
-Check: Docker is installed on your local computer. If it is not, install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended that you also have [Docker-compose](https://docs.docker.com/compose/install/)
+* ROS is installed on your local computer. If it is not, install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
+
+* Docker is installed on your local computer. If it is not, install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended that you also have [Docker-compose](https://docs.docker.com/compose/install/)
+
+</div>
 
 
 ## Demo instructions {#demo-cslam-run}
