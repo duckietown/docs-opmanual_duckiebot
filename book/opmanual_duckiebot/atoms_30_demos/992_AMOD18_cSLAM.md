@@ -1,4 +1,4 @@
-# AMOD18 cSLAM {#demo-cslam status=draft}
+# AMOD18 cSLAM {#demo-cslam status=beta}
 
 <div figure-id="fig:cslam_logo">
      <img src="cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
