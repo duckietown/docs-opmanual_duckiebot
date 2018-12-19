@@ -243,7 +243,9 @@ duckie-j collided!
 ```
 
 <br />
-Resolution: Quit with <kbd>Ctrl</kbd>+<kbd>c</kbd> your terminal session and restart the demo at **Step 4**
+Resolution:
+<br />
+Quit with <kbd>Ctrl</kbd>+<kbd>c</kbd> your terminal session and restart the demo at **Step 4**
 
 <br />
 Symptoms: While executing the  **Step 3** of the demo instructions, if you encounter issues related to the submodule `duckietown-visualization`, try the following steps.
