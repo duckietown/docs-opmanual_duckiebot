@@ -1,5 +1,9 @@
 # AMOD18 cSLAM {#demo-cslam status=draft}
 
+<div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
+     <img src="/cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
+</div>
+
 This is the description of the cSLAM (Centralized Simultaneous Localization And Mapping) demo. This demo allows a Duckiebot to localize itself, while the watchtowers and Duckiebots work together to build a map of the arena. The task is achieved by using the camera of the Duckiebot, together with watchtowers located along the path, to detect AprilTags attached to the tiles, the traffic signs, and the Duckiebot itself.
 
 <div class='requirements' markdown="1">
@@ -55,7 +59,7 @@ Layout of Duckietown:
 
 ## Duckiebot setup notes {#demo-cslam-duckiebot-setup}
 
-* All Duckiebots are required to have an AprilTag mounted on top of them. 
+* All Duckiebots are required to have an AprilTag mounted on top of them.
 * The bottom side of the AprilTag has to be pointing towards the rear of the Duckiebot.
 * The center of the AprilTag should be aligned as closely as possible to the center of gravity of the Duckiebot.
 
@@ -79,7 +83,7 @@ Before starting, please install ROS Kinetic on your local computer by following 
 
 Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
 
-Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam and follow readme instructions to install everything (make sure you install g2o for python2) 
+Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam and follow readme instructions to install everything (make sure you install g2o for python2)
 
 Make sure all devices you are using are connected to the same WiFi network (typically that would be `duckietown`)
 
@@ -105,13 +109,13 @@ It is also necessary to pull the docker image for the cSLAM acquistion node:
 Print out the AprilTags and place them on top of Duckiebots and in Duckietown. Configure a map description file for this. Check [duckietown-world](https://github.com/duckietown/duckietown-world) for an example. Aim to have neighboring towers seeing at least one common AprilTag and to have each watchtower see at least two AprilTags.
 
 TODO: For Amaury: Explain where the config files for the city and the Duckiebots are by default and what needs to be chenged there by the user.
-    
+
 ### Step 3: Setup a ROS Master machine
 
 One of the computers will act as ROS Master. That means that all other nodes and containers will need to have their `ROS_MASTER_URI` environment variable set up to this computer. To set this up, run `roscore` on a computer that has ROS Kinetic installed. Keep in mid that you mind need to source the ROS setup file before that with something like
 
     laptop $ source /opt/ros/kinetic/setup.bash
-    
+
 Then make a note of the hostname of the computer running the ROS Master. You will need that later. When you run `roscore` this will show in a line similar to:
 
 ```
@@ -120,7 +124,7 @@ process[master]: started with pid [3263]
 ROS_MASTER_URI=http://![hostname]:11311/
 ```
 
-You will also need the IP address of  this computer. The easiest way is to simply ping this hostname (followed by `.local`) from another computer. 
+You will also need the IP address of  this computer. The easiest way is to simply ping this hostname (followed by `.local`) from another computer.
 
 ### Step 4: Configure the watchtowers
 
@@ -133,13 +137,13 @@ This step sets up the data acquisition pipeline on each watchtower. This means t
 
 ### Step 5: Test the watchtowers
 
-Setup the diagnostics tool to check that the status of the watchtowers are `OK` where data was received in the last XX seconds. 
+Setup the diagnostics tool to check that the status of the watchtowers are `OK` where data was received in the last XX seconds.
 
     laptop $ docker pull duckietown/cslam-diagnostics
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-diagnostics
 
 Note that the SERVER_HOSTNAME should not contain `.local` at the end.
-    
+
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
 
 
@@ -151,7 +155,7 @@ The Duckiebot should have the following 3 containers runnning:
 - `ros_picam`
 - `joystick`
 
-You can start them or check if they are already running via Portainer. 
+You can start them or check if they are already running via Portainer.
 
 TODO: Add links to the parts of the book where it's explained how to run these.
 
@@ -159,10 +163,10 @@ As the Duckiebot usually has other nodes running we spare it processing of image
 
 - Replace `duckiebotHostname` in `acquisition_node_duckiebotHostname`, `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` and `ACQ_DEVICE_NAME=duckiebotHostname` with your Duckiebot's hostname.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_DEVICE_IP` with your Duckiebot's IP address. You can get this if you ping it.
-- Replace `ROS_MASTER_Hostname` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers. 
-- Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers. 
+- Replace `ROS_MASTER_Hostname` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers.
+- Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers.
 
-TODO: MASTER should be removed for macros which are not ROS Masters. For example, Duckiebots: `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` 
+TODO: MASTER should be removed for macros which are not ROS Masters. For example, Duckiebots: `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local`
 
 You can then start the container by running:
 
@@ -172,7 +176,7 @@ Make the Duckiebot see an AprilTag and you should see that you receive messages 
 
 TODO: This wasn't working live. I have verified that it works on bag files
 
-### Step 7: Set up the cSLAM Graph Optimizer 
+### Step 7: Set up the cSLAM Graph Optimizer
 
 On a laptop that is connected to the same network as the rest:
 
@@ -195,8 +199,8 @@ Set up and run the visualization of the map, Duckiebots, watchtowers, and traffi
 Control the Duckiebot manually around Duckietown
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
-    
-Look at the diagnostic tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. 
+
+Look at the diagnostic tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 
 ### Step 10: Shut everything off
 You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
@@ -222,7 +226,7 @@ If the positions of your Duckiebots and watchtower in Rviz make no sense, there 
 ### AprilTags printed may be of wrong size
 Check that the printed AprilTags are of size 6.5cm as the printer might have done some scaling to the tags.
 
-### Check Diagnostics tool 
+### Check Diagnostics tool
 Check that messages are received frequently. Is not device may be suffering from poor connection and will need to restart or configuration for device was done wrongly and it needs to be reconfigured again. Do check that the network signal is strong enough for the devices to communicate with one another. Keep in mind that sometimes the Diagnostics tool won't show devices that connected after it started, so first try to restart it.
 
 ### How to see the g2o graph
@@ -230,7 +234,7 @@ In Rviz, you only see parts of the actual underlying g2o graph. If you want to v
 In graph_builder.launch, you can set the "save_g2o_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using  [g2o_viewer](#fig:g2o_viewer).   
 
 <div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
-     <img src="g2o_view.png" style='width: 30em'/>
+     <img src="/cSLAM_images/g2o_view.png" style='width: 30em'/>
 </div>
 
 ## Demo failure demonstration {#demo-cslam-failure}
