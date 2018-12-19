@@ -41,7 +41,7 @@ The Obstavoid algorithm is based on a shortest path optimisation problem, which 
 
 Example 3D cost grid illustration:
 <div figure-id="fig:cost_grid_diagram">
-     <img src="994_AMOD18_TheObstavoidAlgorithm/cost_grid_diagram.jpeg" width=50%/>
+     <img src="994_AMOD18_TheObstavoidAlgorithm/cost_grid_diagram.jpg" width=50%/>
 </div>
 
 
