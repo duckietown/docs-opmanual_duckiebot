@@ -46,7 +46,9 @@ cSLAM was designed such that it is modular, scalable, and with minimum overhead 
 
 At the core of cSLAM is a pose graph optimization problem. The watchtowers observe AprilTags on the ground, on top of Duckiebots and even on traffic signs. They can then estimate the relative pose of these AprilTags. Duckiebots similarly see tags on the ground and on traffic signs and estimate relative poses. Duckiebots also estimate their own pose relative to their past position by using odometry data. All these poses, together with the times when they were observed, are combined in a graph optimization problem that is solved by a library called [g2o](https://github.com/RainerKuemmerle/g2o). The solution of this problem is the global positions of all the observed AprilTags, and consequently of the Duckiebots.
 
-
+<div figure-id="fig:architecture" figure-caption="Architecture of cSLAM.">
+     <img src="cSLAM_images/architecture.png" style='width: 40em'/>
+</div>
 
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
 We have the following basic assumptions that need to be fulfilled in order for the demo to work.
@@ -156,7 +158,7 @@ Setup the Diagnostics tool to check that the status of the watchtowers are `OK` 
 Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
 
 NOTE: After everything is over, please run:  
- 
+
     laptop $ xhost -local:host
 
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
@@ -222,7 +224,7 @@ Set up and run the visualization of the map, Duckiebots, watchtowers, and traffi
     laptop $ docker pull duckietown/cslam-visualization
     laptop $ xhost +local:root
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-visualization
-    
+
 NOTE: After everything is over, please run:  
 
     laptop $ xhost -local:host
@@ -234,7 +236,7 @@ If you managed to get all the way to here, congratulations! Quack, quack, hooray
 Now you can drive a Duckiebot around the city and see how it moves on the map. To control the Duckiebot manually around city use the keyboard control:
 
     laptop $ dts duckiebot keyboard_control ![duckiebot_hostname]
-    
+
 Look at the Diagnostics tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 5 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 
 ### Step 10: Shut everything off {#demo-cslam-run-10}
