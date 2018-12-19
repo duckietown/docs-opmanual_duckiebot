@@ -10,12 +10,17 @@ Requires: A duckietown complying with the usual standards
 
 Requires: A laptop with python2, ROS and Docker installed
 
-Requires: Bash shell command line
-<br><br>
+Requires: Bash shell command line  
 
-OUTCOME: Viewing segmented images from the Duckiebot camera on your laptop
+Results: Viewing segmented images from the Duckiebot camera on your laptop
 
 </div>
+
+
+
+
+
+
 
 
 ## Semantic Segmentation
@@ -24,7 +29,7 @@ Semantic segmentation is a computer vision task in which specific regions of an 
 
 <figure>
     <figcaption>Example of semantic segmentation</figcaption>
-      <img style='width:30em' src="Semantic_segmentation.png"/>
+      <img style='width:35em' src="Semantic_segmentation.png"/>
 </figure>
 
 
@@ -35,7 +40,7 @@ However, since we were unable to obtain labeled images of Duckietown, we were fo
 
 <figure>
     <figcaption>Comparison of main segmentation networks</figcaption>
-      <img style='width:15em' src="Network_comparison.png"/>
+      <img style='width:25em' src="Network_comparison.png"/>
 </figure>
 
 The comparison between the most popular segmentation networks is shown in the above figure. According the design principles of segmentation algorithm, we chose the Image Cascade Network (ICNet), which is relatively light, fast and accurate.
@@ -45,7 +50,7 @@ The ICNet provides us with a high efficiency segmentation system with decent qua
 
 <figure>
     <figcaption>ICNet architecture</figcaption>
-      <img style='width:30em' src="Network_architecture.png"/>
+      <img style='width:35em' src="Network_architecture.png"/>
 </figure>
 
 Our code of the ICNet is implemented using the tensorflow framework and pre-trained on the Cityscapes dataset. The algorithm can obtain a mean accuracy of 80.3% on the Cityscapes dataset.
@@ -115,8 +120,7 @@ A duckietown complying with the usual standards is required. In particular, the 
 
 ## Duckiebot setup notes {#demo-semseg-duckiebot-setup}
 
-No special requirements for duckiebots are needed, except the ability of recording logs from the camera.
-Maybe, something regarding the movidus stick if we plan to use the software on the bot
+No special requirements for duckiebots are needed, except the ability of taking logs from the camera.
 
 ## Pre-flight checklist {#demo-semseg-pre-flight}
 
@@ -124,13 +128,18 @@ Check: you have python2 and pip installed
 
 Check: you have ROS installed. Run >>roscore in terminal too check this.
 
+Check: your Duckiebot has to roscore and ros-picam containers running
+
 ## Demo instructions {#demo-semseg-run}
 
 ### First option: Docker (Recommended)
 
-Step 1: Make sure you have ROS and Docker installed on your laptop. You should have completed the steps in the Duckiebot operation manual from Unit B-1 to Unit B-9. Make sure you have ros-picam, roscore container running on your Duckiebot.
 
-Step 2: Find the IP adress of your computer and Duckiebot using the ping command:    
+Step 1: Make sure you have ROS and Docker installed on your laptop. You should have completed the steps in the Duckiebot operation manual from Unit B-1 to Unit B-9: see [](#laptop-setup). Make sure you have ros-picam, roscore container running on your Duckiebot.
+
+
+Step 2: Find the IP adress of your computer and Duckiebot using the ping command:  
+
 
     laptop $ ping ![hostname].local
     laptop $ ping ![Computer name]
@@ -142,19 +151,23 @@ Note: do not use your username instead of your computer name. Usually, the ping 
       <img style='width:30em' src="Ping_your_computer.png"/>
 </figure>
 
- Step 3: Run the semantic segmentation docker image    
 
-     laptop $ docker -H ![hostname].local run -it --network host -e ROS_MASTER_URI=http://![IP of your duckiebot]:11311 -e DUCKIEBOT_NAME=![hostname] -e ROS_HOSTNAME=![IP of your computer] zjdong/semantic-segmentation:2.0
+ Step 3: Run the semantic segmentation Docker image    
 
-The comand should look like this:    
 
-    laptop $ docker -H zjbot.local run -it --network host -e ROS_MASTER_URI=http://10.42.0.115:11311 -e DUCKIEBOT_NAME=zjbot -e ROS_HOSTNAME=127.0.1.1 zjdong/semantic-segmentation:2.0
+    laptop $ docker -H ![hostname].local run -it --network host -e ROS_MASTER_URI=http://![IP of your duckiebot]:11311 -e DUCKIEBOT_NAME=![hostname] -e ROS_HOSTNAME=![IP of your computer] zjdong/semantic-segmentation:2.0
+
+The command should look like this:    
+
+     $ docker -H zjbot.local run -it --network host -e ROS_MASTER_URI=http://10.42.0.115:11311 -e DUCKIEBOT_NAME=zjbot -e ROS_HOSTNAME=127.0.1.1 zjdong/semantic-segmentation:2.0
 
 
 Well done". You are now receiving images from the Duckiebot and processing them on your laptop. Wait until you can read "Predicting" and "Finish prediction", then let the node running without stopping it.
 
 
+
 Step 4: Visualize the results
+
 
 Now, in order to visualize your the processed images, run the following commands in the terminal:    
 
@@ -174,7 +187,9 @@ Since the network was pre-trained, it was impossible for us to reduce its size a
 
 ### Second option: ROS
 
+
 Step 1: Open a new terminal and enter the following commands
+
 
 Note: all these commands have to be run in the bash command line.
 If you are using zsh, enter the command >>bash every time you open a new terminal.    
@@ -196,6 +211,8 @@ If you are using zsh, enter the command >>bash every time you open a new termina
 
 Step 2: edit and run lode_launch.sh
 
+
+
     laptop $ gedit node_launch.sh        
 
 
@@ -207,7 +224,7 @@ export ROS_MASTER_URI=http://"""your duckiebot""".local:11311
 Save and close the file.  
 
 
-Now, check if you can ping your bot. If you can't, you have problems with the connection. Please refer to the duckiebot manual for this.
+Now, check if you can ping your bot. If you can't, you have problems with the connection. Please refer to the duckiebot manual for this: see [](#duckiebot-network).
 
 If you can ping your bot, go on portainer (http://.![robot name]:9000/#/containers) and make sure that ros-picam and roscore containers are running.
 
@@ -219,7 +236,9 @@ Enter the following commands
 
 Well done". You are now receiving images from the Duckiebot and processing them on your laptop. Wait until you can read "Predicting" and "Finish prediction", then let the node running without stopping it.
 
+
 Step 3: Visualize the results
+
 
 Now, in order to visualize your the processed images, run the following commands in the terminal (make sure you are in bash)
 
