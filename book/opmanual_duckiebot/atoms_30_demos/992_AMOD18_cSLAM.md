@@ -228,6 +228,10 @@ You can then stop the processing of Duckiebot images and odometry by pressing <k
 
 `docker-compose -f docker-compose-duckiebot-x86.yml down`
 
+Make sure to execute the following command on your laptop! Otherwise you expose it to security issues!
+
+    laptop $ xhost -local:host
+
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
 Symptom: The positions of your Duckiebots and watchtowers in Rviz make no sense.
