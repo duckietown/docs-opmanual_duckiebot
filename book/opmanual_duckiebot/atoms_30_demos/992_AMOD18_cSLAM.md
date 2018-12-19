@@ -155,9 +155,9 @@ Depending on your ROS configuration you might need to first source the ROS setup
     
 You should now be able to see the raw and rectified watchtower streams, as well as a test stream that shows the detected AprilTags.
 
-### Step 6: Setup the Duckiebot {#demo-cslam-run-6}
+### Step 6: Setup the Duckiebots {#demo-cslam-run-6}
 
-The Duckiebot should have the following 3 containers runnning:
+The Duckiebots should have the following 3 containers runnning:
 
 - `roscore` [Instructions here](#rc-control)
 - `ros_picam` (and `picam` should be stopped) [Instructions here](#read-camera-data)
@@ -165,20 +165,20 @@ The Duckiebot should have the following 3 containers runnning:
 
 You can start them or check if they are already running via Portainer.
 
-As the Duckiebot usually has other nodes running we spare it processing of images and odometry by offloading this. To do this we need to run the acquisition node container on one of the computers. We recommend *not* using the computer serving as the ROS Master. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. Here you need to update a few lines:
+As the Duckiebots usually have other nodes running we spare them processing of images and odometry by offloading this. To do this we need to run an acquisition node container for each one of the Duckiebots on one of the computers. We recommend *not* using the computer serving as the ROS Master. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. You can copy the lines from `acquisition_node_duckiebotHostname` as many times as Duckiebots you have. Here you need to update a few lines for each one of these:
 
 - Replace `duckiebotHostname` in `acquisition_node_duckiebotHostname`, `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` and `ACQ_DEVICE_NAME=duckiebotHostname` with your Duckiebot's hostname.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_DEVICE_IP` with your Duckiebot's IP address. You can get this if you ping it.
 - Replace `ROS_MASTER_HOSTNAME` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers.
 
-You can then start the container by running:
+You can then start all the containers simulateneously by running:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml up`
 
-Make the Duckiebot see an AprilTag and you should see that you receive messages from it in the Diagnostics tool. You might have to restart the diagnostics tool to see the updates.
+Make the Duckiebots see an AprilTag and you should see that you receive messages from them in the Diagnostics tool. You might have to restart the diagnostics tool to see the updates.
 
-If you don't have docker-compose installed you can run the same command in the classical Docker way, althought it is much uglier:
+If you don't have docker-compose installed you can run the same commands in the classical Docker way, althought it is much uglier. You need to run the following command for every Duckiebot you use.
 
      laptop $ docker run -it --name cslam-acquisition --restart always --network host -e ACQ_ROS_MASTER_URI_DEVICE=![duckiebotHostname].local -e ACQ_ROS_MASTER_URI_DEVICE_IP=![XXX.XXX.XXX.XXX] -e ACQ_ROS_MASTER_URI_SERVER=![ROS_MASTER_HOSTNAME].local -e ACQ_ROS_MASTER_URI_SERVER_IP=![XXX.XXX.XXX.XXX] -e ACQ_DEVICE_NAME=![duckiebotHostname] duckietown/cslam-acquisition:x86
 
@@ -193,13 +193,15 @@ If it is not filled, your Duckiebots will not be seen as such.
 
 On the ROS master machine defined at step 3, run:  
 
+<<<<<<< HEAD
     laptop $ docker pull duckietown/cslam-graphoptimizer
     laptop $ docker run -it --rm --net=host -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-graphoptimizer:latest /bin/bash
+=======
+    laptop $ docker pull duckietown/cslam-server
+    laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![Rosmaster name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster IP] amaurx/cslam-graphoptimizer:latest /bin/bash
+>>>>>>> 798a440da225d87f4a926531ee8f0c6062b844c3
 
     container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
-
-Alternativly, you can remove the `/bin/bash` from the "docker run" command, and the `wrapper.sh` will be executed directly.  
-However, it is easier to troubleshoot from inside the container (which you won't be able to do without `/bin/bash`), where launch variables can be easily modified.
 
 This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz in the next step.  
 
@@ -219,23 +221,31 @@ Look at the diagnostic tool to ensure the messaging status of the Duckiebots are
 ### Step 10: Shut everything off {#demo-cslam-run-10}
 You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
 
-You can then stop the processing of your Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and executing:
+You can then stop the processing of Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> in the terminal running docker-compose and by then running:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml down`
-
-TODO: If this has to be done for each Duckiebot, maybe we should have something like docker-compose-<duckiebot_hostname>-x86.yml
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
 ### I can't connect to something.
 Check if you are on the right network. Check if you can ping the device. Sometimes the network won't resolve hostnames and requires a restart.
 
+### Docker complains about wrong Docker versions
+If you run into this issue when running `watchtowers_setup.sh` or `watchtowers_stop.sh`, please run the script again. This typically resolves the error.
+
+### Docker cannot connect to a remote device
+Try to run the command again. Often it is a temporary issue. If it persists, make sure you are on the correct network, that the device is powered on and that you can ping it.
+
+### The Diagnostics tool doesn't show a device or shows ERROR
+This could be a non-problem. For example, if a watchtower or a Duckiebot doesn't recognize any AprilTags you will not receive messages. You can check that with the test image stream from this device in `rqt_image_view`. Often you simply need to restart the Diagnostics tool.
+
+If the problem persists, use Portainer to check if the `roscore`, `ros-picam`, and `cslam-acquisition` containers are running for this device. Check the logs of `cslam-acquisition` for errors.
+
 ### Rviz visualization makes no sense
 If the positions of your Duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
-    - AprilTag recognition is off and gives out weird transforms  
-    - Time delays between different input (watchtowers, Duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
-    - Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
-
+* AprilTag recognition is off and gives out weird transforms  
+* Time delays between different input (watchtowers, Duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
+* Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
 
 ### AprilTags printed may be of wrong size
 Check that the printed AprilTags are of size 6.5cm as the printer might have done some scaling to the tags.
