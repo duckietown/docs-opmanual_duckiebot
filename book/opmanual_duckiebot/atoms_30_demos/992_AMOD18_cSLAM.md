@@ -145,6 +145,15 @@ Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
 
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
 
+You can also see the image stream from the watchtowers with `rqt_image_view`. On the computer running `roscore` run the following line:
+
+    laptop $ rqt_image_view
+    
+Depending on your ROS configuration you might need to first source the ROS setup file with:
+
+    laptop $ source /opt/ros/kinetic/setup.bash
+    
+You should now be able to see the raw and rectified watchtower streams, as well as a test stream that shows the detected AprilTags.
 
 ### Step 6: Setup the Duckiebot {#demo-cslam-run-6}
 
