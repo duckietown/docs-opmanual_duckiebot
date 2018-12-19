@@ -1,76 +1,131 @@
-# AMOD18 Object Detection {#demo-objdet status=draft}
+# AMOD18 To Be Detected {#demo-objdet status=draft}
 
 This is the demo for object detection using the camera on the Duckiebot. The Duckiebot has been trained to detect duckies, Duckiebots, traffic lights, QR codes, intersection signs, stop signs, and (traffic) signal signs. The joystick demo (or lane following pipeline) is used to navigate the Duckiebot around Duckietown.
 
 
+
+Our codebase can be found at the following repository on GitHub: https://github.com/duckietown/duckietown-objdet. This repository contains all the files needed to train the object detector and containerize the inference model that was used in the DEMO.
+
+
 <div class='requirements' markdown="1">
 
-Requires: Two or more initialized Duckiebots.
+Requires: Initialized Duckiebots.
 
-Requires: Camera and wheel calibration completed.
+Requires: wheel calibration completed.[Wheel Calibration](#wheel-calibration)
 
-Requires: Joystick demo completed.
+Requires: Camera calibration completed.[Camera calibration](#camera-calib)
+
+Requires: Joystick demo completed.[Joystick demo](#rc-control)
 
 Requires: Duckietown with all classified objects.
+
+Requires: Docker is installed on your computer
+
+Results: The duckiebot is able to detect objects using its camera.
 </div>
 
-## Video of expected results {#demo-objdet-expected}
 
-First, we show a video of the expected behavior (if the demo is succesful).
+
+## Images of expected results {#demo-objdet-expected}
+
+<div figure-id="fig:objdet2" figure-caption="The expected result is bounding boxes around objects in duckietown.">
+     <img src="objdet2.png" style='width: 30em'/>
+</div>
+
+<div figure-id="fig:objdet1" figure-caption="Another example, notice this one also has the duckiebot.">
+     <img src="objdet1.png" style='width: 30em'/>
+</div>
+
+TODO: A high quality video will be uploaded before the deadline. For now these images are self explanatory of what is to be expected.
 
 ## Duckietown setup notes {#demo-objdet-Duckietown-setup}
 
 The Duckietown used for this demo must have the following characteristics.
-* Several duckies placed on the road and at the side of the road.
-* Intersection sign, Stop sign and Signal sign.
-* QR codes on the ground and below the signs mentioned above.
-* Traffic lights at intersections
-* No cluttering of objects in one place. Allow enough space between each object.
+
+ * Several duckies placed on the road and at the side of the road.
+
+ * Intersection sign, Stop sign and Signal sign.
+
+ * QR codes on the ground and below the signs mentioned above.
+
+ * Traffic lights at intersections
+
+ * Duckiebots on the road.
+
+
+ No cluttering of objects in one place. Allow enough space between each object. An example image is shown below.
 
 ## Duckiebot setup notes {#demo-objdet-Duckiebot-setup}
 
-No special setup needed for the Duckiebot.
+
+Put a duckie on top of the duckiebot.(Seriously)
 
 ## Pre-flight checklist {#demo-objdet-pre-flight}
 
+
+
 The pre-flight checklist for this demo are:
-Check: Battery level is sufficient.
-Check: Joystick container is running.
-Check: Rospicam container is running.
-Check: Put on your smartie pants.
+
+**Check**: Battery level is sufficient.
+
+**Check**: Docker Installed.
+
+**Check**: Joystick container is running.
+
+**Check**: Rospicam container is running.
+
+**Check**: Base container is running.
+
+**Check**: Put on your smartie pants.
 
 ## Demo instructions {#demo-objdet-run}
 
-Here, give step by step instructions to reproduce the demo.
+
+
+The following steps must be completed in order to run the object detector on your duckiebot.
+
 
 **Step 1**: When the Duckiebot is powered on, make sure all the containers required are running. In your laptop, run
 
     laptop $ docker -H ![duckie_bot].local ps
 
-to check whether the right containers are running or not. You can also check by going to the portainer webpage: http://![duckie_bot].local:9000/#/containers.
+to check whether the right containers are running or not. You can also check by going to the portainer webpage: `http://![duckie_bot].local:9000/#/containers`.
+
+Note: If the required containers are running then skip to Step 4.
+
+<div figure-id="fig:Containers" figure-caption="The containers that are required for this demo.">
+     <img src="Containers.png" style='width: 30em'/>
+</div>
 
 
 
-**Step 2**: Launch the rospicam container so that we can capture images from the camera of Duckiebot.
+**Step 2 (Optional)**: Launch the rospicam container so that we can capture images from the camera of Duckiebot.
 
-    laptop $ docker -H ![duckie_bot].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data
-    Duckietown/rpi-Duckiebot-ros-picam:master18
+    laptop $ docker -H ![duckie_bot].local run -it --name ros-picam --network host  --device /dev/vchiq -v /data:/data Duckietown/rpi-Duckiebot-ros-picam:master18
+
 
 This command will run a container and create a ros node inside automatically. This ros node will publish the images captured by the camera to a ros topic.
 
 
 
-**Step 3**: Launch the object detector container.
+**Step 3 (Optional)**: Launch the base container on the duckiebot.
 
-Note: For this command you need the Duckiebot's IP address. In order to obtain the Duckiebot IP address, you should ping your Duckiebot in another terminal and note down the IP address.
 
-    laptop $ docker -H ![duckie_bot].local run -it --name object_detection --network=host -e ROS_MASTER_URI=http://![duckie_bot_IP_Address]:11311/  -e Duckiebot_NAME=![duckie_bot] zgxsin/object_detection:1.6
+    laptop $ docker -H ![duckie_bot].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
+
+
+
+**Step 4**: Launch the object detector container.
+
+Note: For this command you need the Duckiebot's IP address. In order to obtain the Duckiebot IP address, you should ping your Duckiebot in another terminal and note down the IP address of your duckiebot.
+
+    laptop $ run -it --name object_detection --network host -e ROS_MASTER_URI=http://![duckie_bot_IPaddress]:11311/  -e DUCKIEBOT_NAME=![duckie_bot]  -e ROS_HOSTNAME=![Name_Of_Your_Computer] zgxsin/object_detection:1.6
 
 Notice that we have to set up the ROS_MASTER_URI variable so that the ros nodes can communicate with each other. This command will create a object_detection ros node automatically. It will listen to the camera image topic in step 2 and predict images and send the predicted images to another topic for visualization.
 
 
 
-**Step 4**: In another terminal type:
+**Step 5**: In another terminal type:
 
     laptop $ dts start_gui_tools ![duckie_bot]
 
@@ -84,7 +139,10 @@ This will pop up a new GUI window. Select the 'predicted images' topic from the 
 
 
 
-**Step 5**: Move the Duckiebot using the joystick demo to different parts of Duckietown and see the magic.  
+**Step 6**: Move the Duckiebot using the joystick demo to different parts of Duckietown and see the magic. The live feed is a bit slow at the moment so please give it time to update.
+
+
+
 
 ## Troubleshooting and Tips {#demo-objdet-troubleshooting}
 
@@ -92,7 +150,8 @@ This will pop up a new GUI window. Select the 'predicted images' topic from the 
 Symptom: The Duckiebot is not moving.
 
 
-Resolution: Make sure that the joystick container is running. Note that the command for launching the joystick was changed to
+Resolution: Make sure that the joystick container is running. Note that the command for launching the joystick was changed to:
+
     laptop $ dts Duckiebot keyboard_control ![duckie_bot]
 
 
@@ -130,13 +189,19 @@ Resolution: make sure your laptop and Duckiebot are on the same network.
 Symptom: docker: Error response from daemon: Conflict. The container name "/object_detection" is already in use by container.
 
 
-Resolution: Run the command in the laptop: docker container rm --force object_detection. Repeat step 3.
+Resolution: Run the command  
+
+      laptop $ docker container rm --force object_detection.
+
+Repeat step 3.
 
 
 
 **Tip 1**: We can check whether everything is working inside this container. Run `rosnode list` to check whether corresponding ros nodes are running. Run `rostopic list` to check whether the corresponding ros topics exist. You can run other ros-related command to do the check as well.
 
+**Tip 2**: It is very important that the right containers are working. Double check to make sure.
+
 
 ## Demo failure demonstration {#demo-objdet-failure}
 
-Finally, put here a video of how the demo can fail, when the assumptions are not respected.
+Failure is not an option sorry.
