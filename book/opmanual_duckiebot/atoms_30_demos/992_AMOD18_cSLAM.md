@@ -207,7 +207,10 @@ Set up and run the visualization of the map, Duckiebots, watchtowers, and traffi
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-visualization
 
 ### Step 9: The fun part {#demo-cslam-run-9}
-Control the Duckiebot manually around Duckietown
+
+If you managed to get all the way to here, congratulations! Quack, quack, hooray!
+
+Now you can drive a duckiebot around the city and see how it moves on the map. To control the Duckiebot manually around city use the keyboard control:
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
