@@ -161,6 +161,8 @@ Symptom: Duckiebot is not navigating the intersection properly (not moving smoot
 
 Resolution: Make sure the [wheel calibration](#wheel-calibration) is done correctly.
 
+Resolution: Make sure the AprilTags are placed according to [](#fig:4-way) and [](#fig:3-way).
+
 Symptom: 'roslaunch xml error' displayed.
 
 Resolution: Try to restart the container again (try 2-3 times). If the error is not fixed, re-flash your SD card. 
