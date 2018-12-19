@@ -189,9 +189,12 @@ On a laptop that is connected to the same network as the rest:
 TODO: Let's mention that we should do this on the server and not any laptop  
 
     laptop $ docker pull duckietown/cslam-server
-    laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![Rosmaster name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster IP] amaurx/cslam-graphoptimizer:latest /bin/bash
+    laptop $ docker run -it --rm --net=host -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER_URI_DEVICE=![Rosmaster name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster IP] duckietown/cslam-graphoptimizer:latest /bin/bash
 
     container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
+
+Alternativly, you can remove the `/bin/bash` from the "docker run" command, and the `wrapper.sh` will be executed directly.  
+However, it is easier to troubleshoot from inside the container (which you won't be able to do without `/bin/bash`), where launch variables can be easily modified.
 
 This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz in the next step.  
 
@@ -199,12 +202,7 @@ This will listen to the transforms, will build a graph, optimize it and publish 
 Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
-    docker run -it --rm --net=host -v $(pwd) /bin/bash 
-    container $ /graph_optimizer/catkin_ws/src/pose_graph_builder/wrapper.sh
-
-Alternativly, you can remove the `/bin/bash` from the "docker run" command, and the `wrapper.sh` will be executed directly.  
-However, it is easier to troubleshoot from inside the container (which you won't be able to do without `/bin/bash`), where launch variables can be easily modified. 
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
 
 ### Step 9: The fun part {#demo-cslam-run-9}
 Control the Duckiebot manually around Duckietown
