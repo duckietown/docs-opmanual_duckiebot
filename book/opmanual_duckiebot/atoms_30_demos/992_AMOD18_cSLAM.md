@@ -26,6 +26,10 @@ Requires: The duckiebots and watchtowers in configuration DB18 until [Section B-
 
 First, we show a video of the expected behavior (if the demo is successful).
 
+## Demo code
+
+## Introduction to cSLAM
+
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
 TODO: Most of this will go away and a reference to the duckietown specs is needed
 
