@@ -52,11 +52,15 @@ At the core of cSLAM is a pose graph optimization problem. The watchtowers obser
 
 As can be seen from the above image there are quite a few devices and containers involved in this demo. Every red box is a physical device; every blue box is a Docker container that can be deployed on a different device. Let's see what the different containers are and what they do:
 
-* The acquisition containers are multiple Docker containers, each being responsible for acquiring the raw data from a single robot (watchtower or Duckiebot), processing it (rectifying, April tag pose extraction, odometry calculation), and packaging the processed data as new topics on the Graph optimization ROS Master.
+* The *acquisition containers* are multiple Docker containers, each being responsible for acquiring the raw data from a single robot (watchtower or Duckiebot), processing it (rectifying, April tag pose extraction, odometry calculation), and packaging the processed data as new topics on the Graph optimization ROS Master.
 
     Using separate containers allow us to scale the system to an almost infinite amount of robots and watchtowers (simply run as many nodes as necessary on a docker swarm). In this demo we will run the acquisition containers for watchtowers on the towers themselves as this reduces the network delays in the system. The acquistion containers for Duckiebots, however, will be exectued on a laptop such that the Duckiebot's computational resources are available for other processes.
 
-* 
+* The *Graph optimizer* container aggregates all the AprilTag and odometry information, builds a pose graph out of it, and optimizes this graph. Then it publishes global pose information for all AprilTags and cameras in the system, which includes the positions of Duckiebots, watchtowers, traffic signs, and ground tags.
+
+* The *Visualization* container presents the results of the graph optimization in a human- (and duckie-) friendly interface. It reads the positions of the various objects from the Graph optimizer container and shows them on a 3D map of the city.
+
+* The *Diagnostics* container constantly probes the AprilTag pose and odometry messages that are being published and signals if a device stops publishing. This is useful to detect network or configuration issues.
 
 
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
