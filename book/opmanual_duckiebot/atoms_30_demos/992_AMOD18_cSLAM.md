@@ -108,12 +108,12 @@ Then you can run it with `bash watchtowers_setup.sh`.
 
 This step sets up the data acquisition pipeline on each watchtower. This means that each watchtower will now send updates about the AprilTags it sees. A similar step will also be done for each duckiebot in Step 6.
 
-### Step 5: Test the watchtowers
+### Step 5: Test the watchtowers {#cslam-diagnostic-tool}
 
 Setup the diagnostics tool to check that the status of the watchtowers are `OK` where data was received in the last XX seconds.
 
     laptop $ docker pull duckietown/cslam-diagnostics
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-diagnostics
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=![SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=![SERVER_IP] duckietown/cslam-diagnostics
 
 Note that the SERVER_HOSTNAME should not contain `.local` at the end.
 
@@ -156,7 +156,7 @@ On a laptop that is connected to the same network as the rest:
 TODO: Let's mention that we should do this on the server and not any laptop  
 
     laptop $ docker pull duckietown/cslam-server
-    laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![Rosmaster name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster IP] amaurx/cslam-graphoptimizer:latest /bin/bash
+    laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![rosmaster_name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster_IP] amaurx/cslam-graphoptimizer:latest /bin/bash
 
     container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
 
@@ -166,7 +166,7 @@ This will listen to the transforms, will build a graph, optimize it and publish 
 Set up and run the visualization of the map, duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=![SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=![SERVER_IP] duckietown/cslam-visualization
 
 ### Step 9: The fun part
 Control the duckiebot manually around Duckietown
@@ -186,26 +186,26 @@ TODO: If this has to be done for each duckiebot, maybe we should have something 
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
-### Rviz visualization makes no sense
-If the positions of your duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
-    - AprilTag recognition is off and gives out weird transforms  
-    - Time delays between different input (watchtowers, duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If different actors are not synchronized or if one has delay, it will lead to bad results  
-    - Optimization might take to long because of discrepancies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
+Symptom: The positions of your duckiebots and watchtowers in Rviz make no sense.
 
+Resolution: There is probably an issue among but not limited to the following:
 
-### AprilTags printed may be of wrong size
-Check that the printed AprilTags are of size 6.5cm as the printer might have done some scaling to the tags.
-
-### Check Diagnostics tool
-Check that messages are received frequently. Is not device may be suffering from poor connection and will need to restart or configuration for device was done wrongly and it needs to be reconfigured again. Do check that the network signal is strong enough for the devices to communicate with one another.
-
-### How to see the g2o graph
-In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
-In graph_builder.launch, you can set the "save_g2o_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using  [g2o_viewer](#fig:g2o_viewer).   
-
-<div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
-     <img src="g2o_view.png" style='width: 30em'/>
+  * AprilTag recognition is wrong and gives out weird transforms. If this happens, please check that the printed AprilTags are of size 6.5cm, as the printer might have done some scaling to the tags.
+  * There are time delays between different inputs (watchtowers, duckiebots). These lead to a disconnected pose graph: the graph builds and interpolates measures based on their time stamps, so if different actors are not synchronized or if one has delay, bad results will be produced. Please check the frequency with which messages are received by using the [diagnostic tool](#cslam-diagnostic-tool).
+  * Optimization takes too long because of discrepancies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in `graph_builder.launch`.
+  Furthermore, you can visualize the underlying g2o graph. To do so, please have g2o_viewer installed. Then, in `graph_builder.launch` please set the `save_g2o_output` argument to True: this will create a text representation of the g2o graph in `\tmp` that you can visualize using [g2o_viewer](#fig:g2o_viewer).   
+<div figure-id="fig:g2o_viewer" figure-caption="Snapshot of a g2o_viewer window.">
+     <img src="g2o_view.png" style='width: 35em'/>
 </div>
+
+
+Symptom: The diagnostic tool shows that reception of messages is delayed (e.g. by 10-20 secs).
+
+Resolution: The device may be suffering from poor connection. Please make sure that the network signal is strong enough for the devices to communicate with one another and restart the devices.
+
+Symptom: Some messages that you expected to see (e.g. from a certain watchtower) do not show up in the diagnostic tool.
+
+Resolution: The configuration for device was done wrongly. Please check that the variables set by the user (e.g. `ROS_MASTER_URI_DEVICE`, `ROS_MASTER_URI_DEVICE_IP`, `ACQ_ROS_MASTER_URI_DEVICE`, `ACQ_ROS_MASTER_URI_DEVICE_IP`, etc.) are set coherently with the instructions above. If you find some inconsistencies, please follow the configuration steps again.
 
 ## Demo failure demonstration {#demo-cslam-failure}
 
