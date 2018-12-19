@@ -41,10 +41,7 @@ There are also more detailed about the code, different configuration parameters 
 TODO: Put a description, illustrations and explanation of what cSLAM is, the different parts of it, how they communicate, what's the general philosophy, etc.
 
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
-TODO: Most of this will go away and a reference to the duckietown specs is needed
-
-
-Layout of Duckietown:
+We have the following basic assumptions that need to be fulfilled in order for the demo to work.
 
 ### Layout
   * Traffic lights are good to have but not necessary (optional).
@@ -54,7 +51,7 @@ Layout of Duckietown:
   * For a detailed map to be visualized, the poses of the AprilTags in the Duckietown must be (approximately) known beforehand.
   * Watchtowers have to be spread across the entire Duckietown. Preferably the combined field of view covers the entire Duckietown.
 ### Weather
-  * Lighting has to be bright enough for the AprilTags to be seen clearly by camera.
+  * Lighting has to be bright enough for the AprilTags to be seen clearly by camera. Still not too bright to have unwanted reflections.
   * Assumption: it is always sunny. Rain never occurs in Duckietown.
 
 ## Duckiebot setup notes {#demo-cslam-duckiebot-setup}
@@ -70,24 +67,20 @@ Check: The Duckiebot has sufficient battery and is powered on.
 
 Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
 
-Check: ROS is installed on your local computer. TODO: _Is this neccessary if everything is Dockerized?_
-
-Check: Docker is installed on your local computer. TODO: Should we mention this again?
-
 Check: The watchtowers are powered on
+
+Check: ROS is installed on your local computer: Before starting, please install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
+
+Check: Docker is installed on your local computer: Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
+
 
 ## Demo instructions {#demo-cslam-run}
 
 ### Step 0: Preliminaries {#demo-cslam-run-0}
-Before starting, please install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
-
-Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
 
 Clone duckietown-cslam : https://github.com/duckietown/duckietown-cslam and follow readme instructions to install everything (make sure you install g2o for python2)
 
 Make sure all devices you are using are connected to the same WiFi network (typically that would be `duckietown`)
-
-TODO: Installation instructions probably not important here since they are prerequisites. Just docker-compose maybe. That should also be added to prerequisites in my opinion. Yes, the installation shouldn't be necessary when everything is dockerized.
 
 ### Step 1: Set up the watchtowers. _You can skip this step for the demo on Thursday_ {#demo-cslam-run-1}
 
