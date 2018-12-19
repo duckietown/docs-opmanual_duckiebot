@@ -4,7 +4,7 @@ This is the description of the cSLAM (Centralized Simultaneous Localization And 
 
 <div class='requirements' markdown="1">
 
-Requires: Watchtowers, Tiles, AprilTags (tag family=Tag36h11, size=6.5cm, border=1), Duckiebots (with AprilTags on top of them).
+Requires: Watchtowers, Tiles, AprilTags (tag family=Tag36h11, size=6.5cm, border=1), Duckiebots (with AprilTags on top of them), Local (duckietown) wireless network.
 
 Requires: Wheels calibration completed. [Wheel calibration](#wheel-calibration)
 
@@ -12,13 +12,13 @@ Requires: Camera calibration completed. [Camera calibration](#camera-calib)
 
 Requires: Joystick demo has been successfully launched. [Joystick demo](#rc-control)
 
-Requires: ROS installation on local computer.
+Requires: Two computers
 
-Requires: Docker installation on local computer.
+Requires: ROS installation on at least one of the computers.
 
-Requires: The duckiebots and watchtowers in configuration DB18 section B-11.
+Requires: Docker installation on both computers. [Laptop setup](#laptop-setup) Docker-compose is also recommended to be installed but is not required.
 
-TODO: Can we remove the ROS requirement now? Can we add a link to DB18 section B-11
+Requires: The duckiebots and watchtowers in configuration DB18 until [Section B-11](#wheel-calibration).
 
 </div>
 
