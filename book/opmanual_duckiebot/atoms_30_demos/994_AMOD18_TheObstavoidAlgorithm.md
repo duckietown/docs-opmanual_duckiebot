@@ -38,13 +38,6 @@ Actor, passing a dynamic obstacle:
 
 The Obstavoid algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid. The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
 
-### Software architecture
-
-bla bla text
-
-<div figure-id="fig:software_architecture">
-     <img src="994_AMOD18_TheObstavoidAlgorithm/software_architecture.png" style='width: 30em'/>
-</div>
 
 ### Cost function
 There are three main goals the actor tries to fulfill when driving on the road. Firstly, the robot tries to stay within its own lane to obey traffic rules. Secondly, it wants to drive forwards, to not cause a traffic jam and reach its destination. Finally, the actor wants to avoid any collisions with obstacles, e.g. other duckies or duckiebots. For the algorithm to work, these three requirements need to be modelled as a cost function for the solver to find an optimal trajectory with minimal cost along its path.
@@ -123,6 +116,37 @@ The Actor is waiting until the other lane is free:
 
 In conclusion, with the Obstavoid Algorithm the human influence on scenario analysis, classification and corresponding trajectory generation shifts towards the high-level tasks of cost-function design, which is finally not only a question of engineering but rather of morale and ethics.
 
+
+
+### Software architecture
+
+#### Description
+
+Our pipeline is divided up into two main nodes which communicate via topic communication to the simulation (or duckiebot in the future).
+
+**/trajectory_creator_node [frequency: 10hz]**
+* **Input**: */flock_simulator/ state* and */flock_simulator/street_obstruction*: These topics contain position, veloccity and size infromation of all obstacles as well as information about the street the actor is at the moment. 
+* **Computation**: 
+**cost_grid_populator:** This manipulator uses the information safed in the obstacles and evaulates the cost function at the discretized points of the cost_grid.
+**cost_grid_solver:** This manipulator finds an optimal path in the cost_grid while minimizing total cost.
+* **Output:** */obst_avoid/trajectory*: This topic contains a target trajectory for the current cost_grid.
+
+**/trajectory_sampler_node [frequency: 10 hz]**
+* **Input**: */obst_avoid/trajectory*: This topic contains a target trajectory for the current cost_grid.
+* **Computation**: 
+**trajectory_sampler:** This manipulator uses the trajectory and derives the steering commands for the actor duckiebot.
+* **Output:** */obst_avoid/trajectory*: This topic contains the current target linear and angular velocity of the bot.
+
+#### Future Work
+
+To improve the current pipeline on mulitple parts of the code coule be worked on:
+
+* *test different cost_functions*: Currently the pipeline differentiates between static cost (given from things that cannot move) and dynamic cost (moving obstacles such as duckies and duckiebots). These functions could be changed and expanded easily in the 
+
+
+<div figure-id="fig:software_architecture">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/software_architecture.png" style='width: 30em'/>
+</div>
 
 ## Video of expected results {#demo-theobstavoidalgorithm-expected}
 
