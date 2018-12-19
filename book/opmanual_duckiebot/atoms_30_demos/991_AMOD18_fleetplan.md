@@ -2,7 +2,7 @@
 
 
 This is a demonstration for running the Duckietown Fleet Management Simulator for comparing different dispatching algorithms in real time. We focus our steps to run a baseline dispatcher with the fplan simulator, which majorly consists of a dynamics engine of duckiebots and a visualization of their output in Rviz.
-
+<br />
 
 <div class='requirements' markdown="1">
 
@@ -19,8 +19,8 @@ Requires: [duckietown-world][duckietown-world] installed
 ## Video of expected results {#demo-fleetplan-expected}
 
 <div figure-id="fig:demo-fleet-management-simultator-video">
-    <figcaption>Demo: Duckietown Robotatarium Fleet Management Simulator</figcaption>
-    <dtvideo src='vimeo:306587628'/>
+    <figcaption>Demo: Duckietown Fleet Management Simulator</figcaption>
+    <dtvideo src='vimeo:307327906'/>
 </div>
 
 ## Simulator Architechture
@@ -50,6 +50,7 @@ Simple tile map (Default): `4way`
 <img  style='width:12em'  src="f4way.png"/>
 </figure>
 
+<br />
 ROBOTARIUM map: `robotarium1` 
 
 <figure>
@@ -91,7 +92,8 @@ Running the baseline.
 
 If you think you can beat our proposed dispatching baseline algorithm, try it out yourself. 
 
- **Step 5**: Open the currently available dispatcher with the file reader of your choice 
+<br />
+**Step 5**: Open the currently available dispatcher with the file reader of your choice 
 
     laptop $ gedit src/flock_planner/src/dispatcher.py
 
@@ -155,7 +157,7 @@ Note: to change the map name append to the command `map_name:="robotarium1"`, to
 ## Software architecture of the simulator
 
 
-The `flock_simulator` receives commands on the topic `/flock_simulator/commands` and updates the state accordingly which is then published on `/flock_simulator/state`.
+The `flock_simulator` receives commands on the topic `/flock_simulator/commands` and updates the state accordingly. This state is then published on `/flock_simulator/state`.
 
 <br />
 The duckiebots execute the commands (linear and angular velocity) that are tagged with their ID. If a duckiebot does not receive any commands, it drives around randomly (on rails). Once the duckiebot has received commands, it starts following them. The duckiebots stop when there are no more commands to execute. To fix slight deviations from "on rails" behavior, set the `on_rails` flag in the commands to `True` (will ignore if clearly not on rails).
@@ -172,6 +174,7 @@ The state of the simulator is published on `/flock_simulator/state` with every u
 - `flock_simulator/Request[] requests` An array of requests that have not been filled (either waiting or being driven around)
 - `flock_simulator/Request[] filled_requests` An array of filled requests (picked up and dropped off again)
 
+<br />
 ##### Duckie state
 The duckie state message contains following information:
 - `std_msgs/String duckie_id` The duckie's ID
@@ -182,6 +185,7 @@ The duckie state message contains following information:
 - `geometry_msgs/Pose2D pose` Current pose
 - `geometry_msgs/Twist velocity` Current velocity
 
+<br />
 ##### Requests
 A request message is defined by:
 - `std_msgs/String request_id` The request ID
@@ -192,12 +196,14 @@ A request message is defined by:
 - `std_msgs/String end_node` The node for drop-off
 - `std_msgs/String duckie_id` The duckie that picked up the request (empty if request is waiting)
 
-#### Commands
+<br />
+##### Commands
 A command can be issued on the topic `/flock_simulator/commands`, which also triggers a timestep for the simulation (the simulator does not do anything if there are no commands). A command for the flock has the following structure:
 - `std_msgs/Header header` Generic header
 - `std_msgs/Float64 dt` The timestep duration of the simulation in seconds, should not be too big (ideally ~0.05 or less)
 - `flock_simulator/DuckieCommand[] duckie_commands` An array for individual commands for duckies
 
+<br />
 ##### Duckie command
 The command message for a single duckie is defined as follows:
 - `std_msgs/String duckie_id` The duckie this command is meant for
@@ -209,21 +215,23 @@ Commands can be given as a path or as velocites. For the former, `on_rails` shou
 
 The "on-rails" duckies follow very simple traffic rules, such as keeping a certain distance from duckies in front and giving right of way to duckies approaching intersections from the right. Also, they stop in front of intersections if there is already a duckie on it. *Note:* The current rules occasionally lead to collisions.
 
+<br />
 ### Visualization
 The simulation is visualized using rviz. The duckies are shown as meshes of their real-life counterparts, requests shown as spheres (yellow for pick-up, green for drop-off). *Note:* Due to a bug correctly dropped-off requests (green spheres) persist and only disappear after a new request appears).
 
+<br />
 ### Internal structure
 The simulator represents duckies as instances of the class `Duckiebot` and requests as instances of the class `Request`. A single instance of class `StateManager` is used to represent the entire state of the simulation and coordinate the interaction between duckies, requests and the map. The class `DuckietownMap` contains relevant information of the map and methods for extracting information.
 
+<br />
 ### Flock planner
 The flock planner interacts with the simulator and publishes commands on it.
 
+<br />
 #### Dispatcher
 The dispatcher receives the state of the simulation and returns paths for each duckie. The currenlty implemented dispatcher is deliberately kept very rudimentary, so it can be improved by users (and in the future hopefully AIDO participants) and tested.
 
-
-
-
+<br />
 ## Troubleshooting {#demo-fleetplan-troubleshooting}
 
 Symptoms: Collision between duckiebots `i` and `j`
@@ -233,10 +241,13 @@ duckie-i collided!
 duckie-j collided!
 ```
 
-Resolution: Quit with `Ctrl` + `c` your terminal session and restart the demo at **Step 4**
+<br />
+Resolution: Quit with <kbd>Ctrl</kbd>+<kbd>c</kbd> your terminal session and restart the demo at **Step 4**
 
+<br />
 Symptoms: While executing the  **Step 3** of the demo instructions, if you encounter issues related to the submodule `duckietown-visualization`, try the following steps.
 
+<br />
 Resolution:
 <br />
 Check if the submodule was downloaded
@@ -254,7 +265,3 @@ Check if the submodule is on the correct branch
 
 	laptop $ cd src/duckietown-visualization
 	laptop $ git checkout visualization-fplan
-
-
-
-
