@@ -14,6 +14,8 @@ Requires: [Camera calibration](#camera-calib) completed.
 
 Requires: [Joystick demo](#rc-control) succesful.
 
+Requires: [Ros-picam demo](#read-camera-data)
+
 </div>
 
 ### Video of expected results {#demo-visualodometry-expected}
@@ -39,36 +41,90 @@ Check: Your performed recently the camera calibration on your Duckiebot.
 
 Check: Both yout duckiebot and your laptop are connected to the same, stable network
 
-### Demo instructions {#demo-visualodometry-run}
+### Demo setup {#demo-visualodometry-setup}
 
-Step 1: From your computer load the demo container on your duckiebot by typing the command:
+Either using Portainer or manually from a terminal, start both `ros-picam`,
 
-    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" ---memory-swap="1.8g" --privileged -v /data:/data --name visual_odometry_demo  ![unclear]/visualodo-demo:master18
+    laptop $ docker start ros-picam
+
+and `joystick` containers:
+
+    laptop $ docker start joystick
+
+We want to ensure that the turns are performed in a more or less slow and continuous manner, so we will turn down the speed gain. Start by connecting to the duckiebot through `ssh`:
+
+    laptop $ ssh ![hostname]
+
+Open a bash console to one of the duckiebot images, and reduce the gain parameter of the inverse kinematics node. First, open a docker terminal.
+
+    duckiebot $ docker exec -it joystick /bin/bash
+
+Then reduce the gain:
+
+    container $ rosservice call /![hostname]/inverse_kinematics_node/set_gain 0.5
+
+Exit the docker container,
+
+    container $ exit
+
+And the duckiebot
+
+    duckiebot $ exit
 
 
-Step 2: Start the graphical user interface container:
-
-    laptop $ dts start_gui_tools ![hostname]
-
-Step 3: Download the rviz configuration file `odometry_rviz_conf` from our repo to your laptop-container by running:
-
-    laptop-container $ wget https://raw.githubusercontent.com/duckietown/duckietown-visualodo/master/odometry_rviz_conf.rviz
-
-Step 4: Check that you can visualize the list of topics in the duckiebot from the laptop:
-
-    laptop-container $ rostopic list
-
-Step 5: On the same terminal, run `rviz` with the downloaded configuration file
-
-    laptop-container $ rosrun rviz rviz -d ![path_to_file]/odometry_rviz_conf.rviz
-
-Step 6: On a new terminal in the computer, open a virtual joystick to steer the bot
+Activate the joystick control and test that you can control the duckiebot with the keyboard:
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
-Step 7: Start your Duckiebot by pressing <kbd>a</kbd> in the virtual joystick.
+Leave this terminal open.
 
-Step 8: Be amazed!
+Finally, we want to open an `rviz` session listening to the duckiebot to visualize the results of the visual odometry pipeline. First, naviage to the directory of your choice in your computer.
+
+    laptop $ cd ~/![your_favourite_repo]
+
+And download the `rviz` configuration file using the following command.  
+
+    laptop $ wget https://raw.githubusercontent.com/duckietown/duckietown-visualodo/master/odometry_rviz_conf.rviz
+
+Export the `ROS_MASTER_URI` of your duckiebot so that this terminal listens to the `roscore` of the duckiebot:
+
+    laptop $ export ROS_MASTER_URI=http://![hostname].local:11311/
+
+Run rviz with the configuration file:
+
+    laptop $ rosrun rviz rviz -d odometry_rviz_conf.rviz
+
+
+
+### Demo instructions {#demo-visualodometry-run}
+
+Open a new terminal. First, create a docker container with the Visual Odometry image in your duckiebot. If you have recently re-initialized your SD card and have expaned the swap memory capacity, run the container specifying the amount of swap:
+
+    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" --memory-swap="1.8g" --privileged -v /data:/data --name feature_vo recksahr/feature-alignment-tests:master
+
+Otherwise just run it normally:
+
+    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name feature_vo recksahr/feature-alignment-tests:master
+
+Compile the new package you just downloaded using `catkin_make`. This will take a few minutes.
+
+    container $ cd catkin_ws
+
+And build it:
+
+    container $ catkin_make
+
+Then, source the packages:
+
+    container $ source devel/setup.bash
+
+Finally, run the visual odometry package.
+
+Note: Remember to use the tag `veh:=![hostname]` so that it uses your camera images to compute the visual odometry.
+
+    container $ roslaunch duckietown_visualodo visual_odometry_node.launch veh:=![hostname]
+
+If you see a bunch of info and warn messages fastly printing, visual odometry is running! Move the duckiebot around (slowly) with the keyboard and see how it moves too in rviz.
 
 
 ### Troubleshooting {#demo-visualodometry-troubleshooting}
