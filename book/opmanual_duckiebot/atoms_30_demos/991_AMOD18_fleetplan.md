@@ -40,17 +40,29 @@ The fleetplan demo is proposed in the simulation environment using Rviz for visu
 
 Tunable metrics:
 
-* Available Maps
+### Available Maps
 
-    - Simple tile map (Default): `4way`
-    - ROBOTARIUM map: `robotarium1` 
-    - ROBOTARIUM in Montreal: `udem1`
+Simple tile map (Default): `4way`
+    
+<br />
+<figure>
+<figcaption>Simulator Architecture</figcaption>
+<img  style='width:12em'  src="f4way.png"/>
+</figure>
 
-* Fleet size
-	- Any integer from `1 to 15` (Any higher integer is not recommended due to the limited available space on the available maps) (default: `3`)
+ROBOTARIUM map: `robotarium1` 
 
-* Request arrival rate (in seconds)
-	- Any reasonable integer. (default: `20`)
+<figure>
+<figcaption>Simulator Architecture</figcaption>
+<img  style='width:12em'  src="robotarium1.png"/>
+</figure>
+<br />
+
+### Fleet size
+Any integer from `1 to 15` (Any higher integer is not recommended due to the limited available space on the available maps) (default: `3`)
+
+### Request arrival rate (in seconds)
+    Any reasonable integer. (default: `20`)
 
 
 ## Demo instructions {#demo-fleetplan-run}
@@ -137,7 +149,7 @@ The dispatcher should return `paths` for the single duckie bots as follows:
 
     laptop $ roslaunch flock_simulator flock_simulator.launch
     
-Note: to change the map name append to the command `map_name:="small_loop"`, to change the number of requests k `n_requests:="k"` and to change the arrival rate of request l `t_requests:="l"`
+Note: to change the map name append to the command `map_name:="robotarium1"`, to change the number of requests k `n_requests:="k"` and to change the arrival rate of request l `t_requests:="l"`
 
 
 ## Software architecture of the simulator
