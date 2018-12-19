@@ -1,6 +1,6 @@
 # AMOD18 cSLAM {#demo-cslam status=draft}
 
-This is the description of the cSLAM (Centralized Simultaneous Localization And Mapping) demo. This demo allows a duckiebot to localize itself, while the watchtowers and duckiebots work together to build a map of the arena. The task is achieved by using the camera of the duckiebot, together with watchtowers located along the path, to detect AprilTags attached to the tiles, the traffic signs, and the duckiebot itself.
+This is the description of the cSLAM (Centralized Simultaneous Localization And Mapping) demo. This demo allows a Duckiebot to localize itself, while the watchtowers and Duckiebots work together to build a map of the arena. The task is achieved by using the camera of the Duckiebot, together with watchtowers located along the path, to detect AprilTags attached to the tiles, the traffic signs, and the Duckiebot itself.
 
 <div class='requirements' markdown="1">
 
@@ -18,7 +18,7 @@ Requires: ROS installation on at least one of the computers.
 
 Requires: Docker installation on both computers. [Laptop setup](#laptop-setup) [Docker-compose](https://docs.docker.com/compose/install/) is also recommended to be installed but is not required.
 
-Requires: The duckiebots and watchtowers in configuration DB18 until [Section B-11](#wheel-calibration).
+Requires: The Duckiebots and watchtowers in configuration DB18 until [Section B-11](#wheel-calibration).
 
 </div>
 
@@ -62,7 +62,7 @@ Layout of Duckietown:
 
 Check: The Duckiebot has sufficient battery and is powered on.
 
-Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each duckiebot.
+Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
 
 Check: ROS is installed on your local computer. TODO: _Is this neccessary if everything is Dockerized?_
 
@@ -102,7 +102,7 @@ It is also necessary to pull the docker image for the cSLAM acquistion node:
 
 Print out the AprilTags and place them on top of Duckiebots and in Duckietown. Configure a map description file for this. Check [duckietown-world](https://github.com/duckietown/duckietown-world) for an example. Aim to have neighboring towers seeing at least one common AprilTag and to have each watchtower see at least two AprilTags.
 
-TODO: For Amaury: Explain where the config files for the city and the duckiebots are by default and what needs to be chenged there by the user.
+TODO: For Amaury: Explain where the config files for the city and the Duckiebots are by default and what needs to be chenged there by the user.
     
 ### Step 3: Setup a ROS Master machine
 
@@ -160,7 +160,7 @@ As the Duckiebot usually has other nodes running we spare it processing of image
 - Replace `ROS_MASTER_Hostname` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers. 
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers. 
 
-TODO: MASTER should be removed for macros which are not ROS Masters. For example, duckiebots: `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` 
+TODO: MASTER should be removed for macros which are not ROS Masters. For example, Duckiebots: `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` 
 
 You can then start the container by running:
 
@@ -184,7 +184,7 @@ TODO: Let's mention that we should do this on the server and not any laptop
 This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz in the next step.  
 
 ### Step 8: Set up the visualization
-Set up and run the visualization of the map, duckiebots, watchtowers, and traffic signs using the following commands:
+Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
@@ -203,14 +203,17 @@ You can then stop the processing of your Duckiebot images and odometry by pressi
 
 `docker-compose -f docker-compose-duckiebot-x86.yml down`
 
-TODO: If this has to be done for each duckiebot, maybe we should have something like docker-compose-<duckiebot_hostname>-x86.yml
+TODO: If this has to be done for each Duckiebot, maybe we should have something like docker-compose-<duckiebot_hostname>-x86.yml
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
+### I can't connect to something.
+Check if you are on the right network. Check if you can ping the device. Sometimes the network won't resolve hostnames and requires a restart.
+
 ### Rviz visualization makes no sense
-If the positions of your duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
+If the positions of your Duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
     - AprilTag recognition is off and gives out weird transforms  
-    - Time delays between different input (watchtowers, duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
+    - Time delays between different input (watchtowers, Duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
     - Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
 
 
