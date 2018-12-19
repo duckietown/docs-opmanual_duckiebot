@@ -112,7 +112,7 @@ TODO: For Amaury: Explain where the config files for the city and the Duckiebots
 
 ### Step 3: Setup a ROS Master machine {#demo-cslam-run-3}
 
-One of the computers will act as ROS Master. That means that all other nodes and containers will need to have their `ROS_MASTER_URI` environment variable set up to this computer. To set this up, run `roscore` on a computer that has ROS Kinetic installed. Keep in mid that you mind need to source the ROS setup file before that with something like
+One of the computers will act as ROS Master. That means that all other nodes and containers will need to have their `ROS_MASTER_URI` environment variable set up to this computer. To set this up, run `roscore` on a computer that has ROS Kinetic installed. Keep in mind that you might need to source the ROS setup file before that with the following command:  
 
     laptop $ source /opt/ros/kinetic/setup.bash
 
@@ -139,9 +139,14 @@ This step sets up the data acquisition pipeline on each watchtower. This means t
 Setup the diagnostics tool to check that the status of the watchtowers are `OK` (AprilTag data was received in the last 5 seconds).
 
     laptop $ docker pull duckietown/cslam-diagnostics
+    laptop $ xhost +local:root
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-diagnostics
 
 Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
+
+NOTE: After everything is over, please run:  
+ 
+    laptop $ xhost -local:host
 
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
 
