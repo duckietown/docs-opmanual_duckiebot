@@ -1,6 +1,6 @@
 # AMOD18 cSLAM {#demo-cslam status=draft}
 
-<div figure-id="fig:cSLAM_logo">
+<div figure-id="fig:cslam_logo">
      <img src="cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
 </div>
 
@@ -139,7 +139,7 @@ This step sets up the data acquisition pipeline on each watchtower. This means t
 Setup the Diagnostics tool to check that the status of the watchtowers are `OK` (AprilTag data was received in the last 5 seconds).
 
     laptop $ docker pull duckietown/cslam-diagnostics
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=![ROS_MASTER_IP] duckietown/cslam-diagnostics
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-diagnostics
 
 Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
 
@@ -186,12 +186,15 @@ TODO: This wasn't working live. I have verified that it works on bag files
 
 ### Step 7: Set up the cSLAM Graph Optimizer {#demo-cslam-run-7}
 
-On a laptop that is connected to the same network as the rest:
+In folder scripts, there is a yaml file called `apriltagsDB_custom.yaml`.  
+In this file should be added all Duckiebots with their april tag number following the already existing convention.  
+This file will be mounted and read inside the container.  
+If it is not filled, your Duckiebots will not be seen as such.
 
-TODO: Let's mention that we should do this on the server and not any laptop  
+On the ROS master machine defined at step 3, run:  
 
-    laptop $ docker pull duckietown/cslam-server
-    laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![rosmaster_name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster_IP] amaurx/cslam-graphoptimizer:latest /bin/bash
+    laptop $ docker pull duckietown/cslam-graphoptimizer
+    laptop $ docker run -it --rm --net=host -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-graphoptimizer:latest /bin/bash
 
     container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
 
@@ -201,10 +204,13 @@ This will listen to the transforms, will build a graph, optimize it and publish 
 Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=![SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=![SERVER_IP] duckietown/cslam-visualization
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-visualization
 
 ### Step 9: The fun part {#demo-cslam-run-9}
-Control the Duckiebot manually around Duckietown
+
+If you managed to get all the way to here, congratulations! Quack, quack, hooray!
+
+Now you can drive a Duckiebot around the city and see how it moves on the map. To control the Duckiebot manually around city use the keyboard control:
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
