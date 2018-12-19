@@ -69,9 +69,9 @@ Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers
 
 Check: The watchtowers are powered on
 
-Check: ROS is installed on your local computer: Before starting, please install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
+Check: ROS is installed on your local computer. If it is not, install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
 
-Check: Docker is installed on your local computer: Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
+Check: Docker is installed on your local computer. If it is not, install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended that you also have [Docker-compose](https://docs.docker.com/compose/install/)
 
 
 ## Demo instructions {#demo-cslam-run}
