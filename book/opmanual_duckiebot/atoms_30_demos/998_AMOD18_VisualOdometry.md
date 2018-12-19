@@ -111,12 +111,6 @@ Note: Remember to use the tag `veh:=![hostname]` so that it uses your camera ima
 
 If you see a bunch of info and warn messages fastly printing, visual odometry is running! Move the duckiebot around (smoothly) with the keyboard and see how it moves too in rviz.
 
-You should visualize a similar result as in [](#fig:visualodo-path)
-
-<div figure-id="fig:visualodo-path" figure-caption="Path during the VO demo.">
-     <img src="visualodo_path.png" style='width: 37em' />
-</div>
-
 ### Troubleshooting {#demo-visualodometry-troubleshooting}
 
 Symptom: The duckiebot does not move.
@@ -150,13 +144,17 @@ Run the visual odometry node. We will use a rosbag recorded by fellow duckiebot 
 
     laptop $ roslaunch duckietown_visualodo visual_odometry_node.launch veh:=enbot
 
-Download our demo rosbag from the following google drive link: https://drive.google.com/open?id=15O9hR6pdOKMOFgbEe-yyJHxieQW1FFyn
+Download our demo rosbag from the following [google drive link](https://drive.google.com/open?id=15O9hR6pdOKMOFgbEe-yyJHxieQW1FFyn)
 
 Play the rosbag, and visualize the results!
 
     laptop $ rosbag play [direction_to_download]/offline_demo_vo.bag
 
-Image of the expected results:
+You should visualize a similar result as in [](#fig:visualodo-path)
+
+<div figure-id="fig:visualodo-path" figure-caption="Path during the VO demo.">
+     <img src="visualodo_path.png" style='width: 37em' />
+</div>
 
 ### Demo failure demonstration {#demo-visualodometry-failure}
 
