@@ -96,12 +96,13 @@ And build it:
 Then, source the packages:
 
     container $ source devel/setup.bash
-    
+
 We want to ensure that the turns are performed in a more or less slow and continuous manner with the joystick, so we will turn down the speed gain. Reduce this parameter calling the following ros service:
 
     container $ rosservice call /![hostname]/inverse_kinematics_node/set_gain 0.5
 
 Finally, run the visual odometry package.
+
 Note: Remember to use the tag `veh:=![hostname]` so that it uses your camera images to compute the visual odometry.
 
     container $ roslaunch duckietown_visualodo visual_odometry_node.launch veh:=![hostname]
