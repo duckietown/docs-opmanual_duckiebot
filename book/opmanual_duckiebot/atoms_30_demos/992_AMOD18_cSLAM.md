@@ -30,6 +30,8 @@ First, we show a video of the expected behavior (if the demo is successful).
 
 The main cSLAM repository is [here](https://github.com/duckietown/duckietown-cslam). When we refer to configuration files or scripts, they will be here. Clone it for easy access.
 
+There are also more detailed about the code, different configuration parameters and how to maintain it.
+
 ## Introduction to cSLAM
 
 TODO: Put a description, illustrations and explanation of what cSLAM is, the different parts of it, how they communicate, what's the general philosophy, etc.
@@ -221,7 +223,7 @@ If the positions of your Duckiebots and watchtower in Rviz make no sense, there 
 Check that the printed AprilTags are of size 6.5cm as the printer might have done some scaling to the tags.
 
 ### Check Diagnostics tool 
-Check that messages are received frequently. Is not device may be suffering from poor connection and will need to restart or configuration for device was done wrongly and it needs to be reconfigured again. Do check that the network signal is strong enough for the devices to communicate with one another.
+Check that messages are received frequently. Is not device may be suffering from poor connection and will need to restart or configuration for device was done wrongly and it needs to be reconfigured again. Do check that the network signal is strong enough for the devices to communicate with one another. Keep in mind that sometimes the Diagnostics tool won't show devices that connected after it started, so first try to restart it.
 
 ### How to see the g2o graph
 In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
