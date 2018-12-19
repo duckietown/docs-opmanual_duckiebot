@@ -220,7 +220,7 @@ The simulator represents duckies as instances of the class `Duckiebot` and reque
 The flock planner interacts with the simulator and publishes commands on it.
 
 #### Dispatcher
-T   he dispatcher receives the state of the simulation and returns paths for each duckie. The currenlty implemented dispatcher is deliberately kept very rudimentary, so it can be improved by users (and in the future hopefully AIDO participants) and tested.
+The dispatcher receives the state of the simulation and returns paths for each duckie. The currenlty implemented dispatcher is deliberately kept very rudimentary, so it can be improved by users (and in the future hopefully AIDO participants) and tested.
 
 
 
