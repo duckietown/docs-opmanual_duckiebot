@@ -136,7 +136,7 @@ This step sets up the data acquisition pipeline on each watchtower. This means t
 
 ### Step 5: Test the watchtowers {#demo-cslam-run-5}
 
-Setup the diagnostics tool to check that the status of the watchtowers are `OK` (AprilTag data was received in the last 5 seconds).
+Setup the Diagnostics tool to check that the status of the watchtowers are `OK` (AprilTag data was received in the last 5 seconds).
 
     laptop $ docker pull duckietown/cslam-diagnostics
     laptop $ xhost +local:root
@@ -153,11 +153,11 @@ If some of the watchtowers does not appear in the list, then it was likely not c
 You can also see the image stream from the watchtowers with `rqt_image_view`. On the computer running `roscore` run the following line:
 
     laptop $ rqt_image_view
-    
+
 Depending on your ROS configuration you might need to first source the ROS setup file with:
 
     laptop $ source /opt/ros/kinetic/setup.bash
-    
+
 You should now be able to see the raw and rectified watchtower streams, as well as a test stream that shows the detected AprilTags.
 
 ### Step 6: Setup the Duckiebots {#demo-cslam-run-6}
@@ -181,7 +181,7 @@ You can then start all the containers simulateneously by running:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml up`
 
-Make the Duckiebots see an AprilTag and you should see that you receive messages from them in the Diagnostics tool. You might have to restart the diagnostics tool to see the updates.
+Make the Duckiebots see an AprilTag and you should see that you receive messages from them in the Diagnostics tool. You might have to restart the Diagnostics tool to see the updates.
 
 If you don't have docker-compose installed you can run the same commands in the classical Docker way, althought it is much uglier. You need to run the following command for every Duckiebot you use.
 
@@ -219,7 +219,7 @@ Now you can drive a Duckiebot around the city and see how it moves on the map. T
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
-Look at the diagnostic tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
+Look at the Diagnostics tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 
 ### Step 10: Shut everything off {#demo-cslam-run-10}
 You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
@@ -230,39 +230,39 @@ You can then stop the processing of Duckiebot images and odometry by pressing <k
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
-### I can't connect to something.
-Check if you are on the right network. Check if you can ping the device. Sometimes the network won't resolve hostnames and requires a restart.
+Symptom: The positions of your Duckiebots and watchtowers in Rviz make no sense.
 
-### Docker complains about wrong Docker versions
-If you run into this issue when running `watchtowers_setup.sh` or `watchtowers_stop.sh`, please run the script again. This typically resolves the error.
+Resolution: There is probably an issue among but not limited to the following:
 
-### Docker cannot connect to a remote device
-Try to run the command again. Often it is a temporary issue. If it persists, make sure you are on the correct network, that the device is powered on and that you can ping it.
+  * AprilTag recognition is wrong and gives out weird transforms. If this happens, please check that the printed AprilTags are of size 6.5cm, as the printer might have done some scaling to the tags.
+  * There are time delays between different inputs (watchtowers, duckiebots). These lead to a disconnected pose graph: the graph builds and interpolates measures based on their time stamps, so if different actors are not synchronized or if one has delay, bad results will be produced. Please check the frequency with which messages are received by using the [Diagnostics tool](#demo-cslam-run-5).
+  * Optimization takes too long because of discrepancies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in `graph_builder.launch`.
+  Furthermore, you can visualize the underlying g2o graph. To do so, please have g2o_viewer installed. Then, in `graph_builder.launch` please set the `save_g2o_output` argument to True: this will create a text representation of the g2o graph in `\tmp` that you can visualize using [g2o_viewer](#fig:g2o_viewer).   
+<div figure-id="fig:g2o_viewer" figure-caption="Snapshot of a g2o_viewer window.">
+     <img src="cSLAM_images/g2o_view.png" style='width: 35em'/>
+</div>
 
-### The Diagnostics tool doesn't show a device or shows ERROR
-This could be a non-problem. For example, if a watchtower or a Duckiebot doesn't recognize any AprilTags you will not receive messages. You can check that with the test image stream from this device in `rqt_image_view`. Often you simply need to restart the Diagnostics tool.
+Symptom: Docker complains about wrong Docker versions
+
+Resolution: If you run into this issue when running `watchtowers_setup.sh` or `watchtowers_stop.sh`, please run the script again. This typically resolves the error.
+
+Symptom: Docker cannot connect to a remote device
+
+Resolution: Try to run the command again. Often it is a temporary issue. If it persists, make sure you are on the correct network, that the device is powered on and that you can ping it.
+
+Symptom: The Diagnostics tool doesn't show a device or shows ERROR
+
+Resolution: This could be a non-problem. For example, if a watchtower or a Duckiebot doesn't recognize any AprilTags you will not receive messages. You can check that with the test image stream from this device in `rqt_image_view`. Often you simply need to restart the Diagnostics tool.
 
 If the problem persists, use Portainer to check if the `roscore`, `ros-picam`, and `cslam-acquisition` containers are running for this device. Check the logs of `cslam-acquisition` for errors.
 
-### Rviz visualization makes no sense
-If the positions of your Duckiebots and watchtower in Rviz make no sense, there is probably an issue among but not limited to the following:  
-* AprilTag recognition is off and gives out weird transforms  
-* Time delays between different input (watchtowers, Duckiebots) will lead to disconnected graphs that will not be useful. The whole idea is that the graph build and interpolates measures based on their time stamps. If differents actors are not synchronized or if one has delay, it will lead to bad results  
-* Optimization might take to long because of discrepencies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in graph_builder.launch
+Symptom: The Diagnostics tool shows that reception of messages is delayed (e.g. by 10-20 secs).
 
-### AprilTags printed may be of wrong size
-Check that the printed AprilTags are of size 6.5cm as the printer might have done some scaling to the tags.
+Resolution: The device may be suffering from poor connection. Please make sure that the network signal is strong enough for the devices to communicate with one another and restart the devices. Keep in mind that sometimes the Diagnostics tool won't show devices that connected after it started, so if this is the case, try to restart it.
 
-### Check Diagnostics tool
-Check that messages are received frequently. Is not device may be suffering from poor connection and will need to restart or configuration for device was done wrongly and it needs to be reconfigured again. Do check that the network signal is strong enough for the devices to communicate with one another. Keep in mind that sometimes the Diagnostics tool won't show devices that connected after it started, so first try to restart it.
+Symptom: Some messages that you expected to see (e.g. from a certain watchtower) do not show up in the Diagnostics tool.
 
-### How to see the g2o graph
-In Rviz, you only see parts of the actual underlying g2o graph. If you want to visualize it, please have g2o_viewer installed.   
-In graph_builder.launch, you can set the "save_g2o_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using  [g2o_viewer](#fig:g2o_viewer).   
-
-<div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
-     <img src="cSLAM_images/g2o_view.png" style='width: 30em'/>
-</div>
+Resolution: The configuration for device was done wrongly. Please check that the variables set by the user (e.g. `ROS_MASTER_URI_DEVICE`, `ROS_MASTER_URI_DEVICE_IP`, `ACQ_ROS_MASTER_URI_DEVICE`, `ACQ_ROS_MASTER_URI_DEVICE_IP`, etc.) are set coherently with the instructions above. If you find some inconsistencies, please follow the configuration steps again.
 
 ## Demo failure demonstration {#demo-cslam-failure}
 
