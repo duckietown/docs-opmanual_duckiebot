@@ -193,13 +193,8 @@ If it is not filled, your Duckiebots will not be seen as such.
 
 On the ROS master machine defined at step 3, run:  
 
-<<<<<<< HEAD
     laptop $ docker pull duckietown/cslam-graphoptimizer
     laptop $ docker run -it --rm --net=host -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-graphoptimizer:latest /bin/bash
-=======
-    laptop $ docker pull duckietown/cslam-server
-    laptop $ docker run -it --rm --net=host -e ROS_MASTER_URI_DEVICE=![Rosmaster name] -e ROS_MASTER_URI_DEVICE_IP=![rosmaster IP] amaurx/cslam-graphoptimizer:latest /bin/bash
->>>>>>> 798a440da225d87f4a926531ee8f0c6062b844c3
 
     container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
 
