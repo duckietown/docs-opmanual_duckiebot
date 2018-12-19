@@ -124,7 +124,7 @@ Now you should have another directory inside submissions called `submission_*lib
 
 Now you should see a submission being made to the specified challenge. If everything is correct you should now be able to following how the evaluator is evaluating you challenge either in the terminal window where the evaluator is running or on [http://localhost:6544](http://localhost:6544). Once the process is done you should see that you have a new entry on the leaderboard of the defined challenge over on [http://localhost:6544](http://localhost:6544). 
 
-If you see an error in the server window saying that a comparison has been made between a None and a Datetime in the `db_submission.py` add the following to the
+If you see an error in the server window saying that a comparison has been made between a None and a Datetime in the `db_submission.py`, found inside the src folder on the challenge-server, add the following to the
 ```
     if subs_timestamp == None:
 	subs_timestamp = jobs_timestamp
