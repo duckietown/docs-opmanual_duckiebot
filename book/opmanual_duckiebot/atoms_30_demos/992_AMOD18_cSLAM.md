@@ -44,7 +44,7 @@ The goal of cSLAM is to fuse the observations of watchtowers and Duckiebots in a
 
 cSLAM was designed such that it is modular, scalable, and with minimum overhead on the Duckiebots. It is a complex system, so modular means that you will need to run quite a few Docker containers. On the other hand, it is easy to support and extend. And don't worry, we've automated the bulk of container work. Scalable means that it can easily be extended to large cities. As the system is modular, the processing can be distributed over more computers as a city grows. Finally, the minimum overhead means that we don't run any special code on the Duckiebots, we only expect them to publish image and odometry data. All the processing is offloaded to a computer.
 
-At the core of cSLAM is a pose graph optimization problem. The watchtowers observe AprilTags on the ground, on top of Duckiebots and even on traffic signs. They can then estimate the relative pose of these AprilTags. Duckiebots similarly see tags on the ground and on traffic signs and estimate relative poses. Duckiebots also estimate their own pose relative to their past position by using odometry data. All these poses, together with the times when they were observed, are combined in a graph optimization problem that is solved by a library called [g2o](https://github.com/RainerKuemmerle/g2o). The solution of this problem is the global positions of all the observed AprilTags, and consequently of the Duckiebots.
+At the core of cSLAM is a pose graph optimization problem. The watchtowers observe AprilTags on the ground, on top of Duckiebots and even on traffic signs. They can then estimate the relative pose of these AprilTags. Duckiebots similarly see tags on the ground and on traffic signs and estimate relative poses. Duckiebots also estimate their own pose relative to their past position by using odometry data. All these poses, together with the times when they were observed, are combined in a graph optimization problem that is solved by a library called [g2o](https://github.com/RainerKuemmerle/g2o). The solution to this problem is the global positions of all the observed AprilTags, and consequently of the Duckiebots.
 
 <div figure-id="fig:architecture" figure-caption="Architecture of cSLAM.">
      <img src="cSLAM_images/architecture.png" style='width: 40em'/>
@@ -54,7 +54,7 @@ As can be seen from the above image there are quite a few devices and containers
 
 * The *acquisition containers* are multiple Docker containers, each being responsible for acquiring the raw data from a single robot (watchtower or Duckiebot), processing it (rectifying, April tag pose extraction, odometry calculation), and packaging the processed data as new topics on the Graph optimization ROS Master.
 
-    Using separate containers allow us to scale the system to an almost infinite amount of robots and watchtowers (simply run as many nodes as necessary on a docker swarm). In this demo we will run the acquisition containers for watchtowers on the towers themselves as this reduces the network delays in the system. The acquistion containers for Duckiebots, however, will be exectued on a laptop such that the Duckiebot's computational resources are available for other processes.
+    Using separate containers allow us to scale the system to an almost infinite amount of robots and watchtowers (simply run as many nodes as necessary on a docker swarm). In this demo, we will run the acquisition containers for watchtowers on the towers themselves as this reduces the network delays in the system. The acquisition containers for Duckiebots, however, will be executed on a laptop such that the Duckiebot's computational resources are available for other processes.
 
 * The *Graph optimizer* container aggregates all the AprilTag and odometry information, builds a pose graph out of it, and optimizes this graph. Then it publishes global pose information for all AprilTags and cameras in the system, which includes the positions of Duckiebots, watchtowers, traffic signs, and ground tags.
 
@@ -74,7 +74,7 @@ We have the following basic assumptions that need to be fulfilled in order for t
   * For a detailed map to be visualized, the poses of the AprilTags in the Duckietown must be (approximately) known beforehand.
   * Watchtowers have to be spread across the entire Duckietown. Preferably the combined field of view covers the entire Duckietown.
 ### Weather
-  * Lighting has to be bright enough for the AprilTags to be seen clearly by camera. Still not too bright to have unwanted reflections.
+  * Lighting has to be bright enough for the AprilTags to be seen clearly by the cameras. Still not too bright to have unwanted reflections.
   * Assumption: it is always sunny. Rain never occurs in Duckietown.
 
 ## Duckiebot setup notes {#demo-cslam-duckiebot-setup}
@@ -128,7 +128,7 @@ It is also necessary to pull the docker image for the cSLAM acquistion node:
 
 Print out the AprilTags and place them on top of Duckiebots and in Duckietown. Configure a map description file for this. Check [duckietown-world](https://github.com/duckietown/duckietown-world) for an example. Aim to have neighboring towers seeing at least one common AprilTag and to have each watchtower see at least two AprilTags.
 
-TODO: For Amaury: Explain where the config files for the city and the Duckiebots are by default and what needs to be chenged there by the user.
+TODO: For Amaury: Explain where the config files for the city and the Duckiebots are by default and what needs to be changed there by the user.
 
 ### Step 3: Setup a ROS Master machine {#demo-cslam-run-3}
 
@@ -148,11 +148,11 @@ process[master]: started with pid [3263]
 ROS_MASTER_URI=http://![hostname]:11311/
 ```
 
-You will also need the IP address of  this computer. The easiest way is to simply ping this hostname (followed by `.local`) from another computer. You can also get the IP address by running `ifconfig` on this computer (make sure you look at the correct network interface).
+You will also need the IP address of this computer. The easiest way is to simply ping this hostname (followed by `.local`) from another computer. You can also get the IP address by running `ifconfig` on this computer (make sure you look at the correct network interface).
 
 ### Step 4: Configure the watchtowers {#demo-cslam-run-4}
 
-In order to start processing data on the watchtowers you need to run the `cslam-aquisition` container. You already know the hostname and the IP address of the machine serving as the ROS Master for this demo from [Step 3](#demo-cslam-run-3).
+In order to start processing data on the watchtowers, you need to run the `cslam-aquisition` container. You already know the hostname and the IP address of the machine serving as the ROS Master for this demo from [Step 3](#demo-cslam-run-3).
 
 We have made a `bash` script that allows to easily set up all the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `ROS_MASTER_HOSTNAME` and `ROS_MASTER_IP` in this file to the ones of your ROS Master. Note that the `ROS_MASTER_HOSTNAME` should not contain `.local` at the end. Also check if `array` contains all your watchtowers (Once again, you can ignore this for the demo on Thursday.) Then, go to directory `duckietown-cslam/scripts/` and run it:
 
@@ -196,29 +196,26 @@ The Duckiebots should have the following 3 containers runnning:
 
 You can start them or check if they are already running via Portainer.
 
-As the Duckiebots usually have other nodes running we spare them processing of images and odometry by offloading this. To do this we need to run an acquisition node container for each one of the Duckiebots any of the computers on the same network. We recommend *not* using the computer serving as the ROS Master. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. You can copy the lines from `acquisition_node_duckiebotHostname` as many times as Duckiebots you have. Here you need to update a few lines for each one of these:
+As the Duckiebots usually have other nodes running we spare them processing of images and odometry by offloading this. To do this we need to run an acquisition node container for each one of the Duckiebots any of the computers on the same network. We recommend *not* using the computer serving as the ROS Master. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the given example file: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. You can copy the lines from `acquisition_node_duckiebotHostname` as many times as Duckiebots you have. Here you need to update a few lines for each one of these:
 
 - Replace `duckiebotHostname` in `acquisition_node_duckiebotHostname`, `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` and `ACQ_DEVICE_NAME=duckiebotHostname` with your Duckiebot's hostname.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_DEVICE_IP` with your Duckiebot's IP address. You can get this if you ping it.
 - Replace `ROS_MASTER_HOSTNAME` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers.
 
-You can then start all the containers simulateneously by running:
+You can then start all the containers simultaneously by running:
 
     laptop $ docker-compose -f docker-compose-duckiebot-x86.yml up
 
 Make the Duckiebots see an AprilTag and you should see that you receive messages from them in the Diagnostics tool. You might have to restart the Diagnostics tool to see the updates.
 
-If you don't have docker-compose installed you can run the same commands in the classical Docker way, althought it is much uglier. You need to run the following command for every Duckiebot you use.
+If you don't have docker-compose installed you can run the same commands in the classical Docker way, although it is much uglier. You need to run the following command for every Duckiebot you use.
 
      laptop $ docker run -it --name cslam-acquisition --restart always --network host -e ACQ_ROS_MASTER_URI_DEVICE=![duckiebotHostname].local -e ACQ_ROS_MASTER_URI_DEVICE_IP=![XXX.XXX.XXX.XXX] -e ACQ_ROS_MASTER_URI_SERVER=![ROS_MASTER_HOSTNAME].local -e ACQ_ROS_MASTER_URI_SERVER_IP=![XXX.XXX.XXX.XXX] -e ACQ_DEVICE_NAME=![duckiebotHostname] duckietown/cslam-acquisition:x86
 
 ### Step 7: Set up the cSLAM Graph Optimizer {#demo-cslam-run-7}
 
-In folder scripts, there is a yaml file called `apriltagsDB_custom.yaml`.  
-In this file should be added all Duckiebots with their april tag number following the already existing convention.  
-This file will be mounted and read inside the container.  
-If it is not filled, your Duckiebots will not be seen as such.
+In folder scripts, there is a `yaml` file called `apriltagsDB_custom.yaml`. In this file should be added all Duckiebots with their AprilTag number following the already existing convention. This file will be mounted and read inside the container. If it is not filled, your Duckiebots will not be seen as such.
 
 On the ROS master machine defined at step 3, run:  
 
@@ -250,7 +247,7 @@ Now you can drive a Duckiebot around the city and see how it moves on the map. T
 
     laptop $ dts duckiebot keyboard_control ![duckiebot_hostname]
 
-Look at the Diagnostics tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 5 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
+Look at the Diagnostics tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 5 seconds. If the Duckiebot messages do not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 
 ### Step 10: Shut everything off {#demo-cslam-run-10}
 You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
@@ -259,7 +256,7 @@ You can then stop the processing of Duckiebot images and odometry by pressing <k
 
     laptop $ docker-compose -f docker-compose-duckiebot-x86.yml down
 
-Make sure to execute the following command on your laptop! Otherwise you expose it to security issues!
+Make sure to execute the following command on your laptop! Otherwise, you expose it to security issues!
 
     laptop $ xhost -local:host
 
@@ -270,7 +267,7 @@ Symptom: The positions of your Duckiebots and watchtowers in Rviz make no sense.
 Resolution: There is probably an issue among but not limited to the following:
 
   * AprilTag recognition is wrong and gives out weird transforms. If this happens, please check that the printed AprilTags are of size 6.5cm, as the printer might have done some scaling to the tags.
-  * There are time delays between different inputs (watchtowers, duckiebots). These lead to a disconnected pose graph: the graph builds and interpolates measures based on their time stamps, so if different actors are not synchronized or if one has delay, bad results will be produced. Please check the frequency with which messages are received by using the [Diagnostics tool](#demo-cslam-run-5).
+  * There are time delays between different inputs (watchtowers, duckiebots). These lead to a disconnected pose graph: the graph builds and interpolates measures based on their timestamps, so if different actors are not synchronized or if one has a delay, bad results will be produced. Please check the frequency with which messages are received by using the [Diagnostics tool](#demo-cslam-run-5).
   * Optimization takes too long because of discrepancies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in `graph_builder.launch`.
   Furthermore, you can visualize the underlying g2o graph. To do so, please have g2o_viewer installed. Then, in `graph_builder.launch` please set the `save_g2o_output` argument to True: this will create a text representation of the g2o graph in `\tmp` that you can visualize using [g2o_viewer](#fig:g2o_viewer).   
 <div figure-id="fig:g2o_viewer" figure-caption="Snapshot of a g2o_viewer window.">
@@ -293,11 +290,11 @@ If the problem persists, use Portainer to check if the `roscore`, `ros-picam`, a
 
 Symptom: The Diagnostics tool shows that reception of messages is delayed (e.g. by 10-20 secs).
 
-Resolution: The device may be suffering from poor connection. Please make sure that the network signal is strong enough for the devices to communicate with one another and restart the devices. Keep in mind that sometimes the Diagnostics tool won't show devices that connected after it started, so if this is the case, try to restart it.
+Resolution: The device may be suffering from a poor connection. Please make sure that the network signal is strong enough for the devices to communicate with one another and restart the devices. Keep in mind that sometimes the Diagnostics tool won't show devices that connected after it started, so if this is the case, try to restart it.
 
 Symptom: Some messages that you expected to see (e.g. from a certain watchtower) do not show up in the Diagnostics tool.
 
-Resolution: The configuration for device was done wrongly. Please check that the variables set by the user (e.g. `ROS_MASTER_URI_DEVICE`, `ROS_MASTER_URI_DEVICE_IP`, `ACQ_ROS_MASTER_URI_DEVICE`, `ACQ_ROS_MASTER_URI_DEVICE_IP`, etc.) are set coherently with the instructions above. If you find some inconsistencies, please follow the configuration steps again.
+Resolution: The configuration for the device was done wrong. Please check that the variables set by the user (e.g. `ROS_MASTER_URI_DEVICE`, `ROS_MASTER_URI_DEVICE_IP`, `ACQ_ROS_MASTER_URI_DEVICE`, `ACQ_ROS_MASTER_URI_DEVICE_IP`, etc.) are set coherently with the instructions above. If you find some inconsistencies, please follow the configuration steps again.
 
 ## Demo failure demonstration {#demo-cslam-failure}
 
