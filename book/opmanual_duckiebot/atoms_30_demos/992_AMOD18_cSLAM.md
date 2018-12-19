@@ -41,10 +41,7 @@ There are also more detailed about the code, different configuration parameters 
 TODO: Put a description, illustrations and explanation of what cSLAM is, the different parts of it, how they communicate, what's the general philosophy, etc.
 
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
-TODO: Most of this will go away and a reference to the duckietown specs is needed
-
-
-Layout of Duckietown:
+We have the following basic assumptions that need to be fulfilled in order for the demo to work.
 
 ### Layout
   * Traffic lights are good to have but not necessary (optional).
@@ -54,7 +51,7 @@ Layout of Duckietown:
   * For a detailed map to be visualized, the poses of the AprilTags in the Duckietown must be (approximately) known beforehand.
   * Watchtowers have to be spread across the entire Duckietown. Preferably the combined field of view covers the entire Duckietown.
 ### Weather
-  * Lighting has to be bright enough for the AprilTags to be seen clearly by camera.
+  * Lighting has to be bright enough for the AprilTags to be seen clearly by camera. Still not too bright to have unwanted reflections.
   * Assumption: it is always sunny. Rain never occurs in Duckietown.
 
 ## Duckiebot setup notes {#demo-cslam-duckiebot-setup}
@@ -66,11 +63,19 @@ Layout of Duckietown:
 
 ## Pre-flight checklist {#demo-cslam-pre-flight}
 
-* The Duckiebot has sufficient battery and is powered on.
+<div class='check' markdown="1">
 
-* The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
+Check: The Duckiebot has sufficient battery and is powered on.
 
-* The watchtowers are powered on
+Check: The `roscore`, `ros-picam`, `joystick`, and `keyboard_control` containers are turned on for each Duckiebot.
+
+Check: The watchtowers are powered on
+
+Check: ROS is installed on your local computer. If it is not, install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
+
+Check: Docker is installed on your local computer. If it is not, install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended that you also have [Docker-compose](https://docs.docker.com/compose/install/)
+
+</div>
 
 ## Demo instructions {#demo-cslam-run}
 
@@ -231,7 +236,11 @@ You can stop the `cslam-acquisition` containers on the watchtowers with the `wat
 
 You can then stop the processing of Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> in the terminal running docker-compose and by then running:
 
-`docker-compose -f docker-compose-duckiebot-x86.yml down`
+    laptop $ docker-compose -f docker-compose-duckiebot-x86.yml down
+
+Make sure to execute the following command on your laptop! Otherwise you expose it to security issues!
+
+    laptop $ xhost -local:host
 
 ## Troubleshooting {#demo-cslam-troubleshooting}
 
