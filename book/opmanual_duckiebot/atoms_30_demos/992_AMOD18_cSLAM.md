@@ -1,7 +1,7 @@
 # AMOD18 cSLAM {#demo-cslam status=draft}
 
 <div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
-     <img src="/cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
+     <img src="cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
 </div>
 
 This is the description of the cSLAM (Centralized Simultaneous Localization And Mapping) demo. This demo allows a Duckiebot to localize itself, while the watchtowers and Duckiebots work together to build a map of the arena. The task is achieved by using the camera of the Duckiebot, together with watchtowers located along the path, to detect AprilTags attached to the tiles, the traffic signs, and the Duckiebot itself.
@@ -234,7 +234,7 @@ In Rviz, you only see parts of the actual underlying g2o graph. If you want to v
 In graph_builder.launch, you can set the "save_g2o_output" argument to True for the optimization. This will create a text representation of the g2o graph in \tmp that you can visualize using  [g2o_viewer](#fig:g2o_viewer).   
 
 <div figure-id="fig:g2o_viewer" figure-caption="g2o_viewer window">
-     <img src="/cSLAM_images/g2o_view.png" style='width: 30em'/>
+     <img src="cSLAM_images/g2o_view.png" style='width: 30em'/>
 </div>
 
 ## Demo failure demonstration {#demo-cslam-failure}
