@@ -24,6 +24,10 @@ Requires: Docker installation on both computers. [Laptop setup](#laptop-setup) [
 
 Requires: The Duckiebots and watchtowers in configuration DB18 until [Section B-11](#wheel-calibration).
 
+Results: Global locations of Duckiebots and other objects with AprilTags in a Duckeitown city
+
+Results: A 3D map of the city that shows the moving Duckiebots
+
 </div>
 
 ## Video of expected results {#demo-cslam-expected}
