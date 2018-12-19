@@ -289,13 +289,7 @@ For further analysis to the performance of the Obstavoid algorithm, refer to the
 
 ## Performance analysis {#demo-theobstavoidalgorithm-performance}
 
-%%%%%%%%%%%%%%%
-dt ändere -> duckie schneller, tradeoff: geschwindigkeit - unvorsichtiger
-
-measure execution time for different costs
-
-cost grid verfiinere -> meh computation, smootheri trajektorie (screenshot)
-cost grid meh time horizon -> bringt ned viel will mer ehh immer refreshed, aber schützt vor zuekünftigi ereignis (screenshot)
+To test the overall efficiency of the code, the performance of the most uncertain part of the code, the trajectory solver, has been measured for 100 subsequent trajectory generations. As the shortest path problem varies in computational complexity due to the obstacle configuration in the cost grid, the solution time can vary. Nevertheless, the order of magnitude of the solution times seems not to be crucial, also if run on a Raspberry Pi.
 
 
 <div figure-id="fig:performance_graph">
