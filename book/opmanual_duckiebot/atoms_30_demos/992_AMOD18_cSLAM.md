@@ -165,20 +165,27 @@ The Duckiebot should have the following 3 containers runnning:
 
 You can start them or check if they are already running via Portainer.
 
-As the Duckiebot usually has other nodes running we spare it processing of images and odometry by offloading this to a computer. To do this we need to run the acquisition node container. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. Here you need to update a few lines:
+As the Duckiebot usually has other nodes running we spare it processing of images and odometry by offloading this. To do this we need to run the acquisition node container on one of the computers. We recommend *not* using the computer serving as the ROS Master. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. Here you need to update a few lines:
 
 - Replace `duckiebotHostname` in `acquisition_node_duckiebotHostname`, `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local` and `ACQ_DEVICE_NAME=duckiebotHostname` with your Duckiebot's hostname.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_DEVICE_IP` with your Duckiebot's IP address. You can get this if you ping it.
-- Replace `ROS_MASTER_Hostname` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers.
+- Replace `ROS_MASTER_HOSTNAME` in `ACQ_ROS_MASTER_URI_SERVER=ROS_MASTER_Hostname.local` with your ROS Master's hostname. You should have gotten this already when you configured the watchtowers.
 - Replace `XXX.XXX.XXX.XXX` in `ACQ_ROS_MASTER_URI_SERVER_IP` with your ROS Master's IP address. You should have gotten this already when you configured the watchtowers.
-
-TODO: MASTER should be removed for macros which are not ROS Masters. For example, Duckiebots: `ACQ_ROS_MASTER_URI_DEVICE=duckiebotHostname.local`
 
 You can then start the container by running:
 
 `docker-compose -f docker-compose-duckiebot-x86.yml up`
 
 Make the Duckiebot see an AprilTag and you should see that you receive messages from it in the Diagnostics tool. You might have to restart the diagnostics tool to see the updates.
+
+If you don't have docker-compose installed you can run the same command in the classical Docker way, althought it is much uglier:
+
+     laptop $ docker run -it --name cslam-acquisition --restart always --network host 
+     
+           duckietown/cslam-acquisition:x86
+      environment:
+    -e ACQ_ROS_MASTER_URI_DEVICE=![duckiebotHostname].local -e ACQ_ROS_MASTER_URI_DEVICE_IP=![XXX.XXX.XXX.XXX] -e ACQ_ROS_MASTER_URI_SERVER=![ROS_MASTER_HOSTNAME].local -e ACQ_ROS_MASTER_URI_SERVER_IP=![XXX.XXX.XXX.XXX] -e ACQ_DEVICE_NAME=![duckiebotHostname]
+
 
 TODO: This wasn't working live. I have verified that it works on bag files
 
@@ -199,12 +206,7 @@ This will listen to the transforms, will build a graph, optimize it and publish 
 Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
-    docker run -it --rm --net=host -v $(pwd) /bin/bash 
-    container $ /graph_optimizer/catkin_ws/src/pose_graph_builder/wrapper.sh
-
-Alternativly, you can remove the `/bin/bash` from the "docker run" command, and the `wrapper.sh` will be executed directly.  
-However, it is easier to troubleshoot from inside the container (which you won't be able to do without `/bin/bash`), where launch variables can be easily modified. 
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
 
 ### Step 9: The fun part {#demo-cslam-run-9}
 Control the Duckiebot manually around Duckietown
