@@ -30,13 +30,13 @@ Requires: The Duckiebots and watchtowers in configuration DB18 until [Section B-
 
 First, we show a video of the expected behavior (if the demo is successful).
 
-## Demo code
+## Demo code {#demo-code}
 
 The main cSLAM repository is [here](https://github.com/duckietown/duckietown-cslam). When we refer to configuration files or scripts, they will be here. Clone it for easy access.
 
 There are also more detailed about the code, different configuration parameters and how to maintain it.
 
-## Introduction to cSLAM
+## Introduction to cSLAM {#demo-introduction}
 
 TODO: Put a description, illustrations and explanation of what cSLAM is, the different parts of it, how they communicate, what's the general philosophy, etc.
 
@@ -78,7 +78,7 @@ Check: The watchtowers are powered on
 
 ## Demo instructions {#demo-cslam-run}
 
-### Step 0: Preliminaries
+### Step 0: Preliminaries {#demo-cslam-run-0}
 Before starting, please install ROS Kinetic on your local computer by following the official installation instructions [here](http://wiki.ros.org/kinetic/Installation/Ubuntu). Please install the Desktop-Full version.
 
 Please install Docker on your local computer by following the official installation instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/). It is recommended you also have [Docker-compose](https://docs.docker.com/compose/install/)
@@ -89,7 +89,7 @@ Make sure all devices you are using are connected to the same WiFi network (typi
 
 TODO: Installation instructions probably not important here since they are prerequisites. Just docker-compose maybe. That should also be added to prerequisites in my opinion. Yes, the installation shouldn't be necessary when everything is dockerized.
 
-### Step 1: Set up the watchtowers. _You can skip this step for the demo on Thursday_
+### Step 1: Set up the watchtowers. _You can skip this step for the demo on Thursday_ {#demo-cslam-run-1}
 
 To burn the SD card for each watchtower, the same instructions as for Duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
 
@@ -104,13 +104,13 @@ It is also necessary to pull the docker image for the cSLAM acquistion node:
 
     laptop $ docker -H ![hostname].local pull duckietown/cslam-aquisition:rpi
 
-### Step 2: Setup the AprilTags _You can skip this step for the Thursday demo_
+### Step 2: Setup the AprilTags _You can skip this step for the Thursday demo_ {#demo-cslam-run-2}
 
 Print out the AprilTags and place them on top of Duckiebots and in Duckietown. Configure a map description file for this. Check [duckietown-world](https://github.com/duckietown/duckietown-world) for an example. Aim to have neighboring towers seeing at least one common AprilTag and to have each watchtower see at least two AprilTags.
 
 TODO: For Amaury: Explain where the config files for the city and the Duckiebots are by default and what needs to be chenged there by the user.
 
-### Step 3: Setup a ROS Master machine
+### Step 3: Setup a ROS Master machine {#demo-cslam-run-3}
 
 One of the computers will act as ROS Master. That means that all other nodes and containers will need to have their `ROS_MASTER_URI` environment variable set up to this computer. To set this up, run `roscore` on a computer that has ROS Kinetic installed. Keep in mid that you mind need to source the ROS setup file before that with something like
 
@@ -126,16 +126,16 @@ ROS_MASTER_URI=http://![hostname]:11311/
 
 You will also need the IP address of  this computer. The easiest way is to simply ping this hostname (followed by `.local`) from another computer.
 
-### Step 4: Configure the watchtowers
+### Step 4: Configure the watchtowers {#demo-cslam-run-4}
 
-In order to start processing data on the watchtowers you need to run the `cslam-aquisition` container. This requires that you know the hostname and the IP address of the machine serving as the ROS Master for this demo. Once you know the hostname you can get its IP address by pinging it.
+In order to start processing data on the watchtowers you need to run the `cslam-aquisition` container. This requires that you know the hostname and the IP address of the machine serving as the ROS Master for this demo. Once you know the hostname you can get its IP address by pinging it. You should have done this already in [Step 3](#demo-cslam-run-3).
 
 We have made a `bash` script that allows to easily set up all the the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `SERVER_HOSTNAME` and `SERVER_IP` in this file to the ones of your ROS Master. Also check if `array` contains all your watchtowers.
 Then you can run it with `bash watchtowers_setup.sh`.
 
 This step sets up the data acquisition pipeline on each watchtower. This means that each watchtower will now send updates about the AprilTags it sees. A similar step will also be done for each Duckiebot in Step 6.
 
-### Step 5: Test the watchtowers
+### Step 5: Test the watchtowers {#demo-cslam-run-5}
 
 Setup the diagnostics tool to check that the status of the watchtowers are `OK` where data was received in the last XX seconds.
 
@@ -147,7 +147,7 @@ Note that the SERVER_HOSTNAME should not contain `.local` at the end.
 If some of the watchtowers does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues. Try to repeat the previous step again.
 
 
-### Step 6: Setup the Duckiebot
+### Step 6: Setup the Duckiebot {#demo-cslam-run-6}
 
 The Duckiebot should have the following 3 containers runnning:
 
@@ -176,7 +176,7 @@ Make the Duckiebot see an AprilTag and you should see that you receive messages 
 
 TODO: This wasn't working live. I have verified that it works on bag files
 
-### Step 7: Set up the cSLAM Graph Optimizer
+### Step 7: Set up the cSLAM Graph Optimizer {#demo-cslam-run-7}
 
 On a laptop that is connected to the same network as the rest:
 
@@ -189,20 +189,20 @@ TODO: Let's mention that we should do this on the server and not any laptop
 
 This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz in the next step.  
 
-### Step 8: Set up the visualization
+### Step 8: Set up the visualization {#demo-cslam-run-8}
 Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
     laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
 
-### Step 9: The fun part
+### Step 9: The fun part {#demo-cslam-run-9}
 Control the Duckiebot manually around Duckietown
 
     laptop $ dts duckiebot keyboard_control ![duckie_hostname]
 
 Look at the diagnostic tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 10 seconds. If the Duckiebot messages does not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 
-### Step 10: Shut everything off
+### Step 10: Shut everything off {#demo-cslam-run-10}
 You can stop the `cslam-acquisition` containers on the watchtowers with the `watchtowers_stop.sh` script in the `duckietown-cslam/scripts` folder. Before that check if all the watchtowers you are using are in the `array` in the script.
 
 You can then stop the processing of your Duckiebot images and odometry by pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and executing:
