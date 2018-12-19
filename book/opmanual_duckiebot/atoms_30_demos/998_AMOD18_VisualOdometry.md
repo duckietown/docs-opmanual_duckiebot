@@ -45,32 +45,11 @@ Check: Both yout duckiebot and your laptop are connected to the same, stable net
 
 Either using Portainer or manually from a terminal, start both `ros-picam`,
 
-    laptop $ docker start ros-picam
+    laptop $ docker -H ![hostname].local start ros-picam
 
 and `joystick` containers:
 
-    laptop $ docker start joystick
-
-We want to ensure that the turns are performed in a more or less slow and continuous manner, so we will turn down the speed gain. Start by connecting to the duckiebot through `ssh`:
-
-    laptop $ ssh ![hostname]
-
-Open a bash console to one of the duckiebot images, and reduce the gain parameter of the inverse kinematics node. First, open a docker terminal.
-
-    duckiebot $ docker exec -it joystick /bin/bash
-
-Then reduce the gain:
-
-    container $ rosservice call /![hostname]/inverse_kinematics_node/set_gain 0.5
-
-Exit the docker container,
-
-    container $ exit
-
-And the duckiebot
-
-    duckiebot $ exit
-
+    laptop $ docker -H ![hostname].local start joystick
 
 Activate the joystick control and test that you can control the duckiebot with the keyboard:
 
@@ -117,14 +96,17 @@ And build it:
 Then, source the packages:
 
     container $ source devel/setup.bash
+    
+We want to ensure that the turns are performed in a more or less slow and continuous manner with the joystick, so we will turn down the speed gain. Reduce this parameter calling the following ros service:
+
+    container $ rosservice call /![hostname]/inverse_kinematics_node/set_gain 0.5
 
 Finally, run the visual odometry package.
-
 Note: Remember to use the tag `veh:=![hostname]` so that it uses your camera images to compute the visual odometry.
 
     container $ roslaunch duckietown_visualodo visual_odometry_node.launch veh:=![hostname]
 
-If you see a bunch of info and warn messages fastly printing, visual odometry is running! Move the duckiebot around (slowly) with the keyboard and see how it moves too in rviz.
+If you see a bunch of info and warn messages fastly printing, visual odometry is running! Move the duckiebot around (smoothly) with the keyboard and see how it moves too in rviz.
 
 
 ### Troubleshooting {#demo-visualodometry-troubleshooting}
@@ -141,7 +123,7 @@ Symptom: The estimated pose is really bad and the scene is not dynamic
 
 Resolution: Debug the pipeline by turning on the plotting parameters
 
-*Add videos here*
+*Debug videos will be added here*
 
 ### Demo failure demonstration {#demo-visualodometry-failure}
 
