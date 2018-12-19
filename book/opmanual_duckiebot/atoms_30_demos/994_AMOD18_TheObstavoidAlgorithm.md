@@ -36,7 +36,7 @@ Actor, passing a dynamic obstacle:
 
 ## The Obstavoid Algorithm {#demo-theobstavoidalgorithm-explained}
 
-The Obstavoid algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid. The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
+The Obstavoid algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid [[1]](https://networkx.github.io/). The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
 
 
 Example 3D cost grid illustration:
@@ -139,9 +139,12 @@ Our pipeline is divided up into two main nodes which communicate via topic commu
 
 #### Future Work
 
-To improve the current pipeline on mulitple parts of the code coule be worked on:
+To improve the current pipeline on mulitple parts of the code coule be worked on thanks to the modularity:
 
-* *test different cost_functions*: Currently the pipeline differentiates between static cost (given from things that cannot move) and dynamic cost (moving obstacles such as duckies and duckiebots). These functions could be changed and expanded easily in the 
+* *test the pipeline on a real demo*: Currently due to delay and inaccuracies of the duckietown perception pipeline our approach could not have been tested on a real duckiebot. 
+
+* *test different cost_functions*: Currently the pipeline differentiates between static cost (given from things that cannot move) and dynamic cost (moving obstacles such as duckies and duckiebots). These functions could be changed and expanded easily to test different cost modeling strategies
+
 
 
 <div figure-id="fig:software_architecture">
