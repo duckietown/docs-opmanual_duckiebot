@@ -203,6 +203,9 @@ Set up and run the visualization of the map, Duckiebots, watchtowers, and traffi
     docker run -it --rm --net=host -v $(pwd) /bin/bash 
     container $ /graph_optimizer/catkin_ws/src/pose_graph_builder/wrapper.sh
 
+Alternativly, you can remove the `/bin/bash` from the "docker run" command, and the `wrapper.sh` will be executed directly.  
+However, it is easier to troubleshoot from inside the container (which you won't be able to do without `/bin/bash`), where launch variables can be easily modified. 
+
 ### Step 9: The fun part {#demo-cslam-run-9}
 Control the Duckiebot manually around Duckietown
 
