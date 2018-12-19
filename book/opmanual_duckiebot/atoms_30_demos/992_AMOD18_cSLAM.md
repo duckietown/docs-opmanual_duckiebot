@@ -201,7 +201,9 @@ This will listen to the transforms, will build a graph, optimize it and publish 
 Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER_URI_DEVICE=[SERVER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=[SERVER_IP] duckietown/cslam-visualization
+    docker run -it --rm --net=host -v $(pwd) /bin/bash 
+    container $ /graph_optimizer/catkin_ws/src/pose_graph_builder/wrapper.sh
 
 ### Step 9: The fun part {#demo-cslam-run-9}
 Control the Duckiebot manually around Duckietown
