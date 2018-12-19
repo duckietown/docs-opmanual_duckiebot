@@ -159,13 +159,11 @@ You should now be able to see the raw and rectified watchtower streams, as well 
 
 The Duckiebot should have the following 3 containers runnning:
 
-- `roscore`
-- `ros_picam`
-- `joystick`
+- `roscore` [Instructions here](#rc-control)
+- `ros_picam` (and `picam` should be stopped) [Instructions here](#read-camera-data)
+- `joystick` [Instructions here](#rc-control)
 
 You can start them or check if they are already running via Portainer.
-
-TODO: Add links to the parts of the book where it's explained how to run these.
 
 As the Duckiebot usually has other nodes running we spare it processing of images and odometry by offloading this to a computer. To do this we need to run the acquisition node container. The acquisition node has a lot of configuration parameters. That is where `docker-compose` is handy. You can check the example `.yml` file given: `duckietown-cslam/scripts/docker-compose-duckiebot-x86.yml`. Here you need to update a few lines:
 
