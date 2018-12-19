@@ -139,7 +139,7 @@ This step sets up the data acquisition pipeline on each watchtower. This means t
 Setup the diagnostics tool to check that the status of the watchtowers are `OK` (AprilTag data was received in the last 5 seconds).
 
     laptop $ docker pull duckietown/cslam-diagnostics
-    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER_URI_DEVICE=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_URI_DEVICE_IP=![ROS_MASTER_IP] duckietown/cslam-diagnostics
+    laptop $ docker run -it --rm --net=host --env="DISPLAY" -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-diagnostics
 
 Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
 
