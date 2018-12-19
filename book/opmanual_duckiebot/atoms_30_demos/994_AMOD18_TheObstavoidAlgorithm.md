@@ -4,9 +4,9 @@
 
 This demo will show the use of a new fully-functional drive controller. It might replace the current lane follower in the future, as it is able to handle more general driving scenarios, mainly focusing on obstacles.
 
-With the Obstavoid algorithm, the duckiebot (now denoted as the ‘actor’) will still try to follow its own lane, exactly like the lane follower implemented by default. The advantage of the Obstavoid algorithm is, that it takes into account every obstacle within a certain visibility range and planning horizon. The module continuously calculates an optimal trajectory to navigate along the road. If an obstacle blocks its way, the algorithm will decide on its own what maneuver will suit the best for the given situation. By predicting the motion of every obstacle and other duckiebots, the actor can, for example, be prepared for an inattentive duckie trying to cross the road, or decide if a passing maneuver is feasible with the current traffic situation, or if it should rather adjust its driving speed to wait until one of the lanes are free.
+With the Obstavoid Algorithm, the duckiebot (now denoted as the ‘actor’) will still try to follow its own lane, exactly like the lane follower implemented by default. The advantage of the Obstavoid Algorithm is, that it takes into account every obstacle within a certain visibility range and planning horizon. The module continuously calculates an optimal trajectory to navigate along the road. If an obstacle blocks its way, the algorithm will decide on its own what maneuver will suit the best for the given situation. By predicting the motion of every obstacle and other duckiebots, the actor can, for example, be prepared for an inattentive duckie trying to cross the road, or decide if a passing maneuver is feasible with the current traffic situation, or if it should rather adjust its driving speed to wait until one of the lanes are free.
 
-In this demo different scenarios are set up in a simulation, where you can test the Obstavoid algorithm to its full extent.
+In this demo different scenarios are set up in a simulation, where you can test the Obstavoid Algorithm to its full extent.
 
 
 <div class='requirements' markdown="1">
@@ -36,7 +36,7 @@ Actor, passing a dynamic obstacle:
 
 ## The Obstavoid Algorithm {#demo-theobstavoidalgorithm-explained}
 
-The Obstavoid algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid [[1]](https://networkx.github.io/). The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
+The Obstavoid Algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid [[1]](https://networkx.github.io/). The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
 
 
 Example 3D cost grid illustration:
