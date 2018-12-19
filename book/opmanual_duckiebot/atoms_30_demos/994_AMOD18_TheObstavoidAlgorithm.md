@@ -181,7 +181,7 @@ TODO: make restart branch to master
 
 ### Step 0 - 2 with no effort
 
-If you are *lazy* you can just create a folder on your computer in which we will install everything you need for the demo and which you can easily delete afterwards. Just copy this file [here](https://raw.githubusercontent.com/duckietown/duckietown-mplan/restart/setup/setup_from_blank_folder.bash) in to the folder an run it in your folder with:
+If you are *lazy* you can just create a folder on your computer in which we will install everything you need for the demo and which you can easily delete afterwards. Just copy this file [here](https://raw.githubusercontent.com/duckietown/duckietown-mplan2/master/setup/setup_from_blank_folder.bash) in to the folder an run it in your folder with:
 
 ```
 $ . ./setup_from_blank_folder.bash
@@ -209,34 +209,27 @@ Install duckietown-world now in the virtual environment, as we depend on librari
 
 Clone the mplan-repo with the following command. Make sure you are inside the `src` folder of a catkin workspace. If you do not have a catkin workspace set up follow these [instructions](https://github.com/duckietown/duckietown-mplan/wiki/Setting-up-a-catkin-workspace).
 ```
-$ git clone https://github.com/duckietown/duckietown-mplan.git
+$ git clone git@github.com:duckietown/duckietown-mplan2.git
 ```
 
 Enter the repo
 ```
-$ cd duckietown-mplan
+$ cd duckietown-mplan2
 ```
 
 Install the additional requirements using
 ```
-$ pip install -r requirements.txt
+$ pip install -r lib-mplan/requirements.txt
 ```
 
 Load the submodules and build the workspace
 ```
-$ git submodule init
-$ git submodule update
+$ git submodule update --init --recursive
 ```
 
-Load the submodule’s submodules
-```
-$ cd duckietown-fplan
-$ git submodule init
-$ git submodule update
-```
 Build the workspace from the initial folder
 ```
-$ cd ../../..
+$ cd ../..
 $ catkin build
 ```
 Run `catkin_make` instead if you don't use `python-catkin-tools`.
@@ -250,7 +243,7 @@ $ source devel/setup.bash
 
 Run the demo including a visualization in rviz with 
 ```
-$ roslaunch obst_avoid obst_avoid_withviz_demo.launch demo_num:=1
+$ roslaunch duckietown_mplan mplan_withviz_demo.launch demo_num:=5
 
 ```
 With the parameter `demo_num` you can select a specific scenario. The scenarios are as follows:
@@ -299,8 +292,6 @@ To test the overall efficiency of the code, the performance of the most uncertai
 
 ## References {#demo-theobstavoidalgorithm-references}
 
-%%%%%%%%%%%%%%%
-LINK NETWORKX TO GRAPH
 
 
 References:
