@@ -62,13 +62,12 @@ Here the most important lines are the challenge and the protocol line. The chall
 
 #### config
 
-The config folder should contain a text file for each library you want to create a submission for. In this text file should be the absolute path to one level above the directory where you store your code, and on the second line it should have the name of the directory where you story your code. The generate\_submissions script takes this absolute path and combines it with the directory name to movie a copy of your code into a new submission folder.
+The config folder should contain a text file for each library you want to create a submission for. In this text file should be the absolute path to one level above the directory where you store your code, and on the second line it should have the name of the directory where you story your code. `The generate_submissions.py` script takes this absolute path and combines it with the directory name to movie a copy of your code into a new submission folder.
 
 
 ### Challenge
-Information on how to define a challenge can be found here:
-
-
+Information on how to define a challenge can be found here\(for now\):
+[https://github.com/DaRavenox/docs-AIDO/blob/master/book/AIDO/70_developers/50_define.md](https://github.com/DaRavenox/docs-AIDO/blob/master/book/AIDO/70_developers/50_define.md)
 ## DEMO: The regression test pipeline {#demo-projecthero-run}
 
 What follows now is a step by step guide to setting up a local server, defining a challenge, and making a submission to this challenge.
