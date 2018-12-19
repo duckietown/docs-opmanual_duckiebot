@@ -180,12 +180,7 @@ Make the Duckiebot see an AprilTag and you should see that you receive messages 
 
 If you don't have docker-compose installed you can run the same command in the classical Docker way, althought it is much uglier:
 
-     laptop $ docker run -it --name cslam-acquisition --restart always --network host 
-     
-           duckietown/cslam-acquisition:x86
-      environment:
-    -e ACQ_ROS_MASTER_URI_DEVICE=![duckiebotHostname].local -e ACQ_ROS_MASTER_URI_DEVICE_IP=![XXX.XXX.XXX.XXX] -e ACQ_ROS_MASTER_URI_SERVER=![ROS_MASTER_HOSTNAME].local -e ACQ_ROS_MASTER_URI_SERVER_IP=![XXX.XXX.XXX.XXX] -e ACQ_DEVICE_NAME=![duckiebotHostname]
-
+     laptop $ docker run -it --name cslam-acquisition --restart always --network host -e ACQ_ROS_MASTER_URI_DEVICE=![duckiebotHostname].local -e ACQ_ROS_MASTER_URI_DEVICE_IP=![XXX.XXX.XXX.XXX] -e ACQ_ROS_MASTER_URI_SERVER=![ROS_MASTER_HOSTNAME].local -e ACQ_ROS_MASTER_URI_SERVER_IP=![XXX.XXX.XXX.XXX] -e ACQ_DEVICE_NAME=![duckiebotHostname] duckietown/cslam-acquisition:x86
 
 TODO: This wasn't working live. I have verified that it works on bag files
 
