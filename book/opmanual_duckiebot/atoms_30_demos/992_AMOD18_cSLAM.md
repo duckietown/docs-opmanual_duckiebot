@@ -28,7 +28,11 @@ First, we show a video of the expected behavior (if the demo is successful).
 
 ## Demo code
 
+The main cSLAM repository is [here](https://github.com/duckietown/duckietown-cslam). When we refer to configuration files or scripts, they will be here. Clone it for easy access.
+
 ## Introduction to cSLAM
+
+TODO: Put a description, illustrations and explanation of what cSLAM is, the different parts of it, how they communicate, what's the general philosophy, etc.
 
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
 TODO: Most of this will go away and a reference to the duckietown specs is needed
