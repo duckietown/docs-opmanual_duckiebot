@@ -50,6 +50,15 @@ At the core of cSLAM is a pose graph optimization problem. The watchtowers obser
      <img src="cSLAM_images/architecture.png" style='width: 40em'/>
 </div>
 
+As can be seen from the above image there are quite a few devices and containers involved in this demo. Every red box is a physical device; every blue box is a Docker container that can be deployed on a different device. Let's see what the different containers are and what they do:
+
+* The acquisition containers are multiple Docker containers, each being responsible for acquiring the raw data from a single robot (watchtower or Duckiebot), processing it (rectifying, April tag pose extraction, odometry calculation), and packaging the processed data as new topics on the Graph optimization ROS Master.
+
+    Using separate containers allow us to scale the system to an almost infinite amount of robots and watchtowers (simply run as many nodes as necessary on a docker swarm). In this demo we will run the acquisition containers for watchtowers on the towers themselves as this reduces the network delays in the system. The acquistion containers for Duckiebots, however, will be exectued on a laptop such that the Duckiebot's computational resources are available for other processes.
+
+* 
+
+
 ## Duckietown setup notes {#demo-cslam-duckietown-setup}
 We have the following basic assumptions that need to be fulfilled in order for the demo to work.
 
