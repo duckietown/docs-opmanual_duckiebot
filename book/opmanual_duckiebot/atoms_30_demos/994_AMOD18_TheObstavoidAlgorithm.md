@@ -152,10 +152,8 @@ The modular architecture allow for improving the code simultaneously on multiple
 
 ## Video of expected results {#demo-theobstavoidalgorithm-expected}
 
-%%%%%%%%%%%%%%%%%%%
 please add our video to the vimeo account, you can find it here:
 994_AMOD18_TheObstavoidAlgorithm/movie_clips_for_vimeo/the_obstavoid_algorithm_movie.mp4
-%%%%%%%%%%%%%%%%%%%
 
 <div figure-id="fig:the_obstavoid_algorithm_movie">
     <figcaption>The Obstavoid Algorithm Movie.
