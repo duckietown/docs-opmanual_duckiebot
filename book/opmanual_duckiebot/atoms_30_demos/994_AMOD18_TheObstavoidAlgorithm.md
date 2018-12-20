@@ -1,4 +1,10 @@
+<div figure-id="fig:obst_avoid_logo">
+     <img src="994_AMOD18_TheObstavoidAlgorithm/obst_avoid_logo.png" style='width: 30em'/>
+</div>
+
 # AMOD18 The Obstavoid Algorithm {#demo-theobstavoidalgorithm status=draft}
+
+[YouTube, The Obstavoid Algorithm](https://youtu.be/zHMXoAidxT4)
 
 ## Demo description {#demo-theobstavoidalgorithm-description}
 
@@ -152,7 +158,7 @@ The modular architecture allow for improving the code simultaneously on multiple
 
 ## Video of expected results {#demo-theobstavoidalgorithm-expected}
 
-please add our video to the vimeo account, you can find it here:
+Please add our video to the vimeo account, you can find it here:
 994_AMOD18_TheObstavoidAlgorithm/movie_clips_for_vimeo/the_obstavoid_algorithm_movie.mp4
 
 <div figure-id="fig:the_obstavoid_algorithm_movie">
@@ -160,6 +166,8 @@ please add our video to the vimeo account, you can find it here:
     </figcaption>
     <dtvideo src='vimeo:XXXXXXXXX'/>
 </div>
+
+Or else watch it on YouTube [here](https://youtu.be/zHMXoAidxT4)
 
 
 ## Duckietown setup notes {#demo-theobstavoidalgorithm-duckietown-setup}
