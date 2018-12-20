@@ -174,7 +174,7 @@ Setup the Diagnostics tool to check that the status of the watchtowers are `OK` 
 
 Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
 
-NOTE: After everything is over, please run:  
+NOTE: Once the Diagnostic tool is no longer required at the end of the demo and has been closed, please run:  
 
     laptop $ xhost -local:host
 
@@ -226,7 +226,7 @@ On the ROS master machine defined at step 3, run:
     laptop $ docker pull duckietown/cslam-graphoptimizer
     laptop $ docker run -it --rm --net=host -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-graphoptimizer:latest /bin/bash
 
-    laptop-container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
+    laptop-container $ /graph_optimizer/catkin_ws/src/pose_graph_builder/wrapper.sh
 
 You can also remove the `/bin/bash` and the wrapper will be executed directly. Keeping the `/bin/bash` is helpful for troubleshooting when you want to modify launch parameters.
 
