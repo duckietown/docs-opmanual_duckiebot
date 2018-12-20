@@ -42,7 +42,7 @@ There are also more detailed about the code, different configuration parameters 
 
 ## Introduction to cSLAM {#demo-introduction}
 
-It can be incredibly useful to have a system that can localize your Duckeibot. Not only in case you lose it, but also if you want to facilitate autonomous Robotarium operations or to evaluate AIDO submissions. And most importantly, it looks cool! And that's exactly what the cSLAM system does.
+It can be incredibly useful to have a system that can localize your Duckiebot. Not only in case you lose it, but also if you want to facilitate autonomous Robotarium operations or to evaluate AIDO submissions. And most importantly, it looks cool! And that's exactly what the cSLAM system does.
 
 The goal of cSLAM is to fuse the observations of watchtowers and Duckiebots in a single optimization that tries to predict as accurately as possible the current and past Duckiebot locations. This is then nicely visualized on a 3D model of the city.
 
@@ -126,7 +126,7 @@ When the cards are burned, put in the watchtowers and their initialization is co
 
 It is also necessary to pull the docker image for the cSLAM acquistion node:
 
-    laptop $ docker -H ![hostname].local pull duckietown/cslam-aquisition:rpi
+    laptop $ docker -H ![hostname].local pull duckietown/cslam-acquisition:rpi
 
 ### Step 2: Setup the AprilTags _You can skip this step for the Thursday demo_ {#demo-cslam-run-2}
 
