@@ -56,7 +56,7 @@ Step 2: Clone the following repo [duckietown-uplan](https://github.com/duckietow
 Step 3: Installation of dependencies (NOTE: make sure that pip installation belongs to python2.7)
 
     $ pip install -r --user duckietown-uplan/lib-uplan/requirements.txt        (Might require sudo or --user)
-    $ sudo python setup.py develop --no-deps
+    $ sudo python duckietown-uplan/lib-uplan/setup.py develop --no-deps
     
 Step 4: Go back to catkin_ws main directory and run catkin_make
 
@@ -85,7 +85,7 @@ For experimentation. You can edit the following parameters and observe how the p
 * [x] Planning under uncertainity to get a velocity profiler for the shortest path chosen.
 * [x] Realtime visualization of duckiebots
 * [x] Visualization of 10 future steps of duckiebot trajectory
-* [ ] Visualizing uncertainty probability field
+* [x] Visualizing uncertainty probability field
 * [x] Visualizing velocity profiler
 * [x] Visualizing of the shortest path planned
 
