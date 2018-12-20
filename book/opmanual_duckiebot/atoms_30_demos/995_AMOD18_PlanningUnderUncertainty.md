@@ -58,7 +58,7 @@ Step 2: Clone the following repo [duckietown-uplan](https://github.com/duckietow
 Step 3: Installation of dependencies (NOTE: make sure that pip installation belongs to python2.7)
 
     $ cd duckietown-uplan/lib-uplan
-    $ pip install -r --user requirements.txt        (Might require sudo or --user)
+    $ pip install -r requirements.txt --user       (Might require or --user)
     $ sudo python setup.py develop --no-deps
     
 Step 4: Go back to catkin_ws main directory and run catkin_make
