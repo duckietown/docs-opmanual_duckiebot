@@ -40,7 +40,11 @@ For each intersection type (3-way or 4-way) a feasible direction will be chosen 
 
 The expected behavior should look like the following video:
 
-Video comming soon...
+<div figure-id="fig:success_unicorn">
+    <figcaption>Expected behavior of the duckiebot when performing the intersection navigation demo (3 different demos for each of the directions).
+    </figcaption>
+    <dtvideo src='vimeo:307407118'/>
+</div>
 
 ## Duckietown setup notes {#demo-projectunicorn-duckietown-setup}
 
@@ -66,7 +70,7 @@ An accurate localization in the intersection area is crucial for successful navi
 
 The used algorithm is inter alia based on reprojecting points from the camera to the world frame. Therefore in order to enable an accurate localization an accurate camera calibration is required, especially with respect to scale.
 
-### Calibration test instructions:
+**Calibration test instructions:**
 
 ### Step 1
 
@@ -157,7 +161,7 @@ Symptom: Duckiebot not moving.
 Resolution: Make sure the duckiebot can see AprilTags.
 
 
-Symptom: Duckiebot is not navigating the intersection properly (not moving smoothly).
+Symptom: Duckiebot is not navigating the intersection properly (not moving smoothly or cutting corners).
 
 Resolution: Make sure the [wheel calibration](#wheel-calibration) is done correctly.
 
@@ -167,13 +171,21 @@ Symptom: 'roslaunch xml error' displayed.
 
 Resolution: Try to restart the container again (try 2-3 times). If the error is not fixed, re-flash your SD card. 
 
-Note: Check the newest updates on error troubleshooting on our [Project Unicorn Intersection Navigation repository](https://github.com/duckietown/duckietown-intnav).
+Symptom: Docker failed to register layer: 'no space left on device'
+
+Resolution: Remove unused images on Portainer.
+
+Note: Check for the newest updates on error troubleshooting on our [repository](https://github.com/duckietown/duckietown-intnav).
 
 ## Demo failure demonstration {#demo-projectunicorn-failure}
 
 The following video shows how the demo can fail, when the assumptions are not respected.
 
-Video comming soon...
+<div figure-id="fig:fail_unicorn">
+    <figcaption>When the AprilTags are not correctly placed, the duckiebot is not able to localize properly and the demo fails.
+    </figcaption>
+    <dtvideo src='vimeo:307407768'/>
+</div>
 
 ## Project description {#demo-projectunicorn-description}
 
@@ -234,7 +246,6 @@ The duckiebot is placed in a lane (with width between 10 - 16 cm), in front of t
 
 * Initial intersection conditions:
 
-
 	- Duckiebot detecting intersection.
 
 	- Stopping in front of the red line: Initial position within the lane and within ± 3 cm to the red line and initial orientation within ± 10° to the yellow lines.
@@ -243,9 +254,19 @@ The duckiebot is placed in a lane (with width between 10 - 16 cm), in front of t
 
 * Maximal control delay (~ 1 s, testable).
 
+### Visualization
+
+To watchdog the performance of the algorithm a rviz interface is available as well as display of the detected april tag. 
+
+    laptop $ bash run_visualization.bash ![hostname]
+
+<div figure-id="fig:visualization" figure-caption="AprilTag detection" >
+     <img src="visualization.jpg" style='width: 30em'/>
+</div>
+
 ### Failed Approaches
 
-For the [first step](#demo-projectunicorn-approach), the following approaches other than the AprilTag detection were tried and not implemented for the reasons stated below:
+For the [Estimation of the initial pose](#demo-projectunicorn-approach), the following approaches other than the AprilTag detection were tried and not implemented for the reasons stated below:
 
 **Feature Detection + Template matching:**
 
@@ -259,27 +280,100 @@ The camera image was converted to HSV colorspace. Then, canny edge detector was 
 
 The code is split into two sections:
 
-- *lib-intnav*: contains the logic architecture and algorithms of the demo implementation. It contains the following nodes:
+* **lib-intnav**: contains the logic architecture and algorithms of the demo implementation. It contains the following nodes:
 
-	- *camera_config*
-	- *controller*
-	- *kalman*
-	- *planner*
-	- *imap* (used for visualization purposes only)
+<col4 figure-id="tab:mytable" figure-caption="Nodes from lib-intnav" class="labels-row1">
+    <span>Node</span>
+    <span>Description</span>
+    <span>Input</span>
+    <span>Output</span>
+    <span>camera_config</span>
+    <span>Undistorsion algorithm</span>
+    <span>Camera image, Camera calibration</span>
+    <span>Undistorsioned image</span>
+    <span>kalman</span>
+    <span>Extended Kalman filter based on differential drive mode</span>
+    <span>Path to follow, Instante pose, Measurements of previous pose</span>
+    <span>Estimated next pose</span>
+    <span>planner</span>
+    <span>Generate corresponding path to follow</span>
+    <span>Intersection command</span>
+    <span>Path to follow</span>
+    <span>controller</span>
+    <span>Control duckiebot locally to follow optimal trajectory</span>
+    <span>Path to follow, Instant pose</span>
+    <span>Wheel speed commands</span>
+    <span>imap</span>
+    <span>Visualize the intersection</span>
+    <span>Intersection type</span>
+    <span>Intersection map</span>
+    <span></span>
+    <span></span>
+    <span></span>
+</col4>
 
-- *ros-intnav*: contains all nodes that enable the communication between lib-intnav (algorithms for calculation) and ROS (communicates with the duckiebot). It contains the following nodes:
+* **ros-intnav**: contains all nodes that enable the communication between lib-intnav (algorithms for calculation) and ROS (communicates with the duckiebot). It contains the following nodes:
 
-	- *april_activator*
-	- *controller*
-	- *image_processing*
-	- *interface*
-	- *localization*
-	- *swan_to_map*
-	- *tf_april_static*
-	- *tf_cam_vehicle*
+<col4 figure-id="tab:mytable2" figure-caption="Nodes from ros-intnav" class="labels-row1">
+    <span>Node</span>
+    <span>Libraries (lib-intnav /external)</span>
+    <span>Input</span>
+    <span>Output</span>
+    <span>image_ processing</span>
+    <span>image_ calibration</span>
+    <span>Raw image</span>
+    <span>Undistorted image</span>
+    <span>april_ activator</span>
+    <span></span>
+    <span></span>
+    <span>AprilTag detection ping</span>
+    <span>localization</span>
+    <span>kalman</span>
+    <span>Previous wheel speeds, Detected tags</span>
+    <span>Pose estimation, Trajectory</span>
+    <span>controller</span>
+    <span>controller, planner</span>
+    <span>Pose estimate</span>
+    <span>Optimal path, wheel speed commands</span>
+    <span>interface</span>
+    <span></span>
+    <span>Duckietown configuration, Pose</span>
+    <span>Direction to go, Intersection type, Switch</span>
+    <span>tf_april_ static</span>
+    <span>tf</span>
+    <span>Duckietown configuration</span>
+    <span>AprilTag pose in world frame</span>
+    <span>tf_cam_ vehicle</span>
+    <span>tf</span>
+    <span>Duckiebot configuration</span>
+    <span>Camera to wheel axis transformation</span>
+    <span>visualization _imap</span>
+    <span>imap</span>
+    <span>Direction to go, Intersection type</span>
+    <span>Visualization (rviz)</span>
+</col4>
 
 ### Performance analysis
 
-TODO
+* Success rate = Number of successful navigations / Number of trials = 93%
+
+A successful intersection navigation entails:
+
+	- Following the path in a reasonable way: not crossing any lines, smooth trajectory.
+
+	- Achieving the desired intersection end point within a range of +/-15 cm.
+
+	- Navigating the intersection within the maximum time limit: 10 s for straight and left curve, 8 s for right curve.
+
+* Navigation duration (until duckiebot is able to continue with the lane follower):
+
+Left = 8 s (3 s initialize + 5 s operation)
+
+Right = 6 s (3 s initialize + 3 s operation)
+
+Straight = 6 s (3 s initialize + 3 s operation)
+
+* Repeatability: Start intersection navigation from a fixed point and compare the end points for robustness.
+
 
 
