@@ -40,6 +40,8 @@ Currently, plannning under uncertainity is tested only in simulation environment
 
 Here, give step by step instructions to reproduce the demo.
 
+** ASSUMTION: YOU ARE ABLE TO IMPORT `duckietown_world` SUCCESFULLY **
+
 Step 0: Make sure you sourced ros
 
     $ source /opt/ros/kinetic/setup.bash       (Use setup.zsh If you are using zsh shell)
