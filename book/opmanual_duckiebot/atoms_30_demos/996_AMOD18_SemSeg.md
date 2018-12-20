@@ -58,12 +58,10 @@ Our code of the ICNet is implemented using the tensorflow framework and pre-trai
 
 ## Implementation
 
-What happends when we use the algorithm
-A docker container is sent ... --> img from duckiebot --> analyse on laptop --> show image....
-
-* step 1
-* step 2
-* step 3
+<figure>
+    <figcaption>Code implementation</figcaption>
+      <img style='width:35em' src="Implementation.png"/>
+</figure>
 
 ## Performance
 
