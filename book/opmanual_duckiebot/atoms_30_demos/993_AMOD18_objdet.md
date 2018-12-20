@@ -19,7 +19,7 @@ Requires: Joystick demo completed.[Joystick demo](#rc-control)
 
 Requires: Duckietown with all classified objects.
 
-Requires: Docker is installed on your computer
+Requires: Docker is installed on your computer.
 
 Results: The duckiebot is able to detect objects using its camera.
 </div>
@@ -111,7 +111,7 @@ This command will run a container and create a ros node inside automatically. Th
 **Step 3 (Optional)**: Launch the base container on the duckiebot.
 
 
-    laptop $ docker -H ![duckie_bot].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
+    laptop $ docker -H ![duckie_bot].local run -it --network host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
 
 
 
@@ -119,9 +119,13 @@ This command will run a container and create a ros node inside automatically. Th
 
 Note: For this command you need the Duckiebot's IP address. In order to obtain the Duckiebot IP address, you should ping your Duckiebot in another terminal and note down the IP address of your duckiebot.
 
-    laptop $ run -it --name object_detection --network host -e ROS_MASTER_URI=http://![duckie_bot_IPaddress]:11311/  -e DUCKIEBOT_NAME=![duckie_bot]  -e ROS_HOSTNAME=![Name_Of_Your_Computer] zgxsin/object_detection:1.6
+    laptop $ docker run -it --name object_detection --network host -e ROS_MASTER_URI=http://![duckie_bot_IPaddress]:11311/  -e DUCKIEBOT_NAME=![duckie_bot]  -e ROS_HOSTNAME=![Name_Of_Your_Computer] zgxsin/object_detection:1.7
 
 Notice that we have to set up the ROS_MASTER_URI variable so that the ros nodes can communicate with each other. This command will create a object_detection ros node automatically. It will listen to the camera image topic in step 2 and predict images and send the predicted images to another topic for visualization.
+
+
+
+Note: You can replace the `1.7` in the above command with `1.6` to use a model with good accuracy but lower speed. There is a trade off between the two. Incase the version 1.7 is not working for you, please try version 1.6.
 
 
 
@@ -135,7 +139,7 @@ After that, run the following command in the container
 
     container $ rqt_image_view
 
-This will pop up a new GUI window. Select the 'predicted images' topic from the drop down menu.
+This will pop up a new GUI window. Select the `/!duckie_bot]/prediction_images` topic from the drop down menu.
 
 
 
@@ -152,7 +156,7 @@ Symptom: The Duckiebot is not moving.
 
 Resolution: Make sure that the joystick container is running. Note that the command for launching the joystick was changed to:
 
-    laptop $ dts Duckiebot keyboard_control ![duckie_bot]
+    laptop $ dts duckiebot keyboard_control ![duckie_bot]
 
 
 
@@ -193,13 +197,15 @@ Resolution: Run the command
 
       laptop $ docker container rm --force object_detection.
 
-Repeat step 3.
+Repeat step 4.
 
 
 
-**Tip 1**: We can check whether everything is working inside this container. Run `rosnode list` to check whether corresponding ros nodes are running. Run `rostopic list` to check whether the corresponding ros topics exist. You can run other ros-related command to do the check as well.
+**Tip 1**: We can check whether everything is working inside object detection container. Run `rosnode list` to check whether corresponding ros nodes are running. Run `rostopic list` to check whether the corresponding ros topics exist. You can run other ros-related command to do the check as well.
 
 **Tip 2**: It is very important that the right containers are working. Double check to make sure.
+
+
 
 
 ## Demo failure demonstration {#demo-objdet-failure}
