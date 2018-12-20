@@ -36,7 +36,7 @@ Fig. 1: Actor, passing a dynamic obstacle
 
 ## The Obstavoid Algorithm {#demo-theobstavoidalgorithm-explained}
 
-The Obstavoid Algorithm is based on a shortest path optimisation problem, which seeks the best way through a weighted, three dimensional space-time grid. The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory, which was implemented using the Python package NetworkX [[1]](https://networkx.github.io/), and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
+The Obstavoid Algorithm is based on a shortest path optimization problem, which seeks the best way through a weighted, three dimensional space-time grid. The three main pillars necessary for this problem setting are the design of a suitable cost function to define the actor’s behaviour, a graph search algorithm to determine the optimal trajectory, which was implemented using the Python package NetworkX [[1]](https://networkx.github.io/), and a sampler, which extracts the desired steering commands from a given trajectory and the actor’s position. In the following, each of these aspects will be further discussed and their implementation in the code architecture is briefly addressed.
 
 
 Fig. 2: Example 3D cost grid illustration
@@ -72,7 +72,7 @@ Fig. 4: Modified bell curve cost function with tuning parameter to change the ra
 By simply adding these static costs with the cost of each obstacle together, an overall final cost is obtained. Once this final cost function has been found, it can now be discretized as a 5 x 6 x 6 grid (width x length x timesteps) in a defined box in front of the actor.
 
 
-Fig. 5: Actor with visualisation of its cost grid. As the road is blocked, the lowest cost is reached by waiting
+Fig. 5: Actor with visualization of its cost grid. As the road is blocked, the lowest cost is reached by waiting
 <div figure-id="fig:demo_3_with_cost_grid">
      <img src="994_AMOD18_TheObstavoidAlgorithm/demo_3_with_cost_grid.gif" style='width: 30em'/>
 </div>
@@ -275,7 +275,7 @@ Using 'i', 'j', 'l', ',' you can now teleoperate another duckiebot. With 'q', 'w
 
  * 1 : Networkx library was not found: Double check that all installations were completed IN the virtual environment, especially the requirements of duckietown-world.
  * 2 : duckietown-world was not found: Double check that all installations were completed IN the virtual environment, especially the setup of duckietown-world.
- * 3 : The duckiebot does not see and crashes in obstacles. Have you spawned to many obstacles / actors? We have seen that too many obstacles / actors introduce a delay into the simulation which makes it impossible to avoid them in an effective manner.
+ * 3 : The duckiebot does not see and crashes in obstacles. Have you spawned too many obstacles / actors? We have seen that too many obstacles / actors introduce a delay into the simulation which makes it impossible to avoid them in an effective manner.
  
 
 ## Demo failure demonstration {#demo-theobstavoidalgorithm-failure}
