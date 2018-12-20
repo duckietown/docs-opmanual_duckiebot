@@ -70,6 +70,11 @@ Ensure all three packages build correctly and custom messages are built
 
     $ source devel/setup.bash               (Or zsh)
     $ roslaunch uplan_visualization planningUncertainty.launch
+    
+## Troubleshooting
+If having problems with duckietown_world please install from pip:
+
+    $ pip install --user duckietown_world
 
 ## Experimentation
 
