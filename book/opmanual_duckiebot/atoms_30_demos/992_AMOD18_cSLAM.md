@@ -156,7 +156,7 @@ You will also need the IP address of this computer. The easiest way is to simply
 
 ### Step 4: Configure the watchtowers {#demo-cslam-run-4}
 
-In order to start processing data on the watchtowers, you need to run the `cslam-aquisition` container. You already know the hostname and the IP address of the machine serving as the ROS Master for this demo from [Step 3](#demo-cslam-run-3).
+In order to start processing data on the watchtowers, you need to run the `cslam-acquisition` container. You already know the hostname and the IP address of the machine serving as the ROS Master for this demo from [Step 3](#demo-cslam-run-3).
 
 We have made a `bash` script that allows to easily set up all the watchtowers. You can find it in `duckietown-cslam/scripts/watchtowers_setup.sh`. You will need to edit the `ROS_MASTER_HOSTNAME` and `ROS_MASTER_IP` in this file to the ones of your ROS Master. Note that the `ROS_MASTER_HOSTNAME` should not contain `.local` at the end. Also check if `array` contains all your watchtowers (Once again, you can ignore this for the demo on Thursday.) Then, go to directory `duckietown-cslam/scripts/` and run it:
 
