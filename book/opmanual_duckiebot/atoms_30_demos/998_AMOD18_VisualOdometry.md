@@ -1,4 +1,4 @@
-# AMOD18 Visual Odometry {#demo-visualodometry status=draft}
+# AMOD18 Visual Odometry {#demo-visualodometry status=ready}
 
 This is the report of the AMOD18 Visual Odometry group. In the first section we present how to run the demo, while the second section is dedicated on a more complete report of our work.
 
@@ -16,11 +16,20 @@ Requires: [Joystick demo](#rc-control) succesful.
 
 Requires: [Ros-picam demo](#read-camera-data)
 
+Results: A Duckiebot running a pose estimate algorithm in real time.
+
 </div>
 
 ### Video of expected results {#demo-visualodometry-expected}
 
-First, we show a video of the expected behavior (if the demo is succesful).
+First, we show a video of the expected behavior.
+
+<figure id="visualodo-video">
+    <figcaption>Visual Odometry in Duckietown</figcaption>
+    <dtvideo src="vimeo:308293052"/>
+</figure>
+
+The code used in this demo can be found [here](https://github.com/duckietown/duckietown-visualodo).
 
 ### Duckietown setup notes {#demo-visualodometry-duckietown-setup}
 
@@ -111,6 +120,8 @@ Note: Remember to use the tag `veh:=![hostname]` so that it uses your camera ima
 
 If you see a bunch of info and warn messages fastly printing, visual odometry is running! Move the duckiebot around (smoothly) with the keyboard and see how it moves too in rviz.
 
+The most uptaded stable version of the code can be found [here](https://github.com/duckietown/duckietown-visualodo).
+
 ### Troubleshooting {#demo-visualodometry-troubleshooting}
 
 Symptom: The duckiebot does not move.
@@ -123,12 +134,9 @@ Resolution: You might have a too dynamic scene, for the visual odometry to run c
 
 Symptom: The estimated pose is really bad and the scene is not dynamic
 
-Resolution: Debug the pipeline by turning on the plotting parameters
+Resolution: Debug the pipeline by turning on the plotting parameters, they are in the `.yaml` file in the data folder of `lib-visualodo`
 
-*Debug videos will be added here*
-
-
-### Offline demo {#WHAT GOES HERE?}
+### Offline demo {#demo-visualodometry-offline}
 
 If you dont have a duckiebot in hand, or your network is not reliable enough, you can also run this demo offline! Clone the git repository of visual odometry and compile the repository:
 
@@ -210,19 +218,37 @@ When the `visual_odometry_node` receives an image, the relative callback functio
 
 The image gets converted to an `OpenCV` object. Then the actual algorithm present in `lib-visualodo` is triggered with this image object.  
 
-The image gets then downsampled, as this reduces significantly the computational time. Then relevant features are extracted from the image, using either `SURF`, `SIFT` or `ORB` (by default `ORB` is chosen).  
+The image gets then downsampled, as this reduces significantly the computational time. Then relevant features are extracted from the image, using either `SURF`, `SIFT` or `ORB` (by default `ORB` is chosen). Information about these methods can be found in [](#bib:fraundorfer2012visual),in particular the paper presenting `ORB` is [](#bib:rublee2011orb).
 
 At each frame, we gather one image and we discard the oldest one, so to keep always the two most recent to perform the pipeline.  
 
-Then we need to match the features, with either `KNN` or using the Hamming distance (default). If KNN is chosen, its matches can be filtered using a first-neighbor-to-second-neighbor ratio threshold. Empirically Bruteforce Hamming distance has proven to outperform KNN in the duckietown environment.
+Then we need to match the features, with either `KNN` or using the Hamming distance (default). If KNN is chosen, its matches can be filtered using a first-neighbor-to-second-neighbor ratio threshold. Empirically Bruteforce Hamming distance has proven to outperform KNN in the Duckietown environment.
 
-Matches may be further filtered using histogram fitting (activated by default, can be turned off). This means that we fit a gaussian distribution to the lenght and angle of the matches, and we remove the ones further than `x` standard deviations from the average value. These `x` values can be set in the parameters yaml file.
+Matches may be further filtered using histogram fitting (activated by default, can be turned off). This means that we fit a gaussian distribution to the lenght and angle of the matches, and we remove the ones further than `x` standard deviations from the average value. These `x` values can be set in the parameters yaml file. The results of outlier filtering can be seen in [](#fig:visualodo-outliers).
 
-Then we divide the feature pairs between far and close regions, to decouple the estimate of the translation vector to the estimate of the rotation matrix (BangleiGuan et.al. 2018).  
+<div figure-id="fig:visualodo-outliers" figure-caption="Outlier removal using histogram fitting.">
+     <img src="visualodo-outliers.png" style='width: 32em' />
+</div>
+
+Then we divide the feature pairs between far and close regions, to decouple the estimate of the translation vector to the estimate of the rotation matrix, as presented in [](#bib:guan2018visual). The division we used for the Duckietown environment can be seen in [](#fig:visualodo-areas).
+
+<div figure-id="fig:visualodo-areas" figure-caption="Region division for motion estimation.">
+     <img src="visualodo-areas.png" style='width: 32em' />
+</div>
 
 After having computed the motion matrix, we apply it to the previous duckiebot rotation it to get a new estimate of the pose.
 
 The translation vector is assumed to be always a one-component vector (pointing towards the front direction), and is scaled by a factor of the duckiebot linear velocity command.
+
+The pipeline can be seen in [](#fig:visualodo-diagram)
+
+<div figure-id="fig:visualodo-diagram" figure-caption="Block diagram of VO implementation.">
+     <img src="visualodo-diagram.png" style='width: 22em' />
+</div>
+
+#### Logical architecture
+
+Given a Duckiebot with a running demo (can be of any kind, it only needs a camera stream and possibly commands over the wheels), upon launch of the visual odometry demo, the following will happen: our algorithm will communicate with the current demo, getting the camera stream. Using this data, it will publish an estimate of the translation and the rotation between two analyzed frames. Stacking those motion estimates it will also provide a global pose estimate. These results can be visualized on a computer screen.
 
 #### Software architecture
 
@@ -245,7 +271,6 @@ visual_odometry_node:
   * Published topics:
 
     - path
-
 
 
 ### Future development
