@@ -9,15 +9,18 @@ First, we describe what is needed, including:
 
 ## Pre-flight checklist {#demo-planningunderuncertainty-pre-flight}
 
+
+
+duckietown-world
+
+
 Those following prerequisites ensure that the simulation will run properly:
 
-Check: Desktop-Full installation of ROS
+Check: Desktop-Full installation of [ros-kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu)
 
-Check: [duckietown-world](https://github.com/duckietown/duckietown-world)
+Check: [duckietown-world](https://github.com/duckietown/duckietown-world) (And all their requirements)
 
-Check: [geometry](https://github.com/AndreaCensi/geometry)
-
-Check: [duckietown-visualization](https://github.com/duckietown/duckietown-visualization)
+Check: Ubuntu16.04 with python2.7
 
 
 ## Video of expected results {#demo-planningunderuncertainty-expected}
@@ -25,7 +28,7 @@ Check: [duckietown-visualization](https://github.com/duckietown/duckietown-visua
 <div figure-id="fig:simulation_uncertain">
     <figcaption>Simulation of the planning under uncertainity and the velocity profiler in action.
     </figcaption>
-    <dtvideo src='vimeo:306787607'/>
+    <dtvideo src='vimeo:307404964'/>
 </div>
 
 ## Duckietown setup notes {#demo-planningunderuncertainty-duckietown-setup}
@@ -37,72 +40,96 @@ Currently, plannning under uncertainity is tested only in simulation environment
 
 Here, give step by step instructions to reproduce the demo.
 
-Step 1: Clone the following repo: [duckietown-uplan](https://github.com/duckietown/duckietown-uplan)
+** ASSUMTION: YOU ARE ABLE TO IMPORT `duckietown_world` SUCCESFULLY **
 
-Step 2: Installation from source and installing all the dependent packages
+Step 0: Make sure you sourced ros
 
-This is the way to install within a virtual environment created by 
-using `pipenv`:
+    $ source /opt/ros/kinetic/setup.bash       (Use setup.zsh If you are using zsh shell)
 
-    $ pipenv install
-    $ pipenv shell
-    $ cd lib-uplan
-    $ pip install -r requirements.txt
-    $ python setup.py develop --no-deps
+Step 1: Create a catkin workspace in your home directory
 
-Step 3: Clone and install the rviz repo available for uncertainity planning visualization (more on this later) to visualize how the duckiebots are planning under uncertainity.
+    $ mkdir -p ~/catkin_ws/src
+    $ cd ~/catkin_ws/src
+  
+Step 2: Clone the following repo [duckietown-uplan](https://github.com/duckietown/duckietown-uplan) 
+
+    $ git clone https://github.com/duckietown/duckietown-uplan
+
+Step 3: Installation of dependencies (NOTE: make sure that pip installation belongs to python2.7)
+
+    $ cd duckietown-uplan/lib-uplan
+    $ pip install -r requirements.txt --user       (Might require or --user)
+    $ sudo python setup.py develop --no-deps
     
-Step 4: Launch a visulization of the simulation using rviz
+Step 4: Go back to catkin_ws main directory and run catkin_make
 
-This is a ROS package for visualization of Duckietown maps and duckiebots for Planning with Uncertainty project.
+    $ cd ..
+    $ catkin_make
+    
+Ensure all three packages build correctly and custom messages are built
 
-    laptop $ roslaunch uplan_visualization example.launch
+    $ source devel/setup.bash               (Or zsh)
+    $ roslaunch uplan_visualization planningUncertainty.launch
+    
+## Troubleshooting
+If having problems with duckietown_world please install from pip:
 
-## Installing
-From the `src` directory of your ROS Workspace, run
-```
-$ git clone (https://github.com/duckietown/duckietown-uplan)
-```
-From your workspace directory, run
-```
-$ catkin build 
-```
-Run `catkin_make` instead if you don't use `python-catkin-tools`.
-
-Next, source your workspace using
-
-## Running the map visualization
-
-Run the visualization of the `robotarium1` map, which is currently the default 
-by using
-```
-$ roslaunch uplan_visualization example.launch
-```
-[ You can specify different map names to be loaded according to the maps in 
-`duckietown-world`.]
-
+    $ pip install --user duckietown_world
 
 ## Experimentation
 
 For experimentation. You can edit the following parameters and observe how the path plan and the velocities along the path change with it. (to be provided in a .yaml file)
 
-- velocity min, velocity max, number of velocities for a duckiebot to choose from
-- Graph augmentation parameters like number of extra lanes to the right, number of extra lanes to the left and number of control point to spawn between two original control points. Note: Augmenting the graph basically means how many paths the duckiebot will consider when planning under uncertainity. (The more you augment the graph, the slower the demo will be since there will be more control points to consider while planning)
-- Duckie bot width and height
-- Field of view of each duckiebot
-- initial obstacle probability to consider (0 to 1)
-- Duckietown map to use
+* velocity min, velocity max, number of velocities for a duckiebot to choose from
+* Graph augmentation parameters like number of extra lanes to the right, number of extra lanes to the left and number of control point to spawn between two original control points. Note: Augmenting the graph basically means how many paths the duckiebot will consider when planning under uncertainity. (The more you augment the graph, the slower the demo will be since there will be more control points to consider while planning)
+* Duckie bot width and height
+* Field of view of each duckiebot
+* initial obstacle probability to consider (0 to 1)
+* Duckietown map to use
 
 ## Features
-- [x] Visualization of maps from duckietown-world
-- [x] Planning under uncertainity to get a shortest collision free path under current observations.
-- [x] Planning under uncertainity to get a velocity profiler for the shortest path chosen.
-- [x] Realtime visualization of duckiebots
-- [x] Visualization of 10 future steps of duckiebot trajectory
-- [ ] Visualizing uncertainty probability field
-- [x] Visualizing velocity profiler
-- [x] Visualizing of the shortest path planned
+* [x] Visualization of maps from duckietown-world
+* [x] Planning under uncertainity to get a shortest collision free path under current observations.
+* [x] Planning under uncertainity to get a velocity profiler for the shortest path chosen.
+* [x] Realtime visualization of duckiebots
+* [x] Visualization of 10 future steps of duckiebot trajectory
+* [x] Visualizing uncertainty probability field
+* [x] Visualizing velocity profiler
+* [x] Visualizing of the shortest path planned
 
+
+
+
+## Proposed Solution
+We propose a planning algorithm that outputs a trajectory and corresponding velocity profile, in a discretized space, resembling a railway/subway planning to perform multi-objective optimization for the shortest path under uncertainty.
+We predefine “legal” routes a duckiebot can take, including the ones at intersections. Each route is composed of several nodes and edges connecting them which are then further subdivided into a predefined number of line-segments. These predefined routes allow the duckiebot to go in a violating lane for example to pass another duckiebot or pass one.
+Our proposed planner assigns a cost for each of the control points (nodes) taking into consideration the various degrees of uncertainty, and plan a path to goal state. A simple A* algorithm will be then used to define a velocity profile for the path calculated by the planner.
+### Initialization:
+All nodes are assigned a fixed value associated with the probability of an obstacle being present at that node.
+The collision matrix defines the pairs of poses where the footprint of one duckiebot in one pose intersects that of another duckiebot in the other pose of that pair. Occupancy vector defines the set/vector of poses (graph nodes) that are occupied (through the footprint of the duckiebot).
+
+### Planning:
+Given a start and end goal the planner outputs a shortest path using Dijkstra's algorithm.
+At each timestep the duckiebot updates its probability according to the obstacles it observes in its field view. Nodes with obstacles are assigned a cost of infinity cost and an uncertainty of 1. Obstacle free nodes are assigned a zero cost and zero uncertainty probability. 
+Once the probabilities and collision matrices are updated in the ObservationModel, the planning algorithm replans a path to the goal.
+The VelocityProfiler takes in this path and outputs a velocity profile for the given trajectory.
+This process is continued until goal is reached.
+
+### Visualization:
+The trajectory output and the uncertainties calculated for the duckiebot are then published using markers and subscribes to by RViz. 
+The trajectory path is colorized according to the velocity profile; high to low velocities are mapped from red to blue shades.
+The uncertainties at each node are also colorized according to their magnitudes. Red shades represents higher probabilities of an obstacle being present and bluer shades represent unoccupied nodes.
+
+### Results
+* Goal 1: Obstacle avoidance (dynamic and static), i.e. collision-free shortest path
+We can clearly see that duckiebots running the path planning algorithm successfully manage to avoid other duckiebots (be it stationary or dynamic).
+For example, *something specific to the video*
+* Goal 2: Velocity profiler 
+The velocity profiling algorithm adds an additional measure of safety in that it limits the velocity of the duckiebot in regions where it is not so certain about its environment. Several factors are taken into account in the cost function (point out an example where different factors come into picture)
+For example, *something specific to the video*
+
+### Problems Faced/ Future Work
+Computationally expensive to augment the graph (to be optimized in C++ library - 100x faster)
 
 
 ## More on Planning Under Uncertainty
@@ -128,14 +155,15 @@ We apply A* algorithm to get the velocity profile for a given path. The cost fun
 
 For the planning algorithm to know how to plan for a good velocity profile we use a cost functions that includes the following terms:
 
-[delta_v_norm] Changes in velocity from node to node
-[delta_unc] The difference in uncertainty from node to node
-[unc] The uncertainty level
-[next_vel_norm] The next velocity normalized (v - v_min)/(v_max-v_min)
-[error_norm] Error from reference to actual speed (normalized) (reference is taken as max_v, this makes us go as fast as possible given that there is no uncertainty)
+* [delta_v_norm] Changes in velocity from node to node
+* [delta_unc] The difference in uncertainty from node to node
+* [unc] The uncertainty level
+* [next_vel_norm] The next velocity normalized (v - v_min)/(v_max-v_min)
+* [error_norm] Error from reference to actual speed (normalized) (reference is taken as max_v, this makes us go as fast as possible given that there is no uncertainty)
 The current implemented cost function is:
 
-cost = a1*delta_v_norm^2 + a3*unc + a5*error_norm
+    cost = a1*delta_v_norm^2 + a3*vel_norm*unc + a5*error_norm
+
 Of course the cost function is customizable and can be change with a few lines of code, if no cost function is sent to Velocity profiler then it is going to use the above mentioned.
 
 ### 4. Experimenting with different cost functions
@@ -146,11 +174,13 @@ Of course the cost function is customizable and can be change with a few lines o
 </div>
 
 
+
 Another example of a cost function:
 
 <div figure-id="fig:cost_func3" figure-caption="Cost Function 2">
      <img src="cost_func3.png" style='width: 30em'/>
 </div>
+
 
 ## More on Rviz visualizer
 
@@ -170,15 +200,15 @@ More information found here: http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv
 ### 2.Using uplan_visualization with your pipeline
 
 Go through the publish_duckieData.py in the package ros-uplan folder to understand
-how to use 'uplan-visualization`. Here you will populate the duckie trajectory/velocity and uncertainty values and publish them as markers to RViz, using uncertainty_planning package.
+how to use `uplan-visualization`. Here you will populate the duckie trajectory/velocity and uncertainty values and publish them as markers to RViz, using uncertainty_planning package.
 
-- First, create a list of duckiebot names which you want to visualize in a yaml 
+* First, create a list of duckiebot names which you want to visualize in a yaml 
 file similar to `uplan-visualization/config/example.yaml`
-- For each duckiebot, publish a transform from frame `duckiebot_link` to that 
+* For each duckiebot, publish a transform from frame `duckiebot_link` to that 
 duckiebot. `duckiebot_link` is a fixed frame which is the origin of your 
 measurements for each duckiebot.
-- In the publish_trajec.py and publish_uncertainty.py ROS nodes, populate the duckieStruct meesages and publish on corresponding topics.
-- The trajectory is plotted using the line marker_array and uncertainty using Cubelist marker_array.
+* In the publish_trajec.py and publish_uncertainty.py ROS nodes, populate the duckieStruct meesages and publish on corresponding topics.
+* The trajectory is plotted using the line marker_array and uncertainty using Cubelist marker_array.
 
 
 ## Demo failure demonstration {#demo-planningunderuncertainty-failure}
@@ -197,7 +227,6 @@ Conclusion of the results and how uncertainities play a role for the velocity pr
 Case 1: 
 
 Case 2:
-
 
 
 
