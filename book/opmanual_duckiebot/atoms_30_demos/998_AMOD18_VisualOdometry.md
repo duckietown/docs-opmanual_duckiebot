@@ -138,6 +138,11 @@ Resolution: Debug the pipeline by turning on the plotting parameters, they are i
 
 ### Offline demo {#demo-visualodometry-offline}
 
+Requires: ROS Kinetic installed on your computer
+
+
+Warning: The demo was only tested for ROS Kinetic.
+
 If you dont have a duckiebot in hand, or your network is not reliable enough, you can also run this demo offline! Clone the git repository of visual odometry and compile the repository:
 
     laptop $ cd ~/[path_to_duckietown_software]/catkin_ws/src
@@ -163,10 +168,6 @@ You should visualize a similar result as in [](#fig:visualodo-path)
 <div figure-id="fig:visualodo-path" figure-caption="Path during the VO demo.">
      <img src="visualodo_path.png" style='width: 37em' />
 </div>
-
-### Demo failure demonstration {#demo-visualodometry-failure}
-
-Finally, put here a video of how the demo can fail, when the assumptions are not respected.
 
 
 ## The AMOD18 Visual Odometry final report {#final-report-visualodo}
@@ -268,9 +269,13 @@ visual_odometry_node:
 
     - fsm_node/switch
 
+    - forward_kinematics_node/velocity
+
   * Published topics:
 
     - path
+
+    - odometry
 
 
 ### Future development
