@@ -32,7 +32,12 @@ Results: A 3D map of the city that shows the moving Duckiebots
 
 ## Video of expected results {#demo-cslam-expected}
 
-First, we show a video of the expected behavior (if the demo is successful).
+<div figure-id="fig:presentation-duckietown-cslam">
+    <figcaption>Presentation : duckietown-cslam
+    </figcaption>
+    <dtvideo src='vimeo:308401182'/>
+</div>
+
 
 ## Demo code {#demo-code}
 
