@@ -103,7 +103,11 @@ The performance metrics script used to compare labels and ground truths will be 
 
 ## Video of expected results {#demo-semseg-expected}
 
-First, we show a video of the expected behavior (if the demo is succesful).
+First, we show a video of the expected behavior (if the demo is successful).
+
+https://youtu.be/FhLgdG9PItg
+
+(Please see this link first. We will upload the video to duckiebook later)
 
 ## Duckietown setup notes {#demo-semseg-duckietown-setup}
 
