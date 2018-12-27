@@ -24,7 +24,9 @@ The interested reader can find the source code in the [Project Unicorn Intersect
 </div>
 
 
-### Demo workflow 
+### Demo workflow {#demo-projectunicorn-workflow}
+
+**Intersection Navigation demo:**
 
 The Intersection Navigation demo performs one intersection maneuver out of the following 3:
 
@@ -36,14 +38,31 @@ The Intersection Navigation demo performs one intersection maneuver out of the f
 
 For each intersection type (3-way or 4-way) a feasible direction will be chosen randomly by the algorithm.
 
+**Intersection Navigation and Lane following demo:**
+
+Additionally to the official demo (“pure” intersection navigation), a demo combining lane following and intersection navigation can be executed.
+
+In this case, the duckiebot will perform one intersection maneuver and switch to lane following automatically after. 
+
+To avoid unnecessary computation while performing intersection navigation in our lane following image, the camera publishes on different topics: one for lane following and the other one for intersection navigation.
+
+Note: As a red line detection module was not operational during our project, the lane follower will not stop at the next intersection but continue lane following. 
+
 ## Video of expected results {#demo-projectunicorn-expected}
 
-The expected behavior should look like the following video:
+The expected behaviors should look like the following videos:
 
 <div figure-id="fig:success_unicorn">
     <figcaption>Expected behavior of the duckiebot when performing the intersection navigation demo (3 different demos for each of the directions).
     </figcaption>
     <dtvideo src='vimeo:307407118'/>
+</div>
+
+
+<div figure-id="fig:success_unicorn2">
+    <figcaption>Expected behavior of the duckiebot when performing the intersection navigation and lane following demo.
+    </figcaption>
+    <dtvideo src='vimeo:308420740'/>
 </div>
 
 ## Duckietown setup notes {#demo-projectunicorn-duckietown-setup}
@@ -62,6 +81,13 @@ The following is assumed:
      <img src="3-way-map.png" style='width: 30em'/>
 </div>
 
+
+## Laptop setup notes {#demo-projectunicorn-laptop-setup}
+
+Clone the duckietown-intnav folder in your PC:
+ 
+    laptop $ git clone --branch demo git@github.com:duckietown/duckietown-intnav.git
+
 ## Duckiebot setup notes {#demo-projectunicorn-duckiebot-setup}
 
 **Requires**: Completed intersection navigation calibration.
@@ -72,7 +98,7 @@ The used algorithm is inter alia based on reprojecting points from the camera to
 
 **Calibration test instructions:**
 
-### Step 1
+###st Step
 
 Place the duckiebot in the intersection as in [](#fig:test_position): the duckiebot's origin (center of wheel axis) in the center of the bottom line of the yellow tag adjacent to the red stop line and oriented towards the opposite side of the intersection.
 
@@ -80,13 +106,20 @@ Place the duckiebot in the intersection as in [](#fig:test_position): the duckie
      <img src="test_position.jpg" style='width: 30em'/>
 </div>
 
-### Step 2
+###nd Step
+
+Run the container on your duckiebot:
+
+    laptop $ cd duckietown-intnav/scripts
+    laptop $ bash deploy.bash ![hostname]
+
+###rd Step
 
 Start the calibration test in the intnav container:
 
     duckiebot $ roslaunch duckietown-intnav calibration_check.launch duckiebot:=![hostname]
 
-### Step 3
+###th Step
 
 When launched, press <kbd>X</kbd> to start the calibration procedure.
 
@@ -104,11 +137,6 @@ Recommended: place the camera very close to the checkerboard during the data col
      <img src="camera_calibration.png" style='width: 30em'/>
 </div>
 
-## Laptop setup notes {#demo-projectunicorn-laptop-setup}
-
-Clone the duckietown-intnav folder in your PC:
- 
-    laptop $ git clone git@github.com:duckietown/duckietown-intnav.git
 
 ## Pre-flight checklist {#demo-projectunicorn-pre-flight}
 
@@ -116,30 +144,57 @@ Clone the duckietown-intnav folder in your PC:
 
 **Check**: The intersection is free of obstacles (including other duckiebots).
 
-## Demo instructions {#demo-projectunicorn-run}
+## Intersection Navigation demo instructions {#demo-projectunicorn-run}
 
-### Step 1
+###st Step
 
 Place the duckiebot in front of any of the red lines from the desired Duckietown intersection.
 
-### Step 2
+###nd Step
 
 Run the container on your duckiebot:
 
     laptop $ cd duckietown-intnav/scripts
     laptop $ bash deploy.bash ![hostname]
 
-### Step 3
+###rd Step
 
 Once inside the container, start the intnav demo:
 
     duckiebot $ roslaunch duckietown-intnav main.launch duckiebot:=![hostname]
 
-### Step 4
+###th Step
 
 After the duckiebot stops, the demo is finished.
 
 Next steps: Go back to Step 1 if you wish to navigate the intersection again.
+
+
+## Additional demo: Intersection Navigation and Lane following demo instructions {#demo-projectunicorn-demo2}
+
+###st Step
+
+Run the container on your duckiebot:
+
+    laptop $ cd duckietown-intnav
+    laptop $ git checkout master
+    laptop $ cd scripts
+    laptop $ bash deploy_lane_follower.bash [hostname]
+
+###nd Step
+
+Wait until the lane follower is booted; it can take a few minutes. Place your duckiebot at an intersection.
+
+###rd Step
+
+Start intersection navigation. In another terminal:
+
+    laptop $ bash deploy.bash [hostname]
+    duckiebot $ roslaunch duckietown-intnav main.launch [hostname]
+
+The duckiebot will cross the intersection and switch to lane following automatically.
+
+Note: the duckiebot is not expected to stop at the next red line. (Read [this](#demo-projectunicorn-workflow) for more information).
 
 ## Troubleshooting {#demo-projectunicorn-troubleshooting}
 
@@ -179,7 +234,7 @@ Note: Check for the newest updates on error troubleshooting on our [repository](
 
 ## Demo failure demonstration {#demo-projectunicorn-failure}
 
-The following video shows how the demo can fail, when the assumptions are not respected.
+The following video shows how the Intersection Navigation demo can fail, when the assumptions are not respected.
 
 <div figure-id="fig:fail_unicorn">
     <figcaption>When the AprilTags are not correctly placed, the duckiebot is not able to localize properly and the demo fails.
