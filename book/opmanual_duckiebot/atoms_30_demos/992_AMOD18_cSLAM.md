@@ -315,6 +315,3 @@ Symptom: Some messages that you expected to see (e.g. from a certain watchtower)
 
 Resolution: The configuration for the device was done wrong. Please check that the variables set by the user (e.g. `ROS_MASTER_URI_DEVICE`, `ROS_MASTER_URI_DEVICE_IP`, `ACQ_ROS_MASTER_URI_DEVICE`, `ACQ_ROS_MASTER_URI_DEVICE_IP`, etc.) are set coherently with the instructions above. If you find some inconsistencies, please follow the configuration steps again.
 
-## Demo failure demonstration {#demo-cslam-failure}
-
-Finally, put here a video of how the demo can fail, when the assumptions are not respected.
