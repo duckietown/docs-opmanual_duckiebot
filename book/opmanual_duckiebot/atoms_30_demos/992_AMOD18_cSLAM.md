@@ -1,4 +1,4 @@
-# AMOD18 cSLAM {#demo-cslam status=beta}
+# AMOD18 cSLAM {#demo-cslam status=ready}
 
 <div figure-id="fig:cslam_logo">
      <img src="cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
@@ -118,7 +118,7 @@ We have the following basic assumptions that need to be fulfilled in order for t
 
 * Make sure all devices you are using are connected to the same WiFi network (typically that would be `duckietown`)
 
-### Step 1: Set up the watchtowers. _You can skip this step for the demo on Thursday_ {#demo-cslam-run-1}
+### Step 1: Set up the watchtowers. {#demo-cslam-run-1}
 
 To burn the SD card for each watchtower, the same instructions as for Duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
 
@@ -133,11 +133,9 @@ It is also necessary to pull the docker image for the cSLAM acquistion node:
 
     laptop $ docker -H ![hostname].local pull duckietown/cslam-acquisition:rpi
 
-### Step 2: Setup the AprilTags _You can skip this step for the Thursday demo_ {#demo-cslam-run-2}
+### Step 2: Setup the AprilTags {#demo-cslam-run-2}
 
 Print out the AprilTags and place them on top of Duckiebots and in Duckietown. Configure a map description file for this. Check [duckietown-world](https://github.com/duckietown/duckietown-world) for an example. Aim to have neighboring towers seeing at least one common AprilTag and to have each watchtower see at least two AprilTags.
-
-TODO: For Amaury: Explain where the config files for the city and the Duckiebots are by default and what needs to be changed there by the user.
 
 ### Step 3: Setup a ROS Master machine {#demo-cslam-run-3}
 
