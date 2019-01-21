@@ -1,4 +1,4 @@
-# AMOD18 cSLAM {#demo-cslam status=beta}
+# AMOD18 cSLAM {#demo-cslam status=ready}
 
 <div figure-id="fig:cslam_logo">
      <img src="cSLAM_images/cSLAM_logo.png" style='width: 20em'/>
@@ -32,7 +32,12 @@ Results: A 3D map of the city that shows the moving Duckiebots
 
 ## Video of expected results {#demo-cslam-expected}
 
-First, we show a video of the expected behavior (if the demo is successful).
+<div figure-id="fig:presentation-duckietown-cslam">
+    <figcaption>Presentation : duckietown-cslam
+    </figcaption>
+    <dtvideo src='vimeo:308401182'/>
+</div>
+
 
 ## Demo code {#demo-code}
 
@@ -113,7 +118,7 @@ We have the following basic assumptions that need to be fulfilled in order for t
 
 * Make sure all devices you are using are connected to the same WiFi network (typically that would be `duckietown`)
 
-### Step 1: Set up the watchtowers. _You can skip this step for the demo on Thursday_ {#demo-cslam-run-1}
+### Step 1: Set up the watchtowers. {#demo-cslam-run-1}
 
 To burn the SD card for each watchtower, the same instructions as for Duckiebots apply. [Duckiebot initialization](#setup-duckiebot)
 
@@ -128,11 +133,9 @@ It is also necessary to pull the docker image for the cSLAM acquistion node:
 
     laptop $ docker -H ![hostname].local pull duckietown/cslam-acquisition:rpi
 
-### Step 2: Setup the AprilTags _You can skip this step for the Thursday demo_ {#demo-cslam-run-2}
+### Step 2: Setup the AprilTags {#demo-cslam-run-2}
 
 Print out the AprilTags and place them on top of Duckiebots and in Duckietown. Configure a map description file for this. Check [duckietown-world](https://github.com/duckietown/duckietown-world) for an example. Aim to have neighboring towers seeing at least one common AprilTag and to have each watchtower see at least two AprilTags.
-
-TODO: For Amaury: Explain where the config files for the city and the Duckiebots are by default and what needs to be changed there by the user.
 
 ### Step 3: Setup a ROS Master machine {#demo-cslam-run-3}
 
@@ -166,6 +169,10 @@ This step sets up the data acquisition pipeline on each watchtower. This means t
 
 ### Step 5: Test the watchtowers {#demo-cslam-run-5}
 
+<div figure-id="fig:diagnostics" figure-caption="cSLAM Diagnostics tool.">
+     <img src="cSLAM_images/diagnostics.png" style='width: 20em'/>
+</div>
+
 Setup the Diagnostics tool to check that the status of the watchtowers are `OK` (AprilTag data was received in the last 5 seconds).
 
     laptop $ docker pull duckietown/cslam-diagnostics
@@ -174,7 +181,7 @@ Setup the Diagnostics tool to check that the status of the watchtowers are `OK` 
 
 Note that `ROS_MASTER_HOSTNAME` should not contain `.local` at the end.
 
-NOTE: After everything is over, please run:  
+NOTE: Once the Diagnostic tool is no longer required at the end of the demo and has been closed, please run:  
 
     laptop $ xhost -local:host
 
@@ -226,13 +233,18 @@ On the ROS master machine defined at step 3, run:
     laptop $ docker pull duckietown/cslam-graphoptimizer
     laptop $ docker run -it --rm --net=host -v $(pwd)/scripts/apriltagsDB_custom.yaml:/graph_optimizer/catkin_ws/src/pose_graph_builder/data/apriltagsDB_custom.yaml -e ROS_MASTER=![ROS_MASTER_HOSTNAME] -e ROS_MASTER_IP=![ROS_MASTER_IP] duckietown/cslam-graphoptimizer:latest /bin/bash
 
-    laptop-container $ /graph_optimizer/catkin_ws/src/pose_graph_optimizer/wrapper.sh
+    laptop-container $ /graph_optimizer/catkin_ws/src/pose_graph_builder/wrapper.sh
 
 You can also remove the `/bin/bash` and the wrapper will be executed directly. Keeping the `/bin/bash` is helpful for troubleshooting when you want to modify launch parameters.
 
 This will listen to the transforms, will build a graph, optimize it and publish the output on TF, which you will visualize with Rviz in the next step.  
 
 ### Step 8: Set up the visualization {#demo-cslam-run-8}
+
+<div figure-id="fig:visualization" figure-caption="cSLAM Visualization tool.">
+     <img src="cSLAM_images/visualization_2.png" style='width: 20em'/>
+</div>
+
 Set up and run the visualization of the map, Duckiebots, watchtowers, and traffic signs using the following commands:
 
     laptop $ docker pull duckietown/cslam-visualization
@@ -274,6 +286,7 @@ Resolution: There is probably an issue among but not limited to the following:
   * There are time delays between different inputs (watchtowers, duckiebots). These lead to a disconnected pose graph: the graph builds and interpolates measures based on their timestamps, so if different actors are not synchronized or if one has a delay, bad results will be produced. Please check the frequency with which messages are received by using the [Diagnostics tool](#demo-cslam-run-5).
   * Optimization takes too long because of discrepancies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in `graph_builder.launch`.
   Furthermore, you can visualize the underlying g2o graph. To do so, please have g2o_viewer installed. Then, in `graph_builder.launch` please set the `save_g2o_output` argument to True: this will create a text representation of the g2o graph in `\tmp` that you can visualize using [g2o_viewer](#fig:g2o_viewer).   
+
 <div figure-id="fig:g2o_viewer" figure-caption="Snapshot of a g2o_viewer window.">
      <img src="cSLAM_images/g2o_view.png" style='width: 35em'/>
 </div>
@@ -300,6 +313,3 @@ Symptom: Some messages that you expected to see (e.g. from a certain watchtower)
 
 Resolution: The configuration for the device was done wrong. Please check that the variables set by the user (e.g. `ROS_MASTER_URI_DEVICE`, `ROS_MASTER_URI_DEVICE_IP`, `ACQ_ROS_MASTER_URI_DEVICE`, `ACQ_ROS_MASTER_URI_DEVICE_IP`, etc.) are set coherently with the instructions above. If you find some inconsistencies, please follow the configuration steps again.
 
-## Demo failure demonstration {#demo-cslam-failure}
-
-Finally, put here a video of how the demo can fail, when the assumptions are not respected.
