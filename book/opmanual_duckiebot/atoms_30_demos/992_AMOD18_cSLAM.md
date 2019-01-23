@@ -241,7 +241,7 @@ This will listen to the transforms, will build a graph, optimize it and publish 
 
 ### Step 8: Set up the visualization {#demo-cslam-run-8}
 
-<div figure-id="fig:visualization" figure-caption="cSLAM Visualization tool.">
+<div figure-id="fig:cslam_visualization" figure-caption="cSLAM Visualization tool.">
      <img src="cSLAM_images/visualization_2.png" style='width: 20em'/>
 </div>
 
