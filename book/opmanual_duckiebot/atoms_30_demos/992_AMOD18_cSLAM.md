@@ -55,7 +55,7 @@ cSLAM was designed such that it is modular, scalable, and with minimum overhead 
 
 At the core of cSLAM is a pose graph optimization problem. The watchtowers observe AprilTags on the ground, on top of Duckiebots and even on traffic signs. They can then estimate the relative pose of these AprilTags. Duckiebots similarly see tags on the ground and on traffic signs and estimate relative poses. Duckiebots also estimate their own pose relative to their past position by using odometry data. All these poses, together with the times when they were observed, are combined in a graph optimization problem that is solved by a library called [g2o](https://github.com/RainerKuemmerle/g2o). The solution to this problem is the global positions of all the observed AprilTags, and consequently of the Duckiebots.
 
-<div figure-id="fig:architecture" figure-caption="Architecture of cSLAM.">
+<div figure-id="fig:cslam_architecture" figure-caption="Architecture of cSLAM.">
      <img src="cSLAM_images/architecture.png" style='width: 40em'/>
 </div>
 
@@ -241,7 +241,7 @@ This will listen to the transforms, will build a graph, optimize it and publish 
 
 ### Step 8: Set up the visualization {#demo-cslam-run-8}
 
-<div figure-id="fig:visualization" figure-caption="cSLAM Visualization tool.">
+<div figure-id="fig:cslam_visualization" figure-caption="cSLAM Visualization tool.">
      <img src="cSLAM_images/visualization_2.png" style='width: 20em'/>
 </div>
 
@@ -285,9 +285,9 @@ Resolution: There is probably an issue among but not limited to the following:
   * AprilTag recognition is wrong and gives out weird transforms. If this happens, please check that the printed AprilTags are of size 6.5cm, as the printer might have done some scaling to the tags.
   * There are time delays between different inputs (watchtowers, duckiebots). These lead to a disconnected pose graph: the graph builds and interpolates measures based on their timestamps, so if different actors are not synchronized or if one has a delay, bad results will be produced. Please check the frequency with which messages are received by using the [Diagnostics tool](#demo-cslam-run-5).
   * Optimization takes too long because of discrepancies in the graph. To get info on the optimization itself, check the argument `optim_verbose` in `graph_builder.launch`.
-  Furthermore, you can visualize the underlying g2o graph. To do so, please have g2o_viewer installed. Then, in `graph_builder.launch` please set the `save_g2o_output` argument to True: this will create a text representation of the g2o graph in `\tmp` that you can visualize using [g2o_viewer](#fig:g2o_viewer).   
+  Furthermore, you can visualize the underlying g2o graph. To do so, please have g2o_viewer installed. Then, in `graph_builder.launch` please set the `save_g2o_output` argument to True: this will create a text representation of the g2o graph in `\tmp` that you can visualize using [g2o_viewer](#fig:cslam_g2o_viewer).   
 
-<div figure-id="fig:g2o_viewer" figure-caption="Snapshot of a g2o_viewer window.">
+<div figure-id="fig:cslam_g2o_viewer" figure-caption="Snapshot of a g2o_viewer window.">
      <img src="cSLAM_images/g2o_view.png" style='width: 35em'/>
 </div>
 
