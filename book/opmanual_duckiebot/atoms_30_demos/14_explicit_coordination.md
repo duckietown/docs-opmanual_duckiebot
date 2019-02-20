@@ -32,7 +32,7 @@ No special setup is needed for the Duckiebot. If more Duckiebots are available, 
 
 ### If there is a traffic light:
 
-Refer to [robotarium documentation](#book:robotarium) to start traffic lights.
+Refer to [robotarium documentation](+robotarium#robotarium-traffic-light) to start traffic lights.
 
 
 **WARNING** The rest of this is not maintained : it is TBD if it still works. In any case, it uses DB17 version of duckiebots
