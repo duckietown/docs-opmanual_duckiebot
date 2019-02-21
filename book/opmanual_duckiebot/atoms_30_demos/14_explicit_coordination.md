@@ -32,33 +32,10 @@ No special setup is needed for the Duckiebot. If more Duckiebots are available, 
 
 ### If there is a traffic light:
 
-To start the traffic light:
-
-* Make sure the traffic light is connected to power
-
-* From your laptop connect to wifi TrafficLight# (# corresponds to a decimal number), the password is 'Traff!cL!ght'
-
-SSH into the raspberry pi:
-
-    laptop $ ssh tlo@trafficlight#.local
-
-The password is 'Traff!cL!ght'
-
-* To start the demo on the traffic light:
-
-Make sure you are on the branch new_light_traffic:
-
-    $ cd ~/duckietown
-
-    $ git fetch --all
-
-    $ git checkout new_light_traffic
-
-Start the demo:
-
-    $ make traffic-light
+Refer to [robotarium documentation](+robotarium#robotarium-traffic-light) to start traffic lights.
 
 
+**WARNING** The rest of this is not maintained : it is TBD if it still works. In any case, it uses DB17 version of duckiebots
 
 ### On the Duckiebot:
 
