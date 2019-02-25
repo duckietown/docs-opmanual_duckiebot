@@ -82,6 +82,8 @@ Edit the file `~/.profile` and add the line:
 
 Note: do not use `sudo pip` to install the Duckietown Shell.
 
+Note: for Mac users this path will be different, probably something like `~/Library/Python/2.7/bin`
+
 Log out and in. This command should succeed:
 
     laptop $ dts version
