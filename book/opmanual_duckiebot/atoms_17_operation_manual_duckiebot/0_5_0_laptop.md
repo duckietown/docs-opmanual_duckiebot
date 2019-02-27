@@ -61,7 +61,7 @@ Installs pip, git, git-lfs, curl, wget:
 
 Install Docker by following the instructions [here][docker_install].
 
-[docker_install]:https://docs.docker.com/install/linux/docker-ee/ubuntu/
+[docker_install]:https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
 Adds user to "docker" group:
 
