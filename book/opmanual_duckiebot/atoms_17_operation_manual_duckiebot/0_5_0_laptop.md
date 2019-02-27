@@ -59,10 +59,10 @@ Installs pip, git, git-lfs, curl, wget:
     
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
-Installs Docker:
+Install Docker by following the instructions [here][docker_install].
 
-    laptop $ sudo apt install -y docker.io
-    
+[docker_install]:https://docs.docker.com/install/linux/docker-ee/ubuntu/
+
 Adds user to "docker" group:
 
     laptop $ sudo adduser `whoami` docker
