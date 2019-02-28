@@ -91,12 +91,6 @@ You know that your Pi has successfully booted when you are able to ping your rob
 laptop $ ping ![hostname].local
 ```
 
-or
-
-```
-laptop $ ping ![hostname].localdomain
-```
-
 Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use Bridged connection (typically NAT is used by default).
 
 You should see output similar to the following:​    
