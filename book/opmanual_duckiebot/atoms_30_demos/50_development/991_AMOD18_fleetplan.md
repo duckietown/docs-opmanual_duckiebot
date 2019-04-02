@@ -28,7 +28,7 @@ Requires: [duckietown-world][duckietown-world] installed
     <dtvideo src='vimeo:307327906'/>
 </div>
 
-## Demo setup notes 
+## Demo setup notes
 
 The fleetplan demo is proposed in the simulation environment using Rviz as a visualiser.
 
@@ -36,7 +36,7 @@ The fleetplan demo is proposed in the simulation environment using Rviz as a vis
 ### Available Maps
 
 Simple tile map (Default): `4way`
-    
+
 <br />
 <figure>
 <figcaption>Simple 4 way tile map</figcaption>
@@ -44,7 +44,7 @@ Simple tile map (Default): `4way`
 </figure>
 
 <br />
-ROBOTARIUM map: `robotarium1` 
+ROBOTARIUM map: `robotarium1`
 
 <figure>
 <figcaption>Robotarium map</figcaption>
@@ -53,7 +53,7 @@ ROBOTARIUM map: `robotarium1`
 <br />
 
 ### Fleet size
-Any integer from `1 to 15`, the default value is set to `3` (Any higher integer is not recommended due to the limited available space on the available maps) 
+Any integer from `1 to 15`, the default value is set to `3` (Any higher integer is not recommended due to the limited available space on the available maps)
 
 ### Request arrival rate (in seconds)
 Any reasonable integer, the default value is set to `20`.
@@ -71,22 +71,22 @@ Running the baseline.
 
     laptop $ cd duckietown-fplan
     laptop $ catkin_make
- 
+
  **Step 3**: Source the setup file (you can also add this step to your `.bashrc`)
 
     laptop $ source devel/setup.bash
 
  **Step 4**: To launch the simulator, visualization, and dummy planner demo
- 
+
     laptop $ roslaunch flock_simulator flock_simulator.launch
- 
 
-## "Try it yourself" (Advanced) 
 
-If you think you can beat our proposed dispatching baseline algorithm, try it out yourself. 
+## "Try it yourself" (Advanced)
+
+If you think you can beat our proposed dispatching baseline algorithm, try it out yourself.
 
 <br />
-**Step 5**: Open the currently available dispatcher with the file reader of your choice 
+**Step 5**: Open the currently available dispatcher with the file reader of your choice
 
     laptop $ gedit src/flock_planner/src/dispatcher.py
 
@@ -121,7 +121,7 @@ state = {
 <br />
 
 <br />
-The dispatcher should return `paths` for the single duckie bots as follows: 
+The dispatcher should return `paths` for the single duckie bots as follows:
 
 ```
 paths = [
@@ -145,7 +145,7 @@ paths = [
 
 The map is given as a class variable `skeleton_graph` from the `duckietown_world` package. It is documented there in more detail if more information is needed.
 
-`skeleton_graph.G` is a MultiDiGraph from the NetworkX library. Every node represents a fork in the path (i.e. before an intersection), or the merging of paths (after an intersection). The path will be given as a list of nodes, which the shortest one can be easily extracted with the NetworkX library (the shortest might not be the fastest path!). The edges contain the names of the lane it represents (the state gives you the duckie's position as their lanes their currently on). 
+`skeleton_graph.G` is a MultiDiGraph from the NetworkX library. Every node represents a fork in the path (i.e. before an intersection), or the merging of paths (after an intersection). The path will be given as a list of nodes, which the shortest one can be easily extracted with the NetworkX library (the shortest might not be the fastest path!). The edges contain the names of the lane it represents (the state gives you the duckie's position as their lanes their currently on).
 
 `skeleton_graph.root2` contains a dictionary of poses that define the geometry for each lane. This information might be used for instance for generating weights for the lanes (e.g. length of lane), but is not necessary to create a working dispatcher.
 
@@ -155,7 +155,7 @@ The map is given as a class variable `skeleton_graph` from the `duckietown_world
  **Step 6**: Launch the simulator and the visualization
 
     laptop $ roslaunch flock_simulator flock_simulator.launch
-    
+
 Note: to change the map name append to the command `map_name:="robotarium1"`, to change the number of requests append  `n_requests:="k"` and to change the arrival rate of request append  `t_requests:="l"`
 
 
@@ -257,16 +257,16 @@ Resolution:
 <br />
 Check if the submodule was downloaded
 
-	laptop $ git submodule update --recursive --remote
+    laptop $ git submodule update --recursive --remote
 
 
 Check if the submodule was updated
 
-	laptop $ cd src/duckietown-visualization
-	laptop $ git pull
+    laptop $ cd src/duckietown-visualization
+    laptop $ git pull
 
 
 Check if the submodule is on the correct branch
 
-	laptop $ cd src/duckietown-visualization
-	laptop $ git checkout visualization-fplan
+    laptop $ cd src/duckietown-visualization
+    laptop $ git checkout visualization-fplan

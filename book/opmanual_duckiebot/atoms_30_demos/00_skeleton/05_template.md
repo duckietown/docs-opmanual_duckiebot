@@ -1,4 +1,4 @@
-# Demo template {#demo-template status=beta}
+# Demo template {#demo-template status=ready}
 
 This is the template for the description of a demo.
 
@@ -29,7 +29,7 @@ Here, describe the assumptions about the Duckietown, including:
 * Instrastructure (traffic lights, wifi networks, ...) required
 * Weather (lights, ...)
 
-Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](+duckietowns#dt-ops-appearance-specifications). Here, merely point to them.
+Do not write instructions here. The instructions should be somewhere in [the part about Duckietowns](+opmanual_duckietown#dt-ops-appearance-specifications). Here, merely point to them.
 
 
 ## Duckiebot setup notes {#demo-template-duckiebot-setup}

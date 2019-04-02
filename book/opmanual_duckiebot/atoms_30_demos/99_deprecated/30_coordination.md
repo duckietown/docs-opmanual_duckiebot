@@ -1,4 +1,4 @@
-# Coordination {#demo-coordination2016 status=beta}
+# Coordination {#demo-coordination2016 status=deprecated}
 
 TODO: mark this as obsolete (2016). 2017 version is out: explicit coordination, implicit coordination.
 
@@ -96,7 +96,7 @@ has been published’, place the Duckiebot on the lane and press 'R1'. To switch
 
 * After other robots at the intersection clears (i.e. finished crossing, others gave 'pass' signal), the Duckiebot should start flashing 'I am going' signal and crosses the intersection.
 
-## Troubleshooting 
+## Troubleshooting
 
 * When it shows "Event:intersection_go", the Duckiebot does not move. This problem is related to AprilTags.
 

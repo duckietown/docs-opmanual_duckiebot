@@ -1,4 +1,4 @@
-# Parking demo instructions {#parking-demo-instructions status=beta}
+# Parking demo instructions {#parking-demo-instructions status=deprecated}
 
 TODO for Jacopo Tani: image sizes, knowledge graph.
 

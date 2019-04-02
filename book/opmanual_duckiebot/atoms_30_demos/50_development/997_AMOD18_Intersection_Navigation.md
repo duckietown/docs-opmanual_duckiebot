@@ -2,7 +2,7 @@
 
 **Project Unicorn** is a project for AMOD (Autonomous Mobility On Demand) course from ETH Zürich that focuses on the intersection navigation for duckiebots in Duckietown.
 
-The following document provides the instructions on how to run the intersection navigation demo on a duckiebot and a basic overview of the project (in the [section below](#demo-projectunicorn-description)). 
+The following document provides the instructions on how to run the intersection navigation demo on a duckiebot and a basic overview of the project (in the [section below](#demo-projectunicorn-description)).
 
 The interested reader can find the source code in the [Project Unicorn Intersection Navigation repository](https://github.com/duckietown/duckietown-intnav).
 
@@ -42,11 +42,11 @@ For each intersection type (3-way or 4-way) a feasible direction will be chosen 
 
 Additionally to the official demo (“pure” intersection navigation), a demo combining lane following and intersection navigation can be executed.
 
-In this case, the duckiebot will perform one intersection maneuver and switch to lane following automatically after. 
+In this case, the duckiebot will perform one intersection maneuver and switch to lane following automatically after.
 
 To avoid unnecessary computation while performing intersection navigation in our lane following image, the camera publishes on different topics: one for lane following and the other one for intersection navigation.
 
-Note: As a red line detection module was not operational during our project, the lane follower will not stop at the next intersection but continue lane following. 
+Note: As a red line detection module was not operational during our project, the lane follower will not stop at the next intersection but continue lane following.
 
 ## Video of expected results {#demo-projectunicorn-expected}
 
@@ -85,14 +85,14 @@ The following is assumed:
 ## Laptop setup notes {#demo-projectunicorn-laptop-setup}
 
 Clone the duckietown-intnav folder in your PC:
- 
+
     laptop $ git clone --branch demo git@github.com:duckietown/duckietown-intnav.git
 
 ## Duckiebot setup notes {#demo-projectunicorn-duckiebot-setup}
 
 **Requires**: Completed intersection navigation calibration.
 
-An accurate localization in the intersection area is crucial for successful navigation. 
+An accurate localization in the intersection area is crucial for successful navigation.
 
 The used algorithm is inter alia based on reprojecting points from the camera to the world frame. Therefore in order to enable an accurate localization an accurate camera calibration is required, especially with respect to scale.
 
@@ -200,7 +200,7 @@ Note: the duckiebot is not expected to stop at the next red line. (Read [this](#
 
 Symptom: roslaunch not working properly.
 
-Resolution: 
+Resolution:
 
 Stop the process with <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
@@ -224,7 +224,7 @@ Resolution: Make sure the AprilTags are placed according to [](#fig:4-way) and [
 
 Symptom: 'roslaunch xml error' displayed.
 
-Resolution: Try to restart the container again (try 2-3 times). If the error is not fixed, re-flash your SD card. 
+Resolution: Try to restart the container again (try 2-3 times). If the error is not fixed, re-flash your SD card.
 
 Symptom: Docker failed to register layer: 'no space left on device'
 
@@ -301,17 +301,17 @@ The duckiebot is placed in a lane (with width between 10 - 16 cm), in front of t
 
 * Initial intersection conditions:
 
-	- Duckiebot detecting intersection.
+    - Duckiebot detecting intersection.
 
-	- Stopping in front of the red line: Initial position within the lane and within ± 3 cm to the red line and initial orientation within ± 10° to the yellow lines.
+    - Stopping in front of the red line: Initial position within the lane and within ± 3 cm to the red line and initial orientation within ± 10° to the yellow lines.
 
-	- Entering intersection navigation mode.
+    - Entering intersection navigation mode.
 
 * Maximal control delay (~ 1 s, testable).
 
 ### Visualization
 
-To watchdog the performance of the algorithm a rviz interface is available as well as display of the detected april tag. 
+To watchdog the performance of the algorithm a rviz interface is available as well as display of the detected april tag.
 
     laptop $ bash run_visualization.bash ![hostname]
 
@@ -429,6 +429,3 @@ Right = 6 s (3 s initialize + 3 s operation)
 Straight = 6 s (3 s initialize + 3 s operation)
 
 * Repeatability: Start intersection navigation from a fixed point and compare the end points for robustness.
-
-
-

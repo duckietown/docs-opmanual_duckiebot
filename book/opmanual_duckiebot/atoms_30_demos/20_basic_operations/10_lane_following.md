@@ -23,7 +23,7 @@ Requires: Joystick demo has been successfully launched [Joystick demo](#rc-contr
 Assumption about Duckietown:
 
 * A Duckietown with white and yellow lanes. No obstacles on the lane.
-* Layout conform to Duckietown Appearance [Specifications](+duckietowns#dt-ops-appearance-specifications)
+* Layout conform to Duckietown Appearance [Specifications](+opmanual_duckietown#dt-ops-appearance-specifications)
 * Required tiles types: straight tile, turn tile
 * Additional tile types:3-way/4-way intersection
 * Configurated wireless network for communicating with Duckiebot.

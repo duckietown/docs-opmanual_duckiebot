@@ -1,4 +1,4 @@
-# Parallel Autonomy  {#demo-parallel-autonomy status=draft}
+# Parallel Autonomy  {#demo-parallel-autonomy status=beta}
 
 <div class='requirements' markdown="1">
 

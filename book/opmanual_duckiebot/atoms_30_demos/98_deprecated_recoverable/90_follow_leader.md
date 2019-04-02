@@ -1,4 +1,4 @@
-# Follow Leader {#demo-follow-leader status=beta}
+# Follow Leader {#demo-follow-leader status=deprecated}
 
 This is the description of the follow the leader demo.
 

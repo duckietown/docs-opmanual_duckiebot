@@ -1,4 +1,4 @@
-# Implicit Coordination {#implicit-coordination status=beta}
+# Implicit Coordination {#implicit-coordination status=deprecated}
 
 This demo allows multiple Duckiebots that stop at an intersection to coordinate themself without explicit communication and clear the intersection.
 

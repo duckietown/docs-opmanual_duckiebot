@@ -33,7 +33,7 @@ The code used in this demo can be found [here](https://github.com/duckietown/duc
 
 ### Duckietown setup notes {#demo-visualodometry-duckietown-setup}
 
-To run this demo, you can setup any generic Duckietown which complies to the appereance specifications presented in [the duckietown specs](+duckietowns#dt-ops-appearance-specifications).  
+To run this demo, you can setup any generic Duckietown which complies to the appereance specifications presented in [the duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications).  
 
 The only two constraints are that you have good lighting conditions and enough texture in the field of view of the Duckiebot (it can be anything, really, from duckies to street signs to a replica of the Saturn V).
 

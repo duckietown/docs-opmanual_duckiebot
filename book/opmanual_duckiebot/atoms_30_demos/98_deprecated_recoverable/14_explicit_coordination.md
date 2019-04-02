@@ -1,4 +1,4 @@
-# Explicit Coordination {#demo-coordination2017 status=beta}
+# Explicit Coordination {#demo-coordination2017 status=deprecated}
 
 This demo allows different Duckiebots to coordinate at an intersection using LED-based communication. It handles three or four way intersections with or without a traffic light.
 

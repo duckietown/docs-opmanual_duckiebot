@@ -1,4 +1,4 @@
-# Demo Saviors {#demo-saviors status=ready}
+# Demo Saviors {#demo-saviors status=deprecated}
 
 This is the description of the saviors obstacle avoidance demo.
 

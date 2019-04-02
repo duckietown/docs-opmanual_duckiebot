@@ -1,4 +1,4 @@
-# Demo system ID {#demo-sysid status=beta}
+# Demo system ID {#demo-sysid status=deprecated}
 
 This document provides an operation manual for performing an offline optimization of the odometry parameters. The odometry optimization is conducted in two steps. First, we execute a sequence of commands on the duckiebot and record its motion with the on-board camera. Then, we feed these information to an optimization script in our local computer to compute the odometry parameters. These parameters will be stored in the kinematics yaml file.
 
