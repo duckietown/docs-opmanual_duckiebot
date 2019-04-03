@@ -1,6 +1,6 @@
 # Making your Duckiebot move {#rc-control status=ready}
 
-Assigned: Breandan Considine, Liam Paull
+Assigned: Breandan Considine, Liam Paull, Andrea F. Daniele
 
 This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](https://docs.duckietown.org/DT17/).
 
@@ -23,22 +23,20 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
 
 
 ## Option 1 - Pure Docker {#make-it-move_docker status=beta}
- 
 
-### Run the `roscore` container 
-    
+
+### Run the `roscore` container
+
 Use the following command to run the container that contains `roscore`:
 
     laptop $ docker -H ![hostname].local run -dit --privileged --name roscore --net host -v /data:/data --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
-    
+
 If this is the first time you run this, it might take some time to download the container.
 
 Verify that the container is running by either using [the Portainer interface](#docker-setup-portainer-interface)
-or by using `docker ps`. 
- 
+or by using `docker ps`.
 
 
-    
 ### Run the joystick demo
 
 Use the following command to run the joystick demo:
@@ -49,11 +47,61 @@ Use the following command to run the joystick demo:
 
 ### Controlling your robot with a joystick
 
-
 If you have a joystick, you can use it to make your robot move.
 
-Otherwise, you can use the following instructions to run the demo with 
-keyboard control 
+Otherwise, you can use the following instructions to run the demo with
+keyboard control.
+
+
+### Controlling your robot using the dashboard {#setup-ros-websocket-image}
+
+If you followed the instructions in [](#duckiebot-dashboard-setup), you
+should have access to the Duckiebot dashboard.
+
+Note: Make sure that the dashboard container is running by following the instructions
+in [](#dashboard-installation).
+
+In order for your dashboard to be able to exchange messages with your
+robot, you need to setup a communication channel. Of course, we have a
+Docker image for this. Running the following command will give the
+dashboard access to the ROS messaging system that powers your robot.
+
+
+    laptop $ docker -H ![hostname].local run -dit --name ros-websocket --network=host  duckietown/rpi-duckiebot-rosbridge-websocket:master18
+
+
+You can now open the browser and visit the page `http://![hostname].local/mission-control`.
+
+This is the Mission Control page. It is the page that lets you monitor and control
+your Duckiebot. The top of the page should be similar to the following image,
+
+
+<div figure-id="fig:dashboard_mission_control_auto" figure-caption="">
+  <img src="dashboard_mission_control_auto.png" style='width: 35em'/>
+</div>
+
+
+The first thing to check to make sure that everything we have done so far
+is correct, is the status of the **Bridge**, in the top-right corner of the page.
+The label should show the status "**Bridge: Connected**" (as shown in the image above).
+If the indicator reads "**Bridge: Closed**", it means that something went wrong
+while launching the ROS websocket node above. In that case, start again from
+the beginning of this section.
+
+Note: Don't worry if one of the blocks is called "Camera" but you
+don't see an image. We will get to that later.
+
+This page will show you lateral and angular speed of your robot, and
+a plot of left and right motor speed. Toggle the **Take over** switch
+in the top-right corner of the page to gain control of your robot.
+You will see that the background of the page will highlight and the
+central plot will start moving.
+
+You can now use the arrows on your keyboard to drive your Duckiebot.
+
+**Did you know?**
+The page contains 4 blocks by default. Feel free to drag them around and rearrange
+them as you please. You can also use the menu button of each block to resize them.
 
 
 ### Controlling your robot with your keyboard
@@ -94,13 +142,14 @@ Note: If the above doesn't work, try running the command line interface version 
 
 ## Option 2 - Docker + ROS {#make-it-move_docker_ros status=beta}
 
-
 Run the base image on the duckiebot:
+
 
     laptop $ docker -H ![hostname].local run -it --net host --privileged --name base duckietown/rpi-duckiebot-base:master18 /bin/bash
 
 
-Then when the container has started 
+Then when the container has started
+
 
     container $  roslaunch duckietown joystick.launch veh:=![hostname]
 
@@ -119,7 +168,6 @@ If you have cloned the repo on your laptop and installed ROS, then you can start
 
 
 ## Option 3 - Pure ROS {#make-it-move_ros status=deprecated}
-
 
 
 #### Controlling your robot with a joystick
@@ -176,7 +224,7 @@ XXX Is all of the above valid with the new joystick?
 
 
 
-## Troubleshooting 
+## Troubleshooting
 
 Symptom: When do a `docker run` command you get a response like: `Error response from daemon: Get https://registry-1.docker.io/v2/: x509: certificate has expired or is not yet`
 
@@ -205,7 +253,7 @@ Resolution:  Test whether or not the joystick itself is working properly, run:
 Move the joysticks and push the buttons. You should see the data displayed change
 according to your actions.
 
-Resolution: Check that the cables on your robot are connected 
+Resolution: Check that the cables on your robot are connected
 
 
 
