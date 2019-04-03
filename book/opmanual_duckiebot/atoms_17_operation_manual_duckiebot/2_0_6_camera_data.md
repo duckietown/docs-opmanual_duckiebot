@@ -99,7 +99,7 @@ image below.
   <img src="dashboard_mission_control_camera_feed.png" style='width: 35em'/>
 </div>
 
-By default, the camera stream is throttle down to 8 frames per second. This is to
+By default, the camera stream is throttled down to 8 frames per second. This is to
 minimize the resources used by your browser while streaming images from the robot.
 Feel free to increase the data stream frequency in the **Properties** tab of the
 camera block.
