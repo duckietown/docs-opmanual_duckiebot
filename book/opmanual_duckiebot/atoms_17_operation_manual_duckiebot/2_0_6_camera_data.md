@@ -35,13 +35,14 @@ Now stop the `picam` container:
 
 warning The `picam` container is just for this example to verify your camera works. You should leave this container stopped if you plan to use the camera in other containers.
 
-## Viewing an Image Stream on Your Laptop
+
+## Viewing an Image Stream on Your Laptop {#view-image-using-rqt-image-view}
 
 Start publishing images through ROS on the Duckiebot using
 the container `rpi-duckiebot-ros-picam`:
 
 
-    laptop $ docker -H ![hostname].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18 
+    laptop $ docker -H ![hostname].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18
 
 Note: you need `-v /data:/data` because of the calibration procedure later.
 
@@ -73,10 +74,43 @@ The container will start. At the prompt, run:
 The command should open a window where you can view the image.
 You have to select the right topic from the dropdown menu.
 
+
+## Viewing the image stream on the Dashboard
+
+If you followed the instructions in [](#duckiebot-dashboard-setup), you
+should have access to the Duckiebot dashboard.
+
+A few things to check before continuing:
+
+- Make sure that the dashboard container is running, as explained in [](#dashboard-installation).
+
+- Make sure that the camera node is running, as explained in [](#view-image-using-rqt-image-view).
+
+- Make sure that the ROS websocket bridge is running, as explained in [](#setup-ros-websocket-image).
+
+
+Open the browser and visit the page `http://![hostname].local/mission-control`.
+
+The bottom of the page shows the camera block. If you followed all the steps described
+above, you should be able to see the camera feed in the camera block, as shown in the
+image below.
+
+<div figure-id="fig:dashboard_mission_control_camera_feed" figure-caption="">
+  <img src="dashboard_mission_control_camera_feed.png" style='width: 35em'/>
+</div>
+
+By default, the camera stream is throttled down to 8 frames per second. This is to
+minimize the resources used by your browser while streaming images from the robot.
+Feel free to increase the data stream frequency in the **Properties** tab of the
+camera block.
+
+Note: If you see a black image in the camera block, make sure that you removed the
+protective cap that covers the camera lens of your Duckiebot.
+
+
 ## Verifying the output by using the ROS utilities
 
-Close the `rqt_image_view` window and type the next commands in the same
-window.
+Use the commands below to check the data streams in ROS.
 
 
 ### List topics
