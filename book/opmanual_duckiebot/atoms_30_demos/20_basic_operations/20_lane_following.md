@@ -2,7 +2,7 @@
 
 This is the description of lane following demo.
 
-Maintainer: Russell Buchanan
+Maintainer: Gianmarco Bernasconi
 
 <div class='requirements' markdown="1">
 
@@ -32,7 +32,7 @@ Assumption about Duckietown:
 ## Duckiebot setup notes {#demo-lane-following-duckiebot-setup}
 
 * Make sure the camera is heading ahead.
-* Duckiebot in configuration [DB18-jwd](#duckiebot-configurations)
+* Duckiebot in configuration [DB18](#duckiebot-configurations)
 
 
 ## Pre-flight checklist {#demo-lane-following-pre-flight}
@@ -41,7 +41,7 @@ Assumption about Duckietown:
 * Turn on battery of the duckiebot.
 * Place duckiebot in lane so that enough of the lane lines are visible to the camera.
 * Verify you can ping your duckiebot over the network.
-* __IMPORTANT__ Make sure no containers are runing on the duckiebot which use either the camera or joystick. We will run these ROS nodes together in a new container.
+* __IMPORTANT__ Make sure no containers are running on the duckiebot which use either the camera or joystick. We will run these ROS nodes together in a new container.
 
 ## Demo instructions {#demo-lane-following-run}
 
@@ -61,7 +61,7 @@ Now we will verify that `lane_filter_node` is working. On your laptop run `start
 
 This will enter you into a container on your laptop that can talk to the ROS on the robot. To verify this do:
 
-    laptop container $ rostopic list
+    laptop-conainer $ rostopic list
 
 and you should see all of the rostopics listed there. If you see an output like "Cannot communicate with ROS_MASTER" that's a problem
 
@@ -97,10 +97,9 @@ If you have a joystick you can skip this next command, otherwise we need to run 
 |----------------------|:--------:|:---------:|
 | Start Lane Following |  __R1__  |   __a__   |
 | Stop Lane Following  |  __L1__  |   __s__   |
-| Reset Anti-Instagram |  __X__   |   __i__   |
 
 
-Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a __normal__ lane. Enjoy the demo.
+Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. Enjoy the demo.
 
 ## Troubleshooting {#demo-lane-following-troubleshooting}
 

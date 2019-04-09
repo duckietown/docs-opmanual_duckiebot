@@ -1,100 +1,96 @@
-# Lane following {#demo-megacity status=draft}
+# Megacity {#demo-megacity status=ready}
 
-This is the description of the megacity demo.
+This is the description of the great and marvelous megacity demo.
 
 Maintainer: Gianmarco Bernasconi
 
 <div class='requirements' markdown="1">
 
-Requires: A bot capable of running all the basic demos.
+Requires: Fully set up Duckiebots
 
-Requires: A robotarium.
+Requires: Fully set up Duckietown.
 
-Results: The great megacity demp.
+Results: One or more Duckiebot safely navigating in Duckietown.
 
 </div>
 
+Warning: This demo is designed to be used in robotariums, by expert users. Make sure you have the experience and the hardware to fully capture the potential of the demo.
+
 ## Video of expected results {#demo-megacity-expected}
 
-[Video of demo lane following](https://drive.google.com/file/d/198iythQkovbQkzY3pPeTXWC8tTCRgDwB/view?usp=sharing)
+TODO: Add a  video with an up to specification Duckietown.
 
 ## Duckietown setup notes {#demo-megacity-duckietown-setup}
 
-Assumption about Duckietown:
+To run this demo, you can push your fantasy to the limit by building the Duckietown. The demo supports (almost) everything that is currently implemented. Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications).
 
-* A Duckietown with white and yellow lanes. No obstacles on the lane.
-* Layout conform to Duckietown Appearance [Specifications](+opmanual_duckietown#dt-ops-appearance-specifications)
-* Required tiles types: straight tile, turn tile, intersections
-* Configurated wireless network for communicating with Duckiebot.
-* Good consistent lighting, avoid natural lighting.
 
 ## Duckiebot setup notes {#demo-megacity-duckiebot-setup}
 
-* Make sure the camera is heading ahead.
-* Duckiebot in configuration [DB18-jwd](#duckiebot-configurations)
-
+One (preferably more) Duckiebot in [setup](#duckiebot-configurations) `DB-18`.
 
 ## Pre-flight checklist {#demo-megacity-pre-flight}
 
-* Turn on joystick (if applicable).
-* Turn on battery of the duckiebot.
-* Place duckiebot in lane so that enough of the lane lines are visible to the camera.
-* Verify you can ping your duckiebot over the network.
-* __IMPORTANT__ Make sure no containers are running on the duckiebot which use either the camera or joystick. We will run these ROS nodes together in a new container.
+Check: Sufficient battery charge of the Duckiebot.
+
+Check: Duckiebot is properly calibrated.
 
 ## Demo instructions {#demo-megacity-run}
 
+Note: You will have to repeat the instructions for each of the Duckiebots
+
+Follow these steps to run the indefinite navigation demo on your Duckiebot:
+
 ### Step 1
 
-Load the new container:
-
-    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" --memory-swap="1.8g" --privileged -v /data:/data --name megacity_demo gibernas/rpi-duckiebot-megacity-demo-master18:master
-
-This will start the `megacity_demo` container. You have to wait a while for everything to start working.
-
+Power on your bot.
 
 ### Step 2
 
-If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
+Go to the portainer interface on
 
-    laptop $ dts duckiebot keyboard_control ![hostname]
+    http://![hostname].local:9000/#/containers
 
-|        Controls      | Joystick |  Keyboard |
-|----------------------|:--------:|:---------:|
-| Start Lane Following |  __R1__  |   __a__   |
-| Stop Lane Following  |  __L1__  |   __s__   |
+And check that only the necessary containers are running, namely:
+
+    roscore
+    dt18_00_basic_portainer_1
+    dt18_01_health_stats_rpi-simple-server_1
+    dt18_01_health_stats_rpi-health_1
+    dt18_01_health_stats_rpi-duckiebot-loader_1
+    dt18_01_health_stats_rpi-duckiebot-online_1
+    dt18_00_basic_watchtower_1
+
+If other containers are running, stop them.
+
+### Step 3
+
+Run the base container:
+
+    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name base duckietown/rpi-duckiebot-base:megacity /bin/bash
+
+A shell will open in the new container.
+
+### Step 4
+
+Launch the demo in the container by:
+
+    duckiebot-container $ source /docker/env.sh
+    duckiebot-container $ roslaunch duckietown_demos megacity.launch
+
+Note: Many nodes need to be launched, so it will take quite some time. Moreover the CPU load will be extremely high during the demo.
+
+### Step 5
+
+In a separate terminal, start a joystick with
+
+    laptop dts duckiebot keyboard_control ![hostname]
 
 
-Start the autonomous mode. The Duckiebot should drive autonomously in the lane. Enjoy the demo.
+## Troubleshooting
 
-## Troubleshooting {#demo-megacity-troubleshooting}
+Symptom: The Duckiebot fails at intersections.
 
-### The duckiebot does not move
+Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`.
 
-* Check if you can manually drive the duckiebot
-  * Try re launching `dts keyboard control`
-* Check if ROS messages are received on the robot on the `![hostname]/joy` topic
-
-### The Duckiebot does not stay in a straight lane
-
-* Check `rqt_image_view` and look at image_with_lines.
-  * Check if you see enough segments. If not enough segments are visible, reset the Anti-Instagram filter.
-  * Check if you see more segments and the color of the segments are according to the color of the lines in Duckietown
-* Check your camera [calibrations](#camera-calib) are good.
-
-
-### The Duckiebot cuts white line while driving on inner curves (avanced)
-
-Solution (advanced):
-
-Set alternative controller gains. While running the demo on the Duckiebot use the following to set the gains to the alternative values:
-
-    laptop $ rosparam set /![hostname]/lane_controller_node/k_d -45
-
-    laptop $ rosparam set /![hostname]/lane_controller_node/k_theta -11
-
-Those changes are only active while running the demo and need to be repeated at every start of the demo if needed. If this improved the performance of your Duckiebot, you should think about permenantly change the default values in your catkin_ws.
-
-## Demo failure demonstration {#demo-megacity-failure}
-
-TODO: write
+Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
