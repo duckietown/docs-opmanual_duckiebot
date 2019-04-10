@@ -67,7 +67,7 @@ A shell will open in the new container.
 
 **Step 4** Launch the demo in the container by:
 
-    duckiebot-container $ source /docker/env.sh
+    duckiebot-container $ source /home/software/docker/env.sh
     duckiebot-container $ roslaunch duckietown_demos megacity.launch
 
 Note: Many nodes need to be launched, so it will take quite some time. Moreover the CPU load will be extremely high during the demo.
