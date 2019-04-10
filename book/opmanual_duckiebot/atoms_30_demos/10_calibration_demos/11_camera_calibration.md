@@ -58,6 +58,8 @@ Depending on you network speed it might take some time until the duckiebot downl
 
 **Step 4**: Now Place your duckiebot inside the camera calibration hardware.
 
+Note: If you just executed *Step 3*, a shell inside the container should be already open. 
+
 Having the experimental setup ready, we can start testing, enter into the running `camera-test ` container if your are not already in, and launch the test interface.
 
     laptop $ export DOCKER_HOST=![ROBOT_NAME].local
@@ -66,7 +68,7 @@ Having the experimental setup ready, we can start testing, enter into the runnin
 
 And then launch the camera calibration.
 
-    duckiebot $ roslaunch calibration camera_calibration_test.launch veh:=![HOST_NAME] output_dir:=/logs
+    duckiebot-container $ roslaunch calibration camera_calibration_test.launch veh:=![HOST_NAME] output_dir:=/logs
 
 Note that, if `output_dir` is not specified the program attempts to save the results to user´s home folder. This will fail it you don't have enough space in your device.
 
@@ -81,7 +83,7 @@ With data-acquisition interface you can specify
 
 The results of the experiment can be found under `/logs` folder in a zipped form. To download the results ![ZIPPED_RESULT_NAME] to your local computer first move the zipped folder to your `/data` folder,
 
-    duckiebot $ mv /logs/![ZIPPED_RESULT_NAME] /data/
+    duckiebot-container $ mv /logs/![ZIPPED_RESULT_NAME] /data/
 
 Now you can download the file by heading to `![HOST_NAME]:8082` in your **browser** and then clicking on `![ZIPPED_RESULT_NAME]`.  
 
