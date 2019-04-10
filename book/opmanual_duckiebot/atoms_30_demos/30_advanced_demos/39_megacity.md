@@ -81,6 +81,6 @@ Note: Many nodes need to be launched, so it will take quite some time. Moreover 
 
 Symptom: The Duckiebot fails at intersections.
 
-Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`.
+Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
 
 Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
