@@ -1,4 +1,4 @@
-# Intersection troubleshooting {#trouble-unicorn_intersection status=draft}
+# Intersection troubleshooting {#trouble-unicorn_intersection status=ready}
 
 If your Duckiebot does not yield satisfactory results in intersection navigation, you might want to tune the related parameters.
 Basically the `unicorn_intersection_node` (long story for the name) is a mixture of open loop commands and a re-use of the lane filter.
