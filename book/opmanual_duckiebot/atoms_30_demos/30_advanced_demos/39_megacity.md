@@ -18,7 +18,11 @@ Warning: This demo is designed to be used in robotariums, by expert users. Make 
 
 ## Video of expected results {#demo-megacity-expected}
 
-TODO: Add a  video with an up to specification Duckietown.
+<div figure-id="fig:demo_succeeded-megacity">
+    <figcaption>Outcome of a successful Megacity demo
+    </figcaption>
+    <dtvideo src='vimeo:329612860'/>
+</div>
 
 ## Duckietown setup notes {#demo-megacity-duckietown-setup}
 
