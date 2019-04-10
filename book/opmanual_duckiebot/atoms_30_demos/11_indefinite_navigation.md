@@ -1,18 +1,21 @@
-# Indefinite Navigation {#demo-indefinite-navigation status=beta}
+# Indefinite Navigation {#demo-indefinite-navigation status=ready}
 
 This is the description of the indefinite navigation demo.
 
+Maintainer: Gianmarco Bernasconi
+
 <div class='requirements' markdown="1">
 
-Requires: Wheels calibration completed.[wheel calibration](#wheel-calibration)
+Requires: [Wheel calibration](#wheel-calibration) completed.
 
-Requires: Camera calibration completed.[Camera calibration](#camera-calib)
+Requires: [Camera calibration](#camera-calib) completed.
 
-Requires: Joystick demo has been successfully launched.[Joystick demo](#rc-control))
+Requires: [Lane following](#demo-lane-following) demo has been successfully launched.
 
-Requires: Fully set up Duckietown (including April tags for intersections)
+Requires: Fully set up Duckietown.
 
-Requires: A motor gain of approximately 0.65 (strong influence in open-loop intersections)
+Results: One or more Duckiebot safely navigating in Duckietown.
+
 </div>
 
 ## Video of expected results {#demo-indefinite-navigation-expected}
@@ -31,75 +34,62 @@ TODO: add a different video with an up to specification Duckietown.
 
 ## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
 
-A Duckietown with white and yellow lanes. No obstacles on the lane. Red stop lines at intersections. If several Duckiebots are present while running this demo, LEDs need to be installed for explicit communication and coordination of Duckiebots at intersections.
+To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
+
 
 ## Duckiebot setup notes {#demo-indefinite-navigation-duckiebot-setup}
 
-Make sure the camera is securely tightened and properly calibrated.
+One (or possibly more) Duckiebot in [setup](#duckiebot-configurations) `DB-18`.
 
 ## Pre-flight checklist {#demo-indefinite-navigation-pre-flight}
 
-Check: Joystick is turned on.
-
 Check: Sufficient battery charge of the Duckiebot.
 
-Check: Gain is set to approximately 0.65.
+Check: Duckiebot is properly calibrated.
 
 ## Demo instructions {#demo-indefinite-navigation-run}
 
 Follow these steps to run the indefinite navigation demo on your Duckiebot:
 
-Step 1: On the Duckiebot, navigate to the `/DUCKIETOWN_ROOT/` directory, run the command:
+Step 1: Power on your bot.
 
-    duckiebot $ make indefinite-navigation
+Step 2: Go to the portainer interface on
 
-Wait until everything has been launched. Press X to start anti-instagram. Pressing R1 will start the autonomous lane following and L1 can be used to revert back to manual control.
+    http://![hostname].local:9000/#/containers
 
-In the current open-loop intersection navigation, no Duckiebot will successfully run the demo the first time. Parameter tuning is a must. The only two parameters that should be adjusted are the gain and trim, previously defined during the [wheel calibration procedure](#wheel-calibration).
+And check that only the necessary containers are running, namely:
 
-The parameter pair which makes your bot go straight will unlikely work for the lane following due to the current controller design. Start with your parameter pair obtained from wheel calibration. If your Duckiebot stays too long on a curve during crossing an intersection, decrease your gain in steps of 0.05. If the Duckiebot doesn't make the turn enough long, increase your gain in steps of 0.05.
+    roscore
+    dt18_00_basic_portainer_1
+    dt18_01_health_stats_rpi-simple-server_1
+    dt18_01_health_stats_rpi-health_1
+    dt18_01_health_stats_rpi-duckiebot-loader_1
+    dt18_01_health_stats_rpi-duckiebot-online_1
+    dt18_00_basic_watchtower_1
 
-Command to modify your gain (in this example to 0.65):
+If other containers are running, stop them.
 
-    &#36; rosservice call /![robot name]/inverse_kinematics_node/set_gain -- 0.65
+Step 3: Run the base container:
 
-Question: on laptop or bot?
+    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name base duckietown/rpi-duckiebot-base:megacity /bin/bash
 
-Everything below is helpful for debugging if your robot does not follow the lane at all.
+A shell will open in the new container.
 
-Step 2: Navigate to the Duckietown folder:
+Step 4: Launch the demo in the container by:
 
-    laptop &#36; cd ~/duckietown
+    duckiebot-container $ source /docker/env.sh
+    duckiebot-container $ roslaunch duckietown_demos indefinite_navigation.launch
 
-then source the environment:
+Note: Many nodes need to be launched, so it will take quite some time.
 
-    laptop &#36; source environment.sh
+Step 5: In a separate terminal, start a joystick with:
 
-set the the ROS master to your vehicle:
+    laptop $ dts duckiebot keyboard_control ![hostname]
 
-    laptop &#36; source set_ros_master.sh ![robot name]
+## Troubleshooting
 
-and finally launch rviz:
+Symptom: The Duckiebot fails at intersections.
 
-    laptop &#36; rviz
+Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`.
 
-In rviz, two markerarrays:
-
-- `/![robot name]/duckiebot_visualizer/segment_list_markers`, and
--  `/![robot name]/lane_pose_visualizer_node/lane_pose_markers`
-
-can be visualized. The green arrow representing the pose estimate of the robot has to be in a reasonable direction.
-
-Step 3: Always on the laptop, run:
-
-    laptop &#36; rqt
-
-In rqt, the images can be visualized are:
-
--  `/![robot name]/camera_node/image/compressed`,
--  `/![robot name]/line_detector_node/image_with_lines`,
--  `/![robot name]/lane_filter_node/belief_img`.
-
-## Troubleshooting 
-
-Maintainer: Contact Julien Kindle (ETHZ) via Slack for further assistance.
+Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
