@@ -51,9 +51,9 @@ Check: Duckiebot is properly calibrated.
 
 Follow these steps to run the indefinite navigation demo on your Duckiebot:
 
-Step 1: Power on your bot.
+**Step 1**: Power on your bot.
 
-Step 2: Go to the portainer interface on
+**Step 2**: Go to the portainer interface on
 
     http://![hostname].local:9000/#/containers
 
@@ -69,27 +69,27 @@ And check that only the necessary containers are running, namely:
 
 If other containers are running, stop them.
 
-Step 3: Run the base container:
+**Step 3**: Run the base container:
 
     laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name base duckietown/rpi-duckiebot-base:megacity /bin/bash
 
 A shell will open in the new container.
 
-Step 4: Launch the demo in the container by:
+**Step 4**: Launch the demo in the container by:
 
     duckiebot-container $ source /docker/env.sh
     duckiebot-container $ roslaunch duckietown_demos indefinite_navigation.launch
 
 Note: Many nodes need to be launched, so it will take quite some time.
 
-Step 5: In a separate terminal, start a joystick with:
+**Step 5**: In a separate terminal, start a joystick with:
 
-    laptop dts duckiebot keyboard_control ![hostname]
+    laptop $ dts duckiebot keyboard_control ![hostname]
 
 ## Troubleshooting
 
 Symptom: The Duckiebot fails at intersections.
 
-Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`.
+Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
 
 Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
