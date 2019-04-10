@@ -84,7 +84,7 @@ Note: Many nodes need to be launched, so it will take quite some time. Moreover 
 
 In a separate terminal, start a joystick with
 
-    laptop dts duckiebot keyboard_control ![hostname]
+    laptop $ dts duckiebot keyboard_control ![hostname]
 
 
 ## Troubleshooting
