@@ -83,4 +83,8 @@ Symptom: The Duckiebot fails at intersections.
 
 Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
 
+Symptom: The demo fails, and it complains of a missing camera calibration file (usually is the `ground_projection_node` the first to die)
+
+Resolution: Run the [camera calibration](#camera-calib) again.
+
 Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
