@@ -18,7 +18,11 @@ Warning: This demo is designed to be used in robotariums, by expert users. Make 
 
 ## Video of expected results {#demo-megacity-expected}
 
-TODO: Add a  video with an up to specification Duckietown.
+<div figure-id="fig:demo_succeeded-megacity">
+    <figcaption>Outcome of a successful Megacity demo
+    </figcaption>
+    <dtvideo src='vimeo:329612860'/>
+</div>
 
 ## Duckietown setup notes {#demo-megacity-duckietown-setup}
 
@@ -67,7 +71,7 @@ A shell will open in the new container.
 
 **Step 4** Launch the demo in the container by:
 
-    duckiebot-container $ source /docker/env.sh
+    duckiebot-container $ source /home/software/docker/env.sh
     duckiebot-container $ roslaunch duckietown_demos megacity.launch
 
 Note: Many nodes need to be launched, so it will take quite some time. Moreover the CPU load will be extremely high during the demo.
@@ -82,5 +86,9 @@ Note: Many nodes need to be launched, so it will take quite some time. Moreover 
 Symptom: The Duckiebot fails at intersections.
 
 Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
+
+Symptom: The demo fails, and it complains of a missing camera calibration file (usually is the `ground_projection_node` the first to die)
+
+Resolution: Run the [camera calibration](#camera-calib) again.
 
 Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
