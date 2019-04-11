@@ -243,9 +243,22 @@ Note: you need to *log in and out* to have the group change take effect.
 
 ### Duckietown Shell {#laptop-setup-ubuntu-16-shell}
 
-Install the Duckietown Shell using:
+The duckietown-shell now needs python3.6 or higher. This is not supported by ubuntu16 by default.
+However, there is a work around, using homebrew.
 
-    laptop $ pip install --no-cache-dir -U --user duckietown-shell
+Follow the instructions here : https://docs.brew.sh/Homebrew-on-Linux (don't forget to follow all the steps in there)
+
+Then, run :
+
+    $ brew install python3
+    $ python3.7 -m pip install --no-cache-dir --user -U duckietown-shell
+
+Then, typing 
+
+    $ which dts
+
+should output : /home/linuxbrew/.linuxbrew/bin/dts
+
 
 Edit the file `~/.profile` and add the line:
 
