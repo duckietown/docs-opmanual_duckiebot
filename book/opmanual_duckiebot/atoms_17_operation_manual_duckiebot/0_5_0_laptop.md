@@ -55,7 +55,7 @@ See: For instructions, see for example [this online tutorial][tutorial].
 
 Installs pip, git, git-lfs, curl, wget:
 
-    laptop $ sudo apt install -y python-pip git git-lfs curl wget 
+    laptop $ sudo apt install -y python3-pip git git-lfs curl wget 
     
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
@@ -74,7 +74,7 @@ Note: you need to *log out and in* for the group change take effect.
 
 To install the Duckietown shell, use:
 
-    laptop $ pip install --user --no-cache-dir -U duckietown-shell
+    laptop $ python3 -m pip install --user --no-cache-dir -U duckietown-shell
 
 Edit the file `~/.profile` and add the line:
 
