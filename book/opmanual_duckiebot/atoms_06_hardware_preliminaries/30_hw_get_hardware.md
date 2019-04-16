@@ -305,7 +305,7 @@ The pack of LEDs linked in the table above holds 10 LEDs, enough for two Duckieb
 
 The LED HAT ([](#figure:led_hat)) provides an interface for our RGB LEDs and the computational stack. This board is a daughterboard for the Adafruit 16-Channel PWM/Servo HAT, and enables connection with additional gadgets such as [ADS1015 12 Bit 4 Channel ADC](https://www.adafruit.com/product/1083), [Monochrome 128x32 I2C OLED graphic display](https://www.adafruit.com/product/931), and [Adafruit 9-DOF IMU Breakout - L3GD20H+LSM303](https://www.adafruit.com/product/1714). This item will require [soldering](#assembling-duckiebot-db17-soldering).
 
-This board is custom degined and can only be ordered in minimum runs of 3 pieces. The price scales down quickly with quantity, and lead times may be significant, so it is better to buy these boards in bulk.
+This board is custom designed and can only be ordered in minimum runs of 3 pieces. The price scales down quickly with quantity, and lead times may be significant, so it is better to buy these boards in bulk.
 
 <div figure-id="fig:led_hat" figure-caption="The LED HAT">
      <img src="led_hat.png" style='width: 15em'/>
@@ -368,7 +368,7 @@ These items require [soldering](0_5_soldering_boards_c1.md).
      <img src="placeholder.png" style='width: 15em'/>
 </div>
 
-## Caster (`DB17-c`)
+## Caster (`DB17-c`) {#db17-c-description status=beta}
 
 The caster ([](#fig:caster)) is an `DB17-c` component that substitutes the steel omni-directional wheel that comes in the Magician Chassis package. Although the caster is not essential, it provides smoother operations and overall enhanced Duckiebot performance.
 
