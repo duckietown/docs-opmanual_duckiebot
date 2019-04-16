@@ -1,3 +1,3 @@
 # Preliminaries {#part:preliminaries status=ready}
 
-Before starting this adventure, take some preliminary steps.
+Before you start your adventure, make sure that you know this important background knowledge.
