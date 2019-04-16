@@ -24,7 +24,7 @@ sure to follow them in the following order:
 - [Part 1: What is in the box?](#bom-db18)
 - [Part 2: Motors](#howto-mount-motors-db18)
 - [Part 3: Omni-directional wheel](#howto-mount-omniwheel-db18)
-- [Part 4: Assemble Onmi-directional wheel and bottom chassis](#howto-assemble-chassis-bottom)
+- [Part 4: Assemble Omni-directional wheel and bottom chassis](#howto-assemble-chassis-bottom)
 - [Part 5: Spacers to bottom plate](#howto-mount-spacers)
 - [Part 6: Wheels](#howto-mount-wheels-db18)
 - [Part 7: Preparing the Raspberry Pi](#howto-mount-rpi)
@@ -84,7 +84,7 @@ Note that a few among all of your metal screws are special. They are "countersun
 
 Every time you read M3x8 screw, a M3x10 will do the same trick. You can exchange them at will.
 
-Do not exchange metal and nylon screws though. The latter are not electrically conductive and are passive protections to potential short circuits that can damage your Duckiebot beyond repair. This is especially true for [Part 4: Assemble Onmi-directional wheel and bottom chassis](#howto-assemble-chassis-bottom); make sure you use the correct nylon screws at that step.
+Do not exchange metal and nylon screws though. The latter are not electrically conductive and are passive protections to potential short circuits that can damage your Duckiebot beyond repair. This is especially true for [Part 4: Assemble Omni-directional wheel and bottom chassis](#howto-assemble-chassis-bottom); make sure you use the correct nylon screws at that step.
 
 Remember that instructions are your friend! At least at this stage, try to follow them precisely.
 

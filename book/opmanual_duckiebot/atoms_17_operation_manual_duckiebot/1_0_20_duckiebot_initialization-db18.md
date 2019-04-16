@@ -78,14 +78,14 @@ Warning: Don't charge the battery while you are doing the initialization (or in 
 
 You should immediately see the **green** light next to where the SD card was inserted start to blink with activity. 
 
-If not, stop, as there is a problem with the SD card (or possibly the PI, but this is unlikely).
+If not, stop, as there is a problem with the SD card initialization (or possibly the PI, but this is unlikely).
 
 Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or more since some things are being configured. 
 
 Do not power the robot off (by holding the battery button) while this is in process. 
 
 
-You know that your Pi has successfully booted when you are able to ping your robot with the command bellow or with some method in [](#duckiebot-network):
+You know that your Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
 
 ```
 laptop $ ping ![hostname].local

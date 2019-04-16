@@ -59,10 +59,10 @@ Installs pip, git, git-lfs, curl, wget:
     
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
-Installs Docker:
+Install Docker by following the instructions [here][docker_install].
 
-    laptop $ sudo apt install -y docker.io
-    
+[docker_install]:https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
 Adds user to "docker" group:
 
     laptop $ sudo adduser `whoami` docker
@@ -81,6 +81,8 @@ Edit the file `~/.profile` and add the line:
     export PATH=~/.local/bin:$PATH
 
 Note: do not use `sudo pip` to install the Duckietown Shell.
+
+Note: for Mac users this path will be different, probably something like `~/Library/Python/2.7/bin`
 
 Log out and in. This command should succeed:
 
