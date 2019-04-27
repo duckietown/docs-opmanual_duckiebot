@@ -1,6 +1,6 @@
-# Boot and recovery troubleshooting {#setup-troubleshooting-boot status=draft}
+# Boot and recovery troubleshooting {#setup-troubleshooting-boot status=ready}
 
-What to do if your PI does not boot, network is unreachable etc.
+What to do if your Raspberry Pi does not boot, network is unreachable etc.
 
 ## The Raspberry Pi does not have power
 

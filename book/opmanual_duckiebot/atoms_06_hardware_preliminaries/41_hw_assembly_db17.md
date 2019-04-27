@@ -1076,7 +1076,7 @@ If you have soldered the boards already, you may test correct functionality of t
      <img src="final-result-power-c0.jpg" style='width: 15em'/>
 </div>
 
-# Bumper Assembly {#bumper-assembly status=beta}
+## Bumper Assembly {#bumper-assembly status=ready}
 
 <div class='requirements' markdown="1">
 
@@ -1090,7 +1090,7 @@ Results: A Duckiebot with Bumpers (configuration DB17-l2)
 
 </div>
 
-## Locate all required parts
+### Locate all required parts
 
 The following should be included in your parts envelope (See image below for these components):
 
@@ -1116,7 +1116,7 @@ The following is not included in your parts envelope but will be needed for asse
 
  Use care when assembling, make sure to be gentle! Tighten screws just enough so that the parts will remain stationary. When inserting LEDs, gently work them into their holders. While the acrylic is relatively tough, it can be fractured with modest force. We don’t have many replacements (at this moment) so we may not be able to replace a broken part.
 
-### Remove protective paper
+#### Remove protective paper
 
 Peel protective layer off of all parts on all sides.
 
@@ -1213,7 +1213,7 @@ past the camera screws.
 
 Gently tighten the nuts. The front bumper should now stay in position.
 
-## Assembly instructions (`DB17-l`) {#assembling-duckiebot-db17l status=beta}
+## Assembly instructions (`DB17-l`) {#assembling-duckiebot-db17l status=ready}
 
 <div class='requirements' markdown="1">
 
@@ -1279,7 +1279,3 @@ For instructions on how to assemble your bumpers set, refer to: [](#bumper-assem
 ### Assembling the LED HAT and LEDs (`DB17-l3`)
 
 For instructions on how to assemble the LED HAT and related LEDs, refer to: [](#leds-setup-db17).
-
-TODO: finish above, estimate assembly time, add bumper assembly instructions, add LED positioning and wiring instructions
-
-## Assembling the `DB17-lc` {#leds-setup-db17 status=beta}

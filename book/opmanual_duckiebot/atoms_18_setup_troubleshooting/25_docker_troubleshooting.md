@@ -56,7 +56,7 @@ With Docker compose you would use:
 [compose]: https://docs.docker.com/compose/
 
 
-## Container does not start  {#setup-troubleshooting-docker-starting status=draft}
+## Container does not start  {#setup-troubleshooting-docker-starting status=ready}
 
 Symptom: `docker: Error response from daemon: Conflict. The container name "/![container_name]" is already in use by container "![container_hash]". You have to remove (or rename) that container to be able to reuse that name.`
 
