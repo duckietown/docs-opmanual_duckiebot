@@ -1,7 +1,5 @@
 # Docker basics {#preliminaries-docker-basics status=ready}
 
-Maintainer: Aleksandar Petrov
-
 ## What is Docker? {#basic-docker-what-is}
 
 Docker is used to perform operating-system-level virtualization, something often referred to as "containerization". While Docker is not the only software that does this, it is by far the most popular one.
@@ -36,17 +34,17 @@ Docker images are build up from layers. The initial layer is the *base layer*, t
 
 Each layer on top of the base layer constitutes a change to the layers below. The Docker internal mechanisms translate this sequence of changes to a file system that the container can then use. If one makes a small change to a file, then typically only a single layer will be changed and when Docker attempts to pull the new version, it will need to download and store only the changed layer, saving space, time and bandwidth.
 
-In the Docker world images get organized by their repository name, image name and tags. As with Git and GitHub, Docker images are stored in image registers. The most popular Docker register is called DockerHub and it is what we use in Duckietown. 
+In the Docker world images get organized by their repository name, image name and tags. As with Git and GitHub, Docker images are stored in image registers. The most popular Docker register is called DockerHub and it is what we use in Duckietown.
 
 An image stored on DockerHub has a name of the form:
 
     duckietown/rpi-ros-kinetic-base:master18
 
-Here the repository name is `duckietown`, the image name is `rpi-ros-kinetic-base`, and the tag is `master18`. 
+Here the repository name is `duckietown`, the image name is `rpi-ros-kinetic-base`, and the tag is `master18`.
 
 All Duckietown-related images are in the `duckietown` repository. The images themselves can be very different and for various applications.
 
-Sometimes a certain image might need to have several different versions. These can be designated with *tags*. For example, the `master18` tag means that this is the image to be used with the `DT18` version of Duckietown. 
+Sometimes a certain image might need to have several different versions. These can be designated with *tags*. For example, the `master18` tag means that this is the image to be used with the `DT18` version of Duckietown.
 
 It is not necessary to specify a tag. If you don't, Docker assumes you are interested in the image with `latest` tag, should such an image exist.
 
@@ -67,7 +65,7 @@ If you don't need it, or if you're running down on storage space, you can remove
 
     laptop $ docker image rm ubuntu:18.04
 
-You can also remove images by their `IMAGE ID` as printed by the `list` command. 
+You can also remove images by their `IMAGE ID` as printed by the `list` command.
 
 Sometimes you might have a lot of images you are not using. You can easily remove them all with:
 
@@ -79,15 +77,15 @@ If you want to look into the heart and soul of your images, you can use the comm
 
 ## Working with containers {#basic-docker-commands-containers }
 
-Containers are the run-time equivalent of images. When you want to start a container, Docker picks up the image you specify, creates a file system from its layers, attaches all devices and directories you want, "boots" it up, sets up the environment up and starts a pre-determined process in this container. All that magic happens with you running a single command: `docker run`. You don't even need to have pulled the image beforehand, if Docker can't find it locally, it will look for it on DockerHub. 
+Containers are the run-time equivalent of images. When you want to start a container, Docker picks up the image you specify, creates a file system from its layers, attaches all devices and directories you want, "boots" it up, sets up the environment up and starts a pre-determined process in this container. All that magic happens with you running a single command: `docker run`. You don't even need to have pulled the image beforehand, if Docker can't find it locally, it will look for it on DockerHub.
 
 Here's a simple example:
 
     laptop $ docker run ubuntu
 
-This will take the `ubuntu` image with `latest` tag and will start a container from it. 
+This will take the `ubuntu` image with `latest` tag and will start a container from it.
 
-The above won't do much. In fact, the container will immediately exit as it has nothing to execute. When the main process of a container exits, the container exits as well. By default this `ubuntu` image runs `bash` and as you don't pass any commands to it, it exits immediately. This is no fun, though. 
+The above won't do much. In fact, the container will immediately exit as it has nothing to execute. When the main process of a container exits, the container exits as well. By default this `ubuntu` image runs `bash` and as you don't pass any commands to it, it exits immediately. This is no fun, though.
 
 
 Let's try to keep this container alive for some time by using the `-it` switch. This tells Docker
@@ -103,12 +101,12 @@ Keep in mind that the part after `@` will be different---that is your container 
 
 In this manual, we will use the following icon to show that the command should be run in the container:
 
-    container $ command to be run in the container 
+    container $ command to be run in the container
 
 You are now in your new `ubuntu` container! Try to play around, you can try to use some basic `bash` commands like `ls`, `cd`, `cat` to make sure that you are not in your host machine.
 
 Note: **If you are sure about the difference between the host and the container**, you might want to see what happens when you do `rm -rf /` IN THE CONTAINER.  
-You will destroy the OS inside the container---but you can just exit and start another one. If instead you have confused host and container, at this 
+You will destroy the OS inside the container---but you can just exit and start another one. If instead you have confused host and container, at this
 point you probably need to re-install from scratch.
 
 You can check which containers you are running using the `docker ps` command --- analogous to the `ps` command. Open a new terminal window (don't close the other one yet) and type:
@@ -120,9 +118,9 @@ An alternative syntax is
     laptop $ docker container list
 
 These commands list all running containers.
- 
- Now you can go back to your `ubuntu` container and type `exit`. This will bring you back to you host shell and will stop the container. If you again run the `docker ps` command you will see nothing running. So does this mean that this container and all changes you might have made in it are gone? Not at all, `docker ps` and `docker container list` only list the *currently running* containers. 
- 
+
+ Now you can go back to your `ubuntu` container and type `exit`. This will bring you back to you host shell and will stop the container. If you again run the `docker ps` command you will see nothing running. So does this mean that this container and all changes you might have made in it are gone? Not at all, `docker ps` and `docker container list` only list the *currently running* containers.
+
  You can see all containers, including the stopped ones with:
 
     laptop $ docker container list -a
@@ -162,13 +160,13 @@ Often we will ask you to run containers with more sophisticated options than wha
   </style>
   <col3 class="labels-row1" >
     <span>Short command </span>
-    <span>Full command</span> 
+    <span>Full command</span>
     <span>Explanation</span>
     <span>`-i`</span>
     <span>`--interactive`</span>
     <span>Keep STDIN open even if not attached, typically used together with `-t`.</span>
     <span>`-t`</span>
-    <span>`--tty`</span> 
+    <span>`--tty`</span>
     <span>Allocate a pseudo-TTY, gives you terminal access to the container, typically used together with `-i`.</span>
     <span>`-d`</span>
     <span>`--detach`</span>
@@ -203,26 +201,26 @@ Often we will ask you to run containers with more sophisticated options than wha
 
 ### Examples {nonumber}
 
-Set the container name to `joystick`: 
+Set the container name to `joystick`:
 
     --name joystick
-    
+
 Mount the host's path `/home/myuser/data` to `/data` inside the container:
 
     -v /home/myuser/data:/data
-    
+
 Publish port 8080 in the container as 8082 on the host:
 
     -p 8082:8080
-    
+
 Allow the container to use the device `/dev/mmcblk0`:
 
     -d /dev/mmcblk0
-    
+
 Run a container on the Duckiebot:
 
     -H duckiebot.local
-    
+
 ## Other useful commands
 
 ### Pruning images
@@ -235,7 +233,7 @@ Keep in mind that this command will delete **all** containers that are not curre
 
 ### Portainer
 
-Often, for simple operations and basic commands, one can use Portainer. 
+Often, for simple operations and basic commands, one can use Portainer.
 
 Portainer is itself a Docker container that allows you to control the Docker daemon through your web browser. You can install it by running:
 
@@ -246,7 +244,7 @@ Note that Portainer comes pre-installed on your Duckiebot, so you don't need to 
 
 ## Further resources
 
-There is much more that you can learn to do with Docker. 
+There is much more that you can learn to do with Docker.
 
 Here are some resources you can look up:
 

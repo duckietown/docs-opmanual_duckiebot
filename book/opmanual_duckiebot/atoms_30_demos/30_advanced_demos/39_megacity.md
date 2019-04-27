@@ -2,8 +2,6 @@
 
 This is the description of the great and marvelous megacity demo.
 
-Maintainer: Gianmarco Bernasconi
-
 <div class='requirements' markdown="1">
 
 Requires: Fully set up Duckiebots
@@ -14,7 +12,7 @@ Results: One or more Duckiebot safely navigating in Duckietown.
 
 </div>
 
-Warning: This demo is designed to be used in robotariums, by expert users. Make sure you have the experience and the hardware to fully capture the potential of the demo.
+Warning: This is an advanced demo. Make sure you have the experience and the hardware to fully capture its potential.
 
 ## Video of expected results {#demo-megacity-expected}
 
@@ -26,7 +24,7 @@ Warning: This demo is designed to be used in robotariums, by expert users. Make 
 
 ## Duckietown setup notes {#demo-megacity-duckietown-setup}
 
-To run this demo, you can push your fantasy to the limit by building the Duckietown. The demo supports (almost) everything that is currently implemented. Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications).
+To run this demo, you can push your fantasy to the limit by building the Duckietown. The demo supports (almost) everything that is currently implemented. Make sure that your Duckietown complies with the appearance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications).
 
 
 ## Duckiebot setup notes {#demo-megacity-duckiebot-setup}

@@ -1,8 +1,6 @@
-# SD card flashing troubleshooting {#setup-troubleshooting-flashing status=draft}
+# SD card flashing troubleshooting {#setup-troubleshooting-flashing status=ready}
 
-What to do if you cannot complete the flashing procedure. 
-
-Assigned: Aleks
+What to do if you cannot complete the flashing procedure.
 
 ## "DTShell object has no attribute sprint" when using `dts tok set`
 
@@ -15,5 +13,5 @@ You have to completely reinstall `dts` and its commands. Do that by:
 ## "Bad archive" when using `dts init_sd_card`
 
 Symptom: The `dts init_sd_card` command exits with error "Bad archive"
- 
+
 Resolution: It usually means that you don't have enough disk space on your laptop. Free up some space and try again.

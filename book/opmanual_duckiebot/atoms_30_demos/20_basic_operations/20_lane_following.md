@@ -2,8 +2,6 @@
 
 This is the description of lane following demo.
 
-Maintainer: Gianmarco Bernasconi
-
 <div class='requirements' markdown="1">
 
 Requires: Wheels calibration completed [wheel calibration](#wheel-calibration)

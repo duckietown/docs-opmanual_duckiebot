@@ -1,7 +1,5 @@
 # Duckietown account {#dt-account status=ready}
 
-Assigned: Andrea Censi
-
 This section describes how to register for the Duckietown account
 and set up the authentication token.
 
@@ -46,19 +44,19 @@ Note: It may take up to 5 minutes after first creating your account for a token 
 Use the command
 
     laptop $ dts tok set
-    
+
 and follow the prompt.
 
 
 Then the following command should work:
 
     laptop $ dts challenges info
-    
+
 and give a similar output to:
- 
+
     You are succesfully authenticated.
-     
+
        name: ![Your name]
       login: ![username]
-   
+
         uid: ![user ID]

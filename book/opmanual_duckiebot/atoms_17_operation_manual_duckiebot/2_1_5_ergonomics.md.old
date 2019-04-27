@@ -1,7 +1,4 @@
-# Interlude: Ergonomics {#ergonomics status=ready}
-
-Assigned: Andrea Censi
-
+# Interlude: Ergonomics {#ergonomics status=deprecated}
 
 <div class='requirements' markdown="1">
 
@@ -45,6 +42,3 @@ You haven't created another hostname, just an alias for SSH.
 
 However, you can use the alias with all the tools that rely
 on SSH, including `rsync` and `scp`.
-
-
-
