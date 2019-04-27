@@ -18,7 +18,7 @@ You can acquire Duckiebots in two ways.
 
 ## Acquiring the parts for a `DB18` {#db-opmanual-get-db18 status=ready}
 
-This hardware can be acquired by contacting directly the [Duckietown project](https://www.duckietown.org/about/hardware).
+Note: This hardware can be acquired by contacting directly the [Duckietown project](https://www.duckietown.org/about/hardware).
 
 The `DB18` configuration has the same functionalities of a fully equipped `DB17-l` Duckiebot.
 
