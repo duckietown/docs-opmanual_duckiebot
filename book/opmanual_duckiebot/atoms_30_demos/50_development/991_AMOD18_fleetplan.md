@@ -1,4 +1,4 @@
-# AMOD18 Fleet Management {#demo-fleetplan status=draft}
+# AMOD18 Fleet Management {#demo-fleetplan status=beta}
 
 
 This is a demonstration for running the Duckietown Fleet Management Simulator for comparing different dispatching algorithms in real time. We focus our steps to run a baseline dispatcher with the fplan simulator, which majorly consists of a dynamics engine of duckiebots and a visualization of their output in Rviz.
