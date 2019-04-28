@@ -248,7 +248,7 @@ There is much more that you can learn to do with Docker.
 
 Here are some resources you can look up:
 
-- [Duckietown Containerization manual](+software_devel#part:docker-devel);
+- [Duckietown Introduction to Docker for Robotics and Machine Learning](+software_devel#docker-intro);
 - [Docker official Get Started tutorial](https://docs.docker.com/get-started/);
 - [Docker Curriculum](https://docker-curriculum.com/);
 - *Docker Deep Dive*, by Nigel Poulton.
