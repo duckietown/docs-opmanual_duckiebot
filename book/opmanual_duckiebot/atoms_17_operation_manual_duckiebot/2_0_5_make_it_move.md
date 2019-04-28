@@ -327,7 +327,7 @@ If `rqt_console` does not show any message, check out the *Troubleshooting* sect
 You can use <kbd>Ctrl</kbd>-<kbd>C</kbd> at the terminal where `roslaunch` was executed to stop all the
 nodes launched by the launch file.
 
-See also: For more information about `rqt_console`, see [](+docs-software_reference#rqt_console).
+See also: For more information about `rqt_console`, see [](+software_reference#rqt_console).
 
 ##### Troubleshooting
 
