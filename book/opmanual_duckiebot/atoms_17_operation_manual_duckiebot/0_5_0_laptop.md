@@ -1,12 +1,12 @@
 # Laptop Setup {#laptop-setup status=ready}
 
-Assigned: Andrea Censi
+This page is for the Duckiebot `DB18` configuration.
 
-This page is for the `DB18` configuration used in classes in 2018. 
-
-For last year's instructions, see [here](https://docs.duckietown.org/DT17/).
+For previous year's instructions, see [here](https://docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown='1'>
+
+Requires: A Duckiebot in configuration `DB18`
 
 Requires: A laptop with free disk space.
 
@@ -18,10 +18,10 @@ Results: A laptop ready to be used for Duckietown.
 
 </div>
 
-  
 
 
-## Minimal Laptop Requirements {#laptop-setup-reqs} 
+
+## Minimal Laptop Requirements {#laptop-setup-reqs}
 
 These installation steps make sure that you have a minimal "sane" environment, which includes:
 
@@ -30,7 +30,7 @@ These installation steps make sure that you have a minimal "sane" environment, w
 3. The Duckietown Shell.
 
 
-## Native installation vs virtual machines {#laptop-setup-vms} 
+## Native installation vs virtual machines {#laptop-setup-vms}
 
 Having Ubuntu installed natively on your laptop is recommended but not strictly required.
 
@@ -39,8 +39,8 @@ If you are running Ubuntu in a VM make sure that you are using a Bridged network
 Sometimes when running a VMware machine in a Mac OS host, it is neccessary to have two network adapters: *Share with my Mac* for connecting to the internet and *Bridged Networking* for connecting to the Duckiebot.
 
 TODO: give some pointers for VM.
- 
- 
+
+
 ## Setup for Ubuntu 18 {#laptop-setup-ubuntu-18}
 
 ### System installation {#laptop-setup-ubuntu-18-system}
@@ -55,8 +55,8 @@ See: For instructions, see for example [this online tutorial][tutorial].
 
 Installs pip, git, git-lfs, curl, wget:
 
-    laptop $ sudo apt install -y python-pip git git-lfs curl wget 
-    
+    laptop $ sudo apt install -y python-pip git git-lfs curl wget
+
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
 Install Docker by following the instructions [here][docker_install].
@@ -66,7 +66,7 @@ Install Docker by following the instructions [here][docker_install].
 Adds user to "docker" group:
 
     laptop $ sudo adduser `whoami` docker
-    
+
 Note: you need to *log out and in* for the group change take effect.
 
 
@@ -97,16 +97,16 @@ Other useful packages:
 Edit `~/.profile` and add:
 
     export EDITOR=vim
-    
+
 ### Z shell
 
     $ sudo apt install zsh
     $ chsh -s /usr/bin/zsh
-    
+
 Install `oh-my-zsh`:
 
-    $ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" 
- 
+    $ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
 Edit `~/.zshrc` and set a different theme using:
 
     ZSH_THEME="bureau"
@@ -115,7 +115,7 @@ You can find other themes [at this page](https://github.com/robbyrussell/oh-my-z
 
 Also add the line:
 
-    . ~/.profile 
+    . ~/.profile
 
 
 #### Passwordless sudo
@@ -136,18 +136,17 @@ into
 
 
     $ sudo apt install iotop atop htop
-    
+
 ### For virtual machines
 
 For VMWare, install this:
 
     laptop $ sudo apt install open-vm-tools
 
-    
-    
-## Setting up Mac OS X {#laptop-setup-mac} 
 
-Assigned to: Liam
+
+## Setting up Mac OS X {#laptop-setup-mac}
+
 
 Note: this configuration is not officially supported.
 
@@ -174,7 +173,7 @@ After installing XQuartz, run it in the command line with:
     laptop $ open -a XQuartz
 
 
-Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set. 
+Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set.
 
 It is also recommended that you add the following lines to your `.bashrc` file:
 
@@ -185,11 +184,11 @@ It is also recommended that you add the following lines to your `.bashrc` file:
 These will find your IP and then allow incoming connections to it in order to be able to popup windows from within docker containers.
 
 Alternatively, you can run them each time before you want to use `X11` forwarding.
- 
+
 
 ### Docker {#laptop-setup-mac-docker}
 
-Follow [these instructions](https://docs.docker.com/docker-for-mac/install/) 
+Follow [these instructions](https://docs.docker.com/docker-for-mac/install/)
 
 ### Duckietown Shell {#laptop-setup-mac-shell}
 
@@ -237,7 +236,7 @@ Installs pip, git, git-lfs, docker, duckietown-shell:
 
     laptop $ curl -fsSL https://get.docker.com | sudo bash
     laptop $ sudo usermod -aG docker `whoami`
-    
+
 Note: you need to *log in and out* to have the group change take effect.
 
 
@@ -253,11 +252,7 @@ Edit the file `~/.profile` and add the line:
 
 Note: do not use `sudo pip` to install the Duckietown Shell.
 
- 
+
 Log out and in. This command should succeed:
 
     laptop $ dts version
-
-
-
-

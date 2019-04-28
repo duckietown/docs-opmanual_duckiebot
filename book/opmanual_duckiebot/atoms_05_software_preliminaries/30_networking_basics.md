@@ -1,4 +1,1 @@
-# Networking basics {#preliminaries-networking status=draft}
-
-Assigned: OPEN
-
+# Networking basics {#preliminaries-networking status=beta}

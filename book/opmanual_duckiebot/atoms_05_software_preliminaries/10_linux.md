@@ -1,22 +1,20 @@
-# Linux basics {#preliminaries-linus status=draft}
-
-Assigned: Russell Buchanan
+# Linux basics {#preliminaries-linux status=ready}
 
 Linux is a group of free and open-source software operating systems built around the Linux kernel first released in 1991. Typically, Linux is packaged in a form known as a Linux distribution such as Fedora or Ubuntu (the latter one is what we use in this course).
 
 
 ## Ubuntu
 
-As of this writing the most recent version of Ubuntu is 18.04 LTS (Long Term Service) which will be supported until April 2023. However it is still very new so we recomend installing Ubuntu 16.04 LTS which will be supported until April 2021.
+As of this writing the most recent version of Ubuntu is 18.04 LTS (Long Term Service) which will be supported until April 2023. However it is still very new so we recommend installing Ubuntu 16.04 LTS which will be supported until April 2021.
 
 
 ## Installation
 
-It is highly recomended to install Ubuntu directly on your laptop or as a dual boot operating system alongside your exisiting OS. However we also provide some guidance on installing Ubuntu within a Virtual Enviornment on your laptop.
+It is highly recommended to install Ubuntu directly on your laptop or as a dual boot operating system alongside your existing OS. However we also provide some guidance on installing Ubuntu within a Virtual Environment on your laptop.
 
 ### Dual Boot
 
-* First you need to download a .iso image file which contains the version of Ubuntu you want. Here is [16.04 LTS](http://releases.ubuntu.com/16.04/) make sure to download the desktop image. 
+* First you need to download a `.iso` image file which contains the version of Ubuntu you want. Here is [16.04 LTS](http://releases.ubuntu.com/16.04/) make sure to download the desktop image.
 * Next, you need a free USB drive with at least 2GB of space. The drive will be completely written over.
 * You need some software to write the .iso to the USB. If on Windows you can use [Rufus](https://rufus.ie/)
 * Create the bootable USB drive, disconnect the USB then reconnect to your computer.
@@ -28,7 +26,7 @@ It is highly recomended to install Ubuntu directly on your laptop or as a dual b
 
 ### Virtual Machine
 
-* First you need to download a .iso image file which contains the version of Ubuntu you want. Here is [16.04 LTS](http://releases.ubuntu.com/16.04/) make sure to download the desktop image. 
+* First you need to download a .iso image file which contains the version of Ubuntu you want. Here is [16.04 LTS](http://releases.ubuntu.com/16.04/) make sure to download the desktop image.
 * Download you desired Virtual Machine such as Virtual Box
 
 ## Tutorial

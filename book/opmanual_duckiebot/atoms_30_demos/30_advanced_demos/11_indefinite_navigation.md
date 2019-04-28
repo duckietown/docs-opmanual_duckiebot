@@ -2,8 +2,6 @@
 
 This is the description of the indefinite navigation demo.
 
-Maintainer: Gianmarco Bernasconi
-
 <div class='requirements' markdown="1">
 
 Requires: [Wheel calibration](#wheel-calibration) completed.

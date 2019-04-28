@@ -1,10 +1,10 @@
 # Making your Duckiebot move {#rc-control status=ready}
 
-Assigned: Breandan Considine, Liam Paull, Andrea F. Daniele
-
-This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](https://docs.duckietown.org/DT17/).
+This page is for Duckiebots in `DB18` configuration. For previous year's instructions see [here](https://docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown='1'>
+
+Requires: A Duckiebot in `DB18` configuration.
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
