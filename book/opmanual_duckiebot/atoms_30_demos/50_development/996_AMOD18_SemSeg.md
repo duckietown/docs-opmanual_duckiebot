@@ -1,4 +1,4 @@
-# AMOD18 SemSeg {#demo-semseg status=draft}
+# AMOD18 SemSeg {#demo-semseg status=beta}
 
 <div class='requirements' markdown="1">
 

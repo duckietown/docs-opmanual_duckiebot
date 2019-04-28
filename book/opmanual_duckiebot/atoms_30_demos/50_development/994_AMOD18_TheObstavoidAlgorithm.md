@@ -2,7 +2,7 @@
      <img src="994_AMOD18_TheObstavoidAlgorithm/obst_avoid_logo.png" style='width: 30em'/>
 </div>
 
-# AMOD18 The Obstavoid Algorithm {#demo-theobstavoidalgorithm status=draft}
+# AMOD18 The Obstavoid Algorithm {#demo-theobstavoidalgorithm status=beta}
 
 [YouTube, The Obstavoid Algorithm](https://youtu.be/zHMXoAidxT4)
 
@@ -131,15 +131,15 @@ In conclusion, with the Obstavoid Algorithm the human influence on scenario anal
 Our pipeline is divided up into two main nodes which communicate via topic communication to the simulation (or duckiebot in the future).
 
 **/trajectory_creator_node [frequency: 10hz]**
-* **Input**: */flock_simulator/ state* and */flock_simulator/street_obstruction*: These topics contain position, veloccity and size infromation of all obstacles as well as information about the street the actor is at the moment. 
-* **Computation**: 
+* **Input**: */flock_simulator/ state* and */flock_simulator/street_obstruction*: These topics contain position, veloccity and size infromation of all obstacles as well as information about the street the actor is at the moment.
+* **Computation**:
 **cost_grid_populator:** This manipulator uses the information safed in the obstacles and evaulates the cost function at the discretized points of the cost_grid.
 **cost_grid_solver:** This manipulator finds an optimal path in the cost_grid while minimizing total cost.
 * **Output:** */obst_avoid/trajectory*: This topic contains a target trajectory for the current cost_grid.
 
 **/trajectory_sampler_node [frequency: 10 hz]**
 * **Input**: */obst_avoid/trajectory*: This topic contains a target trajectory for the current cost_grid.
-* **Computation**: 
+* **Computation**:
 **trajectory_sampler:** This manipulator uses the trajectory and derives the steering commands for the actor duckiebot.
 * **Output:** */obst_avoid/trajectory*: This topic contains the current target linear and angular velocity of the bot.
 
@@ -147,7 +147,7 @@ Our pipeline is divided up into two main nodes which communicate via topic commu
 
 The modular architecture allow for improving the code simultaneously on multiple parts.
 
-* *test the pipeline on a real demo*: Currently due to delay and inaccuracies of the duckietown perception pipeline our approach could not be tested on a real duckiebot. 
+* *test the pipeline on a real demo*: Currently due to delay and inaccuracies of the duckietown perception pipeline our approach could not be tested on a real duckiebot.
 
 * *test different cost_functions*: Currently the pipeline differentiates between static cost (given from things that cannot move) and dynamic cost (moving obstacles such as duckies and duckiebots). These functions could be changed and expanded easily to test different cost modeling strategies.
 
@@ -247,7 +247,7 @@ $ source devel/setup.bash
 
 ### Step 3: Running the demo
 
-Run the demo including a visualization in rviz with 
+Run the demo including a visualization in rviz with
 ```
 $ roslaunch duckietown_mplan mplan_withviz_demo.launch demo_num:=5
 
@@ -258,7 +258,7 @@ With the parameter `demo_num` you can select a specific scenario. The scenarios 
  * 3 : blocked road
  * 4 : street passing duckie
  * 5 : multiple obstacles and curves
-  
+
 ### Step 4: Teleoperating another duckiebot (optional)
 
 
@@ -276,13 +276,13 @@ Using 'i', 'j', 'l', ',' you can now teleoperate another duckiebot. With 'q', 'w
  * 1 : Networkx library was not found: Double check that all installations were completed IN the virtual environment, especially the requirements of duckietown-world.
  * 2 : duckietown-world was not found: Double check that all installations were completed IN the virtual environment, especially the setup of duckietown-world.
  * 3 : The duckiebot does not see and crashes in obstacles. Have you spawned too many obstacles / actors? We have seen that too many obstacles / actors introduce a delay into the simulation which makes it impossible to avoid them in an effective manner.
- 
+
 
 ## Demo failure demonstration {#demo-theobstavoidalgorithm-failure}
 
 Our pipeline works with a fixed field of view, which can lead to situations where it is not able to react in time to avoid an obstacle if the obstacle comes to fast from the side.
 
-Fig. 10: Example of a failure 
+Fig. 10: Example of a failure
 <div figure-id="fig:fail_1_to_fast_from_side">
      <img src="994_AMOD18_TheObstavoidAlgorithm/fail_1_to_fast_from_side.gif" style='width: 30em'/>
 </div>
@@ -291,7 +291,7 @@ Fig. 10: Example of a failure
 
 To test the overall efficiency of the code, the performance of the most variable part of the code, the trajectory solver, has been measured for 100 subsequent trajectory generations. As the shortest path problem varies in computational complexity due to the obstacle configuration inside the cost grid, the solution time can vary. Nevertheless, the order of magnitude of the solution times seems not to be crucial, also if run on a Raspberry Pi.
 
-Fig. 11: Graphical analysis of the performance 
+Fig. 11: Graphical analysis of the performance
 <div figure-id="fig:performance_graph">
      <img src="994_AMOD18_TheObstavoidAlgorithm/performance_graph.png" style='width: 30em'/>
 </div>
@@ -317,9 +317,3 @@ Further references, used in development:
 * [5]: Graph algorithms, Wikipedia, see [here](https://en.wikipedia.org/wiki/Category:Graph_algorithms) [Dec. 2018]
 
 * [6]: A* Algorithm, Video by Compterphile, see [here](https://www.youtube.com/watch?v=ySN5Wnu88nE) [Dec. 2018]
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-# Camera Calibration Verification Test {#demo-camcaltest status=beta}
+# Camera Calibration Verification Test {#demo-camcaltest status=ready}
 
 This document provides instructions for testing the camera calibration.
 
@@ -58,7 +58,7 @@ Depending on you network speed it might take some time until the duckiebot downl
 
 **Step 4**: Now Place your duckiebot inside the camera calibration hardware.
 
-Note: If you just executed *Step 3*, a shell inside the container should be already open. 
+Note: If you just executed *Step 3*, a shell inside the container should be already open.
 
 Having the experimental setup ready, we can start testing, enter into the running `camera-test ` container if your are not already in, and launch the test interface.
 

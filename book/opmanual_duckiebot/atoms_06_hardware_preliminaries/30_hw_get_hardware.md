@@ -368,7 +368,7 @@ These items require [soldering](0_5_soldering_boards_c1.md).
      <img src="placeholder.png" style='width: 15em'/>
 </div>
 
-## Caster (`DB17-c`) {#db17-c-description status=beta}
+## Caster (`DB17-c`) {#db17-c-description status=ready}
 
 The caster ([](#fig:caster)) is an `DB17-c` component that substitutes the steel omni-directional wheel that comes in the Magician Chassis package. Although the caster is not essential, it provides smoother operations and overall enhanced Duckiebot performance.
 
@@ -397,3 +397,5 @@ To assemble the caster at the right height we will need to purchase:
         <img src="caster-split-washer.png" style='width: 25em'/>
     </div>
 </div>
+
+Note: The caster wheel use is to be considered experimental and has been dropped in official configurations starting from `DB18`. 

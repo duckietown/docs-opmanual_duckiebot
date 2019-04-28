@@ -42,7 +42,7 @@ To log everything that is being published, run the above docker container but pu
 
 ## Getting the log
 
-If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended). 
+If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended).
 
 See: For unmounting instructions see [here](http://docs.duckietown.org/DT18/software_reference/out/mounting_usb.html).
 
@@ -53,10 +53,10 @@ Doubt: I see the folder but not the logs why ?
 Otherwise you can copy the logs from your robot onto your laptop. Assuming they are on the same network execute:
 
     laptop $ scp ![hostname]/data/logs/* ![path-to-local-folder]
-    
+
 You can also download a specific log instead of all by replacing `*` with the filename.
 
-## Verify a log {#verify-a-log status=beta}
+## Verify a log {#verify-a-log status=ready}
 
 Either copy the log to your laptop or from within your container do
 

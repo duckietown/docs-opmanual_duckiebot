@@ -1,4 +1,4 @@
-# Wheels and motor troubleshooting {#setup-troubleshooting-wheels status=beta}
+# Wheels and motor troubleshooting {#setup-troubleshooting-wheels status=ready}
 
 ## The Duckiebot does not move as expected {#troubleshooting-controller status=ready}
 

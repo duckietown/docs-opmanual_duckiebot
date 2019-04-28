@@ -22,7 +22,7 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
 
 
 
-## Option 1 - Pure Docker {#make-it-move_docker status=beta}
+## Option 1 - Pure Docker {#make-it-move_docker status=ready}
 
 
 ### Run the `roscore` container
@@ -140,7 +140,7 @@ Note: If the above doesn't work, try running the command line interface version 
     laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
 
-## Option 2 - Docker + ROS {#make-it-move_docker_ros status=beta}
+## Option 2 - Docker + ROS {#make-it-move_docker_ros status=ready}
 
 Run the base image on the duckiebot:
 
