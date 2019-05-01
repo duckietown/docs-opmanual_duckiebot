@@ -35,6 +35,7 @@ The important options are:
     --linux-password   default: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
+    --aido             default: False # loads only the things needed for an AI-DO submission
 
 For a full list of the options, run
 
