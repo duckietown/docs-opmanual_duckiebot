@@ -19,31 +19,9 @@ It might be useful to do a quick camera hardware check as documented in [](#howt
 
 
 The imagery is streaming from your Duckiebot by default on startup. 
-
-
-
-Run a base image on your laptop with:
+To see it, run a base image on your laptop with:
 
     laptop: dts start_gui_tools ![DUCKIEBOT_NAME]
-
-
-You should see of output that ends with:
-
-    WARN: [/duckiebot/cam_info_reader_node] ==============CompressedImage
-    INFO: [/duckiebot/camera_node] Initializing......
-    INFO: [/duckiebot/camera_node] ~framerate_high = 30
-    INFO: [/duckiebot/camera_node] ~framerate_low = 15
-    INFO: [/duckiebot/camera_node] ~res_w = 640
-    INFO: [/duckiebot/camera_node] ~res_h = 480
-    INFO: [/duckiebot/camera_node] Initialized.
-    INFO: [/duckiebot/camera_node] Start capturing.
-    INFO: [/duckiebot/camera_node] Published the first image.
-
-
-Now start the GUI tools container in a different terminal:
-
-
-    laptop $ dts start_gui_tools ![hostname]
 
 
 The container will start. At the prompt, run:
@@ -53,10 +31,30 @@ The container will start. At the prompt, run:
 
 
 The command should open a window where you can view the image.
-You have to select the right topic from the dropdown menu.
+You have to select the right topic from the dropdown menu:
+
+<figure>
+    <figcaption>The `rqt_image_view` window with dropdown menu</figcaption>
+    <img style='width:8em' src="rqt_image_view.png"/>
+</figure>
 
 
-## Viewing the image stream on the Dashboard
+### Troubleshooting
+
+Symptom: I don't see any image
+
+Reolution: Check that the `duckiebot-interface` is running
+
+Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+
+You call also determine this by running:
+
+    $ docker -H ![DUCKIEBOT_NAME].local ps
+
+and look at the output to find the Duckiebot interface container and verify that it is running. 
+
+
+## Viewing the image stream on the Dashboard {#image-dashboard status=beta}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
@@ -89,6 +87,7 @@ Note: If you see a black image in the camera block, make sure that you removed t
 protective cap that covers the camera lens of your Duckiebot.
 
 
+
 ## Verifying the output by using the ROS utilities
 
 Use the commands below to check the data streams in ROS.
@@ -106,7 +105,6 @@ You should see at least the following topics:
 
     /![hostname]/camera_node/camera_info
     /![hostname]/camera_node/image/compressed
-    /![hostname]/camera_node/image/raw
     /rosout
     /rosout_agg
 

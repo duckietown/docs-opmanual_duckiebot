@@ -62,7 +62,7 @@ If, for some reason, you cannot get the window to open, run the command with the
     laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
 
-Warning: This does not currently work on Mac OSX
+Warning: This does not currently work on Mac OSX - need to fix
     
 
 
