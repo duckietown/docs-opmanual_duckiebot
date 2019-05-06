@@ -1,6 +1,6 @@
-# AMOD18 Planning Under Uncertainty {#demo-planningunderuncertainty status=draft}
+# AMOD18 Planning Under Uncertainty {#demo-planningunderuncertainty status=beta}
 
-**Planning under uncertainty** (observation uncertainty) is a simulation-based project for the AMOD-Duckietown Fall 2018 course at ETH Zurich. This document presents both `docker` and `ros` based instructions to run the demo. A more in-depth description of the project is available towards the end of this document. 
+**Planning under uncertainty** (observation uncertainty) is a simulation-based project for the AMOD-Duckietown Fall 2018 course at ETH Zurich. This document presents both `docker` and `ros` based instructions to run the demo. A more in-depth description of the project is available towards the end of this document.
 
 ## Planning under Uncertainty Demo
 
@@ -94,7 +94,7 @@ laptop $ mkdir -p ~/catkin_ws/src
 laptop $ cd ~/catkin_ws/src
 ```
 
-Step 2: Clone the following repo [duckietown-uplan](https://github.com/duckietown/duckietown-uplan) 
+Step 2: Clone the following repo [duckietown-uplan](https://github.com/duckietown/duckietown-uplan)
 
 ```
 laptop $ git clone https://github.com/duckietown/duckietown-uplan
@@ -128,12 +128,12 @@ Note:  YOU MUST BE ABLE TO IMPORT `duckietown_world` **SUCCESSFULLY ** to launch
 
 For even further experimentation, ou can edit the following parameters and observe how the planned path and the velocities along the path change accordingly:
 
-* min. velocity, max. velocity, discretization of the velocity space 
-* graph augmentation parameters like number of extra lanes to the right, number of extra lanes to the left and number of control point to spawn between two original control points. 
+* min. velocity, max. velocity, discretization of the velocity space
+* graph augmentation parameters like number of extra lanes to the right, number of extra lanes to the left and number of control point to spawn between two original control points.
 * duckiebot width and height
 * field-of-view of each duckiebot
 * initial obstacle probability to consider (0 to 1)
-* duckietown map 
+* duckietown map
 
 Note: Augmenting the graph basically means how many paths the duckiebot will consider when planning under uncertainity. (The more you augment the graph, the slower the demo will be since there will be more control points to consider while planning)
 
@@ -150,9 +150,9 @@ Note: Augmenting the graph basically means how many paths the duckiebot will con
 
 ### Troubleshooting {#demo-planningunderuncertainty-troubleshooting}
 
-Having followed the `docker` instructions to run the demo, everything must run smoothly. 
+Having followed the `docker` instructions to run the demo, everything must run smoothly.
 
-``` 
+```
 laptop $ No protocol specified
 rqt: cannot connect to X server unix:0
 ```
@@ -173,7 +173,7 @@ laptop $ xhost -local:root
 
 For the `ROS`- only instructions, common symptoms include:
 
-Symptom: problems with `duckietown_world` 
+Symptom: problems with `duckietown_world`
 
 Resolution:  Install using pip with `--user`
 
@@ -187,7 +187,7 @@ Resolution: make sure you installed `git-lfs`
 
 ```
 laptop $ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-laptop $ sudo apt-get install  -y python-pip git git-lfs 
+laptop $ sudo apt-get install  -y python-pip git git-lfs
 ```
 
 ### Demo failure  {#demo-planningunderuncertainty-failure}
@@ -210,7 +210,7 @@ The augmentified pose graph network is built from the original lane control poin
 
 **Collision-free shortest path planning**
 
-The collision matrix is built from the intersection of the possible footprints of the duckiebots in the map. 
+The collision matrix is built from the intersection of the possible footprints of the duckiebots in the map.
 
 $$
 C_{ij} = 1 \ if \ F(q_{1}) \cap F(q_{2})
@@ -240,7 +240,7 @@ For the planning algorithm to know how to plan for a good velocity profile we us
 * $|\Delta v|$:  changes in velocity from node to node
 * $\Delta u$: The difference in uncertainty from node to node
 * $u$: the uncertainty level
-* $v$: the normalized velocity 
+* $v$: the normalized velocity
 * $|e|$: error between reference and actual speed (normalized) (reference is taken as $v(max)$, this makes us go as fast as possible given that there is no uncertainty)
 
 The current implemented cost function is:
@@ -275,23 +275,23 @@ We propose a planning algorithm that outputs a trajectory and corresponding velo
 
 We predefine “legal” routes a duckiebot can take, including the ones at intersections. Each route is composed of several nodes and edges connecting them which are then further subdivided into a predefined number of line-segments. These predefined routes allow the duckiebot to go in a violating lane for example to pass another duckiebot or pass one.
 
-Our proposed planner assigns a cost for each of the control points (nodes) taking into consideration the various degrees of uncertainty, and plan a path to goal state. A simple **A\* ** algorithm will be then used to define a velocity profile for the path calculated by the planner. 
+Our proposed planner assigns a cost for each of the control points (nodes) taking into consideration the various degrees of uncertainty, and plan a path to goal state. A simple **A\* ** algorithm will be then used to define a velocity profile for the path calculated by the planner.
 
 **Initialization:**
 
-All nodes are assigned a fixed value associated with the probability of an obstacle being present at that node. The collision matrix defines the pairs of poses where the footprint of one duckiebot in one pose intersects that of another duckiebot in the other pose of that pair. The occupancy vector defines the set/vector of poses (graph nodes) that are occupied (through the footprint of the duckiebot). This vector is updated to include the footprint of duckiebots in the planning duckiebot's field of view. 
+All nodes are assigned a fixed value associated with the probability of an obstacle being present at that node. The collision matrix defines the pairs of poses where the footprint of one duckiebot in one pose intersects that of another duckiebot in the other pose of that pair. The occupancy vector defines the set/vector of poses (graph nodes) that are occupied (through the footprint of the duckiebot). This vector is updated to include the footprint of duckiebots in the planning duckiebot's field of view.
 
 **Planning:**
 
 Given a start and end goal, the planner outputs a shortest path using Dijkstra's algorithm.
 
-At each timestep the duckiebot updates its probability according to the obstacles it observes in its field view. Nodes with obstacles are assigned an uncertainty of 1 and a cost of infinity. Obstacle free nodes are assigned a zero cost and zero uncertainty probability. 
+At each timestep the duckiebot updates its probability according to the obstacles it observes in its field view. Nodes with obstacles are assigned an uncertainty of 1 and a cost of infinity. Obstacle free nodes are assigned a zero cost and zero uncertainty probability.
 
-Once the probabilities and collision matrices are updated in the observation model, the planning algorithm replans a path to the goal. The `VelocityProfiler` takes in this path and outputs a velocity profile for the given trajectory. This process persists until the goal is reached. 
+Once the probabilities and collision matrices are updated in the observation model, the planning algorithm replans a path to the goal. The `VelocityProfiler` takes in this path and outputs a velocity profile for the given trajectory. This process persists until the goal is reached.
 
 **Visualization:**
 
-The trajectory output and the uncertainties calculated for the duckiebot are then published using markers and subscribe to `rviz`. 
+The trajectory output and the uncertainties calculated for the duckiebot are then published using markers and subscribe to `rviz`.
 The trajectory path is colorized according to the velocity profile; high to low velocities are mapped from red to blue shades.
 The uncertainties at each node are also colorized according to their magnitudes. Red shades represents higher probabilities of an obstacle being present and bluer shades represent unoccupied nodes.
 
@@ -311,12 +311,12 @@ The `ros-uplan` package contains all the necessary nodes needed for a proper sim
 **How it works**
 
 To understand the working of this package, you need a basic understanding of the
-[ROS Transform library](http://wiki.ros.org/tf2) and 
+[ROS Transform library](http://wiki.ros.org/tf2) and
 [RViz Markers](http://wiki.ros.org/rviz/DisplayTypes/Marker). This package reads
 the map having name `map_name` from `duckietown-world` and broadcasts markers
-([MESH_RESOURCE](http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D)) 
-for each element of the map. Each class of elements (tiles, road signs, etc.) is 
-published in a different namespace under the transform `/map` to provide the 
+([MESH_RESOURCE](http://wiki.ros.org/rviz/DisplayTypes/Marker#Mesh_Resource_.28MESH_RESOURCE.3D10.29_.5B1.1.2B-.5D))
+for each element of the map. Each class of elements (tiles, road signs, etc.) is
+published in a different namespace under the transform `/map` to provide the
 feature of turning off a certain category of map elements.
 The package uses two custom messages: `duckieData.msg` and `DuckieStruct.msg`
 More information found here: [ROS Custom Messages](http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv).
@@ -343,7 +343,7 @@ In `/launch`:
 
 `planningUncertainty.launch`: This is the main launch file used to execute planning and visualization. It launches all python scripts/ROS nodes in `/src` and visualization nodes in `/duckietown_visualization`. It allows to specify `duckietown_link` frame and the map type to be used.
 
-In `/msg`: 
+In `/msg`:
 
 There are two custom messages: `duckieData.msg` and `duckieStruct.msg`
 
@@ -363,10 +363,10 @@ Once a collision free path is available, the uncertainties are calculated and  t
 Go through the publish_duckieData.py in the package ros-uplan folder to understand
 how to use `uplan-visualization`. Here you will populate the duckie trajectory/velocity and uncertainty values and publish them as markers to RViz, using `uncertainty_planning` package.
 
-* First, create a list of duckiebot names which you want to visualize in a yaml 
+* First, create a list of duckiebot names which you want to visualize in a yaml
 file similar to `uplan-visualization/config/example.yaml`
-* For each duckiebot, publish a transform from frame `duckiebot_link` to that 
-duckiebot. `duckiebot_link` is a fixed frame which is the origin of your 
+* For each duckiebot, publish a transform from frame `duckiebot_link` to that
+duckiebot. `duckiebot_link` is a fixed frame which is the origin of your
 measurements for each duckiebot.
 * In the `publish_trajec.py` and `publish_uncertainty.py`  nodes, populate the duckieStruct meesages and publish on corresponding topics.
 * The trajectory is plotted using the line marker_array and uncertainty using Cubelist `marker_array`.
@@ -377,7 +377,7 @@ measurements for each duckiebot.
 
 We can clearly see that duckiebots running the path planning algorithm successfully manage to avoid other duckiebots (be it stationary or dynamic).
 
-* **Goal 2:** Velocity profiler 
+* **Goal 2:** Velocity profiler
 
 The velocity profiling algorithm adds an additional measure of safety in that it limits the velocity of the duckiebot in regions where it is not so certain about its environment. Below are examples of both the skeleton graph visualization and the `rviz` visualization of the planning and velocity profiling algorithms.
 
@@ -402,4 +402,3 @@ We mention a few areas where the code/architecture of the simulator can be furth
 
 1. [Lavalle's book](http://planning.cs.uiuc.edu/book.pdf)
 2. [Safe motion planning for autonomous vehicles using intent-aware dynamic shadow regions](https://www.youtube.com/watch?v=3w6zQF9HOAM)
-

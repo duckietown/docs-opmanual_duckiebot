@@ -43,7 +43,7 @@ Note: You can always run the above command to get a terminal inside a container 
 
 ## Getting the log
 
-If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended). 
+If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended).
 
 See: For unmounting instructions see [here](+software_reference#mounting_usb)
 
@@ -53,10 +53,10 @@ Otherwise, if you are running the file server, you should see you logs at `http:
 Otherwise you can copy the logs from your robot onto your laptop. Assuming they are on the same network execute:
 
     laptop $ scp ![hostname]/data/logs/* ![path-to-local-folder]
-    
+
 You can also download a specific log instead of all by replacing `*` with the filename.
 
-## Verify a log {#verify-a-log status=beta}
+## Verify a log {#verify-a-log status=ready}
 
 Either copy the log to your laptop or from within your container do
 

@@ -1,12 +1,12 @@
 # Demo unsupervised image segmentation {#demo-kmeans status=beta}
 
-This demo shows implemenation of k-means algorithm on the duckiebot for image segmentation.
+This demo shows implementation of k-means algorithm on the Duckiebot for image segmentation.
 
-In order to complete the procedure, you need your duckiebot in configuration DB18 until unit B-11 with its camera calibrated.
+In order to complete the procedure, you need your Duckiebot in configuration DB18 until unit B-11 with its camera calibrated.
 
 <div class='requirements' markdown="1">
 
-Requires: The duckiebot in configuration DB18 section B-11
+Requires: The Duckiebot in configuration DB18 section B-11
 
 Requires: Camera calibration completed.
 
@@ -21,7 +21,7 @@ Check: the camera is calibrated
 
 ## Demo instructions {#demo-kmeans-run}
 
-**Step 1**: Now we need to run the docker container to be able to launch the camera_kmeans node on our duckiebot. Check if DOCKER_HOST variable is set
+**Step 1**: Now we need to run the docker container to be able to launch the camera_kmeans node on our Duckiebot. Check if DOCKER_HOST variable is set
 
     laptop $ echo $DOCKER_HOST
 
@@ -54,8 +54,8 @@ This will start a rqt terminal, where you can see the image output after the k-m
 
 Symptom: Cannot see image in the rqt.
 
-Resolution: Check that you are receiving the compressed image using rostopic list on the duckiebot.
+Resolution: Check that you are receiving the compressed image using rostopic list on the Duckiebot.
 
 Symptom: Image is too slow
 
-Resolution: Thats because k-means is computationally intensive. Increase the reduction parameter and check if you can run it faster
+Resolution: That's because k-means is computationally intensive. Increase the reduction parameter and check if you can run it faster

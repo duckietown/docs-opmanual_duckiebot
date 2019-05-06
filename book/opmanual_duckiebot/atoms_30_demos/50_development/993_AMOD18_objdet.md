@@ -1,4 +1,4 @@
-# AMOD18 To Be Detected {#demo-objdet status=draft}
+# AMOD18 To Be Detected {#demo-objdet status=beta}
 
 <div figure-id="fig:1" figure-caption="">
      <img src="TBD_images/Logo.png" style='width: 30em'/>

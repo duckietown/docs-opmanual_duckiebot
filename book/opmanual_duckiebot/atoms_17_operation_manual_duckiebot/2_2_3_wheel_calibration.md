@@ -1,7 +1,5 @@
 # Wheel calibration {#wheel-calibration status=ready}
 
-Assigned: Jacopo Tani
-
 <div class='requirements' markdown='1'>
 
 Requires: You can make your robot move as described in [](#sec:rc-control).
@@ -20,7 +18,7 @@ For the theoretical treatment of the odometry calibration see [](+learning_mater
 
 ## Step 1: Make your robot move
 
-Follow instructions in [](#sec:rc-control) to make your robot movable either with a joystick or the keyboard. 
+Follow instructions in [](#sec:rc-control) to make your robot movable either with a joystick or the keyboard.
 
 Note: Whatever container you used in [](#sec:rc-control) needs to have the `-v /data:/data` flag set or the calibration will not persist on your Duckiebot.
 
@@ -28,7 +26,7 @@ Note: Whatever container you used in [](#sec:rc-control) needs to have the `-v /
 ## Step 2
 
 
-### Docker 
+### Docker
 
 If you just finished the [camera calibration step](#camera-calib) then you have a docker terminal ready to use on your laptop.  
 

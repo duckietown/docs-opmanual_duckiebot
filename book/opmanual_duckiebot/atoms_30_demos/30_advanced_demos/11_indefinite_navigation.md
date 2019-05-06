@@ -2,8 +2,6 @@
 
 This is the description of the indefinite navigation demo.
 
-Maintainer: Gianmarco Bernasconi
-
 <div class='requirements' markdown="1">
 
 Requires: [Wheel calibration](#wheel-calibration) completed.
@@ -77,7 +75,7 @@ A shell will open in the new container.
 
 **Step 4**: Launch the demo in the container by:
 
-    duckiebot-container $ source /docker/env.sh
+    duckiebot-container $ source /home/software/docker/env.sh
     duckiebot-container $ roslaunch duckietown_demos indefinite_navigation.launch
 
 Note: Many nodes need to be launched, so it will take quite some time.

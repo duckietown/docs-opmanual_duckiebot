@@ -1,18 +1,18 @@
-# System Identification {#demo-sysidII status=beta}
+# System Identification {#demo-sysidII status=ready}
 
 This document provides instructions for performing an offline system identification procedure. The identification procedure is completed in three stages.
 
-The first stage is the data acquisition stage where we send certain input patterns to our duckiebot and record the camera images along with the input commands sent into a rosbag.
+The first stage is the data acquisition stage where we send certain input patterns to our Duckiebot and record the camera images along with the input commands sent into a rosbag.
 
 In the second stage, we post-process the recorded rosbag to translate camera images to local pose estimations.
 
-In the third stage, post-processed rosbag is passed to the optimization script which performs nonlinear-optimization to estimate the parameters of duckiebot's model. The resulting optimal model parameters are saved into a YAML file. We also generate parameter convergence plots, cost convergence plot as well as a plot demonstrating one-step-ahead predictions of the initial and the identified model.
+In the third stage, post-processed rosbag is passed to the optimization script which performs nonlinear-optimization to estimate the parameters of Duckiebot's model. The resulting optimal model parameters are saved into a YAML file. We also generate parameter convergence plots, cost convergence plot as well as a plot demonstrating one-step-ahead predictions of the initial and the identified model.
 
-Finally, we run a test to see if the duckiebot can drive straight with the identified model.
+Finally, we run a test to see if the Duckiebot can drive straight with the identified model.
 
 <div class='requirements' markdown="1">
 
-Requires: A duckiebot version DB-18.
+Requires: A Duckiebot version `DB18`.
 
 Requires: Camera calibration completed.
 
@@ -33,7 +33,7 @@ Requires: Calibration pattern, see below.
 
 Check: the USB plugged in.
 
-Check: the duckiebot has sufficient battery
+Check: the Duckiebot has sufficient battery
 
 ## Abbreviations {#demo-sysidII-abb}
 
@@ -51,7 +51,7 @@ Check that side length of the AprilTag matches the value specified in the settin
 ). Note that we are using the AprilTag with ID 0. If it is not possible to print the AprilTag with with the specified dimension you can manually adjust its value. Note that this needs to be done before starting the post-processing.
 
 
-**Step 1**: SSH into your duckiebot and create the directory for logging.
+**Step 1**: SSH into your Duckiebot and create the directory for logging.
 
     duckiebot $ sudo mkdir /data/logs
 
@@ -59,7 +59,7 @@ Check that side length of the AprilTag matches the value specified in the settin
 
     duckiebot $ sudo mount -t vfat /dev/sda1 /data/logs -o umask=000
 
-**Step 3**: Now we will run the docker container on our duckiebot that contains the data acquisition script. Open a new terminal on your computer. Make sure that `DOCKER_HOST` variable is set by checking
+**Step 3**: Now we will run the docker container on our Duckiebot that contains the data acquisition script. Open a new terminal on your computer. Make sure that `DOCKER_HOST` variable is set by checking
 
     laptop $ echo $DOCKER_HOST
 
@@ -71,9 +71,9 @@ Now, we will run the docker container. Be sure to replace the `DOCKER_CONTAINER`
 
     laptop $ docker -H ![HOST_NAME].local run -it --net host --privileged -v /data/logs:/logs -v /data:/data --memory="800m" --memory-swap="2.8g" --name sysid-pi ![DOCKER_CONTAINER] /bin/bash
 
-Depending on you network speed it might take some time until the duckiebot downloads the container.
+Depending on you network speed it might take some time until the Duckiebot downloads the container.
 
-**Stage 4**: Now Place your duckiebot at a distance of approximately 1 meter in front of the AprilTag as shown in the image ([](#fig:system_identification_apriltag_orientation)).
+**Stage 4**: Now Place your Duckiebot at a distance of approximately 1 meter in front of the AprilTag as shown in the image ([](#fig:system_identification_apriltag_orientation)).
 
 <div class='check' markdown="1">
 Make sure that the AprilTag is oriented exactly the same way as you see in the picture__.
@@ -103,12 +103,12 @@ With data-acquisition interface you can specify
 
 * whether to do another experiment.
 
-You might want to start with a simple step experiment to get a feeling of your duckiebot. Once you run it, you will probably observe that duckiebot drifting to one side. This is expected! We strongly recommend running one ramp-up and one sine experiment as well to provide sufficiently rich data to the optimization procedure.    
+You might want to start with a simple step experiment to get a feeling of your Duckiebot. Once you run it, you will probably observe that Duckiebot drifting to one side. This is expected! We strongly recommend running one ramp-up and one sine experiment as well to provide sufficiently rich data to the optimization procedure.    
 
-It is necessary to have enough data for system identification procedure to work well. Thus we need to make sure that the duckiebot sees the Apriltag during its travel. This can be achieved by adjusting the initial heading of the duckiebot and/or placing the duckiebot off-centered towards the opposite direction. Note that you can also adjust the duration of the input commands. Typically experiments of length 1.5-2.0 seconds are seen to be sufficient.
+It is necessary to have enough data for system identification procedure to work well. Thus we need to make sure that the Duckiebot sees the Apriltag during its travel. This can be achieved by adjusting the initial heading of the Duckiebot and/or placing the Duckiebot off-centered towards the opposite direction. Note that you can also adjust the duration of the input commands. Typically experiments of length 1.5-2.0 seconds are seen to be sufficient.
 
 
-**Step 5**: Currently, the rosbags we recorded only contain compressed images. We have to convert them to local poses before we can feed them into the optimization script. In this section we will see how to do it. Note that, we will execute these steps directly on our duckiebot inside the `sysid-pi` container. Remember that you can always enter into a running container as described at Step 4. Also note that if you want to adjust the default value for the AprilTag, you should do it now. Inside the container, head to `SOFTWARE_ROOT/catkin_ws/src/20-indefinite-navigation/apriltags2_ros/apriltags2_ros/config/tags.yaml` and adjust the value of `Tag0` to what you measure. Note that you have to execute `catkin_make` after making the change.
+**Step 5**: Currently, the rosbags we recorded only contain compressed images. We have to convert them to local poses before we can feed them into the optimization script. In this section we will see how to do it. Note that, we will execute these steps directly on our Duckiebot inside the `sysid-pi` container. Remember that you can always enter into a running container as described at Step 4. Also note that if you want to adjust the default value for the AprilTag, you should do it now. Inside the container, head to `SOFTWARE_ROOT/catkin_ws/src/20-indefinite-navigation/apriltags2_ros/apriltags2_ros/config/tags.yaml` and adjust the value of `Tag0` to what you measure. Note that you have to execute `catkin_make` after making the change.
 
 We start by creating a two folders to store the post-processed bags: training folder, validation folder. Training folder will contain the rosbags that we will pass to the optimization script in the next step. Validation folder will contain a rosbag that will be used for validating the model by generated by the optimization script. Further create a folder to place recorded rosbags for post-processing, we will refer to this particular folder while generating rosbags containing local pose estimation in the next step. Create these folders with,
 
@@ -167,9 +167,9 @@ The program also generates a YAML file named `![HOST_NAME]_kinematic_drive.yaml`
 It is worth noting we provide a package level config file to give user control over some of the internal procedures. For details please see `![PACKAGE_ROOT]/configs/system_identification/`.
 
 
-**Step 8**: Now lets test whether the parameters returned by the optimization script improved the system performance, i.e. whether the duckiebot can drive perform well for certain tasks such as driving straight or following a circle.
+**Step 8**: Now lets test whether the parameters returned by the optimization script improved the system performance, i.e. whether the Duckiebot can drive perform well for certain tasks such as driving straight or following a circle.
 
-Place your duckiebot on the ground, and execute,
+Place your Duckiebot on the ground, and execute,
 
     duckiebot $ roslaunch calibration data_collector.launch veh:=![ROBOT_NAME] use_for:=verification model:=kinematic_drive
 
@@ -185,17 +185,17 @@ Symptom: Logs are created but they are empty.
 
 Resolution: This might be because the Raspberry-Pi did not have enough time to save the data. Please increase `wait_start_rosbag` and `wait_write_rosbag` inside [this script](https://github.com/selcukercan/Software/blob/system-identificiation-v1/catkin_ws/src/05-teleop/calibration/src/data_collector.py).
 
-Symptom: The duckiebot deviates from the trajectory, so that the AprilTag goes out of the camera’s field of view.
+Symptom: The Duckiebot deviates from the trajectory, so that the AprilTag goes out of the camera’s field of view.
 
 Resolution: You can adjust the parameters of each command to maximize the duration
 
-Symptom: There are large discontinuities in the recordings despite the fact that the duckiebot does see the AprilTag most of the time.
+Symptom: There are large discontinuities in the recordings despite the fact that the Duckiebot does see the AprilTag most of the time.
 
-Resolution: One possible cause of this problem is insufficient memory. Please make sure to execute `docker run` command with `--memory="800m" --memory-swap="2.8g"` flags which would tell docker to utilize the swap space. Swap space is created and allocated during the initialization process. The swap space allocation is done by default since 5 October 2018. If you had flashed your SD card prior to that, please reflash your SD card. You can verify that you have swap space by executing `top` command in your duckiebot and inspecting `KiB Swap` section.
+Resolution: One possible cause of this problem is insufficient memory. Please make sure to execute `docker run` command with `--memory="800m" --memory-swap="2.8g"` flags which would tell docker to utilize the swap space. Swap space is created and allocated during the initialization process. The swap space allocation is done by default since 5 October 2018. If you had flashed your SD card prior to that, please reflash your SD card. You can verify that you have swap space by executing `top` command in your Duckiebot and inspecting `KiB Swap` section.
 
 Symptom: My problem is not listed here. How do I get help?
 
-Resolution: Though we tested the system identification procedure multiple times on different duckiebots, it is possible that something did not work for you. Please file an issue on GitHub, [here](https://github.com/selcukercan/Software/issues).
+Resolution: Though we tested the system identification procedure multiple times on different Duckiebots, it is possible that something did not work for you. Please file an issue on GitHub, [here](https://github.com/selcukercan/Software/issues).
 
 ## Demo failure demonstration {#demo-sysidII-failure}
 
