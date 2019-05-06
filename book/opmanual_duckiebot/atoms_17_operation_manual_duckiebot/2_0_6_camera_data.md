@@ -3,9 +3,13 @@
 
 <div class='requirements' markdown='1'>
 
+Requires: A Duckiebot in `DB18` configuration.
+
+Requires: Laptop configured, according to [](#laptop-setup).
+
 Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
-Requires: You have configured Docker communication as documented in [](#docker-setup).
+Result: You can see the output of the camera.
 
 </div>
 
@@ -21,7 +25,7 @@ It might be useful to do a quick camera hardware check as documented in [](#howt
 The imagery is streaming from your Duckiebot by default on startup. 
 To see it, run a base image on your laptop with:
 
-    laptop: dts start_gui_tools ![DUCKIEBOT_NAME]
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
 
 The container will start. At the prompt, run:
@@ -34,8 +38,8 @@ The command should open a window where you can view the image.
 You have to select the right topic from the dropdown menu:
 
 <figure>
-    <figcaption>The `rqt_image_view` window with dropdown menu</figcaption>
-    <img style='width:8em' src="rqt_image_view.png"/>
+    <figcaption>The rqt image view window with dropdown menu</figcaption>
+    <img style='width:12em' src="rqt_image_view.png"/>
 </figure>
 
 

@@ -10,8 +10,6 @@ Requires: Laptop configured, according to [](#laptop-setup).
 
 Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
-Requires: You have configured Docker communication as documented in [](#docker-setup).
-
 Results: You can make your robot move.
 
 </div>
