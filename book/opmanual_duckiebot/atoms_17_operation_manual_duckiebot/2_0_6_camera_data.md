@@ -15,36 +15,17 @@ Requires: You have configured Docker communication as documented in [](#docker-s
 It might be useful to do a quick camera hardware check as documented in [](#howto-mount-camera).
 
 
-## Viewing a Single Image
-These commands assume that you have completed the steps in [](#docker-setup),
-and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
-
-Start the container `rpi-python-picamera`. It reads the camera image and writes it to `/data`.
-
-    laptop $ docker -H ![hostname].local run -d --name picam --device /dev/vchiq -v /data:/data duckietown/rpi-python-picamera:master18
-
-Then point your browser to the address
-
-    http://![hostname].local:8082/image.jpg
-
-and verify that it is the output from your camera.
-
-Now stop the `picam` container:
-
-    laptop $ docker -H ![hostname].local stop picam
-
-warning The `picam` container is just for this example to verify your camera works. You should leave this container stopped if you plan to use the camera in other containers.
-
-
 ## Viewing an Image Stream on Your Laptop {#view-image-using-rqt-image-view}
 
-Start publishing images through ROS on the Duckiebot using
-the container `rpi-duckiebot-ros-picam`:
+
+The imagery is streaming from your Duckiebot by default on startup. 
 
 
-    laptop $ docker -H ![hostname].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18
 
-Note: you need `-v /data:/data` because of the calibration procedure later.
+Run a base image on your laptop with:
+
+    laptop: dts start_gui_tools ![DUCKIEBOT_NAME]
+
 
 You should see of output that ends with:
 

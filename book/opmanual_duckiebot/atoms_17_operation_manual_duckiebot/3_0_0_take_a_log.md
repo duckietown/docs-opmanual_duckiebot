@@ -12,43 +12,43 @@ Result: A verified log.
 
 ## Preparation
 
-Note: If you didn't recently burn your SD card, you may not have the folder. SSH into your robot and execute:
+Note: You may not have the folder. SSH into your robot and execute:
 
     duckiebot $ sudo mkdir /data/logs
 
 Note: It is recommended but not required that you log to your USB and not to your SD card.
 
-See: To mount your USB see [here](http://docs.duckietown.org/DT18/software_reference/out/mounting_usb.html).
+See: To mount your USB see [here](+software_reference#mounting_usb).
 
-
-## Run something on the Duckiebot
-
-For example, if you want to drive the robot around and collect image data. For example run [Lane Following Demo](#demo-lane-following) or the camera and the joystick.
-
-View images on the laptop and verify that indeed your camera is streaming imagery See [](#read-camera-data).
 
 ## Record the log {#record-log}
 
-    laptop $ docker -H ![hostname].local run -it --net host --name logger -v /data/logs:/logs duckietown/rpi-duckiebot-logger:master18
+    laptop $ dts duckiebot demo --demo_name make_log_docker --duckiebot_name ![DUCKIEBOT_NAME]
 
 This will only log the imagery, camera_info, the control commands and a few other essential things.
 
-### Option: Full Logging
 
-To log everything that is being published, run the above docker container but put `/bin/bash` at the end. When inside run
+### Option: Full Logging on the Duckiebot
+
+To log everything that is being published, run the base container on the Duckiebot:
+
+    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME]
+
+When inside run:
 
     duckiebot-container $ make log-full-docker
+
+Note: You can always run the above command to get a terminal inside a container that has the base Duckietown software stack on the robot. 
 
 
 ## Getting the log
 
 If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended). 
 
-See: For unmounting instructions see [here](http://docs.duckietown.org/DT18/software_reference/out/mounting_usb.html).
+See: For unmounting instructions see [here](+software_reference#mounting_usb)
 
 Otherwise, if you are running the file server, you should see you logs at `http://![hostname].local:8082/logs/`
 
-Doubt: I see the folder but not the logs why ?
 
 Otherwise you can copy the logs from your robot onto your laptop. Assuming they are on the same network execute:
 
@@ -69,5 +69,3 @@ Then:
 - verify that the "size" of the log seems "reasonable" - the log size should grow at about 220MB/min
 
 - verify in the output that your camera was publishing very close to **30.0Hz** and verify that you joysick was publishing at a rate between **3Hz** and **6Hz**.
-
-TODO for Andrea Censi: More complex log verification methods.
