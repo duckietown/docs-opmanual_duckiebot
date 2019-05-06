@@ -21,17 +21,79 @@ Results: You can make your robot move.
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).-->
 
 
+## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
 
-## Option 1 - Pure Docker {#make-it-move_docker status=ready}
+Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and run:
+
+    $ dts duckiebot demo --demo_name joystick --duckiebot_name ![DUCKIEBOT_NAME]
+
+and you should be able to move it with the joystick. 
+
+If you would like to move your robot using your laptop, you can run 
+
+    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
+    
+which, after startup should open the interface window that looks like:
+
+<figure>
+    <figcaption>The keyboard control graphical user interface</figcaption>
+    <img style='width:8em' src="keyboard_gui.png"/>
+</figure>
+
+The following keys control the Duckiebot:
+
+<col2 figure-id="tab:virtual_keyboard" figure-caption="Keyboard joystick functions" class="labels-row1">
+    <span>Keys</span>
+    <span>Function</span>
+    <span>ARROW_KEYS</span>
+    <span>Steer your Duckiebot</span>
+    <span>q</span>
+    <span>Quit</span>
+    <span>a</span>
+    <span>Turn on Lane Following</span>
+    <span>s</span>
+    <span>Stop Lane Following</span>
+    <span>i</span>
+    <span>Toggle Anti-instagram</span>
+</col2>
+
+If, for some reason, you cannot get the window to open, run the command with the `--cli` option to get a command line interface:
+
+    laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
 
-### Run the `roscore` container
+Warning: This does not currently work on Mac OSX
+    
 
-Use the following command to run the container that contains `roscore`:
 
-    laptop $ docker -H ![hostname].local run -dit --privileged --name roscore --net host -v /data:/data --restart unless-stopped duckietown/rpi-ros-kinetic-roscore:master18
+### Troubleshooting
 
-If this is the first time you run this, it might take some time to download the container.
+Symptom: The robot doesn't move
+
+Reolution: Check that the `duckiebot-interface` is running
+
+Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+
+You call also determine this by running:
+
+    $ docker -H ![DUCKIEBOT_NAME].local ps
+
+and look at the output to find the Duckiebot interface container and verify that it is running. 
+
+Resolution: One of the base images is out of date
+
+Pull the base images on the Duckiebot:
+
+    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/rpi-duckiebot-base:master19
+    
+and on the laptop:
+
+    $ docker pull duckietown/rpi-duckiebot-base:master19-no-arm
+
+
+<!--
+## Option 2 - with Docker  {#make-it-move_docker status=ready}
+
 
 Verify that the container is running by either using [the Portainer interface](#docker-setup-portainer-interface)
 or by using `docker ps`.
@@ -51,9 +113,9 @@ If you have a joystick, you can use it to make your robot move.
 
 Otherwise, you can use the following instructions to run the demo with
 keyboard control.
+-->
 
-
-### Controlling your robot using the dashboard {#setup-ros-websocket-image}
+## Option 2: Using the dashboard {#setup-ros-websocket-image status=beta}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
@@ -103,42 +165,7 @@ You can now use the arrows on your keyboard to drive your Duckiebot.
 The page contains 4 blocks by default. Feel free to drag them around and rearrange
 them as you please. You can also use the menu button of each block to resize them.
 
-
-### Controlling your robot with your keyboard
-
-On your laptop run:
-
-    laptop $ dts duckiebot keyboard_control ![hostname]
-
-Note: Make sure you enter the Duckiebot's hostname with the same capitalization that you used when setting up the SD card.
-
-Note: Currently not working for Mac OSX - the window pops up but the robot won't move - this is expected for now
-
-TODO: Liam fix this
-
-This will pop open a window where you can use arrows to control the robot.
-
-The following keys are supported:
-
-<col2 figure-id="tab:virtual_keyboard" figure-caption="Keyboard joystick functions" class="labels-row1">
-    <span>Keys</span>
-    <span>Function</span>
-    <span>ARROW_KEYS</span>
-    <span>Steer your Duckiebot</span>
-    <span>q</span>
-    <span>Quit</span>
-    <span>a</span>
-    <span>Turn on Lane Following</span>
-    <span>s</span>
-    <span>Stop Lane Following</span>
-    <span>i</span>
-    <span>Toggle Anti-instagram</span>
-</col2>
-
-Note: If the above doesn't work, try running the command line interface version with:
-
-    laptop $ dts duckiebot keyboard_control ![hostname] --cli
-
+<!--
 
 ## Option 2 - Docker + ROS {#make-it-move_docker_ros status=ready}
 
@@ -266,7 +293,7 @@ Resolution: Check that the joystick has the switch set to the position "x". And 
 Symptom: The left joystick does not work.
 
 Resolution: If the green light on the right to the "mode" button is on, click the "mode" button to turn the light off. The "mode" button toggles between left joystick or the cross on the left.
-
+-->
 
 <!--
 
@@ -292,6 +319,8 @@ As an alternative you can use the `poweroff` command:
 Warning: If you disconnect frequently the cable at the Raspberry Pi's end, you might damage the port.
 
 -->
+
+<!--
 
 ## Watch the program output using `rqt_console`
 
@@ -349,3 +378,5 @@ Resolution: You have not followed the instructions that told you to add the `Hos
 option. Delete `~/.ssh/known_hosts` and fix your configuration.
 
 See: The procedure is documented in [](+software_reference#ssh-local-configuration).
+
+-->

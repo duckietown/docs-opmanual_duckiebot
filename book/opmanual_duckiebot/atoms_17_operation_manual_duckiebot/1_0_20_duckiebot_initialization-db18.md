@@ -79,7 +79,7 @@ You should immediately see the **green** light next to where the SD card was ins
 
 If not, stop, as there is a problem with the SD card initialization (or possibly the PI, but this is unlikely).
 
-Warning: Allow the robot time to boot. On first boot it may take up to 5 mins or more since some things are being configured.
+Warning: Allow the robot time to boot. On first boot it may take up to 20 mins. You will see the LED lights go off when the robot is ready to use. 
 
 Do not power the robot off (by holding the battery button) while this is in process.
 
