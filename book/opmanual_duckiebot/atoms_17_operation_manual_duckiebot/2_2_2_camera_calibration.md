@@ -7,11 +7,10 @@ This section describes the instrinsics and extrinsics calibration procedures.
 Requires: You can see the camera image on the laptop. The procedure is documented in
 [](#read-camera-data).
 
-Requires: You have configured Docker communication as documented in [](#docker-setup).
-
 Requires: You have a camera calibration pattern [](#camera-calibration-pattern-materials).
 
 Results: Calibration for the robot camera.
+
 </div>
 
 
@@ -44,18 +43,6 @@ This is not 100% necessary.
 
 ## Start calibration program
 
-Make sure your Duckiebot is on, and both your laptop and Duckiebot are connected to the duckietown network.
-
-These commands assume that you have completed the steps in [](#docker-setup),
-and in particular that you set `DOCKER_HOST` correctly.
-
-
-Make sure your camera is on and the images are being published to ROS
-using the `rpi-duckiebot-ros-picam` container:
-
-    laptop $ docker -H ![hostname].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data duckietown/rpi-duckiebot-ros-picam:master18
-
-Note in particular the switch `-v /data:/data`. It was not really needed before, but now it is essential because it is this container that will save the intrinsic calibration files to the `/data` directory.   
 
 On your laptop run:
 
