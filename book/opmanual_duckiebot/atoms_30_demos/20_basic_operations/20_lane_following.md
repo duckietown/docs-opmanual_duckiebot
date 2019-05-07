@@ -45,11 +45,11 @@ Assumption about Duckietown:
 
 ### Step 1
 
-Load the new container:
+Run the demo:
 
-    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" --memory-swap="1.8g" --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo:master18
-
-This will start the `lane_following_demo` container. You have to wait a while for everything to start working.
+    laptop $ dts duckiebot demo --demo_name lane_following --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
+    
+This will start the `demo_lane_following` container. You have to wait a while for everything to start working.
 
 ### Step 2
 
