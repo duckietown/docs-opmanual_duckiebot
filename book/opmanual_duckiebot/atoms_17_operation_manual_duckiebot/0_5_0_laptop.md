@@ -74,7 +74,7 @@ Note: you need to *log out and in* for the group change take effect.
 
 Follow the instructions in [repo README][shell_install].
 
-[shell_install][https://github.com/duckietown/duckietown-shell]
+[shell_install]:[https://github.com/duckietown/duckietown-shell]
 
 
 ### Other suggested configuration
