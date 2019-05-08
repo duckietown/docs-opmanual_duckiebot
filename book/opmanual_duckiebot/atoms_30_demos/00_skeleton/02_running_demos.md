@@ -12,7 +12,7 @@ Requires: Other requirements are demo specific, see the specific pages
 
 </div>
 
-
+## Start demos
 In the [Duckietown software repo](https://github.com/duckietown/Software), the launch files are currently separated in two different packages (folders).
 
 **The [`duckietown` package](https://github.com/duckietown/Software/tree/master19/catkin_ws/src/00-infrastructure/duckietown/launch)** has launch files which are constructed "additively" through `include` tags. This is the default package used to run launch files. Any launch file in this folder can be run through the [duckietown shell](#laptop-setup-ubuntu-18-shell) with the following command:
@@ -26,3 +26,10 @@ where `![DEMO_NAME]` is the part before the `.launch` of a `![DEMO_NAME].launch`
     laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name duckietown_demos
 
 where, similarly to above,  `![DEMO_NAME]` is the part before the `.launch` of a `![DEMO_NAME].launch` file.
+
+## Debug options
+You can open a terminal in the container running the demo you want by appending the option `--debug` to the command. An example is:
+
+    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name duckietown_demos --debug
+
+This enables you to access to the `ROS` debug informations of the nodes that are launched.
