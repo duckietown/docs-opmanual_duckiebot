@@ -4,11 +4,11 @@ This is the description of lane following demo.
 
 <div class='requirements' markdown="1">
 
-Requires: Wheels calibration completed [wheel calibration](#wheel-calibration)
+Requires: [Wheels calibration](#wheel-calibration) completed.
 
-Requires: Camera calibration completed [Camera calibration](#camera-calib)
+Requires: [Camera calibration](#camera-calib) completed.
 
-Requires: Joystick demo has been successfully launched [Joystick demo](#rc-control))
+Requires: [Joystick demo](#rc-control) has been successfully launched.
 
 </div>
 
@@ -23,7 +23,6 @@ Assumption about Duckietown:
 * A Duckietown with white and yellow lanes. No obstacles on the lane.
 * Layout conform to Duckietown Appearance [Specifications](+opmanual_duckietown#dt-ops-appearance-specifications)
 * Required tiles types: straight tile, turn tile
-* Additional tile types:3-way/4-way intersection
 * Configurated wireless network for communicating with Duckiebot.
 * Good consistent lighting, avoid natural lighting.
 
@@ -45,11 +44,11 @@ Assumption about Duckietown:
 
 ### Step 1
 
-Load the new container:
+Run the demo:
 
-    laptop $ docker -H ![hostname].local run -it --net host --memory="800m" --memory-swap="1.8g" --privileged -v /data:/data --name lane_following_demo duckietown/rpi-duckiebot-lanefollowing-demo:master18
+    laptop $ dts duckiebot demo --demo_name lane_following --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
 
-This will start the `lane_following_demo` container. You have to wait a while for everything to start working.
+This will start the `demo_lane_following` container. You have to wait a while for everything to start working.
 
 ### Step 2
 
@@ -59,9 +58,9 @@ Now we will verify that `lane_filter_node` is working. On your laptop run `start
 
 This will enter you into a container on your laptop that can talk to the ROS on the robot. To verify this do:
 
-    laptop-conainer $ rostopic list
+    laptop-container $ rostopic list
 
-and you should see all of the rostopics listed there. If you see an output like "Cannot communicate with ROS_MASTER" that's a problem
+and you should see all of the rostopics listed there. If you see an output like "Cannot communicate with ROS_MASTER" that's a problem.
 
 Next run:
 
@@ -91,10 +90,10 @@ If you have a joystick you can skip this next command, otherwise we need to run 
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
-|        Controls      | Joystick |  Keyboard |
-|----------------------|:--------:|:---------:|
-| Start Lane Following |  __R1__  |   __a__   |
-| Stop Lane Following  |  __L1__  |   __s__   |
+|        Controls      |  Joystick  |  Keyboard |
+|----------------------|:----------:|:---------:|
+| Start Lane Following |   __R1__   |   __a__   |
+| Stop Lane Following  |   __L1__   |   __s__   |
 
 
 Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. Enjoy the demo.
@@ -104,7 +103,7 @@ Start the lane following. The Duckiebot should drive autonomously in the lane. I
 ### The duckiebot does not move
 
 * Check if you can manually drive the duckiebot
-  * Try re launching `dts keyboard control`
+  * Try re launching `dts duckiebot keyboard_control ![hostname]`
 * Check if ROS messages are received on the robot on the `![hostname]/joy` topic
 
 ### The Duckiebot does not stay in a straight lane
@@ -129,8 +128,3 @@ Set alternative controller gains. While running the demo on the Duckiebot use th
     laptop $ rosparam set /![hostname]/lane_controller_node/k_theta -11
 
 Those changes are only active while running the demo and need to be repeated at every start of the demo if needed. If this improved the performance of your Duckiebot, you should think about permenantly change the default values in your catkin_ws.
-
-## Demo failure demonstration {#demo-lane-following-failure}
-
-The Anti-Instagram performs some self calibrations on startup, but if this happens when the robot cannot see the lane it will be poorly calibrated. This means it won't see enough lane segments, particularily around curves like in this [video](https://drive.google.com/open?id=1Hy6EjQ8QakfZliiSp_j2NV78_VpyPvCq).
-To solve the problem Anti-Instagram needs to be relaunched. In the last part of the video the **X** button on the joystick is pressed and the Anti-Instagram node gets relaunched. We can see in RVIZ that the number of detected line segments gets increased drastically after the recalibration.
