@@ -57,7 +57,7 @@ Follow these steps to run the indefinite navigation demo on your Duckiebot:
 
 Note: Many nodes need to be launched, so it will take quite some time.
 
-**Step 4**: With the joystick or In a separate terminal, start the joystick GUI:
+**Step 3**: With the joystick or In a separate terminal, start the joystick GUI:
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
