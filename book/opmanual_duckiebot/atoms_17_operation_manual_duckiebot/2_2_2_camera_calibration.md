@@ -113,7 +113,9 @@ This will automatically save the calibration results on your Duckiebot:
 /data/config/calibrations/camera_intrinsic/![hostname].yaml
 ```
 
-If you are running the file server through docker (which runs by default) you can view or download the calibration file at the address: `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
+If you are running the file server through docker (which runs by default) you can view or download the calibration file at the address:
+
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
 
 
 ### Keeping your calibration valid
@@ -159,7 +161,9 @@ This will automatically save the calibration results on your Duckiebot:
 /data/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml
 ```
 
-If you are running the file server through docker you can view or download the calibration file at the address: `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
+If you are running the file server through docker you can view or download the calibration file at the address: 
+
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
 
 
 #### Troubleshooting
@@ -175,16 +179,16 @@ Resolution: Your camera is not viewing the full checkerboard pattern. You can ve
 
 You can view or download the files at
 
-    http://![DUCKIEBOT_NAME].local:8082/
+`http://![DUCKIEBOT_NAME].local:8082/`
 
 
 In that directory there are the results of the testing and the actual calibration files. The calibration file is at
 
-    http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
 
 You can also see the output of the diagnostics at
 
-    http://![DUCKIEBOT_NAME].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/
+`http://![DUCKIEBOT_NAME].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/`
 
 
 It should look like [](#fig:calibrate_extrinsics1).
