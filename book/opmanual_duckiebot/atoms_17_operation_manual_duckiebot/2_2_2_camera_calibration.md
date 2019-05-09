@@ -7,9 +7,7 @@ This section describes the instrinsics and extrinsics calibration procedures.
 Requires: You can see the camera image on the laptop. The procedure is documented in
 [](#read-camera-data).
 
-Requires: You have a camera calibration pattern [](#camera-calibration-pattern-materials).
-
-Results: Calibration for the robot camera.
+Results: That your camera intrinsics and extrinsics are calibrated and stored on the duckiebot.
 
 </div>
 
@@ -32,7 +30,7 @@ Note: In case your squares are not of the right size, make sure your printer set
 
 Fix the checkerboard to a rigid planar surface that you can move around.
 
-Warning: If the pattern is not rigid the calibration will be useless. You can, e.g., print on thick paper to achieve this.
+Warning: If the pattern is not rigid the calibration will be useless. You can print on thick paper or adhere to something rigid to achieve this.
 
 
 ### Optional material
@@ -41,46 +39,31 @@ You will also need a "lane" during the extrinsics calibration procedure.
 This is not 100% necessary.
 
 
-## Start calibration program
+## Intrinsic Calibration
 
+Every camera is a little bit different so we need to do a camera calibration procedure to account for the small manufacturing discrepancies.
+This process will involve displaying a predetermined patter to the camera and using it to solve for the camera parameters. For more information on the details see [the slides](https://github.com/duckietown/lectures/blob/master/1_ideal/25_computer_vision/cv_calibration.pdf).
+The procedure is basically a wrapper around the [ROS camera calibration tool](http://wiki.ros.org/camera_calibration).
 
-On your laptop run:
+### Publish raw imagery
 
-    laptop $ dts duckiebot calibrate_all ![hostname]
+We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
-Hit <kbd>Enter</kbd> and follow the instructions.
+    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME]
 
+### Launch the intrinsic calibration application
 
-<!--
+Next you can launch the intrinsic calibration program with:
 
-#### ROS {status=deprecated}
-
-Open two terminals on the laptop. In the first terminal, log in into your robot using SSH and launch the camera process:
-
-
-    duckiebot $ cd ![duckietown root]
-    duckiebot $ source environment.sh
-    duckiebot $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
-
-
-In the second laptop terminal run the camera calibration:
-
-
-    laptop $ cd ![duckietown root]
-    laptop $ source environment.sh
-    laptop $ source set_ros_master.sh ![robot name]
-    laptop $ roslaunch duckietown intrinsic_calibration.launch veh:=![Duckiebot name]
-
--->
-
-## Perform intrinsics calibration {#intrinsic-camera-calibration}
-**Note:** you can now use `dts duckiebot calibrate_intrinsics ![hostname]` to run intrinsic calibration only. (you will be able to check if ros-picam is running before proceeding with calibration)
+    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
+    
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
 <div figure-id="fig:intrinsic_callibration_pre" figure-caption="">
      <img src="intrinsic_callibration_pre.png" style='width: 30em'/>
 </div>
+
 
 ### Calibration dance
 
@@ -130,20 +113,24 @@ This will automatically save the calibration results on your Duckiebot:
 /data/config/calibrations/camera_intrinsic/![hostname].yaml
 ```
 
-If you are running the file server through docker you can view or download the calibration file at the address: `http://![hostname].local:8082/config/calibrations/camera_intrinsic/![hostname].yaml`
+If you are running the file server through docker (which runs by default) you can view or download the calibration file at the address:
+
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
 
 
 ### Keeping your calibration valid
 
 Warning: Do not change the focus during or after the calibration, otherwise your calibration is no longer valid.
 
-Warning: Do not use the lens cover anymore; removing the lens cover changes the focus.
+Warning: Do not use the lens cover anymore; removing the lens cover may change the focus.
+
+
+
 
 ## Extrinsic Camera Calibration {#extrinsic-camera-calibration}
 
 
 ### Setup {#camera-calib-jan18-extrinsics-setup}
-**Note:** you can now use `dts duckiebot calibrate_extrinsics ![hostname]` to run extrinsic calibration only.
 
 Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). Note that the axis of the wheels should be aligned with the y-axis.
 
@@ -159,45 +146,49 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 </div>
 
 
+### Launch the extrinsic calibration pipeline
 
-### Docker
+Run:
 
-If you ran:
+    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME]
 
-    laptop $ dts duckiebot calibrate_all ![hostname]
+First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>. 
+If all goes well the program will complete.
 
-then the same terminal will immediately take you into the extrinsic calibration step. After the following Setup step, push <kbd>Enter</kbd>.
+This will automatically save the calibration results on your Duckiebot:
 
-TODO: make this a separate procedure, so that we can re-do the extrinsics without re-doing the intrinsics.
+```
+/data/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml
+```
+
+If you are running the file server through docker you can view or download the calibration file at the address: 
+
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
 
 
-<!--
+#### Troubleshooting
 
-### ROS - Extrinsic calibration procedure {#camera-calib-jan18-extrinsics status=deprecated}
+Symptom: You see a long complicated error message that ends with something about `findChessBoardCorners failed`. 
 
-Run the following on the Duckiebot:
+Resolution: Your camera is not viewing the full checkerboard pattern. You can verify this by going to the file `http://![DUCKIEBOT_NAME].local:8082` and navigate into the folder `out-calibrate-extrinsics-![DUCKIEBOT_NAME]-20...` and click on `all.jpg` to see the pictures that were taken. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
 
-    duckiebot $ rosrun complete_image_pipeline calibrate_extrinsics
 
-Followed by the following command for verification:
 
-    duckiebot $ rosrun complete_image_pipeline single_image_pipeline
--->
+### Manual verification of the Results
 
-### Verifying the Results
 
 You can view or download the files at
 
-    http://![hostname].local:8082/
+`http://![DUCKIEBOT_NAME].local:8082/`
 
 
 In that directory there are the results of the testing and the actual calibration files. The calibration file is at
 
-    http://![hostname].local:8082/config/calibrations/camera_extrinsic/![hostname].yaml
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
 
 You can also see the output of the diagnostics at
 
-    http://![hostname].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/
+`http://![DUCKIEBOT_NAME].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/`
 
 
 It should look like [](#fig:calibrate_extrinsics1).
@@ -214,39 +205,14 @@ are not square. This is the rectification used in the lane localization pipeline
 
 2. In `rectified_full_ratio_auto` the image is not stretched. The camera matrix is preserved. This means that the aspect ratio is the same. In particular note the April tags are square. If you do something with April tags, you need this rectification.
 
-<!-- Currently not working
- ## Camera validation by simulation {#camera-calib-jan18-simulation}
 
-TODO: Add this to container
+### Optional autonomic verification step
 
-You can run the following command to make sure that the camera calibration is reasonable:
+By default, the extrinsic calibration pipeline will now ask you to put your robot on a lane to complete a verification step.
 
-    duckiebot $ rosrun complete_image_pipeline validate_calibration
+This step needs a Duckietown lane. If you don't have it, skip it by add `--no_verification` to the `dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME]` command above. 
 
-What this does is simulating what the robot should see, if the models were correct ([](#fig:validate_calibration_out1)).
-
-<div figure-id="fig:validate_calibration_out1">
-    <img style='width:40%' src="2_2_2_camera/validate_calibration_out1.jpg"/>
-    <figcaption>Result of <code>validate_calibration</code>.</figcaption>
-</div>
-
-Then it also tries to localize on the simulated data ([](#fig:try_simulated_localization)).
-It usual achieves impressive calibration results!
-
-> Simulations are doomed to succeed.
-
-<div figure-id="fig:try_simulated_localization">
-    <img style='width:90%' src="2_2_2_camera/try_simulated_localization.jpg"/>
-    <figcaption>Output of <code>validate_calibration</code>: localization
-    in simulated environment.</figcaption>
-</div>
--->
-
-### Optional verification step
-
-This step needs a Duckietown lane. If you don't have it, skip it.
-
-Place the robot in a lane when instructed.
+To do the validation, place the robot in a lane when instructed.
 
 What this does is taking one snapshot and performing localization on that single image.
 
@@ -254,7 +220,7 @@ The output will be useful to check that everything is ok.
 
 You can see the output of the diagnostics at
 
-    http://![hostname].local:8082/out-pipeline-![hostname]-YYYYMMDDHHMMSS/
+    http://![DUCKIEBOT_NAME].local:8082/out-pipeline-![DUCKIEBOT_NAME]-YYYYMMDDHHMMSS/
 
 [](#fig:oneshot1_all) is an example in which the calibration was correct, and the robot
 localizes perfectly.

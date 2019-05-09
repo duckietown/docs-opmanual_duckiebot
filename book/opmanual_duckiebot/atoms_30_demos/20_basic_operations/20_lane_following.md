@@ -14,7 +14,11 @@ Requires: [Joystick demo](#rc-control) has been successfully launched.
 
 ## Video of expected results {#demo-lane-following-expected}
 
-[Video of demo lane following](https://drive.google.com/file/d/198iythQkovbQkzY3pPeTXWC8tTCRgDwB/view?usp=sharing)
+<div figure-id="fig:lane_following_vid">
+    <figcaption>Outcome of the lane following demo.
+    </figcaption>
+    <dtvideo src='vimeo:334931570'/>
+</div>
 
 ## Duckietown setup notes {#demo-lane-following-duckietown-setup}
 
@@ -79,7 +83,11 @@ so that `line_detector_node` will publish the image_with_lines.
 
 Now select the `/![hostname]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
 
-First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqVm3TSj7Sowc8) of the expected behavior.
+<div figure-id="fig:line_detector">
+    <figcaption>Outcome of the line detector node.
+    </figcaption>
+    <dtvideo src='vimeo:334931437'/>
+</div>
 
 Et voilà! We are ready to drive around autonomously.
 

@@ -4,7 +4,7 @@ This is the description of the great and marvelous megacity demo.
 
 <div class='requirements' markdown="1">
 
-Requires: Fully set up Duckiebots
+Requires: Fully set up Duckiebots.
 
 Requires: Fully set up Duckietown.
 
@@ -43,41 +43,19 @@ Note: You will have to repeat the instructions for each of the Duckiebots
 
 Follow these steps to run the indefinite navigation demo on your Duckiebot:
 
-**Step 1** Power on your bot.
+**Step 1** Power on your bot and wait for the `duckiebot-interface` to initialize (the LEDs go off).
 
-**Step 2** Go to the portainer interface on:
+**Step 2**: Launch the demo by running:
 
-    http://![hostname].local:9000/#/containers
+    laptop $ dts duckiebot demo --demo_name megacity --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
 
-And check that only the necessary containers are running, namely:
+Note: Many nodes need to be launched, so it will take quite some time.
 
-    roscore
-    dt18_00_basic_portainer_1
-    dt18_01_health_stats_rpi-simple-server_1
-    dt18_01_health_stats_rpi-health_1
-    dt18_01_health_stats_rpi-duckiebot-loader_1
-    dt18_01_health_stats_rpi-duckiebot-online_1
-    dt18_00_basic_watchtower_1
-
-If other containers are running, stop them.
-
-**Step 3** Run the base container:
-
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data --name base duckietown/rpi-duckiebot-base:megacity /bin/bash
-
-A shell will open in the new container.
-
-**Step 4** Launch the demo in the container by:
-
-    duckiebot-container $ source /home/software/docker/env.sh
-    duckiebot-container $ roslaunch duckietown_demos megacity.launch
-
-Note: Many nodes need to be launched, so it will take quite some time. Moreover the CPU load will be extremely high during the demo.
-
-**Step 5** In a separate terminal, start a joystick with:
+**Step 3**: With the joystick or In a separate terminal, start the joystick GUI:
 
     laptop $ dts duckiebot keyboard_control ![hostname]
 
+and use the instructions to toggle between autonomous navigation and joystick control modes.
 
 ## Troubleshooting
 
