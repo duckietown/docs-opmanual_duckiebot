@@ -51,6 +51,8 @@ Moreover, you might have slightly different components than those shown. For exa
 
 Some of the components in your Duckiebox will not be used at this stage, e.g., the traffic signs and stands. Keep these aside, they will come in handy in other parts of the book.
 
+Other components, like the HDMI cable and the collector edition 32 GB external USB drive, will be in your kit only if you got one of the Kickstarter 2018 units. 
+
 Finally, you should have several spares, especially for the mechanical bits (nuts and screws). These are included just in case you drop a few and can't find them anymore (especially the tiny nylon ones like to hide in the cracks!).
 
 ### Preliminary Steps
