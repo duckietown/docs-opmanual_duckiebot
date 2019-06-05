@@ -9,40 +9,26 @@ when you command it to. Set the maximum speed of the Duckiebot.
 
 </div>
 
-Comment: It might be helpful to talk about the ROS Parameter Server here, or at least
-reference another page. -AD
 
 For the theoretical treatment of the odometry calibration see [](+learning_materials#odometry_calibration).
-
 
 
 ## Step 1: Make your robot move
 
 Follow instructions in [](#sec:rc-control) to make your robot movable either with a joystick or the keyboard.
 
-Note: Whatever container you used in [](#sec:rc-control) needs to have the `-v /data:/data` flag set or the calibration will not persist on your Duckiebot.
+
+## Step 2: Get a base container with a command line
 
 
-## Step 2
+Now you need another container to run so that you can edit the calibrations and see the results. To get a base container with a command line you can run:
 
 
-### Docker
-
-If you just finished the [camera calibration step](#camera-calib) then you have a docker terminal ready to use on your laptop.  
-
-**Note:** you can now use `dts duckiebot calibrate_wheels ![hostname]` to run wheel calibration only.
-
-### Docker + ROS
-
-
-Get a base container running on your robot if you don't have one already:
-
-
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data duckietown/rpi-duckiebot-base:master18
+    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME]
 
 
 
-## Step 3: Perform the Calibration
+## Step 3: Perform the calibration
 
 
 ### Calibrating the `trim` parameter
@@ -83,12 +69,12 @@ If the Duckiebot drifted by less than $10$ centimeters you can stop calibrating 
 
 If the Duckiebot drifted to the left side of the tape, decrease the value of $r$, by running, for example:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/set_trim -- -0.1
+    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/set_trim -- -0.1
 
 If the Duckiebot drifted to the right side of the tape, increase the value of
 $r$, by running, for example:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/set_trim -- 0.1
+    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/set_trim -- 0.1
 
 
 
@@ -147,7 +133,7 @@ You should see your robot drive down the lane. If it is calibrated properly, you
 
 When you are all done, save the parameters by running:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/save_calibration
+    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/save_calibration
 
 The first time you save the parameters, this command will create the file
 
@@ -155,4 +141,6 @@ The first time you save the parameters, this command will create the file
 ### Final Check to make sure it's stored
 
 
-Assuming your are running an HTTP server, point your browser to `http://![hostname].local:8082/config/calibrations/kinematics/![hostname].yaml`
+Assuming your are running an HTTP server, point your browser to
+
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/kinematics/![DUCKIEBOT_NAME].yaml`
