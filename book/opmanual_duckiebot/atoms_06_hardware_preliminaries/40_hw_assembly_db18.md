@@ -502,7 +502,7 @@ Note: By this moment you probably have both M2.5 and M3 Nylon screws. Make sure 
 
 ### Step 1
 
-Place the M2.5 spacers on the bottom side of the Raspberry Pi, as in [](#fig:howto-assemble-rpi-top-1).
+Place the M2.5 spacers on the bottom side of the Raspberry Pi, as in [](#fig:howto-assemble-rpi-top-1). (Note: Spacers are the nylon rings. Don't use standoffs.)
 
 <div figure-id="fig:howto-assemble-rpi-top-1" figure-caption="Place the spacers on the Raspberry Pi.">
      <img src="howto_assemble_rpi_top_1.png" style='width: 25em'/>
