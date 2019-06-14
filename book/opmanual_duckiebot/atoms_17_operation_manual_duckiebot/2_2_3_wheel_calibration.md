@@ -115,11 +115,12 @@ The following are the specs for this 3x1 mat "runway":
 
 Place your robot as shown in [](#fig:kinematic_calibration).
 
-On your robot execute:
+On your robot, still from within the base container you created before, execute:
 
     duckiebot $ cd ![duckietown root]
     duckiebot $ make hw-test-kinematics
 
+(![duckietown root] seems to be the directory '/home/software' .)   
 You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again.
 
 ### Store the calibration
