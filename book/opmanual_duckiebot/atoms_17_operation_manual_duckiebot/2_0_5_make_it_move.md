@@ -27,7 +27,7 @@ Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you
 
 and you should be able to move it with the joystick. 
 
-If you would like to move your robot using your laptop, you can run 
+If you would like to move your robot using your laptop, first also run the line above - it will start the service on the duckiebot that will listen to commands from the joystick emulator. To start the emulator, you can then run 
 
     $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
     
