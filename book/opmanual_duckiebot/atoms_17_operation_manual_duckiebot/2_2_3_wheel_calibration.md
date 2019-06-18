@@ -117,7 +117,7 @@ Place your robot as shown in [](#fig:kinematic_calibration).
 
 In the open shell execute:
 
-    duckiebot-container $ roslaunch indefinite_navigation calibrate_kinematics.test veh:![veh_name]
+    duckiebot-container $ roslaunch indefinite_navigation calibrate_kinematics.test veh:=![veh_name]
 
 Then open a second shell with:
 
@@ -125,7 +125,7 @@ Then open a second shell with:
 
 And inside of it run the test script with:
 
-      duckiebot-container $ rosrun indefinite_navigation  test_kinematics.py
+    duckiebot-container $ rosrun indefinite_navigation  test_kinematics.py
 
 You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again. You can use the shell in which you ran the `rosrun` command to modify the calibration.
 
