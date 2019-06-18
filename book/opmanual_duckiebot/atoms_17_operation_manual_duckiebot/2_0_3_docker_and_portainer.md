@@ -65,14 +65,6 @@ The following commands can be run on your laptop but will affect the Duckiebot.
 
 Note: It is never needed to log in to the Duckiebot via `ssh`, though that could be an alternative workflow.
 
-
-You can set the variable `DOCKER_HOST` to point to the Duckiebot:
-
-    laptop $ export DOCKER_HOST=![hostname].local
-
-If you do, then you may omit every instance of the switch `-H ![hostname].local`.   
-
-
 ### Seeing which containers are running using `docker ps`
 
 To test the connection, run `docker ps`:
