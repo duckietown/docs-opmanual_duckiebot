@@ -83,3 +83,12 @@ Do:
     $ ssh-keygen -f "/home/user/.ssh/known_hosts" -R hostname.local
 
 It will generate a key for you, if it doesn't exists.
+
+## Unable to communicate with Docker
+
+Symptom: Error message appears saying `I cannot communicate with docker`. Also a warning `\"DOCKER_HOST\" is set to ![hostname].local` is present.
+
+
+Resolution: Unset the `DOCKER_HOST`, running:
+
+    laptop $ unset DOCKER_HOST

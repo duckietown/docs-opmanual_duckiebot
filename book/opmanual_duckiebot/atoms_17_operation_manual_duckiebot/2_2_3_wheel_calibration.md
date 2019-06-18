@@ -35,7 +35,7 @@ Now you need another container to run so that you can edit the calibrations and 
 
 The trim parameter is set to $0.00$ by default, under the assumption that both motors and wheels are perfectly identical. You can change the value of the trim parameter by running the command:
 
-    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/set_trim -- ![trim value]
+    duckiebot-container $ rosservice call /![hostname]/inverse_kinematics_node/set_trim -- ![trim value]
 
 Use some tape to create a straight line on the floor ([](#fig:wheel_calibration_line)).
 
@@ -87,7 +87,7 @@ Repeat this process until the robot drives straight
 The gain parameter is set to $1.00$ by default. You can change its value by
 running the command:
 
-    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/set_gain -- ![gain value]
+    duckiebot-container $ rosservice call /![hostname]/inverse_kinematics_node/set_gain -- ![gain value]
 
 You won't really know if it's right until you verify it though! onto the next section
 
@@ -115,12 +115,19 @@ The following are the specs for this 3x1 mat "runway":
 
 Place your robot as shown in [](#fig:kinematic_calibration).
 
-On your robot execute:
+In the open shell execute:
 
-    duckiebot $ cd ![duckietown root]
-    duckiebot $ make hw-test-kinematics
+    duckiebot-container $ roslaunch indefinite_navigation calibrate_kinematics.test veh:=![veh_name]
 
-You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again.
+Then open a second shell with:
+
+    laptop $ docker -H ![hostname].local exec -it demo_base /bin/bash
+
+And inside of it run the test script with:
+
+    duckiebot-container $ rosrun indefinite_navigation  test_kinematics.py
+
+You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again. You can use the shell in which you ran the `rosrun` command to modify the calibration.
 
 ### Store the calibration
 
@@ -134,6 +141,6 @@ The first time you save the parameters, this command will create the file
 ### Final Check to make sure it's stored
 
 
-Assuming your are running an HTTP server, point your browser to 
+Assuming your are running an HTTP server, point your browser to
 
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/kinematics/![DUCKIEBOT_NAME].yaml`

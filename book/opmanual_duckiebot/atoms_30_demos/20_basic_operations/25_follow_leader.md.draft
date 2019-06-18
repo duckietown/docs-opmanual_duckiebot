@@ -1,0 +1,82 @@
+# Follow the leader {#demo-follow-leader status=draft}
+
+In this demo, you will make your Duckiebot follow a circle grid pattern (see [](#fig:circle_grid_pattern)). Note that you can either move the leading pattern with you hand, or you can place it in the back of another Duckiebot, and try to follow that one. In that case, and if you have a Duckietown available, it gets interesting to make the leading Duckiebot execute [Lane Following](#demo-lane-following), and the following Duckiebot executes this demo.
+
+<div class='requirements' markdown="1">
+
+Requires: [Wheels calibration](#wheel-calibration) completed.
+
+Requires: [Camera calibration](#camera-calib) completed.
+
+Requires: [Joystick demo](#rc-control) has been successfully launched.
+
+Requires: An additional circle grid pattern.
+
+</div>
+
+<div figure-id="fig:circle_grid_pattern" figure-caption="The used circle grid pattern.">
+  <img src="circle_grid_pattern.png" style='width: 30em'/>
+</div>
+
+## Video of expected results {#demo-follow-leader-expected}
+
+TODO: Add video
+
+## Duckietown setup notes {#demo-follow-leader-duckietown-setup}
+
+For this demo, you don't need a Duckietown, you can run it anywhere you want!
+
+## Duckiebot setup notes {#demo-follow-leader-duckiebot-setup}
+
+* Make sure the camera is heading ahead.
+* Duckiebot in configuration [DB18](#duckiebot-configurations)
+
+
+## Pre-flight checklist {#demo-follow-leader-pre-flight}
+
+* Turn on joystick (if applicable).
+* Turn on battery of the Duckiebt.
+* Verify you can ping your Duckiebot over the network.
+
+## Demo instructions {#demo-follow-leader-run}
+
+### Step 1
+
+Run the demo:
+
+    laptop $ dts Duckiebot demo --demo_name follow_leader --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
+
+This will start the `demo_follow_leader` container. You have to wait a while for everything to start working.
+
+### Step 2
+
+If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
+
+    laptop $ dts duckiebot keyboard_control ![hostname]
+
+|        Controls       |  Joystick  |  Keyboard |
+|-----------------------|:----------:|:---------:|
+| Start Autonomous Mode |   __R1__   |   __a__   |
+| Stop Autonomous Mode  |   __L1__   |   __s__   |
+
+### Step 3 *Optional*
+
+If you have a second Duckiebot, and if you want to steer the leading Duckiebot with your joystick/keyboard, follow  [the instructions](#rc-control).
+
+If you have a second Duckiebot and a setup Duckietown, and if you want to execute Lane following on the leading Duckiebot follow  [the instructions](#demo-lane-following).
+
+### Step 4
+
+Press  <kbd>A</kbd> on your keyboard (or the relative button on the joystick) in the Duckiebot to start the autonomous follow-the-leader mode. The Duckiebot should follow a circle grid pattern in front of him, if present, otherwise stop.
+
+## Additional informations
+
+If you start the graphic user interface tools on your computer, by executing:
+
+    laptop $ dts start_gui_tools ![duckiebot_name]
+
+And then in the container you start the visualization tool:
+
+    laptop $ rqt_image_view
+
+You can select the `ROS` topic `vehicle_detection_node/circlepattern_image`, and if you are in the autonomous mode, you will see the live detection of the circle grid.
