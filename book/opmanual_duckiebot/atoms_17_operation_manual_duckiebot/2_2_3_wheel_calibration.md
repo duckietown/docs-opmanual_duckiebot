@@ -97,12 +97,19 @@ Construct a calibration station similar to the one in [](#fig:kinematic_calibrat
 
 <div figure-id="fig:kinematic_calibration" figure-caption="Kinematic calibration verification setup">
      <img src="kinematic_calibration1.jpg" style='width: 30em'/>
+     <img src="kinematic_calibration3.pdf" style='width: 30em'/>
      <img src="kinematic_calibration2.jpg" style='width: 30em'/>
 </div>
 
+Note: In the sketch of the setup, the light green sections represent the interlocking parts of the tiles.
+
 The following are the specs for this 3x1 mat "runway":
 
- - Red line as close to the edge without crossing the interlocking bits
+ - For red and white tape, use the one provided in your Duckietown kit
+
+ - Blue/Black tape is ignored by Duckiebots, you can use anything of any color (expect red/white/yellow) to mark the positions.
+
+ - Red line as close to the edge without crossing the interlocking bits.
 
  - Blue/Black line 8 cm from red line and parallel to it.
 
