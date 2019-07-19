@@ -122,7 +122,7 @@ the output should look like:
 
     avrdude done.  Thank you.
 
-With that, the MC should work. To change the MC programm, just edit the files, e.g with vim. With $ make you can compile and download the programm to the MC again.
+With that, the MC should work. To change the MC programm, just edit the files, e.g with vim. With `&#36; make` you can compile and download the programm to the MC again.
 
 In the end, make sure to delete the Software repository to free up the space again. This is done by running:
 
