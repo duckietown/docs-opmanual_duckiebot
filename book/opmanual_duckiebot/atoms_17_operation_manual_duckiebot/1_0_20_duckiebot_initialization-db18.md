@@ -75,11 +75,13 @@ Now insert the SD card into the Raspberry PI and push the button on the battery 
 
 Warning: Don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
 
-You should immediately see the **green** light next to where the SD card was inserted start to blink with activity.
+You should immediately see the **green** LED of the Raspberry Pi next to where the SD card was inserted start to blink with activity.
 
-If not, stop, as there is a problem with the SD card initialization (or possibly the PI, but this is unlikely).
+If not, stop, as there is a problem with the SD card initialization (or possibly the Raspberry Pi, but this is unlikely).
 
-Warning: Allow the robot time to boot. On first boot it may take up to 20 mins. You will see the LED lights go off when the robot is ready to use. 
+After some time, the **red** and the **green** LEDs of the Raspberry Pi will start to blink alternately. This means that the necessary Docker containers are being extracted. When the process is finished the **red** LED will be off and the **green** will be on.
+
+Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take a lot of time.
 
 Do not power the robot off (by holding the battery button) while this is in process.
 
@@ -108,7 +110,6 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 Next, try to log in using SSH, using
 
     laptop $ ssh ![hostname]
-
 
 This should succeed without password.
 
