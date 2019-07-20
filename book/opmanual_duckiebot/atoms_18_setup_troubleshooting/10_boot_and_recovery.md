@@ -30,11 +30,11 @@ Resolution: An older version of the SD card image had the docker container `cjim
     duckiebot $ sudo systemctl unmask wpa_supplicant
     duckiebot $ sudo systemctl restart networking.service
 
-## Flashing the microcontroller.
+## Flashing the microcontroller
 
 Symptom: The LEDs light up in a variety of colors when the battery is plugged in.
 
-Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller (MC) is corrupted. You can reflash it using the following procedure:
+Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:
 
 `ssh` into your robot and clone the Duckietown Software repository with:
 
@@ -67,7 +67,7 @@ if the output of `make fuses` is at the end like
 
     avrdude done.  Thank you.
 
-the connection to the MC works and the fuses could be written. The fuses are some low lowlevel settings, which just have to be set once. If this succeeded, jump the next step.
+the connection to the microcontroller works and the fuses could be written. The fuses are some low lowlevel settings, which just have to be set once. If this succeeded, jump the next step.
 
 
 If there is the message "make: warning: Clock skew detected. Your build may be incomplete." or the make process is not stopping and many debugging messages are showed, try the following:
@@ -82,7 +82,7 @@ Next up, remove all temporary files, so everything has to be compiled freshly by
 
     duckiebot $ make clean
 
-Compile the programm and download it to the MC by running:
+Compile the programm and download it to the microcontroller by running:
 
     duckiebot $ make
 
@@ -123,7 +123,7 @@ the output should look like:
 
     avrdude done.  Thank you.
 
-With that, the MC should work. To change the MC programm, just edit the files, e.g with vim. With `make` you can compile and download the programm to the MC again.
+With that, the microcontroller should work. To change the microcontroller programm, just edit the files, e.g with vim. With `make` you can compile and download the programm to the microcontroller again.
 
 In the end, make sure to delete the Software repository to free up the space again. This is done by running:
 
