@@ -83,9 +83,7 @@ After some time, the **red** and the **green** LEDs of the Raspberry Pi will sta
 
 Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take a lot of time.
 
-Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take a lot of time.
-
-Do not power the robot off (by holding the battery button) while this is in process.
+Do not power the robot off (by holding the battery button) while this is in process.re
 
 
 You know that your Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
@@ -116,7 +114,6 @@ Resolution: The LEDs of the Duckiebot should light up in white as soon as you po
 Next, try to log in using SSH, using
 
     laptop $ ssh ![hostname]
-
 
 This should succeed without password.
 
