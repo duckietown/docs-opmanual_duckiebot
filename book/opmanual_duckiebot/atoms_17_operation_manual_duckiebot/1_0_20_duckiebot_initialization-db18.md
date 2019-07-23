@@ -1,6 +1,6 @@
 # Duckiebot Initialization {#setup-duckiebot status=ready}
 
-This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](https://docs.duckietown.org/DT17/).
+This page is for the `DB18` configuration used in classes in 2019. For last year's instructions see [here](https://docs.duckietown.org/DT18/).
 
 <div class='requirements' markdown="1">
 
@@ -83,7 +83,7 @@ After some time, the **red** and the **green** LEDs of the Raspberry Pi will sta
 
 Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take a lot of time.
 
-Do not power the robot off (by holding the battery button) while this is in process.
+Do not power the robot off (by holding the battery button) while this is in process.re
 
 
 You know that your Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
@@ -102,7 +102,11 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
 ![...]
 ```
+### Troubleshooting
 
+Symptom: The LEDs light up in a variety of colors when the battery is plugged in.
+
+Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#setup-troubleshooting-boot).
 
 
 ## SSH to the Duckiebot {#setup-duckiebot-ssh}
