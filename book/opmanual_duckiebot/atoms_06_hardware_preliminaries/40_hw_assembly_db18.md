@@ -110,7 +110,7 @@ From the Duckiebox package take the following components:
 ### Step 1
 
 Pass two of the motor holders through the openings in the bottom plate of the chassis as shown
-in [](#fig:howto-mount-motors-1). If you have troubles fitting the holders, it is probably because you have not removed the protective plastic film.
+in [](#fig:howto-mount-motors-1). If you have troubles fitting the holders, it is probably because you have not removed the protective plastic film. Note which holes you are using. You should be using the middle section ones.
 
 <div figure-id="fig:howto-mount-motors-1" figure-caption="How to mount the motor holders.">
      <img src="howto-mount-motors-1.jpg" style='width: 25em'/>
@@ -139,6 +139,8 @@ to secure the holders to the bottom plate of the chassis as shown in [](#fig:how
    <img src="howto-mount-motors-3.jpg" style='width: 25em'/>
 </div>
 
+Note: You might find aligning the holes to be a little bit hard. It is easier to first get the top screw aligned and place the screw in, and then push in the side support piece in to place. If that still doesn't work, get the bottom screw and the side support in first, align it, and secure with nuts. Then try to push the top screw through. You might have to use the screw to expand the hole a bit.
+
 Note: tighten the motors firmly, as a wobbly motor might cause troubles later on.
 
 ### Step 4
@@ -159,7 +161,7 @@ Tilt your bottom plate and pass the cables of the motors through the central hol
 
 
 
-## Omni-directional wheel {#howto-mount-omniwheel-db18}
+## Omni-directional wheel assembly {#howto-mount-omniwheel-db18}
 
 The Duckiebot is driven by controlling the wheels attached to the DC motors.
 Still, it requires a _passive_ support on the back. In this configuration an omni-directional wheel is
@@ -170,8 +172,9 @@ From the Duckiebox package take the following components:
 - Steel omni-directional wheel (1x)
 - M3x25 metal spacers (2x)
 - M3x6 (or longer) screws (2x)
+- M3x10 nylon screws (2x) (Used for next part)
 
-[](#fig:howto-mount-omniwheel-parts-db18) shows the components needed to complete this part of the tutorial.
+[](#fig:howto-mount-omniwheel-parts-db18) shows the components needed to complete this part and next part of the tutorial.
 
 <div figure-id="fig:howto-mount-omniwheel-parts-db18" figure-caption="The components for the omni-directional wheel assembly.">
      <img src="howto_mount_omniwheel_parts-db18-nylon.jpg" style='width: 25em'/>
@@ -180,6 +183,8 @@ From the Duckiebox package take the following components:
 ### Step 1
 
 Secure the M3x25 spacers to the omni-directional wheel using *2* M3 screws (M6 to M10 will work, choose the shortest you have in your pack) as shown in [](#fig:howto-mount-omniwheel).
+
+Note: Sometimes you might need a bit of force to get the screw and the standoffs fully connected.
 
 <div figure-id="fig:howto-mount-omniwheel" figure-caption="Parts needed to build the omni-directional wheel.">
      <img src="howto_mount_omniwheel-1.jpg" style='width: 25em'/>
@@ -312,7 +317,7 @@ From the Duckiebot kit take the following components:
 
 - Raspberry Pi 3B+ (1x)
 - Heat sink (1x)
-- Camera cable (1x)
+- Camera cable (1x) (This should be in the same box as )
 - Micro SD card (1x)
 
 Note: You probably have two heat sinks, make sure you use the bigger one in this step. The smaller one can be used at discretion (e.g., apply it on the USB port you will later use for the external 32GB USB dongle).
