@@ -55,9 +55,31 @@ Note: **(For ETH Zurich students only)** To connect to the netoworks on campus u
 
 After you run the  `dts init_sd_card` command with your options follow the instructions that appear on screen:
 
-- You will then have to enter your laptop's `sudo` password to run Etcher.
+- Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdb`) by pressing <kbd>Enter</kbd>.
 
-- Select the drive with the correct size (usually `/dev/mmcblk0`) by pressing <kbd>Enter</kbd>.
+Note: If you don't know where to find the drive path, you can utilize the command line `lsblk`. This command should show you all the disks on the machine.
+
+```
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0    7:0    0   2.3M  1 loop /snap/gnome-calculator/260
+loop1    7:1    0  14.5M  1 loop /snap/gnome-logs/45
+loop2    7:2    0 140.7M  1 loop /snap/gnome-3-26-1604/74
+loop3    7:3    0    91M  1 loop /snap/core/6350
+loop4    7:4    0  34.6M  1 loop /snap/gtk-common-themes/818
+loop5    7:5    0   3.7M  1 loop /snap/gnome-system-monitor/57
+loop6    7:6    0    13M  1 loop /snap/gnome-characters/139
+sda      8:0    0 298.1G  0 disk 
+└─sda1   8:1    0 298.1G  0 part /
+sdb      8:16   1  29.1G  0 disk 
+├─sdb1   8:17   1    64M  0 part 
+└─sdb2   8:18   1  29.1G  0 part 
+sr0     11:0    1  1024M  0 rom  
+
+```
+
+Note: using above listing as an example, you should be choosing the disk name (sdb), not the partition name (sdb1, sdb2) for etcher to capture the whole disk.
+
+- You will then have to enter your laptop's `sudo` password to run Etcher.
 
 - When asked "Are you sure?" select <kbd>y</kbd>.
 
