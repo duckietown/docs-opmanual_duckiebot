@@ -585,8 +585,6 @@ Secure the camera from the back using the M2 nuts. ([](#fig:howto-mount-camera-5
      <img src="howto_mount_camera_5.jpg" style='width: 25em'/>
 </div>
 
-TODO: replace figure -- nuts should be nylon, not metal.
-
 ## Chassis assembly {#howto-assemble-chassis}
 
 From the previously prepared pieces take the following components:
