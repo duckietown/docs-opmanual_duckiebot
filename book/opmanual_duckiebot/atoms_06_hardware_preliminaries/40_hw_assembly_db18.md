@@ -889,7 +889,11 @@ Note: Be careful not to hurt the Duckie.
    <img src="howto_assemble_finish_milestone-2.jpg" style='width: 25em'/>
 </div>
 
-TODO: update [](#fig:howto-assemble-finish-milestone-2) to include new double-face USB cables.
+
+<div figure-id="fig:howto-assemble-finish-milestone-3" figure-caption="The final Duckiebot assembly, with longer form factor battery and double sided usb cable.">
+   <img src="howto_assemble_finish_milestone-3.jpg" style='width: 25em'/>
+</div>
+
 
 Note: as a final check, verify that no cable is touching the wheels. You can use the provided zip ties to ensure that cables stay out of the way.
 
