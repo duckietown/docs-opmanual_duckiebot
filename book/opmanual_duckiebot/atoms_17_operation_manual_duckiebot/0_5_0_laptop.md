@@ -55,7 +55,7 @@ See: For instructions, see for example [this online tutorial][tutorial].
 
 Installs pip, git, git-lfs, curl, wget:
 
-    laptop $ sudo apt install -y python-pip git git-lfs curl wget
+    laptop $ sudo apt install -y python3-pip git git-lfs curl wget
 
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
