@@ -68,7 +68,7 @@ Warning: This does not currently work on Mac OSX - need to fix
 
 Symptom: The robot doesn't move
 
-Reolution: Check that the `duckiebot-interface` is running
+Resolution: Check that the `duckiebot-interface` is running
 
 Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
 
