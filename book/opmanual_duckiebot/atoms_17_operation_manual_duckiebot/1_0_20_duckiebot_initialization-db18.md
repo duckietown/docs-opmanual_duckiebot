@@ -18,6 +18,17 @@ Results: A correctly configured Duckiebot SD card in configuration `DB18`. After
 </div>
 
 
+## Choose a name for your robot {#chose-robot-hostname}
+
+Pick a `hostname` for your robot. This will be the name of your robot and has to be unique within
+a fleet of robots connected to the same network.
+A valid `hostname` satisfies all the following requirements:
+
+- it is lowercase
+- it starts with a letter
+- it contains only letters, numbers, and underscores
+
+
 ## Burn the SD card {#burn-sd-card}
 
 Warning: this currently only works on Ubuntu. Mac is not supported.
@@ -26,11 +37,11 @@ Plug the SD card in the computer using the card reader.
 
 Then initalize it by running the command:
 
-    laptop $ dts init_sd_card [options]
+    laptop $ dts init_sd_card --hostname ![hostname] [options]
 
 The important options are:
 
-    --hostname         default: duckiebot
+    --hostname         required
     --linux-username   default: duckie
     --linux-password   default: quackquack
     --wifi             default: duckietown:quackquack
@@ -43,7 +54,7 @@ For a full list of the options, run
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
-    laptop $ dts init_sd_card --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
+    laptop $ dts init_sd_card --hostname ![hostname] --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
 If you are using a 16GB SD card, also add the `--compress` option.
 
@@ -68,11 +79,11 @@ loop3    7:3    0    91M  1 loop /snap/core/6350
 loop4    7:4    0  34.6M  1 loop /snap/gtk-common-themes/818
 loop5    7:5    0   3.7M  1 loop /snap/gnome-system-monitor/57
 loop6    7:6    0    13M  1 loop /snap/gnome-characters/139
-sda      8:0    0 298.1G  0 disk 
+sda      8:0    0 298.1G  0 disk
 └─sda1   8:1    0 298.1G  0 part /
-sdb      8:16   1  29.1G  0 disk 
-├─sdb1   8:17   1    64M  0 part 
-└─sdb2   8:18   1  29.1G  0 part 
+sdb      8:16   1  29.1G  0 disk
+├─sdb1   8:17   1    64M  0 part
+└─sdb2   8:18   1  29.1G  0 part
 sr0     11:0    1  1024M  0 rom  
 
 ```
