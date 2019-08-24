@@ -3,9 +3,13 @@
 
 <div class='requirements' markdown='1'>
 
+Requires: A Duckiebot in `DB18` configuration.
+
+Requires: Laptop configured, according to [](#laptop-setup).
+
 Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
-Requires: You have configured Docker communication as documented in [](#docker-setup).
+Result: You can see the output of the camera.
 
 </div>
 
@@ -15,53 +19,13 @@ Requires: You have configured Docker communication as documented in [](#docker-s
 It might be useful to do a quick camera hardware check as documented in [](#howto-mount-camera).
 
 
-## Viewing a Single Image
-These commands assume that you have completed the steps in [](#docker-setup),
-and in particular that you set `DOCKER_HOST` correctly and can use `docker ps` successfully.
-
-Start the container `rpi-python-picamera`. It reads the camera image and writes it to `/data`.
-
-    laptop $ docker -H ![hostname].local run -d --name picam --device /dev/vchiq -v /data:/data duckietown/rpi-python-picamera:master18
-
-Then point your browser to the address
-
-    http://![hostname].local:8082/image.jpg
-
-and verify that it is the output from your camera.
-
-Now stop the `picam` container:
-
-    laptop $ docker -H ![hostname].local stop picam
-
-warning The `picam` container is just for this example to verify your camera works. You should leave this container stopped if you plan to use the camera in other containers.
-
-## Viewing an Image Stream on Your Laptop
-
-Start publishing images through ROS on the Duckiebot using
-the container `rpi-duckiebot-ros-picam`:
+## Viewing an Image Stream on Your Laptop {#view-image-using-rqt-image-view}
 
 
-    laptop $ docker -H ![hostname].local run -it --name ros-picam --network=host  --device /dev/vchiq -v /data:/data  duckietown/rpi-duckiebot-ros-picam:master18 
+The imagery is streaming from your Duckiebot by default on startup. 
+To see it, run a base image on your laptop with:
 
-Note: you need `-v /data:/data` because of the calibration procedure later.
-
-You should see of output that ends with:
-
-    WARN: [/duckiebot/cam_info_reader_node] ==============CompressedImage
-    INFO: [/duckiebot/camera_node] Initializing......
-    INFO: [/duckiebot/camera_node] ~framerate_high = 30
-    INFO: [/duckiebot/camera_node] ~framerate_low = 15
-    INFO: [/duckiebot/camera_node] ~res_w = 640
-    INFO: [/duckiebot/camera_node] ~res_h = 480
-    INFO: [/duckiebot/camera_node] Initialized.
-    INFO: [/duckiebot/camera_node] Start capturing.
-    INFO: [/duckiebot/camera_node] Published the first image.
-
-
-Now start the GUI tools container in a different terminal:
-
-
-    laptop $ dts start_gui_tools ![hostname]
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
 
 The container will start. At the prompt, run:
@@ -71,12 +35,66 @@ The container will start. At the prompt, run:
 
 
 The command should open a window where you can view the image.
-You have to select the right topic from the dropdown menu.
+You have to select the right topic from the dropdown menu:
+
+<figure>
+    <figcaption>The rqt image view window with dropdown menu</figcaption>
+    <img style='width:12em' src="rqt_image_view.png"/>
+</figure>
+
+
+### Troubleshooting
+
+Symptom: I don't see any image
+
+Reolution: Check that the `duckiebot-interface` is running
+
+Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+
+You call also determine this by running:
+
+    $ docker -H ![DUCKIEBOT_NAME].local ps
+
+and look at the output to find the Duckiebot interface container and verify that it is running. 
+
+
+## Viewing the image stream on the Dashboard {#image-dashboard status=beta}
+
+If you followed the instructions in [](#duckiebot-dashboard-setup), you
+should have access to the Duckiebot dashboard.
+
+A few things to check before continuing:
+
+- Make sure that the dashboard container is running, as explained in [](#dashboard-installation).
+
+- Make sure that the camera node is running, as explained in [](#view-image-using-rqt-image-view).
+
+- Make sure that the ROS websocket bridge is running, as explained in [](#setup-ros-websocket-image).
+
+
+Open the browser and visit the page `http://![hostname].local/mission-control`.
+
+The bottom of the page shows the camera block. If you followed all the steps described
+above, you should be able to see the camera feed in the camera block, as shown in the
+image below.
+
+<div figure-id="fig:dashboard_mission_control_camera_feed" figure-caption="">
+  <img src="dashboard_mission_control_camera_feed.png" style='width: 35em'/>
+</div>
+
+By default, the camera stream is throttled down to 8 frames per second. This is to
+minimize the resources used by your browser while streaming images from the robot.
+Feel free to increase the data stream frequency in the **Properties** tab of the
+camera block.
+
+Note: If you see a black image in the camera block, make sure that you removed the
+protective cap that covers the camera lens of your Duckiebot.
+
+
 
 ## Verifying the output by using the ROS utilities
 
-Close the `rqt_image_view` window and type the next commands in the same
-window.
+Use the commands below to check the data streams in ROS.
 
 
 ### List topics
@@ -91,7 +109,6 @@ You should see at least the following topics:
 
     /![hostname]/camera_node/camera_info
     /![hostname]/camera_node/image/compressed
-    /![hostname]/camera_node/image/raw
     /rosout
     /rosout_agg
 

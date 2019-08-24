@@ -1,17 +1,14 @@
 # Setting up the Docker workflow {#docker-setup status=ready}
 
-Assigned: Andrea Censi
-
 This section shows how to use the Docker functionality and introduces
 some monitoring tools and workflow tips.
-
 
 <div class='requirements' markdown="1">
 
 Requires: You can ping and SSH into the robot, as explained in [](#setup-duckiebot).
 
 Results: You have setup the Docker workflow.
- 
+
 </div>
 
 ## The Portainer interface {#docker-setup-portainer-interface}
@@ -24,9 +21,9 @@ and ssh to the robot.
 Try to open the Portainer interface:
 
     http://![hostname].local:9000/#/containers
-    
+
 This will show the containers that are running.
- 
+
 ### In case the above doesn't work
 
 The first time that the Duckiebot starts it will download the containers to run.
@@ -40,8 +37,8 @@ To debug this, login to the robot:
 and then look at the logs:
 
     $ sudo tail -f /var/log/syslog
-    
-You should see messages like this: 
+
+You should see messages like this:
 
     Sep 28 20:23:23 duckiebot cloud-init[695]: Loaded image: resin/raspberrypi3-alpine-python:slim
     Sep 28 20:23:25 duckiebot cloud-init[695]: Creating volume "local_data-volume" with local driver
@@ -60,28 +57,20 @@ You should see messages like this:
     Sep 28 20:26:46 duckiebot cloud-init[695]: Creating local_portainer_1   ...
 
 Until you see `Creating ![container]` messages, the PI is still downloading the data.
- 
+
 
 ## Communicating with Docker on the Duckiebot using the command line  {#docker-setup-communication}
 
 The following commands can be run on your laptop but will affect the Duckiebot.
 
 Note: It is never needed to log in to the Duckiebot via `ssh`, though that could be an alternative workflow.
- 
 
-You can set the variable `DOCKER_HOST` to point to the Duckiebot:
-
-    laptop $ export DOCKER_HOST=![hostname].local
- 
-If you do, then you may omit every instance of the switch `-H ![hostname].local`.   
-
-    
 ### Seeing which containers are running using `docker ps`
 
 To test the connection, run `docker ps`:
 
     laptop $ docker -H ![hostname].local ps
-    
+
     CONTAINER ID        IMAGE                                   ...
     84b6454111fd        resin/raspberrypi3-alpine-python:slim   ...
     c82d1487e2da        v2tec/watchtower:armhf-latest           ...
@@ -103,7 +92,7 @@ Another cool alternative is `ctop`, which you can install [from here][ctop-insta
 
 ## Health checks {#docker-setup-health-checks}
 
-Warning: the container `duckietown/rpi-health` arrived only recently in the default config (Sep 27). If you have a previous SD card, you have to run it, using: 
+Warning: the container `duckietown/rpi-health` arrived only recently in the default config (Sep 27). If you have a previous SD card, you have to run it, using:
 
     laptop $ docker -H ![hostname].local run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health:master18
 
@@ -119,13 +108,13 @@ In particular, the container `duckietown/rpi-health` checks some common hardware
 To access detailed information about the HW health, click the "logs" icon (second icon to the right of the orange "unhealthy" label). Alternatively, open the URL `http://![hostname].local:8085` in your browser.
 
 Search for the `status` and `status_msgs` output:
-    
+
     {
-        "status": "error", 
+        "status": "error",
         "status_msgs": [
-            "Error: PI is throttled", 
-            "Error: Under-voltage", 
-            "Warning: PI throttling occurred in the past.", 
+            "Error: PI is throttled",
+            "Error: Under-voltage",
+            "Warning: PI throttling occurred in the past.",
             "Warning: Under-voltage occurred in the past."
         ]
     ...
@@ -146,11 +135,11 @@ To access this content, you have two ways.
 From another computer, you can see the contents of `/data` by visiting the URL:
 
     http://![hostname].local:8082
-    
+
 Otherwise, you can login via SSH and take a look at the contents of `/data`:
 
     laptop $ ssh ![hostname].local ls /data  
- 
+
 
 
 ## Building workflow {#docker-setup-building-workflow}

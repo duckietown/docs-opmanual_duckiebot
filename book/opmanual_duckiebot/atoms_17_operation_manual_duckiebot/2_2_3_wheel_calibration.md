@@ -1,7 +1,5 @@
 # Wheel calibration {#wheel-calibration status=ready}
 
-Assigned: Jacopo Tani
-
 <div class='requirements' markdown='1'>
 
 Requires: You can make your robot move as described in [](#sec:rc-control).
@@ -11,47 +9,33 @@ when you command it to. Set the maximum speed of the Duckiebot.
 
 </div>
 
-Comment: It might be helpful to talk about the ROS Parameter Server here, or at least
-reference another page. -AD
 
 For the theoretical treatment of the odometry calibration see [](+learning_materials#odometry_calibration).
 
 
-
 ## Step 1: Make your robot move
 
-Follow instructions in [](#sec:rc-control) to make your robot movable either with a joystick or the keyboard. 
-
-Note: Whatever container you used in [](#sec:rc-control) needs to have the `-v /data:/data` flag set or the calibration will not persist on your Duckiebot.
+Follow instructions in [](#sec:rc-control) to make your robot movable either with a joystick or the keyboard.
 
 
-## Step 2
+## Step 2: Get a base container with a command line
 
 
-### Docker 
-
-If you just finished the [camera calibration step](#camera-calib) then you have a docker terminal ready to use on your laptop.  
-
-**Note:** you can now use `dts duckiebot calibrate_wheels ![hostname]` to run wheel calibration only.
-
-### Docker + ROS
+Now you need another container to run so that you can edit the calibrations and see the results. To get a base container with a command line you can run:
 
 
-Get a base container running on your robot if you don't have one already:
-
-
-    laptop $ docker -H ![hostname].local run -it --net host --privileged -v /data:/data duckietown/rpi-duckiebot-base:master18
+    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME]
 
 
 
-## Step 3: Perform the Calibration
+## Step 3: Perform the calibration
 
 
 ### Calibrating the `trim` parameter
 
 The trim parameter is set to $0.00$ by default, under the assumption that both motors and wheels are perfectly identical. You can change the value of the trim parameter by running the command:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/set_trim -- ![trim value]
+    duckiebot-container $ rosservice call /![hostname]/inverse_kinematics_node/set_trim -- ![trim value]
 
 Use some tape to create a straight line on the floor ([](#fig:wheel_calibration_line)).
 
@@ -85,12 +69,12 @@ If the Duckiebot drifted by less than $10$ centimeters you can stop calibrating 
 
 If the Duckiebot drifted to the left side of the tape, decrease the value of $r$, by running, for example:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/set_trim -- -0.1
+    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/set_trim -- -0.1
 
 If the Duckiebot drifted to the right side of the tape, increase the value of
 $r$, by running, for example:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/set_trim -- 0.1
+    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/set_trim -- 0.1
 
 
 
@@ -103,7 +87,7 @@ Repeat this process until the robot drives straight
 The gain parameter is set to $1.00$ by default. You can change its value by
 running the command:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/set_gain -- ![gain value]
+    duckiebot-container $ rosservice call /![hostname]/inverse_kinematics_node/set_gain -- ![gain value]
 
 You won't really know if it's right until you verify it though! onto the next section
 
@@ -113,12 +97,19 @@ Construct a calibration station similar to the one in [](#fig:kinematic_calibrat
 
 <div figure-id="fig:kinematic_calibration" figure-caption="Kinematic calibration verification setup">
      <img src="kinematic_calibration1.jpg" style='width: 30em'/>
+     <img src="kinematic_calibration3.pdf" style='width: 30em'/>
      <img src="kinematic_calibration2.jpg" style='width: 30em'/>
 </div>
 
+Note: In the sketch of the setup, the light green sections represent the interlocking parts of the tiles.
+
 The following are the specs for this 3x1 mat "runway":
 
- - Red line as close to the edge without crossing the interlocking bits
+ - For red and white tape, use the one provided in your Duckietown kit
+
+ - Blue/Black tape is ignored by Duckiebots, you can use anything of any color (expect red/white/yellow) to mark the positions.
+
+ - Red line as close to the edge without crossing the interlocking bits.
 
  - Blue/Black line 8 cm from red line and parallel to it.
 
@@ -131,18 +122,25 @@ The following are the specs for this 3x1 mat "runway":
 
 Place your robot as shown in [](#fig:kinematic_calibration).
 
-On your robot execute:
+In the open shell execute:
 
-    duckiebot $ cd ![duckietown root]
-    duckiebot $ make hw-test-kinematics
+    duckiebot-container $ roslaunch indefinite_navigation calibrate_kinematics.test veh:=![veh_name]
 
-You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again.
+Then open a second shell with:
+
+    laptop $ docker -H ![hostname].local exec -it demo_base /bin/bash
+
+And inside of it run the test script with:
+
+    duckiebot-container $ rosrun indefinite_navigation  test_kinematics.py
+
+You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again. You can use the shell in which you ran the `rosrun` command to modify the calibration.
 
 ### Store the calibration
 
 When you are all done, save the parameters by running:
 
-    duckiebot $ rosservice call /![hostname]/inverse_kinematics_node/save_calibration
+    duckiebot $ rosservice call /![DUCKIEBOT_NAME]/inverse_kinematics_node/save_calibration
 
 The first time you save the parameters, this command will create the file
 
@@ -150,4 +148,6 @@ The first time you save the parameters, this command will create the file
 ### Final Check to make sure it's stored
 
 
-Assuming your are running an HTTP server, point your browser to `http://![hostname].local:8082/config/calibrations/kinematics/![hostname].yaml`
+Assuming your are running an HTTP server, point your browser to
+
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/kinematics/![DUCKIEBOT_NAME].yaml`
