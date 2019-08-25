@@ -350,9 +350,9 @@ These bumpers are designed to keep the LEDs in place and are therefore used only
 <!--
 Our design files are available [here].
 -->
-<div figure-id="fig:bumpers" figure-caption="The Bumpers">
+<!--div figure-id="fig:bumpers" figure-caption="The Bumpers">
      <img src="placeholder.png" style='width: 15em'/>
-</div>
+</div-->
 
 ## Headers, resistors and jumper
 
@@ -360,13 +360,13 @@ Upgrading `DB17` to `DB17-l` requires several electrical bits: 5 of 4 pin female
 
 These items require [soldering](0_5_soldering_boards_c1.md).
 
-<div figure-id="fig:headers" figure-caption="The Headers">
+<!--div figure-id="fig:headers" figure-caption="The Headers">
      <img src="placeholder.png" style='width: 15em'/>
-</div>
+</div-->
 
-<div figure-id="fig:resistors" figure-caption="The Resistors">
+<!--div figure-id="fig:resistors" figure-caption="The Resistors">
      <img src="placeholder.png" style='width: 15em'/>
-</div>
+</div-->
 
 ## Caster (`DB17-c`) {#db17-c-description status=ready}
 
@@ -398,4 +398,4 @@ To assemble the caster at the right height we will need to purchase:
     </div>
 </div>
 
-Note: The caster wheel use is to be considered experimental and has been dropped in official configurations starting from `DB18`. 
+Note: The caster wheel use is to be considered experimental and has been dropped in official configurations starting from `DB18`.

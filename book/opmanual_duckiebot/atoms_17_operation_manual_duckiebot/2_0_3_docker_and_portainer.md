@@ -92,10 +92,6 @@ Another cool alternative is `ctop`, which you can install [from here][ctop-insta
 
 ## Health checks {#docker-setup-health-checks}
 
-Warning: the container `duckietown/rpi-health` arrived only recently in the default config (Sep 27). If you have a previous SD card, you have to run it, using:
-
-    laptop $ docker -H ![hostname].local run --device /dev/vchiq -p 8085:8085 -d duckietown/rpi-health:master18
-
 If some of the containers are marked as "unhealthy", fix the problem before continuing.
 
 <figure id="portainer-unhealthy">

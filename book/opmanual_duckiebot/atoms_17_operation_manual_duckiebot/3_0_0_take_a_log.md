@@ -18,7 +18,7 @@ Note: You may not have the folder. SSH into your robot and execute:
 
 Note: It is recommended but not required that you log to your USB and not to your SD card.
 
-See: To mount your USB see [here](+software_reference#mounting_usb).
+See: To mount your USB see [here](+software_reference#mounting-usb).
 
 
 ## Record the log {#record-log}
@@ -38,14 +38,14 @@ When inside run:
 
     duckiebot-container $ make log-full-docker
 
-Note: You can always run the above command to get a terminal inside a container that has the base Duckietown software stack on the robot. 
+Note: You can always run the above command to get a terminal inside a container that has the base Duckietown software stack on the robot.
 
 
 ## Getting the log
 
 If you mounted a USB drive, you can unmount it and then remove the USB drive containing the logs (recommended).
 
-See: For unmounting instructions see [here](+software_reference#mounting_usb)
+See: For unmounting instructions see [here](+software_reference#mounting-usb)
 
 Otherwise, if you are running the file server, you should see you logs at `http://![hostname].local:8082/logs/`
 
