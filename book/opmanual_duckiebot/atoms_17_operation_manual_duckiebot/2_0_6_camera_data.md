@@ -66,8 +66,8 @@ should have access to the Duckiebot dashboard.
 Open the browser and visit the page `http://![hostname].local/mission-control`.
 
 The bottom of the page shows the camera block.
-If you followed all the steps described above, you should be able to see
-the camera feed in the camera block, as shown in the image below.
+You should be able to see the camera feed in the camera block,
+as shown in the image below.
 
 <div figure-id="fig:dashboard_mission_control_camera_feed" figure-caption="">
   <img src="dashboard_mission_control_camera_feed.png" style='width: 35em'/>
