@@ -25,12 +25,12 @@ Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you
 
     $ dts duckiebot demo --demo_name joystick --duckiebot_name ![DUCKIEBOT_NAME]
 
-and you should be able to move it with the joystick. 
+and you should be able to move it with the joystick.
 
-If you would like to move your robot using your laptop, first also run the line above - it will start the joystick node on the duckiebot that will listen to commands from the joystick emulator. To start the emulator, you can then run 
+If you would like to move your robot using your laptop, first also run the line above - it will start the joystick node on the duckiebot that will listen to commands from the joystick emulator. To start the emulator, you can then run
 
     $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
-    
+
 which, after startup should open the interface window that looks like:
 
 <figure>
@@ -61,7 +61,7 @@ If, for some reason, you cannot get the window to open, run the command with the
 
 
 Warning: This does not currently work on Mac OSX - need to fix
-    
+
 
 
 ### Troubleshooting
@@ -76,14 +76,14 @@ You call also determine this by running:
 
     $ docker -H ![DUCKIEBOT_NAME].local ps
 
-and look at the output to find the Duckiebot interface container and verify that it is running. 
+and look at the output to find the Duckiebot interface container and verify that it is running.
 
 Resolution: One of the base images is out of date
 
 Pull the base images on the Duckiebot:
 
     $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/rpi-duckiebot-base:master19
-    
+
 and on the laptop:
 
     $ docker pull duckietown/rpi-duckiebot-base:master19-no-arm
@@ -118,22 +118,11 @@ keyboard control.
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
 
-Note: Make sure that the dashboard container is running by following the instructions
-in [](#dashboard-installation).
+You can open the browser and visit the page `http://![hostname].local/mission-control`.
 
-In order for your dashboard to be able to exchange messages with your
-robot, you need to setup a communication channel. Of course, we have a
-Docker image for this. Running the following command will give the
-dashboard access to the ROS messaging system that powers your robot.
-
-
-    laptop $ docker -H ![hostname].local run -dit --name ros-websocket --network=host  duckietown/rpi-duckiebot-rosbridge-websocket:master18
-
-
-You can now open the browser and visit the page `http://![hostname].local/mission-control`.
-
-This is the Mission Control page. It is the page that lets you monitor and control
-your Duckiebot. The top of the page should be similar to the following image,
+This is the Mission Control page.
+It is the page that lets you monitor and control your Duckiebot.
+The top of the page should be similar to the following image,
 
 
 <div figure-id="fig:dashboard_mission_control_auto" figure-caption="">
@@ -160,8 +149,9 @@ central plot will start moving.
 You can now use the arrows on your keyboard to drive your Duckiebot.
 
 **Did you know?**
-The page contains 4 blocks by default. Feel free to drag them around and rearrange
-them as you please. You can also use the menu button of each block to resize them.
+The page contains 4 blocks by default.
+Feel free to drag them around and rearrange them as you please.
+You can also use the menu button of each block to resize them.
 
 <!--
 
