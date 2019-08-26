@@ -22,7 +22,7 @@ It might be useful to do a quick camera hardware check as documented in [](#howt
 ## Viewing an Image Stream on Your Laptop {#view-image-using-rqt-image-view}
 
 
-The imagery is streaming from your Duckiebot by default on startup. 
+The imagery is streaming from your Duckiebot by default on startup.
 To see it, run a base image on your laptop with:
 
     laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
@@ -55,7 +55,7 @@ You call also determine this by running:
 
     $ docker -H ![DUCKIEBOT_NAME].local ps
 
-and look at the output to find the Duckiebot interface container and verify that it is running. 
+and look at the output to find the Duckiebot interface container and verify that it is running.
 
 
 ## Viewing the image stream on the Dashboard {#image-dashboard status=beta}
@@ -63,32 +63,24 @@ and look at the output to find the Duckiebot interface container and verify that
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
 
-A few things to check before continuing:
-
-- Make sure that the dashboard container is running, as explained in [](#dashboard-installation).
-
-- Make sure that the camera node is running, as explained in [](#view-image-using-rqt-image-view).
-
-- Make sure that the ROS websocket bridge is running, as explained in [](#setup-ros-websocket-image).
-
-
 Open the browser and visit the page `http://![hostname].local/mission-control`.
 
-The bottom of the page shows the camera block. If you followed all the steps described
-above, you should be able to see the camera feed in the camera block, as shown in the
-image below.
+The bottom of the page shows the camera block.
+If you followed all the steps described above, you should be able to see
+the camera feed in the camera block, as shown in the image below.
 
 <div figure-id="fig:dashboard_mission_control_camera_feed" figure-caption="">
   <img src="dashboard_mission_control_camera_feed.png" style='width: 35em'/>
 </div>
 
-By default, the camera stream is throttled down to 8 frames per second. This is to
-minimize the resources used by your browser while streaming images from the robot.
-Feel free to increase the data stream frequency in the **Properties** tab of the
-camera block.
+By default, the camera stream is throttled down to 8 frames per second.
+This is to minimize the resources used by your browser while streaming
+images from the robot.
+Feel free to increase the data stream frequency in the **Properties** tab
+of the camera block.
 
-Note: If you see a black image in the camera block, make sure that you removed the
-protective cap that covers the camera lens of your Duckiebot.
+Note: If you see a black image in the camera block, make sure that you
+removed the protective cap that covers the camera lens of your Duckiebot.
 
 
 

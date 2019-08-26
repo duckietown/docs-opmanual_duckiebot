@@ -27,22 +27,16 @@ of \\compose\\ running on your Duckiebot.
 To make is easier for you to get started, we provide a Docker image with \\compose\\
 and all the packages you need. Follow the instructions in the next step to get started.
 
-Visit the [official documentation page](http://compose.afdaniele.com/docs/latest/index)
+Visit the
+[official documentation page](http://compose.afdaniele.com/docs/latest/index)
 for further information about \\compose\\.
-
-
-### Install Dashboard {#dashboard-installation}
-
-Use the following command to run the dashboard on your Duckiebot:
-
-
-    laptop $ docker -H ![hostname].local run -dit --net=host --name dashboard duckietown/rpi-duckiebot-dashboard:master19
-
 
 
 ## Dashboard - First-setup {#dashboard-first-setup}
 
-Wait up to 20 seconds, then open the URL `http://![hostname].local` in your browser.
+Turn ON your Duckiebot and wait a few minutes for the robot
+to be ready. Open the browser and visit the URL
+`http://![hostname].local`.
 You should be able to see the following page,
 
 <div figure-id="fig:compose_first_setup" figure-caption="">
