@@ -64,10 +64,19 @@ For the DBv2 we use the line following sensor QRE1113 from spark fun. You can fi
 
 ## Inertial Measurement Unit (IMU)
 
+An inertial measurement unite (IMU)  is a sensor that measures body's specific force, angular rate and the orientation of the body, using accelerometers, gyroscopes and magnetometers.
+
+
+[spark fun website](https://www.sparkfun.com/products/13762)
 
 ## Camera
 
 ## Wheel Encoder
+
+An encoder is a device, that transforms information in another format. The wheel encoder we are using sends out a light signal and detects it with a photo diode. If the light beam gets interrupted the digital output signal of the diode is pulled LOW (0). If the light beam can be detected the output signal is HIGH (1).
+
+On the `DBv2` a 3D printed wheel with well-defined hole sizes is mounted on the back axle.The wheel is mounted in the middle between the light source and the photo diode. When the `DBv2` is driving, the number of rising and falling edges can be counted per rotation of the wheel. The driving speed and the traveled distance can be measured and calculated.
+
 
 ## Sensor Suite
 The sensor suite node scans through all sensor which are available for the `DBv2` and detects which sensors are plugged in. The sensors must be plugged in as stated in the construction manual. It won’t detect a ToF at the IMU plug.
