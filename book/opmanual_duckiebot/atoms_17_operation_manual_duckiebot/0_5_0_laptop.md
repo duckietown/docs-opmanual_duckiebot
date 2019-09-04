@@ -162,9 +162,9 @@ After installing XQuartz, run it in the command line with:
     laptop $ open -a XQuartz
 
 
-Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set.
+Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set. Now close XQuartz.
 
-It is also recommended that you add the following lines to your `.bashrc` file:
+You may want to add the following lines to your `.bashrc` file:
 
 
     export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
@@ -172,7 +172,7 @@ It is also recommended that you add the following lines to your `.bashrc` file:
 
 These will find your IP and then allow incoming connections to it in order to be able to popup windows from within docker containers.
 
-Alternatively, you can run them each time before you want to use `X11` forwarding.
+Alternatively, you can run them each time before you want to use `X11` forwarding. This is done for you when you run things through the duckietown shell.
 
 
 ### Docker {#laptop-setup-mac-docker}
