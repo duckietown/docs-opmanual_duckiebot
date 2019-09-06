@@ -3,16 +3,93 @@
 This page explains the sensors of the `DBv2`.
 
 ## Time of Flight Sensor (ToF)
-To measure distances, a time of flight sensor can be used. The sensor sends out a signal and measures the time a signal needs to return. Knowing the propagation speed of the signal and the time it needs to come back, it is possible to calculate the travel distance. For the `DBv2` the spark fun RFD77402 sensor is used. That sensor has a distance range of 2 m and 55° in angle. According to the datasheet the precision is (+/-) 10%.
 
-Testing the precision by our self, we could find an error of less than 10% for distances between 5-100 cm. By a distance under 5 cm we got an error of 10-13% and measuring a distance over one meter gives errors which are much higher than 10% (the distance of 150 cm to a shiny box had an error of 30%).
+To measure distances, a time of flight sensor can be used. The sensor sends out a signal and measures the time a signal needs to return. Knowing the propagation speed of the signal and the time it needs to come back, it is possible to calculate the travel distance. For the `DBv2` the spark fun RFD77402 sensor is used. That sensor has a distance range of 2 m and 55° in angle. According to the datasheet the precision is (+/-) 10%.
 
 Futher information about the RFD77402 chip can be found on the [SparkFun website](https://www.sparkfun.com/products/14539)
 
 <figure>
     <figcaption>RFD77402</figcaption>
-    <img style='width:8em' src="RFD77402.jpeg"/>
+    <img style='width:8em' src="images_sensors/RFD77402.jpeg"/>
 </figure>
+
+### Validation
+Testing the precision by our self, we could find an error of less than 10% for distances between 5-100 cm. By a distance under 5 cm we got an error of 10-13% and measuring a distance over one meter gives errors which are much higher than 10% (the distance of 150 cm to a shiny box had an error of 30%).
+
+Bad accuracy, good precision.
+
+<figure>
+    <figcaption>Accurency RFD77402</figcaption>
+    <img style='width:40em' src="images_sensors/accurency_rfd77402.jpg"/>
+</figure>
+
+
+<table style="width:100%">
+ <tr>
+   <th>True Distance [mm]</th>
+   <td>100</th>
+   <td>150</th>
+   <td>200</th>
+ </tr>
+ <tr>
+   <th>Mean [mm]</td>
+   <td>94.36</td>
+   <td>148.43</td>
+   <td>198.67</td>
+ </tr>
+ <tr>
+   <th>Standard deviation</td>
+   <td>19.92</td>
+   <td>18.39</td>
+   <td>17.73</td>
+ </tr>
+</table>
+
+
+
+<figure>
+    <figcaption>Precision RFD77402</figcaption>
+    <img style='width:40em' src="images_sensors/precision_rfd77402.jpg"/>
+</figure>
+
+<table style="width:100%">
+ <tr>
+   <th></th>
+   <th>Sensor 1</th>
+   <th>Sensor 2</th>
+   <th>Sensor 3</th>
+   <th>Sensor 4</th>
+   <th>Sensor 5</th>
+   <th>Sensor 6</th>
+   <th>Sensor 7</th>
+
+ </tr>
+ <tr>
+   <th>Mean [mm]</td>
+   <td>170.1</td>
+   <td>127.5</td>
+   <td>144.6</td>
+   <td>129.3</td>
+   <td>152.6</td>
+   <td>138.1</td>
+   <td>176.8</td>
+ </tr>
+ <tr>
+   <th>Standard deviation</td>
+   <td>2.33</td>
+   <td>5.34</td>
+   <td>1.96</td>
+   <td>4.76</td>
+   <td>6.20</td>
+   <td>4.61</td>
+   <td>2.90</td>
+ </tr>
+</table>
+
+
+
+
+### Run the ToF Service
 
 To get the measurement of the time of flight call the rosservice tof_node with the position name of the sensor you want to measure the distance from
 
@@ -27,6 +104,8 @@ Open a second terminal:
     $rosservice call /tof_measurement "sensor_position: '[position name]'";
 
 This service returns the measured distance in mm, the confidence value and the valid pixels, which are values of the confidence register and depend on the detected signal amplitude. The sensor measures different distances, as the light beam gets reflected differently. If there is no object in a range of 2 m sometimes a distance was measured with less than 100 valid pixels. This happens because the light beam can also be reflected by the ground. (We advise you to check, if the valid pixel is a number greater then 100 when using the distance.) The last information the time of flight service returns is the time stamp when the measurement is taken.
+
+confidence Value from 0 to 2047 where 2017 being the "most confident"
 
 Position names:
 <col2 figure-id="tab:tof_positions" figure-caption="ToF position names" class="labels-row1">
@@ -59,7 +138,7 @@ For the DBv2 we use the line following sensor QRE1113 from SparkFun. You can fin
 
 <figure>
     <figcaption>QRE1113</figcaption>
-    <img style='width:8em' src="QRE1113.jpg"/>
+    <img style='width:8em' src="images_sensors/QRE1113.jpg"/>
 </figure>
 
 
