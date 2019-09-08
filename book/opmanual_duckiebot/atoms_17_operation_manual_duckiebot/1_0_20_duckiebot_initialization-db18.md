@@ -102,6 +102,14 @@ If the procedure fails with errors about directories not mounted, be patient and
 
 On successful end of the procedure, you can eject (safe remove) the drives and remove the SD card from your laptop.
 
+### Troubleshooting
+
+Symptom: The flashing procedure failes with a `Bad archive` error when trying to flash the Hypriot image
+
+Resolution: This happens when the downloaded zip for Hypriot is incomplete or corrupt. Delete the zip file by running the following command and try the procedure again.
+
+    laptop $ rm /tmp/duckietown/hypriotos*
+
 ## Booting the Duckiebot {#duckiebot-boot}
 
 Now insert the SD card into the Raspberry PI and push the button on the battery to power things up.
