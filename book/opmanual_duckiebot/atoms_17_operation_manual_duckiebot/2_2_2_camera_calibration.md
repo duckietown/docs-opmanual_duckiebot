@@ -49,7 +49,7 @@ The procedure is basically a wrapper around the [ROS camera calibration tool](ht
 
 We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
-    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image_name duckietown/dt-core:daffy
+    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image duckietown/dt-core:daffy
 
 ### Launch the intrinsic calibration application
 
