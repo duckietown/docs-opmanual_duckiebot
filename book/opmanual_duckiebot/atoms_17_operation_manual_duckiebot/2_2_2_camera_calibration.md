@@ -55,7 +55,7 @@ We want uncompressed imagery for this which is not streamed by default from the 
 
 Next you can launch the intrinsic calibration program with:
 
-    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
+    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
     
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
