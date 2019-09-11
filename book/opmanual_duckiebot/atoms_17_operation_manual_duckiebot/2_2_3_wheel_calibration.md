@@ -24,7 +24,7 @@ Follow instructions in [](#sec:rc-control) to make your robot movable either wit
 Now you need another container to run so that you can edit the calibrations and see the results. To get a base container with a command line you can run:
 
 
-    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME] --image duckietown/dt-core:daffy
 
 
 
