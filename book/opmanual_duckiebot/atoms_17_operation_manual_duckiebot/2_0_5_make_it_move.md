@@ -22,7 +22,6 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
 ## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
 
 
-Warning: This does not currently work on Mac OSX - need to fix
 
 
 Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and run:
@@ -33,7 +32,7 @@ and you should be able to move it with the joystick.
 
 If you would like to move your robot using your laptop, first also run the line above - it will start the joystick node on the duckiebot that will listen to commands from the joystick emulator. To start the emulator, you can then run
 
-    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
+    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
 
 which, after startup should open the interface window that looks like:
 
@@ -59,11 +58,16 @@ The following keys control the Duckiebot:
     <span>Toggle Anti-instagram</span>
 </col2>
 
-If, for some reason, you cannot get the window to open, run the command with the `--cli` option to get a command line interface:
-
-    laptop $ dts duckiebot keyboard_control ![hostname] --cli
+Warning: This does not currently work on Mac OSX - need to fix
 
 
+## The no-window way  (For Mac Users) 
+
+There is some weird reason that messages published on Mac inside the container don't make it all the way to the robot. 
+
+For those that don't want or can't do the above where a window pops up, do the following (which will run directly on the robot): 
+
+    laptop $ dts duckiebot keyboard_control ![hostname] --cli --base_image duckietown/dt-core:daffy
 
 
 ### Troubleshooting
