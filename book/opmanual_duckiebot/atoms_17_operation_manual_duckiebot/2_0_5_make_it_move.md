@@ -18,19 +18,15 @@ Results: You can make your robot move.
 <!--Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).-->
 
+## Option 0 - With a joystick
+
+Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and you should be able to use it right away
+
 
 ## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
 
 
-
-
-Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and run:
-
-    $ dts duckiebot demo --demo_name joystick --duckiebot_name ![DUCKIEBOT_NAME] --image duckietown/dt-core:daffy
-
-and you should be able to move it with the joystick.
-
-If you would like to move your robot using your laptop, first also run the line above - it will start the joystick node on the duckiebot that will listen to commands from the joystick emulator. To start the emulator, you can then run
+If you would like to move your robot using your laptop, you can run:
 
     $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
 
