@@ -169,6 +169,8 @@ You may want to add the following lines to your `.bashrc` file:
 
     export IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
     xhost +$IP
+    
+Note: You may also need to add `/usr/X11/bin` to your system path in order for it to find `xhost`. 
 
 These will find your IP and then allow incoming connections to it in order to be able to popup windows from within docker containers.
 
