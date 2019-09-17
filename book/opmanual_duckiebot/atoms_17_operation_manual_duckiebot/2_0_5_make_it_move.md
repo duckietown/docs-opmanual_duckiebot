@@ -28,7 +28,7 @@ Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you
 
 If you would like to move your robot using your laptop, you can run:
 
-    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
+    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
 
 which, after startup should open the interface window that looks like:
 
@@ -88,7 +88,7 @@ Pull the base images on the Duckiebot:
 
 and on the laptop:
 
-    $ docker pull duckietown/dt-core:daffy
+    $ docker pull duckietown/dt-core:daffy-amd64
 
 
 <!--
