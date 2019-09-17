@@ -37,6 +37,14 @@ To log everything that is being published, run the base container on the Duckieb
     laptop $ dts duckiebot demo --demo_name make_log_full_docker --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
 
+## Stop logging
+
+You can stop the recording process by stopping the container:
+
+    laptop $ docker -H ![DUCKIEBOT_NAME].local stop demo_make_log_docker
+ 
+or `demo_make_log_full_docker` as the case may be. You can also do this through the portainer interface. 
+
 
 ## Getting the log
 
