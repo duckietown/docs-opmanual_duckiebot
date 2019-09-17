@@ -23,7 +23,9 @@ See: To mount your USB see [here](+software_reference#mounting-usb).
 
 ## Record the log {#record-log}
 
-    laptop $ dts duckiebot demo --demo_name make_log_docker --duckiebot_name ![DUCKIEBOT_NAME]
+### Option: Minimal Logging on the Duckiebot
+
+    laptop $ dts duckiebot demo --demo_name make_log_docker --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
 This will only log the imagery, camera_info, the control commands and a few other essential things.
 
@@ -32,13 +34,8 @@ This will only log the imagery, camera_info, the control commands and a few othe
 
 To log everything that is being published, run the base container on the Duckiebot:
 
-    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot demo --demo_name make_log_full_docker --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
-When inside run:
-
-    duckiebot-container $ make log-full-docker
-
-Note: You can always run the above command to get a terminal inside a container that has the base Duckietown software stack on the robot.
 
 
 ## Getting the log
@@ -52,7 +49,7 @@ Otherwise, if you are running the file server, you should see you logs at `http:
 
 Otherwise you can copy the logs from your robot onto your laptop. Assuming they are on the same network execute:
 
-    laptop $ scp ![hostname]/data/logs/* ![path-to-local-folder]
+    laptop $ scp ![linux_username]@![hostname].local:/data/logs/* ![path-to-local-folder]
 
 You can also download a specific log instead of all by replacing `*` with the filename.
 
