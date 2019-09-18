@@ -91,7 +91,7 @@ running the command:
 
 You won't really know if it's right until you verify it though! onto the next section
 
-### Verify your calibration {#verify-kinematic-calibration}
+<!-- ### Verify your calibration {#verify-kinematic-calibration}
 
 Construct a calibration station similar to the one in [](#fig:kinematic_calibration):
 
@@ -134,7 +134,7 @@ And inside of it run the test script with:
 
     duckiebot-container $ rosrun indefinite_navigation  test_kinematics.py
 
-You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again. You can use the shell in which you ran the `rosrun` command to modify the calibration.
+You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again. You can use the shell in which you ran the `rosrun` command to modify the calibration. -->
 
 ### Store the calibration
 
