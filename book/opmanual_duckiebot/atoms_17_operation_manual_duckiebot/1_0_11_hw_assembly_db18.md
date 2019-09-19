@@ -1,6 +1,6 @@
 # Assembling the `DB18` Duckiebot {#assembling-duckiebot-db18 status=ready}
 
-This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [the `DB17` Duckiebot operation manual](https://docs.duckietown.org/DT17/).
+This page is for the `DB18` configuration used in classes in 2018 and 2019. For the instructions from 2017 see [the `DB17` Duckiebot operation manual](https://docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown="1">
 
