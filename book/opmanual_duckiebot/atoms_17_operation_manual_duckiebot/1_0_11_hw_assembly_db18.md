@@ -621,18 +621,23 @@ For each motor, the cable that is soldered closer to the floor (bottom), goes on
 
 Insert the *right*-motor cable on the *right* side of the Hut connector ([](#fig:howto-assemble-chassis-2) perspective), and the *left*-motor cable on the *left* side of the Hut connector.
 
+Putting above explanations into pictures you should connect the cable A1 from the motor to A1 on the Motor Hat and so on.This is shown in the next two pictures.
+
+<div figure-id="fig:howto-assemble-motors" figure-caption="Explicative image.">
+     <img src="howto_wire_motors_db18.png" style='width: 25em'/>
+</div>
+
+
+<div figure-id="fig:howto-wire-motors-db18" figure-caption="Explicative image.">
+     <img src="howto_wire_motors_db18_hat.png" style='width: 25em'/>
+</div>
+
+The outcome should look as follows:
+
 <div figure-id="fig:howto-assemble-chassis-2" figure-caption="Example for the connection.">
      <img src="howto_assemble_chassis_2.jpg" style='width: 25em'/>
 </div>
 
-For reference, look at the example in [](#fig:howto-wire-motors-db18), where the *left* motor (driving perspective) has the *red* wire soldered on the bottom, so it goes on the *internal left* connector. Similarly, the *right* motor (driving perspective) has the *black* wire soldered on the bottom, so it goes on the *internal right* connector.
-
-
-<div figure-id="fig:howto-wire-motors-db18" figure-caption="Explicative image.">
-     <img src="howto_wire_motors_db18.png" style='width: 25em'/>
-</div>
-
-You might find it easier to temporarily remove the USB cables while executing this passage. Make sure that you plug them back in before moving to the next one though.
 
 ### Step 3
 
