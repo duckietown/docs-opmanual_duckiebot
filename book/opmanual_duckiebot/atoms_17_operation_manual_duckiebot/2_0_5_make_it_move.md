@@ -115,7 +115,7 @@ Otherwise, you can use the following instructions to run the demo with
 keyboard control.
 -->
 
-## Option 2: Using the dashboard {#setup-ros-websocket-image status=beta}
+## Option 2: Using the dashboard {#setup-ros-websocket-image status=ready}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
