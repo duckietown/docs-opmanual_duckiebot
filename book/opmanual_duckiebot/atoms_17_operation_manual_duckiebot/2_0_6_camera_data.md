@@ -58,7 +58,7 @@ You call also determine this by running:
 and look at the output to find the Duckiebot interface container and verify that it is running.
 
 
-## Viewing the image stream on the Dashboard {#image-dashboard status=beta}
+## Viewing the image stream on the Dashboard {#image-dashboard status=ready}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
