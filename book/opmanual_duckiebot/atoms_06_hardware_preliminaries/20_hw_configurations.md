@@ -59,9 +59,9 @@ A `DB17` Duckiebot can navigate autonomously in a Duckietown, but cannot communi
 
 The elements of $\aset{O}$ are labels identifying optional hardware that aids in the development phase and enables the Duckiebot to talk to other Duckiebots. The labels stand for:
 
-- `w`: 5 GHz **w**ireless adapter to facilitate streaming of images;
+- `w`: 5 GHz **w** ireless adapter to facilitate streaming of images;
 
-- `j`: wireless **j**oypad that facilitates manual remote control;
+- `j`: wireless **j** oypad that facilitates manual remote control;
 
 - `d`: USB **d**rive for additional storage space;
 
@@ -82,8 +82,6 @@ It may be convenient at times to refer to hybrid configurations including any of
 - `DB17-l1`: _adds_ a PWM hat to `DB17`, in addition to a short USB angled power cable and a M-M power wire;
 - `DB17-l2`: _adds_ a bumpers set to `DB17`, in addition to the mechanical bits to assemble it;
 - `DB17-l3`: _adds_ a LED hat and 5 RGB LEDs to `DB17-l1l2`, in addition to the F-F wires to connect the LEDs to the LED board.
-
-Note: introducing the PWM hat in `DB17-l1` induces a _replacement_ of the [spliced cable](#assembling-duckiebot-db17-cable-splitting) powering solution for the DC motor hat. Details can be found in [](#assembling-duckiebot-db17).
 
 
 - **Functions**: `DB17-l` is the necessary configuration to enable communication between Duckiebots, hence fleet behaviors (e.g., negotiating the crossing of an intersection). Subset configurations are sometimes used in a standalone way for: (`DB17-l1`) avoid using a sliced power cable to power the DC motor hat in `DB17`, and (`DB17-l2`) for purely aesthetic reasons.
