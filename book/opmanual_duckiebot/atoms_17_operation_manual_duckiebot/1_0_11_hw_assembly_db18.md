@@ -615,21 +615,15 @@ Place the top chassis assembly over the bottom chassis assembly as in [](#fig:ho
 
 ### Step 2
 
-Note: The following is a tricky step. We suggest to align your chackras and read the procedure through before starting.
-
-For each motor, the cable that is soldered closer to the floor (bottom), goes on the *internal* connection. The cable soldered on the motor on the plate side goes on the *external* connection.
-
-Insert the *right*-motor cable on the *right* side of the Hut connector ([](#fig:howto-assemble-chassis-2) perspective), and the *left*-motor cable on the *left* side of the Hut connector.
-
-Putting above explanations into pictures you should connect the cable A1 from the motor to A1 on the Motor Hat and so on.This is shown in the next two pictures.
+Connect the cable A1 from the motor to A1 on the Motor Hat and so on as is shown in the next two pictures.
 
 <div figure-id="fig:howto-assemble-motors" figure-caption="Explicative image.">
-     <img src="howto_wire_motors_db18.png" style='width: 25em'/>
+     <img src="howto_wire_motors_db18.jpg" style='width: 25em'/>
 </div>
 
 
 <div figure-id="fig:howto-wire-motors-db18" figure-caption="Explicative image.">
-     <img src="howto_wire_motors_db18_hat.png" style='width: 25em'/>
+     <img src="howto_wire_motors_db18_hat.jpg" style='width: 25em'/>
 </div>
 
 The outcome should look as follows:
