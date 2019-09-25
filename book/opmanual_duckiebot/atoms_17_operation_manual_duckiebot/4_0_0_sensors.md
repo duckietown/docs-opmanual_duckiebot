@@ -1,6 +1,14 @@
-# Sensors
+# Sensors {#Additional_sensors status=ready}
 
-This page explains the sensors of the `DBv2`.
+<div class='requirements' markdown='1'>
+
+Requires: A `DBv2` with the following sensors: time of flight, line follower, IMU, wheel encoder and camera
+
+Result: This page explains the sensors of the `DBv2`.
+
+</div>
+
+
 
 ## Time of Flight (ToF)
 
@@ -9,36 +17,31 @@ To measure distances, a time of flight sensor can be used. The sensor sends out 
 Further information about the RFD77402 chip can be found on the [SparkFun website](https://www.sparkfun.com/products/14539)
 
 <figure>
-    <figcaption>RFD77402</figcaption>
-    <img style='width:8em' src="images_sensors/RFD77402.jpeg"/>
+    <figcaption>Time of flight sensor RFD77402</figcaption>
+    <img style='width:8em' src="images_sensors/RFD77402.jpg"/>
 </figure>
 
 ### Validation
-To verify the distance measurements of the time of flight sensors, seven different sensors were placed in three different distances to a cardboard surface. The distances were 10 cm, 15 cm and 20 cm. With each sensor 10 measurements have been taken, so 70 measurements in total. The measurements are plotted in FIG ACCURACY RFD77402. By a distance of 15 cm the measuring points are scattered between 11.8 cm and 18.1 cm. Also in the other two data series a range of multiple cm for the measurement points was detected.
+To verify the distance measurements of the time of flight sensors, seven different sensors were placed in three different distances to a cardboard surface. The distances were 10 cm, 15 cm and 20 cm. With each sensor 10 measurements have been taken, so 70 measurements in total. The measurements are plotted in [](#fig:accuracy_RFD77402). By a distance of 15 cm the measuring points are scattered between 11.8 cm and 18.1 cm. Also in the other two data series a range of multiple cm for the measurement points was detected.
 
-<figure>
-    <figcaption>Accuracy RFD77402</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/ToF/rfd77402_accuracy.jpg"/>
-</figure>
+<div figure-id="fig:accuracy_RFD77402" figure-caption="Accuracy RFD77402">
+     <img src="images_sensors/validation_plots/ToF/rfd77402_accuracy.jpg" style='width: 30em'/>
+</div>
 
-To verify the precision of the sensors, the results of measuring a distance of 15 cm are plotted for each sensor. See FIG: PRECISION RFD77402. The distribution of the measurements points of one sensor are not scattered over several cm any more, they are separated in a range of mm. Knowing this, the sensors must be calibrated in future.
-
-<figure>
-    <figcaption>Precision RFD77402</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/ToF/rfd77402_precision.jpg"/>
-</figure>
-
-According to the data-sheet the time of flight sensor should have an opening angle of 55 degree. To verify that, the `DBv2` was placed in the center of a circle with radius 27.5 cm. Then a box with the width of __ cm and hight of __ cm surrounded with white duckietown tap was placed in front of the front middle time of flight sensor. So that the middle of the box, the front middle time of flight sensor and the center of the circle are in one straight line. Let's define that point as 0°. We placed the box at 5°, 15°, 25°, ..., 355° and measured which sensors can detect the box.
-
-The box has a width of 5°. An opening angle of 40° was measured. The areas where the `DBv2` detects objects are marked green in FIG: VALIDATION ANGLE RFD77401
+To verify the precision of the sensors, the results of measuring a distance of 15 cm are plotted for each sensor. See [](#fig:precision_RFD77402). The distribution of the measurements points of one sensor are not scattered over several cm any more, they are separated in a range of mm. Knowing this, the sensors must be calibrated in future.
 
 
-<figure>
-    <figcaption>Validation of angular precision of RFD77402</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/ToF/validation_angle_tof.png"/>
-</figure>
+<div figure-id="fig:precision_RFD77402" figure-caption="Precision RFD77402">
+     <img src="images_sensors/validation_plots/ToF/rfd77402_precision.jpg" style='width: 30em'/>
+</div>
 
+According to the data-sheet the time of flight sensor should have an opening angle of 55 degree. To verify that, the `DBv2` was placed in the center of a circle with radius 27.5 cm. Then a box with the width of 4 cm and height of 28 cm surrounded with white duckietown tap was placed in front of the front middle time of flight sensor. So that the middle of the box, the front middle time of flight sensor and the center of the circle are in one straight line. Let's define that point as 0°. We placed the box at 5°, 15°, 25°, ..., 355° and measured which sensors can detect the box.
 
+The box has a width of 5°. An opening angle of 40° was measured. The areas where the `DBv2` detects objects are marked green in [](#fig:opening_angle_RFD77402).
+
+<div figure-id="fig:opening_angle_RFD77402" figure-caption="Opening angle of RFD77402">
+     <img src="images_sensors/validation_plots/ToF/validation_angle_tof.png" style='width: 30em'/>
+</div>
 
 <!-- <table style="width:100%">
  <tr>
@@ -99,7 +102,7 @@ The box has a width of 5°. An opening angle of 40° was measured. The areas whe
 
 
 
-### Taking measurements with a ToF sensor
+### How to run the code for the time of flight sensor
 
 To get the measurement of the time of flight call the tof_node with the position name of the sensor you want to measure the distance from
 
@@ -113,32 +116,30 @@ Open a second terminal:
 
     $rosservice call /tof_measurement "sensor_position: '[position name]'";
 
-This service returns the measured distance in mm, the confidence value and the valid pixels, which are values of the confidence register and depend on the detected signal amplitude. The sensor measures different distances, as the light beam gets reflected differently. If there is no object in a range of 2 m sometimes a distance was measured, with less than 100 valid pixels. This happens because the light beam can also be reflected by the ground. (We advise you to check, if the valid pixel is a number greater then 100 when using the distance.) The last information the time of flight service returns is the time stamp when the measurement is taken.
-
-confidence Value from 0 to 2047 where 2047 being the "most confident"
+The results of a measurement are stored in the message ToFMesurements. One measurement returns the following values: the distance in mm, the confidence value, the valid pixels and a timestamp when the measurement was taken. The confidence value and the valid pixels are values of the confidence register and depend on the detected signal amplitude. The confidence value is an integer between 0 and 2047, where 2047 is the "most confident". It was observed, that when no object was in a range of 2 m to a time of flight sensor, still a distance was measured. The confidence value was then a number lower then 100. Probably the distance to the ground is measured. So we advise you, to check that the confidence value is higher than 100.
 
 Position names:
-<col2 figure-id="tab:tof_positions" figure-caption="ToF position names" class="labels-row1">
+<col2 figure-id="tab:tof_positions" figure-caption="Position names of the time of flight sensors" class="labels-row1">
     <span>Position name</span>
     <span>Explanation</span>
-    <span>tof_fl</span>
-    <span>ToF front left</span>
-    <span>tof_fm</span>
-    <span>ToF front middle</span>
-    <span>tof_fr</span>
-    <span>ToF front right</span>
-    <span>tof_sl</span>
-    <span>ToF side left</span>
-    <span>tof_sr</span>
-    <span>ToF side right</span>
-    <span>tof_bl</span>
-    <span>ToF side right</span>
-    <span>tof_bl</span>
-    <span>ToF back left</span>
-    <span>tof_bm</span>
-    <span>ToF back middle</span>
-    <span>tof_br</span>
-    <span>ToF back right</span>
+    <span>fl</span>
+    <span>time of flight front left</span>
+    <span>fm</span>
+    <span>time of flight front middle</span>
+    <span>fr</span>
+    <span>time of flight front right</span>
+    <span>sl</span>
+    <span>time of flight side left</span>
+    <span>sr</span>
+    <span>time of flight side right</span>
+    <span>bl</span>
+    <span>time of flight side right</span>
+    <span>bl</span>
+    <span>time of flight back left</span>
+    <span>bm</span>
+    <span>time of flight back middle</span>
+    <span>br</span>
+    <span>time of flight back right</span>
 </col2>
 
 ## Line Following Sensor (LF)
@@ -148,55 +149,50 @@ For the DBv2 we use the line following sensor QRE1113 from SparkFun. You can fin
 
 
 <figure>
-    <figcaption>QRE1113</figcaption>
+    <figcaption>Line follower QRE1113</figcaption>
     <img style='width:8em' src="images_sensors/QRE1113.jpg"/>
 </figure>
 
 ### Validation
 
 To validate the measurement data of the line following sensors, the `DBv2` was placed on four different colors. First we set the `DBv2` on white tape, then on yellow tape, red tape and at the end on a the black tile. The measurements were taken with four different sensors. Each sensor made 10 measurements, so we have 40 measurements in total.
-To remove the bias from the last measurement we have to move the bot a little bit. In FIG: ACCURACY LF the results are plotted. There is a clear difference in voltage between the three colors white, yellow, red and the black tile. Distinguish the colors white, yellow and red is not possible. This was to expect, as we have a line following sensor and not a color detection sensor. In FIG: PRECISION LF the measurements of all sensors are plotted again. We can see the difference between the different sensors. We observe that they are all in a very similar voltage range and that the difference between white and black is roughly 700 mV.
+To remove the bias from the last measurement we have to move the bot a little bit. In [](#fig:accuracy_QRE1113) the results are plotted. There is a clear difference in voltage between the three colors white, yellow, red and the black tile. Distinguish the colors white, yellow and red is not possible. This was to expect, as we have a line following sensor and not a color detection sensor. In [](#fig:precision_QRE1113) the measurements of all sensors are plotted again. We can see the difference between the different sensors. We observe that they are all in a very similar voltage range and that the difference between white and black is roughly 700 mV.
 
-<figure>
-    <figcaption>Accuracy line follower</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/LF/qre1113_accuracy.jpg"/>
-</figure>
 
-<figure>
-    <figcaption>Precision line follower</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/LF/qre1113_precision.jpg"/>
-</figure>
+<div figure-id="fig:accuracy_QRE1113" figure-caption="Accuracy QRE1113">
+     <img src="images_sensors/validation_plots/LF/qre1113_accuracy.jpg" style='width: 30em'/>
+</div>
 
-Next, it was tested how illumination effects the measurements. For that the `DBv2` was placed on white tape and a black tile in three different exposure of light: natural sunlight, controlled light and maximum light. In FIG BLACK AND WITHE it can bee seen that the room light does not affect the sensors very much. There might be a voltage shift of some 100 mV. But the difference in the voltage level between black and white is with roughly 700 mV much higher.
+<div figure-id="fig:precision_QRE1113" figure-caption="Accuracy QRE1113">
+     <img src="images_sensors/validation_plots/LF/qre1113_precision.jpg" style='width: 30em'/>
+</div>
 
-<figure>
-    <figcaption>Black tile by different lighting</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/LF/qre1113_black.jpg"/>
-</figure>
+Next, it was tested how illumination effects the measurements. For that the `DBv2` was placed on white tape and a black tile in three different exposure of light: natural sunlight, controlled light and maximum light. In [](#fig:white_QRE1113) and [](#fig:black_QRE1113) it can bee seen that the room light does not affect the sensors very much. There might be a voltage shift of some 100 mV. But the difference in the voltage level between black and white is with roughly 700 mV much higher.
 
-<figure>
-    <figcaption>Withe tap by different lighting</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/LF/qre1113_white.jpg"/>
-</figure>
+<div figure-id="fig:white_QRE1113" figure-caption="White tape by different illumination">
+     <img src="images_sensors/validation_plots/LF/qre1113_white.jpg" style='width: 30em'/>
+</div>
 
-At last, it is of interest, if the lines can be detected when the `DBv2` drives over them. For that two sensors measured while the duckiebot drove over white lines. The setup is documented in FIG DRIVE OVER LINES. As one can see int the FIGURE EXP the thickness between the white tape changes.
-The measurements are plotted in FIG DRIVING OVER LINES. There is a sharp transition between black and white.
+<div figure-id="fig:black_QRE1113" figure-caption="Black tile by different illumination">
+     <img src="images_sensors/validation_plots/LF/qre1113_black.jpg" style='width: 30em'/>
+</div>
+
+At last, it is of interest, if the lines can be detected when the `DBv2` drives over them. For that two sensors measured while the duckiebot drove over white lines. The setup is documented in [](#fig:setup_lf_test). As one can see in [](#fig:setup_lf_test) the thickness between the white tape changes.
+The measurements are plotted in  [](#fig:driving_over_lines). There is a sharp transition between black and white.
 
 Notice that the voltage level of this measurements is much higher, due to different soldering of the sensors. This is the reason why the black and withe voltage levels should be calibrated for each sensor.
 
-<figure>
-    <figcaption>Setup driving over white lines</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/LF/driving_over_lines_setup.png"/>
-</figure>
-
-<figure>
-    <figcaption>Driving over lines</figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/LF/qre1113_driving_over_lines.jpg"/>
-</figure>
 
 
+<div figure-id="fig:setup_lf_test" figure-caption="Setup testing the line follower driving over lines">
+     <img src="images_sensors/validation_plots/LF/driving_over_lines_setup.png" style='width: 30em'/>
+</div>
 
+<div figure-id="fig:driving_over_lines" figure-caption="Measurements results driving over lines">
+     <img src="images_sensors/validation_plots/LF/qre1113_driving_over_lines.jpg" style='width: 30em'/>
+</div>
 
+## How to run the code for the line follower
 To get a measurement from the line following sensor start the rosservice server lf_node
 
     $docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensors-test duckietown/duckiebot-v2-interface
@@ -213,20 +209,20 @@ Open a second terminal and ask for the measurement as a ros service client:
 
     $rosservice call /lf_measurement "sensor_position: '[position name]'";
 
-This service returns the measured intensity in mV.
+In the message LFMeasurements the voltage level mV and the timestamp are stored.
+In `DBv2` four line following sensors can be plugged in, to distinguish them they are named as defined in [](#tab:lf_positions)
 
-Position names:
-<col2 figure-id="tab:tof_positions" figure-caption="ToF position names" class="labels-row1">
+<col2 figure-id="tab:lf_positions" figure-caption="Line follower position names" class="labels-row1">
     <span>Position name</span>
     <span>Explanation</span>
     <span>lf_il</span>
-    <span>LF inner left</span>
+    <span>line follower inner left</span>
     <span>lf_ol</span>
-    <span>LF outer left</span>
+    <span>line follower outer left</span>
     <span>lf_ir</span>
-    <span>LF inner right</span>
+    <span>line follower inner right</span>
     <span>lf_or</span>
-    <span>LF dbv2jetfire
+    <span>line follower dbv2jetfire
     outer right</span>
 </col2>
 
@@ -236,6 +232,14 @@ Position names:
 An inertial measurement unit (IMU) is a sensor that measures acceleration, angular rate and the orientation of the body, using accelerometers, gyroscopes and magnetometers.The accelerometer uses a fork-like structure, forming a capacitor that has the size of a few micrometers only. Both parts of the structure are connected rigidly to the base of the sensor with a very tiny rod each. With this setup, the two parts can be moved towards each other. When the sensor is moved, not only the distance between the spikes of the fork changes but the capacity of the whole structure does so as well. This change in capacity can then be measured and transformed into a digital signal.
 
 With all these features combined into one sensor, we have everything we need to determine our state in space and can note any subsequent change in this state. For the `DBv2` we are using the Spark Fun IMU Breakout MPU-9250. For further information visite the [SparkFun website](https://www.sparkfun.com/products/13762)
+
+<figure>
+    <figcaption>Line follower QRE1113</figcaption>
+    <img style='width:8em' src="images_sensors/IMU_Breakout_MPU-9250.jpg"/>
+</figure>
+
+### How to run the code for the IMU
+In the message IMUMeasurements the results of the IMU measurements are saved. We measure the acceleration in g for the three axis x, y and z. Then the rotation is measured in degrees per second. Followed by measuring the magnetic field in uT. In the end, the temperature of the sensor is measured. The timestamps when the measurements from the accelerometer, the gyro and the magnetometer are also stored in the IMUMeasurement message.
 
 ## Camera
 
@@ -251,23 +255,22 @@ Website https://joy-it.net/en/products/SEN-Speed
     <img style='width:10em' src="images_sensors/Joy_it_lm393.png"/>
 </figure>
 
+### How to run the code for the wheel encoder
 
 ### Validation
 
 To validate the wheel encoder measurements, the duckiebot was pushed 15 cm, 50 cm and 100 cm by hand over the tile. Based on the number of switches the wheel encoder counted from 0 to 1 and from 1 to 0 the traveled distance was calculated. The formula to calculate the traveled distance is:
 
 \begin{equation}
-    2 \pi r frac{ticks}{N}          
+    2 \pi r \dfrac{ticks}{N}
 \end{equation}
 
-The results of this experiment can be seen in FIG: ENCODER. As the duckiebot was moved by hand, there is a big insecurity in the really traveled distance and the reproducibility of this experiment is very low.
+The results of this experiment can be seen in [](#fig:distance_validation). As the `DBv2` was moved by hand, there is a big insecurity in the really traveled distance.
 
+<div figure-id="fig:distance_validation" figure-caption="Distance validation wheel encoder">
+    <img src="images_sensors/validation_plots/encoder/distance_validation_lm393.jpg" style='width: 30em'/>
+</div>
 
-
-<figure>
-    <figcaption>Encoder validation </figcaption>
-    <img style='width:40em' src="images_sensors/validation_plots/encoder/distance_validation_lm393.jpg"/>
-</figure>
 
 ## Sensor Suite
 The sensor suite node scans through all sensor which are available for the `DBv2` and detects which sensors are plugged in. The sensors must be plugged in as stated in the construction manual. It won’t detect a time of flight sensor at the IMU plug.
@@ -276,24 +279,25 @@ The sensor suite first tests if the raspberry pi can communicate via I2C with th
 
 Note: If the front bumper is not connected to the raspberry pi, the time of flight sensors and the line following sensors can’t be detected, as they communicate over the front bumper.
 
+### How to run the code for the sensor suite
+
+
+
 ## Code structure
 In this section we want to give you a short overview how to include new sensors to the `DBv2`.
 
-The code for the sensors is structured as shown in FIG: CODE. Each sensor class has a folder called sensor-name_dirvers. In this folder there are three subfolders: config, include and src.
+The code for the sensors is structured as shown in [](#fig:code_structure_sensors). Each sensor class has a folder called sensor-name_dirvers. In this folder there are three subfolders: config, include and src.
 
 In the config folder the .yaml files are stored. In the yaml-file all parameters that can be changed are defined. For example the multiplexer-ports for each time of flight sensor.
 
 The subfolder include contains all the code used for a specific sensor type. As an example, in the folder tof_drivers the code to take measurements with the time of flight sensor RFD77402 are stored. The code that takes measurements should not depend on code outside of this folder. It should be stand alone. So also no ROS commands should be used. If you use code from an other person to read out the data of a sensor, make sure to save the license files in this folder as well.
 
-The scr folder is where everything comes together. The sensor_node is the main code section for each sensor. As they are all written in a similar way, let's have a look at tof_node. See FIG: TOF NODE. The class ToF_Sensor contains a function that gets the measurements and a service function tof_state. In the tof_state function the attribute active is set. If active is True, the sensor will take measurements. The class ToF_deltaT handles the service, that sets the minimal time between two measurements. In the main function we first define the messages published by the sensors. Every sensor has its own message, so one can call the measurements from one specific sensor. Then we read out all variables, which are stored in the yaml file and create an object of the class ToF_Sensor. In a next step, the service to turn on and off the tof_state. Then the service to change the delta T is created. At the end, measurements from the sensors with an active state are taken.
+The scr folder is where everything comes together. The sensor_node is the main code section for each sensor. As they are all written in a similar way, let's have a look at tof_node. See [](#fig:code_sensors). The class ToF_Sensor contains a function that gets the measurements and a service function tof_state. In the tof_state function the attribute active is set. If active is True, the sensor will take measurements. The class ToF_deltaT handles the service, that sets the minimal time between two measurements. In the main function we first define the messages published by the sensors. Every sensor has its own message, so one can call the measurements from one specific sensor. Then we read out all variables, which are stored in the yaml file and create an object of the class ToF_Sensor. In a next step, the service to turn on and off the tof_state. Then the service to change the delta T is created. At the end, measurements from the sensors with an active state are taken.
 
-<figure>
-    <figcaption>Code structure of ToF </figcaption>
-    <img style='width:20em' src="images_sensors/code_structure/tof_code.png"/>
-</figure>
-BILD OHNE TOF PUBLISHER MACHEN!!!!!!
+<div figure-id="fig:code_structure_sensors" figure-caption="Code structure for sensors">
+    <img src="images_sensors/code_structure/tof_code.png" style='width: 15em'/>
+</div>
 
-<figure>
-    <figcaption>Code structure of ToF </figcaption>
-    <img style='width:80em' src="images_sensors/code_structure/tof_node.png"/>
-</figure>
+<div figure-id="fig:code_sensors" figure-caption="Code: tof_node">
+    <img src="images_sensors/code_structure/tof_node.png" style='width: 40em'/>
+</div>
