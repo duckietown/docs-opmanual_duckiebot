@@ -84,7 +84,7 @@ Resolution: One of the base images is out of date
 
 Pull the base images on the Duckiebot:
 
-    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:daffy
+    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:daffy-amd64
 
 and on the laptop:
 
