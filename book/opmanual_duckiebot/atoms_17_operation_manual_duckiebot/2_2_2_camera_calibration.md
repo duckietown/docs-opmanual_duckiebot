@@ -49,13 +49,13 @@ The procedure is basically a wrapper around the [ROS camera calibration tool](ht
 
 We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
-    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image duckietown/dt-core:daffy
 
 ### Launch the intrinsic calibration application
 
 Next you can launch the intrinsic calibration program with:
 
-    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
     
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
@@ -150,7 +150,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 Run:
 
-    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
 
 First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>. 
 If all goes well the program will complete.
@@ -158,12 +158,12 @@ If all goes well the program will complete.
 This will automatically save the calibration results on your Duckiebot:
 
 ```
-/data/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml
+/data/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml
 ```
 
 If you are running the file server through docker you can view or download the calibration file at the address: 
 
-`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
+`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
 
 
 #### Troubleshooting
@@ -210,7 +210,7 @@ are not square. This is the rectification used in the lane localization pipeline
 
 By default, the extrinsic calibration pipeline will now ask you to put your robot on a lane to complete a verification step.
 
-This step needs a Duckietown lane. If you don't have it, skip it by add `--no_verification` to the `dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME]` command above. 
+This step needs a Duckietown lane. If you don't have it, skip it by add `--no_verification` to the `dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] ... ` command above. 
 
 To do the validation, place the robot in a lane when instructed.
 

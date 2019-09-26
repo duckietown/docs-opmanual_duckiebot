@@ -25,7 +25,7 @@ It might be useful to do a quick camera hardware check as documented in [](#howt
 The imagery is streaming from your Duckiebot by default on startup.
 To see it, run a base image on your laptop with:
 
-    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
 
 
 The container will start. At the prompt, run:
@@ -58,7 +58,7 @@ You call also determine this by running:
 and look at the output to find the Duckiebot interface container and verify that it is running.
 
 
-## Viewing the image stream on the Dashboard {#image-dashboard status=beta}
+## Viewing the image stream on the Dashboard {#image-dashboard status=ready}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.

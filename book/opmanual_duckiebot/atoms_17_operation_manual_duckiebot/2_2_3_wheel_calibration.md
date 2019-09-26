@@ -24,7 +24,7 @@ Follow instructions in [](#sec:rc-control) to make your robot movable either wit
 Now you need another container to run so that you can edit the calibrations and see the results. To get a base container with a command line you can run:
 
 
-    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME] --image duckietown/dt-core:daffy
 
 
 
@@ -89,7 +89,7 @@ running the command:
 
     duckiebot-container $ rosservice call /![hostname]/inverse_kinematics_node/set_gain -- ![gain value]
 
-You won't really know if it's right until you verify it though! onto the next section
+<!-- You won't really know if it's right until you verify it though! onto the next section
 
 ### Verify your calibration {#verify-kinematic-calibration}
 
@@ -134,7 +134,7 @@ And inside of it run the test script with:
 
     duckiebot-container $ rosrun indefinite_navigation  test_kinematics.py
 
-You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again. You can use the shell in which you ran the `rosrun` command to modify the calibration.
+You should see your robot drive down the lane. If it is calibrated properly, you will see a message saying that it has `PASSED`, otherwise it is `FAILED` and you should adjust your gains based on what you observe and try again. You can use the shell in which you ran the `rosrun` command to modify the calibration. -->
 
 ### Store the calibration
 

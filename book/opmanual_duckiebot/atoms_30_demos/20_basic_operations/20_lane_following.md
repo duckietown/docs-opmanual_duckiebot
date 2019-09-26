@@ -50,7 +50,7 @@ Assumption about Duckietown:
 
 Run the demo:
 
-    laptop $ dts duckiebot demo --demo_name lane_following --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
+    laptop $ dts duckiebot demo --demo_name lane_following --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
 This will start the `demo_lane_following` container. You have to wait a while for everything to start working.
 
