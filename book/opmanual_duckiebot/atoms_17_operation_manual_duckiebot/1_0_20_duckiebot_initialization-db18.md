@@ -125,18 +125,18 @@ After some time, the **red** and the **green** LEDs of the Raspberry Pi will sta
 
 Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take a lot of time.
 
-Do not power the robot off (by holding the battery button) while this is in process.re
+Do not power the robot off (by holding the battery button) while this is in process.
 
 
-You know that your Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
+You know that your Raspberry Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
 
 ```
 laptop $ ping ![hostname].local
 ```
 
-Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use Bridged connection (typically NAT is used by default).
+Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use "Bridged" connection (typically NAT is used by default).
 
-You should see output similar to the following:​    
+You should see output similar to the following:  
 
 ```
 PING ![hostname].local (![X.X.X.X]): 56 data bytes
