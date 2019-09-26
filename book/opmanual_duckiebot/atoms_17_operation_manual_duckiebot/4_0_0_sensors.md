@@ -12,12 +12,12 @@ Result: This page explains the sensors of the `DBv2`.
 
 ## Time of Flight (ToF)
 
-To measure distances, a time of flight sensor can be used. The sensor sends out a signal and measures the time the signal needs to return. Knowing the propagation speed of the signal and the time it needs to come back, it is possible to calculate the traveled distance. For the `DBv2`, the spark fun RFD77402 sensor is used. According to the data-sheet the sensor has a distance range of 2 m with a precision of (+/-) 10% and an opening angle  of 55 degree.
+To measure distances, a time of container flight sensor can be used. The sensor sends out a signal and measures the time the signal needs to return. Knowing the propagation speed of the signal and the time it needs to come back, it is possible to calculate the traveled distance. For the `DBv2`, the spark fun RFD77402 sensor is used. According to the data-sheet the sensor has a distance range of 2 m with a precision of (+/-) 10% and an opening angle  of 55 degree.
 
 Further information about the RFD77402 chip can be found on the [SparkFun website](https://www.sparkfun.com/products/14539)
 
 <figure>
-    <figcaption>Time of flight sensor RFD77402</figcaption>
+    <figcaption>Time of flight sensor RFD77402, source: https://www.sparkfun.com/products/14539</figcaption>
     <img style='width:8em' src="images_sensors/RFD77402.jpg"/>
 </figure>
 
@@ -104,17 +104,16 @@ The box has a width of 5°. An opening angle of 40° was measured. The areas whe
 
 ### How to run the code for the time of flight sensor
 
-To get the measurement of the time of flight call the tof_node with the position name of the sensor you want to measure the distance from
+First start all sensor drivers:
 
-    $docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensors-test duckietown/duckiebot-v2-interface
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensor_drivers /duckiebot-v2-interface
 
-Open a second terminal:
+If you want to take measurements:
 
-    $docker -H [DUCKIEBOT_NAME].local exec -it sensors-test /bin/bash
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name tof_client /duckiebot-v2-interface /bin/bash
+and
 
-    $. catkin_ws/devel/setup.bash
-
-    $rosservice call /tof_measurement "sensor_position: '[position name]'";
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/tof_drivers/src/test/tof_client_[position name].py
 
 The results of a measurement are stored in the message ToFMesurements. One measurement returns the following values: the distance in mm, the confidence value, the valid pixels and a timestamp when the measurement was taken. The confidence value and the valid pixels are values of the confidence register and depend on the detected signal amplitude. The confidence value is an integer between 0 and 2047, where 2047 is the "most confident". It was observed, that when no object was in a range of 2 m to a time of flight sensor, still a distance was measured. The confidence value was then a number lower then 100. Probably the distance to the ground is measured. So we advise you, to check that the confidence value is higher than 100.
 
@@ -142,6 +141,14 @@ Position names:
     <span>time of flight back right</span>
 </col2>
 
+If you want to set a minimum time between two measurements, call:
+
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name setToFdeltaT /duckiebot-v2-interface /bin/bash
+and
+
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/tof_drivers/src/test/setToFDeltaT.py
+
+Your input is the minimal time between two measurements in seconds.
 ## Line Following Sensor (LF)
 Line following sensors can detect lines or nearby objects. The sensor detects reflected light coming from its own infrared LED. Through measuring the intensity of the reflected light, transitions from dark to light can be detected. The measured intensity is fed back as an analog signal to the micro controller of the DBv2 hat.
 
@@ -149,7 +156,7 @@ For the DBv2 we use the line following sensor QRE1113 from SparkFun. You can fin
 
 
 <figure>
-    <figcaption>Line follower QRE1113</figcaption>
+    <figcaption>Line follower QRE1113, source: https://www.sparkfun.com/products/9453 </figcaption>
     <img style='width:8em' src="images_sensors/QRE1113.jpg"/>
 </figure>
 
@@ -193,21 +200,24 @@ Notice that the voltage level of this measurements is much higher, due to differ
 </div>
 
 ## How to run the code for the line follower
-To get a measurement from the line following sensor start the rosservice server lf_node
+If you did not started the sensor drivers yet:
 
-    $docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensors-test duckietown/duckiebot-v2-interface
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensor_drivers /duckiebot-v2-interface
 
-To get the measurement of the line following sensor call the rosservice lf_node with the position name of the sensor you want to measure the distance from
+Then call  lf_client to start taking measurements or the setLFdeltaT to set the deltaT.
 
-    $docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensors-test duckietown/duckiebot-v2-interface
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name lf_client /duckiebot-v2-interface /bin/bash
 
-Open a second terminal and ask for the measurement as a ros service client:
+and then:
 
-    $docker -H [DUCKIEBOT_NAME].local exec -it sensors-test /bin/bash
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/lf_drivers/src/test/lf_client_[position name].py
 
-    $. catkin_ws/devel/setup.bash
+or
 
-    $rosservice call /lf_measurement "sensor_position: '[position name]'";
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name setLFdeltaT /duckiebot-v2-interface /bin/bash
+and then:
+
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/lf_drivers/src/test/setLFDeltaT.py
 
 In the message LFMeasurements the voltage level mV and the timestamp are stored.
 In `DBv2` four line following sensors can be plugged in, to distinguish them they are named as defined in [](#tab:lf_positions)
@@ -231,15 +241,35 @@ In `DBv2` four line following sensors can be plugged in, to distinguish them the
 
 An inertial measurement unit (IMU) is a sensor that measures acceleration, angular rate and the orientation of the body, using accelerometers, gyroscopes and magnetometers.The accelerometer uses a fork-like structure, forming a capacitor that has the size of a few micrometers only. Both parts of the structure are connected rigidly to the base of the sensor with a very tiny rod each. With this setup, the two parts can be moved towards each other. When the sensor is moved, not only the distance between the spikes of the fork changes but the capacity of the whole structure does so as well. This change in capacity can then be measured and transformed into a digital signal.
 
-With all these features combined into one sensor, we have everything we need to determine our state in space and can note any subsequent change in this state. For the `DBv2` we are using the Spark Fun IMU Breakout MPU-9250. For further information visite the [SparkFun website](https://www.sparkfun.com/products/13762)
+With all these features combined into one sensor, we have everything we need to determine our state in space and can note any subsequent change in this state. For the `DBv2` we are using the Spark Fun IMU Breakout MPU-9250. For further information visit the [SparkFun website](https://www.sparkfun.com/products/13762)
 
 <figure>
-    <figcaption>Line follower QRE1113</figcaption>
+    <figcaption>Line follower QRE1113, source: https://www.sparkfun.com/products/13762</figcaption>
     <img style='width:8em' src="images_sensors/IMU_Breakout_MPU-9250.jpg"/>
 </figure>
 
 ### How to run the code for the IMU
-In the message IMUMeasurements the results of the IMU measurements are saved. We measure the acceleration in g for the three axis x, y and z. Then the rotation is measured in degrees per second. Followed by measuring the magnetic field in uT. In the end, the temperature of the sensor is measured. The timestamps when the measurements from the accelerometer, the gyro and the magnetometer are also stored in the IMUMeasurement message.
+If you did not started the sensor drivers yet:
+
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensor_drivers /duckiebot-v2-interface
+
+Then call the imu_client to start taking measurements or call setIMUdeltaT to set the delta T.
+
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name imu_client /duckiebot-v2-interface /bin/bash
+
+and then:
+
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/imu_drivers/src/test/imu_client.py
+
+or
+
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name setIMUdeltaT /duckiebot-v2-interface /bin/bash
+
+and then:
+
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/imu_drivers/src/test/setIMUDeltaT.py
+
+In the message IMUMeasurements the results of the IMU measurements are saved. We measure the acceleration in g for the three axis x, y and z. Then the rotation is measured in degrees per second. Followed by measuring the magnetic field in uT. In the end, the temperature of the sensor is measured in degree Celsius. The timestamps when the measurements from the accelerometer, the gyro and the magnetometer are also stored in the IMUMeasurement message.
 
 ## Camera
 
@@ -251,15 +281,13 @@ Sensor: LM393
 Website https://joy-it.net/en/products/SEN-Speed
 -->
 <figure>
-    <figcaption>Wheel encoder</figcaption>
+    <figcaption>Wheel encoder, source: https://joy-it.net/en/products/SEN-Speed</figcaption>
     <img style='width:10em' src="images_sensors/Joy_it_lm393.png"/>
 </figure>
 
-### How to run the code for the wheel encoder
-
 ### Validation
 
-To validate the wheel encoder measurements, the duckiebot was pushed 15 cm, 50 cm and 100 cm by hand over the tile. Based on the number of switches the wheel encoder counted from 0 to 1 and from 1 to 0 the traveled distance was calculated. The formula to calculate the traveled distance is:
+To validate the wheel encoder measurements, the `DBv2` was pushed 15 cm, 50 cm and 100 cm by hand over the tile. Based on the number of switches the wheel encoder counted from 0 to 1 and from 1 to 0 the traveled distance was calculated. The formula to calculate the traveled distance is:
 
 \begin{equation}
     2 \pi r \dfrac{ticks}{N}
@@ -271,6 +299,19 @@ The results of this experiment can be seen in [](#fig:distance_validation). As t
     <img src="images_sensors/validation_plots/encoder/distance_validation_lm393.jpg" style='width: 30em'/>
 </div>
 
+### How to run the code for the wheel encoder
+If you did not started the sensor drivers yet:
+
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensor_drivers /duckiebot-v2-interface
+
+Then call the encoder_client to start taking measurements
+
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name encoder_client /duckiebot-v2-interface /bin/bash
+
+and then:
+
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/encoder_drivers/src/test/enc_client.py
+
 
 ## Sensor Suite
 The sensor suite node scans through all sensor which are available for the `DBv2` and detects which sensors are plugged in. The sensors must be plugged in as stated in the construction manual. It won’t detect a time of flight sensor at the IMU plug.
@@ -280,7 +321,17 @@ The sensor suite first tests if the raspberry pi can communicate via I2C with th
 Note: If the front bumper is not connected to the raspberry pi, the time of flight sensors and the line following sensors can’t be detected, as they communicate over the front bumper.
 
 ### How to run the code for the sensor suite
+If you did not started the sensor drivers yet:
 
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --net host --rm --name sensor_drivers /duckiebot-v2-interface
+
+Then call the sensor_scanning_client to start taking measurements
+
+    laptop $ docker -H [DUCKIEBOT_NAME].local run --privileged -it --rm --net host --name sensor_scanning /duckiebot-v2-interface /bin/bash
+
+and then:
+
+    container $ source catkin_ws/devel/setup.bash && python catkin_ws/src/sensors_suite/src/test/sensor_scanning_client.py
 
 
 ## Code structure
