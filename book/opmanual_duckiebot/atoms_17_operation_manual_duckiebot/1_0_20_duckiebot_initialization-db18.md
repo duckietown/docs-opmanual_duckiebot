@@ -37,7 +37,7 @@ Plug the SD card in the computer using the card reader.
 
 Then initalize it by running the command:
 
-    laptop $ dts init_sd_card --hostname ![hostname] [options]
+    laptop $ dts init_sd_card --hostname ![hostname] [options] --configuration daffy
 
 The important options are:
 
