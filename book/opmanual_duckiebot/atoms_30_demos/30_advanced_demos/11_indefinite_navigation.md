@@ -8,8 +8,6 @@ Requires: [Wheel calibration](#wheel-calibration) completed.
 
 Requires: [Camera calibration](#camera-calib) completed.
 
-Requires: [Lane following](#demo-lane-following) demo has been successfully launched.
-
 Requires: Fully set up Duckietown.
 
 Results: One or more Duckiebot safely navigating in Duckietown.
@@ -105,6 +103,7 @@ Now select the `/![DUCKIEBOT_NAME]/line_detector_node/image_with_lines` in `rqt_
 Here are some additional things you can try:
 
 * Get a [remote stream](#read-camera-data) of your Duckiebot.
+* You can visualize the detected line segments the same way as for the [lane following demo](#demo-lane-following)
 * Try to change some of the ROS parameters to see how your Duckiebot's behavior will change. 
 
 ## Troubleshooting
