@@ -19,7 +19,7 @@ There are two configuration of the `DB18`.
 
 ### The `DB18` configuration
 
-The main configuration is labeled plainly as `DB18` and is designed to operate on any Duckietown. You have the `DB18` if, e.g., you are a student attending the 2018 graduate level classes in ETH or the University of Montreal, or you have pledged to Summer 2018 Kickstarter.
+The main configuration is labeled plainly as `DB18` and is designed to operate on any Duckietown. You have the `DB18` if, e.g., you are a student attending the 2019 graduate level classes in ETH or the University of Montreal, or you have pledged to Summer 2018 Kickstarter.
 
 The `DB18` supports different power bank models depending on the geographical region, but all these solutions are functionally equivalent, although their form factor is different.
 
