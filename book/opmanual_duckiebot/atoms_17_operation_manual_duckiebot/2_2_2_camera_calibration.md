@@ -47,6 +47,10 @@ The procedure is basically a wrapper around the [ROS camera calibration tool](ht
 
 ### Publish raw imagery
 
+First, check if your `duckiebot-interface` container is running. If it is not, start it with
+
+    laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-amd64
+
 We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
     laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image duckietown/dt-core:daffy
