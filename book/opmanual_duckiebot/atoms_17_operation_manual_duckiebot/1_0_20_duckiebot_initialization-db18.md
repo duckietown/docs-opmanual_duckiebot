@@ -37,16 +37,19 @@ Plug the SD card in the computer using the card reader.
 
 Then initalize it by running the command:
 
-    laptop $ dts init_sd_card --hostname ![hostname] [options]
+    laptop $ dts init_sd_card --hostname ![hostname] [options] --configuration daffy
 
 The important options are:
 
     --hostname         required
+    --configuration    required: daffy
     --linux-username   default: duckie
     --linux-password   default: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
     --aido             default: False # loads only the things needed for an AI-DO submission
+
+Note: Make sure to use the option `--configuration daffy` in order to pull the latest images.
 
 For a full list of the options, run
 
@@ -54,15 +57,13 @@ For a full list of the options, run
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
-    laptop $ dts init_sd_card --hostname ![hostname] --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
+    laptop $ dts init_sd_card --hostname ![hostname] --configuration daffy --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
 If you are using a 16GB SD card, also add the `--compress` option.
 
 Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland)
 
 If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
-
-Note: **(For ETH Zurich students only)** To connect to the netoworks on campus use the `--ethz-username` and `--ethz-password` options. Keep in mind that the ETH network prevents hostname resolution so, in general, you won't be able to connect to your Duckiebot despite it being connected to the internet.
 
 After you run the  `dts init_sd_card` command with your options follow the instructions that appear on screen:
 
@@ -124,18 +125,18 @@ After some time, the **red** and the **green** LEDs of the Raspberry Pi will sta
 
 Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take a lot of time.
 
-Do not power the robot off (by holding the battery button) while this is in process.re
+Do not power the robot off (by holding the battery button) while this is in process.
 
 
-You know that your Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
+You know that your Raspberry Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
 
 ```
 laptop $ ping ![hostname].local
 ```
 
-Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use Bridged connection (typically NAT is used by default).
+Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use "Bridged" connection (typically NAT is used by default).
 
-You should see output similar to the following:​    
+You should see output similar to the following:  
 
 ```
 PING ![hostname].local (![X.X.X.X]): 56 data bytes

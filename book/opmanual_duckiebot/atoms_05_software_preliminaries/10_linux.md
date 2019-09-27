@@ -5,7 +5,7 @@ Linux is a group of free and open-source software operating systems built around
 
 ## Ubuntu
 
-As of this writing the most recent version of Ubuntu is 18.04 LTS (Long Term Service) which will be supported until April 2023. However it is still very new so we recommend installing Ubuntu 16.04 LTS which will be supported until April 2021.
+As of this writing the most recent version of Ubuntu is 18.04 LTS (Long Term Service) which will be supported until April 2023.
 
 
 ## Installation
@@ -14,7 +14,7 @@ It is highly recommended to install Ubuntu directly on your laptop or as a dual 
 
 ### Dual Boot
 
-* First you need to download a `.iso` image file which contains the version of Ubuntu you want. Here is [16.04 LTS](http://releases.ubuntu.com/16.04/) make sure to download the desktop image.
+* First you need to download a `.iso` image file which contains the version of Ubuntu you want. Here is [18.04 LTS](http://releases.ubuntu.com/18.04/) make sure to download the desktop image.
 * Next, you need a free USB drive with at least 2GB of space. The drive will be completely written over.
 * You need some software to write the .iso to the USB. If on Windows you can use [Rufus](https://rufus.ie/)
 * Create the bootable USB drive, disconnect the USB then reconnect to your computer.
