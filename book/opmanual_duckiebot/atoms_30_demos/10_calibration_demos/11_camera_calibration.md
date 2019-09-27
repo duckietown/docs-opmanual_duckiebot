@@ -1,4 +1,4 @@
-# Camera Calibration Verification Test {#demo-camcaltest status=ready}
+# Camera Calibration Verification Test {#demo-camcaltest status=draft}
 
 This document provides instructions for testing the camera calibration.
 
