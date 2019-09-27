@@ -17,7 +17,7 @@ In the [Duckietown software repo](https://github.com/duckietown/Software), the l
 
 **The [`duckietown` package](https://github.com/duckietown/Software/tree/master19/catkin_ws/src/00-infrastructure/duckietown/launch)** has launch files which are constructed "additively" through `include` tags. This is the default package used to run launch files. Any launch file in this folder can be run through the [duckietown shell](#laptop-setup-ubuntu-18-shell) with the following command:
 
-    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME]
+    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --image duckietown/dt-core:daffy
 
 where `![DEMO_NAME]` is the part before the `.launch` of a `![DEMO_NAME].launch` file.
 
