@@ -78,26 +78,6 @@ Start the lane following. The Duckiebot should drive autonomously in the lane. I
 
 Et voilà! We are ready to drive around autonomously.
 
-### Step 3: Visualize the detected line segments (optional)
-
-This step is not neccessary but provides a nice visualization of the line segments that the Duckiebot detects. 
-
-For that, we need to make `lane_filter_node` publish all the image topics.
-
-We can do this by setting the ROS parameter `verbose` to `true`:
-
-    container $ rosparam set /![DUCKIEBOT_NAME]/line_detector_node/verbose true
-
-so that `line_detector_node` will publish the image_with_lines.
-
-Now select the `/![DUCKIEBOT_NAME]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
-
-<div figure-id="fig:line_detector">
-    <figcaption>Outcome of the line detector node.
-    </figcaption>
-    <dtvideo src='vimeo:334931437'/>
-</div>
-
 ### Step 4: Extras
 
 Here are some additional things you can try:
