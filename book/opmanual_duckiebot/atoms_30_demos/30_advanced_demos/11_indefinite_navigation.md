@@ -53,7 +53,7 @@ Follow these steps to run the indefinite navigation demo on your Duckiebot:
 
 **Step 2**: Launch the demo by running:
 
-    laptop $ dts duckiebot demo --demo_name indefinite_navigation --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
+    laptop $ dts duckiebot demo --demo_name indefinite_navigation --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
 Note: Many nodes need to be launched, so it will take quite some time.
 
