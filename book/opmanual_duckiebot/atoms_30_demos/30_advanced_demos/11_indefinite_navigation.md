@@ -32,7 +32,7 @@ TODO: add a different video with an up to specification Duckietown.
 
 ## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
 
-To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
+To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. That makes it a a level more difficult than the [lane following demo](#demo-lane-following). Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
 
 
 ## Duckiebot setup notes {#demo-indefinite-navigation-duckiebot-setup}
