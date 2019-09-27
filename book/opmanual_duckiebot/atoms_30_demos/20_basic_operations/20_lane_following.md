@@ -79,7 +79,7 @@ If you have a joystick you can skip this next command, otherwise we need to run 
 
 Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. You can regain control of the bot at any moment by stopping the lane following and using the (virtual) joystick. Resuming the demo is as easy as pressing the corresponding start button.
 
-Enjoy the demo!
+Et voilà! We are ready to drive around autonomously.
 
 ### Step 3: Visualize the detected line segments (optional)
 
@@ -100,9 +100,6 @@ Now select the `/![DUCKIEBOT_NAME]/line_detector_node/image_with_lines` in `rqt_
     </figcaption>
     <dtvideo src='vimeo:334931437'/>
 </div>
-
-Et voilà! We are ready to drive around autonomously.
-
 
 ### Step 4: Extras
 
