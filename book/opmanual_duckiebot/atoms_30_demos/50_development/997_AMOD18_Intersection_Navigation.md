@@ -1,4 +1,4 @@
-# AMOD18 Project Unicorn {#demo-projectunicorn status=ready}
+# AMOD18 Project Unicorn {#demo-projectunicorn status=beta}
 
 **Project Unicorn** is a project for AMOD (Autonomous Mobility On Demand) course from ETH Zürich that focuses on the intersection navigation for duckiebots in Duckietown.
 

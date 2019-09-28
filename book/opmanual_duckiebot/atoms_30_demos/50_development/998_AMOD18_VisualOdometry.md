@@ -1,4 +1,4 @@
-# AMOD18 Visual Odometry {#demo-visualodometry status=ready}
+# AMOD18 Visual Odometry {#demo-visualodometry status=beta}
 
 This is the report of the AMOD18 Visual Odometry group. In the first section we present how to run the demo, while the second section is dedicated on a more complete report of our work.
 

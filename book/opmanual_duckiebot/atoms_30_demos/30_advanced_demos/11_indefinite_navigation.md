@@ -8,8 +8,6 @@ Requires: [Wheel calibration](#wheel-calibration) completed.
 
 Requires: [Camera calibration](#camera-calib) completed.
 
-Requires: [Lane following](#demo-lane-following) demo has been successfully launched.
-
 Requires: Fully set up Duckietown.
 
 Results: One or more Duckiebot safely navigating in Duckietown.
@@ -32,7 +30,7 @@ TODO: add a different video with an up to specification Duckietown.
 
 ## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
 
-To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
+To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. That makes it a a level more difficult than the [lane following demo](#demo-lane-following). Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
 
 
 ## Duckiebot setup notes {#demo-indefinite-navigation-duckiebot-setup}
@@ -41,27 +39,52 @@ One (or possibly more) Duckiebot in configuration [DB18](#duckiebot-configuratio
 
 ## Pre-flight checklist {#demo-indefinite-navigation-pre-flight}
 
-Check: Sufficient battery charge of the Duckiebot.
-
-Check: Duckiebot is properly calibrated.
+Check that every Duckiebot has sufficient battery charge and that they are all properly calibrated.
 
 ## Demo instructions {#demo-indefinite-navigation-run}
 
-Follow these steps to run the indefinite navigation demo on your Duckiebot:
+### Step 1: Start the demo containers
 
-**Step 1**: Power on your bot and wait for the `duckiebot-interface` to initialize (the LEDs go off).
+Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
 
-**Step 2**: Launch the demo by running:
+First, start all the drivers in `dt-duckiebot-interface`:
 
-    laptop $ dts duckiebot demo --demo_name indefinite_navigation --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
+    laptop $ dts duckiebot demo --demo_name all_drivers --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy
+    
+Then, start the glue nodes that handle the joystick mapping and the kinematics:
 
-Note: Many nodes need to be launched, so it will take quite some time.
+    laptop $ dts duckiebot demo --demo_name all --duckiebot_name ![DUCKIEBOT_NAME] --package_name car_interface --image duckietown/dt-car-interface:daffy
 
-**Step 3**: With the joystick or In a separate terminal, start the joystick GUI:
+Finally, we are ready to start the high-level pipeline for indefinite navigation:
 
-    laptop $ dts duckiebot keyboard_control ![hostname]
+    laptop $ dts duckiebot demo --demo_name indefinite_navigation --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
-and use the instructions to toggle between autonomous navigation and joystick control modes.
+You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
+
+### Step 2: Make your Duckiebot drive autonomously!
+
+If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
+
+    laptop $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
+
+
+|        Controls      |  Joystick  |     Keyboard     |
+|----------------------|:----------:|:----------------:|
+| Start Lane Following |   __R1__   |   <kbd>a</kbd>   |
+| Stop Lane Following  |   __L1__   |   <kbd>s</kbd>   |
+
+
+Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. You can regain control of the bot at any moment by stopping the lane following and using the (virtual) joystick. Resuming the demo is as easy as pressing the corresponding start button.
+
+Et voilà! We are ready to drive around autonomously.
+
+### Step 4: Extras
+
+Here are some additional things you can try:
+
+* Get a [remote stream](#read-camera-data) of your Duckiebot.
+* You can visualize the detected line segments the same way as for the [lane following demo](#demo-lane-following)
+* Try to change some of the ROS parameters to see how your Duckiebot's behavior will change. 
 
 ## Troubleshooting
 
