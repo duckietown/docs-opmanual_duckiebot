@@ -43,7 +43,7 @@ Check that every Duckiebot has sufficient battery charge and that they are all p
 
 ## Demo instructions {#demo-indefinite-navigation-run}
 
-### Step 1: Start the demo containers
+### Start the demo containers
 
 Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
 
@@ -61,7 +61,7 @@ Finally, we are ready to start the high-level pipeline for indefinite navigation
 
 You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
 
-### Step 2: Make your Duckiebot drive autonomously!
+### Make your Duckiebot drive autonomously!
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
@@ -78,7 +78,7 @@ Start the lane following. The Duckiebot should drive autonomously in the lane. I
 
 Et voilà! We are ready to drive around autonomously.
 
-### Step 4: Extras
+### Extras
 
 Here are some additional things you can try:
 
