@@ -101,7 +101,7 @@ Now select the `/![DUCKIEBOT_NAME]/line_detector_node/image_with_lines` in `rqt_
     <dtvideo src='vimeo:334931437'/>
 </div>
 
-### Step 4: Extras
+### Extras
 
 Here are some additional things you can try:
 
