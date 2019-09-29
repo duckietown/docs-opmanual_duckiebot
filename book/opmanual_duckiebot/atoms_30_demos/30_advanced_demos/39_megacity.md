@@ -1,4 +1,4 @@
-# Megacity {#demo-megacity status=ready}
+# Megacity {#demo-megacity status=beta}
 
 This is the description of the great and marvelous megacity demo.
 
