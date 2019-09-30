@@ -51,7 +51,7 @@ First, check if your `duckiebot-interface` container is running. If it is not, s
 
     laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy
     
-Warning: The `duckiebot-interface` container can appear under different names, e.g. `dt18_03_duckiebot-interface`. 
+Warning: The `duckiebot-interface` container can appear under different names, e.g. `dt18_03_roscore_duckiebot-interface_1`. 
 
 We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
