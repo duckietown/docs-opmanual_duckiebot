@@ -47,11 +47,15 @@ Check that every Duckiebot has sufficient battery charge and that they are all p
 
 Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
 
-First, start all the drivers in `dt-duckiebot-interface`:
+First, make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped.
+
+Warning: These containers can have different names, instead look at the image name from which they are run.
+
+Then, start all the drivers in `dt-duckiebot-interface`:
 
     laptop $ dts duckiebot demo --demo_name all_drivers --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy
     
-Then, start the glue nodes that handle the joystick mapping and the kinematics:
+Start also the glue nodes that handle the joystick mapping and the kinematics:
 
     laptop $ dts duckiebot demo --demo_name all --duckiebot_name ![DUCKIEBOT_NAME] --package_name car_interface --image duckietown/dt-car-interface:daffy
 
