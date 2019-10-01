@@ -48,9 +48,17 @@ Assumption about Duckietown:
 
 ### Start the demo containers
 
-Running this demo requires almost all of the main Duckietown ROS nodes to be up and running.
+Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
 
-Start the high-level pipeline for lane following:
+First, start all the drivers in `dt-duckiebot-interface`:
+
+    laptop $ dts duckiebot demo --demo_name all_drivers --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy
+    
+Then, start the glue nodes that handle the joystick mapping and the kinematics:
+
+    laptop $ dts duckiebot demo --demo_name all --duckiebot_name ![DUCKIEBOT_NAME] --package_name car_interface --image duckietown/dt-car-interface:daffy
+
+Finally, we are ready to start the high-level pipeline for lane following:
 
     laptop $ dts duckiebot demo --demo_name lane_following --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
