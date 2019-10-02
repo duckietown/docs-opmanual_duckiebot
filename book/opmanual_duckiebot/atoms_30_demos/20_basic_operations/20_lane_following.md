@@ -50,9 +50,7 @@ Assumption about Duckietown:
 
 Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
 
-First, make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped.
-
-Warning: These containers can have different names, instead look at the image name from which they are run.
+Warning: First, make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.
 
 Then, start all the drivers in `dt-duckiebot-interface`:
 
