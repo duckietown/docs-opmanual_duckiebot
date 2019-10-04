@@ -251,7 +251,11 @@ You can go ahead and press **Finish**.
 
 Symptom: I am not sure whether the Duckiebot is properly initialized.
 
+<<<<<<< HEAD
 Resolution: see [](#troubleshooting-init-check).
+=======
+Resolution: see [](#troubleshooting-init-check). 
+>>>>>>> troubleshooting initialization added
 
 Symptom: The LEDs light up in a variety of colors when the battery is plugged in for the first time.
 
