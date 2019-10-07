@@ -1,4 +1,4 @@
-# System Identification {#demo-sysidII status=ready}
+# System Identification {#demo-sysidII status=beta}
 
 This document provides instructions for performing an offline system identification procedure. The identification procedure is completed in three stages.
 

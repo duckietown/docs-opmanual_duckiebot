@@ -4,7 +4,7 @@ This page describes the basic procedure for running demos. Some demos have speci
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` configuration that is [initalized](#setup-duckiebot) has [camera](#camera-calib) and [wheels](#wheel-calibration) calibrated
+Requires: A Duckiebot in `DB18` configuration that is [initalized](#setup-duckiebot)
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
@@ -13,23 +13,22 @@ Requires: Other requirements are demo specific, see the specific pages
 </div>
 
 ## Start demos
-In the [Duckietown software repo](https://github.com/duckietown/Software), the launch files are currently separated in two different packages (folders).
+In the [Duckietown software repo](https://github.com/duckietown/Software), there are two main types of launch files: node-specific (nuclear) ones, and demo launch files. A node launch file handles only a single node and its parameters. A demo launch file combines multiple of node launch files and adds the neccessary connections in order to stage demos that use dozens of nodes.
 
-**The [`duckietown` package](https://github.com/duckietown/Software/tree/master19/catkin_ws/src/00-infrastructure/duckietown/launch)** has launch files which are constructed "additively" through `include` tags. This is the default package used to run launch files. Any launch file in this folder can be run through the [duckietown shell](#laptop-setup-ubuntu-18-shell) with the following command:
+The launch procedure for both types is very similar. The generic command is:
 
-    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --image duckietown/dt-core:daffy
+    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name ![PACKAGE_NAME] --image duckietown/![IMAGE]:daffy
+    
+This command will start the `DEMO_NAME.launch` launch file in the `PACKAGE_NAME` package from the `duckietown/![IMAGE]:daffy` Docker image on the `DUCKIEBOT_NAME` duckiebot.
 
-where `![DEMO_NAME]` is the part before the `.launch` of a `![DEMO_NAME].launch` file.
+Note: Currently `daffy` is the development branch and the `dts` commands work by default with the `master19` version. That is why you should __always__ specify the image with the `daffy` tag!
 
-**The [`duckietown_demos` package](https://github.com/duckietown/Software/tree/master19/catkin_ws/src/70-convenience-packages/duckietown_demos/launch)** contains generally more complicated assemblies of capabilities that are composed into actions. These launch files are constructed "destructively" where each one includes the [`master.launch`](https://github.com/duckietown/Software/blob/master19/catkin_ws/src/70-convenience-packages/duckietown_demos/launch/master.launch) which contains `include` blocks for every node that exists in the Duckietown Software repository. These include blocks are activated and de-activated through a series of `args` that act as switches which are structured hierarchically at the top of the `master.launch` file. To run any launch file in this package through the shell (and actually any launch file in any package) you can additionally specify the `package_name` as an argument:
+You can find the specific command for each demo in the corresponding part of the book. 
 
-    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name duckietown_demos
-
-where, similarly to above,  `![DEMO_NAME]` is the part before the `.launch` of a `![DEMO_NAME].launch` file.
 
 ## Debug options
 You can open a terminal in the container running the demo you want by appending the option `--debug` to the command. An example is:
 
-    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name duckietown_demos --debug
+    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name ![PACKAGE_NAME] --image duckietown/![IMAGE]:daffy --debug
 
-This enables you to access to the `ROS` debug informations of the nodes that are launched.
+This enables you to access to the `ROS` debug informations of the nodes that are launched. This is the same output that you can see in the `logs` window of the particular container on Portainer.

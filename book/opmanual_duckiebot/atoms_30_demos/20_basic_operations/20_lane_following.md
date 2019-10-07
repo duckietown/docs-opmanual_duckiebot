@@ -46,42 +46,56 @@ Assumption about Duckietown:
 
 ## Demo instructions {#demo-lane-following-run}
 
-### Step 1
+### Start the demo containers
 
-Run the demo:
+Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
+
+Warning: First, make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.
+
+Then, start all the drivers in `dt-duckiebot-interface`:
+
+    laptop $ dts duckiebot demo --demo_name all_drivers --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy
+    
+Start also the glue nodes that handle the joystick mapping and the kinematics:
+
+    laptop $ dts duckiebot demo --demo_name all --duckiebot_name ![DUCKIEBOT_NAME] --package_name car_interface --image duckietown/dt-car-interface:daffy
+
+Finally, we are ready to start the high-level pipeline for lane following:
 
     laptop $ dts duckiebot demo --demo_name lane_following --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
 
-This will start the `demo_lane_following` container. You have to wait a while for everything to start working.
+You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
 
-### Step 2
+### Make your Duckiebot drive autonomously!
 
-Now we will verify that `lane_filter_node` is working. On your laptop run `start_gui_tools`.
+If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
-    laptop $ dts start_gui_tools ![hostname]
+    laptop $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
 
-This will enter you into a container on your laptop that can talk to the ROS on the robot. To verify this do:
 
-    laptop-container $ rostopic list
+|        Controls      |  Joystick  |     Keyboard     |
+|----------------------|:----------:|:----------------:|
+| Start Lane Following |   __R1__   |   <kbd>a</kbd>   |
+| Stop Lane Following  |   __L1__   |   <kbd>s</kbd>   |
 
-and you should see all of the rostopics listed there. If you see an output like "Cannot communicate with ROS_MASTER" that's a problem.
 
-Next run:
+Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. You can regain control of the bot at any moment by stopping the lane following and using the (virtual) joystick. Resuming the demo is as easy as pressing the corresponding start button.
 
-    laptop-container $ rqt_image_view
+Et voilà! We are ready to drive around autonomously.
 
-Select the `/![hostname]/camera_node/image/compressed` topic from the drop down in the popup window and you should see the video stream.
+### Visualize the detected line segments (optional)
 
-### Step 3
+This step is not neccessary but provides a nice visualization of the line segments that the Duckiebot detects. 
 
-Now we need to make `lane_filter_node` publish all the image topics.
-We can do this by setting the ROS parameter `verbose` to `true`:
+For that, we need to make `lane_filter_node` publish all the image topics.
 
-    laptop-container $ rosparam set /![hostname]/line_detector_node/verbose true
+You need to open a shell in the `dt-core` container. You can do that either through Portainer or `docker exec`. Then, set the ROS parameter `verbose` to `true`:
+
+    container $ rosparam set /![DUCKIEBOT_NAME]/line_detector_node/verbose true
 
 so that `line_detector_node` will publish the image_with_lines.
 
-Now select the `/![hostname]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
+Now select the `/![DUCKIEBOT_NAME]/line_detector_node/image_with_lines` in `rqt_image_view` and you should see something like this:
 
 <div figure-id="fig:line_detector">
     <figcaption>Outcome of the line detector node.
@@ -89,22 +103,13 @@ Now select the `/![hostname]/line_detector_node/image_with_lines` in `rqt_image_
     <dtvideo src='vimeo:334931437'/>
 </div>
 
-Et voilà! We are ready to drive around autonomously.
+### Extras
 
+Here are some additional things you can try:
 
-### Step 4
+* Get a [remote stream](#read-camera-data) of your Duckiebot.
+* Try to change some of the ROS parameters to see how your Duckiebot's behavior will change. 
 
-If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
-
-    laptop $ dts duckiebot keyboard_control ![hostname]
-
-|        Controls      |  Joystick  |  Keyboard |
-|----------------------|:----------:|:---------:|
-| Start Lane Following |   __R1__   |   __a__   |
-| Stop Lane Following  |   __L1__   |   __s__   |
-
-
-Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. Enjoy the demo.
 
 ## Troubleshooting {#demo-lane-following-troubleshooting}
 
@@ -131,8 +136,8 @@ Solution (advanced):
 
 Set alternative controller gains. While running the demo on the Duckiebot use the following to set the gains to the alternative values:
 
-    laptop $ rosparam set /![hostname]/lane_controller_node/k_d -45
+    laptop $ rosparam set /![DUCKIEBOT_NAME]/lane_controller_node/k_d -45
 
-    laptop $ rosparam set /![hostname]/lane_controller_node/k_theta -11
+    laptop $ rosparam set /![DUCKIEBOT_NAME]/lane_controller_node/k_theta -11
 
-Those changes are only active while running the demo and need to be repeated at every start of the demo if needed. If this improved the performance of your Duckiebot, you should think about permenantly change the default values in your catkin_ws.
+Those changes are only active while running the demo and need to be repeated at every start of the demo if needed. If this improved the performance of your Duckiebot, you should think about permenantly change the default values in your `catkin_ws`.

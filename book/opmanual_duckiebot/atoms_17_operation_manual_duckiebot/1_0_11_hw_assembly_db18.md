@@ -394,9 +394,7 @@ From the Duckiebot kit take the following components:
      <img src="howto_assemble_hut_parts-1.jpg" style='width: 25em'/>
 </div>
 
-Warning: have a close look at the GPIO pins of the Hut (top board). **None of the pins should touch each other**.
-
-If for any reason (maybe they got bent during transportation) the pins are not straight, straighten them up. You can do so with your hands or helping yourself with a screwdriver or pencil, and by applying some _gentle_ pressure.
+Note: In the newest version of the hut, the pins are removed. This is to prevent them from being shorted. You will not need them so you can neglect them in the next few pictures.   
 
 Note: It is more convenient to not separate the jumper cables, but leave them in two sets of three.
 
@@ -420,11 +418,10 @@ Place the Raspberry Pi as in [](#fig:howto-assemble-hut-2), passing the camera c
      <img src="howto_assemble_hut_2.jpg" style='width: 25em'/>
 </div>
 
-_Repetita iuvant_: visually inspect the Hut's GPIO pins and make sure they do not touch each other (i.e., are straight).
 
 ### Step 4
 
-Take one of the two sets of F/F jumper cables, and attach it to the Duckietown Hut as shown in [](#fig:howto-assemble-hut-3). It is important to use the pins named: "5Vusb, ADR LED and GND", do *not* use the pin labelled "5Vraspi". Take note of which color have you connected to each pin.
+Take one of the two sets of F/F jumper cables, and attach it to the Duckietown Hut as shown in [](#fig:howto-assemble-hut-3). It is important to use the pins named: "5Vusb, ADR LED and GND", do *not* use the pin labelled "5Vraspi". Take note of the color you connected to each pin.
 
 <div figure-id="fig:howto-assemble-hut-3" figure-caption="Position of the nylon spacers.">
      <img src="howto_assemble_hut_3.jpg" style='width: 25em'/>
@@ -432,7 +429,7 @@ Take one of the two sets of F/F jumper cables, and attach it to the Duckietown H
 
 ### Step 5
 
-Finally, attach the two USB cable to the power plugs, as in [](#fig:assembly-db18-power-cables). Note that the color of the USB cables might vary, so don't worry if yours are not exactly as those shown in the picture below. The two USB cables could also be uncomfortably short. If your powerbank/battery comes with longer cables you might want to use them instead.
+Finally, attach the two USB cables to the power plugs, as in [](#fig:assembly-db18-power-cables).
 
 <div figure-id="fig:assembly-db18-power-cables" figure-caption="Plugging in the power cables.">
      <img src="assembly-db18-power-cables.jpg" style='width: 25em'/>

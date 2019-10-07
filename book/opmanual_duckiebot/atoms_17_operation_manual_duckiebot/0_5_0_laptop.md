@@ -183,19 +183,7 @@ Follow [these instructions](https://docs.docker.com/docker-for-mac/install/)
 
 ### Duckietown Shell {#laptop-setup-mac-shell}
 
-To install the Duckietown shell, use:
-
-    laptop $ pip install --user --no-cache-dir -U duckietown-shell
-
-Edit the file `~/.profile` and add the line:
-
-    export PATH=~/.local/bin:$PATH
-
-Note: do not use `sudo pip` to install the Duckietown Shell.
-
-Log out and in. This command should succeed:
-
-    laptop $ dts version
+Follow [these instructions](https://github.com/duckietown/duckietown-shell)
 
 
 

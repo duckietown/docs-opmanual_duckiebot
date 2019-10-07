@@ -146,7 +146,11 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 ```
 ### Troubleshooting
 
-Symptom: The LEDs light up in a variety of colors when the battery is plugged in.
+Symptom: I am not sure whether the Duckiebot is properly initialized.
+
+Resolution: see [](#troubleshooting-init-check). 
+
+Symptom: The LEDs light up in a variety of colors when the battery is plugged in for the first time.
 
 Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#setup-troubleshooting-boot).
 

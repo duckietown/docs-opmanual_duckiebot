@@ -42,10 +42,16 @@ This is not 100% necessary.
 ## Intrinsic Calibration
 
 Every camera is a little bit different so we need to do a camera calibration procedure to account for the small manufacturing discrepancies.
-This process will involve displaying a predetermined patter to the camera and using it to solve for the camera parameters. For more information on the details see [the slides](https://github.com/duckietown/lectures/blob/master/1_ideal/25_computer_vision/cv_calibration.pdf).
+This process will involve displaying a predetermined pattern to the camera and using it to solve for the camera parameters. For more information on the details see [the slides](https://github.com/duckietown/lectures/blob/master/1_ideal/25_computer_vision/cv_calibration.pdf).
 The procedure is basically a wrapper around the [ROS camera calibration tool](http://wiki.ros.org/camera_calibration).
 
 ### Publish raw imagery
+
+First, check if your `duckiebot-interface` container is running. If it is not, start it with
+
+    laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy
+    
+Warning: The `duckiebot-interface` container can appear under different names, e.g. `dt18_03_roscore_duckiebot-interface_1`. 
 
 We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
@@ -150,7 +156,11 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 Run:
 
-    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
+    laptop $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:calib-fix
+
+and then:
+
+    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:calib-fix
 
 First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>. 
 If all goes well the program will complete.

@@ -20,6 +20,28 @@ Symptom: The Raspberry Pi has power but it does not boot.
 
 Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
 
+## I am not sure whether the Duckiebot is properly initialized {#troubleshooting-init-check status=ready}
+
+Symptom: I am not sure whether the Duckiebot is properly initialized.
+
+Resolution: Open a browser window and type: `![hostname].local:8082/boot-log.txt`
+the output of this should look as follows:
+
+```
+{"phase": "loading", "msg": "Stack DT18_00_basic: Loading containers"}
+{"phase": "loading", "msg": "Stack DT18_00_basic: docker-compose up"}
+{"phase": "loading", "msg": "Stack DT18_01_health_stats: Loading containers"}
+{"phase": "loading", "msg": "Stack DT18_01_health_stats: docker-compose up"}
+{"phase": "loading", "msg": "Stack DT18_03_roscore: Loading containers"}
+{"phase": "loading", "msg": "Stack DT18_03_roscore: docker-compose up"}
+{"phase": "loading", "msg": "Stack DT18_06_dashboard: Loading containers"}
+{"phase": "loading", "msg": "Stack DT18_06_dashboard: docker-compose up"}
+{"phase": "loading", "msg": "Stack DT18_02_others: Loading containers"}
+{"phase": "loading", "msg": "Stack DT18_05_duckiebot_base: Loading containers"}
+{"phase": "done", "msg": "All stacks up"}
+```
+When you see the last message saying "All stacks up", your Duckiebot is ready to go. If your Duckiebot is still somewhere further up, patience you must have. It can take up to 90 minutes until the Duckiebot is ready to go.
+
 ## Hanging {#troubleshooting-hanging}
 
 Symptom: The Pi hangs when you do `docker pull` commands or otherwise and sometimes shuts off.
