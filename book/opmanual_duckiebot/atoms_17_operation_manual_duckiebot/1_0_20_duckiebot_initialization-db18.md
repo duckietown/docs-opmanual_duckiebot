@@ -37,19 +37,16 @@ Plug the SD card in the computer using the card reader.
 
 Then initalize it by running the command:
 
-    laptop $ dts init_sd_card --hostname ![hostname] [options] --configuration daffy
+    laptop $ dts init_sd_card --hostname ![hostname] [options]
 
 The important options are:
 
     --hostname         required
-    --configuration    required: daffy
     --linux-username   default: duckie
     --linux-password   default: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
     --aido             default: False # loads only the things needed for an AI-DO submission
-
-Note: Make sure to use the option `--configuration daffy` in order to pull the latest images.
 
 For a full list of the options, run
 
@@ -57,7 +54,7 @@ For a full list of the options, run
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
-    laptop $ dts init_sd_card --hostname ![hostname] --configuration daffy --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
+    laptop $ dts init_sd_card --hostname ![hostname] --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
 If you are using a 16GB SD card, also add the `--compress` option.
 
@@ -148,7 +145,7 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 
 Symptom: I am not sure whether the Duckiebot is properly initialized.
 
-Resolution: see [](#troubleshooting-init-check). 
+Resolution: see [](#troubleshooting-init-check).
 
 Symptom: The LEDs light up in a variety of colors when the battery is plugged in for the first time.
 
