@@ -174,7 +174,7 @@ This configuration was added by the `init_sd_card` command.
 
 
 ## Securing your Duckiebot
-By default your Duckiebot uses an SSH key that is the same for all Duckiebots. That means that anyone can access your Duckiebot. Typically, this is not a problem, but in case you have sensitive information on it, such as your university internet credentials, you can remove it. Keep in mind that this might prevent some advanced functionality (particularly involving autolab proccesses) from working properly. Remove the SSH key at your risk and only if completely necessary.
+By default, your Duckiebot uses an SSH key that is the same for all Duckiebots. That means that anyone can access your robot. Typically, this is not a problem, but in case you have sensitive information on it, such as your university internet credentials, you can remove it. Keep in mind that by doing so, some advanced functionality (particularly involving autolab proccesses) might stop functioning properly! Remove the SSH key at your risk and only if completely necessary.
 
 You can remove the key by running:
 
