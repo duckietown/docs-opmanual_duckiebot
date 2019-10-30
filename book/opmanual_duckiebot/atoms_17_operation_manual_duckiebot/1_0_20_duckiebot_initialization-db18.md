@@ -116,9 +116,24 @@ You should immediately see the **green** LED of the Raspberry Pi next to where t
 
 If not, stop, as there is a problem with the SD card initialization (or possibly the Raspberry Pi, but this is unlikely).
 
-After some time, the **red** and the **green** LEDs of the Raspberry Pi will start to blink alternately. This means that the necessary Docker images are being extracted. When the process is finished the **red** LED will be off and the **green** will be on.
+You know that your Raspberry Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
 
-Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take some time.
+```
+laptop $ ping ![hostname].local
+```
+
+Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use "Bridged" connection (typically NAT is used by default).
+
+You should see output similar to the following:  
+
+```
+PING ![hostname].local (![X.X.X.X]): 56 data bytes
+64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
+64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
+![...]
+```
+
+After some time, the **red** and the **green** LEDs of the Raspberry Pi will start to blink alternately. This means that the necessary Docker images are being extracted. When the process is finished the **red** LED will be off and the **green** will be on.
 
 Do not power the robot off (by holding the battery button) while this is in process.
 
@@ -141,7 +156,7 @@ second, so there is no need to manually restart it.
 The list will look like the following.
 
 <div figure-id="fig:fleet-discover" figure-caption="Output of 'dts fleet discover'">
-     <img src="fleet_discover.jpg" style='width: 25em'/>
+     <img src="fleet_discover.jpg" style='width: 34em'/>
 </div>
 
 After you turn your Duckiebot ON with a new SD card in, you will see your
@@ -149,15 +164,15 @@ Duckiebot appear in the list within approximately 2 minutes.
 The column you will need to monitor is *Dashboard*. Wait until the
 Dashboard is *Up* as shown in the image below.
 
-<div figure-id="fig:fleet-discover" figure-caption="Output of 'dts fleet discover' (Dashboard Up)">
-     <img src="fleet_discover_dashboard_up.jpg" style='width: 25em'/>
+<div figure-id="fig:fleet-discover-dashboard-up" figure-caption="Output of 'dts fleet discover' (Dashboard Up)">
+     <img src="fleet_discover_dashboard_up.jpg" style='width: 34em'/>
 </div>
 
 When the Dashboard is Up, open your browser and visit the
 URL `http://![hostname].local/`. You will see the following page,
 
 <div figure-id="fig:compose_first_setup" figure-caption="">
-  <img src="compose_first_setup.png" style='width: 30em'/>
+  <img src="compose_first_setup.png" style='width: 34em'/>
 </div>
 
 This is the dashboard of your Duckiebot. The Dashboard is built using a
@@ -202,20 +217,20 @@ The **Step 4: Package: Duckietown - Duckiebot** tab should now be open, as shown
 If you see the message **Waiting for the device-loader container**, please wait.
 
 <div figure-id="fig:dashboard_device_loader_progress" figure-caption="">
-  <img src="dashboard_device_loader_progress.jpg" style='width: 34em'/>
+  <img src="dashboard_device_loader_progress.png" style='width: 34em'/>
 </div>
 
 Now, sit back, relax, and enjoy your coffee! this will take a while.
 Keep monitoring the temperature and disk bars, if the temperature is too high
-(more than 3/4 of the bar) make sure your robot is placed in a an area where
+(more than 3/4 of the bar) make sure your robot is placed in an area where
 it can get enough air. If the disk bar reaches the maximum, it means that the
 SD card is full, upgrade to a bigger one or reflash using the `--compress` flag.
 
 When all the unpacking is done and your Duckiebot is ready to go,
 you will see the following message appear on the Dashboard.
 
-<div figure-id="fig:dashboard_device_loader_progress" figure-caption="">
-  <img src="dashboard_device_loader_progress.jpg" style='width: 34em'/>
+<div figure-id="fig:dashboard_device_loader_finished" figure-caption="">
+  <img src="dashboard_device_loader_finished.png" style='width: 34em'/>
 </div>
 
 Click **Next** to continue.
@@ -232,27 +247,6 @@ The **Step 5: Complete** tab should now be open, as shown below.
 You can go ahead and press **Finish**.
 
 
-
-
-
-
-
-You know that your Raspberry Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
-
-```
-laptop $ ping ![hostname].local
-```
-
-Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use "Bridged" connection (typically NAT is used by default).
-
-You should see output similar to the following:  
-
-```
-PING ![hostname].local (![X.X.X.X]): 56 data bytes
-64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
-64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
-![...]
-```
 ### Troubleshooting
 
 Symptom: I am not sure whether the Duckiebot is properly initialized.

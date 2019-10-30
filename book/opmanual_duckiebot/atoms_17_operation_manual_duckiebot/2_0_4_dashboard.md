@@ -42,8 +42,8 @@ You should be able to see the login page, as shown below.
   <img src="dashboard_login_page.png" style='width: 34em'/>
 </div>
 
-Since we skipped the first two steps of the **First Setup** section
-([](#dashboard-first-setup)), we cannot login using a Google account.
+Since we skipped the first two steps of the **First Setup** of \\compose\\
+([](#monitor-first-boot)), we cannot login using a Google account.
 As discussed above, the Duckietown package provides its own login system,
 which is based on the Duckietown personal token (Duckietoken).
 If you have not retrieved yours, it is now time to do so by visiting
