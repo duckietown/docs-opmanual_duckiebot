@@ -37,19 +37,18 @@ Plug the SD card in the computer using the card reader.
 
 Then initalize it by running the command:
 
-    laptop $ dts init_sd_card --hostname ![hostname] [options] --configuration daffy
+    laptop $ dts init_sd_card --hostname ![hostname] [options]
 
 The important options are:
 
     --hostname         required
-    --configuration    required: daffy
     --linux-username   default: duckie
     --linux-password   default: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
     --aido             default: False # loads only the things needed for an AI-DO submission
 
-Note: Make sure to use the option `--configuration daffy` in order to pull the latest images.
+Note: The version of the software that will be used depends on the version of the shell, chose with `dts --set-version`.
 
 For a full list of the options, run
 
