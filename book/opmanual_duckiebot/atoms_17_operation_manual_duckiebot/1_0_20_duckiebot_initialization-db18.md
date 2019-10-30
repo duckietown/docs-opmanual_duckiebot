@@ -92,8 +92,6 @@ Note: using above listing as an example, you should be choosing the disk name (s
 
 - When asked "Are you sure?" select <kbd>y</kbd>.
 
-When the SD card is completely written, you should arrive at `Press any key to continue`. Do so and the script will exit.
-
 Note: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
 
 If the procedure fails with errors about directories not mounted, be patient and do it again, this time leaving the SD card in.
@@ -118,11 +116,125 @@ You should immediately see the **green** LED of the Raspberry Pi next to where t
 
 If not, stop, as there is a problem with the SD card initialization (or possibly the Raspberry Pi, but this is unlikely).
 
-After some time, the **red** and the **green** LEDs of the Raspberry Pi will start to blink alternately. This means that the necessary Docker containers are being extracted. When the process is finished the **red** LED will be off and the **green** will be on.
+After some time, the **red** and the **green** LEDs of the Raspberry Pi will start to blink alternately. This means that the necessary Docker images are being extracted. When the process is finished the **red** LED will be off and the **green** will be on.
 
-Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take a lot of time.
+Warning: Allow the robot time to boot. Wait until only the green Raspberry Pi LED is on, while the red is off. This might take some time.
 
 Do not power the robot off (by holding the battery button) while this is in process.
+
+
+## Monitor the progress of the first boot {#monitor-first-boot}
+
+Open a terminal and run the command
+
+```
+laptop $ dts fleet discover
+```
+
+Note: If the command above returns an error about the library `zeroconf` being
+missing, run `pip3 install zeroconf` and retry.
+
+The command above (`fleet discover`) will show a list of all the duckiebots
+reachable on your network. Leave this tool open, it will refresh automatically every
+second, so there is no need to manually restart it.
+
+The list will look like the following.
+
+<div figure-id="fig:fleet-discover" figure-caption="Output of 'dts fleet discover'">
+     <img src="fleet_discover.jpg" style='width: 25em'/>
+</div>
+
+After you turn your Duckiebot ON with a new SD card in, you will see your
+Duckiebot appear in the list within approximately 2 minutes.
+The column you will need to monitor is *Dashboard*. Wait until the
+Dashboard is *Up* as shown in the image below.
+
+<div figure-id="fig:fleet-discover" figure-caption="Output of 'dts fleet discover' (Dashboard Up)">
+     <img src="fleet_discover_dashboard_up.jpg" style='width: 25em'/>
+</div>
+
+When the Dashboard is Up, open your browser and visit the
+URL `http://![hostname].local/`. You will see the following page,
+
+<div figure-id="fig:compose_first_setup" figure-caption="">
+  <img src="compose_first_setup.png" style='width: 30em'/>
+</div>
+
+This is the dashboard of your Duckiebot. The Dashboard is built using a
+framework called \\compose\\. We will now configure our Duckiebot for first
+use.
+
+
+### Steps 1, 2
+
+By default, \\compose\\ uses Google Sign-In to authenticate the users.
+In Duckietown, we use authentication based on personal tokens. You should be able to
+retrieve yours by visiting the page:
+
+> [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
+
+Since we are not going to use Google Sign-In, you can click on **Skip**.
+This will let you skip the first two steps and move straight to **Step 3**.
+Do not worry about creating an administrator account (Step 2) for now,
+the Duckietown package for \\compose\\ will create one for us as soon as we
+authenticate for the first time using our personal token.
+
+
+### Step 3
+
+At this point, the **Step 3** tab should be open, as shown in the image below.
+
+<div figure-id="fig:compose_first_setup_step3" figure-caption="">
+  <img src="compose_first_setup_step3.png" style='width: 34em'/>
+</div>
+
+You can complete this step as you please.
+Feel free to update all the fields, and remember, you can always update your
+choices through the page **Settings** after you authenticate
+using your personal token.
+
+When you are happy with your choices, click on **Next**.
+
+
+### Step 4
+
+The **Step 4: Package: Duckietown - Duckiebot** tab should now be open, as shown below.
+If you see the message **Waiting for the device-loader container**, please wait.
+
+<div figure-id="fig:dashboard_device_loader_progress" figure-caption="">
+  <img src="dashboard_device_loader_progress.jpg" style='width: 34em'/>
+</div>
+
+Now, sit back, relax, and enjoy your coffee! this will take a while.
+Keep monitoring the temperature and disk bars, if the temperature is too high
+(more than 3/4 of the bar) make sure your robot is placed in a an area where
+it can get enough air. If the disk bar reaches the maximum, it means that the
+SD card is full, upgrade to a bigger one or reflash using the `--compress` flag.
+
+When all the unpacking is done and your Duckiebot is ready to go,
+you will see the following message appear on the Dashboard.
+
+<div figure-id="fig:dashboard_device_loader_progress" figure-caption="">
+  <img src="dashboard_device_loader_progress.jpg" style='width: 34em'/>
+</div>
+
+Click **Next** to continue.
+
+
+### Step 5
+
+The **Step 5: Complete** tab should now be open, as shown below.
+
+<div figure-id="fig:compose_first_setup_step5" figure-caption="">
+  <img src="compose_first_setup_step5.png" style='width: 34em'/>
+</div>
+
+You can go ahead and press **Finish**.
+
+
+
+
+
 
 
 You know that your Raspberry Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):

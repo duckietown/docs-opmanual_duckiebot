@@ -32,62 +32,6 @@ Visit the
 for further information about \\compose\\.
 
 
-## Dashboard - First-setup {#dashboard-first-setup}
-
-Turn ON your Duckiebot and wait a few minutes for the robot
-to be ready. Open the browser and visit the URL
-`http://![hostname].local`.
-You should be able to see the following page,
-
-<div figure-id="fig:compose_first_setup" figure-caption="">
-  <img src="compose_first_setup.png" style='width: 30em'/>
-</div>
-
-
-### Steps 1, 2
-
-By default, \\compose\\ uses Google Sign-In to authenticate the users.
-In Duckietown, we use authentication based on personal tokens. You should be able to
-retrieve yours by visiting the page:
-
-> [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
-
-Since we are not going to use Google Sign-In, you can click on **Skip**.
-This will let you skip the first two steps and move straight to **Step 3**.
-Do not worry about creating an administrator account (Step 2) for now,
-the Duckietown package is going to create one for us as soon as we authenticate
-for the first time using our personal token.
-
-
-### Step 3
-
-At this point, the **Step 3** tab should be open, as shown in the image below.
-
-<div figure-id="fig:compose_first_setup_step3" figure-caption="">
-  <img src="compose_first_setup_step3.png" style='width: 34em'/>
-</div>
-
-You can complete this step as you please.
-Feel free to update all the fields, and remember, you can always update your
-choices through the page **Settings** after you authenticate
-using your personal token.
-
-When you are happy with your choices, click on **Next**.
-
-
-### Step 4
-
-The **Step 4** tab should now be open, as shown below.
-
-
-<div figure-id="fig:compose_first_setup_step4" figure-caption="">
-  <img src="compose_first_setup_step4.png" style='width: 34em'/>
-</div>
-
-
-You can go ahead and press **Finish**.
-
-
 ## First Login
 
 If everything went as planned, the dashboard is now configured and ready to go!
