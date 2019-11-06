@@ -156,11 +156,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 Run:
 
-    laptop $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:calib-fix
-
-and then:
-
-    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:calib-fix
+    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
 
 First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>. 
 If all goes well the program will complete.
