@@ -316,25 +316,23 @@ Insert one wheel on each motor, as in [](#fig:howto-mount-wheels-1). Mind that t
 From the Duckiebot kit take the following components:
 
 - Raspberry Pi 3B+ (1x)
-- Heat sink (1x)
+- Heat sinks (2x)
 - Camera cable (1x) (This should be in the same box as the camera)
 - Micro SD card (1x)
-
-Note: You probably have two heat sinks, make sure you use the bigger one in this step. The smaller one can be used at discretion (e.g., apply it on the USB port you will later use for the external 32GB USB dongle).
 
 Note: You will notice there is a camera cable already attached to the camera. We won't use this one since it is a bit short. You will find a longer camera cable inside the same box as the camera.
 
 [](#fig:howto-mount-rpi-parts) shows the components needed to complete the following steps.
 
-<div figure-id="fig:howto-mount-rpi-parts" figure-caption="The bigger heat sinks and the Raspberry Pi 3 B+.">
+<div figure-id="fig:howto-mount-rpi-parts" figure-caption="The heat sinks and the Raspberry Pi 3 B+.">
      <img src="howto_mount_rpi_parts.jpg" style='width: 25em'/>
 </div>
 
 ### Step 1
 
-Peel the cover from the bottom of the heat sink and place it on the Raspberry Pi microchip, as shown in [](#fig:howto-mount-rpi-1)
+Peel the cover from the bottom of the heat sinks. Place the large heat sink on the Raspberry Pi microchip ("Broadcom"-labeled) as shown in [](#fig:howto-mount-rpi-1). You might also want to place the small heat sink on the NIC module ("SMSC"-labeled).
 
-<div figure-id="fig:howto-mount-rpi-1" figure-caption="How to mount the heat sink.">
+<div figure-id="fig:howto-mount-rpi-1" figure-caption="How to mount the heat sinks.">
      <img src="howto_mount_rpi_1.jpg" style='width: 25em'/>
 </div>
 
