@@ -18,12 +18,12 @@ Results: A Duckiebot capable of performing lane following with other vehicles. T
 
 <figure>
     <figcaption>LFV in the simulation</figcaption>
-    <img style='width:12em' src="sim.gif"/>
+    <img style='width:16em' src="sim.gif"/>
 </figure>
 
 <figure>
     <figcaption>LFV in the real world</figcaption>
-    <img style='width:12em' src="real.gif"/>
+    <img style='width:16em' src="real.gif"/>
 </figure>
 
 
