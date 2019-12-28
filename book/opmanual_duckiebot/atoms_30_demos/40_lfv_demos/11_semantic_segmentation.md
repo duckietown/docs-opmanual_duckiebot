@@ -13,22 +13,22 @@ Results: A Duckiebot capable of performing lane following with other vehicles. T
 ## Video of expected results {#demo-semantic-segmentation-expected}
 
 <figure>
-    <figcaption>This video demonstrates the expected LFV results in the simulation. Top-left: camera image. Top-right: predicted segmentation map. Bottom-left: result of line fitting using RANSAC in image space (note that we only consider the bottom-half of the image). Bottom-right: visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller.</figcaption>
+    <figcaption>This video demonstrates the expected LFV results in the simulation. Top-left: camera image. Top-right: predicted segmentation map. Bottom-left: result of line fitting using RANSAC in image space (note that we only consider the bottom-half of the image). Bottom-right: visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller. As seen in the video, the Duckiebot stops when the other vehicle gets too close.</figcaption>
     <img style='width:16em' src="sim.gif"/>
 </figure>
 
 <figure>
-    <figcaption>This video demonstrates the expected LFV results in the real world. Left: camera image. Right: predicted segmentation map. The Duckiebot drives autonomously using a pure pursuit controller. The other Duckiebot with a duckie on top of its body was manually controlled.</figcaption>
+    <figcaption>This video demonstrates the expected LFV results in the real world. Left: camera image. Right: predicted segmentation map. The Duckiebot drives autonomously using a pure pursuit controller. The other Duckiebot with a duckie on top of its body was manually controlled. As seen in the video, the Duckiebot stops when the other vehicle gets too close.</figcaption>
     <img style='width:16em' src="real.gif"/>
 </figure>
 
 <figure>
-    <figcaption>This video demonstrates the expected Lane Following (LF) without other vehicles results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller. The other Duckiebot with a duckie on top of its body was manually controlled.</figcaption>
+    <figcaption>This video demonstrates the expected Lane Following (LF) without other vehicles results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller and finishes one lap in 40 seconds.</figcaption>
     <img style='width:16em' src="lf.gif"/>
 </figure>
 
 <figure>
-    <figcaption>This video demonstrates the expected LFV results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller. The other Duckiebot with a duckie on top of its body was manually controlled.</figcaption>
+    <figcaption>This video demonstrates the expected LFV results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller. The other Duckiebot with a duckie on top of its body was manually controlled. As seen in the video, the Duckiebot stops when the other vehicle gets too close.</figcaption>
     <img style='width:16em' src="lfv.gif"/>
 </figure>
 
