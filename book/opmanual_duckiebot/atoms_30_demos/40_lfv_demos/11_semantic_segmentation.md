@@ -97,7 +97,7 @@ EXPERIMENTAL:
 
 ### Controller: pure pursuit
 
-TODO
+Some additional features were added on top of the standard pure pursuit controller. These include a function to modify the velocity as a function of angle required for our robot to face the follow point. This was done so our robot decelerate when it needs to make a sharp turn, and accelerates during straight lane. A parameter to change the profile of this relationship was also added (e.g., quadratic, cubic, etc.). To have more control, the gains and offsets when detecting yellow or white lines only were set to be different. These parameters can then be adjusted based on trial and error.
 
 ## Demo instructions {#demo-semantic-segmentation-run}
 
