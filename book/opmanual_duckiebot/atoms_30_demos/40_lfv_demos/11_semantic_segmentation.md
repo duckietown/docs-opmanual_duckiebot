@@ -49,6 +49,11 @@ In addition, we also did not want to manually label thousands of training images
 
 Although the Duckietown simulation allows us to do domain randomization, we added more transformations into our domain randomization pipeline to make the images more diverse. These additional transformations include randomization of hue level, saturation level, elastic transformation, contrast, gaussian noise, sharpening, and embossing. We use the imgaug library (https://imgaug.readthedocs.io/en/latest/) to apply these additional transformations. Moreover, inspired by the application of robust optimization in adversarial machine learning, where training machine learning model exclusively on adversarial examples rather than the inputs that we may see during test time (i.e., inputs from the training set) has been shown to increase generalizability (https://arxiv.org/abs/1706.06083), we only trained our segmentation model exclusively on the transformed images. 
 
+<figure>
+    <figcaption>Samples of images before (most left images) and after domain randomization.</figcaption>
+    <img style='width:16em' src="figures/dr_samples.png"/>
+</figure>
+
 Finally, we finetuned the trained segmentation model using 230 labeled real world images. From the results we saw above, we can see how the segmentation model can indeed perform well on real world images after being finetuned. The trained models can be found in our package repository (TODO: add repo package link).
 
 This functionality is implemented as a ROS node that subscribes to the camera image topic and publishes the segmentation map as another image topic.
