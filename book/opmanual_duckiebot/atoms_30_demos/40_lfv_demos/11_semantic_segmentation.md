@@ -67,7 +67,7 @@ In addition to domain randomization, we also experimented with different sim-to-
 
 <figure>
     <figcaption>This video demonstrates our early attemps using RCANs. **From left to right:** camera image, predicted canonical image, and predicted segmentation map. We can see it does not perform too well.</figcaption>
-    <img style='width:16em' src="figures/rcan.gif"/>
+    <img style='width:24em' src="figures/rcan.gif"/>
 </figure>
 
 
