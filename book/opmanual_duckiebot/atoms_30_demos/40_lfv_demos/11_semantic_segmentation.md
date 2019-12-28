@@ -46,7 +46,7 @@ The core of this approach it to leverage the generalizability of learning-based 
 
 Using semantic segmentation model has advantages when compared to classic approaches such as color-based methods when detecting Duckiebots and duckies (e.g., assuming red for Duckiebots and yellow for duckies). For example, color-based methods are not able to differentiate between Duckiebots and red lines, or duckies and yellow lines.
 
-### Semantic segmentation model
+### Lane and obstacle detection module: semantic segmentation model
 
 We use deep learning based model to perform semantic segmentation since they are currently considered to be one of the best methods to perform this task. One may argue that deep learning based semantic segmentation models are typically large and may not run in real time if we do not have access to a GPU. Indeed, we initially used a larger capacity segmentation model called The One Hundred Layers Tiramisu (https://arxiv.org/abs/1611.09326) and faced difficulties when making submissions to the AI-DO. We fixed this problem by implementing the model based on the MobileNets (https://arxiv.org/abs/1704.04861) and the FCN (https://arxiv.org/abs/1411.4038) that uses combinations of depthwise and pointwise convolutions for faster computation. After these changes, we can make submissions to the AI-DO without problems and our whole pipeline can run entirely on CPU.
 
@@ -73,20 +73,23 @@ In addition to domain randomization, we also experimented with different sim-to-
 </figure>
 
 
-## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
+### Ground projection module
 
-To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. That makes it a a level more difficult than the [lane following demo](#demo-lane-following). Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
+TODO
 
+### Computing follow point
 
-## Duckiebot setup notes {#demo-indefinite-navigation-duckiebot-setup}
+TODO
 
-One (or possibly more) Duckiebot in configuration [DB18](#duckiebot-configurations).
+### Controller: pure pursuit
 
-## Pre-flight checklist {#demo-indefinite-navigation-pre-flight}
+TODO
+
+## Pre-flight checklist {#demo-semantic-segmentation-pre-flight}
 
 Check that every Duckiebot has sufficient battery charge and that they are all properly calibrated.
 
-## Demo instructions {#demo-indefinite-navigation-run}
+## Demo instructions {#demo-semantic-segmentation-run}
 
 ### Start the demo containers
 
