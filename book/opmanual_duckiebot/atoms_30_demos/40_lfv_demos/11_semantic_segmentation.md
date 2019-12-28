@@ -20,23 +20,18 @@ Results: A Duckiebot capable of performing lane following with other vehicles. T
 [link 1 of lane following](https://photos.google.com/share/AF1QipMEwYvBW5hl3_l4M0f9on3RSKJmYftbWxo0nSyW7EMTBWs7iXRc_fHEc5mouSMSxA/photo/AF1QipPOmXr0yu__d_J0Wefp1Gm6sNTtptUk57FvS6Fo?key=M1ZWc2k0Nnl4ckFjd3dwRmV0WmdMSzFWU0xmOXh3)
 -->
 
-<figure>
-    <figcaption>Hello</figcaption>
-    <img style='width:8em' src="lf.gif"/>
+<figure>  
+    <figcaption>Main caption</figcaption>
+    <figure>
+        <figcaption>LFV in simulation</figcaption>
+        <img style='width:12em' src="sim.gif"/>
+    </figure>
+    <figure>  
+        <figcaption>LFV in real world</figcaption>
+        <img style='width:12em' src="real.gif"/>
+    </figure>
 </figure>
 
-<figure>
-    <figcaption>Hello</figcaption>
-    <img style='width:8em' src="lfv.gif"/>
-</figure>
-
-<div figure-id="fig:demo-indefinite-navigation-video">
-    <figcaption>Demo: indefinite navigation
-    </figcaption>
-    <dtvideo src='vimeo:247596730'/>
-</div>
-
-TODO: add a different video with an up to specification Duckietown.
 
 ## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
 
