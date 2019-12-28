@@ -71,9 +71,17 @@ In addition to domain randomization, we also experimented with different sim-to-
 </figure>
 
 
-### Ground projection module
+### Ground projection module with various filters
 
-TODO
+The goal of the ground projection module is to get the location of points that belong to some classes (e.g., lines, Duckiebots, etc.) in the robot coordinate frame. In our implementation, rather than ground projecting all the points, we apply multiple filters so we can only ground project the useful ones.
+
+First, we disregard anything above the horizon and only consider the bottom half of the segmentation map. We also disregard all points that belong to "background and others" (BLACK points) and "red line" (PURPLE points) classes since they are not useful in LFV challenge. Moreover, in order to compensate for possibly noisy segmentation model, we ignore a class if the number of points that belong to this class is below than a certain threshold.
+
+Next, we filter the points further based on some heuristics that we know from the task we are doing (i.e., lane following while not hitting obstacles). We disregard points that belong to "white lines" if they are located to the right of the yellow lines since we only want our robot to be within the right lane. For "obstacles" points (i.e., GREEN and RED points), we only consider those that are located between yellow and white lines (i.e., we do not need to worry about obstacles that are not within the lane).
+
+To further reduce the noise in white and yellow lines, we apply RANSAC to fit a straight line for both the WHITE and YELLOW points. A better option is to fit a higher order polynomials (e.g., cubic) line. We attempted to do this, but did not get a good results in time. However, we encourage curious readers to implement this in order to improve the overall performance.
+
+Finally, we ground project all the remaining WHITE and YELLOW points onto the ground since we know that white and yellow lines are indeed part of the ground plane. For GREEN and RED points, we only ground project the points that correspond to the bottom of the obstacles. The implementation of the ground projection mostly follows the one available in the `ground_projection` package (https://github.com/duckietown/dt-core/tree/daffy/packages/ground_projection).
 
 ### Computing follow point
 
