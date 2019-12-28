@@ -93,11 +93,11 @@ For the case when we see obstacles, we may consider all combinations of classes 
 
 EXPERIMENTAL:
 
-
+TODO
 
 ### Controller: pure pursuit
 
-Some additional features were added on top of the standard pure pursuit controller. These include a function to modify the velocity as a function of angle required for our robot to face the follow point. This was done so our robot decelerate when it needs to make a sharp turn, and accelerates during straight lane. A parameter to change the profile of this relationship was also added (e.g., quadratic, cubic, etc.). To have more control, the gains and offsets when detecting yellow or white lines only were set to be different. These parameters can then be adjusted based on trial and error.
+Pure pursuit controller is a geometric path following controller whose goals are to align the heading of the vehicle with the path heading and to eliminate crosstrack errors from the reference path. In standard pure pursuit controller, we usually set the velocity of the vehicle to be constant, so that we can compute the required angular velocity that will take the vehicle from its current position to the follow point (or sometimes referred to as the look ahead point). For example, in our case, given a follow point, we can calculate the angle required for our robot to face the follow point, which can then be used to calculate the required angular velocity (i.e., the angular velocity is calculated as a function of this angle, velocity, and the look ahead distance). We then added some additional features on top of the standard pure pursuit controller. These include a function to modify the velocity as a function of angle required for our robot to face the follow point. This was done so our robot decelerate when it needs to make a sharp turn, and accelerates during straight lane. A parameter to change the profile of this relationship was also added (e.g., quadratic, cubic, etc.). To have more control, the gains and offsets when detecting yellow or white lines only were set to be different. These parameters can then be adjusted based on trial and error.
 
 ## Demo instructions {#demo-semantic-segmentation-run}
 
