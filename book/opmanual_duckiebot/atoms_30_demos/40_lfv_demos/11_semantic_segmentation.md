@@ -14,22 +14,22 @@ Results: A Duckiebot capable of performing lane following with other vehicles us
 
 <figure>
     <figcaption>This video demonstrates the expected LFV results in the simulation. Top-left: camera image. Top-right: predicted segmentation map. Bottom-left: result of line fitting using RANSAC in image space (note that we only consider the bottom-half of the image). Bottom-right: visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller, which was tuned such that the Duckiebot accelerates on straight lane, and decelerates at corners to make a hard turn. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close.</figcaption>
-    <img style='width:16em' src="sim.gif"/>
+    <img style='width:16em' src="figures/sim.gif"/>
 </figure>
 
 <figure>
     <figcaption>This video demonstrates the expected LFV results in the real world. Left: camera image. Right: predicted segmentation map. The Duckiebot drives autonomously using a pure pursuit controller (same as above). The other Duckiebot with a duckie on top of its body was manually controlled. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close, regardless of the pose of the other vehicle.</figcaption>
-    <img style='width:16em' src="real.gif"/>
+    <img style='width:16em' src="figures/real.gif"/>
 </figure>
 
 <figure>
     <figcaption>This video demonstrates the expected Lane Following (LF) without other vehicles results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller (same as above) and finishes one lap in 40 seconds.</figcaption>
-    <img style='width:16em' src="lf.gif"/>
+    <img style='width:16em' src="figures/lf.gif"/>
 </figure>
 
 <figure>
     <figcaption>This video demonstrates the expected LFV results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller (same as above). The other Duckiebot with a duckie on top of its body was manually controlled. As seen in the video, the Duckiebot stops when the other vehicle gets too close.</figcaption>
-    <img style='width:16em' src="lfv.gif"/>
+    <img style='width:16em' src="figures/lfv.gif"/>
 </figure>
 
 
@@ -51,16 +51,16 @@ Although the Duckietown simulation allows us to do domain randomization, we adde
 
 Finally, we finetuned the trained segmentation model using 230 labeled real world images. From the results we saw above, we can see how the segmentation model can indeed perform well on real world images after being finetuned. The trained models can be found in our package repository (TODO: add repo package link).
 
+This functionality is implemented as a ROS node that subscribes to the camera image topic and publishes the segmentation map as another image topic.
+
 EXPERIMENTAL:
 
 In addition to domain randomization, we also experimented with different sim-to-real approaches. These include adversarial domain randomization (https://arxiv.org/abs/1702.05464) and Randomized-to-Canonical Adaptation Networks or RCANs (https://arxiv.org/abs/1812.07252). Our early attempts did not work too well, so we decided not to spend too much time on it due to time constraints. Nevertheless, both of these methods are interesting to try and may produce better results compared to domain randomization if trained properly.
 
 <figure>
     <figcaption>This video demonstrates our early attemps using RCANs. From left to right: camera image, predicted canonical image, and predicted segmentation map. We can see it does not perform too well.</figcaption>
-    <img style='width:16em' src="rcan.gif"/>
+    <img style='width:16em' src="figures/rcan.gif"/>
 </figure>
-
-
 
 
 ## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
