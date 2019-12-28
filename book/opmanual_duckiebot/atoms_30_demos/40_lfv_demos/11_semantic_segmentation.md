@@ -93,7 +93,12 @@ For the case when we see obstacles, we may consider all combinations of classes 
 
 EXPERIMENTAL:
 
-TODO
+Beyond the LFV challenge, although we have not fully tested this yet, we also thought of a method that will allow our Duckiebot to avoid and pass a static obstacle if there is enough space around the obstacle. For example, this can be useful if there is a duckie located near white or the yellow lines.
+
+<figure>
+    <figcaption>Illustration of the proposed method to avoid static obstacles.</figcaption>
+    <img style='width:16em' src="figures/prelim_avoidance_method.png"/>
+</figure>
 
 ### Controller: pure pursuit
 
