@@ -33,6 +33,26 @@ Results: A Duckiebot capable of performing lane following with other vehicles us
 </figure>
 
 
+## How the method works {#demo-semantic-segmentation-method}
+
+### The big picture
+
+The core of this approach it to leverage the generalizability of learning-based semantic segmention model to find where the lines (or roads) and obstacles are (e.g., Duckiebots, duckies, cones, etc.) in the image space.
+
+Using semantic segmentation model has advantages when compared to classic approaches such as color-based methods when detecting Duckiebots and duckies (e.g., assuming red for Duckiebots and yellow for duckies). For example, color-based methods are not able to differentiate between Duckiebots and red lines, or duckies and yellow lines.
+
+### Semantic segmentation model
+
+We use deep learning based model to perform semantic segmentation since they are currently considered to be one of the best methods to perform this task. One may argue that deep learning based semantic segmentation models are typically large and may not run in real time if we do not have access to a GPU. Indeed, we initially used a larger capacity segmentation model called The One Hundred Layers Tiramisu (https://arxiv.org/abs/1611.09326) and faced difficulties when making submissions to the AI-DO. We fixed this problem by implementing the model based on the MobileNets (https://arxiv.org/abs/1704.04861) and the FCN (https://arxiv.org/abs/1411.4038) that uses combinations of depthwise and pointwise convolutions for faster computation. After these changes, we can make submissions to the AI-DO without problems and our whole pipeline can run entirely on CPU.
+
+In addition, we also did not want to manually label thousands of training images with their segmentation maps. Instead we would like to train our model on images that we can gather from the Duckietown simulation since we can generate the segmentation maps for free. The main challenge with this is that our segmentation model may easily overfit to the simulated image domain, and it may not work well to segment real world images. In other words, we would need to perform simulation-to-real transfer (or in short, sim-to-real). We did this by performing one of the most popular sim-to-real methods: domain randomization. Domain randomization works by training our model on images that have been randomly transformed, while still using the same labels from the original image. The hope is for the model to eventually be able to generalize well across domains. Note that we should still make sure the image to maintain its semantic meaning after being transformed. We refer readers to Tobin et al. (2017) (https://arxiv.org/abs/1703.06907) for the primer about domain randomization.
+
+Although the Duckietown simulation allows us to do domain randomization, we added more transformations into our domain randomization pipeline to make the images more diverse. These additional transformations include randomization of hue level, saturation level, elastic transformation, contrast, gaussian noise, sharpening, and embossing. We use the imgaug library (https://imgaug.readthedocs.io/en/latest/) to apply these additional transformations. In addition, inspired by the application of robust optimization in adversarial machine learning, where training machine learning model exclusively on adversarial examples rather than the inputs that we may see during test time (i.e., inputs from the training set) has been shown to increase generalizability, we only trained our segmentation model on the transformed images.
+
+TODO: add repo package
+
+
+
 ## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
 
 To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. That makes it a a level more difficult than the [lane following demo](#demo-lane-following). Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
