@@ -47,9 +47,19 @@ We use deep learning based model to perform semantic segmentation since they are
 
 In addition, we also did not want to manually label thousands of training images with their segmentation maps. Instead we would like to train our model on images that we can gather from the Duckietown simulation since we can generate the segmentation maps for free. The main challenge with this is that our segmentation model may easily overfit to the simulated image domain, and it may not work well to segment real world images. In other words, we would need to perform simulation-to-real transfer (or in short, sim-to-real). We did this by performing one of the most popular sim-to-real methods: domain randomization. Domain randomization works by training our model on images that have been randomly transformed, while still using the same labels from the original image. The hope is for the model to eventually be able to generalize well across domains. Note that we should still make sure the image to maintain its semantic meaning after being transformed. We refer readers to Tobin et al. (2017) (https://arxiv.org/abs/1703.06907) for the primer about domain randomization.
 
-Although the Duckietown simulation allows us to do domain randomization, we added more transformations into our domain randomization pipeline to make the images more diverse. These additional transformations include randomization of hue level, saturation level, elastic transformation, contrast, gaussian noise, sharpening, and embossing. We use the imgaug library (https://imgaug.readthedocs.io/en/latest/) to apply these additional transformations. In addition, inspired by the application of robust optimization in adversarial machine learning, where training machine learning model exclusively on adversarial examples rather than the inputs that we may see during test time (i.e., inputs from the training set) has been shown to increase generalizability, we only trained our segmentation model on the transformed images.
+Although the Duckietown simulation allows us to do domain randomization, we added more transformations into our domain randomization pipeline to make the images more diverse. These additional transformations include randomization of hue level, saturation level, elastic transformation, contrast, gaussian noise, sharpening, and embossing. We use the imgaug library (https://imgaug.readthedocs.io/en/latest/) to apply these additional transformations. Moreover, inspired by the application of robust optimization in adversarial machine learning, where training machine learning model exclusively on adversarial examples rather than the inputs that we may see during test time (i.e., inputs from the training set) has been shown to increase generalizability (https://arxiv.org/abs/1706.06083), we only trained our segmentation model exclusively on the transformed images. 
 
-TODO: add repo package
+Finally, we finetuned the trained segmentation model using 230 labeled real world images. From the results we saw above, we can see how the segmentation model can indeed perform well on real world images after being finetuned. The trained models can be found in our package repository (TODO: add repo package link).
+
+EXPERIMENTAL:
+
+In addition to domain randomization, we also experimented with different sim-to-real approaches. These include adversarial domain randomization (https://arxiv.org/abs/1702.05464) and Randomized-to-Canonical Adaptation Networks or RCANs (https://arxiv.org/abs/1812.07252). Our early attempts did not work too well, so we decided not to spend too much time on it due to time constraints. Nevertheless, both of these methods are interesting to try and may produce better results compared to domain randomization if trained properly.
+
+<figure>
+    <figcaption>This video demonstrates our early attemps using RCANs. From left to right: camera image, predicted canonical image, and predicted segmentation map. We can see it does not perform too well.</figcaption>
+    <img style='width:16em' src="rcan.gif"/>
+</figure>
+
 
 
 
