@@ -13,7 +13,7 @@ Results: A Duckiebot capable of performing lane following with other vehicles us
 ## Video of expected results {#demo-semantic-segmentation-expected}
 
 <figure>
-    <figcaption>This video demonstrates the expected LFV results in the simulation. *Top-left:* camera image. **Top-right:** predicted segmentation map. **Bottom-left:** result of line fitting using RANSAC in image space (note that we only consider the bottom-half of the image). **Bottom-right:** visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller, which was tuned such that the Duckiebot accelerates on straight lane, and decelerates at corners to make a hard turn. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close.</figcaption>
+    <figcaption>This video demonstrates the expected LFV results in the simulation. **Top-left:** camera image. **Top-right:** predicted segmentation map. **Bottom-left:** result of line fitting using RANSAC in image space (note that we only consider the bottom-half of the image). **Bottom-right:** visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller, which was tuned such that the Duckiebot accelerates on straight lane, and decelerates at corners to make a hard turn. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close.</figcaption>
     <img style='width:16em' src="figures/sim.gif"/>
 </figure>
 
@@ -73,7 +73,7 @@ In addition to domain randomization, we also experimented with different sim-to-
 
 ### Ground projection module with various filters
 
-The goal of the ground projection module is to get the location of points that belong to some classes (e.g., lines, Duckiebots, etc.) in the robot coordinate frame. In our implementation, rather than ground projecting all the points, we apply multiple filters so we can only ground project the useful ones.
+The goal of the ground projection module is to get the location of points that belong to some classes (e.g., lines, Duckiebots, etc.) in the robot coordinate frame. Thus, the ground projection module takes the segmentation map that is published by the lane and obstacle detection module as the input. In our implementation, rather than ground projecting all the points, we apply multiple filters so we can only ground project the useful ones.
 
 First, we disregard anything above the horizon and only consider the bottom half of the segmentation map. We also disregard all points that belong to "background and others" (BLACK points) and "red line" (PURPLE points) classes since they are not useful in LFV challenge. Moreover, in order to compensate for possibly noisy segmentation model, we ignore a class if the number of points that belong to this class is below than a certain threshold.
 
@@ -81,19 +81,23 @@ Next, we filter the points further based on some heuristics that we know from th
 
 To further reduce the noise in white and yellow lines, we apply RANSAC to fit a straight line for both the WHITE and YELLOW points. A better option is to fit a higher order polynomials (e.g., cubic) line. We attempted to do this, but did not get a good results in time. However, we encourage curious readers to implement this in order to improve the overall performance.
 
-Finally, we ground project all the remaining WHITE and YELLOW points onto the ground since we know that white and yellow lines are indeed part of the ground plane. For GREEN and RED points, we only ground project the points that correspond to the bottom of the obstacles. The implementation of the ground projection mostly follows the one available in the `ground_projection` package (https://github.com/duckietown/dt-core/tree/daffy/packages/ground_projection).
+Finally, we ground project all the remaining WHITE and YELLOW points onto the ground since we know that white and yellow lines are indeed part of the ground plane. For GREEN and RED points, we only ground project the points that correspond to the bottom of the obstacles. The implementation of the ground projection mostly follows the one available in the `ground_projection` package (https://github.com/duckietown/dt-core/tree/daffy/packages/ground_projection). The ground projected points will then be used to compute the follow point (next subsection).
 
 ### Computing follow point
 
-TODO
+To compute where to go next, given all the ground projected points, we consider cases when we see obstacles or not. 
+
+For the case when we do not see obstacles, there are cases when we see both white and yellow lines, only yellow line, and only white line. For the case when we see both lines, we compute the centroid from each of the lines, and compute the follow point as the middle point between these two centroids. If we only see one of these lines, then we compute the follow point as the centroid of the line added with some offset value so that the follow point is located in the middle of the lane.
+
+For the case when we see obstacles, we may consider all combinations of classes that may appear (e.g., WHITE-YELLOW-RED, WHITE-YELLOW-GREEN, WHITE-YELLOW-GREEN-RED, etc.). For the LFV challenge, we can consider only the cases when other Duckiebot appears (i.e., there exist RED points). That is, we check the distance of the closest RED point to our Duckiebot. If the distance is lower than certain threshold value, we consider the other Duckiebot to be too close to our robot and the follow point should be set at (0,0) (i.e., the origin of our robot coordinate frame) to make our Duckiebot stops moving. With this approach, if there is a moving Duckiebot in front of our Duckiebot, our robot will always maintain its distance from the other vehicle while keep following the lane.
+
+EXPERIMENTAL:
+
+
 
 ### Controller: pure pursuit
 
 TODO
-
-## Pre-flight checklist {#demo-semantic-segmentation-pre-flight}
-
-Check that every Duckiebot has sufficient battery charge and that they are all properly calibrated.
 
 ## Demo instructions {#demo-semantic-segmentation-run}
 
