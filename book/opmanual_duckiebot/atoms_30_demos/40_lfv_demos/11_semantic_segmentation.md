@@ -37,6 +37,11 @@ Results: A Duckiebot capable of performing lane following with other vehicles us
 
 ### The big picture
 
+<figure>
+    <figcaption>Block diagram of the proposed method.</figcaption>
+    <img style='width:16em' src="figures/diagram.png"/>
+</figure>
+
 The core of this approach it to leverage the generalizability of learning-based semantic segmention model to find where the lines (or roads) and obstacles are (e.g., Duckiebots, duckies, cones, etc.) in the image space.
 
 Using semantic segmentation model has advantages when compared to classic approaches such as color-based methods when detecting Duckiebots and duckies (e.g., assuming red for Duckiebots and yellow for duckies). For example, color-based methods are not able to differentiate between Duckiebots and red lines, or duckies and yellow lines.
