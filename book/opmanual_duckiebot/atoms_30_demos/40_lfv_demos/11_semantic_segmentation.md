@@ -97,7 +97,7 @@ Beyond the LFV challenge, although we have not fully tested this yet, we also th
 
 <figure>
     <figcaption>Illustration of the proposed follow point (p*) calculation. First, we sample multiple points along the x-axis on both white and yellow lines (the orange points).  When there is no obstacle, we calculate the candidate follow points (e.g., p1, p2, p4) by taking the mean from each pair of the sampled orange points.  When there is an obstacle, we would like to see whether the opening on one side of the obstacles is larger than the other side.  In this particular case, since d1 is larger than d2, we determine p3 by calculating the mean between the point on the yellow line and the point on the left side of the obstacle. Finally, we ignore p4 since it is located further than where the obstacle is, and calculate p∗ as the center of p1, p2, and p3.</figcaption>
-    <img style='width:16em' src="figures/prelim_avoidance_method.png"/>
+    <img style='width:24em' src="figures/prelim_avoidance_method.png"/>
 </figure>
 
 ### Controller: pure pursuit
