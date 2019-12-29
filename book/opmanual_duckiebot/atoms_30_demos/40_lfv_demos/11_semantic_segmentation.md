@@ -63,7 +63,7 @@ This functionality is implemented as a ROS node that subscribes to the camera im
 
 EXPERIMENTAL:
 
-In addition to domain randomization, we also experimented with different sim-to-real approaches. These include adversarial domain randomization (https://arxiv.org/abs/1702.05464) and Randomized-to-Canonical Adaptation Networks or RCANs (https://arxiv.org/abs/1812.07252). Our early attempts did not work too well, so we decided not to spend too much time on it due to time constraints. Nevertheless, both of these methods are interesting to try and may produce better results compared to domain randomization if trained properly, although one may need to take into account the extra computation needed to run another neural network model.
+In addition to domain randomization, we also experimented with different sim-to-real approaches. These include variants of adversarial domain adaptation (https://arxiv.org/abs/1702.05464) and Randomized-to-Canonical Adaptation Networks or RCANs (https://arxiv.org/abs/1812.07252). Our early attempts did not work too well, so we decided not to spend too much time on it due to time constraints. Nevertheless, both of these methods are interesting to try and may produce better results compared to domain randomization if trained properly, although one may need to take into account the extra computation needed to run another neural network model.
 
 <figure>
     <figcaption>This video demonstrates our early attemps using RCANs. **From left to right:** camera image, predicted canonical image, and predicted segmentation map. We can see it does not perform too well.</figcaption>
