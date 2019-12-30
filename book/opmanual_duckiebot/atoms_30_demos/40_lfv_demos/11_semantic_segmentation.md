@@ -170,7 +170,8 @@ This will run the demo on your Duckiebot for 180 seconds.
 
 * You can visualize the segmentation map, RANSAC output, and ground projection using `rqt_image_view`
 * You can modify adjustable parameters in `lfv_controller.py` and see how the behavior changes.
-* We also provided a notebook that explains how to train the segmentation model from scratch in `challenge-aido_LF-baseline-duckietown/assets/`
+* We also provided a notebook that explains how to train the segmentation model from scratch in `challenge-aido_LF-baseline-duckietown/assets/` (TODO: add link)
+* We also make our package available separately if you prefer to use it in your existing project (TODO: add link)
 * Contact Rey Reza Wiyatno (rey.wiyatno@umontreal.ca) if you are interested in the dataset we used to train our segmentation models.
 
 ## Troubleshooting
