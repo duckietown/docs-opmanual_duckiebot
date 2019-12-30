@@ -129,7 +129,7 @@ Go to `1_develop` directory
 
     laptop $ cd challenge-aido_LF-baseline-duckietown/1_develop
 
-We have provided you a map file with two moving Duckiebots in `challenge-aido_LF-baseline-duckietown/assets/`. To make this the default map, copy this file into `challenge-aido_LF-baseline-duckietown/1_develop/simulation/src/gym_duckietown/maps/` by running (assuming you are currently in challenge-aido_LF-baseline-duckietown/1_develop):
+We have provided you a map file with two moving Duckiebots in `challenge-aido_LF-baseline-duckietown/assets/`. To make this the default map, copy this file into `challenge-aido_LF-baseline-duckietown/1_develop/simulation/src/gym_duckietown/maps/` by running (assuming you are currently in `challenge-aido_LF-baseline-duckietown/1_develop`):
 
     laptop $ cp ../assets/loop_obstacles.yaml simulation/src/gym_duckietown/maps/
 
