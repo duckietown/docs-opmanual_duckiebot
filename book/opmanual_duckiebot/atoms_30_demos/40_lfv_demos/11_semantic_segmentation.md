@@ -2,9 +2,13 @@
 
 This is the description of the "Lane Following with Vehicles (LFV) using Semantic Segmentation" demo.
 
+Contributor: Rey Reza Wiyatno and Dong Wang
+
 <div class='requirements' markdown="1">
 
 Requires: Fully set up Duckiebot or have done the instructions in the Duckiebot Operation Manual (https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html) and lane following demo (https://docs.duckietown.org/daffy/opmanual_duckiebot/out/demo_lane_following.html).
+
+Requires: have done the Getting Started (https://docs.duckietown.org/daffy/AIDO/out/quickstart.html) instructions in The AI Driving Olympics page.
 
 Results: A Duckiebot capable of performing lane following with other vehicles using semantic segmentation at its core. The Duckiebot should stop moving if the other vehicles are too close to the Duckiebot.
 
@@ -13,7 +17,7 @@ Results: A Duckiebot capable of performing lane following with other vehicles us
 ## Video of expected results {#demo-semantic-segmentation-expected}
 
 <figure>
-    <figcaption>This video demonstrates the expected LFV results in the simulation. Top-left: camera image. Top-right: predicted segmentation map. Bottom-left: result of line fitting using RANSAC in image space (note that we only consider the bottom-half of the image). Bottom-right: visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller, which was tuned such that the Duckiebot accelerates on straight lane, and decelerates at corners to make a hard turn. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close.</figcaption>
+    <figcaption>This video demonstrates the expected LFV results in the simulation. Top-left: camera image. Top-right: predicted segmentation map. Bottom-left: result of line fitting using RANSAC in image space (note that we only consider the bottom 2/3 of the image). Bottom-right: visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller, which was tuned such that the Duckiebot accelerates on straight lane, and decelerates at corners to make a hard turn. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close.</figcaption>
     <img style='width:16em' src="figures/sim.gif"/>
 </figure>
 
@@ -75,7 +79,7 @@ In addition to domain randomization, we also experimented with different sim-to-
 
 The goal of the ground projection module is to get the location of points that belong to some classes (e.g., lines, Duckiebots, etc.) in the robot's coordinate frame. Thus, the ground projection module takes the segmentation map that is published by the lane and obstacle detection module as the input. In our implementation, rather than ground projecting all the points, we apply multiple filters so we can only ground project the useful ones.
 
-First, we disregard anything above the horizon and only consider the bottom half of the segmentation map. We also disregard all points that belong to "background and others" (BLACK points) and "red line" (PURPLE points) classes since they are not useful in LFV challenge. Moreover, in order to compensate for possibly noisy segmentation model, we ignore a class if the number of points that belong to this class is below than a certain threshold.
+First, we disregard anything above the horizon and only consider the bottom 2/3 of the segmentation map. We also disregard all points that belong to "background and others" (BLACK points) and "red line" (PURPLE points) classes since they are not useful in LFV challenge. Moreover, in order to compensate for possibly noisy segmentation model, we ignore a class if the number of points that belong to this class is below than a certain threshold.
 
 Next, we filter the points further based on some heuristics that we know from the task we are doing (i.e., lane following while not hitting obstacles). We disregard points that belong to "white lines" if they are located to the right of the yellow lines since we only want our robot to be within the right lane. For "obstacles" points (i.e., GREEN and RED points), we only consider those that are located between yellow and white lines (i.e., we do not need to worry about obstacles that are not within the lane).
 
@@ -106,55 +110,69 @@ Pure pursuit controller is a geometric path following controller whose goals are
 
 ## Demo instructions {#demo-semantic-segmentation-run}
 
-### Start the demo containers
+### Setup
 
-Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
+Clone our fork of AIDO LF baseline Github repository
 
-Warning: First, make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.
+    laptop $ git clone -b daffy git@github.com:rrwiyatn/challenge-aido_LF-baseline-duckietown.git --recursive
 
-Then, start all the drivers in `dt-duckiebot-interface`:
+Update submodules
 
-    laptop $ dts duckiebot demo --demo_name all_drivers --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy
-    
-Start also the glue nodes that handle the joystick mapping and the kinematics:
+    laptop $ cd challenge-aido_LF-baseline-duckietown
+    laptop $ git submodule init
+    laptop $ git submodule update
+    laptop $ git submodule foreach "(git checkout daffy; git pull)"
 
-    laptop $ dts duckiebot demo --demo_name all --duckiebot_name ![DUCKIEBOT_NAME] --package_name car_interface --image duckietown/dt-car-interface:daffy
+### Work locally and test the demo in simulation
 
-Finally, we are ready to start the high-level pipeline for indefinite navigation:
+Go to `1_develop` directory
 
-    laptop $ dts duckiebot demo --demo_name indefinite_navigation --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
+    laptop $ cd challenge-aido_LF-baseline-duckietown/1_develop
 
-You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
+We have provided you a map file with two moving Duckiebots in `challenge-aido_LF-baseline-duckietown/assets/`. To make this the default map, copy this file into `challenge-aido_LF-baseline-duckietown/1_develop/simulation/src/gym_duckietown/maps/` by running (assuming you are currently in challenge-aido_LF-baseline-duckietown/1_develop):
 
-### Make your Duckiebot drive autonomously!
+    laptop $ cp ../assets/loop_obstacles.yaml simulation/src/gym_duckietown/maps/
 
-If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
+Then, we need to build and run Docker
 
-    laptop $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
+    laptop $ docker-compose build
+    laptop $ docker-compose up
 
+Next, see the output of your terminal after running `docker-compose up`, find the line that says `http://127.0.0.1:8888/?token={SOME_LONG_TOKEN}` and open it in your browser, this should bring you to a Jupyter notebook homepage. Click on a dropdown that says "New" on the top-right corner, and click on "Terminal". This will open a terminal in a new tab. Go to the terminal that you just created, and run the following
 
-|        Controls      |  Joystick  |     Keyboard     |
-|----------------------|:----------:|:----------------:|
-| Start Lane Following |   __R1__   |   <kbd>a</kbd>   |
-| Stop Lane Following  |   __L1__   |   <kbd>s</kbd>   |
+    laptop-container $ source /opt/ros/melodic/setup.bash
+    laptop-container $ catkin build --workspace catkin_ws
+    laptop-container $ source catkin_ws/devel/setup.bash
 
+Finally, we can launch the launch file from the same container terminal by running 
 
-Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. You can regain control of the bot at any moment by stopping the lane following and using the (virtual) joystick. Resuming the demo is as easy as pressing the corresponding start button.
+    laptop-container $ roslaunch custom/lf_slim.launch
 
-Et voilà! We are ready to drive around autonomously.
+This will run the demo in simulation. To see what the robot is seeing in simulation, open `http://localhost:6901/vnc.html` in your browser, click on connect, and enter `quackquack` as the password. You can open a new terminal in this VNC and run `rqt_image_view` to see the image topics.
+
+### Make submission to the AIDO and test the demo on a real robot
+
+Go to `3_submit` directory
+
+    laptop $ cd challenge-aido_LF-baseline-duckietown/3_submit
+
+To make submission, run
+
+    laptop $ dts challenges submit
+
+You can see the output of your terminal after running `dts challenges submit`, find the line that says `Track this submission at: ...` and you can open the link listed there to monitor your submission. When you make a submission, the image is also being pushed to the DockerHub. You should be able to find your latest submission in `https://hub.docker.com/repository/docker/<YOUR_USERNAME>/aido-submissions/tags?page=1`. You can then copy the name of the image, and run it on your robot using
+
+    laptop $ dts duckiebot evaluate --duckiebot_name <YOUR_DUCKIEBOT_NAME> --image <YOUR_IMAGE_NAME> --duration 180
+
+This will run the demo on your Duckiebot for 180 seconds.
 
 ### Extras
 
-Here are some additional things you can try:
-
-* Get a [remote stream](#read-camera-data) of your Duckiebot.
-* You can visualize the detected line segments the same way as for the [lane following demo](#demo-lane-following)
-* Try to change some of the ROS parameters to see how your Duckiebot's behavior will change. 
+* You can visualize the segmentation map, RANSAC output, and ground projection using `rqt_image_view`
+* You can modify adjustable parameters in `lfv_controller.py` and see how the behavior changes.
+* We also provided a notebook that explains how to train the segmentation model from scratch in `challenge-aido_LF-baseline-duckietown/assets/`
+* Contact Rey Reza Wiyatno (rey.wiyatno@umontreal.ca) if you are interested in the dataset we used to train our segmentation models.
 
 ## Troubleshooting
 
-Symptom: The Duckiebot fails at intersections.
-
-Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
-
-Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
+Contact Rey Reza Wiyatno (rey.wiyatno@umontreal.ca) for inquiries.
