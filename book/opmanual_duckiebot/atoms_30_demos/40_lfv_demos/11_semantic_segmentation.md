@@ -164,7 +164,7 @@ To make submission, run
 
 We can see the output of your terminal after running `dts challenges submit`, find the line that says `Track this submission at: ...` and open the link listed there to monitor the submission. When we make a submission, the image is also being pushed to the DockerHub. We should be able to find our latest submission in `https://hub.docker.com/repository/docker/<YOUR_USERNAME>/aido-submissions/tags?page=1`. We can then copy the name of the image, and run it on our robot using
 
-    laptop $ dts duckiebot evaluate --duckiebot_name [OUR_DUCKIEBOT_NAME] --image [YOUR_IMAGE_NAME] --duration 180
+    laptop $ dts duckiebot evaluate --duckiebot_name [OUR_DUCKIEBOT_NAME] --image [OUR_IMAGE_NAME] --duration 180
 
 This will run the demo on the Duckiebot for 180 seconds.
 
@@ -184,6 +184,4 @@ Resolution: Change the adjustable parameters in `lfv_controller.py`.
 
 Symptom: The Duckiebot does not response fast enough to stop hitting the other vehicle.
 
-Resolution: Reduce the velocity of the Duckiebot, or increase the closest distance allowed between Duckiebot and obstacles in `lfv_controller.py`. 
-
-Maintainer: Contact Rey Reza Wiyatno (rey.wiyatno@umontreal.ca) for further assistance.
+Resolution: Reduce the velocity of the Duckiebot, or increase the closest distance allowed between Duckiebot and obstacles in `lfv_controller.py`.
