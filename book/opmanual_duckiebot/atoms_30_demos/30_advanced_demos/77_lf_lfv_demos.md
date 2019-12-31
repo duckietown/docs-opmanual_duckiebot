@@ -38,44 +38,6 @@ You also need a wireless network setup to communicate with the robot or to `ssh`
 * Place the duckiebot in the right lane. The algorithm may not allow it to recover if it is kept in the wrong ie the left lane. 
 * You can use portainer to see what all containers are running on the duckiebot. In this demo we will run a new container. 
 
-## Demo instructions {#demo-lane-following-with-vehicles-run}
-
-### Start the demo containers
-
-Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`, we will need to start all of them.
-
-Warning: First, make sure all old containers from the images `dt-duckiebot-interface`, `dt-car-interface`, and `dt-core` are stopped. These containers can have different names, instead look at the image name from which they are run.
-
-Then, start all the drivers in `dt-duckiebot-interface`:
-
-    laptop $ dts duckiebot demo --demo_name all_drivers --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy
-    
-Start also the glue nodes that handle the joystick mapping and the kinematics:
-
-    laptop $ dts duckiebot demo --demo_name all --duckiebot_name ![DUCKIEBOT_NAME] --package_name car_interface --image duckietown/dt-car-interface:daffy
-
-Pull the docker image for LFV on the bot:
-
-    laptop $ ssh ![DUCKIEBOT_NAME].local
-    duckie@root $ docker pull charared/charan_ros_core:v1-arm32v7
-    
-Finally, we are ready to start the high-level pipeline for lane following with vehicles:
-
-    laptop $ dts duckiebot demo --demo_name purepursuit_controller --duckiebot_name ![DUCKIEBOT_NAME] --package_name purepursuit --image charared/charan_ros_core:v1-arm32v7
-
-[Github Link to the Package](https://github.com/charan223/charan_ros_core)
-
- 
-You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
-
-Portainer can be accessed at below link:
-
-    https://![DUCKIEBOT_NAME].local:9000/#/containers
-
-You can place your duckiebot on the lane after you see in the logs that the duckiebot is able to see the line segments. The duckiebot stops if it sees an obstacle(duckiebot) ahead and continues following the lane after the obstacle is removed.
-
-Stopping the container demo_purepursuit_controller in the portainer will stop the lane following.
-
 
 ## Demo instructions {#demo-lane-following-with-vehicles-run}
 
@@ -128,6 +90,7 @@ Visualize it in the simulation at `http://localhost:6901/vnc.html` in your brows
 ### To run on real bot
 
 Go to package's base directory and do
+
     laptop $ dts devel build --push
 
 Pull the docker image for LFV on the duckiebot:
@@ -140,6 +103,16 @@ To run LFV on the duckiebot:
     laptop $ dts duckiebot demo --demo_name purepursuit_controller --duckiebot_name ![DUCKIEBOT_NAME] --package_name purepursuit --image charared/charan_ros_core:v1-arm32v7
 
 [Github Link to the Package](https://github.com/charan223/charan_ros_core)
+
+You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
+
+Portainer can be accessed at below link:
+
+    https://![DUCKIEBOT_NAME].local:9000/#/containers
+
+You can place your duckiebot on the lane after you see in the logs that the duckiebot is able to see the line segments. The duckiebot stops if it sees an obstacle(duckiebot) ahead and continues following the lane after the obstacle is removed.
+
+Stopping the container demo_purepursuit_controller in the portainer will stop the lane following.
 
 
 <!--
