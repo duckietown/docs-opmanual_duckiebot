@@ -6,9 +6,9 @@ Contributor(s): Rey Reza Wiyatno and Dong Wang
 
 <div class='requirements' markdown="1">
 
-Requires: Fully set up Duckiebot or have done the instructions in the Duckiebot Operation Manual (https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html) and lane following demo (https://docs.duckietown.org/daffy/opmanual_duckiebot/out/demo_lane_following.html).
+Requires: Fully set up Duckiebot or have done the instructions in the [Duckiebot Operation Manual](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/index.html) and [Lane Following Demo](https://docs.duckietown.org/daffy/opmanual_duckiebot/out/demo_lane_following.html).
 
-Requires: have done the Getting Started instructions in The AI Driving Olympics page (https://docs.duckietown.org/daffy/AIDO/out/quickstart.html).
+Requires: have done the [Getting Started](https://docs.duckietown.org/daffy/AIDO/out/quickstart.html) instructions in The AI Driving Olympics page.
 
 Results: A Duckiebot capable of performing lane following with other vehicles using semantic segmentation at its core. The Duckiebot should stop moving if the other vehicles are too close to the Duckiebot.
 
