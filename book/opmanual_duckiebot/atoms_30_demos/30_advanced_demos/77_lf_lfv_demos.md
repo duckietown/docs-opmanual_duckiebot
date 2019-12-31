@@ -8,25 +8,14 @@ Requires: [Wheel calibration](#wheel-calibration) completed.
 
 Requires: [Camera calibration](#camera-calib) completed.
 
-Requires: Fully setting up Duckietown framwork and Duckiebot.
+Requires: Fully setting up Duckietown framework and Duckiebot.
 
 Results: One or more Duckiebot safely following lane and stops when there is a vehicle ahead.
-
 </div>
 
-## Video of expected results {#demo-lane-following-with-vehicles}
+## Video of expected results {#demo-lane-following-with-vehicles-expected}
 
-<!--
-[link 1 of lane following with vehicles](https://drive.google.com/file/d/18o9ejgp0wOWVv8RbLE_1Ax0TUQVMIi2S/view?usp=sharing)
--->
-
-<div figure-id="fig:demo-lane-following-with-vehicles-video">
-    <figcaption>Demo: lane following with vehicles
-    </figcaption>
-    <dtvideo src='vimeo:247596730'/>
-</div>
-
-TODO: add a different video with an up to specification Duckietown.
+[Video Link (Real) - Lane following with vehicles](https://drive.google.com/open?id=18o9ejgp0wOWVv8RbLE_1Ax0TUQVMIi2S)
 
 ## Duckietown setup notes {#demo-lane-following-with-vehicles-duckietown-setup}
 
@@ -96,7 +85,7 @@ Here are some additional things you can try:
 ---
 ## Implementation details
 ---
-### Brief Desciption of the Demo and Broad Approach.
+### Desciption of the Demo and the Approach.
 Task is to follow the lane and avoid dynamic vehicles. 
 For Lane Following we use the Pure-Pursuit Controller. It seems to work better than vanilla PID controller.
 For Lane Following with Dynamic Vehicles (LFV), we consider two types of objects, static Duckies and dynamic Duckiebots. We follow a simple approach to avoid vehicles. First we do Object Detection.  We tried two methods for this 
@@ -125,6 +114,8 @@ We have implemented a dynamic velocity and omega gain for the duckiebot using fo
 
 ---
 ### LFV: Object Detection using **HSV Thresholding**
+The most basic way to detect objects which can work in both simulation and the real environment is doing HSV thresholding and then doing opencv operations to get the bounding box for the object. A brief description is as follows
+* 
 We have performed HSV thresholding for both simulation and the real environment. We used OpenCV trackbars to find optimal HSV values. Dilation is applied to form blobs.
 
 #### Ground Projections
@@ -133,19 +124,38 @@ We have written our custom point2ground function to transform the detected bound
 
 
 #### Vehicle Avoidance
-<!-- 
-
-    If we get closer to a vehicle (which is directly in front of us) than some distance threshold, we stop. We stay still until the obstalce is no longer in front of us within that distance threshold. In the visualization below, the gray box is the "safety zone" where we stop if an obstacle is within that box. -->
 We use a very simple approach of just stopping on spotting an object which will collide with the current trajectory. The stopping criterion is very simple. If the object is within some deviation of our lane and withing a threshold distance then we stop, else we ignore. This threshold is fine-tuned for optimal performance. 
 
 #### Qualitative Results in the Simulation
-TODO: Add the image/gif from the slides. Also the image showing the detections. 
+Also the image showing the detections. 
+<p align="center">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/hsv.gif" alt="hsv gif" width="400" height="300">
+</p>
+Qualitatively we can also see the detection and the consequent stopping of the duckiebot after the thresholding in simulation.
+<p align="center">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/hsv1.gif" alt="hsv1 gif" width="400" height="300">
+</p>
+
+
+[Video Link (Simulation) - Lane following with vehicles](https://drive.google.com/open?id=1-oaqhY2mspkT7VWq6Dqx_lCsA4yOZF5w)
 
 #### Qualitative Results in the Environment
 Note that in the environment, the hsv thresholding values are different. 
-TODO: Add the final video
+
+<p align="center">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/lfv_cut11.gif" alt="lfv_cut11 gif" width="400" height="300">
+
+  <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/lfv_cut22.gif" alt="lfv_cut22 gif" width="400" height="300">
+</p>
+
+[Video Link (Real) - Lane following with vehicles](https://drive.google.com/open?id=18o9ejgp0wOWVv8RbLE_1Ax0TUQVMIi2S)
+
+[Video Link (Real) - Lane following](https://drive.google.com/open?id=18vinMYckb0UH0hNQebdYQNFNohcRcu9Z)
+
+
 ---
-### LFV: Object Detection using **Deep Learning**
+
+### LFV: Object Detection using Deep Learning
 This approach is mainly targetted at leveraging the available Dataset and compute to use DL to do Object Detection in Real Environment. We use logs from the real world and  Deep Learning based Faster RCNN with ResNet-50 and Feature Pyramid Network (FPN) backbone.
 #### Dataset
 * Dataset has images from logs of a Duckiebot in a Duckietown in a variety of lighting conditions with objects like cones, signs, duckiebots, duckies etc. 
@@ -160,21 +170,21 @@ This approach is mainly targetted at leveraging the available Dataset and comput
 * For more details you can refer to https://arxiv.org/abs/1506.01497
 * On just using the Faster RCNN we noticed that the smaller duckies and the far away duckiebots were not detected properly. 
 * So to do detection at different scales for more fine-grained detections, we use the Feature Pyramid Network. For more details look at https://arxiv.org/abs/1612.03144 
-* We used the implementation by Facebook AI research in their Detectron 2 framwork. 
+* We used the implementation by Facebook AI research in their Detectron 2 framework. 
 <p align="center">
   <img src="https://github.com/charan223/duckietown-report/blob/master/images/rcnn.png" alt="RCNN" width="400" height="600">
   <img src="https://github.com/charan223/duckietown-report/blob/master/images/fpn.png" alt="FPN" width="400" height="200">
 </p>
 
 Training Details
-* 80:20 Train:Val Split.
-* Approx 500 Duckiebot instances and 5k duckie instances.
-* Pre-trained weights from MS-COCO
+* We used a 80:20 Train, Val Split.
+* Approx 500 Duckiebot instances and 5k duckie instances were used. 
+* For the backbones we use pre-trained weights from MS-COCO. So we need to only fine-tune to our dataset. Which is time-efficient as well as allows us to train on our small-dataset.
 
-Exptected results
-* Mean Average Precision : Duckie : 52.180  and  Duckiebot : 52.011
-* Inference Time : 0.05 sec/img
-* Robust to Different Lighting conditions
+Obtained Results
+* Mean Average Precision(MAP) for duckies was 52.180  and  for duckiebot was 52.011
+* Inference Time for the trained model is 0.05 sec/img
+* The detectins are robust to different lighting conditions as can be seen from the results below.
   
 We present some qualitative results which clearly show that this method performs really well and is able to accurately detect all the duckiebots and all the ducks which are important. 
 
@@ -189,25 +199,28 @@ We present some qualitative results which clearly show that this method performs
   <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det5" width="150" height="150">
   <img src="https://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det6" width="150" height="150">
   <img src="https://github.com/charan223/duckietown-report/blob/master/images/8.png" alt="det6" width="150" height="150">     
-</p>
-
-----
-
-Initial plan to was to use this Deep Learning based classifier in the real environment using a GPU. But the process of setting up a the Duckietown framework such that the inference is done on the remote and the detections are communicated via the network is non-trivial and hence it was left for future work. We attempted to run our code on CPU but the inference times ranged between 5 to 10 seconds. So it wasn't feasible to run it on the raspberry pi for which the inference timing would have been even longer.
-
-----
-
-### References
-* Mask R-CNN, Kaiming He, Georgia Gkioxari, Piotr Dollár, Ross Girshick, https://arxiv.org/abs/1703.06870
-* Feature Pyramid Networks for Object Detection, Tsung-Yi Lin, Piotr Dollár, Ross Girshick, Kaiming He, Bharath Hariharan, Serge Belongie
-* https://github.com/facebookresearch/detectron2
 
 
-----
-## Troubleshooting
 
-Symptom: The Duckiebot fails at intersections.
+---
+## AI Driving Olympics 
 
-Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
+**RUNNER UP** during LFV Challenge at NeurIPS, Vancouver 2019
+
+**RUNNER UP** during LF Challenge at UdeM, Montreal 2019
+
+|        Challenge      |  Position  |
+|----------------------|:----------:|
+| aido3-LFV-real-validation  |   2  |
+| aido3-LF-real-validation |   8   |
+| aido3-LFV-sim-testing  |   6  |
+| aido3-LF-sim-testing |   10   |
+| aido3-LFV-sim-validation  |   8  |
+| aido3-LF-sim-validation |   10   |
+---
+
+
 
 Maintainer: Contact Charan Reddy (UdeM/ Mila), Soumye Singhal (UdeM/ Mila) via Slack for further assistance.
+
+
