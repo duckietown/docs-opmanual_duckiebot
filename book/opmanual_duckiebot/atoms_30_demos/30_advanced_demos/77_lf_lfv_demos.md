@@ -63,6 +63,9 @@ Finally, we are ready to start the high-level pipeline for lane following with v
 
     laptop $ dts duckiebot demo --demo_name purepursuit_controller --duckiebot_name ![DUCKIEBOT_NAME] --package_name purepursuit --image charared/charan_ros_core:v1-arm32v7
 
+[Github Link to the Package](https://github.com/charan223/charan_ros_core)
+
+ 
 You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
 
 Portainer can be accessed at below link:
@@ -74,6 +77,72 @@ You can place your duckiebot on the lane after you see in the logs that the duck
 Stopping the container demo_purepursuit_controller in the portainer will stop the lane following.
 
 
+## Demo instructions {#demo-lane-following-with-vehicles-run}
+
+
+### Setup
+
+Fork and clone udem-fall19-public:
+
+    laptop $ git clone https://github.com/charan223/udem-fall19-public.git
+
+If you are using fork, create an upstream:
+
+    laptop $ git remote add upstream https://github.com/duckietown-udem/udem-fall19-public.git
+
+Then pull from upstream:
+
+    laptop $ git pull upstream master 
+
+
+Update submodules
+
+    laptop $ git submodule init
+    laptop $ git submodule update
+    laptop $ git submodule foreach "(git checkout daffy; git pull)"
+
+### To run in simulation
+
+
+From udem-fall19-public directory run:
+
+    laptop $ docker-compose build
+    laptop $ docker-compose up
+
+You can open the notebook just like before by copying the url that looks like:
+
+    http://127.0.0.1:8888/?token={SOME_LONG_TOKEN}
+
+After that, open terminal in the notebook and run below commands:
+
+    jupyter-notebook $ catkin build --workspace catkin_ws
+    jupyter-notebook $ source catkin_ws/devel/setup.bash
+    jupyter-notebook $ ./launch_car_interface.sh
+
+Run your launch file using below commands:
+
+    jupyter-notebook $ roslaunch purepursuit purepursuit_controller.launch
+
+Visualize it in the simulation at `http://localhost:6901/vnc.html` in your browser, with `quackquack` as the password. Run `rqt_image_view` in the terminal to visualize the image topics.
+
+### To run on real bot
+
+Go to package's base directory and do
+    laptop $ dts devel build --push
+
+Pull the docker image for LFV on the duckiebot:
+
+    laptop $ ssh ![DUCKIEBOT_NAME].local
+    duckie@root $ docker pull charared/charan_ros_core:v1-arm32v7
+    
+To run LFV on the duckiebot:
+
+    laptop $ dts duckiebot demo --demo_name purepursuit_controller --duckiebot_name ![DUCKIEBOT_NAME] --package_name purepursuit --image charared/charan_ros_core:v1-arm32v7
+
+[Github Link to the Package](https://github.com/charan223/charan_ros_core)
+
+
+<!--
 ### Extras
 
 Here are some additional things you can try:
@@ -81,7 +150,7 @@ Here are some additional things you can try:
 * Get a [remote stream](#read-camera-data) of your Duckiebot.
 * You can visualize the detected line segments the same way as for the [lane following demo](#demo-lane-following)
 * Try to change some of the ROS parameters to see how your Duckiebot's behavior will change. 
-
+-->
 ---
 ## Implementation details
 ---
@@ -105,13 +174,6 @@ We have used a trust segment approach, where we consider only that particular co
 We have implemented a dynamic velocity and omega gain for the duckiebot using follow point. If the y coordinate of the follow point is towards farther right or left side, it implies that there is a right or left turn there and we slow down the duckiebot and increase the omega gain to make the turn smoothly. We also vary velocity based on how farther the x coordinate of the follow point is (i.e., increase velocity if the road is straight for a long distance).
 
 
-<!-- Varying Speed and Omega Gain
-
-    Our robot detects whether it is close to a left turn, a right turn or on a straight path. Turns are detected using statistics of detected lines.
-    The duckiebot gradually speeds up on straight paths, while reducing the omega gain so that the robot corrects less when moving fast (to avoid jerky movement).
-    The duckiebot gradually slows down at turns, while increasing the omega gain (to make nice sharp turns).
-    A second order degree polynomial is used for changing the velocity/omega gain. So, after a turn the robot speeds up slowly, giving it enough time to correct its position before going really fast. At turns, the robot will slow down faster to ensure safe navigation of the turn. -->
-
 ---
 ### LFV: Object Detection using **HSV Thresholding**
 The most basic way to detect objects which can work in both simulation and the real environment is doing HSV thresholding and then doing opencv operations to get the bounding box for the object. A brief description is as follows
@@ -125,14 +187,14 @@ Now after the object is detected we need to compute how far it is from our ducki
 
 #### Ground Projections
 
-We have written our custom `point2ground` function to transform the detected bounding box coordinates(bottom two points of rectangle) on the ground. We have initially normalized point coordinates to original image coordinates and calculated the ground point coordinates by performing dot product of homography matrix and the point coordinates. No
+We have written our custom `point2ground` function to transform the detected bounding box coordinates(bottom two points of rectangle) on the ground. We have initially normalized point coordinates to original image coordinates and calculated the ground point coordinates by performing dot product of homography matrix and the point coordinates. Now the projected points tell us how far the detected object is from our robot.
 
 
 #### Vehicle Avoidance
-We use a very simple approach of just stopping on spotting an object which will collide with the current trajectory. The stopping criterion is very simple. If the object is within some deviation of our lane and withing a threshold distance then we stop, else we ignore. This threshold is fine-tuned for optimal performance. 
+We use a very simple approach of just stopping on spotting an object which will collide with the current trajectory. The stopping criterion is very simple. If the object is within some deviation of our lane and withing a threshold distance then we stop, else we ignore. This distance is obtained by using the ground projection node described before. This threshold is fine-tuned for optimal performance. 
 
 #### Qualitative Results in the Simulation
-Also the image showing the detections. 
+The following is the results obtained from doing hsv thresholding in the simulation. We can see that it does a good job of detecting all the objects.
 <p align="center">
   <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/hsv.gif" alt="hsv gif" width="400" height="300">
 </p>
@@ -177,8 +239,8 @@ This approach is mainly targetted at leveraging the available Dataset and comput
 * So to do detection at different scales for more fine-grained detections, we use the Feature Pyramid Network. For more details look at https://arxiv.org/abs/1612.03144 
 * We used the implementation by Facebook AI research in their Detectron 2 framework. 
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/rcnn.png" alt="RCNN" width="400" height="600">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/fpn.png" alt="FPN" width="400" height="200">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/rcnn.png" alt="RCNN" width="400" height="500">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/fpn.png" alt="FPN" width="400" height="250">
 </p>
 
 Training Details
@@ -194,26 +256,28 @@ Obtained Results
 We present some qualitative results which clearly show that this method performs really well and is able to accurately detect all the duckiebots and all the ducks which are important. 
 
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/1.png" alt="det1" width="250" height="250">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/2.png" alt="det2" width="250" height="250">  
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/3.png" alt="det3" width="250" height="250">  
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/1.png" alt="det1" width="270" height="230">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/2.png" alt="det2" width="270" height="230">  
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/3.png" alt="det3" width="270" height="230">  
 </p>
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/5.png" alt="det4" width="250" height="250">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det5" width="250" height="250">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det6" width="250" height="250">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/5.png" alt="det4" width="270" height="230">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det5" width="270" height="230">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det6" width="270" height="23z0">
 </p>
     
+----
 
+Initial plan to was to use this Deep Learning based classifier in the real environment using a GPU. But the process of setting up a the Duckietown framework such that the inference is done on the remote and the detections are communicated via the network is non-trivial and hence it was left for future work. We attempted to run our code on CPU but the inference times ranged between 5 to 10 seconds. So it wasn't feasible to run it on the raspberry pi for which the inference timing would have been even longer.
 
 
 ---
-## AI Driving Olympics 
+## Performance
 
 **RUNNER UP** during LFV Challenge at NeurIPS, Vancouver 2019
 
 **RUNNER UP** during LF Challenge at UdeM, Montreal 2019
-
+### AI Driving Olympics Leaderboard
 |        Challenge      |  Position  |
 |----------------------|:----------:|
 | aido3-LFV-real-validation  |   2  |
@@ -222,9 +286,23 @@ We present some qualitative results which clearly show that this method performs
 | aido3-LF-real-validation |   8   |
 | aido3-LF-sim-testing |   10   |
 | aido3-LF-sim-validation |   10   |
----
+
+----
+
+### References
+* Mask R-CNN, Kaiming He, Georgia Gkioxari, Piotr Dollár, Ross Girshick, https://arxiv.org/abs/1703.06870
+* Feature Pyramid Networks for Object Detection, Tsung-Yi Lin, Piotr Dollár, Ross Girshick, Kaiming He, Bharath Hariharan, Serge Belongie
+* https://github.com/facebookresearch/detectron2
 
 
+----
+## Troubleshooting
+
+Symptom: The Duckiebot fails at intersections.
+
+Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
+
+----
 
 Maintainer: Contact Charan Reddy (UdeM/ Mila), Soumye Singhal (UdeM/ Mila) via Slack for further assistance.
 
