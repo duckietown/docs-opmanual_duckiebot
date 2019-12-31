@@ -135,7 +135,7 @@ You can now see the 3 main visualizations that we have:
 
 <figure>
     <figcaption>compressed_image (left) and path_points (right) topics.</figcaption>
-    <img style='width:20em' src="lfv_images/lfv_sim.gif"/>
+    <img src="lfv_images/lfv_sim.gif"/>
 </figure>
 
 * detections (left figure) and detection_masks (right figure) show the detected obstacle bounding boxes and the HSV filter output used for detection respectively.
@@ -189,18 +189,20 @@ We avoided computing the path by directly estimating our target (follow) point v
 * Additionally, the average direction of the line segments is also taken into consideration for computing the offset: E.g., if the ground-projected yellow line segments are perpendicular to us (like when facing a turn), then the target point would not just be to the right of the average of the yellow points, but also downwards (towards the robot).
 * In the visualization below, we can see the ground projected and shifted line segments. The cyan point is our robot's position, and the green point is the pure pursuit target (follow) point. The yellow and white points are the ground-projected and shifted points on the yellow and white lanes respectively.
 <br clear="all" />
-<p align="center">
-<img src="lfv_images/lf_sim.gif"/>
-</p>
+<figure>
+    <figcaption>compressed_image (left) and path_points (right) topics.</figcaption>
+    <img src="lfv_images/lf_sim.gif"/>
+</figure>
 
 #### Varying Speed and Omega Gain
 * Our robot detects whether it is close to a left turn, a right turn or on a straight path. Turns are detected using statistics of detected lines.
 * The duckiebot gradually speeds up on straight paths, while reducing the omega gain so that the robot corrects less when moving fast (to avoid jerky movement).
 * The duckiebot gradually slows down at turns, while increasing the omega gain (to make nice sharp turns).
 * A second order degree polynomial is used for changing the velocity/omega gain. So, after a turn the robot speeds up slowly, giving it enough time to correct its position before going really fast. At turns, the robot will slow down faster to ensure safe navigation of the turn.
-<p align="center">
-  <img src="lfv_images/gearbox_demo_opt.gif"/>
-</p>
+<figure>
+    <figcaption>The duckiebot slows down at turns and speeds up on straight paths.</figcaption>
+    <img src="lfv_images/gearbox_demo_opt.gif"/>
+</figure>
 
 #### Modified Lane Filter
 * We <a href="https://github.com/saryazdi/pp-navigation/blob/47a0f058d8cb0f3a88431c4cd5c32a946b86019b/packages/my_lane_filter/include/my_lane_filter/my_lane_filter.py#L163">modified</a> the "<a href="https://github.com/duckietown/dt-core/tree/daffy/packages/lane_filter">lane_filter</a>" package so that at each update step, it computes how much time has passed since the last update, and based on that we scale the variance of the gaussian that is used for smoothing the belief. This is especially useful if there is too much variance in the FPS: Not scaling the covariance when the FPS has a high variance would cause us to either smoothen the belief too much or too little.
@@ -210,10 +212,14 @@ We annotated our own real-world duckietown object detection dataset and trained 
   
 <br clear="all" />
 
-<p align="center">
-  <img src="lfv_images/vehicle_avoidance_short1.gif" alt="Vehicle Avoidance Behind" width="300">
-  <img src="lfv_images/vehicle_avoidance_short2.gif" alt="Vehicle Avoidance Head-on" width="300">
-</p>
+<figure>
+    <figcaption>Vehicle avoidance behind.</figcaption>
+    <img src="lfv_images/vehicle_avoidance_short1.gif"/>
+</figure>
+<figure>
+    <figcaption>Vehicle avoidance head-on.</figcaption>
+    <img src="lfv_images/vehicle_avoidance_short2.gif"/>
+</figure>
 TODO: Get the GPU to work with docker. Currently the implementation detects vehicles with image processing on hardware as well. This is temporary to show that the pipeline is working correctly and we can integrate our trained deep learning model on hardware once we figure out how to get the GPU working with docker.
 
 
@@ -223,22 +229,28 @@ We annotated a real-world dataset from Duckietown for detecting duckiebots, duck
 
 ##### The Model
 For object detection with deep learning, we use Faster RCNN architecture with Feature Pyramid Network. Faster RCNN is a popular 2 stage object detection pipeline. The first stage involves feature map extraction from a backbone network and the usage of region proposal network to find potential object regions. Once we find the object regions, we feed it through the second stage of the network. In the second stage, we do bounding box regression and object classification. We also use Feature Pyramid Network (FPN). FPN enables us to detect objects at various scales and sizes. We extract features at multiple different resolutions and fuse them to get a rich set of features before feeding it to the region proposal network to find final region proposals. FPNs are more effective at detecting small objects. As mentioned above, we use <a href="https://github.com/saryazdi/Duckietown-Object-Detection-LFV/blob/master/DuckietownObjectDetectionDataset.md">the Duckietown Object Detection Dataset</a> to train the network. Below is the architecture of Faster RCNN.
-<p align="center">
-    <img src="lfv_images/model_architecture.png" height="220"/>
-</p>
+<figure>
+    <figcaption>Faster RCNN architecture.</figcaption>
+    <img src="lfv_images/model_architecture.png"/>
+</figure>
 
 For the model implementation, we use <a href="https://github.com/facebookresearch/detectron2">detectron2</a>, a state of the art object detection framework from Facebook AI research. We train the model for 15000 iterations over the dataset with a learning rate of 0.015. We use Resnet 50 backbone for the model. Below are some qualitative results of the object detector, and you can find a video of our object detector in the "Video of expected results" section on top of this page.
-<p align="center">
-  <img src="lfv_images/00025.png" width="370"/>
-  <img src="lfv_images/fasterRCNN.gif" width="370"/>
-</p>
+<figure>
+    <figcaption>Duckies and traffic cones detections.</figcaption>
+    <img src="lfv_images/00025.png"/>
+</figure>
+<figure>
+    <figcaption>Duckiebot detections.</figcaption>
+    <img src="lfv_images/fasterRCNN.gif"/>
+</figure>
 
 
 #### Object Detection with Image Processing
 * For object detection using image processing, we use HSV filtering followed by erosion and dilation, we then find the bounding boxes around the contours. Bounding boxes with a small area are filtered out.
-<p align="center">
-<img src="lfv_images/sim_detection_duckiebot.gif"/>
-</p>
+<figure>
+    <figcaption>Visualizations of bounding boxes (left) and HSV masks (right) when doing obstacle detection with image processing.</figcaption>
+    <img src="lfv_images/sim_detection_duckiebot.gif"/>
+</figure>
 
 
 #### Ground Projections
@@ -247,9 +259,10 @@ For the model implementation, we use <a href="https://github.com/facebookresearc
 
 #### Vehicle Avoidance
 * If we get closer to a vehicle (which is directly in front of us) than some distance threshold, we stop. We stay still until the obstalce is no longer in front of us within that distance threshold. In the visualization below, the gray box is the "safety zone" where we stop if an obstacle is within that box.
-<p align="center">
-  <img src="lfv_images/lfv_sim.gif"/>
-</p>
+<figure>
+    <figcaption>Vehicle avoidance visualizations: The duckiebot image stream (left) and the ground projections of detections (right).</figcaption>
+    <img src="lfv_images/lfv_sim.gif"/>
+</figure>
 
 
 ## Troubleshooting {#demo-lane-following-with-vehicles-duckietown-troubleshooting}
