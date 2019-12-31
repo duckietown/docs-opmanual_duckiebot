@@ -212,14 +212,16 @@ We annotated our own real-world duckietown object detection dataset and trained 
   
 <br clear="all" />
 
-<figure>
+<figure class="left" style="float:left">
 <!--     <figcaption>Vehicle avoidance behind.</figcaption> -->
     <img src="lfv_images/vehicle_avoidance_short1.gif"/>
 </figure>
-<figure>
+<figure class="right" style="float:right">
 <!--     <figcaption>Vehicle avoidance head-on.</figcaption> -->
     <img src="lfv_images/vehicle_avoidance_short2.gif"/>
 </figure>
+
+<br clear="all" />
 
 TODO: Get the GPU to work with docker. Currently the implementation detects vehicles with image processing on hardware as well. This is temporary to show that the pipeline is working correctly and we can integrate our trained deep learning model on hardware once we figure out how to get the GPU working with docker.
 
@@ -238,16 +240,17 @@ For object detection with deep learning, we use Faster RCNN architecture with Fe
 
 For the model implementation, we use <a href="https://github.com/facebookresearch/detectron2">detectron2</a>, a state of the art object detection framework from Facebook AI research. We train the model for 15000 iterations over the dataset with a learning rate of 0.015. We use Resnet 50 backbone for the model. Below are some qualitative results of the object detector, and you can find a video of our object detector in the "Video of expected results" section on top of this page.
 
-<!-- <figure> -->
+<figure class="left" style="float:left">
 <!--     <figcaption>Duckies and traffic cones detections.</figcaption> -->
-<!--     <img src="lfv_images/00025.png"/> -->
-<!-- </figure> -->
-
-<figure>
-<!--     <figcaption>Duckiebot detections.</figcaption> -->
-    <img src="lfv_images/fasterRCNN.gif"/>
+    <img src="lfv_images/00025.png" width="340"/>
 </figure>
 
+<figure class="right" style="float:right">
+<!--     <figcaption>Duckiebot detections.</figcaption> -->
+    <img src="lfv_images/fasterRCNN.gif" width="340"/>
+</figure>
+
+<br clear="all" />
 
 #### Object Detection with Image Processing
 * For object detection using image processing, we use HSV filtering followed by erosion and dilation, we then find the bounding boxes around the contours. Bounding boxes with a small area are filtered out.
