@@ -4,9 +4,7 @@ This is a documentation for our demo, which is about using Object detection to d
 
 <div class='requirements' markdown="1">
 
-Requires: [Wheel calibration](#wheel-calibration) completed.
-
-Requires: [Camera calibration](#camera-calib) completed.
+Requires: Wheel and Camera calibration.
 
 Requires: Fully setting up Duckietown framework and Duckiebot.
 
@@ -19,17 +17,15 @@ Results: One or more Duckiebot safely following lane and stops when there is a v
 
 ## Duckietown setup notes {#demo-lane-following-with-vehicles-duckietown-setup}
 
-To run this demo, you can setup a quite complex Duckietown. The demo supports a variety of road tiles, straight, complex turns, etc. It also supports dynamic and static vehicles and can robustly avoid them. That makes it a level more difficult than the [lane following demo](#demo-lane-following). Make sure that your Duckietown complies with the appearance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). 
+To run this demo, you can setup a quite complex Duckietown. The demo supports a variety of road tiles, straight, complex turns, etc. It also supports dynamic and static vehicles and can robustly avoid them. That makes it a level more difficult than the lane following demo.  
 
 You also need a wireless network set up to communicate with the robot or to `ssh` into it. The demo is robust to varied lighting conditions but take care that the duckietown is not too dark to hinder with the object detections. 
 
-
-## Duckiebot setup notes {#demo-lane-following-with-vehicles-duckiebot-setup} 
-* One (or possibly more) Duckiebot in configuration [DB18](#duckiebot-configurations).
+* Add one (or possibly more) Duckiebot in duckiebot configurations.
 * Care must be taken that duckiebot is rigid and there are no loose parts.
 * The camera must be upright so that it has a proper field of view. 
 * Make sure the calibration(both intrinsic and extrinsic is done meticulously). The performance is sensitive to it.
-* Make sure the battery is fixed in place.
+* Make sure the battery is fixed in place and fully charged.
 
 ## Pre-flight checklist {#demo-lane-following-with-vehicles-pre-flight}
 
@@ -41,49 +37,50 @@ You also need a wireless network set up to communicate with the robot or to `ssh
 
 ## Demo instructions {#demo-lane-following-with-vehicles-run}
 
+### [Github Link to the Package for the Demo](https://github.com/charan223/charan_ros_core)
 
 ### Setup
 
 Fork and clone udem-fall19-public:
 
- laptop $ git clone https://github.com/charan223/udem-fall19-public.git
+    laptop $ git clone https://github.com/charan223/udem-fall19-public.git
 
 If you are using fork, create an upstream:
 
- laptop $ git remote add upstream https://github.com/duckietown-udem/udem-fall19-public.git
+    laptop $ git remote add upstream https://github.com/duckietown-udem/udem-fall19-public.git
 
 Then pull from upstream:
 
- laptop $ git pull upstream master 
+    laptop $ git pull upstream master 
 
 
 Update submodules
 
- laptop $ git submodule init
- laptop $ git submodule update
- laptop $ git submodule foreach "(git checkout daffy; git pull)"
+    laptop $ git submodule init
+    laptop $ git submodule update
+    laptop $ git submodule foreach "(git checkout daffy; git pull)"
 
 ### To run in simulation
 
 
 From udem-fall19-public directory run:
 
- laptop $ docker-compose build
- laptop $ docker-compose up
+    laptop $ docker-compose build
+    laptop $ docker-compose up
 
 You can open the notebook just like before by copying the url that looks like:
 
- http://127.0.0.1:8888/?token={SOME_LONG_TOKEN}
+    http://127.0.0.1:8888/?token={SOME_LONG_TOKEN}
 
 After that, open terminal in the notebook and run below commands:
 
- jupyter-notebook $ catkin build --workspace catkin_ws
- jupyter-notebook $ source catkin_ws/devel/setup.bash
- jupyter-notebook $ ./launch_car_interface.sh
+    jupyter-notebook $ catkin build --workspace catkin_ws
+    jupyter-notebook $ source catkin_ws/devel/setup.bash
+    jupyter-notebook $ ./launch_car_interface.sh
 
 Run your launch file using below commands:
 
- jupyter-notebook $ roslaunch purepursuit purepursuit_controller.launch
+    jupyter-notebook $ roslaunch purepursuit purepursuit_controller.launch
 
 Visualize it in the simulation at `http://localhost:6901/vnc.html` in your browser, with `quackquack` as the password. Run `rqt_image_view` in the terminal to visualize the image topics.
 
@@ -91,24 +88,23 @@ Visualize it in the simulation at `http://localhost:6901/vnc.html` in your brows
 
 Go to package's base directory and do
 
- laptop $ dts devel build --push
+    laptop $ dts devel build --push
 
 Pull the docker image for LFV on the duckiebot:
 
- laptop $ ssh ![DUCKIEBOT_NAME].local
- duckie@root $ docker pull charared/charan_ros_core:v1-arm32v7
+    laptop $ ssh ![DUCKIEBOT_NAME].local
+    duckie@root $ docker pull charared/charan_ros_core:v1-arm32v7
  
 To run LFV on the duckiebot:
 
- laptop $ dts duckiebot demo --demo_name purepursuit_controller --duckiebot_name ![DUCKIEBOT_NAME] --package_name purepursuit --image charared/charan_ros_core:v1-arm32v7
+    laptop $ dts duckiebot demo --demo_name purepursuit_controller --duckiebot_name ![DUCKIEBOT_NAME] --package_name purepursuit --image charared/charan_ros_core:v1-arm32v7
 
-[Github Link to the Package](https://github.com/charan223/charan_ros_core)
 
 You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
 
 Portainer can be accessed at below link:
 
- https://![DUCKIEBOT_NAME].local:9000/#/containers
+    https://![DUCKIEBOT_NAME].local:9000/#/containers
 
 You can place your duckiebot on the lane after you see in the logs that the duckiebot can see the line segments. The duckiebot stops if it sees an obstacle(duckiebot) ahead and continues following the lane after the obstacle is removed.
 
@@ -124,9 +120,13 @@ Here are some additional things you can try:
 * You can visualize the detected line segments the same way as for the [lane following demo](#demo-lane-following)
 * Try to change some of the ROS parameters to see how your Duckiebot's behavior will change. 
 -->
+
 ---
+
 ## Implementation details
+
 ---
+
 ### Description of the Demo and the Approach.
 The task is to follow the lane and avoid dynamic vehicles. 
 For Lane Following, we use the Pure-Pursuit Controller. It seems to work better than the vanilla PID controller.
@@ -211,6 +211,7 @@ This approach is mainly targetted at leveraging the available Dataset and comput
 * On just using the Faster RCNN, we noticed that the smaller duckies and the far away duckiebots were not detected properly. 
 * So to do detection at different scales for more fine-grained detections, we use the Feature Pyramid Network. For more details look at https://arxiv.org/abs/1612.03144 
 * We used the implementation by Facebook AI research in their Detectron 2 framework. 
+* Link to our implementation here: [Colab Link](https://colab.research.google.com/drive/1lUMuVuZzaiQDyc_2fBSUKJusULbzJgvj)
 <p align="center">
  <img src="https://github.com/charan223/duckietown-report/blob/master/images/rcnn.png" alt="RCNN" width="400" height="500">
  <img src="https://github.com/charan223/duckietown-report/blob/master/images/fpn.png" alt="FPN" width="400" height="250">
@@ -267,13 +268,6 @@ The initial plan was to use this Deep Learning-based classifier in the real envi
 * Feature Pyramid Networks for Object Detection, Tsung-Yi Lin, Piotr Dollár, Ross Girshick, Kaiming He, Bharath Hariharan, Serge Belongie
 * https://github.com/facebookresearch/detectron2
 
-
-----
-## Troubleshooting
-
-Symptom: The Duckiebot fails at intersections.
-
-Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
 
 ----
 
