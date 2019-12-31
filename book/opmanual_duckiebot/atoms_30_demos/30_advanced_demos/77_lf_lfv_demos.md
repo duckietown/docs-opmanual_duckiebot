@@ -115,12 +115,17 @@ We have implemented a dynamic velocity and omega gain for the duckiebot using fo
 ---
 ### LFV: Object Detection using **HSV Thresholding**
 The most basic way to detect objects which can work in both simulation and the real environment is doing HSV thresholding and then doing opencv operations to get the bounding box for the object. A brief description is as follows
-* 
-We have performed HSV thresholding for both simulation and the real environment. We used OpenCV trackbars to find optimal HSV values. Dilation is applied to form blobs.
+* We have performed HSV thresholding for both simulation and the real environment separately
+* The `pure_pursuit` node on receiving an image processes it and determines if an object is there. 
+* HSV thresholding for reds and yellows is done to nicely detect the duckiebots and duckies, to form a mask. We used OpenCV trackbars to find optimal HSV values.
+* Dilation is applied to form good blobs. 
+* Then we find contours using `cv2.findCountour` to aggregate the blobs. We use those countours to get a nice bounding box around the detection
+  
+Now after the object is detected we need to compute how far it is from our duckiebot and whether the stopping criterion is satisfied. This is decribed next:
 
 #### Ground Projections
 
-We have written our custom point2ground function to transform the detected bounding box coordinates(bottom two points of rectangle) on the ground. We have initially normalized point coordinates to original image coordinates and calculated the ground point coordinates by performing dot product of homography matrix and the point coordinates.
+We have written our custom `point2ground` function to transform the detected bounding box coordinates(bottom two points of rectangle) on the ground. We have initially normalized point coordinates to original image coordinates and calculated the ground point coordinates by performing dot product of homography matrix and the point coordinates. No
 
 
 #### Vehicle Avoidance
@@ -137,7 +142,7 @@ Qualitatively we can also see the detection and the consequent stopping of the d
 </p>
 
 
-[Video Link (Simulation) - Lane following with vehicles](https://drive.google.com/open?id=1-oaqhY2mspkT7VWq6Dqx_lCsA4yOZF5w)
+[Full Video Link (Simulation) - Lane following with vehicles](https://drive.google.com/open?id=1-oaqhY2mspkT7VWq6Dqx_lCsA4yOZF5w)
 
 #### Qualitative Results in the Environment
 Note that in the environment, the hsv thresholding values are different. 
@@ -148,9 +153,9 @@ Note that in the environment, the hsv thresholding values are different.
   <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/lfv_cut22.gif" alt="lfv_cut22 gif" width="400" height="300">
 </p>
 
-[Video Link (Real) - Lane following with vehicles](https://drive.google.com/open?id=18o9ejgp0wOWVv8RbLE_1Ax0TUQVMIi2S)
+[Full Video Link (Real) - Lane following with vehicles](https://drive.google.com/open?id=18o9ejgp0wOWVv8RbLE_1Ax0TUQVMIi2S)
 
-[Video Link (Real) - Lane following](https://drive.google.com/open?id=18vinMYckb0UH0hNQebdYQNFNohcRcu9Z)
+[Full Video Link (Real) - Lane following](https://drive.google.com/open?id=18vinMYckb0UH0hNQebdYQNFNohcRcu9Z)
 
 
 ---
@@ -189,16 +194,16 @@ Obtained Results
 We present some qualitative results which clearly show that this method performs really well and is able to accurately detect all the duckiebots and all the ducks which are important. 
 
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/1.png" alt="det1" width="150" height="150">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/2.png" alt="det2" width="150" height="150">  
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/3.png" alt="det3" width="150" height="150">  
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/4.png" alt="det7" width="150" height="150">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/1.png" alt="det1" width="250" height="250">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/2.png" alt="det2" width="250" height="250">  
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/3.png" alt="det3" width="250" height="250">  
 </p>
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/5.png" alt="det4" width="150" height="150">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det5" width="150" height="150">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det6" width="150" height="150">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/8.png" alt="det6" width="150" height="150">     
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/5.png" alt="det4" width="250" height="250">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det5" width="250" height="250">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det6" width="250" height="250">
+</p>
+    
 
 
 
@@ -212,10 +217,10 @@ We present some qualitative results which clearly show that this method performs
 |        Challenge      |  Position  |
 |----------------------|:----------:|
 | aido3-LFV-real-validation  |   2  |
-| aido3-LF-real-validation |   8   |
 | aido3-LFV-sim-testing  |   6  |
-| aido3-LF-sim-testing |   10   |
 | aido3-LFV-sim-validation  |   8  |
+| aido3-LF-real-validation |   8   |
+| aido3-LF-sim-testing |   10   |
 | aido3-LF-sim-validation |   10   |
 ---
 
