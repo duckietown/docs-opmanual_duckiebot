@@ -132,14 +132,17 @@ Log into noVNC by going to <a href="http://localhost:6901/vnc.html">http://local
 You can now see the 3 main visualizations that we have:
 
 * path_points (right figure) shows the ground projected target point (green point), the current robot position (cyan point), the ground-projected and shifted points on the yellow and white lanes which now lie on the path (yellow and white points respectively), the ground-projected bounding boxes of other duckiebots (red quadrilaterals), and the "safety zone" where we stop if there is a duckiebot within that zone (gray box).
-<p align="center">
-  <img src="lfv_images/lfv_sim.gif"/>
-</p>
+
+<figure>
+    <figcaption>compressed_image (left) and path_points (right) topics.</figcaption>
+    <img style='width:20em' src="lfv_images/lfv_sim.gif"/>
+</figure>
 
 * detections (left figure) and detection_masks (right figure) show the detected obstacle bounding boxes and the HSV filter output used for detection respectively.
-<p align="center">
-<img src="lfv_images/sim_detection_duckiebot.gif"/>
-</p>
+<figure>
+    <figcaption>detections (left) and detection_masks (right) topics.</figcaption>
+    <img src="lfv_images/sim_detection_duckiebot.gif"/>
+</figure>
 
 ### Extras
 
