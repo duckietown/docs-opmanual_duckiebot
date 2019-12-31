@@ -184,6 +184,6 @@ Resolution: Change the adjustable parameters in `lfv_controller.py`.
 
 Symptom: The Duckiebot does not response fast enough to stop hitting the other vehicle.
 
-Resolution: Reduce the velocity of the Duckiebot, or increase the closest distance allowed between Duckiebot and obstacles in `lfv_controller.py`.
+Resolution: Reduce the velocity of the Duckiebot, or increase the closest distance allowed between Duckiebot and obstacles in `lfv_controller.py`. 
 
 Maintainer: Contact Rey Reza Wiyatno (rey.wiyatno@umontreal.ca) for further assistance.
