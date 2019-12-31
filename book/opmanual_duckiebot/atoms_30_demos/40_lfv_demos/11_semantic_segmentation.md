@@ -162,7 +162,7 @@ To make submission, run
 
     laptop $ dts challenges submit
 
-We can see the output of your terminal after running `dts challenges submit`, find the line that says `Track this submission at: ...` and open the link listed there to monitor the submission. When we make a submission, the image is also being pushed to the DockerHub. We should be able to find our latest submission in `https://hub.docker.com/repository/docker/<YOUR_USERNAME>/aido-submissions/tags?page=1`. We can then copy the name of the image, and run it on our robot using
+We can see the output of your terminal after running `dts challenges submit`, find the line that says `Track this submission at: ...` and open the link listed there to monitor the submission. When we make a submission, the image is also being pushed to the DockerHub. We should be able to find our latest submission in `https://hub.docker.com/repository/docker/[YOUR_USERNAME]/aido-submissions/tags?page=1`. We can then copy the name of the image, and run it on our robot using
 
     laptop $ dts duckiebot evaluate --duckiebot_name [OUR_DUCKIEBOT_NAME] --image [OUR_IMAGE_NAME] --duration 180
 
