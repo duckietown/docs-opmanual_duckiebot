@@ -238,10 +238,10 @@ For object detection with deep learning, we use Faster RCNN architecture with Fe
 
 For the model implementation, we use <a href="https://github.com/facebookresearch/detectron2">detectron2</a>, a state of the art object detection framework from Facebook AI research. We train the model for 15000 iterations over the dataset with a learning rate of 0.015. We use Resnet 50 backbone for the model. Below are some qualitative results of the object detector, and you can find a video of our object detector in the "Video of expected results" section on top of this page.
 
-<figure>
+<!-- <figure> -->
 <!--     <figcaption>Duckies and traffic cones detections.</figcaption> -->
-    <img src="lfv_images/00025.png" style='width: 20em'/>
-</figure>
+<!--     <img src="lfv_images/00025.png"/> -->
+<!-- </figure> -->
 
 <figure>
 <!--     <figcaption>Duckiebot detections.</figcaption> -->
