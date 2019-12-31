@@ -162,11 +162,10 @@ This approach is mainly targetted at leveraging the available Dataset and comput
 * So to do detection at different scales for more fine-grained detections, we use the Feature Pyramid Network. For more details look at https://arxiv.org/abs/1612.03144 
 * We used the implementation by Facebook AI research in their Detectron 2 framwork. 
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/rcnn.png" alt="RCNN" style="width:100%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/rcnn.png" alt="RCNN" style="width:20%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/fpn.png" alt="FPN" style="width:20%">
 </p>
-<p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/fpn.png" alt="FPN" style="width:100%">
-</p>
+
 Training Details
 * 80:20 Train:Val Split.
 * Approx 500 Duckiebot instances and 5k duckie instances.
@@ -180,20 +179,20 @@ Exptected results
 We present some qualitative results which clearly show that this method performs really well and is able to accurately detect all the duckiebots and all the ducks which are important. 
 
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/1.png" alt="det1" style="width:100%">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/2.png" alt="det2" style="width:100%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/1.png" alt="det1" style="width:20%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/2.png" alt="det2" style="width:20%">
 </p>
 <p align="center">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/3.png" alt="det3" style="width:100%">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/4.png" alt="det4" style="width:100%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/3.png" alt="det3" style="width:20%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/4.png" alt="det4" style="width:20%">
 </p>
 <p align="center">
-  <img src="http://github.com/charan223/duckietown-report/blob/master/images/5.png" alt="det5" style="width:100%">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det6" style="width:100%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/5.png" alt="det5" style="width:20%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det6" style="width:20%">
 </p>
 <p align="center">
-  <img src="http://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det7" style="width:100%">
-  <img src="https://github.com/charan223/duckietown-report/blob/master/images/8.png" alt="det8" style="width:100%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det7" style="width:20%">
+  <img src="https://github.com/charan223/duckietown-report/blob/master/images/8.png" alt="det8" style="width:20%">
 </p>
 
 ----
