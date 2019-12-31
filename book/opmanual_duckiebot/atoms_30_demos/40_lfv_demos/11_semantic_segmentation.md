@@ -131,7 +131,7 @@ Go to `1_develop` directory
 
     laptop $ cd challenge-aido_LF-baseline-duckietown/1_develop
 
-We have provided you a map file with two moving Duckiebots in `challenge-aido_LF-baseline-duckietown/assets/`. To make this the default map, copy this file into `challenge-aido_LF-baseline-duckietown/1_develop/simulation/src/gym_duckietown/maps/` by running (assuming you are currently in `challenge-aido_LF-baseline-duckietown/1_develop`):
+We have provided a map file with two moving Duckiebots in `challenge-aido_LF-baseline-duckietown/assets/`. To make this the default map, copy this file into `challenge-aido_LF-baseline-duckietown/1_develop/simulation/src/gym_duckietown/maps/`. Assuming we are currently in `challenge-aido_LF-baseline-duckietown/1_develop`, we can run:
 
     laptop $ cp ../assets/loop_obstacles.yaml simulation/src/gym_duckietown/maps/
 
@@ -140,7 +140,7 @@ Then, we need to build and run Docker
     laptop $ docker-compose build
     laptop $ docker-compose up
 
-Next, see the output of your terminal after running `docker-compose up`, find the line that says `http://127.0.0.1:8888/?token={SOME_LONG_TOKEN}` and open it in your browser, this should bring you to a Jupyter notebook homepage. Click on a dropdown that says "New" on the top-right corner, and click on "Terminal". This will open a terminal in a new tab. Go to the terminal that you just created, and run the following
+Next, see the output of our terminal after running `docker-compose up`, find the line that says `http://127.0.0.1:8888/?token={SOME_LONG_TOKEN}` and open it in your browser, this should bring us to a Jupyter notebook homepage. Click on a dropdown that says "New" on the top-right corner, and click on "Terminal". This will open a terminal in a new tab. Go to the terminal that we just created, and run the following
 
     laptop-container $ source /opt/ros/melodic/setup.bash
     laptop-container $ catkin build --workspace catkin_ws
@@ -150,7 +150,7 @@ Finally, we can launch the launch file from the same container terminal by runni
 
     laptop-container $ roslaunch custom/lf_slim.launch
 
-This will run the demo in simulation. To see what the robot is seeing in simulation, open `http://localhost:6901/vnc.html` in your browser, click on connect, and enter `quackquack` as the password. You can open a new terminal in this VNC and run `rqt_image_view` to see the image topics.
+This will run the demo in simulation. To see what the robot is seeing in simulation, open `http://localhost:6901/vnc.html` in our browser, click on connect, and enter `quackquack` as the password. We can open a new terminal in this VNC and run `rqt_image_view` to see the image topics.
 
 ### Make submission to the AIDO and test the demo on a real robot
 
@@ -162,19 +162,19 @@ To make submission, run
 
     laptop $ dts challenges submit
 
-You can see the output of your terminal after running `dts challenges submit`, find the line that says `Track this submission at: ...` and you can open the link listed there to monitor your submission. When you make a submission, the image is also being pushed to the DockerHub. You should be able to find your latest submission in `https://hub.docker.com/repository/docker/<YOUR_USERNAME>/aido-submissions/tags?page=1`. You can then copy the name of the image, and run it on your robot using
+We can see the output of your terminal after running `dts challenges submit`, find the line that says `Track this submission at: ...` and open the link listed there to monitor the submission. When we make a submission, the image is also being pushed to the DockerHub. We should be able to find our latest submission in `https://hub.docker.com/repository/docker/<YOUR_USERNAME>/aido-submissions/tags?page=1`. We can then copy the name of the image, and run it on our robot using
 
     laptop $ dts duckiebot evaluate --duckiebot_name <YOUR_DUCKIEBOT_NAME> --image <YOUR_IMAGE_NAME> --duration 180
 
-This will run the demo on your Duckiebot for 180 seconds.
+This will run the demo on the Duckiebot for 180 seconds.
 
 ### Extras
 
-* You can visualize the segmentation map, RANSAC output, and ground projection using `rqt_image_view`
-* You can modify adjustable parameters in `lfv_controller.py` and see how the behavior changes.
+* We can visualize the segmentation map, RANSAC output, and ground projection using `rqt_image_view`
+* We encourage the readers to modify adjustable parameters in `lfv_controller.py` and see how the behavior changes.
 * We also provided a notebook that explains how to train the segmentation model from scratch in `challenge-aido_LF-baseline-duckietown/assets/` (TODO: add link)
-* We also make our package available separately if you prefer to use it in your existing project (TODO: add link)
-* Contact Rey Reza Wiyatno (rey.wiyatno@umontreal.ca) if you are interested in the dataset we used to train our segmentation models.
+* We also make our package available separately if one prefers to use it in an existing project (TODO: add link)
+* Contact Rey Reza Wiyatno (rey.wiyatno@umontreal.ca) if interested in the dataset we used to train our segmentation models.
 
 ## Troubleshooting
 
