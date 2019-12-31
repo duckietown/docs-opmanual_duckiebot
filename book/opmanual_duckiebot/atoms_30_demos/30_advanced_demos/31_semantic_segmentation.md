@@ -18,22 +18,22 @@ Results: A Duckiebot capable of performing lane following with other vehicles us
 
 <figure>
     <figcaption>This video demonstrates the expected LFV results in the simulation. Top-left: camera image. Top-right: predicted segmentation map. Bottom-left: result of line fitting using RANSAC in image space (note that we only consider the bottom 2/3 of the image). Bottom-right: visualization of the ground-projected points in Duckiebot's coordinate frame, where the color blue corresponds to the predicted follow point and other colors correspond to the segmentation classes. The segmentation classes are: (1) YELLOW = yellow lines, (2) WHITE = white lines, (3) PURPLE = red lines, (4) RED = duckiebot, (5) GREEN = static obstacles (such as duckies, cones, and barricade), and (6) BLACK = everything else. The Duckiebot drives autonomously using a pure pursuit controller, which was tuned such that the Duckiebot accelerates on straight lane, and decelerates at corners to make a hard turn. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close.</figcaption>
-    <img style='width:16em' src="figures/sim.gif"/>
+    <img style='width:24em' src="figures/sim.gif"/>
 </figure>
 
 <figure>
     <figcaption>This video demonstrates the expected LFV results in the real world. Left: camera image. Right: predicted segmentation map. The Duckiebot drives autonomously using a pure pursuit controller (same as above). The other Duckiebot with a duckie on top of its body was manually controlled. As seen in the video, the segmentation model is able to segment the images correctly and the Duckiebot stops when the other vehicle gets too close, regardless of the pose of the other vehicle.</figcaption>
-    <img style='width:16em' src="figures/real.gif"/>
+    <img style='width:24em' src="figures/real.gif"/>
 </figure>
 
 <figure>
     <figcaption>This video demonstrates the expected Lane Following (LF) without other vehicles results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller (same as above) and finishes one lap in 40 seconds.</figcaption>
-    <img style='width:16em' src="figures/lf.gif"/>
+    <img style='width:24em' src="figures/lf.gif"/>
 </figure>
 
 <figure>
     <figcaption>This video demonstrates the expected LFV results in the real world from a third person point of view. The Duckiebot drives autonomously using a pure pursuit controller (same as above). The other Duckiebot with a duckie on top of its body was manually controlled. As seen in the video, the Duckiebot stops when the other vehicle gets too close.</figcaption>
-    <img style='width:16em' src="figures/lfv.gif"/>
+    <img style='width:24em' src="figures/lfv.gif"/>
 </figure>
 
 
@@ -43,7 +43,7 @@ Results: A Duckiebot capable of performing lane following with other vehicles us
 
 <figure>
     <figcaption>Block diagram of the proposed method.</figcaption>
-    <img style='width:16em' src="figures/diagram.png"/>
+    <img style='width:36em' src="figures/diagram.png"/>
 </figure>
 
 The goal of the LFV challenge is to perform lane following without hitting other possibly moving vehicles within the same environment. This means, the Duckiebot needs to know where the lanes and obstacles are located, decide what to do next, and execute the action. The core of this approach it to leverage the generalizability of learning-based semantic segmention model to find where the lines (or roads) and obstacles are (e.g., Duckiebots, duckies, cones, etc.) in the image space. We can then ground project these information so we know the location of the lines and obstacles in the robot's coordinate frame. Once we have the ground projected points, we can compute where to go next (i.e., compute follow point) and use this follow point as the input to our controller (which in our case is the pure pursuit controller) that will predict the linear and angular velocity for the robot to execute. In the following subsections, we will discuss each of these components in more detail.
@@ -58,7 +58,7 @@ Although the Duckietown simulation allows us to do domain randomization, we adde
 
 <figure>
     <figcaption>Samples of images before (most left images) and after domain randomization.</figcaption>
-    <img style='width:16em' src="figures/dr_samples.png"/>
+    <img style='width:32em' src="figures/dr_samples.png"/>
 </figure>
 
 Finally, we finetuned the trained segmentation model using 230 labeled real world images. From the results we saw above, we can see how the segmentation model can indeed perform well on real world images after being finetuned. The trained models can be found in `nodes` directory. We also include a [notebook](https://github.com/rrwiyatn/challenge-aido_LF-baseline-duckietown/blob/daffy/assets/train_segmentation_model.ipynb) that explains how to train the segmentation model.
@@ -101,7 +101,7 @@ Beyond the LFV challenge, although we have not fully tested this yet, we also th
 
 <figure>
     <figcaption>Illustration of the proposed follow point (p*) calculation. First, we sample multiple points along the x-axis on both white and yellow lines (the orange points).  When there is no obstacle, we calculate the candidate follow points (e.g., p1, p2, p4) by taking the mean from each pair of the sampled orange points.  When there is an obstacle, we would like to see whether the opening on one side of the obstacles is larger than the other side.  In this particular case, since d1 is larger than d2, we determine p3 by calculating the mean between the point on the yellow line and the point on the left side of the obstacle. Finally, we ignore p4 since it is located further than where the obstacle is, and calculate the follow point as the center of p1, p2, and p3.</figcaption>
-    <img style='width:24em' src="figures/prelim_avoidance_method.png"/>
+    <img style='width:16em' src="figures/prelim_avoidance_method.png"/>
 </figure>
 
 ### Controller: pure pursuit
