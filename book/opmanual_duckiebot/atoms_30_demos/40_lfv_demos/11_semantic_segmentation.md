@@ -110,6 +110,8 @@ Pure pursuit controller is a geometric path following controller whose goals are
 
 ## Demo instructions {#demo-semantic-segmentation-run}
 
+The easiest way to run this demo is to clone our fork of AIDO LF baseline Github repository. However, we also made our package available for those interested (see below in Extras).
+
 ### Setup
 
 Clone our fork of AIDO LF baseline Github repository
