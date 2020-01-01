@@ -170,13 +170,13 @@ We use a very simple approach of just stopping on spotting an object which will 
 The following is the results obtained from doing hsv thresholding in the simulation. We can see that it does a good job of detecting all the objects.
 
 <p align="center">
- <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/hsv.gif" alt="hsv gif" width="400" height="300"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/gifs/hsv.gif" alt="hsv gif" width="400" height="300"/>
 </p>
 
 Qualitatively we can also see the detection and the consequent stopping of the duckiebot after the thresholding in simulation.
 
 <p align="center">
- <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/hsv1.gif" alt="hsv1 gif" width="400" height="300"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/gifs/hsv1.gif" alt="hsv1 gif" width="400" height="300"/>
 </p>
 
 
@@ -186,9 +186,9 @@ Qualitatively we can also see the detection and the consequent stopping of the d
 Note that in the environment, the HSV thresholding values are different. 
 
 <p align="center">
- <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/lfv_cut11.gif" alt="lfv_cut11 gif" width="400" height="300"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/gifs/lfv_cut11.gif" alt="lfv_cut11 gif" width="400" height="300"/>
 
- <img src="https://github.com/charan223/duckietown-report/blob/master/gifs/lfv_cut22.gif" alt="lfv_cut22 gif" width="400" height="300"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/gifs/lfv_cut22.gif" alt="lfv_cut22 gif" width="400" height="300"/>
 </p>
 
 [Full Video Link (Real) - Lane following with vehicles](https://drive.google.com/open?id=18o9ejgp0wOWVv8RbLE_1Ax0TUQVMIi2S)
@@ -216,8 +216,8 @@ This approach is mainly targetted at leveraging the available Dataset and comput
 * We used the implementation by Facebook AI research in their Detectron 2 framework. 
 * Link to our implementation here: [Colab Link](https://colab.research.google.com/drive/1lUMuVuZzaiQDyc_2fBSUKJusULbzJgvj)
 <p align="center">
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/rcnn.png" alt="RCNN" width="400" height="500"/>
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/fpn.png" alt="FPN" width="400" height="250"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/rcnn.png" alt="RCNN" width="400" height="500"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/fpn.png" alt="FPN" width="400" height="250"/>
 </p>
 
 Training Details
@@ -233,14 +233,14 @@ Obtained Results
 We present some qualitative results which clearly show that this method performs really well and is able to accurately detect all the duckiebots and all the ducks which are important. 
 
 <p align="center">
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/1.png" alt="det1" width="270" height="230"/>
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/2.png" alt="det2" width="270" height="230"/> 
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/3.png" alt="det3" width="270" height="230"/> 
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/1.png" alt="det1" width="270" height="230"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/2.png" alt="det2" width="270" height="230"/> 
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/3.png" alt="det3" width="270" height="230"/> 
 </p>
 <p align="center">
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/5.png" alt="det4" width="270" height="230"/>
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/6.png" alt="det5" width="270" height="230"/>
- <img src="https://github.com/charan223/duckietown-report/blob/master/images/7.png" alt="det6" width="270" height="230"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/5.png" alt="det4" width="270" height="230"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/6.png" alt="det5" width="270" height="230"/>
+ <img src="https://github.com/charan223/duckietown-report/raw/master/images/7.png" alt="det6" width="270" height="230"/>
 </p>
  
 ----
