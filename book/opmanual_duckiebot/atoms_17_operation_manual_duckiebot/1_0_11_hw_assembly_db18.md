@@ -4,7 +4,7 @@ This page is for the `DB18` configuration used in classes in 2018 and 2019. For 
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB18` parts. The acquisition process is explained in [](#duckiebot-configurations).
+Requires: Duckiebot `DB18` parts. The acquisition process is explained in [](#get-db-hw), see also [](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot).
 
