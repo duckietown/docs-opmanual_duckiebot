@@ -1,4 +1,4 @@
-# LFV with Object Detection {#lane-following-with-vehicles status=ready}
+# LFV with Object Detection {#lane-following-with-vehicles status=beta}
 
 This is a documentation for our demo, which is about using Object detection to do the lane-following-with-vehicles demo.
 
