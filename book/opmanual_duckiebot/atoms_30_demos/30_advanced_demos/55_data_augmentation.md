@@ -10,6 +10,8 @@ Requires: [Camera calibration](#camera-calib) completed.
 
 Requires: [Joystick demo](#rc-control) has been successfully launched.
 
+Requires: That you understand the workflow for running the exercises as notebooks [here](https://github.com/duckietown-udem/udem-fall19-public/blob/master/notebooks/hw-02-pure-pursuit-control.md)
+
 Result: Access to augmented set of data points (i.e. line segments)
 
 </div>
