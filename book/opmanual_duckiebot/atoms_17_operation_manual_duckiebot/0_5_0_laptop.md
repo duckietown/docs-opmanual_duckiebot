@@ -41,11 +41,11 @@ Sometimes when running a VMware machine in a Mac OS host, it is neccessary to ha
 TODO: give some pointers for VM.
 
 
-## Setup for Ubuntu 18 {#laptop-setup-ubuntu-18}
+## Setup for Ubuntu 18.04 {#laptop-setup-ubuntu-18}
 
 ### System installation {#laptop-setup-ubuntu-18-system}
 
-Install Ubuntu 18.
+Install Ubuntu 18.04.
 
 See: For instructions, see for example [this online tutorial][tutorial].
 
@@ -199,7 +199,7 @@ Log out and in. This command should succeed:
 
 ## Setup for Ubuntu 16.04 {#laptop-setup-ubuntu-16}
 
-Note: It is suggested to use Ubuntu 18.
+Note: It is suggested to use Ubuntu 18.04.
 
 ### System installation {#laptop-setup-ubuntu-16-system}
 
