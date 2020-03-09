@@ -1,4 +1,4 @@
-# LFV with Object Detection {#lane-following-with-vehicles status=beta}
+# LFV with Object Detection {#lane-following-with-obj-det status=beta}
 
 This is a documentation for our demo, which is about using Object detection to do the lane-following-with-vehicles demo.
 
@@ -11,11 +11,11 @@ Requires: Fully setting up Duckietown framework and Duckiebot.
 Results: One or more Duckiebot safely following lane and stops when there is a vehicle ahead.
 </div>
 
-## Video of expected results {#demo-lane-following-with-vehicles-expected}
+## Video of expected results {#demo-lane-following-with-obj-det-expected}
 
 [Video Link (Real) - Lane following with vehicles](https://drive.google.com/open?id=18o9ejgp0wOWVv8RbLE_1Ax0TUQVMIi2S)
 
-## Duckietown setup notes {#demo-lane-following-with-vehicles-duckietown-setup}
+## Duckietown setup notes {#demo-lane-following-with-obj-det-duckietown-setup}
 
 To run this demo, you can setup a quite complex Duckietown. The demo supports a variety of road tiles, straight, complex turns, etc. It also supports dynamic and static vehicles and can robustly avoid them. That makes it a level more difficult than the lane following demo.  
 
@@ -27,7 +27,7 @@ You also need a wireless network set up to communicate with the robot or to `ssh
 * Make sure the calibration(both intrinsic and extrinsic is done meticulously). The performance is sensitive to it.
 * Make sure the battery is fixed in place and fully charged.
 
-## Pre-flight checklist {#demo-lane-following-with-vehicles-pre-flight}
+## Pre-flight checklist {#demo-lane-following-with-obj-det-pre-flight}
 
 * Check that every Duckiebot has sufficient battery charge and that they are all properly calibrated.
 * Turn the duckiebot on and wait for it to boot. To check if it's ready, try to ssh into it. 
@@ -35,7 +35,7 @@ You also need a wireless network set up to communicate with the robot or to `ssh
 * You can use portainer to see what all containers are running on the duckiebot. In this demo, we will run a new container. 
 
 
-## Demo instructions {#demo-lane-following-with-vehicles-run}
+## Demo instructions {#demo-lane-following-with-obj-det-run}
 
 ### [Github Link to the Package for the Demo](https://github.com/charan223/charan_ros_core)
 
