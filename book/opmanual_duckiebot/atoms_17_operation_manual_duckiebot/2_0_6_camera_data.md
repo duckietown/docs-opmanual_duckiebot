@@ -16,7 +16,7 @@ Result: You can see the output of the camera.
 
 ## Check the camera hardware
 
-It might be useful to do a quick camera hardware check as documented in [](#howto-mount-camera).
+It might be useful to do a quick camera hardware check as documented in [](#howto-camera-db18).
 
 
 ## Viewing an Image Stream on Your Laptop {#view-image-using-rqt-image-view}
