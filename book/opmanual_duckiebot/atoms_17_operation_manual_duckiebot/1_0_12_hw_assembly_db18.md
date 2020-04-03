@@ -1,4 +1,4 @@
-# Assembling the `DB18` Duckiebot {#assembling-duckiebot-db18-new status=ready}
+# Assembling the `DB18` Duckiebot {#assembling-duckiebot-db18 status=ready}
 
 This page is for the `DB18` configuration used in classes in 2018 and 2019. For the instructions from 2017 see [the `DB17` Duckiebot operation manual](https://docs.duckietown.org/DT17/).
 
@@ -16,7 +16,7 @@ Results: An assembled Duckiebot in configuration `DB18`.
 
 Note: The [FAQ](#op-faq-db18) section at the bottom of this page may already answer some of you comments, questions or doubts.
 
-There are 16 parts in this procedure. Most parts build upon previous steps, so make
+There are 9 parts in this procedure. Most parts build upon previous steps, so make
 sure to follow them in the following order:
 
 - [Part 1: What is in the box?](#howto-bom-db18)
@@ -74,7 +74,7 @@ Do not exchange metal and nylon screws though. The latter are not electrically c
 
 Remember that instructions are your friend! At least at this stage, try to follow them precisely.
 
-If regardless of this foreword you still choose to try and figure it out yourself, it's ok, but for the love of what is precious, *do not plug the battery in until you have performed a visual inspection* [Here](#db18-assembly-visual-inspection).  
+If regardless of this foreword you still choose to try and figure it out yourself, it's ok, but for the love of what is precious, *do not plug the battery in until you have performed a visual inspection* [here](#db18-assembly-visual-inspection).  
 
 
 ## Motors {#howto-motors-db18}
@@ -82,7 +82,7 @@ If regardless of this foreword you still choose to try and figure it out yoursel
 From the Duckiebox package take the following components:
 
 - Chassis-bottom (1x)
-- DC Motors (2x)
+- Yellow dc motors (2x)
 - Motor holders (4x)
 - M3x30 screw (4x)
 - M3 nuts (4x)
@@ -101,32 +101,32 @@ Put one motor between the holders as shown in [](#fig:db18-step_1b).
   <img src="db18-step_1b.png" style='width: 25em'/>
 </div>
 
-Note: Orient the motors so that their wires are inwards (i.e., towards the center of the plate).
+Note: Orient the motors that their wires are inwards (i.e., towards the center of the plate).
 
 Note: Use your screwdriver.
 
-Use *2* M3x30 screws and *2* M3 nuts to secure the motor to the motor holders. Pass the screws through the holes from the outside inwards, then tighten the screws to secure the holders to the bottom plate of the chassis.
+Use *2* M3x30 screws and *2* M3 nuts to secure the motor to the motor supports. Pass the screws through the holes from the outside inwards, then tighten the screws to secure the holders to the bottom plate of the chassis.
 
 Note: You might find aligning the holes to be a little bit hard. It is easier to first get the top screw aligned and place the screw in, and then push in the side support piece in to place. If that still doesn't work, get the bottom screw and the side support in first, align it, and secure with nuts. Then try to push the top screw through. You might have to use the screw to expand the hole a bit.
 
 ### Step 2
 Do the same for the second motor as well as shown in [](#fig:db18-step_2a) and [](#fig:db18-step_2b)
 
-<div figure-id="fig:db18-step_2a" figure-caption="How to mount the second motor holders.">
+<div figure-id="fig:db18-step_2a" figure-caption="How to mount the second motor supports">
   <img src="db18-step_2a.png" style='width: 25em'/>
 </div>
 
-<div figure-id="fig:db18-step_2b" figure-caption="How to mount the second DC-motor.">
+<div figure-id="fig:db18-step_2b" figure-caption="How to mount the second DC-motor">
   <img src="db18-step_2b.png" style='width: 25em'/>
 </div>
 
-Note: tighten the motors firmly, as a wobbly motor might cause troubles later on.
+Note: Tighten the motors firmly, as a wobbly motor might cause troubles later on.
 
 ### Step 3
 
 Wire the cables of the two motors through the bottom plate of the chassis and make sure they are well separated ([](#fig:db18-step_3)).
 
-<div figure-id="fig:db18-step_3" figure-caption="Cables through central hole.">
+<div figure-id="fig:db18-step_3" figure-caption="Cables through central hole">
    <img src="db18-step_3.png" style='width: 25em'/>
 </div>
 
@@ -139,8 +139,8 @@ attached to the bottom plate of the chassis to provide such support.
 From the Duckiebox package take the following components:
 - Steel omni-directional wheel (1x)
 - M3x25 metal spacers (2x)
-- M3x6 (or longer) screws (2x)
-- M3x10 nylon screws (2x) (Used for next part)
+- M3x10 metal screws (2x)
+- M3x10 nylon screws (2x)
 
 ### Step 4
 Assemble the omni-directional wheel as shown in figure [](#fig:db18-step_4).
@@ -156,10 +156,7 @@ Then mount it to the bottom plate of the Duckiebot as shown in figure [](#fig:db
      <img src="db18-step_5.png" style='width: 25em'/>
 </div>
 
-Note: Use the *nylon* screws in this step, to avoid short-circuits later on.
-
 Note: Sometimes you might need a bit of force to get the screw and the standoffs fully connected.
-
 
 ### Step 6
 From the Duckiebot kit take the following components:
@@ -179,7 +176,7 @@ and mount the rear bracer to the bottom plate with the _25cm_ spacers ([](#fig:d
 ### Step 7
 Now use the M3x30 standoffs (longer ones) for the front of the Duckiebot ([](#fig:db18-step_7)).
 
-<div figure-id="fig:db18-step_7" figure-caption="Mount front spacers.">
+<div figure-id="fig:db18-step_7" figure-caption="Mount front spacers">
      <img src="db18-step_7.png" style='width: 25em'/>
 </div>
 
@@ -194,9 +191,8 @@ From the Duckiebot kit take the following components:
      <img src="db18-step_8.png" style='width: 25em'/>
 </div>
 
-Note: Mind that there is a particular orientation at which the wheel will fit. Don't force them too much!
+Note: Mind that there is a particular orientation at which the wheels will fit. Don't force them too much!
 
-### Check the outcome
 [](#fig:howto-mount-wheels-milestone-db18) shows how the assembly should look like after mounting the wheels.
 
 <div figure-id="fig:howto-mount-wheels-milestone-db18" figure-caption="The wheels mounted on the bottom plate assembly.">
@@ -217,9 +213,9 @@ Note: You probably have two heat sinks, make sure you use the bigger one for sur
 
 Note: You will notice there is a camera cable already attached to the camera. We won't use this one since it is a bit short. You will find a longer camera cable inside the same box as the camera.
 
-[](#fig:howto-mount-rpi-parts) shows the components needed to complete the following steps.
+[](#fig:howto-mount-rpi-parts-db18) shows the components needed to complete the following steps.
 
-<div figure-id="fig:howto-mount-rpi-parts" figure-caption="The bigger heat sinks and the Raspberry Pi 3 B+.">
+<div figure-id="fig:howto-mount-rpi-parts-db18" figure-caption="The bigger heat sinks and the Raspberry Pi 3 B+.">
      <img src="howto_mount_rpi_parts.jpg" style='width: 25em'/>
 </div>
 
@@ -233,7 +229,7 @@ Peel the cover from the bottom of the heat sink and place it on the Raspberry Pi
 ### Step 10
 Insert the SD card in the slot as shown in figure [](#fig:db18-step_10).
 
-Note: If the card is not flashed yet, do the initialization first: [](#setup-duckiebot)
+Note: If the card is not flashed yet, do the initialization first: [](#setup-duckiebot),  but only until the section [](#burn-sd-card), because you will need the fully assembled Duckiebot for the following steps of the Duckiebot Initialization.
 
 <div figure-id="fig:db18-step_10" figure-caption="Insert SD card">
      <img src="db18-step_10.png" style='width: 25em'/>
@@ -267,9 +263,9 @@ From the Duckiebot kit take the following components:
 - USB to micro USB cables (2x)
 - Set of three female to female(F/F) jumper wires (1x)
 
-[](#fig:howto-assemble-hut-parts) shows the components needed to complete this part of the tutorial.
+[](#fig:howto-assemble-hut-parts-db18) shows the components needed to complete this part of the tutorial.
 
-<div figure-id="fig:howto-assemble-hut-parts" figure-caption="The parts needed to assemble the Raspberry Pi and the Hut.">
+<div figure-id="fig:howto-assemble-hut-parts-db18" figure-caption="The parts needed to assemble the Raspberry Pi and the Hut.">
      <img src="howto_assemble_hut_parts-1.jpg" style='width: 25em'/>
 </div>
 
@@ -301,7 +297,7 @@ Connect the F/F jumper wire to the pins on the Hut as shown in figure [](#fig:db
 ### Step 15
 Finally, attach the two USB cables to the power plugs on the Hut and Raspberry Pi, as in [](#fig:db18-step_15).
 
-<div figure-id="fig:db18-step_15" figure-caption="Plugging in the power cables.">
+<div figure-id="fig:db18-step_15" figure-caption="Plugging in the power cables">
      <img src="db18-step_15.png" style='width: 25em'/>
 </div>
 
@@ -399,9 +395,9 @@ From the Duckiebot kit take the following components:
 
 Note: In the picture, nylon screws are used. However you probably used them to assemble the omni-directional wheel, then use the metal screws.
 
-[](#fig:howto-mount-circlegrid-holder-parts) shows the components needed to complete this upgrade.
+[](#fig:howto-mount-circlegrid-holder-parts-db18) shows the components needed to complete this upgrade.
 
-<div figure-id="fig:howto-mount-circlegrid-holder-parts" figure-caption="The parts needed to mount the circle grid holder.">
+<div figure-id="fig:howto-mount-circlegrid-holder-parts-db18" figure-caption="The parts needed to mount the circle grid holder.">
      <img src="howto_mount_circlegrid_holder_parts.png" style='width: 25em'/>
 </div>
 
@@ -438,9 +434,9 @@ Connect a new jumper wire (F/F) to the connector on the back bumper, see picture
      <img src="db18-step_26.png" style='width: 25em'/>
 </div>
 
-No matter what exact solution you choose concerning the cable management, the objective is to avoid any cables from touching the wheels in the end. One solution could be something like it is shown in figure [](#fig:howto-mount-front-bumper-2).
+No matter what exact solution you choose concerning the cable management, the objective is to avoid any cables from touching the wheels in the end. One solution could be something like it is shown in figure [](#fig:howto-mount-front-bumper-db18).
 
-<div figure-id="fig:howto-mount-front-bumper-2" figure-caption="Cable management">
+<div figure-id="fig:howto-mount-front-bumper-db18" figure-caption="Cable management">
      <img src="howto_mount_front_bumper_2.png" style='width: 25em'/>
 </div>
 
@@ -467,7 +463,7 @@ From the Duckiebot kit take the following components:
 At that point you should have arrived with two loose cables in the front. Make sure to connect both of them to the front bumper. The one from step 26 on the right hand side and the other on the left hand side, see picture [](#fig:db18-step_28).
 
 <div figure-id="fig:db18-step_28" figure-caption="Wiring the front bumper">
-     <img src="db18-step_28.png" style='width: 25em'/>
+     <img src="db18-step_28.png" style='width: 40em'/>
 </div>
 
 ### Step 29
@@ -512,13 +508,13 @@ Note: **Do not** unplug/replug the bumper wires when the power is on. You could 
      <img src="db18-step_31.png" style='width: 25em'/>
 </div>
 
-There are different batteries concerning the outer dimensions, so the result could look like either of the following pictures [](#fig:howto-mount-battery-duckie-1) or [](#fig:howto-assemble-finish-milestone-2):
+There are different batteries concerning the outer dimensions, so the result could look like either of the following pictures [](#fig:howto-mount-battery-duckie-db18) or [](#fig:howto-assemble-finish-milestone-db18):
 
-<div figure-id="fig:howto-mount-battery-duckie-1" figure-caption="Solution with smaller battery">
+<div figure-id="fig:howto-mount-battery-duckie-db18" figure-caption="Solution with smaller battery">
      <img src="howto_mount_battery_duckie_1.jpg" style='width: 25em'/>
 </div>
 
-<div figure-id="fig:howto-assemble-finish-milestone-2" figure-caption="The final Duckiebot assembly, with longer form factor battery.">
+<div figure-id="fig:howto-assemble-finish-milestone-db18" figure-caption="The final Duckiebot assembly, with longer form factor battery.">
    <img src="howto_assemble_finish_milestone-2.jpg" style='width: 25em'/>
 </div>
 
