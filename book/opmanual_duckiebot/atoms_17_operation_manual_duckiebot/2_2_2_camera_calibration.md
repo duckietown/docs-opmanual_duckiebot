@@ -61,7 +61,7 @@ We want uncompressed imagery for this which is not streamed by default from the 
 
 Next you can launch the intrinsic calibration program with:
 
-    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
+    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
     
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
@@ -156,7 +156,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 Run:
 
-    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
+    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] 
 
 First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>. 
 If all goes well the program will complete.
