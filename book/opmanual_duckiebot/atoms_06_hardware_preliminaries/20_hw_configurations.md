@@ -10,10 +10,24 @@ Results: Knowledge of Duckiebot configuration naming conventions and their respe
 
 We define different Duckiebot configurations depending on their time of use and hardware components.
 
+## Duckiebot version 2019, or `DB19` {#duckiebot-config-db19}
+
+The `DB19` is the latest version of the Duckiebot. You have a `DB19` Duckiebot for sure if you have the blue motors shown in figure [](#fig:dc-motor-db19).
+
+<div figure-id="fig:dc-motor-db19" figure-caption="The motors for the version `DB19`">
+   <img src="dc-motor-db19.png" style='width: 25em'/>
+</div>
+
+Apart from the new motors and another HUT, the `DB19` is identical with the `DB18`. A complete version can be seen here:
+
+<div figure-id="fig:db19-complete-cad" figure-caption="The complete Duckiebot 19">
+   <img src="db19-complete-cad.png" style='width: 25em'/>
+</div>
+
 
 ## Duckiebot version 2018, or `DB18` {#duckiebot-config-db18}
 
-The `DB18` is the latest version of the Duckiebot. You have a `DB18` Duckiebot if, e.g., you have pledged to the Kickstarter.
+You have a `DB18` Duckiebot if, e.g., you have pledged to the Kickstarter.
 
 There are two configuration of the `DB18`.
 
