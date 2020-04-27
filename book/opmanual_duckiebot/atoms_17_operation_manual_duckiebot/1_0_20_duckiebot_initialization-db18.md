@@ -220,7 +220,7 @@ If you see the message **Waiting for the device-loader container**, please wait.
   <img src="dashboard_device_loader_progress.png" style='width: 34em'/>
 </div>
 
-Now, sit back, relax, and enjoy your coffee! this will take a while.
+Now, sit back, relax, and enjoy your coffee! This will take a while.
 Keep monitoring the temperature and disk bars, if the temperature is too high
 (more than 3/4 of the bar) make sure your robot is placed in an area where
 it can get enough air. If the disk bar reaches the maximum, it means that the
