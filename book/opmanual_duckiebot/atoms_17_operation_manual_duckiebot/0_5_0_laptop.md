@@ -184,7 +184,7 @@ Follow [these instructions](https://docs.docker.com/docker-for-mac/install/)
 ### Duckietown Shell {#laptop-setup-mac-shell}
 
 Follow [these instructions](https://github.com/duckietown/duckietown-shell)
-
+Note: On OS X if you get a `Could not load commands` error when you run `dts` for the first time. Try deleting `~/.dt-shell/commands-multi/daffy/challenges/installed.flag` and running `dts` again.
 
 
 ## Setup for Ubuntu 16.04 {#laptop-setup-ubuntu-16}
