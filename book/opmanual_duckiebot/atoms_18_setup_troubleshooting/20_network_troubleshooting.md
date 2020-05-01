@@ -97,6 +97,6 @@ Resolution: Unset the `DOCKER_HOST`, running:
 
 Symptom: You can ping the robot, `ssh` into it, start the demos, but the commands from the virtual joystick do not seem to reach the robot.
 
-A possible cause is that your firewall is blocking the incoming traffic from the robot.
+A possible cause is that your computer's firewall is blocking the incoming traffic from the robot.
 
-Resolution: Check the settings for your firewall and make sure that any incoming traffic from the IP address of the robot is allowed on all ports. Keep in mind that if your robot's IP address changes, you might need to update the rule.
+Resolution: Check the settings for the firewall on your computer and make sure that any incoming traffic from the IP address of the robot is allowed on all ports. Keep in mind that if your robot's IP address changes, you might need to update the rule.
