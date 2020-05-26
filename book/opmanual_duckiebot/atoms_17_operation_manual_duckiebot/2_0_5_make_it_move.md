@@ -28,7 +28,7 @@ Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you
 
 If you would like to move your robot using your laptop, you can run:
 
-    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
+    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
 
 which, after startup should open the interface window that looks like:
 
