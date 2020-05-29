@@ -74,7 +74,7 @@ Resolution: Check that the `duckiebot-interface` is running
 
 Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
 
-You call also determine this by running:
+You can also determine this by running:
 
     $ docker -H ![DUCKIEBOT_NAME].local ps
 
