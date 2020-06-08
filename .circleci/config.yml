@@ -6,6 +6,7 @@ jobs:
         environment:
           COLUMNS: 160
           TERM: xterm-256color
+          COMPMAKE_COMMAND: "rparmake n=3"
 
     resource_class: large
     steps:
