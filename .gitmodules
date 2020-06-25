@@ -1,0 +1,4 @@
+[submodule "resources"]
+	path = resources
+	url = https://github.com/AndreaCensi/docs-resources2.git
+	branch = daffy
