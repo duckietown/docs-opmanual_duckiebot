@@ -14,7 +14,7 @@ Note: These instructions are valid for the DB18 version of the Duckiebot with a 
 
 3. Flash the image on an SD card. If you use Ubuntu, you can use the USB Image Writer tool that it comes with.
 
-Note: Make sure you write it to the right device! You can damage your system if you select a different device!
+    Note: Make sure you write it to the right device! You can damage your system if you select a different device!
     
 4. Now put the SD card in the assembled robot and power it up. 
 
