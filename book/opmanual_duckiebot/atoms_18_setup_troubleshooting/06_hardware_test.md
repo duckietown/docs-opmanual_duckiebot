@@ -2,7 +2,7 @@
 
 If you have assembled your robot but you are not sure if you did it correctly, i.e. are the motors connected in the right way, is the camera attached properly, there is a small tool that you can use to test that.
 
-The procedure consists of downloading and flashing a test image on an SD card. If you have only one SD card, you might want to do that before you do the steps in [](setup-duckiebot).
+The procedure consists of downloading and flashing a test image on an SD card. If you have only one SD card, you might want to do that before you do the steps in [](#setup-duckiebot).
 
 Note: These instructions are valid for the DB18 version of the Duckiebot with a Raspberry Pi 3B+. If you have a different version of the hardware, you might not observe the expected behavior.
 
