@@ -8,7 +8,7 @@ Note: These instructions are valid for the DB18 version of the Duckiebot with a 
 
 ## Test procedure
 
-1. Download this SD card [image](https://u.pcloud.link/publink/show?code=XZWVLNkZNoKQp6aU46hjTg1cmewUb7eiN5YV)
+1. Download this SD card [image](https://duckietown-public-storage.s3.amazonaws.com/disk_image/DB18_hw_test_image_13_07_2020_shrunk.img.gz)
 
 2. Extract the `.img` image from the archive.
 
@@ -22,21 +22,19 @@ Note: These instructions are valid for the DB18 version of the Duckiebot with a 
 
 If everything is successful within 30 to 60 seconds you should your robot's lights start to change. If your robot is assembled correctly you should observe the following behavior:
 
-1. All LEDs are __white__ for 2 seconds.
+1. All LEDs are __green__ for 2 seconds.
 
-2. All LEDs are __green__ for 2 seconds.
+2. All LEDs are __red__ for 2 seconds.
 
-3. All LEDs are __red__ for 2 seconds.
+3. The LEDs on the __right__ side of the robot will be __red__, the rest are white, and the robot is turning __right__ (i.e _into_ the direction of the red LEDs).
 
-4. The LEDs on the __right__ side of the robot will be __red__, the rest are white, and the robot is turning __right__ (i.e _into_ the direction of the red LEDs).
+4. The LEDs on the __left__ side of the robot will be __red__, the rest are white, and the robot is turning __left__ (i.e _into_ the direction of the red LEDs).
 
-5. The LEDs on the __left__ side of the robot will be __red__, the rest are white, and the robot is turning __left__ (i.e _into_ the direction of the red LEDs).
+5. The robot stops.
 
-6. The robot stops.
+6. After a few seconds all LEDs are green.
 
-7. After a few seconds all LEDs are green.
-
-8. End of the test. Everything appears to be assembled correct.
+7. End of the test. Everything appears to be assembled correct.
 
 
 ## Troubleshooting
