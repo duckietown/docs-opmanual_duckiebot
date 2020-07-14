@@ -8,13 +8,13 @@ Note: These instructions are valid for the DB18 version of the Duckiebot with a 
 
 ## Test procedure
 
-1. Download this SD card [image](https://u.pcloud.link/publink/show?code=XZWVLNkZNoKQp6aU46hjTg1cmewUb7eiN5YV)git 
+1. Download this SD card [image](https://u.pcloud.link/publink/show?code=XZWVLNkZNoKQp6aU46hjTg1cmewUb7eiN5YV)
 
 2. Extract the `.img` image from the archive.
 
 3. Flash the image on an SD card. If you use Ubuntu, you can use the USB Image Writer tool that it comes with.
 
-Note: Make sure you write it to the right device! You can damage your system if you select a different device!
+    Note: Make sure you write it to the right device! You can damage your system if you select a different device!
     
 4. Now put the SD card in the assembled robot and power it up. 
 
