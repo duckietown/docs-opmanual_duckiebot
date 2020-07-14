@@ -38,6 +38,10 @@ If everything is successful within 30 to 60 seconds you should your robot's ligh
 
 8. End of the test. Everything appears to be assembled correct.
 
+This is a video of what you should observe if your robot is assembled correctly:
+
+<dtvideo src="vimeo:438103873"/>
+
 
 ## Troubleshooting
 
