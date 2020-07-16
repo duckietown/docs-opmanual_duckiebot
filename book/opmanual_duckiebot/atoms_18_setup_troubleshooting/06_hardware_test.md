@@ -38,7 +38,7 @@ If everything is successful within 30 to 60 seconds you should your robot's ligh
 
 This is a video of what you should observe if your robot is assembled correctly:
 
-<dtvideo src="vimeo:438103873"/> 
+<dtvideo src="vimeo:438103873"/>  
 
 
 ## Troubleshooting
