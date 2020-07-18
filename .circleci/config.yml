@@ -38,7 +38,7 @@ jobs:
           path: duckuments-dist
           destination: duckuments-dist
       - store_artifacts:
-          path: build-stats
+          path: out/build-stats
           destination: build-stats
       - test-results-store:
           path: duckuments-dist/junit
