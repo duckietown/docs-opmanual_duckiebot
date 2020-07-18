@@ -70,7 +70,7 @@ You have to wait a while for everything to start working. While you wait, you ca
 
 If you have a joystick you can skip this next command, otherwise we need to run the keyboard controller:
 
-    laptop $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
+    laptop $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --image duckietown/dt-core:daffy-amd64
 
 
 |        Controls      |  Joystick  |     Keyboard     |

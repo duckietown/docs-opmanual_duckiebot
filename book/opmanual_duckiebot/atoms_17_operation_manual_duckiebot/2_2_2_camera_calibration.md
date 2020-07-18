@@ -49,13 +49,13 @@ The procedure is basically a wrapper around the [ROS camera calibration tool](ht
 
 First, check if your `duckiebot-interface` container is running. If it is not, start it with
 
-    laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy
+    laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-arm32v7
     
 Warning: The `duckiebot-interface` container can appear under different names, e.g. `dt18_03_roscore_duckiebot-interface_1`. 
 
 We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
-    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image duckietown/dt-core:daffy
+    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image duckietown/dt-core:daffy-arm32v7
 
 ### Launch the intrinsic calibration application
 
