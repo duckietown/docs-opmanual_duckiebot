@@ -55,7 +55,7 @@ Warning: The `duckiebot-interface` container can appear under different names, e
 
 We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
 
-    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image duckietown/dt-core:daffy-arm32v7
+    laptop $ dts duckiebot demo --demo_name image_decoding --duckiebot_name ![DUCKIEBOT_NAME] --package_name image_processing 
 
 ### Launch the intrinsic calibration application
 
