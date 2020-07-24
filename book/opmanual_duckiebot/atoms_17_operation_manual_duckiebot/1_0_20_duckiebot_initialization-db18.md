@@ -46,7 +46,6 @@ The important options are:
     --linux-password   default: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
-    --aido             default: False # loads only the things needed for an AI-DO submission
 
 For a full list of the options, run
 
@@ -56,9 +55,7 @@ If you plan on connecting with the Duckiebot over different networks (e.g. at ho
 
     laptop $ dts init_sd_card --hostname ![hostname] --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
-If you are using a 16GB SD card, also add the `--compress` option.
-
-Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland)
+Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
 
 If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
 
@@ -133,8 +130,6 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 ![...]
 ```
 
-After some time, the **red** and the **green** LEDs of the Raspberry Pi will start to blink alternately. This means that the necessary Docker images are being extracted. When the process is finished the **red** LED will be off and the **green** will be on.
-
 Do not power the robot off (by holding the battery button) while this is in process.
 
 
@@ -151,7 +146,7 @@ missing, run `pip3 install zeroconf` and retry.
 
 The command above (`fleet discover`) will show a list of all the duckiebots
 reachable on your network. Leave this tool open, it will refresh automatically every
-second, so there is no need to manually restart it.
+second, so there is no need to manually restart it. You should see your duckiebot in a few minutes after you inserted your SD card and power on the robot.
 
 The list will look like the following.
 
