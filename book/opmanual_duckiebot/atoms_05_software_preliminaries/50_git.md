@@ -98,6 +98,14 @@ To delete a remote branch you need to push the delete command:
 
 If you are working on another branch than the master or if you forked a repository and want to propose changes you made into the master, you can open a so-called `pull-request`. In order to do so, press the corresponding tab in the dashboard of a repository and then press the green button `New pull request`. You will be asked which branch from which fork you want to merge.
 
+### Keep your password stored locally
+
+If you are setting up Github on your own personal computer, and you use two factor authentication, it might be time consuming to configure that every time you need to provide git credentials. Instead, you can have the computer to remember your password. To do that, you can:
+
+    $ git config --global credential.helper store
+
+Please note you should only do that if this is your personal computer!
+
 ## Submitting issues
 
 If you are experiencing issues with any code or content of a repository (such as this operating manual you are reading right now), you can submit issues. For doing so go to the dashboard of the corresponding repository and press the `Issues` tab where you can open a new request.
