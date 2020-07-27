@@ -1,5 +1,9 @@
 # Docker troubleshooting {#setup-troubleshooting-docker status=ready}
 
+## I need to pull dt-core to run
+
+Note that dt-core is architecture dependent. If you want to have the image run on your computer, you should use `:daffy-amd64` tag, and if you want it to run on your duckiebot, you should use `:daffy-arm32v7` tag.
+
 ## I stopped all the containers and now Portainer or other basic containers are not available
 
 You need to `ssh` in your Duckiebot and start the containers manually.
