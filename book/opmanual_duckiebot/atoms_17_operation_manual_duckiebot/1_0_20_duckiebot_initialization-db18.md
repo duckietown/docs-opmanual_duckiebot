@@ -35,30 +35,38 @@ Warning: this currently only works on Ubuntu. Mac is not supported.
 
 Plug the SD card in the computer using the card reader.
 
+Warning: If your SD card have write protection switch on the side of the SD card, make sure it is set to write mode.
+
 Then initalize it by running the command:
 
     laptop $ dts init_sd_card --hostname ![hostname] [options]
 
-The important options are:
+The basic options are:
 
-    --hostname         required
-    --linux-username   default: duckie
-    --linux-password   default: quackquack
+    --hostname         Hostname of the device to flash. This is required.
+    --linux-username   Username of the linux user to create on the flashed
+                       device The default is: duckie 
+    --linux-password   Password to access the linux user profile created on
+                       the flashed device The default is: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
-    --aido             default: False # loads only the things needed for an AI-DO submission
-
-For a full list of the options, run
-
-    laptop $ dts init_sd_card --help
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
     laptop $ dts init_sd_card --hostname ![hostname] --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
-If you are using a 16GB SD card, also add the `--compress` option.
+Default for watchtower and traffic_light is no wifi config. Default for other robot types is "duckietown:quackquack" Each network defined in the list can have between 1 and 3 arguments: 
 
-Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland)
+      -- Open networks (no password) network: "ssid"
+      -- PSK (Pre-shared key) protected networks (no password) network: "ssid:psk" 
+      -- EAP (Extensible Authentication Protocol) protected networks network: "ssid:username:password"
+
+
+For a full list of the options, run
+
+    laptop $ dts init_sd_card --help
+
+Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
 
 If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
 
@@ -133,8 +141,6 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 ![...]
 ```
 
-After some time, the **red** and the **green** LEDs of the Raspberry Pi will start to blink alternately. This means that the necessary Docker images are being extracted. When the process is finished the **red** LED will be off and the **green** will be on.
-
 Do not power the robot off (by holding the battery button) while this is in process.
 
 
@@ -151,7 +157,7 @@ missing, run `pip3 install zeroconf` and retry.
 
 The command above (`fleet discover`) will show a list of all the duckiebots
 reachable on your network. Leave this tool open, it will refresh automatically every
-second, so there is no need to manually restart it.
+second, so there is no need to manually restart it. You should see your duckiebot in a few minutes after you inserted your SD card and power on the robot.
 
 The list will look like the following.
 
