@@ -14,9 +14,7 @@ Requires: Duckietown Token set up as in [](#dt-account).
 
 Results: A correctly configured Duckiebot SD card in configuration `DB18`. After assembling the Duckiebot, this will allow you to start it, connect to the internet, and get going.
 
-
 </div>
-
 
 ## Choose a name for your robot {#chose-robot-hostname}
 
@@ -27,7 +25,6 @@ A valid `hostname` satisfies all the following requirements:
 - it is lowercase
 - it starts with a letter
 - it contains only letters, numbers, and underscores
-
 
 ## Burn the SD card {#burn-sd-card}
 
@@ -47,7 +44,7 @@ The basic options are:
 
     --hostname         Hostname of the device to flash. This is required.
     --linux-username   Username of the linux user to create on the flashed
-                       device The default is: duckie 
+                       device The default is: duckie
     --linux-password   Password to access the linux user profile created on
                        the flashed device The default is: quackquack
     --wifi             default: duckietown:quackquack
@@ -57,19 +54,19 @@ If you plan on connecting with the Duckiebot over different networks (e.g. at ho
 
     laptop $ dts init_sd_card --hostname ![hostname] --wifi duckietown:quackquack,myhomenetwork:myhomepassword,myuninetwork:myunipassword
 
-Default for watchtower and traffic_light is no wifi config. Default for other robot types is "duckietown:quackquack" Each network defined in the list can have between 1 and 3 arguments: 
+Default for watchtower and traffic_light is no wifi config. Default for other robot types is "duckietown:quackquack" Each network defined in the list can have between 1 and 3 arguments:
 
       - Open networks (no password) network: "ssid"
-      - PSK (Pre-shared key) protected networks (no password) network: "ssid:psk" 
+      - PSK (Pre-shared key) protected networks (no password) network: "ssid:psk"
       - EAP (Extensible Authentication Protocol) protected networks network: "ssid:username:password"
 
-If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
+If you want to add additional networks later and you have to edit the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
 
 Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
 
 Additional options for init_sd_card are provided, however, it is recommended that you only use those if you know what you are doing:
 
-    --type             The type of your device. 
+    --type             The type of your device.
     --configuration    The configuration of your robot. This is associated with `--type` option
     --no-cache         Uses "fresh" image instead of the cached one.
     --workdir          Temporary working directory.
@@ -80,7 +77,7 @@ For a full list of the options, run
 
     laptop $ dts init_sd_card --help
 
-After you run the  `dts init_sd_card` command with your options follow the instructions that appear on screen:
+After you run the `dts init_sd_card` command with your options follow the instructions that appear on screen:
 
 - Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdc`) by pressing <kbd>Enter</kbd>.
 
@@ -100,7 +97,7 @@ sda      8:0    0 298.1G  0 disk
 sdb      8:16   1  29.1G  0 disk
 ├─sdb1   8:17   1    64M  0 part
 └─sdb2   8:18   1  29.1G  0 part
-sr0     11:0    1  1024M  0 rom  
+sr0     11:0    1  1024M  0 rom
 
 ```
 
@@ -150,7 +147,7 @@ laptop $ ping ![hostname].local
 
 Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use "Bridged" connection (typically NAT is used by default).
 
-You should see output similar to the following:  
+You should see output similar to the following:
 
 ```
 PING ![hostname].local (![X.X.X.X]): 56 data bytes
@@ -160,7 +157,6 @@ PING ![hostname].local (![X.X.X.X]): 56 data bytes
 ```
 
 Do not power the robot off (by holding the battery button) while this is in process.
-
 
 ## Monitor the progress of the first boot {#monitor-first-boot}
 
@@ -185,8 +181,8 @@ The list will look like the following.
 
 After you turn your Duckiebot ON with a new SD card in, you will see your
 Duckiebot appear in the list within approximately 2 minutes.
-The column you will need to monitor is *Dashboard*. Wait until the
-Dashboard is *Up* as shown in the image below.
+The column you will need to monitor is _Dashboard_. Wait until the
+Dashboard is _Up_ as shown in the image below.
 
 <div figure-id="fig:fleet-discover-dashboard-up" figure-caption="Output of 'dts fleet discover' (Dashboard Up)">
      <img src="fleet_discover_dashboard_up.jpg" style='width: 34em'/>
@@ -212,7 +208,6 @@ Symptom: The LEDs light up in a variety of colors when the battery is plugged in
 
 Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#setup-troubleshooting-boot).
 
-
 ## SSH to the Duckiebot {#setup-duckiebot-ssh}
 
 Next, try to log in using SSH, using
@@ -229,7 +224,6 @@ If it doesn't work, check that `~/.ssh/config` contains something like:
         IdentityFile ~/.ssh/DT18_key_00
 
 This configuration was added by the `init_sd_card` command.
-
 
 ## Securing your Duckiebot
 
