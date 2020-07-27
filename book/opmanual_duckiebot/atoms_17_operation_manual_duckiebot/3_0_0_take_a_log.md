@@ -25,7 +25,7 @@ See: To mount your USB see [here](+software_reference#mounting-usb).
 
 ### Option: Minimal Logging on the Duckiebot
 
-    laptop $ dts duckiebot demo --demo_name make_log_docker --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
+    laptop $ dts duckiebot demo --demo_name make_log_docker --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy-arm32v7
 
 This will only log the imagery, camera_info, the control commands and a few other essential things.
 
@@ -34,7 +34,7 @@ This will only log the imagery, camera_info, the control commands and a few othe
 
 To log everything that is being published, run the base container on the Duckiebot:
 
-    laptop $ dts duckiebot demo --demo_name make_log_full_docker --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy
+    laptop $ dts duckiebot demo --demo_name make_log_full_docker --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos --image duckietown/dt-core:daffy-arm32v7
 
 
 ## Stop logging

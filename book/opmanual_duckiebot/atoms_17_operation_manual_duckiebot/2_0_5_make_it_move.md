@@ -114,6 +114,7 @@ Otherwise, you can use the following instructions to run the demo with
 keyboard control.
 -->
 
+<!--
 ## Option 2: Using the dashboard {#setup-ros-websocket-image status=ready}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
@@ -153,4 +154,4 @@ You can now use the arrows on your keyboard to drive your Duckiebot.
 The page contains 4 blocks by default.
 Feel free to drag them around and rearrange them as you please.
 You can also use the menu button of each block to resize them.
-
+-->
