@@ -33,6 +33,8 @@ A valid `hostname` satisfies all the following requirements:
 
 Warning: this currently only works on Ubuntu. Mac is not supported.
 
+Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
+
 Plug the SD card in the computer using the card reader.
 
 Warning: If your SD card have write protection switch on the side of the SD card, make sure it is set to write mode.
@@ -57,22 +59,30 @@ If you plan on connecting with the Duckiebot over different networks (e.g. at ho
 
 Default for watchtower and traffic_light is no wifi config. Default for other robot types is "duckietown:quackquack" Each network defined in the list can have between 1 and 3 arguments: 
 
-      -- Open networks (no password) network: "ssid"
-      -- PSK (Pre-shared key) protected networks (no password) network: "ssid:psk" 
-      -- EAP (Extensible Authentication Protocol) protected networks network: "ssid:username:password"
+      - Open networks (no password) network: "ssid"
+      - PSK (Pre-shared key) protected networks (no password) network: "ssid:psk" 
+      - EAP (Extensible Authentication Protocol) protected networks network: "ssid:username:password"
 
+If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
+
+Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
+
+Additional options for init_sd_card are provided, however, it is recommended that you only use those if you know what you are doing:
+
+    --type             The type of your device. 
+    --configuration    The configuration of your robot. This is associated with `--type` option
+    --no-cache         Uses "fresh" image instead of the cached one.
+    --workdir          Temporary working directory.
+    --device           The device you want to flash the image to
+    --steps            Steps to perform
 
 For a full list of the options, run
 
     laptop $ dts init_sd_card --help
 
-Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
-
-If you want to add additional networks later and you have to edit  the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
-
 After you run the  `dts init_sd_card` command with your options follow the instructions that appear on screen:
 
-- Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdb`) by pressing <kbd>Enter</kbd>.
+- Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdc`) by pressing <kbd>Enter</kbd>.
 
 Note: If you don't know where to find the drive path, you can utilize the command line `lsblk`. This command should show you all the disks on the machine.
 
@@ -94,19 +104,27 @@ sr0     11:0    1  1024M  0 rom
 
 ```
 
-Note: using above listing as an example, you should be choosing the disk name (sdb), not the partition name (sdb1, sdb2) for etcher to capture the whole disk.
+Using above listing as an example, you should be choosing the disk name (sdb), not the partition name (sdb1, sdb2) for etcher to capture the whole disk.
 
 - You will then have to enter your laptop's `sudo` password to run Etcher.
 
 - When asked "Are you sure?" select <kbd>y</kbd>.
 
-Note: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
+Warning: Always be careful when selecting disk to be imaged. You don't want to lose your computer's system partition!
 
-If the procedure fails with errors about directories not mounted, be patient and do it again, this time leaving the SD card in.
-
-On successful end of the procedure, you can eject (safe remove) the drives and remove the SD card from your laptop.
+On successful end of the procedure, the drives will be automatically ejected and you can just remove the SD card from your laptop.
 
 ### Troubleshooting
+
+Symptom: The SD card doesn't seem to be written.
+
+Symptom: The SD card process seems extremely fast, and there is no data on my SD card.
+
+Resolution: Check if your SD card is good, and check if it has a write protection switch and it is in read-only mode.
+
+Symptom: On Ubuntu 16, it prompts with errors about directories not mounted
+
+Resolution: If the procedure fails with errors about directories not mounted, be patient and do it again, this time leaving the SD card in.
 
 Symptom: The flashing procedure failes with a `Bad archive` error when trying to flash the Hypriot image
 
@@ -182,76 +200,7 @@ URL `http://![hostname].local/`. You will see the following page,
 </div>
 
 This is the dashboard of your Duckiebot. The Dashboard is built using a
-framework called \\compose\\. We will now configure our Duckiebot for first
-use.
-
-
-### Steps 1, 2
-
-By default, \\compose\\ uses Google Sign-In to authenticate the users.
-In Duckietown, we use authentication based on personal tokens. You should be able to
-retrieve yours by visiting the page:
-
-> [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
-
-Since we are not going to use Google Sign-In, you can click on **Skip**.
-This will let you skip the first two steps and move straight to **Step 3**.
-Do not worry about creating an administrator account (Step 2) for now,
-the Duckietown package for \\compose\\ will create one for us as soon as we
-authenticate for the first time using our personal token.
-
-
-### Step 3
-
-At this point, the **Step 3** tab should be open, as shown in the image below.
-
-<div figure-id="fig:compose_first_setup_step3" figure-caption="">
-  <img src="compose_first_setup_step3.png" style='width: 34em'/>
-</div>
-
-You can complete this step as you please.
-Feel free to update all the fields, and remember, you can always update your
-choices through the page **Settings** after you authenticate
-using your personal token.
-
-When you are happy with your choices, click on **Next**.
-
-
-### Step 4
-
-The **Step 4: Package: Duckietown - Duckiebot** tab should now be open, as shown below.
-If you see the message **Waiting for the device-loader container**, please wait.
-
-<div figure-id="fig:dashboard_device_loader_progress" figure-caption="">
-  <img src="dashboard_device_loader_progress.png" style='width: 34em'/>
-</div>
-
-Now, sit back, relax, and enjoy your coffee! This will take a while.
-Keep monitoring the temperature and disk bars, if the temperature is too high
-(more than 3/4 of the bar) make sure your robot is placed in an area where
-it can get enough air. If the disk bar reaches the maximum, it means that the
-SD card is full, upgrade to a bigger one or reflash using the `--compress` flag.
-
-When all the unpacking is done and your Duckiebot is ready to go,
-you will see the following message appear on the Dashboard.
-
-<div figure-id="fig:dashboard_device_loader_finished" figure-caption="">
-  <img src="dashboard_device_loader_finished.png" style='width: 34em'/>
-</div>
-
-Click **Next** to continue.
-
-
-### Step 5
-
-The **Step 5: Complete** tab should now be open, as shown below.
-
-<div figure-id="fig:compose_first_setup_step5" figure-caption="">
-  <img src="compose_first_setup_step5.png" style='width: 34em'/>
-</div>
-
-You can go ahead and press **Finish**.
-
+framework called \\compose\\. You will see how to configure it in [](#duckiebot-dashboard-setup)
 
 ### Troubleshooting
 
@@ -308,10 +257,8 @@ To turn off the Duckiebot, use:
 
 Then wait 30 seconds.
 
-
 Warning: If you disconnect the power before shutting down properly using `shutdown`,
 the system might get corrupted.
-
 
 Then disconnect the USB cable (from the large connector next to the battery).
 

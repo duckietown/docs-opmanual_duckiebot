@@ -31,6 +31,74 @@ Visit the
 [official documentation page](http://compose.afdaniele.com/docs/latest/index)
 for further information about \\compose\\.
 
+## Setting up dashboard {#init-dashboard}
+
+### Steps 1, 2
+
+By default, \\compose\\ uses Google Sign-In to authenticate the users.
+In Duckietown, we use authentication based on personal tokens. You should be able to
+retrieve yours by visiting the page:
+
+> [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
+
+Since we are not going to use Google Sign-In, you can click on **Skip**.
+This will let you skip the first two steps and move straight to **Step 3**.
+Do not worry about creating an administrator account (Step 2) for now,
+the Duckietown package for \\compose\\ will create one for us as soon as we
+authenticate for the first time using our personal token.
+
+
+### Step 3
+
+At this point, the **Step 3** tab should be open, as shown in the image below.
+
+<div figure-id="fig:compose_first_setup_step3" figure-caption="">
+  <img src="compose_first_setup_step3.png" style='width: 34em'/>
+</div>
+
+You can complete this step as you please.
+Feel free to update all the fields, and remember, you can always update your
+choices through the page **Settings** after you authenticate
+using your personal token.
+
+When you are happy with your choices, click on **Next**.
+
+
+### Step 4
+
+The **Step 4: Package: Duckietown - Duckiebot** tab should now be open, as shown below.
+If you see the message **Waiting for the device-loader container**, please wait.
+
+<div figure-id="fig:dashboard_device_loader_progress" figure-caption="">
+  <img src="dashboard_device_loader_progress.png" style='width: 34em'/>
+</div>
+
+Now, sit back, relax, and enjoy your coffee! This will take a while.
+Keep monitoring the temperature and disk bars, if the temperature is too high
+(more than 3/4 of the bar) make sure your robot is placed in an area where
+it can get enough air. If the disk bar reaches the maximum, it means that the
+SD card is full, upgrade to a bigger one or reflash using the `--compress` flag.
+
+When all the unpacking is done and your Duckiebot is ready to go,
+you will see the following message appear on the Dashboard.
+
+<div figure-id="fig:dashboard_device_loader_finished" figure-caption="">
+  <img src="dashboard_device_loader_finished.png" style='width: 34em'/>
+</div>
+
+Click **Next** to continue.
+
+
+### Step 5
+
+The **Step 5: Complete** tab should now be open, as shown below.
+
+<div figure-id="fig:compose_first_setup_step5" figure-caption="">
+  <img src="compose_first_setup_step5.png" style='width: 34em'/>
+</div>
+
+You can go ahead and press **Finish**.
+
 
 ## First Login
 
