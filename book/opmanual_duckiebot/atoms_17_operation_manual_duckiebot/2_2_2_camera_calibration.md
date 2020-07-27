@@ -1,7 +1,6 @@
 # Camera calibration and validation {#camera-calib status=ready}
 
 This section describes the instrinsics and extrinsics calibration procedures.
-
 <div class='requirements' markdown='1'>
 
 Requires: You can see the camera image on the laptop. The procedure is documented in
@@ -44,18 +43,6 @@ This is not 100% necessary.
 Every camera is a little bit different so we need to do a camera calibration procedure to account for the small manufacturing discrepancies.
 This process will involve displaying a predetermined pattern to the camera and using it to solve for the camera parameters. For more information on the details see [the slides](https://github.com/duckietown/lectures/blob/master/1_ideal/25_computer_vision/cv_calibration.pdf).
 The procedure is basically a wrapper around the [ROS camera calibration tool](http://wiki.ros.org/camera_calibration).
-
-### Publish raw imagery
-
-First, check if your `duckiebot-interface` container is running. If it is not, start it with
-
-    laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-arm32v7
-    
-Warning: The `duckiebot-interface` container can appear under different names, e.g. `dt18_03_roscore_duckiebot-interface_1`. 
-
-We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
-
-    laptop $ dts duckiebot demo --demo_name image_decoding --duckiebot_name ![DUCKIEBOT_NAME] --package_name image_processing 
 
 ### Launch the intrinsic calibration application
 
