@@ -25,7 +25,6 @@ Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you
 
 ## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
 
-
 If you would like to move your robot using your laptop, you can run:
 
     $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
@@ -63,7 +62,7 @@ There is some weird reason that messages published on Mac inside the container d
 
 For those that don't want or can't do the above where a window pops up, do the following (which will run directly on the robot): 
 
-    laptop $ dts duckiebot keyboard_control ![hostname] --cli --base_image duckietown/dt-core:daffy
+    laptop $ dts duckiebot keyboard_control ![hostname] --cli --base_image duckietown/dt-core
 
 
 ### Troubleshooting
@@ -84,7 +83,7 @@ Resolution: One of the base images is out of date
 
 Pull the base images on the Duckiebot:
 
-    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:daffy
+    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:daffy-arm32v7
 
 and on the laptop:
 
