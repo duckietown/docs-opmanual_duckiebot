@@ -66,6 +66,9 @@ and look at the output to find the Duckiebot interface container and verify that
 
 If that image is not running, you should manually start that or check to see if you `init_sd_card` procedure was correct.
 
+To manually start the `duckiebot-interface`, do: 
+
+    laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-arm32v7
 
 ## Viewing the image stream on the Dashboard {#image-dashboard status=ready}
 
