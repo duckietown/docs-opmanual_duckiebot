@@ -126,3 +126,50 @@ pre-installed.
 
 Take your time to visit all the pages and get comfortable with the platform.
 We will discuss the functionalities offered by each page in the next sections.
+
+
+## Drive your duckiebot via dashboard {#drive-dashboard status=beta}
+
+<!--
+## Option 2: Using the dashboard {#setup-ros-websocket-image status=ready}
+
+If you followed the instructions in [](#duckiebot-dashboard-setup), you
+should have access to the Duckiebot dashboard.
+
+You can open the browser and visit the page `http://![hostname].local/mission-control`.
+
+This is the Mission Control page.
+It is the page that lets you monitor and control your Duckiebot.
+The top of the page should be similar to the following image,
+
+
+<div figure-id="fig:dashboard_mission_control_auto" figure-caption="">
+  <img src="dashboard_mission_control_auto.png" style='width: 35em'/>
+</div>
+
+
+The first thing to check to make sure that everything we have done so far
+is correct, is the status of the **Bridge**, in the top-right corner of the page.
+The label should show the status "**Bridge: Connected**" (as shown in the image above).
+If the indicator reads "**Bridge: Closed**", it means that something went wrong
+while launching the ROS websocket node above. In that case, start again from
+the beginning of this section.
+
+Note: Don't worry if one of the blocks is called "Camera" but you
+don't see an image. We will get to that later.
+
+This page will show you lateral and angular speed of your robot, and
+a plot of left and right motor speed. Toggle the **Take over** switch
+in the top-right corner of the page to gain control of your robot.
+You will see that the background of the page will highlight and the
+central plot will start moving.
+
+You can now use the arrows on your keyboard to drive your Duckiebot.
+
+**Did you know?**
+The page contains 4 blocks by default.
+Feel free to drag them around and rearrange them as you please.
+You can also use the menu button of each block to resize them.
+-->
+
+## Monitor your duckiebot status {#drive-dashboard status=beta}
