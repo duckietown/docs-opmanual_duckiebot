@@ -77,9 +77,7 @@ For a full list of the options, run
 
     laptop $ dts init_sd_card --help
 
-After you run the `dts init_sd_card` command with your options follow the instructions that appear on screen:
-
-- Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdc`) by pressing <kbd>Enter</kbd>.
+After you run the `dts init_sd_card` command with your options follow the instructions that appear on screen. Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdc`) by pressing <kbd>Enter</kbd>.
 
 Note: If you don't know where to find the drive path, you can utilize the command line `lsblk`. This command should show you all the disks on the machine.
 

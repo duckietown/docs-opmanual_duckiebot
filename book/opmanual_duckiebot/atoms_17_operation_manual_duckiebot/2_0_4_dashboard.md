@@ -66,32 +66,7 @@ When you are happy with your choices, click on **Next**.
 
 ### Step 4
 
-The **Step 4: Package: Duckietown - Duckiebot** tab should now be open, as shown below.
-If you see the message **Waiting for the device-loader container**, please wait.
-
-<div figure-id="fig:dashboard_device_loader_progress" figure-caption="">
-  <img src="dashboard_device_loader_progress.png" style='width: 34em'/>
-</div>
-
-Now, sit back, relax, and enjoy your coffee! This will take a while.
-Keep monitoring the temperature and disk bars, if the temperature is too high
-(more than 3/4 of the bar) make sure your robot is placed in an area where
-it can get enough air. If the disk bar reaches the maximum, it means that the
-SD card is full, upgrade to a bigger one or reflash using the `--compress` flag.
-
-When all the unpacking is done and your Duckiebot is ready to go,
-you will see the following message appear on the Dashboard.
-
-<div figure-id="fig:dashboard_device_loader_finished" figure-caption="">
-  <img src="dashboard_device_loader_finished.png" style='width: 34em'/>
-</div>
-
-Click **Next** to continue.
-
-
-### Step 5
-
-The **Step 5: Complete** tab should now be open, as shown below.
+The **Step 4: Complete** tab should now be open, as shown below.
 
 <div figure-id="fig:compose_first_setup_step5" figure-caption="">
   <img src="compose_first_setup_step5.png" style='width: 34em'/>
@@ -140,7 +115,7 @@ be redirected to your profile page, similar to the one shown below.
   <img src="dashboard_profile_page_full.png" style='width: 35em'/>
 </div>
 
-As you might have noticed, the top bar now shows many more pages. Some pages are
+As you might have noticed, the left hand side bar now shows many more pages. Some pages are
 accessible by all users, others only by administrators (e.g., Settings,
 Package Store, Debug).
 
