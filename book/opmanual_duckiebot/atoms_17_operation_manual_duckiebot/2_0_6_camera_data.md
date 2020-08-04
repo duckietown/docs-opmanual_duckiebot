@@ -1,6 +1,5 @@
 # See what your Duckiebot sees {#read-camera-data status=ready}
 
-
 <div class='requirements' markdown='1'>
 
 Requires: A Duckiebot in `DB18` configuration.
@@ -13,20 +12,16 @@ Result: You can see the output of the camera.
 
 </div>
 
-
 ## Check the camera hardware
 
 It might be useful to do a quick camera hardware check as documented in [](#howto-camera-db18).
 
-
 ## Viewing an Image Stream on Your Laptop {#view-image-using-rqt-image-view}
-
 
 The imagery is streaming from your Duckiebot by default on startup.
 To see it, run a base image on your laptop with:
 
     laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
-
 
 The container will start. At the prompt, run:
 
@@ -48,9 +43,9 @@ Resolution: Sometimes window does not successfully spawn on the first try. You c
 
 Symptom: I don't see any image
 
-Reolution: use `rostopic hz /![hostname]/camera_node/image/compressed` and see if the image is being published. Typically, the image publish rate should be near 30hz. 
+Reolution: use `rostopic hz /![hostname]/camera_node/image/compressed` and see if the image is being published. Typically, the image publish rate should be near 30hz.
 
-See also: For more information about `rostopic`, see [](+software_reference#rostopic).
+See also: For more information about `rostopic`, see [](#using-no-vnc).
 
 Sumptom: My image topic is not being published.
 
@@ -66,7 +61,7 @@ and look at the output to find the Duckiebot interface container and verify that
 
 If that image is not running, you should manually start that or check to see if you `init_sd_card` procedure was correct.
 
-To manually start the `duckiebot-interface`, do: 
+To manually start the `duckiebot-interface`, do:
 
     laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-arm32v7
 
@@ -75,7 +70,7 @@ To manually start the `duckiebot-interface`, do:
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
 
-Open the browser and visit the page `http://![hostname].local/dashboard/robot/mission_control`.
+Open the browser and visit the page `http://![hostname].local/`. Login using your duckietown token, and select robot panel on the left hand side navigation bar. Once selected you should see mission control page there. If you are unfamiliar with the dasboard, you can find more information here: [](#dashboard-overview)
 
 The bottom of the page shows the camera block.
 You should be able to see the camera feed in the camera block,

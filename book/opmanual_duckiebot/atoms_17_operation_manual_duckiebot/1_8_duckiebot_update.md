@@ -23,7 +23,7 @@ If your duckiebot has not been used for a while, and there has been new image re
 You will see a prompt similar to this:
 
 <div figure-id="fig:dt-autoupdate.png" figure-caption="Auto Update Duckiebot Container">
-     <img src="dt-autoupdate.png.png" style='width: 25em'/>
+     <img src="dt-autoupdate.png" style='width: 25em'/>
 </div>
 
 Type in `y` for yes to continue updating. If you would like to abort, you can use CTRL-C to stop the update.

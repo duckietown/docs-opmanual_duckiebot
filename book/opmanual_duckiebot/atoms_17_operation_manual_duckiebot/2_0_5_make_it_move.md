@@ -62,8 +62,7 @@ There is some weird reason that messages published on Mac inside the container d
 
 For those that don't want or can't do the above where a window pops up, do the following (which will run directly on the robot): 
 
-    laptop $ dts duckiebot keyboard_control ![hostname] --cli --base_image duckietown/dt-core
-
+    laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
 ### Troubleshooting
 

@@ -2,7 +2,6 @@
 
 This section shows how to install the Duckietown dashboard on the Duckiebot using Docker.
 
-
 <div class='requirements' markdown='1'>
 
 Requires: Laptop configured, according to [](#laptop-setup).
@@ -14,7 +13,6 @@ Requires: You have configured Docker communication as documented in [](#docker-s
 Results: You have access to a web-based Dashboard for your Duckiebot.
 
 </div>
-
 
 ## The \compose\ platform {#compose-platform}
 
@@ -47,7 +45,6 @@ Do not worry about creating an administrator account (Step 2) for now,
 the Duckietown package for \\compose\\ will create one for us as soon as we
 authenticate for the first time using our personal token.
 
-
 ### Step 3
 
 At this point, the **Step 3** tab should be open, as shown in the image below.
@@ -63,7 +60,6 @@ using your personal token.
 
 When you are happy with your choices, click on **Next**.
 
-
 ### Step 4
 
 The **Step 4: Complete** tab should now be open, as shown below.
@@ -73,7 +69,6 @@ The **Step 4: Complete** tab should now be open, as shown below.
 </div>
 
 You can go ahead and press **Finish**.
-
 
 ## First Login
 
@@ -127,26 +122,50 @@ pre-installed.
 Take your time to visit all the pages and get comfortable with the platform.
 We will discuss the functionalities offered by each page in the next sections.
 
+## What is in the dashboard? {#dashboard-overview status=ready}
 
-## Drive your duckiebot via dashboard {#drive-dashboard status=beta}
+To see all the available components within the dashboard, you will need to first login to the dashboard. Inside the dashboard, you will see a navigation panel on your left hand side. There are 7 subpages of dashboard. They are:
 
-<!--
-## Option 2: Using the dashboard {#setup-ros-websocket-image status=ready}
+- Portainer           A nice GUI tool for seeing all containers running on duckiebot
+- Robot               A summary page for the robot status
+- Users               _Advanced Feature:_ Allow multiple student using one duckiebot
+- Profile             Information for your duckietown account
+- Package Store       A package store contain all available packages for your duckiebot
+- Settings            _Advanced Feature:_ Change configuration of your duckiebot dashboard manually
+- Restful API         _Advanced Feature:_ A description of restful API.
+
+### Portainer {#dashboard-portainer status=ready}
+
+Portainer is a provided tool for managing all the docker containers that are running on the duckiebot. Using portainer tools, you can quickly see the status of the containers on your duckiebot.
+
+For more information about portainer, you can find them in [this](#docker-setup-portainer-interface) page.
+
+### Robot Information {#dashboard-robot-overview status=ready}
+
+In this page, you can find information for your robot, including your robot name, type, configuration, and critical information such as CPU usage, temperature, and other crucial robot vitals.
+
+### Mission Control {#dashboard-mission-control status=ready}
+
+
+
+### Robot Health {#dashboard-robot-health status=ready}
+
+### Robot ROS information {#dashboard-robot-architecture status=ready}
+
+## Dashboard Package Store {#dashboard-update status=beta}
+
+## Drive your duckiebot via dashboard {#drive-dashboard status=draft}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
-
-You can open the browser and visit the page `http://![hostname].local/mission-control`.
 
 This is the Mission Control page.
 It is the page that lets you monitor and control your Duckiebot.
 The top of the page should be similar to the following image,
 
-
 <div figure-id="fig:dashboard_mission_control_auto" figure-caption="">
   <img src="dashboard_mission_control_auto.png" style='width: 35em'/>
 </div>
-
 
 The first thing to check to make sure that everything we have done so far
 is correct, is the status of the **Bridge**, in the top-right corner of the page.
@@ -170,6 +189,3 @@ You can now use the arrows on your keyboard to drive your Duckiebot.
 The page contains 4 blocks by default.
 Feel free to drag them around and rearrange them as you please.
 You can also use the menu button of each block to resize them.
--->
-
-## Monitor your duckiebot status {#drive-dashboard status=beta}
