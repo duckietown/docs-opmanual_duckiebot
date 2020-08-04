@@ -58,6 +58,7 @@ You should see a display screen open on the laptop ([](#fig:intrinsic_callibrati
      <img src="intrinsic_callibration_pre.png" style='width: 30em'/>
 </div>
 
+Note: If you only see a window with black screen during the startup, try to resize the window manually using cursor, and you should see the window content correctly. 
 
 ### Calibration dance
 
