@@ -112,6 +112,7 @@ If you are running the file server through docker (which runs by default) you ca
 
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
 
+Additionally, you can access your calibration files through dashboard. Read more [here](#dashboard-files)
 
 ### Keeping your calibration valid
 

@@ -126,46 +126,95 @@ We will discuss the functionalities offered by each page in the next sections.
 
 To see all the available components within the dashboard, you will need to first login to the dashboard. Inside the dashboard, you will see a navigation panel on your left hand side. There are 7 subpages of dashboard. They are:
 
-- Portainer           A nice GUI tool for seeing all containers running on duckiebot
-- Robot               A summary page for the robot status
-- Users               _Advanced Feature:_ Allow multiple student using one duckiebot
-- Profile             Information for your duckietown account
-- Package Store       A package store contain all available packages for your duckiebot
-- Settings            _Advanced Feature:_ Change configuration of your duckiebot dashboard manually
-- Restful API         _Advanced Feature:_ A description of restful API.
+    PAGE NAME           DESCRIPTION
+    Portainer           A nice GUI tool for seeing all containers running on duckiebot
+    Robot               A summary page for the robot status
+    Users               Advanced Feature: Allow multiple student using one duckiebot
+    Profile             Information for your duckietown account
+    Package Store       A package store contain all available packages for your duckiebot
+    Settings            Advanced Feature: Change configuration of your duckiebot dashboard manually
+    Restful API         Advanced Feature: A description of restful API.
 
-### Portainer {#dashboard-portainer status=ready}
+## Portainer {#dashboard-portainer status=ready}
 
 Portainer is a provided tool for managing all the docker containers that are running on the duckiebot. Using portainer tools, you can quickly see the status of the containers on your duckiebot.
 
+<div figure-id="fig:dashboard-portainer" figure-caption="">
+  <img src="dashboard-portainer.png" style='width: 35em'/>
+</div>
+
+You can select `containers` to see all the containers on the duckiebot.
+
 For more information about portainer, you can find them in [this](#docker-setup-portainer-interface) page.
 
-### Robot Information {#dashboard-robot-overview status=ready}
+## Robot Page {#dashboard-robot status=ready}
+
+In this page you will find several subpage that helps you see and understand the duckiebot status. The default page is `Info`.
+
+### Info {#dashboard-robot-overview status=ready}
 
 In this page, you can find information for your robot, including your robot name, type, configuration, and critical information such as CPU usage, temperature, and other crucial robot vitals.
 
+<div figure-id="fig:dashboard_info" figure-caption="">
+  <img src="dashboard_info.png" style='width: 35em'/>
+</div>
+
 ### Mission Control {#dashboard-mission-control status=ready}
 
-
-
-### Robot Health {#dashboard-robot-health status=ready}
-
-### Robot ROS information {#dashboard-robot-architecture status=ready}
-
-## Dashboard Package Store {#dashboard-update status=beta}
-
-## Drive your duckiebot via dashboard {#drive-dashboard status=draft}
-
-If you followed the instructions in [](#duckiebot-dashboard-setup), you
-should have access to the Duckiebot dashboard.
-
 This is the Mission Control page.
-It is the page that lets you monitor and control your Duckiebot.
-The top of the page should be similar to the following image,
 
 <div figure-id="fig:dashboard_mission_control_auto" figure-caption="">
   <img src="dashboard_mission_control_auto.png" style='width: 35em'/>
 </div>
+
+In this page you can see what the duckiebot sees and you can see lateral and angular speed of your robot, and a plot of left and right motor speed.It is the page that lets you monitor and control your Duckiebot. The top of the page should be similar to the following image,
+
+Note: If you do not see the camera view, make sure you are accessing the dashboard using `https://ROBOT_HOSTNAME.local/` instead of directly accessing the dashboard using robot IP address.
+
+**Did you know?**
+The page contains 4 blocks by default.
+Feel free to drag them around and rearrange them as you please.
+You can also use the menu button of each block to resize them.
+
+### Health {#dashboard-robot-health status=ready}
+
+This is the Health Page. It will show you a plot of the robot's health status such as temperature, frequency, and CPU usage. It is a good debug too to watch your code's resource usage.
+
+<div figure-id="fig:dashboard-health" figure-caption="">
+  <img src="dashboard-health.png" style='width: 35em'/>
+</div>
+
+### Architecture {#dashboard-robot-architecture status=ready}
+
+This is the Architecture Page. It will allow you to visualize all the published ROS topics and see their details. It is a useful tool to see what is running and what is not. You can also use this tool in replacement of `rqt-graph`.
+
+<div figure-id="fig:dashboard-health" figure-caption="">
+  <img src="dashboard-health.png" style='width: 35em'/>
+</div>
+
+### Software {#dashboard-software status=beta}
+
+This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dts) for more information about keeping your duckiebot up to date.
+
+<div figure-id="fig:dashboard-update" figure-caption="">
+  <img src="dashboard-update.png" style='width: 35em'/>
+</div>
+
+### Files {#dashboard-files status=ready}
+
+This is the files page. You can access your calibration result directly through this tab. You calibration are stored under `/config/calibration`. If you do not want to recalibrate everytime you re-flahsed your SD card, it is recommended to save these calibration results.
+
+Additionally, you can access configuration files duckiebot uses in this tab.
+
+<div figure-id="fig:dashboard-files" figure-caption="">
+  <img src="dashboard-files.png" style='width: 35em'/>
+</div>
+
+## Dashboard Package Store {#dashboard-update status=ready}
+
+## Drive your duckiebot via mission control {#drive-dashboard status=draft}
+
+You can remotely drive your Duckiebot through mission control page.
 
 The first thing to check to make sure that everything we have done so far
 is correct, is the status of the **Bridge**, in the top-right corner of the page.
@@ -177,15 +226,9 @@ the beginning of this section.
 Note: Don't worry if one of the blocks is called "Camera" but you
 don't see an image. We will get to that later.
 
-This page will show you lateral and angular speed of your robot, and
-a plot of left and right motor speed. Toggle the **Take over** switch
+Toggle the **Take over** switch
 in the top-right corner of the page to gain control of your robot.
 You will see that the background of the page will highlight and the
 central plot will start moving.
 
 You can now use the arrows on your keyboard to drive your Duckiebot.
-
-**Did you know?**
-The page contains 4 blocks by default.
-Feel free to drag them around and rearrange them as you please.
-You can also use the menu button of each block to resize them.

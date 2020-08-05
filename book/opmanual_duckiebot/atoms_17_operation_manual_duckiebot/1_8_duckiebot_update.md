@@ -18,7 +18,7 @@ Results: An up to date duckiebot!
 
 If your duckiebot has not been used for a while, and there has been new image released for the duckiebot, you don't necessarily need to reflash the image of the duckiebot, instead you can use `dts duckiebot update` command to update your duckiebot.
 
-    laptop $ dts duckiebot update ![DUCKIEBOT_HOSTNAME]
+    laptop $ dts duckiebot update ![DUCKIEBOT_NAME]
 
 You will see a prompt similar to this:
 
@@ -29,8 +29,3 @@ You will see a prompt similar to this:
 Type in `y` for yes to continue updating. If you would like to abort, you can use CTRL-C to stop the update.
 
 Note: This process will take a while to complete, it is recommended to take a coffee break while executing the command.
-
-## Update duckiebot container manually {#dt-manualupdate status=beta}
-
-Instead of automagically updating the container using `dts`, you can also update the container manually using docker commands.
-
