@@ -188,19 +188,19 @@ This is the Health Page. It will show you a plot of the robot's health status su
 
 This is the Architecture Page. It will allow you to visualize all the published ROS topics and see their details. It is a useful tool to see what is running and what is not. You can also use this tool in replacement of `rqt-graph`.
 
-<div figure-id="fig:dashboard-health" figure-caption="">
-  <img src="dashboard-health.png" style='width: 35em'/>
+<div figure-id="fig:dashboard-architecture" figure-caption="">
+  <img src="dashboard-architecture.png" style='width: 35em'/>
 </div>
 
-### Software {#dashboard-software status=beta}
+### Software {#dashboard-tutorial-software status=beta}
 
 This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dts) for more information about keeping your duckiebot up to date.
 
-<div figure-id="fig:dashboard-update" figure-caption="">
-  <img src="dashboard-update.png" style='width: 35em'/>
+<div figure-id="fig:dashboard-software" figure-caption="">
+  <img src="dashboard-software.png" style='width: 35em'/>
 </div>
 
-### Files {#dashboard-files status=ready}
+### Files {#dashboard-tutorial-files status=ready}
 
 This is the files page. You can access your calibration result directly through this tab. You calibration are stored under `/config/calibration`. If you do not want to recalibrate everytime you re-flahsed your SD card, it is recommended to save these calibration results.
 
