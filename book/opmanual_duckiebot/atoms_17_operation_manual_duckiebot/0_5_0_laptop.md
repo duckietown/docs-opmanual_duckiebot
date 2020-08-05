@@ -38,7 +38,7 @@ If you are running Ubuntu in a VM make sure that you are using a Bridged network
 
 Sometimes when running a VMware machine in a Mac OS host, it is neccessary to have two network adapters: *Share with my Mac* for connecting to the internet and *Bridged Networking* for connecting to the Duckiebot.
 
-TODO: give some pointers for VM.
+For more information about networking with VMware, see [here](https://wiki.ros.org/ROS/NetworkSetup)
 
 
 ## Setup for Ubuntu 18 {#laptop-setup-ubuntu-18}

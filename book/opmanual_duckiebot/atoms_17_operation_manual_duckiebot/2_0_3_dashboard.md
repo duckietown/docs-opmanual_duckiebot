@@ -192,7 +192,7 @@ This is the Architecture Page. It will allow you to visualize all the published 
   <img src="dashboard-architecture.png" style='width: 35em'/>
 </div>
 
-### Software {#dashboard-tutorial-software status=beta}
+### Software {#dashboard-tutorial-software status=ready}
 
 This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dts) for more information about keeping your duckiebot up to date.
 
@@ -210,7 +210,7 @@ Additionally, you can access configuration files duckiebot uses in this tab.
   <img src="dashboard-files.png" style='width: 35em'/>
 </div>
 
-## Dashboard Package Store {#dashboard-update status=ready}
+## Dashboard Package Store {#dashboard-update status=beta}
 
 ## Drive your duckiebot via mission control {#drive-dashboard status=draft}
 
