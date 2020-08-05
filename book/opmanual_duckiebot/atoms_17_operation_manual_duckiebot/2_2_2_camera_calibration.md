@@ -206,7 +206,7 @@ are not square. This is the rectification used in the lane localization pipeline
 
 2. In `rectified_full_ratio_auto` the image is not stretched. The camera matrix is preserved. This means that the aspect ratio is the same. In particular note the April tags are square. If you do something with April tags, you need this rectification.
 
-
+<!--
 ### Optional autonomic verification step
 
 By default, the extrinsic calibration pipeline will now ask you to put your robot on a lane to complete a verification step.
@@ -254,3 +254,4 @@ of the calibrations useless ([](#fig:calibration_95_percent_success)), and peopl
     <figcaption>In 2017, a bug in the calibration made about 5 percent
     of the calibrations useless.</figcaption>
 </div>
+-->
