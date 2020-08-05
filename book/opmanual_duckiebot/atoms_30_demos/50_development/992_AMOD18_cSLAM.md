@@ -261,7 +261,7 @@ If you managed to get all the way to here, congratulations! Quack, quack, hooray
 
 Now you can drive a Duckiebot around the city and see how it moves on the map. To control the Duckiebot manually around city use the keyboard control:
 
-    laptop $ dts duckiebot keyboard_control ![duckiebot_hostname]
+    laptop $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
 
 Look at the Diagnostics tool to ensure the messaging status of the Duckiebots are `OK` where data was received in the last 5 seconds. If the Duckiebot messages do not appear in the list, then it was likely not configured properly. Sometimes this is due to connection issues.
 

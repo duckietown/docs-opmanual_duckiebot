@@ -23,10 +23,7 @@ Follow instructions in [](#sec:rc-control) to make your robot movable either wit
 
 Now you need another container to run so that you can edit the calibrations and see the results. To get a base container with a command line you can run:
 
-
-    laptop $ dts duckiebot demo --demo_name base --duckiebot_name ![DUCKIEBOT_NAME] --image duckietown/dt-core:daffy
-
-
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
 ## Step 3: Perform the calibration
 
@@ -151,3 +148,5 @@ The first time you save the parameters, this command will create the file
 Assuming your are running an HTTP server, point your browser to
 
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/kinematics/![DUCKIEBOT_NAME].yaml`
+
+Additionally, you can access your calibration files through dashboard. Read more [here](#dashboard-tutorial-files)

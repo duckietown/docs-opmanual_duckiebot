@@ -61,6 +61,7 @@ sure to follow them in the following order.
 - [Part XIII: Upgrade to `DB17-j`](#howto-upgrade-db17-j)
 - [Part XIV: Upgrade to `DB17-d`](#howto-upgrade-db17-d)
 
+You can also refer to [this](https://docs.duckietown.org/DT17/opmanual_duckiebot/out/index.html) book for more informtaion on robot with this configuration.
 
 ### Motors {#howto-mount-motors}
 
@@ -730,8 +731,6 @@ Duckiebot to the configuration DB17-d.">
 </div>
 
 - Mount your USB drive.
-
-TODO: re-add instructions from 2017 Duckiebook version.
 
 ### FAQ {#op-assembly-db17wjd-faq}
 

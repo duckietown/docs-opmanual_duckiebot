@@ -58,6 +58,7 @@ You should see a display screen open on the laptop ([](#fig:intrinsic_callibrati
      <img src="intrinsic_callibration_pre.png" style='width: 30em'/>
 </div>
 
+Note: If you only see a window with black screen during the startup, try to resize the window manually using cursor, and you should see the window content correctly. 
 
 ### Calibration dance
 
@@ -111,6 +112,7 @@ If you are running the file server through docker (which runs by default) you ca
 
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
 
+Additionally, you can access your calibration files through dashboard. Read more [here](#dashboard-tutorial-files)
 
 ### Keeping your calibration valid
 
@@ -204,7 +206,7 @@ are not square. This is the rectification used in the lane localization pipeline
 
 2. In `rectified_full_ratio_auto` the image is not stretched. The camera matrix is preserved. This means that the aspect ratio is the same. In particular note the April tags are square. If you do something with April tags, you need this rectification.
 
-
+<!--
 ### Optional autonomic verification step
 
 By default, the extrinsic calibration pipeline will now ask you to put your robot on a lane to complete a verification step.
@@ -252,3 +254,4 @@ of the calibrations useless ([](#fig:calibration_95_percent_success)), and peopl
     <figcaption>In 2017, a bug in the calibration made about 5 percent
     of the calibrations useless.</figcaption>
 </div>
+-->

@@ -17,7 +17,6 @@ Note: It makes sense to read this only once the network is established,
 as explained in [](#setup-duckiebot). In particular, you need to be able to ping
 and ssh to the robot.
 
-
 Try to open the Portainer interface:
 
     http://![hostname].local:9000/#/containers
@@ -58,8 +57,7 @@ You should see messages like this:
 
 Until you see `Creating ![container]` messages, the PI is still downloading the data.
 
-
-## Communicating with Docker on the Duckiebot using the command line  {#docker-setup-communication}
+## Communicating with Docker on the Duckiebot using the command line {#docker-setup-communication}
 
 The following commands can be run on your laptop but will affect the Duckiebot.
 
@@ -76,10 +74,8 @@ To test the connection, run `docker ps`:
     c82d1487e2da        v2tec/watchtower:armhf-latest           ...
     dc34165b0e39        portainer/portainer:linux-arm           ...
 
-
 This shows what containers are running on the Duckiebot. The information presented is
 more limited than in Portainer.
-
 
 <!--
  ### A third way: `ctop`
@@ -88,7 +84,6 @@ Another cool alternative is `ctop`, which you can install [from here][ctop-insta
 
 [ctop-install]: https://github.com/bcicen/ctop
 -->
-
 
 ## Health checks {#docker-setup-health-checks}
 
@@ -120,9 +115,7 @@ The throttling and under-voltage warnings have to do with the power
 supply. Note that the PI can be damaged by inadequate power supply,
 so fix these as soon as possible.
 
-
 ## Seeing files on the Duckiebot {#docker-setup-simple-server}
-
 
 On the Duckiebot there is a directory `/data` that will contain interesting files.
 
@@ -134,9 +127,7 @@ From another computer, you can see the contents of `/data` by visiting the URL:
 
 Otherwise, you can login via SSH and take a look at the contents of `/data`:
 
-    laptop $ ssh ![hostname].local ls /data  
-
-
+    laptop $ ssh ![hostname].local ls /data
 
 ## Building workflow {#docker-setup-building-workflow}
 
@@ -145,5 +136,18 @@ can build successfully.
 
 To verify that, follow [the `rpi-duckiebot-simple-python` tutorial available here][here].
 
-
 [here]: https://github.com/duckietown/rpi-duckiebot-simple-python
+
+## Recreate all container at once {#dt-manualupdate status=beta}
+
+Instead of automagically updating the container using `dts`, you can also update the container manually using docker commands. SSH into your duckiebot, and then run:
+
+    duckiebot $ dt-autoboot
+
+This will recreate the all the container image.
+
+## Run a specific image from boot {#dt-update-image status=beta}
+
+To run a specific container, you can run:
+
+    laptop $ docker run -H ![DUCKIEBOT_NAME].local -restart=always --net=host -v /data:/data -v /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket ![ORG/NAME:TAG]
