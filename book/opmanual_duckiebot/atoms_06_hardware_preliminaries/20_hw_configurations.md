@@ -18,7 +18,7 @@ The `DB19` is the latest version of the Duckiebot. You have a `DB19` Duckiebot f
    <img src="dc-motor-db19.png" style='width: 25em'/>
 </div>
 
-Apart from the new motors and another HUT, the `DB19` is identical with the `DB18`. A complete version can be seen here:
+Apart from the new motors and another HUT (v. 2.1), the `DB19` is identical with the `DB18`. A complete version can be seen here:
 
 <div figure-id="fig:db19-complete-cad" figure-caption="The complete Duckiebot 19">
    <img src="db19-complete-cad.png" style='width: 25em'/>
