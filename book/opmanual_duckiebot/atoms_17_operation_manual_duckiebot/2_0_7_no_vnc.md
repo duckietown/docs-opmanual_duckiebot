@@ -1,4 +1,16 @@
-# Using no-vnc and ROS {#using-no-vnc status=ready}
+# Using ROS tools (start_gui_tools) and no-vnc {#using-no-vnc status=ready}
+
+## A note on start_gui_tools {#start_gui_tools status=ready}
+
+If you are very familiar with how ROS works, and is familiar with command line tools, you can simply run:
+
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+
+This will give you a terminal (container actually) that is connected to the duckiebot ROS network, and you can perform all the ROS commands there too. 
+
+Note: You can only start one instance of `start_gui_tools` container, therefore if you want multiple instances of terminal, it is recommended to use no-vnc.
+
+Note: A trick you can use is to add `&` at the end of your command to run it back ground. 
 
 ## Starting no-vnc images {#starting-no-vnc status=ready}
 
@@ -8,15 +20,13 @@ To start a image that runs no-vnc, do:
 
 To use no-vnc, use your browser and navigate to:
 
-    http://localhost:6901/vnc.html. 
-    
-Password is quackquack.
+    http://localhost:8087/
 
 Once logged in, you can treat this environment as a typical Ubuntu machine with ROS installed, and configured to talk with your duckiebot.
 
-## Verifying the output by using the ROS utilities {#no-vnc-ros status=ready}
+## Verifying the output by using the ROS utilities and command line {#no-vnc-ros status=ready}
 
-Open up a terminal (right click and select open terminal here), and use the commands below to check the data streams in ROS.
+Open up a terminal (LXTerminal on the desktop), and use the commands below to check the data streams in ROS.
 
 ### List topics
 
@@ -60,6 +70,17 @@ That's the "image" --- as seen by a machine.
 
 ## rqt_image_view tool {#rqt-no-vnc status=ready}
 
-To see what your duckiebot sees, you can run:
-    
-    $ dts start_gui_tools ![DUCKIEBOT_NAME]
+To see what your duckiebot sees, you can click on the RQT Image View application icon on the desktop. You will see the `rqt_image_view` starts up
+
+<figure>
+    <figcaption>The rqt image view window with dropdown menu</figcaption>
+    <img style='width:12em' src="rqt_image_view.png"/>
+</figure>
+
+## rqt_graph tool {#rqt-graph-no-vnc status=ready}
+
+If you want to explore the relationship between all the nodes, topics and tf, you can open up a terminal and run:
+
+    $ rqt_graph
+
+This will open up a window that contains all the ROS topics being published, all the ROS nodes running, and it is a very handy tool to understand the relationship between nodes.
