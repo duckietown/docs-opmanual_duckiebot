@@ -1,4 +1,4 @@
-# Using ROS tools (start_gui_tools) and no-vnc {#using-no-vnc status=ready}
+# Using start_gui_tools, ROS tools and no-vnc {#using-no-vnc status=ready}
 
 ## A note on start_gui_tools {#start_gui_tools status=ready}
 
@@ -10,7 +10,7 @@ This will give you a terminal (container actually) that is connected to the duck
 
 Note: You can only start one instance of `start_gui_tools` container, therefore if you want multiple instances of terminal, it is recommended to use no-vnc.
 
-Note: A trick you can use is to add `&` at the end of your command to run it back ground. 
+Note: A trick you can use is to add `AND Symbol` at the end of your command to run it back ground. 
 
 ## Starting no-vnc images {#starting-no-vnc status=ready}
 
