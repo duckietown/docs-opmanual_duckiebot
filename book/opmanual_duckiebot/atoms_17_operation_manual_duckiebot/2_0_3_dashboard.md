@@ -194,7 +194,7 @@ This is the Architecture Page. It will allow you to visualize all the published 
 
 ### Software {#dashboard-tutorial-software status=ready}
 
-This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dts) for more information about keeping your duckiebot up to date.
+This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dashboard) for more information about keeping your duckiebot up to date.
 
 <div figure-id="fig:dashboard-software" figure-caption="">
   <img src="dashboard-software.png" style='width: 35em'/>
