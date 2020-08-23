@@ -4,7 +4,7 @@
 
 To start a image that runs no-vnc, do:
 
-    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+    laptop $ dts start_gui_tools --vnc ![DUCKIEBOT_NAME]
 
 To use no-vnc, use your browser and navigate to:
 
