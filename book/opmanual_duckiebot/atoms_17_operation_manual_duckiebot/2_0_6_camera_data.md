@@ -65,6 +65,10 @@ To manually start the `duckiebot-interface`, do:
 
     laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-arm32v7
 
+## Viewing the image in no-vnc {#image-novnc status=ready}
+
+For instructions using the no-vnc tool, see [here](#using-no-vnc)
+
 ## Viewing the image stream on the Dashboard {#image-dashboard status=ready}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
@@ -89,6 +93,4 @@ of the camera block.
 Note: If you see a black image in the camera block, make sure that you
 removed the protective cap that covers the camera lens of your Duckiebot.
 
-## Viewing the image in no-vnc {#image-novnc status=ready}
 
-For instructions using the no-vnc tool, see [](#using-no-vnc)

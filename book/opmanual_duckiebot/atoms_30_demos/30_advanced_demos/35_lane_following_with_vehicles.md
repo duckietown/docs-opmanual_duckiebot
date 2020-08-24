@@ -1,4 +1,4 @@
-# Lane Following with Vehicles {#lane-following-with-vehicles status=beta}
+# Lane Following with Vehicles Advanced {#lane-following-with-vehicles status=beta}
 
 This is the description of the lane following with vehicles demo.
 
