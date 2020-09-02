@@ -123,7 +123,7 @@ Resolution: If the procedure fails with errors about directories not mounted, be
 
 Symptom: The flashing procedure failes with a `Bad archive` error when trying to flash the Hypriot image
 
-Resolution: This happens when the downloaded zip for Hypriot is incomplete or corrupt. Delete the zip file by running the following command and try the procedure again.
+Resolution: This happens when the downloaded zip for Hypriot is incomplete or corrupt. Delete the zip file by running the following command and try the procedure again. Also check if your computer has enough storage space.
 
     laptop $ rm /tmp/duckietown/hypriotos*
 

@@ -60,3 +60,13 @@ and give a similar output to:
       login: ![username]
 
         uid: ![user ID]
+
+## Troubleshooting
+
+### "DTShell object has no attribute sprint" when using `dts tok set`
+
+You have to completely reinstall `dts` and its commands. Do that by:
+
+1. Delete the `~/.dt-shell` folder
+2. Uninstall `dts` by running `pip uninstall duckietown-shell`
+3. Reinstall `dts` by following the procedure in [Laptop Setup](#laptop-setup)
