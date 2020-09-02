@@ -1,4 +1,4 @@
-# Duckiebot Initialization {#setup-duckiebot status=ready}
+# Duckiebot SD Card Initialization {#setup-duckiebot status=ready}
 
 This page is for the `DB18` configuration used in classes in 2019. For last year's instructions see [here](https://docs.duckietown.org/DT18/).
 
