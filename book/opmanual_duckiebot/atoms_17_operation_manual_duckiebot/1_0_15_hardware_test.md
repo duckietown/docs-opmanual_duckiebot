@@ -1,4 +1,4 @@
-# Hardware test {#setup-troubleshooting-hw-test status=ready}
+# Hardware assembly verification {#setup-troubleshooting-hw-test status=ready}
 
 If you have assembled your robot but you are not sure if you did it correctly, i.e. are the motors connected in the right way, is the camera attached properly, there is a small tool that you can use to test that. This step is not mandatory but do serve as a good troubleshooting tool.
 
