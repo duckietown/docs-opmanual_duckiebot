@@ -36,7 +36,20 @@ Using a USB Stick is the recommended method from us, as you do not need to have 
 
 In this tutorial we will focus on installing Ubuntu on a USB stick
 
-## Creating your Boot Stick
+## Create Ubuntu Dual Boot System
+
+* Before you start, make sure you have a partition that can allow you to install ubuntu.
+* First you need to download a `.iso` image file which contains the version of Ubuntu you want. Here is [20.04 LTS](http://releases.ubuntu.com/20.04/) make sure to download the desktop image.
+* Next, you need a free USB drive with at least 2GB of space. The drive will be completely written over.
+* You need some software to write the .iso to the USB. If on Windows you can use [Rufus](https://rufus.ie/)
+* Create the bootable USB drive, disconnect the USB then reconnect to your computer.
+* Restart your computer
+    - If your computer simply boots into the existing operating system you need to change the boot order in your BIOS.
+    - Restart your computer again and press the button during startup which lets you into the BIOS. It may say on your computer what this button is but you may need to Google depending on your laptop model. 
+    - Look for an option to change boot order and put priority on your USB drive.
+* Your computer should now boot into Ubuntu installation and you can follow the instructions for dual boot.
+
+## Creating your Bootable USB Stick
 
 ### Flashing Ubuntu onto your USB stick
 
