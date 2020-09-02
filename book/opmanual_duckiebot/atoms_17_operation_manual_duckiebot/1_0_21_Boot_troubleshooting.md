@@ -52,7 +52,7 @@ Resolution: An older version of the SD card image had the docker container `cjim
     duckiebot $ sudo systemctl unmask wpa_supplicant
     duckiebot $ sudo systemctl restart networking.service
 
-## Flashing the microcontroller
+## Flashing the microcontroller {#reflash-microcontroller status=ready}
 
 Symptom: The LEDs light up in a variety of colors when the battery is plugged in.
 
