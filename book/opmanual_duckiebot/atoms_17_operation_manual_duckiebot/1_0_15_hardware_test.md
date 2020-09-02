@@ -1,6 +1,6 @@
 # Hardware test {#setup-troubleshooting-hw-test status=ready}
 
-If you have assembled your robot but you are not sure if you did it correctly, i.e. are the motors connected in the right way, is the camera attached properly, there is a small tool that you can use to test that.
+If you have assembled your robot but you are not sure if you did it correctly, i.e. are the motors connected in the right way, is the camera attached properly, there is a small tool that you can use to test that. This step is not mandatory but do serve as a good troubleshooting tool.
 
 The procedure consists of downloading and flashing a test image on an SD card. If you have only one SD card, you might want to do that before you do the steps in [](#setup-duckiebot).
 
