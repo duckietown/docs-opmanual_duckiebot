@@ -211,6 +211,10 @@ Symptom: The Raspberry Pi has power but it does not boot.
 
 Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
 
+Symptom: I cannot ping the duckiebot.
+
+Resolution: Check the [networking section](#duckiebot-network) of the book to see if your networking is good! 
+
 Symptom: I am not sure whether the Duckiebot is properly initialized.
 
 Resolution: As long as the fleet discover tool shows ready, your duckiebot should be ready. You can also visit `http://![hostname].local:9000` to see all the container status. Generally as long as you see the duckiebot web UI is up, your duckiebot should be good.
