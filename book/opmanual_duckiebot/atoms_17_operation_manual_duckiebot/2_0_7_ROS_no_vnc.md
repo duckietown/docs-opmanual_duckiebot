@@ -100,3 +100,5 @@ Resolution: Go to protainer of the robot to make sure the following containers a
     ROS
     car-interface
     duckiebot-interface
+
+If they are not running, refer to [docker troubleshooting](#setup-troubleshooting-docker) to make sure those containers are running.
