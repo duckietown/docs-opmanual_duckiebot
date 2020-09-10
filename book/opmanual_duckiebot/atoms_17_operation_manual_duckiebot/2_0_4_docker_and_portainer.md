@@ -122,13 +122,21 @@ To verify that, follow [the `rpi-duckiebot-simple-python` tutorial available her
 
 ## Docker common troubleshooting {#setup-troubleshooting-docker status=ready}
 
+### docker: Got permission denied while trying to connect to the Docker daemon socket
+
+If this is on your laptop, that means when you setup your enviornment you did not grant your user account right to do certain things. You can fix this by running:
+
+    laptop $ sudo adduser `whoami` docker
+
+Log out and in again and it should be fixed. 
+
 ### I stopped all the containers and now Portainer or other basic containers are not available
 
 You need to `ssh` in your Duckiebot and start the containers manually.
 
 Use `docker container list -a` to see its exact name and `docker start ![container_name]` to start it.
 
-## I deleted all the containers
+### I deleted all the containers
 
 You need to `ssh` in your Duckiebot and re-create the containers.
 
@@ -156,17 +164,17 @@ This way all the containers will be automatically recreated.
 
 [compose]: https://docs.docker.com/compose/
 
-## Container does not start {#setup-troubleshooting-docker-starting status=ready}
+### Container does not start {#setup-troubleshooting-docker-starting status=ready}
 
 Symptom: `docker: Error response from daemon: Conflict. The container name "/![container_name]" is already in use by container "![container_hash]". You have to remove (or rename) that container to be able to reuse that name.`
 
 Resolution: Stop the container (`docker stop ![container_name]`) if running and then remove (`docker rm ![container_name]`) the container with the
 
-## Docker exits with `tls: oversized record received`
+### Docker exits with `tls: oversized record received`
 
 If Docker exits with the above error when running remote commands, the most likely reason is different versions of Docker on your computer and Duckiebot. You can check that by running `docker version` on both devices. If that is indeed the case, you need to upgrade the Docker binaries on your computer. To do that, follow the official instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
 
-## I can't run a container because I get `exec user process caused "exec format error"`
+### I can't run a container because I get `exec user process caused "exec format error"`
 
 An error like this:
 
