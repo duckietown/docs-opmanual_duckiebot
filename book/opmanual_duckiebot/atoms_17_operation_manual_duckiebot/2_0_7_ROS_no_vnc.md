@@ -84,3 +84,19 @@ If you want to explore the relationship between all the nodes, topics and tf, yo
     $ rqt_graph
 
 This will open up a window that contains all the ROS topics being published, all the ROS nodes running, and it is a very handy tool to understand the relationship between nodes.
+
+## ROS Troubleshooting
+
+Symptom: My ros commands are not working. I cannot use tab to auto complete ROS commands. 
+
+Resolution: You can fix that by sourcing devel/setup.bash.
+
+    $ source /code/catkin_ws/devel/setup.bash
+
+Symptom: I cannot connect to ROS master. 
+
+Resolution: Go to protainer of the robot to make sure the following containers are running without errors: 
+
+    ROS
+    car-interface
+    duckiebot-interface
