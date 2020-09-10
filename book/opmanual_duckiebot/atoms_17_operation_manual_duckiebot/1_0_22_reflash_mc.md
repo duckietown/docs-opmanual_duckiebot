@@ -1,31 +1,4 @@
-# Boot and recovery troubleshooting {#setup-troubleshooting-boot status=ready}
-
-What to do if your Raspberry Pi does not boot, network is unreachable etc.
-
-## The Raspberry Pi does not have power
-
-Symptom: The red LED on the Raspberry Pi is OFF.
-
-Resolution: Press the button on the side of the battery ([](#troubleshooting-battery-button)).
-
-<figure id="troubleshooting-battery-button">
-    <figcaption>The power button on the RAVPower Battery.</figcaption>
-     <img src="battery_button.jpg" style='width: 14em'/>
-</figure>
-
-## The Raspberry Pi has power but it does not boot
-
-Symptom: The Raspberry Pi has power but it does not boot.
-
-Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
-
-## I am not sure whether the Duckiebot is properly initialized {#troubleshooting-init-check status=ready}
-
-Symptom: I am not sure whether the Duckiebot is properly initialized.
-
-Resolution: Use `dts fleet discover` command to see if the duckiebot is ready. For more information about that tool, see [here](#monitor-first-boot)
-
-## Flashing the microcontroller {#reflash-microcontroller status=ready}
+# Reflash-Microcontroller {#reflash-microcontroller status=ready}
 
 Symptom: The LEDs light up in a variety of colors when the battery is plugged in.
 

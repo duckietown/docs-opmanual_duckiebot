@@ -196,11 +196,24 @@ URL `http://![hostname].local/`. You will see the following page,
 This is the dashboard of your Duckiebot. The Dashboard is built using a
 framework called \\compose\\. You will see how to configure it in [](#duckiebot-dashboard-setup)
 
-### Troubleshooting
+### Troubleshooting for first boot
+
+Symptom: The red LED on the Raspberry Pi is OFF.
+
+Resolution: Press the button on the side of the battery ([](#troubleshooting-battery-button)).
+
+<figure id="troubleshooting-battery-button">
+    <figcaption>The power button on the RAVPower Battery.</figcaption>
+     <img src="battery_button.jpg" style='width: 14em'/>
+</figure>
+
+Symptom: The Raspberry Pi has power but it does not boot.
+
+Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
 
 Symptom: I am not sure whether the Duckiebot is properly initialized.
 
-Resolution: see [](#troubleshooting-init-check).
+Resolution: As long as the fleet discover tool shows ready, your duckiebot should be ready. You can also visit `http://![hostname].local:9000` to see all the container status. Generally as long as you see the duckiebot web UI is up, your duckiebot should be good.
 
 Symptom: The LEDs light up in a variety of colors when the battery is plugged in for the first time.
 
