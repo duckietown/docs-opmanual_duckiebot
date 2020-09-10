@@ -1,4 +1,4 @@
-# Getting a Ubuntu Environment {#USB-ubuntu status=ready}
+# Getting a Ubuntu Environment {#USB-ubuntu status=beta}
 
 This page instructs you how to get a Ubuntu Environment that is installed on a USB stick.
 
