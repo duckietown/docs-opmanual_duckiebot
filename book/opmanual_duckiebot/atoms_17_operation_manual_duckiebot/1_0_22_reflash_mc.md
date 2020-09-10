@@ -1,8 +1,8 @@
 # Reflash-Microcontroller {#reflash-microcontroller status=ready}
 
-Symptom: The LEDs light up in a variety of colors when the battery is plugged in.
+Warning: You do not need to perform the following procedure unless you are specifically told to do in the book.
 
-Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:
+The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:
 
 `ssh` into your robot and clone the Duckietown Software repository with:
 
