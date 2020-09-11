@@ -1,4 +1,4 @@
-# Duckiebot operation manual {#book:opmanual_duckiebot status=ready}
+# Duckiebot operation manual {#book:book status=ready}
 
 
 
