@@ -1,6 +1,6 @@
-# Duckiebot Initialization {#setup-duckiebot status=ready}
+# Duckiebot SD Card Initialization {#setup-duckiebot status=ready}
 
-This page is for the `DB18` configuration used in classes in 2019. For last year's instructions see [here](https://docs.duckietown.org/DT18/).
+This page is for the `DB18` configuration and above. 
 
 <div class='requirements' markdown="1">
 
@@ -123,7 +123,7 @@ Resolution: If the procedure fails with errors about directories not mounted, be
 
 Symptom: The flashing procedure failes with a `Bad archive` error when trying to flash the Hypriot image
 
-Resolution: This happens when the downloaded zip for Hypriot is incomplete or corrupt. Delete the zip file by running the following command and try the procedure again.
+Resolution: This happens when the downloaded zip for Hypriot is incomplete or corrupt. Delete the zip file by running the following command and try the procedure again. Also check if your computer has enough storage space.
 
     laptop $ rm /tmp/duckietown/hypriotos*
 
@@ -196,15 +196,32 @@ URL `http://![hostname].local/`. You will see the following page,
 This is the dashboard of your Duckiebot. The Dashboard is built using a
 framework called \\compose\\. You will see how to configure it in [](#duckiebot-dashboard-setup)
 
-### Troubleshooting
+### Troubleshooting for first boot
+
+Symptom: The red LED on the Raspberry Pi is OFF.
+
+Resolution: Press the button on the side of the battery ([](#troubleshooting-battery-button)).
+
+<figure id="troubleshooting-battery-button">
+    <figcaption>The power button on the RAVPower Battery.</figcaption>
+     <img src="battery_button.jpg" style='width: 14em'/>
+</figure>
+
+Symptom: The Raspberry Pi has power but it does not boot.
+
+Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
+
+Symptom: I cannot ping the duckiebot.
+
+Resolution: Check the [networking section](#duckiebot-network) of the book to see if your networking is good! 
 
 Symptom: I am not sure whether the Duckiebot is properly initialized.
 
-Resolution: see [](#troubleshooting-init-check).
+Resolution: As long as the fleet discover tool shows ready, your duckiebot should be ready. You can also visit `http://![hostname].local:9000` to see all the container status. Generally as long as you see the duckiebot web UI is up, your duckiebot should be good.
 
 Symptom: The LEDs light up in a variety of colors when the battery is plugged in for the first time.
 
-Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#setup-troubleshooting-boot).
+Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#reflash-microcontroller).
 
 ## SSH to the Duckiebot {#setup-duckiebot-ssh}
 

@@ -1,62 +1,8 @@
-# Boot and recovery troubleshooting {#setup-troubleshooting-boot status=ready}
+# Reflash-Microcontroller {#reflash-microcontroller status=ready}
 
-What to do if your Raspberry Pi does not boot, network is unreachable etc.
+Warning: You do not need to perform the following procedure unless you are specifically told to do in the book.
 
-## The Raspberry Pi does not have power
-
-Symptom: The red LED on the Raspberry Pi is OFF.
-
-Resolution: Press the button on the side of the battery ([](#troubleshooting-battery-button)).
-
-<figure id="troubleshooting-battery-button">
-    <figcaption>The power button on the RAVPower Battery.</figcaption>
-     <img src="battery_button.jpg" style='width: 14em'/>
-</figure>
-
-
-## The Raspberry Pi has power but it does not boot
-
-Symptom: The Raspberry Pi has power but it does not boot.
-
-Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
-
-## I am not sure whether the Duckiebot is properly initialized {#troubleshooting-init-check status=ready}
-
-Symptom: I am not sure whether the Duckiebot is properly initialized.
-
-Resolution: Open a browser window and type: `![hostname].local:8082/boot-log.txt`
-the output of this should look as follows:
-
-```
-{"phase": "loading", "msg": "Stack DT18_00_basic: Loading containers"}
-{"phase": "loading", "msg": "Stack DT18_00_basic: docker-compose up"}
-{"phase": "loading", "msg": "Stack DT18_01_health_stats: Loading containers"}
-{"phase": "loading", "msg": "Stack DT18_01_health_stats: docker-compose up"}
-{"phase": "loading", "msg": "Stack DT18_03_roscore: Loading containers"}
-{"phase": "loading", "msg": "Stack DT18_03_roscore: docker-compose up"}
-{"phase": "loading", "msg": "Stack DT18_06_dashboard: Loading containers"}
-{"phase": "loading", "msg": "Stack DT18_06_dashboard: docker-compose up"}
-{"phase": "loading", "msg": "Stack DT18_02_others: Loading containers"}
-{"phase": "loading", "msg": "Stack DT18_05_duckiebot_base: Loading containers"}
-{"phase": "done", "msg": "All stacks up"}
-```
-When you see the last message saying "All stacks up", your Duckiebot is ready to go. If your Duckiebot is still somewhere further up, patience you must have. It can take up to 90 minutes until the Duckiebot is ready to go.
-
-## Hanging {#troubleshooting-hanging}
-
-Symptom: The Pi hangs when you do `docker pull` commands or otherwise and sometimes shuts off.
-
-Resolution: An older version of the SD card image had the docker container `cjimti/iotwifi` running but this was found to be causing difficulties. `ssh` into your robot by some method and then execute:
-
-    duckiebot $ docker rm $(docker stop $(docker ps -a -q --filter ancestor=cjimti/iotwifi --format="{{.ID}}"))
-    duckiebot $ sudo systemctl unmask wpa_supplicant
-    duckiebot $ sudo systemctl restart networking.service
-
-## Flashing the microcontroller
-
-Symptom: The LEDs light up in a variety of colors when the battery is plugged in.
-
-Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:
+The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:
 
 `ssh` into your robot and clone the Duckietown Software repository with:
 
@@ -91,7 +37,6 @@ if the output of `make fuses` is at the end like
 
 the connection to the microcontroller works and the fuses could be written. The fuses are some low lowlevel settings, which just have to be set once. If this succeeded, jump the next step.
 
-
 If there is the message "make: warning: Clock skew detected. Your build may be incomplete." or the make process is not stopping and many debugging messages are showed, try the following:
 Press <kbd>Ctrl</kbd>-<kbd>C</kbd> to stop the current command. Then run:
 
@@ -99,8 +44,7 @@ Press <kbd>Ctrl</kbd>-<kbd>C</kbd> to stop the current command. Then run:
 
 This ensures that the modification time of all files is set to the current time. Make decides, which files have to be compiled by comparing the source file time with the executable file time. If the executable file time lies in the future regarding the current system time, not all modified files are compiled. This could happen when the clock of the Raspberry Pi is not set correctly and the file timestamps of, e.g., a github pull are used.
 
-
-Next up, remove all temporary files, so everything has to be compiled freshly by running:  
+Next up, remove all temporary files, so everything has to be compiled freshly by running:
 
     duckiebot $ make clean
 
