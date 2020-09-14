@@ -51,13 +51,13 @@ You can acquire the `DB18` hardware by contacting the [Duckietown Foundation](ma
 
 ### The `DB18-Robotarium` configuration
 
-The `DB18-Robotarium` configuration adds to the `DB18` the hardware necessary to operate in Robotariums: continuously operating Duckietowns. They are otherwise identical to the `DB18`.
+The `DB18-Robotarium` configuration adds to the `DB18` the hardware necessary to operate in Robotariums (a.k.a. Duckietown Autolabs): continuously operating Duckietowns. They are otherwise identical to the `DB18`.
 
 The additional hardware consists of a top localization April Tag infrastructure and an "auto-charging" mod, which allows Duckiebots to dock to charging stations and estimate the residual battery charge.  
 
 Robotariums are experimental Duckietown features, currently under development. You will find `DB18-Robotarium` models in university research labs.
 
-If you are interested in obtaining `DB18-Robotarium` Duckiebots, or in building your Duckietown Robotarium, contact the [Duckietown Foundation](mailto:info@duckietown.org).
+If you are interested in obtaining `DB18-Robotarium` Duckiebots, or in building your Duckietown Robotarium, contact the [Duckietown team](mailto:info@duckietown.com).
 
 <div figure-id="fig:db18-robotarium" figure-caption="A Duckiebot in DB18-Robotarium configuration.">
    <img src="a-glimpse-in-the-robotariums.png" style='width: 25em'/>
