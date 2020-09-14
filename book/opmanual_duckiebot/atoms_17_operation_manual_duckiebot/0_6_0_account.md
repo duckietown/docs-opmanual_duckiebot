@@ -1,7 +1,7 @@
-# Duckietown account {#dt-account status=ready}
+# Required Accounts {#dt-account status=ready}
 
 This section describes how to register for the Duckietown account
-and set up the authentication token.
+and set up the authentication token and which other accounts you will need.
 
 <div class='requirements' markdown='1'>
 
@@ -20,6 +20,8 @@ Results: Duckietown token correctly set up.
 To register on the Duckietown website, go to:
 
 > [`https://www.duckietown.org/site/register`](https://www.duckietown.org/site/register)
+
+and click through to pick a community. 
 
 Note: If you are a student, please use your official student email address, so that you can be sorted in the right group.
 
@@ -67,3 +69,14 @@ You have to completely reinstall `dts` and its commands. Do that by:
 1. Delete the `~/.dt-shell` folder
 2. Uninstall `dts` by running `pip uninstall duckietown-shell`
 3. Reinstall `dts` by following the procedure in [Laptop Setup](#laptop-setup)
+
+
+## Other Accounts
+
+### Github
+
+You will find it useful to have an acount on Github if you don't have one already. Get one [here](https://github.com/join).
+
+### DockerHub
+
+You may also need an account on the DockerHub registry for some things. Get one [here](https://hub.docker.com/signup) if you don't already have one. 

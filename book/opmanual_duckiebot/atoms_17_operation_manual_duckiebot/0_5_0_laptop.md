@@ -36,11 +36,11 @@ Sometimes when running a VMware machine in a Mac OS host, it is neccessary to ha
 
 For more information about networking with VMware, see [here](https://wiki.ros.org/ROS/NetworkSetup)
 
-## Setup for Ubuntu {#laptop-setup-ubuntu-18}
+## Setup for Ubuntu 18.04 or 20.04 {#laptop-setup-ubuntu-18}
 
 ### System installation {#laptop-setup-ubuntu-18-system}
 
-Install Ubuntu 18 or 20.
+Install Ubuntu 18.04 or 20.04.
 
 See: For instructions, see for example [this online tutorial][tutorial].
 
@@ -51,6 +51,10 @@ See: For instructions, see for example [this online tutorial][tutorial].
 Installs pip3, git, git-lfs, curl, wget:
 
     laptop $ sudo apt install -y python3-pip git git-lfs curl wget
+    
+Symptom: You see this output `E: Unable to locate package python3-pip`
+
+Resolution: You will need to do `sudo apt update` 
 
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
@@ -86,15 +90,15 @@ You can verify the command install by typing:
 
 and it should output something like `/home/USER/.local/bin/dts`.
 
-### Other suggested configuration
+### Other optional configuration
 
 Other useful packages:
 
-    laptop $ sudo apt install vim byobu openssh-server nfs-common zsh
+    laptop $ sudo apt install emacs byobu openssh-server nfs-common zsh
 
 Edit `~/.profile` and add:
 
-    export EDITOR=vim
+    export EDITOR=emacs
 
 ### Z shell
 
