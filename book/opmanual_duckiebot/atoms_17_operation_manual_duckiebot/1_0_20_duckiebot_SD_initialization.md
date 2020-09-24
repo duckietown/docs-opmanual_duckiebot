@@ -133,30 +133,7 @@ Now insert the SD card into the Raspberry PI and push the button on the battery 
 
 Warning: Don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
 
-You should immediately see the **green** LED of the Raspberry Pi next to where the SD card was inserted start to blink with activity.
-
-If not, stop, as there is a problem with the SD card initialization (or possibly the Raspberry Pi, but this is unlikely).
-
-You know that your Raspberry Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
-
-```
-laptop $ ping ![hostname].local
-```
-
-Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use "Bridged" connection (typically NAT is used by default).
-
-You should see output similar to the following:
-
-```
-PING ![hostname].local (![X.X.X.X]): 56 data bytes
-64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
-64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
-![...]
-```
-
-Do not power the robot off (by holding the battery button) while this is in process.
-
-## Monitor the progress of the first boot {#monitor-first-boot}
+You know that your Raspberry Pi has successfully booted when you see it using the `dts fleet discover` utility:
 
 Open a terminal and run the command
 
@@ -195,6 +172,8 @@ URL `http://![hostname].local/`. You will see the following page,
 
 This is the dashboard of your Duckiebot. The Dashboard is built using a
 framework called \\compose\\. You will see how to configure it in [](#duckiebot-dashboard-setup)
+
+Do not power the robot off (by holding the battery button) after you have booted the robot the first time but before you see it show up in `dts fleet discover`.
 
 ### Troubleshooting for first boot
 
