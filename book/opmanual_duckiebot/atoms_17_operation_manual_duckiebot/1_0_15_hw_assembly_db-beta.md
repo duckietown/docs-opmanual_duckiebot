@@ -15,18 +15,21 @@ Results: An assembled Duckiebot in configuration `DB-beta`.
 <!-- Note: The [FAQ](#op-faq-db19) section at the bottom of this page may already answer some of you comments, questions or doubts. -->
 
 
-There are ?? parts in this procedure. Most parts build upon previous steps, so make
+There are 12 parts in this procedure. Most parts build upon previous steps, so make
 sure to follow them in the following order:
 
-<!-- - [Part 1: What is in the box?](#howto-bom-db19)
-- [Part 2: Motors](#howto-motors-db19)
-- [Part 3: Bottom chassis](#howto-bottom-chassis-db19)
-- [Part 4: Computation unit](#howto-comp-unit-db19)
-- [Part 5: Camera](#howto-camera-db19)
-- [Part 6: Top chassis](#howto-top-chassis-db19)
-- [Part 7: Back bumper](#howto-back-bumper-db19)
-- [Part 8: Front bumper](#howto-front-bumper-db19)
-- [Part 9: Battery and Duckie](#howto-battery-duckie-db19) -->
+- [Part 1: Unboxing](#unboxing-db-beta) 
+- [Part 2: Preliminary steps](#preliminaries-db-beta)
+- [Part 3: Installing the motors](#howto-motors-db-beta)
+- [Part 4: Attaching the back rolling ball](#how-to-back-rolling-ball-dbbeta)
+- [Part 5: Adding the rear mount bracket](#adding_rear_mount_bracker_dbbeta)
+- [Part 6: Adding the front spacers](#adding_front_spacers_dbbeta)
+- [Part 7: Battery Attachment](#battery_attachment_dbbeta)
+- [Part 8: Camera assembly and attachment](#camera_assembly_and_attachment_dbbeta)
+- [Part 9: Top plate assembly](#top_plate_assembly_dbbeta) 
+- [Part 10: Back bumper assembly](#back_bumper_assembly_dbbeta) 
+- [Part 11: Hut attachment](#hut_attachment_dbbeta) 
+- [Part 12: Final assembly - putting it all together](#final_assembly_dbbeta) 
 
 ## Unboxing your first Duckiebot {#unboxing-db-beta}
 
@@ -79,6 +82,10 @@ Breakdown of box contents (check that you have all of these before proceeding):
 
 NOTE: An additional metal spacer has been included which is used to mount the hut (shown below).
 
+<div figure-id="fig:additional_nut_screw_spacer1">
+     <img src="additional_nut_screw_spacer.jpg" style='width: 25em'/>
+</div>
+
 ## Preliminary Steps {#preliminaries-db-beta}
 Important assembly considerations:
 - Never assemble the Duckiebot on a metal surface. The pins on the bottom of the board are conductive, and might short. The Duckiebot will be very sad (fried duck).
@@ -116,30 +123,6 @@ If regardless of this foreword you still choose to try and figure it out yoursel
 
 
 ## Installing the motors {#howto-motors-db-beta}
-
-<!-- <div class='requirements' markdown="1">
-
-Requires: 
-
-<div figure-id="motor_assembly_components">
-     <img src="motor_assembly_components.jpg" style='width: 25em'/>
-</div>
-
-- 4x Long metal screws (longest in the box)
-- 2x Motor cables
-- 2x Blue motors
-- 4x M3 nuts (the only size available for metal nuts)
-- 1x Bottom plate
-- 4x motor mounts (Note, the motors mounts that come with the bottom plate have very tight tolerancing. For easier installation, use the additional motor mounts that come in the same bag with one of the motors).
-
-
-Results: <div figure-id="fig:countersunk-screws-db19" figure-caption="Countersunk screws have a tapered head.">
-     <img src="countersunk-screws-db18.jpg" style='width: 25em'/>
-</div>
-
-</div> -->
-
-<!-- TODO: it would be nice to add a knowledge and activity graph at the beginning of each step -->
 
 Needs:
 
@@ -295,7 +278,9 @@ Place the battery on the bottom plate with the ports facing to the rear left. At
 </div>
 
 
-## Camera assembly {#camera_assembly_dbbeta}
+## Camera assembly and attachment {#camera_assembly_and_attachment_dbbeta}
+
+### Camera assembly {#camera_assembly_dbbeta}
 
 Needed:
 
@@ -315,7 +300,7 @@ Use the nylon screws to mount the camera directly to the camera mount. Tighten u
      <img src="camera_cable.jpg" style='width: 25em'/>
 </div>
 
-## Camera attachment {#camera_attachment_dbbeta}
+### Camera attachment {#camera_attachment_dbbeta}
 
 Needed:
 
@@ -345,7 +330,7 @@ Needed:
 - 4x  M2.5 nylon nuts
 - 4x M2.5x10 nylon screws
 - 4x Nylon female screw spacer (1 size only)
-- 1x micro sd (flashed, instructions: https://docs.duckietown.org/daffy/opmanual_duckiebot/out/setup_duckiebot.html )
+<!-- - 1x micro sd (flashed, instructions: https://docs.duckietown.org/daffy/opmanual_duckiebot/out/setup_duckiebot.html ) -->
 - 1x Previous [assembly](#camera_attachment_dbbeta)
 
 
@@ -409,7 +394,7 @@ Assemble until you have something that looks like the pictures below.
      <img src="back_bumperplate_assembled.jpg" style='width: 25em'/>
 </div>
 
-## Hut assembly
+## Hut attachment {#hut_attachment_dbbeta}
 
 Needed:
 
@@ -435,7 +420,7 @@ Mount the single spacer in the location shown below.
 
 
 
-## Final assembly - putting it all together
+## Final assembly - putting it all together {#final_assembly_dbbeta}
 
 ### Top and bottom plate assembly
 
@@ -455,19 +440,19 @@ Needed:
      <img src="top_plate_components.jpg" style='width: 25em'/>
 </div>
 
-1. Place the back spacer in between the bottom and top plate assembly and secure using 2x M3x10 metal screws. 
+Place the back spacer in between the bottom and top plate assembly and secure using 2x M3x10 metal screws. 
 
 <div figure-id="fig:attach_back_bumper_plate" >
      <img src="attach_back_bumper_plate.jpg" style='width: 25em'/>
 </div>
 
-2. Use additional 2x M3x10 metal screws to secure the Top Plate assembly to the Bottom Plate assembly in the front (close to the camera). Leave the front screws a bit loose so that the front bumper can be fit between the two plates.
+Use additional 2x M3x10 metal screws to secure the Top Plate assembly to the Bottom Plate assembly in the front (close to the camera). Leave the front screws a bit loose so that the front bumper can be fit between the two plates.
 
 <div figure-id="fig:top_plate_screw" >
      <img src="top_plate_screw.jpg" style='width: 25em'/>
 </div>
 
-3. Mount the Hut Assembly (with metal spacer) onto the back of the Duckiebot. Secure with 2x M2.5 Nylon nuts. 
+Mount the Hut Assembly (with metal spacer) onto the back of the Duckiebot. Secure with 2x M2.5 Nylon nuts. 
 
 <div figure-id="fig:nylon_things_hut" >
      <img src="nylon_things_hut.jpg" style='width: 25em'/>
@@ -478,7 +463,7 @@ Needed:
 </div>
 
 
-4. Connecting and securing Camera. Connect the camera to the “CAM 0”, in case of more than one camera connector on the Jetson Nano Board. Secure with a Zip tie (short white one). 
+Connect the camera to the “CAM 0”, in case of more than one camera connector on the Jetson Nano Board. Secure with a Zip tie (short white one). 
 
 <div figure-id="fig:camera_cable_connection_direction" >
      <img src="camera_cable_connection_direction.jpg" style='width: 25em'/>
@@ -500,7 +485,127 @@ Needed:
 - 1x Back bumper assembly
 - 4x M3x8 metal phillips head screw
 - 4x M3 metal nuts
+
+Follow connecting guidelines. 
+
+Warning: Please triple check that all connections follow this guideline, otherwise your front or back bumpers might get fried.
+
+- Red (5V)
+- DIN / DOU (white)
+- Ground (black)
  
 <div figure-id="fig:bumper_plates" figure-caption="Needed components for this step.">
      <img src="bumper_plates.jpg" style='width: 25em'/>
 </div>
+
+Connect front LEDs to the hut. Grab the wires coming from the front bumper, and connect them to the hut as shown below. 
+
+<div figure-id="fig:led_hut_connection" >
+     <img src="led_hut_connection.jpg" style='width: 25em'/>
+</div>
+
+Connect motor cables to the Hut. Right motor corresponds to the right space in the hut. There’s only one possible orientation for the cable connection, don’t force it. 
+
+<div figure-id="fig:motor_cables_dbbeta" >
+     <img src="motor_cables_dbbeta.jpg" style='width: 25em'/>
+</div>
+
+Connect the back bumper cables to the main Duckiebot
+
+<div figure-id="fig:back_bumper_dbbeta" >
+     <img src="back_bumper_dbbeta.jpg" style='width: 25em'/>
+</div>
+
+Place the back bumper using 2x or 4x metal screws. 
+
+<div figure-id="fig:hut_spacer_iso" >
+     <img src="hut_spacer_iso.jpg" style='width: 25em'/>
+</div>
+
+Connect Front bumper to the Duckiebot
+ 
+<div figure-id="fig:front_bumper_cables" >
+     <img src="front_bumper_cables.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:led_connection_front_led_plate" >
+     <img src="led_connection_front_led_plate.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:led_front_plate_connection" >
+     <img src="led_front_plate_connection.jpg" style='width: 25em'/>
+</div>
+
+Gently loosen the front screws connecting the top plate and bottom plate. Lift the top plate and slide the front bumper into the front:
+
+<div figure-id="fig:top_plate_front_attachment" >
+     <img src="top_plate_front_attachment.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:camera_attached2" >
+     <img src="camera_attached2.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:camera_attached3" >
+     <img src="camera_attached3.jpg" style='width: 25em'/>
+</div>
+
+Screw the top plate back. 
+
+
+<div figure-id="fig:front_bumper_dbbeta" >
+     <img src="front_bumper_dbbeta.jpg" style='width: 25em'/>
+</div>
+
+### Connecting the fan and finishing up
+Needed:
+
+- 1x Duckiebot
+- 1x Fan
+- 4x M3x12 metal screws (longer screws)
+- 2x Battery Cables (1x short black cable, 1x short white cable)
+- 1x Duckie 
+
+Screw the fan on top of the heatsink of the Jetson Nano using the long M3x12 metal screws. 
+
+<div figure-id="fig:finished_view_iso" >
+     <img src="finished_view_iso.jpg" style='width: 25em'/>
+</div>
+
+Connect the fan pins to the bottom pins under the hut (pair of pins closest to the back bumper). 
+
+Warning: Make sure the black cable is connected to GND and the red one to VCC (5V).
+
+<div figure-id="fig:fan_connection" >
+     <img src="fan_connection.jpg" style='width: 25em'/>
+</div>
+
+Voila! Final result should look something like this: 
+
+
+<div figure-id="fig:final_result_topview" >
+     <img src="final_result_topview.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:final_result_left" >
+     <img src="final_result_left.jpg" style='width: 25em'/>
+</div>
+
+
+<div figure-id="fig:finished_view1" >
+     <img src="finished_view1.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:front_bumper_iso_view" >
+     <img src="front_bumper_iso_view.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:back_bumperplate" >
+     <img src="back_bumperplate.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:finished_view2" >
+     <img src="finished_view2.jpg" style='width: 25em'/>
+</div>
+
+Congratulations, you completed the easiest part of the course! Now your journey to Mount Doom begins...
