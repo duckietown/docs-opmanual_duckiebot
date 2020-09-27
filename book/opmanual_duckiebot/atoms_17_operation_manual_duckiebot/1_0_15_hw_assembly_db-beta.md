@@ -334,7 +334,7 @@ Needed:
 - 1x Previous [assembly](#camera_attachment_dbbeta)
 
 
- <div figure-id="fig:top_plate_assembly_components_beta" figure-caption="Needed components for this step.">
+<div figure-id="fig:top_plate_assembly_components_beta" figure-caption="Needed components for this step.">
      <img src="top_plate_assembly_components_beta.jpg" style='width: 25em'/>
 </div>
 
@@ -380,7 +380,7 @@ Needed:
 - 2x M3x8 metal screws (shortest metal screws)
 - 2x M3x10 metal countersink screw
 
- <div figure-id="fig:back_bumper_components" figure-caption="Needed components for this step.">
+<div figure-id="fig:back_bumper_components" figure-caption="Needed components for this step.">
      <img src="back_bumper_components.jpg" style='width: 25em'/>
 </div>
 
