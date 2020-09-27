@@ -76,6 +76,7 @@ Breakdown of box contents (check that you have all of these before proceeding):
 31. Double tape (for Duckie City)
 32. Road sign skeleton (for Duckie City)
 33. Wifi dongle (TP-link)
+
 NOTE: An additional metal spacer has been included which is used to mount the hut (shown below).
 
 ## Preliminary Steps {#preliminaries-db-beta}
@@ -149,7 +150,7 @@ Needs:
 - 1x Bottom plate
 - 4x motor mounts (Note, the motors mounts that come with the bottom plate have very tight tolerancing. For easier installation, use the additional motor mounts that come in the same bag with one of the motors).
 
-<div figure-id="fig:motor_assembly_components">
+<div figure-id="fig:motor_assembly_components" figure-caption="Needed components for this step.">
      <img src="motor_assembly_components.jpg" style='width: 25em'/>
 </div>
 
@@ -184,14 +185,15 @@ Use the screws and nuts to connect the first motor (note, cable must be attached
 
 ## Attaching the back rolling ball {#how-to-back-rolling-ball-dbbeta}
 
-Needed:
+Needs:
+
 - 1x metal rolling ball
 - 2x 25mm metal spacers (shorter ones)
 - 4x  M3x10 screws (shortest metal screws in the box)
-- 1x Previous [assembly](fig:motors_installed_bottom_plate) or [assembly](#howto-motors-db-beta).
+- 1x Previous [](#fig:motors_installed_bottom_plate) or [assembly](#howto-motors-db-beta).
 
 
-<div figure-id="fig:roller_components">
+<div figure-id="fig:roller_components" figure-caption="Needed components for this step.">
      <img src="roller_components.jpg" style='width: 25em'/>
 </div>
 
@@ -211,7 +213,7 @@ Attach the metal rolling ball using 2x M3x10 metal screws. Motor cable managemen
      <img src="wheel_roller.png" style='width: 25em'/>
 </div>
 
-## Adding rear mount bracket
+## Adding rear mount bracket {#adding_rear_mount_bracker_dbbeta}
 
 Needed:
 
@@ -220,7 +222,7 @@ Needed:
 * 1x back acrylic spacer
 * 1x Previous [assembly](#how-to-back-rolling-ball-dbbeta)
 
-<div figure-id="fig:bumper_spacers">
+<div figure-id="fig:bumper_spacers" figure-caption="Needed components for this step.">
      <img src="bumper_spacers.jpg" style='width: 25em'/>
 </div>
 
@@ -235,8 +237,270 @@ Use 2x M3x10 metal screws to attach the metal spacer to the back side of the Duc
 </div>
 
 
+## Adding the front spacers {#adding_front_spacers_dbbeta}
+
+Needed:
+
+- 2x M3x10 screws
+- 2x 30mm metal spacers (only place where the longer ones are used)
+- 1x Previous [assembly](#adding_rear_mount_bracker_dbbeta)
+
+<div figure-id="fig:roller_spacer_components" figure-caption="Needed components for this step.">
+     <img src="roller_spacer_components.jpg" style='width: 25em'/>
+</div>
+
+
+Use 2x M3x10 metal screws to attach the front spacers. The location should be as shown on the picture (at the bottom of the outer “T”s in the front)
+
+
+<div figure-id="fig:bottom_plate_complete">
+     <img src="bottom_plate_complete.jpg" style='width: 25em'/>
+</div>
+
+
+## Battery Attachment {#battery_attachment_dbbeta}
+
+Needed:
+
+- 1x Battery
+- 1x Zip tie (long white one)
+- 1x Back acrylic spacer
+- 4x M3x10 screws
+- 1x Previous [assembly](#adding_front_spacers_dbbeta)
+
+<div figure-id="fig:attach_battery_components" figure-caption="Needed components for this step.">
+     <img src="attach_battery_components.jpg" style='width: 25em'/>
+</div>
+
+
+<div figure-id="fig:batteries_db-beta" figure-caption="The two types of batteries that might come with the Duckiebox.">
+     <img src="batteries_db-beta.jpg" style='width: 25em'/>
+</div>
+
+
+Place the battery on the bottom plate with the ports facing to the rear left. Attach it firmly with the longer white zip tie to prevent it from moving and touching the wheels. Make sure to place the zip-tie to the side so that it does not block the top plate from being placed later.
+
+
+<div figure-id="fig:battery_strap_dbbeta">
+     <img src="battery_strap_dbbeta.jpg" style='width: 25em'/>
+</div>
+
+
+<div figure-id="fig:motors_battery_attached">
+     <img src="motors_battery_attached.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:battery_strap_detail">
+     <img src="battery_strap_detail.jpg" style='width: 25em'/>
+</div>
+
+
+## Camera assembly {#camera_assembly_dbbeta}
+
+Needed:
+
+- 1x Camera 
+- 1x 3D printed camera mount
+- 1x Camera cable
+- 4x M2.5x10mm nylon screws (the smallest nylon screws)
+- 4x M2.5 nylon nuts 
+
+<div figure-id="fig:camera_assembly_components_beta" figure-caption="Needed components for this step.">
+     <img src="camera_assembly_components_beta.jpg" style='width: 25em'/>
+</div>
+
+Use the nylon screws to mount the camera directly to the camera mount. Tighten using the nylon nuts. The camera cable should be placed upwards. The correct placement of the camera is pointing slightly towards the ground. 
+
+<div figure-id="fig:camera_cable">
+     <img src="camera_cable.jpg" style='width: 25em'/>
+</div>
+
+## Camera attachment {#camera_attachment_dbbeta}
+
+Needed:
+
+- 1x top plate
+- 2x triple-connector cables
+- 1x [Camera assembly](#camera_assembly_dbbeta)
+- 3x M3x10 metal screws
+- 3x M3 metal nuts
+
+<div figure-id="fig:camera_attachment_components" >
+     <img src="camera_attachment_components.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:camera_attached" figure-caption="Mount the camera mount onto the middle plate using the 3x M3x10 screws. ">
+     <img src="camera_attached.jpg" style='width: 25em'/>
+</div>
+
+
+<div figure-id="fig:camera_top_plate" figure-caption="Place the connecting cables (connecting front and back plate) together as shown in the picture.">
+     <img src="camera_top_plate.jpg" style='width: 25em'/>
+</div>
+
+## Top plate assembly {#top_plate_assembly_dbbeta}
+
+Needed:
+- 1x Jetson Nano board
+- 4x  M2.5 nylon nuts
+- 4x M2.5x10 nylon screws
+- 4x Nylon female screw spacer (1 size only)
+- 1x micro sd (flashed, instructions: https://docs.duckietown.org/daffy/opmanual_duckiebot/out/setup_duckiebot.html )
+- 1x Previous [assembly](#camera_attachment_dbbeta)
+
+
+ <div figure-id="fig:top_plate_assembly_components_beta" figure-caption="Needed components for this step.">
+     <img src="top_plate_assembly_components_beta.jpg" style='width: 25em'/>
+</div>
+
+### Step 1 
+
+Place the nylon screws in the locations shown below. Screw is inserted from the bottom. 
+
+<div figure-id="fig:bumper_cables_layout" >
+     <img src="bumper_cables_layout.jpg" style='width: 25em'/>
+</div>
+
+
+### Step 2
+
+Secure the nylon screws from the top using the M2.5 nylon nuts (x4). Do not tighten yet, as it might be necessary to adjust the location of the screws to fit the Jetson Nano board. 
+
+
+<div figure-id="fig:nylon_screws_for_jetson" >
+     <img src="nylon_screws_for_jetson.jpg" style='width: 25em'/>
+</div>
+
+### Step 3
+
+Place the Jetson Nano board on top, and secure with Nylon female spacers. 
+
+<div figure-id="fig:jetson_attachment" >
+     <img src="jetson_attachment.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:jetson_installed_top_plate" >
+     <img src="jetson_installed_top_plate.jpg" style='width: 25em'/>
+</div>
+
+
+## Back bumper assembly {#back_bumper_assembly_dbbeta}
+
+Needed:
+
+- 1x back bumper (red, with 2 LEDs)
+- 1x back bumper tag
+- 1x back bumper plate
+- 2x 25mm metal spacer
+- 2x M3x8 metal screws (shortest metal screws)
+- 2x M3x10 metal countersink screw
+
+ <div figure-id="fig:back_bumper_components" figure-caption="Needed components for this step.">
+     <img src="back_bumper_components.jpg" style='width: 25em'/>
+</div>
+
+Assemble until you have something that looks like the pictures below. 
+
+<div figure-id="fig:back_bumper_connected" >
+     <img src="back_bumper_connected.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:back_bumperplate_assembled" >
+     <img src="back_bumperplate_assembled.jpg" style='width: 25em'/>
+</div>
+
+## Hut assembly
+
+Needed:
+
+- 1x Hut (with blue sticker)
+- 1x M2.5x10 nylon screw
+- 1x M2.5 nylon nut
+- 1x 12mm metal spacer
+
+<div figure-id="fig:hut_bottom_dbbeta" figure-caption="Needed components for this step.">
+     <img src="hut_bottom_dbbeta.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:additional_nut_screw_spacer_hut" figure-caption="Needed components for this step.">
+     <img src="additional_nut_screw_spacer.jpg" style='width: 25em'/>
+</div>
+
+Mount the single spacer in the location shown below. 
+
+
+<div figure-id="fig:hut_spacer" >
+     <img src="hut_spacer.jpg" style='width: 25em'/>
+</div>
 
 
 
+## Final assembly - putting it all together
 
-  
+### Top and bottom plate assembly
+
+Needed:
+
+- 1x [Top plate assembly](#top_plate_assembly_dbbeta)
+- 1x Bottom plate assembly, as seen in [](#fig:battery_strap_dbbeta) with wheels attached
+- 1x [Back bumper assembly](#back_bumper_assembly_dbbeta)
+- 2x Battery Cables (1x short black cable, 1x short white cable)
+- 1x Back plate spacer
+- 1x Front bumper (with 3 LEDs)
+- 4x M3x10 metal screws 
+- 1x Hut
+- 2x M2.5 nylon nuts (for hut)
+
+<div figure-id="fig:top_plate_components" figure-caption="Needed components for this step.">
+     <img src="top_plate_components.jpg" style='width: 25em'/>
+</div>
+
+1. Place the back spacer in between the bottom and top plate assembly and secure using 2x M3x10 metal screws. 
+
+<div figure-id="fig:attach_back_bumper_plate" >
+     <img src="attach_back_bumper_plate.jpg" style='width: 25em'/>
+</div>
+
+2. Use additional 2x M3x10 metal screws to secure the Top Plate assembly to the Bottom Plate assembly in the front (close to the camera). Leave the front screws a bit loose so that the front bumper can be fit between the two plates.
+
+<div figure-id="fig:top_plate_screw" >
+     <img src="top_plate_screw.jpg" style='width: 25em'/>
+</div>
+
+3. Mount the Hut Assembly (with metal spacer) onto the back of the Duckiebot. Secure with 2x M2.5 Nylon nuts. 
+
+<div figure-id="fig:nylon_things_hut" >
+     <img src="nylon_things_hut.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:hut_install_components" >
+     <img src="hut_install_components.jpg" style='width: 25em'/>
+</div>
+
+
+4. Connecting and securing Camera. Connect the camera to the “CAM 0”, in case of more than one camera connector on the Jetson Nano Board. Secure with a Zip tie (short white one). 
+
+<div figure-id="fig:camera_cable_connection_direction" >
+     <img src="camera_cable_connection_direction.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:camera_cable_connection" >
+     <img src="camera_cable_connection.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:camera_cable_strapped" >
+     <img src="camera_cable_strapped.jpg" style='width: 25em'/>
+</div>
+
+### Adding Bumpers and Connecting wires
+
+Needed:
+
+- 1x Front bumper (with 3 LED)
+- 1x Back bumper assembly
+- 4x M3x8 metal phillips head screw
+- 4x M3 metal nuts
+ 
+<div figure-id="fig:bumper_plates" figure-caption="Needed components for this step.">
+     <img src="bumper_plates.jpg" style='width: 25em'/>
+</div>
