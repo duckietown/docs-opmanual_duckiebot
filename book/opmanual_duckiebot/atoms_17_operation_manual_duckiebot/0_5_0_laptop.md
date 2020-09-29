@@ -70,6 +70,10 @@ Note: you need to _log out and in_ for the group change take effect.
 
 Warning: If you missed this step, you will later run into docker permission issues.
 
+Note: If after logging out and in you still run into a permission issue when running a docker command, try running:
+
+    $ sudo chmod 666 /var/run/docker.sock
+
 Make sure you have docker-compose installed:
 
     laptop $ sudo apt-get install docker-compose
