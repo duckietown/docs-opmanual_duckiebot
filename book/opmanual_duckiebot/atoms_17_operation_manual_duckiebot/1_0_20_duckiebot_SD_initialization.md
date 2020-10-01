@@ -208,28 +208,9 @@ Resolution: The LEDs of the Duckiebot should light up in white as soon as you po
 
 Next, try to log in using SSH, using
 
-    laptop $ ssh ![hostname]
+    laptop $ ssh duckie@![hostname].local
 
-This should succeed without password.
-
-If it doesn't work, check that `~/.ssh/config` contains something like:
-
-    Host ![hostname]
-        User duckie
-        Hostname ![hostname].local
-        IdentityFile ~/.ssh/DT18_key_00
-
-This configuration was added by the `init_sd_card` command.
-
-## Securing your Duckiebot
-
-By default, your Duckiebot uses an SSH key that is the same for all Duckiebots. That means that anyone can access your robot. Typically, this is not a problem, but in case you have sensitive information on it, such as your university internet credentials, you can remove it. Keep in mind that by doing so, some advanced functionality (particularly involving autolab proccesses) might stop functioning properly! Remove the SSH key at your risk and only if completely necessary.
-
-You can remove the key by running:
-
-    laptop $ ssh ![hostname] rm .ssh/authorized_keys
-
-After this you will be prompted for your password every time you connect to your Duckiebot. If the password which you set in the SD card initialization process was not strong enough, or you kept the default password, we recommend you change it now.
+This should succeed without password. Note that duckie is the default user. If you modified the username during the SD card initialization procedure, then use the appropriate username here.
 
 ## Rebooting the PI {#setup-duckiebot-reboot}
 
@@ -237,13 +218,13 @@ Warning: Do not test these commands now if you just booted up your duckiebot for
 
 To reboot:
 
-    laptop $ ssh ![hostname] sudo reboot
+    laptop $ ssh duckie@![hostname].local sudo reboot
 
 ## Turn off the PI {#setup-duckiebot-poweroff}
 
 To turn off the Duckiebot, use:
 
-    laptop $ ssh ![hostname] sudo poweroff
+    laptop $ ssh duckie@![hostname].local sudo poweroff
 
 Then wait 30 seconds.
 
