@@ -4,7 +4,7 @@ This page is for the `DB18` configuration and above (including Jetson Nano confi
 
 <div class='requirements' markdown="1">
 
-Requires: An SD card of size at least 16 GB. 32 GB preferred. 
+Requires: An SD card of size at least 32 GB. 
 
 Requires: A computer with a **Ubuntu OS** (for flashing the SD card), an internet connection, an SD card reader, and 16 GB of free space.
 
@@ -43,14 +43,12 @@ Then initalize it by running the command:
 The basic options are:
 
     --hostname         Hostname of the device to flash. This is required.
-    --linux-username   Username of the linux user to create on the flashed
-                       device The default is: duckie
-    --linux-password   Password to access the linux user profile created on
-                       the flashed device The default is: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
-    --type             The type of your device. E.g. `duckiebot`.
-    --configuration    The configuration of your robot. This is associated with `--type` option. E.g. `DB-beta`.
+    --type             The type of your device. Types are `duckiebot` (default), `watchtower`, `traffic_light`.
+    --configuration    The configuration of your robot. This is associated with `--type` option. E.g. `DB-beta`, `DB20`, `DB19`, or `DB18`.
+
+Note: the default username and password for all duckiebots are "duckie" and "quackquack", respectively. 
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
@@ -72,6 +70,10 @@ Additional options for init_sd_card are provided, however, it is recommended tha
     --workdir          Temporary working directory.
     --device           The device you want to flash the image to
     --steps            Steps to perform
+    --linux-username   Username of the linux user to create on the flashed
+                       device The default is: duckie
+    --linux-password   Password to access the linux user profile created on
+                       the flashed device The default is: quackquack    
 
 For a full list of the options, run
 
