@@ -30,7 +30,7 @@ A valid `hostname` satisfies all the following requirements:
 
 Warning: this currently only works on Ubuntu. Mac is not supported.
 
-Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 or 20 this is not necessary.
+Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 or above this is not necessary.
 
 Plug the SD card in the computer using the card reader.
 
@@ -115,7 +115,7 @@ Warning: Always be careful when selecting disk to be imaged. You don't want to l
 
 For Jetson Nano:
 
-- The procedure will ask to accept the conditions for use. When asked "Do you accept? (a=Accept, n=Reject, r=Read License) \[n]: " select <kbd>a</kbd>.
+- The procedure will ask to accept the conditions for use. When asked "Do you accept? (a=Accept, n=Reject, r=Read License) \[n]: " select <kbd>r</kbd> to read the license, and then <kbd>a</kbd> to accept.
 
 - After the image is downloaded, you will have to enter your `sudo` password. 
 
