@@ -1,10 +1,10 @@
 # Duckiebot SD Card Initialization {#setup-duckiebot status=ready}
 
-This page is for the `DB18` configuration and above. 
+This page is for the `DB18` configuration and above (including Jetson Nano configurations). 
 
 <div class='requirements' markdown="1">
 
-Requires: An SD card of size at least 16 GB.
+Requires: An SD card of size at least 16 GB. 32 GB preferred. 
 
 Requires: A computer with a **Ubuntu OS** (for flashing the SD card), an internet connection, an SD card reader, and 16 GB of free space.
 
@@ -30,7 +30,7 @@ A valid `hostname` satisfies all the following requirements:
 
 Warning: this currently only works on Ubuntu. Mac is not supported.
 
-Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
+Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 or 20 this is not necessary.
 
 Plug the SD card in the computer using the card reader.
 
@@ -49,6 +49,8 @@ The basic options are:
                        the flashed device The default is: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
+    --type             The type of your device. E.g. `duckiebot`.
+    --configuration    The configuration of your robot. This is associated with `--type` option. E.g. `DB-beta`.
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
@@ -66,8 +68,6 @@ Make sure to set your country correctly with the `--country` option. (Ex. CA for
 
 Additional options for init_sd_card are provided, however, it is recommended that you only use those if you know what you are doing:
 
-    --type             The type of your device.
-    --configuration    The configuration of your robot. This is associated with `--type` option
     --no-cache         Uses "fresh" image instead of the cached one.
     --workdir          Temporary working directory.
     --device           The device you want to flash the image to
@@ -76,6 +76,10 @@ Additional options for init_sd_card are provided, however, it is recommended tha
 For a full list of the options, run
 
     laptop $ dts init_sd_card --help
+
+Example initialization for the `DB-beta` using wifi network "duckienet" with password "quackquack". 
+    
+    laptop $ dts init_sd_card --type duckiebot --configuration DB-beta --country CH --hostname studentduck --wifi duckienet:quackquack
 
 After you run the `dts init_sd_card` command with your options follow the instructions that appear on screen. Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdc`) by pressing <kbd>Enter</kbd>.
 
@@ -101,11 +105,21 @@ sr0     11:0    1  1024M  0 rom
 
 Using above listing as an example, you should be choosing the disk name (sdb), not the partition name (sdb1, sdb2) for etcher to capture the whole disk.
 
+For Raspberry Pi:
+
 - You will then have to enter your laptop's `sudo` password to run Etcher.
 
 - When asked "Are you sure?" select <kbd>y</kbd>.
 
 Warning: Always be careful when selecting disk to be imaged. You don't want to lose your computer's system partition!
+
+For Jetson Nano:
+
+- The procedure will ask to accept the conditions for use. When asked "Do you accept? (a=Accept, n=Reject, r=Read License) \[n]: " select <kbd>a</kbd>.
+
+- After the image is downloaded, you will have to enter your `sudo` password. 
+
+- For the Jetson Nano board, the drive selection (e.g. /dev/sda) is performed after the image is downloaded. 
 
 On successful end of the procedure, the drives will be automatically ejected and you can just remove the SD card from your laptop.
 
@@ -126,16 +140,20 @@ Symptom: The flashing procedure failes with a `Bad archive` error when trying to
 Resolution: This happens when the downloaded zip for Hypriot is incomplete or corrupt. Delete the zip file by running the following command and try the procedure again. Also check if your computer has enough storage space.
 
     laptop $ rm /tmp/duckietown/hypriotos*
+    
+Symptom: The verification process fails with error `Please set up a token using "dts tok set"`.
+
+Resolution: Redo the Duckietown Token setup procedure [](#dt-account).
 
 ## Booting the Duckiebot {#duckiebot-boot}
 
-Now insert the SD card into the Raspberry PI and push the button on the battery to power things up.
+Now insert the SD card into the Raspberry PI (or Jetson Nano for `DB-beta`) and push the button on the battery to power things up.
 
 Warning: Don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
 
 ## Monitoring the First Boot {#monitor-first-boot}
 
-You know that your Raspberry Pi has successfully booted when you see it using the `dts fleet discover` utility:
+You know that your Raspberry Pi, or Jetson Nano, has successfully booted when you see it using the `dts fleet discover` utility:
 
 Open a terminal and run the command
 
@@ -190,7 +208,7 @@ Resolution: Press the button on the side of the battery ([](#troubleshooting-bat
 
 Symptom: The Raspberry Pi has power but it does not boot.
 
-Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
+Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. If problem persists, try again.
 
 Symptom: I cannot ping the duckiebot.
 
@@ -212,7 +230,7 @@ Next, try to log in using SSH, using
 
 This should succeed without password. Note that duckie is the default user. If you modified the username during the SD card initialization procedure, then use the appropriate username here.
 
-## Rebooting the PI {#setup-duckiebot-reboot}
+## Rebooting the Duckiebot {#setup-duckiebot-reboot}
 
 Warning: Do not test these commands now if you just booted up your duckiebot for the first time. It is likely not finished initializing and shutting down the duckiebot or disconnecting its internet access could interrupt the process and require you to re-flash the SD card.
 
@@ -220,7 +238,7 @@ To reboot:
 
     laptop $ ssh duckie@![hostname].local sudo reboot
 
-## Turn off the PI {#setup-duckiebot-poweroff}
+## Turn off the Duckiebot {#setup-duckiebot-poweroff}
 
 To turn off the Duckiebot, use:
 
@@ -234,3 +252,5 @@ the system might get corrupted.
 Then disconnect the USB cable (from the large connector next to the battery).
 
 Warning: If you disconnect frequently the cable at the Raspberry Pi's end, you might damage the port.
+
+Warning: Pressing the battery button does not shut down the power to the Duckiebot, it only activates the battery. If not in use anymore, disconnect the cables. The battery will automatically shut down if no load is detected over a period of 10 mins. 
