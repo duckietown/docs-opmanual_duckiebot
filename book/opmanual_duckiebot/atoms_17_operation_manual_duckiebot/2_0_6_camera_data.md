@@ -23,6 +23,8 @@ To see it, run a base image on your laptop with:
 
     laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
+
 The container will start. At the prompt, run:
 
     container $ rqt_image_view
