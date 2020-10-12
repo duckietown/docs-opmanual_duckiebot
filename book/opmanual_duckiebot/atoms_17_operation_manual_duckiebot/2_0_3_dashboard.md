@@ -31,6 +31,14 @@ for further information about \\compose\\.
 
 ## Setting up dashboard {#init-dashboard}
 
+You can find your duckietown dashboard at:
+
+    http://[YOUR_DUCKIEBOT_NAME].local/
+
+If the above address does not work, remove the `.local` part and just do `http://[YOUR_DUCKIEBOT_NAME]/`
+
+Note: if `.local` does not work, that means your router's default domain name is set to something else. It will be helpful if you figure out what that is. 
+
 ### Steps 1, 2
 
 By default, \\compose\\ uses Google Sign-In to authenticate the users.
