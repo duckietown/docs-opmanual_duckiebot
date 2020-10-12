@@ -21,9 +21,12 @@ and ssh to the robot.
 
 Try to open the Portainer interface:
 
-    http://![hostname].local:9000/#/containers
+    http://![DUCKIEBOT_NAME].local:9000/#/containers
 
-This will show the containers that are running.
+This will show the containers that are running. If the address is not achievable, try:
+
+    http://![DUCKIEBOT_NAME]:9000/#/containers
+
 
 ### In case the above doesn't work
 
@@ -33,7 +36,7 @@ Until everything is downloaded the Portainer interface will not start.
 
 To debug this, login to the robot:
 
-    laptop $ ssh duckie@![hostname].local
+    laptop $ ssh duckie@![DUCKIEBOT_NAME].local
 
 and then run the following command:
 
