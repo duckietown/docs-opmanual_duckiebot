@@ -1,10 +1,10 @@
 # Making your Duckiebot move {#rc-control status=ready}
 
-This page is for Duckiebots in `DB18` configuration. For previous year's instructions see [here](https://docs.duckietown.org/DT17/).
+This page is for Duckiebots in `DB18` configuration and above (including Jetson Nano configurations).
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` configuration.
+Requires: A Duckiebot in `DB18` or `DB-beta` configuration.
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
@@ -53,7 +53,11 @@ The following keys control the Duckiebot:
     <span>Toggle Anti-instagram</span>
 </col2>
 
-Warning: This does not currently work on Mac OSX - need to fix
+Warning: This does not currently work on Mac OSX
+
+Symptom: You receive an error about `X Error of failed request:  GLXBadContext ...`
+
+Resolution: Debugging NVIDIA drivers can be very tricky. One thing that has worked is to install `libnvidia-gl-430:i386` on your laptop (with `sudo apt`) and then restart your laptop and retry. The other option is to forego this GUI and try the no-window way or the dashboard (see below). 
 
 ### The no-window way with duckietown shell (For Mac Users)
 
