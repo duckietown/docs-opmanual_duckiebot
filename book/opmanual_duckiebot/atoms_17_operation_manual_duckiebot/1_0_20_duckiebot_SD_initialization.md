@@ -49,14 +49,14 @@ Then initalize it by running the command:
 The basic options are:
 
     --hostname         Hostname of the device to flash. This is required.
-    --linux-username   Username of the linux user to create on the flashed
-                       device The default is: duckie
-    --linux-password   Password to access the linux user profile created on
-                       the flashed device The default is: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
-    --type             The type of your device. E.g. `duckiebot`.
-    --configuration    The configuration of your robot. This is associated with `--type` option. E.g. `DB-beta`, `DB19`, `DB18`.
+    --type             The type of your device. Types are `duckiebot` (default), 
+                       `watchtower`, `traffic_light`.
+    --configuration    The configuration of your robot. This is associated with 
+                       `--type` option. E.g. `DB-beta`, `DB20`, `DB19`, or `DB18`.
+
+Note: the default username and password for all duckiebots are "duckie" and "quackquack", respectively. 
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
