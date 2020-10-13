@@ -33,7 +33,7 @@ Until everything is downloaded the Portainer interface will not start.
 
 To debug this, login to the robot:
 
-    laptop $ ssh ![hostname]
+    laptop $ ssh duckie@![hostname].local
 
 and then run the following command:
 
@@ -109,7 +109,7 @@ From another computer, you can see the contents of `/data` by visiting the URL:
 
 Otherwise, you can login via SSH and take a look at the contents of `/data`:
 
-    laptop $ ssh ![hostname].local ls /data
+    laptop $ ssh duckie@![hostname].local ls /data
 
 ## Building workflow {#docker-setup-building-workflow}
 

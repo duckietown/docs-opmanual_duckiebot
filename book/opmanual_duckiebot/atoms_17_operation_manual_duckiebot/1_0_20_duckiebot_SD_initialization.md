@@ -1,10 +1,10 @@
 # Duckiebot SD Card Initialization {#setup-duckiebot status=ready}
 
-This page is for the `DB18` configuration and above. 
+This page is for the `DB18` configuration and above (including Jetson Nano configurations). 
 
 <div class='requirements' markdown="1">
 
-Requires: An SD card of size at least 16 GB.
+Requires: An SD card of size at least 32 GB. 
 
 Requires: A computer with a **Ubuntu OS** (for flashing the SD card), an internet connection, an SD card reader, and 16 GB of free space.
 
@@ -30,7 +30,7 @@ A valid `hostname` satisfies all the following requirements:
 
 Warning: this currently only works on Ubuntu. Mac is not supported.
 
-Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 this is not necessary.
+Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 or above this is not necessary.
 
 Plug the SD card in the computer using the card reader.
 
@@ -43,12 +43,14 @@ Then initalize it by running the command:
 The basic options are:
 
     --hostname         Hostname of the device to flash. This is required.
-    --linux-username   Username of the linux user to create on the flashed
-                       device The default is: duckie
-    --linux-password   Password to access the linux user profile created on
-                       the flashed device The default is: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
+    --type             The type of your device. Types are `duckiebot` (default), 
+                       `watchtower`, `traffic_light`.
+    --configuration    The configuration of your robot. This is associated with 
+                       `--type` option. E.g. `DB-beta`, `DB20`, `DB19`, or `DB18`.
+
+Note: the default username and password for all duckiebots are "duckie" and "quackquack", respectively. 
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
@@ -60,22 +62,50 @@ Default for watchtower and traffic_light is no wifi config. Default for other ro
       - PSK (Pre-shared key) protected networks (no password) network: "ssid:psk"
       - EAP (Extensible Authentication Protocol) protected networks network: "ssid:username:password"
 
-If you want to add additional networks later and you have to edit the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
+If you want to add additional networks later and you have to edit the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive (for Raspberry Pi), or the `/etc/wpa_supplicant.conf` in the `root` drive (for the Jetson Nano board).
+
+New networks can be created by adding a new `network={}` paragraph, and then entering the network information. An example network configuration is shown below:
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=CH
+
+network={
+    id_str="network_1"
+    ssid="comnet23243"
+    psk="MSNDJWKE32"
+    key_mgmt=WPA-PSK
+}
+
+network={
+    id_str="network_2"
+    ssid="TPlink23432"
+    psk="ksnbn4wn3"
+    key_mgmt=WPA-PSK
+}
+```
 
 Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
 
 Additional options for init_sd_card are provided, however, it is recommended that you only use those if you know what you are doing:
 
-    --type             The type of your device.
-    --configuration    The configuration of your robot. This is associated with `--type` option
     --no-cache         Uses "fresh" image instead of the cached one.
     --workdir          Temporary working directory.
     --device           The device you want to flash the image to
     --steps            Steps to perform
+    --linux-username   Username of the linux user to create on the flashed
+                       device The default is: duckie
+    --linux-password   Password to access the linux user profile created on
+                       the flashed device The default is: quackquack    
 
 For a full list of the options, run
 
     laptop $ dts init_sd_card --help
+
+Example initialization for the `DB-beta` using wifi network "duckienet" with password "quackquack". 
+    
+    laptop $ dts init_sd_card --type duckiebot --configuration DB-beta --country CH --hostname studentduck --wifi duckienet:quackquack
 
 After you run the `dts init_sd_card` command with your options follow the instructions that appear on screen. Select the drive with the correct size (usually `/dev/mmcblk` or `/dev/sdc`) by pressing <kbd>Enter</kbd>.
 
@@ -101,11 +131,21 @@ sr0     11:0    1  1024M  0 rom
 
 Using above listing as an example, you should be choosing the disk name (sdb), not the partition name (sdb1, sdb2) for etcher to capture the whole disk.
 
+For Raspberry Pi:
+
 - You will then have to enter your laptop's `sudo` password to run Etcher.
 
 - When asked "Are you sure?" select <kbd>y</kbd>.
 
 Warning: Always be careful when selecting disk to be imaged. You don't want to lose your computer's system partition!
+
+For Jetson Nano:
+
+- The procedure will ask to accept the conditions for use. When asked "Do you accept? (a=Accept, n=Reject, r=Read License) \[n]: " select <kbd>r</kbd> to read the license, and then <kbd>a</kbd> to accept.
+
+- After the image is downloaded, you will have to enter your `sudo` password. 
+
+- For the Jetson Nano board, the drive selection (e.g. /dev/sda) is performed after the image is downloaded. 
 
 On successful end of the procedure, the drives will be automatically ejected and you can just remove the SD card from your laptop.
 
@@ -126,43 +166,27 @@ Symptom: The flashing procedure failes with a `Bad archive` error when trying to
 Resolution: This happens when the downloaded zip for Hypriot is incomplete or corrupt. Delete the zip file by running the following command and try the procedure again. Also check if your computer has enough storage space.
 
     laptop $ rm /tmp/duckietown/hypriotos*
+    
+Symptom: The verification process fails with error `Please set up a token using "dts tok set"`.
+
+Resolution: Redo the Duckietown Token setup procedure [](#dt-account).
 
 ## Booting the Duckiebot {#duckiebot-boot}
 
-Now insert the SD card into the Raspberry PI and push the button on the battery to power things up.
+Now insert the SD card into the Raspberry PI (or Jetson Nano for `DB-beta`) and push the button on the battery to power things up.
 
 Warning: Don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
 
-You should immediately see the **green** LED of the Raspberry Pi next to where the SD card was inserted start to blink with activity.
+## Monitoring the First Boot {#monitor-first-boot}
 
-If not, stop, as there is a problem with the SD card initialization (or possibly the Raspberry Pi, but this is unlikely).
-
-You know that your Raspberry Pi has successfully booted when you are able to ping your robot with the command below or with some method in [](#duckiebot-network):
-
-```
-laptop $ ping ![hostname].local
-```
-
-Note that you should be connected to the same network as the robot in order to do that. If you are using a virtual machine you should use "Bridged" connection (typically NAT is used by default).
-
-You should see output similar to the following:
-
-```
-PING ![hostname].local (![X.X.X.X]): 56 data bytes
-64 bytes from ![X.X.X.X]: icmp_seq=0 ttl=64 time=2.164 ms
-64 bytes from ![X.X.X.X]: icmp_seq=1 ttl=64 time=2.303 ms
-![...]
-```
-
-Do not power the robot off (by holding the battery button) while this is in process.
-
-## Monitor the progress of the first boot {#monitor-first-boot}
+You know that your Raspberry Pi, or Jetson Nano, has successfully booted when you see it using the `dts fleet discover` utility:
 
 Open a terminal and run the command
 
 ```
 laptop $ dts fleet discover
 ```
+For the Jetson Nano board, the first boot of the Duckiebot will take several minutes, and then it will reboot automatically. Only after it reboots you will be able to ssh into the bot. This can be monitored using an external monitor, or by running the fleet discover command after successful rebooting. 
 
 Note: If the command above returns an error about the library `zeroconf` being
 missing, run `pip3 install zeroconf` and retry.
@@ -196,6 +220,8 @@ URL `http://![hostname].local/`. You will see the following page,
 This is the dashboard of your Duckiebot. The Dashboard is built using a
 framework called \\compose\\. You will see how to configure it in [](#duckiebot-dashboard-setup)
 
+Do not power the robot off (by holding the battery button) after you have booted the robot the first time but before you see it show up in `dts fleet discover`.
+
 ### Troubleshooting for first boot
 
 Symptom: The red LED on the Raspberry Pi is OFF.
@@ -209,7 +235,7 @@ Resolution: Press the button on the side of the battery ([](#troubleshooting-bat
 
 Symptom: The Raspberry Pi has power but it does not boot.
 
-Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. Try again if done instead.
+Resolution: [Initialize the SD card](#setup-duckiebot) if not done already. If problem persists, try again.
 
 Symptom: I cannot ping the duckiebot.
 
@@ -223,46 +249,35 @@ Symptom: The LEDs light up in a variety of colors when the battery is plugged in
 
 Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#reflash-microcontroller).
 
+Symptom: On first boot, the lights of the Duckiebot do not turn white (might be blue). 
+
+Resolution: Run the following commands. 
+
+    laptop $ dts duckiebot update <hostname>
+    
+    duckiebot $ dt-autobot
+    
 ## SSH to the Duckiebot {#setup-duckiebot-ssh}
 
 Next, try to log in using SSH, using
 
-    laptop $ ssh ![hostname]
+    laptop $ ssh duckie@![hostname].local
 
-This should succeed without password.
+This should succeed without password. Note that duckie is the default user. If you modified the username during the SD card initialization procedure, then use the appropriate username here.
 
-If it doesn't work, check that `~/.ssh/config` contains something like:
-
-    Host ![hostname]
-        User duckie
-        Hostname ![hostname].local
-        IdentityFile ~/.ssh/DT18_key_00
-
-This configuration was added by the `init_sd_card` command.
-
-## Securing your Duckiebot
-
-By default, your Duckiebot uses an SSH key that is the same for all Duckiebots. That means that anyone can access your robot. Typically, this is not a problem, but in case you have sensitive information on it, such as your university internet credentials, you can remove it. Keep in mind that by doing so, some advanced functionality (particularly involving autolab proccesses) might stop functioning properly! Remove the SSH key at your risk and only if completely necessary.
-
-You can remove the key by running:
-
-    laptop $ ssh ![hostname] rm .ssh/authorized_keys
-
-After this you will be prompted for your password every time you connect to your Duckiebot. If the password which you set in the SD card initialization process was not strong enough, or you kept the default password, we recommend you change it now.
-
-## Rebooting the PI {#setup-duckiebot-reboot}
+## Rebooting the Duckiebot {#setup-duckiebot-reboot}
 
 Warning: Do not test these commands now if you just booted up your duckiebot for the first time. It is likely not finished initializing and shutting down the duckiebot or disconnecting its internet access could interrupt the process and require you to re-flash the SD card.
 
 To reboot:
 
-    laptop $ ssh ![hostname] sudo reboot
+    laptop $ ssh duckie@![hostname].local sudo reboot
 
-## Turn off the PI {#setup-duckiebot-poweroff}
+## Turn off the Duckiebot {#setup-duckiebot-poweroff}
 
 To turn off the Duckiebot, use:
 
-    laptop $ ssh ![hostname] sudo poweroff
+    laptop $ ssh duckie@![hostname].local sudo poweroff
 
 Then wait 30 seconds.
 
@@ -272,3 +287,5 @@ the system might get corrupted.
 Then disconnect the USB cable (from the large connector next to the battery).
 
 Warning: If you disconnect frequently the cable at the Raspberry Pi's end, you might damage the port.
+
+Warning: Pressing the battery button does not shut down the power to the Duckiebot, it only activates the battery. If not in use anymore, disconnect the cables. The battery will automatically shut down if no load is detected over a period of 10 mins. 
