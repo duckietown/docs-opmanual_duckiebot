@@ -51,7 +51,11 @@ The following keys control the Duckiebot:
     <span>Toggle Anti-instagram</span>
 </col2>
 
-Warning: This does not currently work on Mac OSX - need to fix
+Warning: This does not currently work on Mac OSX
+
+Symptom: You receive an error about `X Error of failed request:  GLXBadContext ...`
+
+Resolution: Debugging NVIDIA drivers can be very tricky. One thing that has worked is to install `libnvidia-gl-430:i386` on your laptop (with `sudo apt`) and then restart your laptop and retry. The other option is to forego this GUI and try the no-window way or the dashboard (see below). 
 
 ### The no-window way with duckietown shell (For Mac Users)
 
