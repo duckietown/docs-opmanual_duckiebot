@@ -4,7 +4,7 @@ This page is for Duckiebots in `DB18` configuration and above (including Jetson 
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` configuration.
+Requires: A Duckiebot in `DB18` or `DB-beta` configuration.
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
