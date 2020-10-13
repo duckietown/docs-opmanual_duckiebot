@@ -4,7 +4,7 @@ This page is for the `DB18` configuration and above (including Jetson Nano confi
 
 <div class='requirements' markdown="1">
 
-Requires: An SD card of size at least 16 GB. 32 GB preferred. 
+Requires: An SD card of size at least 32 GB. 
 
 Requires: A computer with a **Ubuntu OS** (for flashing the SD card), an internet connection, an SD card reader, and 16 GB of free space.
 
@@ -43,14 +43,14 @@ Then initalize it by running the command:
 The basic options are:
 
     --hostname         Hostname of the device to flash. This is required.
-    --linux-username   Username of the linux user to create on the flashed
-                       device The default is: duckie
-    --linux-password   Password to access the linux user profile created on
-                       the flashed device The default is: quackquack
     --wifi             default: duckietown:quackquack
     --country          default: US
-    --type             The type of your device. E.g. `duckiebot`.
-    --configuration    The configuration of your robot. This is associated with `--type` option. E.g. `DB-beta`.
+    --type             The type of your device. Types are `duckiebot` (default), 
+                       `watchtower`, `traffic_light`.
+    --configuration    The configuration of your robot. This is associated with 
+                       `--type` option. E.g. `DB-beta`, `DB20`, `DB19`, or `DB18`.
+
+Note: the default username and password for all duckiebots are "duckie" and "quackquack", respectively. 
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
@@ -62,7 +62,29 @@ Default for watchtower and traffic_light is no wifi config. Default for other ro
       - PSK (Pre-shared key) protected networks (no password) network: "ssid:psk"
       - EAP (Extensible Authentication Protocol) protected networks network: "ssid:username:password"
 
-If you want to add additional networks later and you have to edit the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
+If you want to add additional networks later and you have to edit the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive (for Raspberry Pi), or the `/etc/wpa_supplicant.conf` in the `root` drive (for the Jetson Nano board).
+
+New networks can be created by adding a new `network={}` paragraph, and then entering the network information. An example network configuration is shown below:
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=CH
+
+network={
+    id_str="network_1"
+    ssid="comnet23243"
+    psk="MSNDJWKE32"
+    key_mgmt=WPA-PSK
+}
+
+network={
+    id_str="network_2"
+    ssid="TPlink23432"
+    psk="ksnbn4wn3"
+    key_mgmt=WPA-PSK
+}
+```
 
 Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
 
@@ -72,6 +94,10 @@ Additional options for init_sd_card are provided, however, it is recommended tha
     --workdir          Temporary working directory.
     --device           The device you want to flash the image to
     --steps            Steps to perform
+    --linux-username   Username of the linux user to create on the flashed
+                       device The default is: duckie
+    --linux-password   Password to access the linux user profile created on
+                       the flashed device The default is: quackquack    
 
 For a full list of the options, run
 
@@ -160,6 +186,7 @@ Open a terminal and run the command
 ```
 laptop $ dts fleet discover
 ```
+For the Jetson Nano board, the first boot of the Duckiebot will take several minutes, and then it will reboot automatically. Only after it reboots you will be able to ssh into the bot. This can be monitored using an external monitor, or by running the fleet discover command after successful rebooting. 
 
 Note: If the command above returns an error about the library `zeroconf` being
 missing, run `pip3 install zeroconf` and retry.
@@ -222,6 +249,14 @@ Symptom: The LEDs light up in a variety of colors when the battery is plugged in
 
 Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#reflash-microcontroller).
 
+Symptom: On first boot, the lights of the Duckiebot do not turn white (might be blue). 
+
+Resolution: Run the following commands. 
+
+    laptop $ dts duckiebot update <hostname>
+    
+    duckiebot $ dt-autobot
+    
 ## SSH to the Duckiebot {#setup-duckiebot-ssh}
 
 Next, try to log in using SSH, using
