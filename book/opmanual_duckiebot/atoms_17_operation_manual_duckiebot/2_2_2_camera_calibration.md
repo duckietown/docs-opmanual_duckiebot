@@ -45,18 +45,6 @@ Every camera is a little bit different so we need to do a camera calibration pro
 This process will involve displaying a predetermined pattern to the camera and using it to solve for the camera parameters. For more information on the details see [the slides](https://github.com/duckietown/lectures/blob/master/1_ideal/25_computer_vision/cv_calibration.pdf).
 The procedure is basically a wrapper around the [ROS camera calibration tool](http://wiki.ros.org/camera_calibration).
 
-### Publish raw imagery
-
-First, check if your `duckiebot-interface` container is running. If it is not, start it with
-
-    laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy
-    
-Warning: The `duckiebot-interface` container can appear under different names, e.g. `dt18_03_roscore_duckiebot-interface_1`. 
-
-We want uncompressed imagery for this which is not streamed by default from the duckiebot. To get it you can run the "camera" demo:
-
-    laptop $ dts duckiebot demo --demo_name camera --duckiebot_name ![DUCKIEBOT_NAME] --package_name pi_camera --image duckietown/dt-core:daffy
-
 ### Launch the intrinsic calibration application
 
 Next you can launch the intrinsic calibration program with:
@@ -70,6 +58,7 @@ You should see a display screen open on the laptop ([](#fig:intrinsic_callibrati
      <img src="intrinsic_callibration_pre.png" style='width: 30em'/>
 </div>
 
+Note: If you only see a window with black screen during the startup, try to resize the window manually using cursor, and you should see the window content correctly. 
 
 ### Calibration dance
 
@@ -123,6 +112,7 @@ If you are running the file server through docker (which runs by default) you ca
 
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
 
+Additionally, you can access your calibration files through dashboard. Read more [here](#dashboard-tutorial-files)
 
 ### Keeping your calibration valid
 
@@ -131,6 +121,11 @@ Warning: Do not change the focus during or after the calibration, otherwise your
 Warning: Do not use the lens cover anymore; removing the lens cover may change the focus.
 
 
+### Cleanup
+
+You can now stop the `demo_intrinsic_calibration` on the robot either through the portainer interface or by typing:
+
+     laptop $ docker -H ![DUCKIEBOT_NAME].local stop demo_intrinsic_calibration
 
 
 ## Extrinsic Camera Calibration {#extrinsic-camera-calibration}
@@ -211,7 +206,7 @@ are not square. This is the rectification used in the lane localization pipeline
 
 2. In `rectified_full_ratio_auto` the image is not stretched. The camera matrix is preserved. This means that the aspect ratio is the same. In particular note the April tags are square. If you do something with April tags, you need this rectification.
 
-
+<!--
 ### Optional autonomic verification step
 
 By default, the extrinsic calibration pipeline will now ask you to put your robot on a lane to complete a verification step.
@@ -259,3 +254,4 @@ of the calibrations useless ([](#fig:calibration_95_percent_success)), and peopl
     <figcaption>In 2017, a bug in the calibration made about 5 percent
     of the calibrations useless.</figcaption>
 </div>
+-->
