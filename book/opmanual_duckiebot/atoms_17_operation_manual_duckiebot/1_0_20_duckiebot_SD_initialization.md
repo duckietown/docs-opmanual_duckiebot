@@ -249,6 +249,14 @@ Symptom: The LEDs light up in a variety of colors when the battery is plugged in
 
 Resolution: The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the procedure in [](#reflash-microcontroller).
 
+Symptom: On first boot, the lights of the Duckiebot do not turn white (might be blue). 
+
+Resolution: Run the following commands. 
+
+    laptop $ dts duckiebot update <hostname>
+    
+    duckiebot $ dt-autobot
+    
 ## SSH to the Duckiebot {#setup-duckiebot-ssh}
 
 Next, try to log in using SSH, using
