@@ -1,6 +1,6 @@
 # Making your Duckiebot move {#rc-control status=ready}
 
-This page is for Duckiebots in `DB18` configuration. For previous year's instructions see [here](https://docs.duckietown.org/DT17/).
+This page is for Duckiebots in `DB18` configuration and above (including Jetson Nano configurations).
 
 <div class='requirements' markdown='1'>
 
