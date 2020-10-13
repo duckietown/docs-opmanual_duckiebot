@@ -45,8 +45,10 @@ The basic options are:
     --hostname         Hostname of the device to flash. This is required.
     --wifi             default: duckietown:quackquack
     --country          default: US
-    --type             The type of your device. Types are `duckiebot` (default), `watchtower`, `traffic_light`.
-    --configuration    The configuration of your robot. This is associated with `--type` option. E.g. `DB-beta`, `DB20`, `DB19`, or `DB18`.
+    --type             The type of your device. Types are `duckiebot` (default), 
+                       `watchtower`, `traffic_light`.
+    --configuration    The configuration of your robot. This is associated with 
+                       `--type` option. E.g. `DB-beta`, `DB20`, `DB19`, or `DB18`.
 
 Note: the default username and password for all duckiebots are "duckie" and "quackquack", respectively. 
 
@@ -60,7 +62,29 @@ Default for watchtower and traffic_light is no wifi config. Default for other ro
       - PSK (Pre-shared key) protected networks (no password) network: "ssid:psk"
       - EAP (Extensible Authentication Protocol) protected networks network: "ssid:username:password"
 
-If you want to add additional networks later and you have to edit the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive.
+If you want to add additional networks later and you have to edit the `/etc/wpa_supplicant/wpa_supplicant.conf` file in the `root` drive (for Raspberry Pi), or the `/etc/wpa_supplicant.conf` in the `root` drive (for the Jetson Nano board).
+
+New networks can be created by adding a new `network={}` paragraph, and then entering the network information. An example network configuration is shown below:
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=CH
+
+network={
+    id_str="network_1"
+    ssid="comnet23243"
+    psk="MSNDJWKE32"
+    key_mgmt=WPA-PSK
+}
+
+network={
+    id_str="network_2"
+    ssid="TPlink23432"
+    psk="ksnbn4wn3"
+    key_mgmt=WPA-PSK
+}
+```
 
 Make sure to set your country correctly with the `--country` option. (Ex. CA for Canada, CH for Switzerland) This sometimes will result in the specific Wifi hotspot not being seen on the duckiebot problem.
 
@@ -162,6 +186,7 @@ Open a terminal and run the command
 ```
 laptop $ dts fleet discover
 ```
+For the Jetson Nano board, the first boot of the Duckiebot will take several minutes, and then it will reboot automatically. Only after it reboots you will be able to ssh into the bot. This can be monitored using an external monitor, or by running the fleet discover command after successful rebooting. 
 
 Note: If the command above returns an error about the library `zeroconf` being
 missing, run `pip3 install zeroconf` and retry.
