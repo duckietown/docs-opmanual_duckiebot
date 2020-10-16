@@ -255,7 +255,7 @@ Resolution: Run the following commands.
 
     laptop $ dts duckiebot update <hostname>
     
-    duckiebot $ dt-autobot
+    duckiebot $ dt-autoboot
     
 ## SSH to the Duckiebot {#setup-duckiebot-ssh}
 
