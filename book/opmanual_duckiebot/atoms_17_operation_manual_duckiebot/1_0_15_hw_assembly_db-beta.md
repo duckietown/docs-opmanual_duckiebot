@@ -523,7 +523,7 @@ Mount the single spacer in the location shown below.
 Needed:
 
 - 1x [Top plate assembly](#top_plate_assembly_dbbeta)
-- 1x Bottom plate assembly, as seen in [](#fig:battery_strap_dbbeta) with wheels attached
+- 1x Bottom plate assembly, as seen in [](#fig:db_bat_connected) with wheels attached
 - 1x [Back bumper assembly](#back_bumper_assembly_dbbeta)
 - 2x Battery Cables (1x short black cable, 1x short white cable)
 - 1x Back plate spacer
