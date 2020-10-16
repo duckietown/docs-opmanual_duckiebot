@@ -262,7 +262,7 @@ Needed:
      <img src="attach_battery_components.jpg" style='width: 25em'/>
 </div>
 
-Note: The cables are not included in this picture but are illustrated in [](fig:what_is_in_box_db-beta) as balloons 24 and 25.
+Note: The cables are not included in this picture but are illustrated in [](#fig:what_is_in_box_db-beta) as balloons 24 and 25.
 
 ### Correct battery cable placement for ROMOSS battery
 
