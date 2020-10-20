@@ -243,19 +243,115 @@ Use 2x M3x10 metal screws to attach the front spacers. The location should be as
 
 ## Battery Attachment {#battery_attachment_dbbeta}
 
+Warning: This section has been rewritten due to weight distribution issues. Please ignore pictures in this Duckumentation where the battery is shown in a different configuration. 
+
+
 Needed:
 
-- 1x Battery
+- 1x Battery (ROMOSS or Duckiebot battery)
 - 1x Zip tie (long white one)
+- 2x 90 degree connector black USB cables
+- 1x White USB cable    
 - 1x Back acrylic spacer
 - 4x M3x10 screws
 - 1x Previous [assembly](#adding_front_spacers_dbbeta)
 
-<div figure-id="fig:attach_battery_components" figure-caption="Needed components for this step.">
+
+
+<div figure-id="fig:attach_battery_components" figure-caption="Needed components for this step. ">
      <img src="attach_battery_components.jpg" style='width: 25em'/>
 </div>
 
+Note: The cables are not included in this picture but are illustrated in [](#fig:what_is_in_box_db-beta) as balloons 24 and 25.
 
+### Correct battery cable placement for ROMOSS battery
+
+Note: the charging cable has to go through the back bumper hole before being connected to the battery, otherwise it will not go through. 
+
+<div figure-id="fig:romoss_cables" >
+     <img src="romoss_cables.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:romoss-connections" >
+     <img src="romoss-connections.jpg" style='width: 25em'/>
+</div>
+
+
+
+### Correct battery cable placement for black Duckiebot battery
+
+<div figure-id="fig:db-bat-connections" >
+     <img src="db-bat-connections.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:duckiebot_battery_attached" >
+     <img src="duckiebot_battery_attached.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:db-bat-attached2" >
+     <img src="db-bat-attached2.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:db_bat_connected" >
+     <img src="db_bat_connected.jpg" style='width: 25em'/>
+</div>
+
+Now, if your Duckiebot is completely assembled, and this change is needed, we will have to do surgery. Worry not, we are expert Duckie medics! 
+
+### Repositioning the battery 
+
+Step 1. Cut the ziptie holding the battery together. 
+
+Step 2. Remove the wheels from both sides of the Duckiebot. 
+
+Step 3 (Duckiebot battery (black)). Pass one of the 90 degree cables through the back bumper hole, such that the micro-usb port is inside the bot and can be connected to the battery. 
+
+<div figure-id="fig:white_cable_hole" >
+     <img src="white_cable_hole.jpg" style='width: 25em'/>
+</div>
+
+Step 3 (ROMOSS battery). Pass the white cable through the back bumper hole such that the micro-usb port is inside the bot and connected to the battery. 
+
+<div figure-id="fig:romoss-connected-bot2" >
+     <img src="romoss-connected-bot2.jpg" style='width: 25em'/>
+</div>
+
+Step 4. Connect the battery cables to the battery. 
+
+
+
+<div figure-id="fig:romoss-connected-bot" figure-caption="ROMOSS (left to right on image: 90 degree cable, white cable, 90 degree cable used for charging)">
+     <img src="romoss-connected-bot.jpg" style='width: 25em'/>
+</div>
+
+<div figure-id="fig:db_bat_connected2" figure-caption="Duckiebot Battery (left to right on image: 90 degree cable, white cable used for charging, 90 degree cable)">
+     <img src="db_bat_connected2.jpg" style='width: 25em'/>
+</div>
+
+Step 5. Place batteries back inside the Duckiebot
+
+<div figure-id="fig:db_bat_inside" figure-caption="Duckiebot battery (black)">
+     <img src="db_bat_inside.jpg" style='width: 25em'/>
+</div>
+
+
+<div figure-id="fig:romoss-connected-finished" figure-caption="ROMOSS battery (white) ">
+     <img src="romoss-connected-finished.jpg" style='width: 25em'/>
+</div>
+
+
+Step 6. Connect the cables
+
+<div figure-id="fig:surgery_done" >
+     <img src="surgery_done.jpg" style='width: 25em'/>
+</div>
+
+
+Step 7. Connect the wheels back. And done! Congratulations on performing your first Duckiebot surgery!
+
+<!-- Old assembly -->
+
+<!--
 <div figure-id="fig:batteries_db-beta" figure-caption="The two types of batteries that might come with the Duckiebox.">
      <img src="batteries_db-beta.jpg" style='width: 25em'/>
 </div>
@@ -275,7 +371,7 @@ Place the battery on the bottom plate with the ports facing to the rear left. At
 
 <div figure-id="fig:battery_strap_detail">
      <img src="battery_strap_detail.jpg" style='width: 25em'/>
-</div>
+</div> -->
 
 
 ## Camera assembly and attachment {#camera_assembly_and_attachment_dbbeta}
@@ -427,7 +523,7 @@ Mount the single spacer in the location shown below.
 Needed:
 
 - 1x [Top plate assembly](#top_plate_assembly_dbbeta)
-- 1x Bottom plate assembly, as seen in [](#fig:battery_strap_dbbeta) with wheels attached
+- 1x Bottom plate assembly, as seen in [](#fig:db_bat_connected) with wheels attached
 - 1x [Back bumper assembly](#back_bumper_assembly_dbbeta)
 - 2x Battery Cables (1x short black cable, 1x short white cable)
 - 1x Back plate spacer
