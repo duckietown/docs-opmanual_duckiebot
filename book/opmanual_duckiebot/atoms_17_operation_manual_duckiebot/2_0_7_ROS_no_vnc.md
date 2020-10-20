@@ -18,6 +18,8 @@ To start a image that runs no-vnc, do:
 
     laptop $ dts start_gui_tools --vnc ![DUCKIEBOT_NAME]
 
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
+
 To use no-vnc, use your browser and navigate to:
 
     http://localhost:8087/

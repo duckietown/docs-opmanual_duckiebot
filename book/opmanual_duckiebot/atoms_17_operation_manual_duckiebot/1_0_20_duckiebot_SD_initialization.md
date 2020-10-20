@@ -32,6 +32,12 @@ Warning: this currently only works on Ubuntu. Mac is not supported.
 
 Warning: on Ubuntu 16, you need to remove and re-insert the SD card. On Ubuntu 18 or above this is not necessary.
 
+Before you start initializing SD card, make sure you have setup your dts token in the duckietown shell. To do that: 
+
+    laptop $ dts tok set
+    
+It will bring you to a website where you will login into your duckietown account, and you can get your token there. You can find more information [here](#dt-account-find-token)
+
 Plug the SD card in the computer using the card reader.
 
 Warning: If your SD card have write protection switch on the side of the SD card, make sure it is set to write mode.

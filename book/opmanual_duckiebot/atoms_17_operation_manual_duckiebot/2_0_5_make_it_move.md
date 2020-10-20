@@ -29,6 +29,8 @@ If you would like to move your robot using your laptop, you can run:
 
 which, after startup should open the interface window that looks like:
 
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
+
 <figure>
     <figcaption>The keyboard control graphical user interface</figcaption>
     <img style='width:8em' src="keyboard_gui.png"/>
