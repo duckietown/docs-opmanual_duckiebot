@@ -88,9 +88,11 @@ NOTE: An additional metal spacer has been included which is used to mount the hu
 
 ## Preliminary Steps {#preliminaries-db-beta}
 Important assembly considerations:
+
 - Never assemble the Duckiebot on a metal surface. The pins on the bottom of the board are conductive, and might short. The Duckiebot will be very sad (fried duck).
 - Do NOT connect the battery cables to the Jetson Nano board or the hut until the very end. Doing it too early has the potential of causing irreparable damage to the Duckiebot (physically and mentally). 
 - All electrical components (Jetson Nano, Board, Hut)  should ALWAYS be connected with nylon screws and nuts.
+
 ### Step A
 Unbox all of your components, and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on.
 
