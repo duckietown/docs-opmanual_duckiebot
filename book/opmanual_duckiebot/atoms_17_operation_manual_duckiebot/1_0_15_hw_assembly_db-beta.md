@@ -707,3 +707,9 @@ Voila! Final result should look something like this:
 </div>
 
 Congratulations, you completed the easiest part of the course! Now your journey to Mount Doom begins...
+
+Warning: Be careful when you move the robot when it is powered on and don't stick your fingers in the fan... it has been reported to be painful.
+
+<div figure-id="fig:cut_finger" >
+     <img src="cut_finger.jpg" style='width: 25em'/>
+</div>
