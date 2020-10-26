@@ -552,6 +552,11 @@ Use additional 2x M3x10 metal screws to secure the Top Plate assembly to the Bot
 
 Mount the Hut Assembly (with metal spacer) onto the back of the Duckiebot. Secure with 2x M2.5 Nylon nuts. 
 
+Warning:
+
+Make sure that you press the Hut Assembly well onto the Jetson Nano pins. Otherwise the connection might be bad and the motors and LEDs won't work.
+
+
 <div figure-id="fig:nylon_things_hut" >
      <img src="nylon_things_hut.jpg" style='width: 25em'/>
 </div>
