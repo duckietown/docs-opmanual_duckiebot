@@ -26,12 +26,9 @@ Results: One or more Duckiebot safely navigating in Duckietown.
     <dtvideo src='vimeo:247596730'/>
 </div>
 
-TODO: add a different video with an up to specification Duckietown.
-
 ## Duckietown setup notes {#demo-indefinite-navigation-duckietown-setup}
 
 To run this demo, you can setup a quite complex Duckietown. The demo supports normal road tiles, intersections and traffic lights. That makes it a a level more difficult than the [lane following demo](#demo-lane-following). Make sure that your Duckietown complies with the appereance specifications presented in [the Duckietown specs](+opmanual_duckietown#dt-ops-appearance-specifications). In particular correct street signaling is key to success of intersections handling.
-
 
 ## Duckiebot setup notes {#demo-indefinite-navigation-duckiebot-setup}
 
@@ -45,7 +42,7 @@ Check that every Duckiebot has sufficient battery charge and that they are all p
 
 ### Start the demo containers
 
-Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`). The `dt-duckiebot-interface` and `dt-car-interface` container typically starts with robot startup. You will need to start `dt-core` manually. 
+Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`). The `dt-duckiebot-interface` and `dt-car-interface` container typically starts with robot startup. You will need to start `dt-core` manually.
 
 First, check to make sure that `dt-duckiebot-interface` and `dt-car-interface` are running on your duckiebot via portainer, if not, do:
 
@@ -65,12 +62,10 @@ If you have a joystick you can skip this next command, otherwise we need to run 
 
     laptop $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
 
-
-|        Controls      |  Joystick  |     Keyboard     |
-|----------------------|:----------:|:----------------:|
-| Start Lane Following |   __R1__   |   <kbd>a</kbd>   |
-| Stop Lane Following  |   __L1__   |   <kbd>s</kbd>   |
-
+| Controls             | Joystick |   Keyboard   |
+| -------------------- | :------: | :----------: |
+| Start Lane Following |  **R1**  | <kbd>a</kbd> |
+| Stop Lane Following  |  **L1**  | <kbd>s</kbd> |
 
 Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. You can regain control of the bot at any moment by stopping the lane following and using the (virtual) joystick. Resuming the demo is as easy as pressing the corresponding start button.
 
@@ -80,14 +75,30 @@ Et voilà! We are ready to drive around autonomously.
 
 Here are some additional things you can try:
 
-* Get a [remote stream](#read-camera-data) of your Duckiebot.
-* You can visualize the detected line segments the same way as for the [lane following demo](#demo-lane-following)
-* Try to change some of the ROS parameters to see how your Duckiebot's behavior will change. 
+- Get a [remote stream](#read-camera-data) of your Duckiebot.
+- You can visualize the detected line segments the same way as for the [lane following demo](#demo-lane-following)
+- Try to change some of the ROS parameters to see how your Duckiebot's behavior will change.
 
-## Troubleshooting
+## Troubleshooting the intersection handling
 
-Symptom: The Duckiebot fails at intersections.
+If your Duckiebot does not yield satisfactory results in intersection navigation, you might want to tune the related parameters.
+Basically the `unicorn_intersection_node` (long story for the name) is a mixture of open loop commands and a re-use of the lane filter.
+During the intersection, namely when the Duckiebot is in the `FSM` state `INTERSECTION_CONTROL`, the color perception of lines is changed. As a simple example if the goal is to go straight, the red lines will be perceived as white, so that it will be possible to follow the right white line. On top of this there are a few open loop commands that are used to help the Duckiebot face the correct direction. These parameters are stored in
 
-Resolution: This problem is an open development problem, to improve the results tune the parameters of the `unicorn_intersection_node`, the procedure is explained in the [troubleshooting section](#trouble-unicorn_intersection).
+    Software/catkin_ws/src/00-infrastructure/duckietown/config/baseline/unicorn_intersection/unicorn_intersection_node/default.yaml
 
-Maintainer: Contact Gianmarco Bernasconi (ETHZ) via Slack for further assistance.
+You can change them online (while the demo is running) by using:
+
+     duckiebot-container $ rosparam set ![your_parameter] ![your value]
+
+You can see all the parameters by running:
+
+    duckiebot-container $ rosparam list
+
+And check the value of a specific one using:
+
+    duckiebot-container $ rosparam get ![param name]
+
+The ones you might want to modify are the feed-forward parts, stored in `ff_left`, `ff_right` and `ff_straight`. These parameters modify the output $\omega$ (angular velocity, positive in counterclockwise direction) for the time given in `time_left_turn`, `time_straight_turn` and `time_right_turn`, which you might want to change aswell.
+
+Maintainer: Contact Gianmarco Bernasconi (ETHZ), Frank (Chude) Qian (UofT) via Slack for further assistance.

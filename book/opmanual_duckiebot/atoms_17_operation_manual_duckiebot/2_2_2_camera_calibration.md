@@ -51,6 +51,7 @@ Next you can launch the intrinsic calibration program with:
 
     laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
     
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 

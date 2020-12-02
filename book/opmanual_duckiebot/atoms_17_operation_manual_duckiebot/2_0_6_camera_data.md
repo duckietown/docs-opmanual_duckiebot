@@ -2,7 +2,7 @@
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` configuration.
+Requires: A Duckiebot in `DB18` or `DB-beta` configuration.
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
@@ -23,6 +23,8 @@ To see it, run a base image on your laptop with:
 
     laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
+
 The container will start. At the prompt, run:
 
     container $ rqt_image_view
@@ -37,9 +39,26 @@ You have to select the right topic from the dropdown menu:
 
 ### Troubleshooting
 
+Symptom: I see a black image like this:
+
+<figure id="Cap on photo">
+    <figcaption>What you see if you leave the camera cap on.</figcaption>
+     <img src="capon.png" style='width: 30em'/>
+</figure>
+
+Resolution: Remove the cap of the camera.
+
 Symptom: When I try to do `rqt_image_view`, I don't see the window on my machine.
 
 Resolution: Sometimes window does not successfully spawn on the first try. You can Ctrl+c to terminate the prcess first, and try running that process again.
+
+Symptom: `libGL error` when running `dts start_gui_tools`
+
+Resolution: If you have an error like that when running `dts start_gui_tools` or another command with a GUI on the Duckiebot, then you are likely having issues with an NVIDIA graphics card:
+
+`libGL error: No matching fbConfigs or visuals found libGL error: failed to load driver: swrast nvidia docker`
+
+This could occur on a computer that has two graphics cards: e.g. a discrete NVIDIA GPU, and an integrated Intel card. In order to run these commands you will have to switch to the Intel card. Please follow the official guidelines for your OS and graphics card to find out how to do that.
 
 Symptom: I don't see any image
 
@@ -64,6 +83,16 @@ If that image is not running, you should manually start that or check to see if 
 To manually start the `duckiebot-interface`, do:
 
     laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-arm32v7
+
+Symptom: The camera is not detected from duckiebot
+
+Resolution: remove the battery pack and check the camera cable for damage. Some people bent the cable too much breaking it.
+
+Symptom: Cannot change camera focus
+
+Resolution: Need to break the glue
+Some picams come with the lens glued in place. Apply a bit more force the first time you adjust the lens.
+
 
 ## Viewing the image in no-vnc {#image-novnc status=ready}
 
