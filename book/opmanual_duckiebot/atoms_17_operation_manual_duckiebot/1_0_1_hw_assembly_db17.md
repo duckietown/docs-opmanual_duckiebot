@@ -1,16 +1,16 @@
-# Assembling the `DB17` Duckiebot {#assembling-duckiebot-db17 status=ready}
+# Assembling the `DB-17` Duckiebot {#assembling-duckiebot-db17 status=ready}
 
-This page is for the `DB17` configuration used in classes in 2017. The docker based software stack of 2018 is currently not guaranteed to work out of the box with the `DB17` hardware configurations.
+This page is for the `DB-17` configuration used in classes in 2017. The docker based software stack of 2018 is currently not guaranteed to work out of the box with the `DB-17` hardware configurations.
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB17` parts. The acquisition process is explained in [](#get-db17-hw).
+Requires: Duckiebot `DB-17` parts. The acquisition process is explained in [](#get-db17-hw).
 
 Requires: A microSD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot).
 
 Requires: Time: about 1-1.5 hours (45 minutes for an experienced Duckiebot builder).
 
-Results: An assembled Duckiebot in configuration `DB17`.
+Results: An assembled Duckiebot in configuration `DB-17`.
 
 </div>
 
@@ -653,7 +653,7 @@ Make sure that the LEDs on the Raspberry Pi 3 and the DC Stepper Motor HAT are o
 
 [](#fig:howto-mount-battery-milestone) shows how the battery should be installed on the Duckiebot.
 
-<div figure-id="fig:howto-mount-battery-milestone" figure-caption="The configuration `DB17` completed.">
+<div figure-id="fig:howto-mount-battery-milestone" figure-caption="The configuration `DB-17` completed.">
    <img src="howto_mount_battery_milestone.jpg" style='width: 30em'/>
 </div>
 
@@ -754,7 +754,7 @@ Q: I need something to cut the end of the zip tie with.
 
 A: Scissors typically work out for these kind of jobs (and no, they're not provided in a Fall 2017 Duckiebox).
 
-## Assembly instructions (`DB17`): soldering {#assembling-duckiebot-db17-soldering status=ready}
+## Assembly instructions (`DB-17`): soldering {#assembling-duckiebot-db17-soldering status=ready}
 
 Note: It is better to be safe than sorry. Soldering is a potentially hazardous activity. There is a fire hazard as well as the risk of inhaling toxic fumes. Stop a second and make sure you are addressing the safety standards for soldering when following these instructions. If you have never soldered before, seek advice.
 
@@ -774,7 +774,7 @@ Note: Very general tips in soldering
 
 <div class='requirements' markdown="1">
 
-Requires: Parts: Duckiebot `DB17` parts. The acquisition process is explained in [](#get-db17-hw). The configurations are described in [](#duckiebot-configurations). In particular you need:
+Requires: Parts: Duckiebot `DB-17` parts. The acquisition process is explained in [](#get-db17-hw). The configurations are described in [](#duckiebot-configurations). In particular you need:
 
 - [GPIO Stacking Header](http://adafru.it/2223)
 - [DC and Stepper Motor HAT for Raspberry Pi](http://adafru.it/2348)
@@ -959,7 +959,7 @@ Instructions:
 
 ### Assembly instructions (`DB17-jwd`): power cable {#assembling-duckiebot-db17-cable-splitting status=ready}
 
-In configuration `DB17` we will need a cable to power the DC motor HAT from the battery. The keen observer might have noticed that such a cable was not included in the [`DB17` Duckiebot parts](#db-opmanual-get-db17) chapter. Here, we create this cable by splitting open any USB-A cable, identifying and stripping the power wires, and using them to power the DC motor HAT. If you are unsure about the definitions of the different Duckiebot configurations, read [](#duckiebot-configurations).
+In configuration `DB-17` we will need a cable to power the DC motor HAT from the battery. The keen observer might have noticed that such a cable was not included in the [`DB-17` Duckiebot parts](#db-opmanual-get-db17) chapter. Here, we create this cable by splitting open any USB-A cable, identifying and stripping the power wires, and using them to power the DC motor HAT. If you are unsure about the definitions of the different Duckiebot configurations, read [](#duckiebot-configurations).
 
 It is important to note that these instructions are relevant only for assembling a `DB17-wjdc` configuration Duckiebot (or any subset of it). If you intend to build a `DB17-l` configuration Duckiebot, you can skip these instructions.
 
@@ -979,7 +979,7 @@ Results: One male USB-A to wires power cable
 
 #### Video tutorial
 
-The following video shows how to prepare the USB power cable for the configuration `DB17`.
+The following video shows how to prepare the USB power cable for the configuration `DB-17`.
 
 <div figure-id="fig:prepare-usb-cable">
     <dtvideo src="vimeo:236334476"/>
@@ -1220,7 +1220,7 @@ Requires: Duckiebot `DB17-lc` parts. The acquisition process is explained in [](
 
 Requires: Soldering `DB17-lc` parts. The soldering process is explained in [](#assembling-duckiebot-db17-soldering).
 
-Requires: Having assembled the Duckiebot in configuration `DB17` (or any `DB17-wjd`). The assembly process is explained in [](#assembling-duckiebot-db17jwd).
+Requires: Having assembled the Duckiebot in configuration `DB-17` (or any `DB17-wjd`). The assembly process is explained in [](#assembling-duckiebot-db17jwd).
 
 Requires: Time: about 30 minutes.
 
