@@ -94,14 +94,14 @@ Place one of the motors between the two plates and tighten it with two M3x30 scr
 </div>
 
 ### Step 4
-Connect one of the 6 pin motor cables to the motor you have just mounted.
+Connect the first 6-pin motor cable (length = 220mm) to the motor you have just mounted.
 
 <div figure-id="fig:db21-step_04">
      <img src="db21-step_04.png" style='width: 37em' />
 </div>
 
 ### Step 5
-Connect the second 6 pin motor cable to the second motor.
+Connect the second 6-pin motor cable (length = 220mm) to the second motor.
 
 <div figure-id="fig:db21-step_05">
      <img src="db21-step_05.png" style='width: 37em' />
@@ -122,7 +122,7 @@ Tighten the second motor again with two M3x30 metal screws (index *B5*) and two 
 </div>
 
 ### Step 8
-Connect one of the three long 4 pin cables (colors: black-red-blue-yellow) to the white connector of the IMU (Inertia Measurement Unit) board.
+Connect one of the three long 4-pin cables (length = 260mm) to the white connector of the IMU (Inertia Measurement Unit) board.
 
 <div figure-id="fig:db21-step_08">
      <img src="db21-step_08.png" style='width: 37em' />
@@ -287,11 +287,174 @@ Take the side cover carrying the number `05R`. Insert a nylon M2.5 nut (index *N
 ## Cable Management {#howto-cables-db21m}
 
 ### Step 28
+Take the first black USB cable that contains three connectors. Plug in the big USB-A connector that combines the two cables into the left plug of the battery. Then, connect the other USB-A to the lower port of the USB stack on the Jetson Nano. The micro USB connect must not be connected at that stage!
 
+<div figure-id="fig:db21-step_28">
+     <img src="db21-step_28.png" style='width: 37em' />
+</div>
 
+### Step 29
+Take the second black USB cable with a micro USB plug at each end and connect the angled connector to the middle port on the battery. Wire the cable through the chassis as shown. The other micro USB connector must be left free at that stage!
 
+<div figure-id="fig:db21-step_29">
+     <img src="db21-step_29.png" style='width: 37em' />
+</div>
+
+### Step 30
+Take the third black USB cable with a micro USB plug on one side and an angled USB-A plug on the other side. Connect the USB-A plug to the right port on the battery. Again, wire the cable through the chassis as shown and leave the micro USB connector free on the other side!
+
+<div figure-id="fig:db21-step_30">
+     <img src="db21-step_30.png" style='width: 37em' />
+</div>
+
+### Step 31
+Connect the WIFI dongle to the upper USB-A port on the USB stack on the Jetson Nano.
+
+<div figure-id="fig:db21-step_31">
+     <img src="db21-step_31.png" style='width: 37em' />
+</div>
+
+### Step 32
+Take the back bumper board and connect the 4-pin cable (length = 120mm) to the white plug on the board.
+
+<div figure-id="fig:db21-step_32">
+     <img src="db21-step_32.png" style='width: 37em' />
+</div>
+
+### Step 33
+Wire the cable attached to the back bumper through the same hole in the upper plate as the motor cable of the left driving motor.
+
+<div figure-id="fig:db21-step_33">
+     <img src="db21-step_33.png" style='width: 37em' />
+</div>
+
+### Step 34
+When attaching the back bumper board to the chassis, make sure the pins of the lower and upper plate all fit well. Tighten the board with three metal screws (index *B3*).
+
+<div figure-id="fig:db21-step_34">
+     <img src="db21-step_34.png" style='width: 37em' />
+</div>
+
+### Step 35
+Take the plate carrying the number `06` and press two nylon M2.5 nuts (index *N2*) into the corresponding slits.
+
+<div figure-id="fig:db21-step_35">
+     <img src="db21-step_35.png" style='width: 37em' />
+</div>
+
+### Step 36
+Mount the plate number `06` to the back of the chassis using two metal M3x8 screws (index *B3*). Note the orientation of the plate: if the number `06` is pointing towards the robot, you are good to go!
+
+<div figure-id="fig:db21-step_36">
+     <img src="db21-step_36.png" style='width: 37em' />
+</div>
+
+### Step 37
+Take the fan and mount it on top of the heat sink of the Jetson Nano using 4 metal M3x12 screws (index *B4*). Make sure the cable of the fan is pointing to the back right side (maybe you need to need to push a little more for those screws as the thread has to cut it's way through the heat sink at the first time).
+
+<div figure-id="fig:db21-step_37">
+     <img src="db21-step_37.png" style='width: 37em' />
+</div>
+
+### Step 38
+Take the electronics board (further called *HUT*) and plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).
+
+<div figure-id="fig:db21-step_38">
+     <img src="db21-step_38.png" style='width: 37em' />
+</div>
+
+### Step 39
+Gently press the pin connector of the HUT to the pins on the Jetson Nano and tighten it with two nylon M2.5 nuts (index *N2*). Make sure both motor cables are routed through the slit in the HUT board.
+
+<div figure-id="fig:db21-step_39">
+     <img src="db21-step_39.png" style='width: 37em' />
+</div>
+
+### Step 40
+Connect the HUT to the plate in the back using two nylon M2.5x10 screws (index *B2*). Make sure the end of the 4-pin cable connected to the back bumper board is pointing to the right hand side.
+
+<div figure-id="fig:db21-step_40">
+     <img src="db21-step_40.png" style='width: 37em' />
+</div>
+
+### Step 41
+Connect the 4-pin cable of the back bumper board to the white connector in the back right corner of the HUT.
+
+<div figure-id="fig:db21-step_41">
+     <img src="db21-step_41.png" style='width: 37em' />
+</div>
+
+### Step 42
+Connect the first 6-pin motor cable of the left motor to the connector placed on the edge of the HUT.
+
+<div figure-id="fig:db21-step_42">
+     <img src="db21-step_42.png" style='width: 37em' />
+</div>
+
+### Step 43
+Connect the second 6-pin motor cable of the right motor to the other connector.
+
+<div figure-id="fig:db21-step_43">
+     <img src="db21-step_43.png" style='width: 37em' />
+</div>
+
+### Step 44
+Connect the 4-pin cable from the IMU to the corresponding plug shown in the picture.
+
+<div figure-id="fig:db21-step_44">
+     <img src="db21-step_44.png" style='width: 37em' />
+</div>
 
 ## Front Assembly {#howto-front-assembly-db21m}
+The following steps 45 to 52 will guide you through the assembly of the camera unit as well as some more electronics and cables.
+
+<div figure-id="fig:db21-overview-step_45-52">
+     <img src="db21-overview-step_45-52.png" style='width: 30em' />
+</div>
+
+### Step 45
+Open the plug of the camera and push one side of the camera (length = 100mm) into the plug. Make sure that the blue are is facing the direction of the camera lens and then close the plug completely.
+
+<div figure-id="fig:db21-step_45">
+     <img src="db21-step_45.png" style='width: 37em' />
+</div>
+
+### Step 46
+Wire the camera cable through the 3D printed camera mount starting from the front. Then use 4 nylon M2x8 screws (index *B1*) and 4 nylon M2 nuts (index *N1*) on the other side to tighten the camera to the mount.
+
+<div figure-id="fig:db21-step_46">
+     <img src="db21-step_46.png" style='width: 37em' />
+</div>
+
+### Step 47
+Mount the camera part to the front bumper board using only one metal M3x8 screw (index *B3*) and one metal M3 nut (index *N3*).
+
+<div figure-id="fig:db21-step_47">
+     <img src="db21-step_47.png" style='width: 37em' />
+</div>
+
+### Step 48
+Mount the single nylon M3x5 stand-off (index *S1*) with a metal M3x8 screw (index *B3*) from the other side.
+
+<div figure-id="fig:db21-step_48">
+     <img src="db21-step_48.png" style='width: 37em' />
+</div>
+
+### Step 49
+Take the second 4-pin cable (length = 260mm) to the connector on the front bumper board as shown in the picture.
+
+<div figure-id="fig:db21-step_49">
+     <img src="db21-step_49.png" style='width: 37em' />
+</div>
+
+### Step 50
+Wire the cable that you have just connected to the front bumper in step 49 through the upper plate and the connect it to the connector on the HUT as shown.
+
+<div figure-id="fig:db21-step_50">
+     <img src="db21-step_50.png" style='width: 37em' />
+</div>
+
+
 
 ## Interactive Cover {#howto-interactive-cover-db21m}
 
