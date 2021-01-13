@@ -1,4 +1,4 @@
-# Assembling the `DB-beta` Duckiebot {#assembling-duckiebot-db-beta status=ready}
+# Assembling the Duckiebot `DB-beta` {#assembling-duckiebot-db-beta status=ready}
 
 This page is for the `DB-beta` configuration used in the AMoD class at ETH Zurich in 2020. The hardware used in this Duckiebot model is very similar to the hardware of the `DB19`. The major difference between these models is the replacement of the Raspberry Pi 3 by a Jetson Nano Nvidia board which lead to other minor hardware changes like a new camera, a cooling fan, layout, etc.
 
@@ -18,7 +18,7 @@ Results: An assembled Duckiebot in configuration `DB-beta`.
 There are 12 parts in this procedure. Most parts build upon previous steps, so make
 sure to follow them in the following order:
 
-- [Part 1: Unboxing](#unboxing-db-beta) 
+- [Part 1: Unboxing](#unboxing-db-beta)
 - [Part 2: Preliminary steps](#preliminaries-db-beta)
 - [Part 3: Installing the motors](#howto-motors-db-beta)
 - [Part 4: Attaching the back rolling ball](#how-to-back-rolling-ball-dbbeta)
@@ -26,10 +26,10 @@ sure to follow them in the following order:
 - [Part 6: Adding the front spacers](#adding_front_spacers_dbbeta)
 - [Part 7: Battery Attachment](#battery_attachment_dbbeta)
 - [Part 8: Camera assembly and attachment](#camera_assembly_and_attachment_dbbeta)
-- [Part 9: Top plate assembly](#top_plate_assembly_dbbeta) 
-- [Part 10: Back bumper assembly](#back_bumper_assembly_dbbeta) 
-- [Part 11: Hut attachment](#hut_attachment_dbbeta) 
-- [Part 12: Final assembly - putting it all together](#final_assembly_dbbeta) 
+- [Part 9: Top plate assembly](#top_plate_assembly_dbbeta)
+- [Part 10: Back bumper assembly](#back_bumper_assembly_dbbeta)
+- [Part 11: Hut attachment](#hut_attachment_dbbeta)
+- [Part 12: Final assembly - putting it all together](#final_assembly_dbbeta)
 
 ## Unboxing your first Duckiebot {#unboxing-db-beta}
 
@@ -41,7 +41,7 @@ sure to follow them in the following order:
      <img src="opened_box_db-beta.jpg" style='width: 37em' />
 </div>
 
-Breakdown of box contents (check that you have all of these before proceeding): 
+Breakdown of box contents (check that you have all of these before proceeding):
 <div figure-id="fig:what_is_in_box_db-beta" figure-caption="What's in the box.">
      <img src="what_is_in_box_db-beta.jpg" style='width: 37em' />
 </div>
@@ -67,12 +67,12 @@ Breakdown of box contents (check that you have all of these before proceeding):
 19. 1x Fan
 20. 2x Back bumper spacer (red)
 21. 2x Rubber Duckies
-22. 6x Road signs 
+22. 6x Road signs
 23. 1x Ethernet cable
 24. 2x Battery cables - USB (one short black one, and one longer white one)
 25. 2x Additional battery charging cables (black ones, on top right of image)
 26. 1x Back bumper plate
-27. 1x Back bumper plate sticker 
+27. 1x Back bumper plate sticker
 28. 4x zip ties (2 black and 2 white)
 29. 1x Duckietown Decal
 30. Many - screws, bolts and nuts
@@ -90,7 +90,7 @@ NOTE: An additional metal spacer has been included which is used to mount the hu
 Important assembly considerations:
 
 - Never assemble the Duckiebot on a metal surface. The pins on the bottom of the board are conductive, and might short. The Duckiebot will be very sad (fried duck).
-- Do NOT connect the battery cables to the Jetson Nano board or the hut until the very end. Doing it too early has the potential of causing irreparable damage to the Duckiebot (physically and mentally). 
+- Do NOT connect the battery cables to the Jetson Nano board or the hut until the very end. Doing it too early has the potential of causing irreparable damage to the Duckiebot (physically and mentally).
 - All electrical components (Jetson Nano, Board, Hut)  should ALWAYS be connected with nylon screws and nuts.
 
 ### Step A
@@ -109,15 +109,14 @@ Peel the plastic cover from all the chassis parts (except the bumper bracers) on
 ### Step D
 Note that a few among all of your metal screws are special. They are "countersunk" screws. Keep these aside. They will be needed in when assembling the back bumper.
 
-<div figure-id="fig:countersunk-screws-db-beta" figure-caption="Countersunk screws have a tapered head.">
-     <img src="countersunk-screws-db18.jpg" style='width: 25em'/>
+<div figure-id="fig:countersunk_screw_db19beta" figure-caption="Countersunk screws have a tapered head.">
+     <img src="countersunk_screw.png" style='width: 25em'/>
 </div>
-
 
 ### Step E
 Every time you read M3x8 screw, a M3x10 will do the same trick. You can exchange them at will.
 
-Do not exchange metal and nylon screws though. The latter are not electrically conductive and are passive protections to potential short circuits that can damage your Duckiebot beyond repair. 
+Do not exchange metal and nylon screws though. The latter are not electrically conductive and are passive protections to potential short circuits that can damage your Duckiebot beyond repair.
 
 Remember that instructions are your friend! At least at this stage, try to follow them precisely.
 
@@ -152,7 +151,7 @@ Needs:
 </div>
 
 ### Connect the first motor
-Use the screws and nuts to connect the first motor (note, cable must be attached already). A good idea is to place both screws first to help with positioning, and the start with the top nut. 
+Use the screws and nuts to connect the first motor (note, cable must be attached already). A good idea is to place both screws first to help with positioning, and the start with the top nut.
 
 <div figure-id="fig:motor_backplate">
      <img src="motor_backplate.jpg" style='width: 25em'/>
@@ -188,10 +187,10 @@ Use 2x M3x10 metal screws to connect the metal spacers to the bottom plate.
 <div figure-id="fig:roller_spacers">
      <img src="roller_spacers.jpg" style='width: 25em'/>
 </div>
- 
+
 ### Attach the rolling ball
 
-Attach the metal rolling ball using 2x M3x10 metal screws. Motor cable management is not final yet, but keeping it between the spacers is a good idea for later. 
+Attach the metal rolling ball using 2x M3x10 metal screws. Motor cable management is not final yet, but keeping it between the spacers is a good idea for later.
 
 
 <div figure-id="fig:wheel_roller">
@@ -202,7 +201,7 @@ Attach the metal rolling ball using 2x M3x10 metal screws. Motor cable managemen
 
 Needed:
 
-* 2x M3x10 screws 
+* 2x M3x10 screws
 * 2x 25mm spacers (shorter)
 * 1x back acrylic spacer
 * 1x Previous [assembly](#how-to-back-rolling-ball-dbbeta)
@@ -211,7 +210,7 @@ Needed:
      <img src="bumper_spacers.jpg" style='width: 25em'/>
 </div>
 
-Use 2x M3x10 metal screws to attach the metal spacer to the back side of the Duckiebot. The red spacer should be placed in between the bottom plate and the metal spacers. 
+Use 2x M3x10 metal screws to attach the metal spacer to the back side of the Duckiebot. The red spacer should be placed in between the bottom plate and the metal spacers.
 
 <div figure-id="fig:bottom_back_bumper_spacer">
      <img src="bottom_back_bumper_spacer.jpg" style='width: 25em'/>
@@ -245,7 +244,7 @@ Use 2x M3x10 metal screws to attach the front spacers. The location should be as
 
 ## Battery Attachment {#battery_attachment_dbbeta}
 
-Warning: This section has been rewritten due to weight distribution issues. Please ignore pictures in this Duckumentation where the battery is shown in a different configuration. 
+Warning: This section has been rewritten due to weight distribution issues. Please ignore pictures in this Duckumentation where the battery is shown in a different configuration.
 
 
 Needed:
@@ -268,7 +267,7 @@ Note: The cables are not included in this picture but are illustrated in [](#fig
 
 ### Correct battery cable placement for ROMOSS battery
 
-Note: the charging cable has to go through the back bumper hole before being connected to the battery, otherwise it will not go through. 
+Note: the charging cable has to go through the back bumper hole before being connected to the battery, otherwise it will not go through.
 
 <div figure-id="fig:romoss_cables" >
      <img src="romoss_cables.jpg" style='width: 25em'/>
@@ -298,27 +297,27 @@ Note: the charging cable has to go through the back bumper hole before being con
      <img src="db_bat_connected.jpg" style='width: 25em'/>
 </div>
 
-Now, if your Duckiebot is completely assembled, and this change is needed, we will have to do surgery. Worry not, we are expert Duckie medics! 
+Now, if your Duckiebot is completely assembled, and this change is needed, we will have to do surgery. Worry not, we are expert Duckie medics!
 
-### Repositioning the battery 
+### Repositioning the battery
 
-Step 1. Cut the ziptie holding the battery together. 
+Step 1. Cut the ziptie holding the battery together.
 
-Step 2. Remove the wheels from both sides of the Duckiebot. 
+Step 2. Remove the wheels from both sides of the Duckiebot.
 
-Step 3 (Duckiebot battery (black)). Pass one of the 90 degree cables through the back bumper hole, such that the micro-usb port is inside the bot and can be connected to the battery. 
+Step 3 (Duckiebot battery (black)). Pass one of the 90 degree cables through the back bumper hole, such that the micro-usb port is inside the bot and can be connected to the battery.
 
 <div figure-id="fig:white_cable_hole" >
      <img src="white_cable_hole.jpg" style='width: 25em'/>
 </div>
 
-Step 3 (ROMOSS battery). Pass the white cable through the back bumper hole such that the micro-usb port is inside the bot and connected to the battery. 
+Step 3 (ROMOSS battery). Pass the white cable through the back bumper hole such that the micro-usb port is inside the bot and connected to the battery.
 
 <div figure-id="fig:romoss-connected-bot2" >
      <img src="romoss-connected-bot2.jpg" style='width: 25em'/>
 </div>
 
-Step 4. Connect the battery cables to the battery. 
+Step 4. Connect the battery cables to the battery.
 
 
 
@@ -382,17 +381,17 @@ Place the battery on the bottom plate with the ports facing to the rear left. At
 
 Needed:
 
-- 1x Camera 
+- 1x Camera
 - 1x 3D printed camera mount
 - 1x Camera cable
 - 4x M2.5x10mm nylon screws (the smallest nylon screws)
-- 4x M2.5 nylon nuts 
+- 4x M2.5 nylon nuts
 
 <div figure-id="fig:camera_assembly_components_beta" figure-caption="Needed components for this step.">
      <img src="camera_assembly_components_beta.jpg" style='width: 25em'/>
 </div>
 
-Use the nylon screws to mount the camera directly to the camera mount. Tighten using the nylon nuts. The camera cable should be placed upwards. The correct placement of the camera is pointing slightly towards the ground. 
+Use the nylon screws to mount the camera directly to the camera mount. Tighten using the nylon nuts. The camera cable should be placed upwards. The correct placement of the camera is pointing slightly towards the ground.
 
 <div figure-id="fig:camera_cable">
      <img src="camera_cable.jpg" style='width: 25em'/>
@@ -436,9 +435,9 @@ Needed:
      <img src="top_plate_assembly_components_beta.jpg" style='width: 25em'/>
 </div>
 
-### Step 1 
+### Step 1
 
-Place the nylon screws in the locations shown below. Screw is inserted from the bottom. 
+Place the nylon screws in the locations shown below. Screw is inserted from the bottom.
 
 <div figure-id="fig:bumper_cables_layout" >
      <img src="bumper_cables_layout.jpg" style='width: 25em'/>
@@ -447,7 +446,7 @@ Place the nylon screws in the locations shown below. Screw is inserted from the 
 
 ### Step 2
 
-Secure the nylon screws from the top using the M2.5 nylon nuts (x4). Do not tighten yet, as it might be necessary to adjust the location of the screws to fit the Jetson Nano board. 
+Secure the nylon screws from the top using the M2.5 nylon nuts (x4). Do not tighten yet, as it might be necessary to adjust the location of the screws to fit the Jetson Nano board.
 
 
 <div figure-id="fig:nylon_screws_for_jetson" >
@@ -456,7 +455,7 @@ Secure the nylon screws from the top using the M2.5 nylon nuts (x4). Do not tigh
 
 ### Step 3
 
-Place the Jetson Nano board on top, and secure with Nylon female spacers. 
+Place the Jetson Nano board on top, and secure with Nylon female spacers.
 
 <div figure-id="fig:jetson_attachment" >
      <img src="jetson_attachment.jpg" style='width: 25em'/>
@@ -482,7 +481,7 @@ Needed:
      <img src="back_bumper_components.jpg" style='width: 25em'/>
 </div>
 
-Assemble until you have something that looks like the pictures below. 
+Assemble until you have something that looks like the pictures below.
 
 <div figure-id="fig:back_bumper_connected" >
      <img src="back_bumper_connected.jpg" style='width: 25em'/>
@@ -509,7 +508,7 @@ Needed:
      <img src="additional_nut_screw_spacer.jpg" style='width: 25em'/>
 </div>
 
-Mount the single spacer in the location shown below. 
+Mount the single spacer in the location shown below.
 
 
 <div figure-id="fig:hut_spacer" >
@@ -530,7 +529,7 @@ Needed:
 - 2x Battery Cables (1x short black cable, 1x short white cable)
 - 1x Back plate spacer
 - 1x Front bumper (with 3 LEDs)
-- 4x M3x10 metal screws 
+- 4x M3x10 metal screws
 - 1x Hut
 - 2x M2.5 nylon nuts (for hut)
 
@@ -538,7 +537,7 @@ Needed:
      <img src="top_plate_components.jpg" style='width: 25em'/>
 </div>
 
-Place the back spacer in between the bottom and top plate assembly and secure using 2x M3x10 metal screws. 
+Place the back spacer in between the bottom and top plate assembly and secure using 2x M3x10 metal screws.
 
 <div figure-id="fig:attach_back_bumper_plate" >
      <img src="attach_back_bumper_plate.jpg" style='width: 25em'/>
@@ -550,7 +549,7 @@ Use additional 2x M3x10 metal screws to secure the Top Plate assembly to the Bot
      <img src="top_plate_screw.jpg" style='width: 25em'/>
 </div>
 
-Mount the Hut Assembly (with metal spacer) onto the back of the Duckiebot. Secure with 2x M2.5 Nylon nuts. 
+Mount the Hut Assembly (with metal spacer) onto the back of the Duckiebot. Secure with 2x M2.5 Nylon nuts.
 
 Warning:
 
@@ -566,7 +565,7 @@ Make sure that you press the Hut Assembly well onto the Jetson Nano pins. Otherw
 </div>
 
 
-Connect the camera to the “CAM 0”, in case of more than one camera connector on the Jetson Nano Board. Secure with a Zip tie (short white one). 
+Connect the camera to the “CAM 0”, in case of more than one camera connector on the Jetson Nano Board. Secure with a Zip tie (short white one).
 
 <div figure-id="fig:camera_cable_connection_direction" >
      <img src="camera_cable_connection_direction.jpg" style='width: 25em'/>
@@ -589,25 +588,25 @@ Needed:
 - 4x M3x8 metal phillips head screw
 - 4x M3 metal nuts
 
-Follow connecting guidelines. 
+Follow connecting guidelines.
 
 Warning: Please triple check that all connections follow this guideline, otherwise your front or back bumpers might get fried.
 
 - Red (5V)
 - DIN / DOU (white)
 - Ground (black)
- 
+
 <div figure-id="fig:bumper_plates" figure-caption="Needed components for this step.">
      <img src="bumper_plates.jpg" style='width: 25em'/>
 </div>
 
-Connect front LEDs to the hut. Grab the wires coming from the front bumper, and connect them to the hut as shown below. 
+Connect front LEDs to the hut. Grab the wires coming from the front bumper, and connect them to the hut as shown below.
 
 <div figure-id="fig:led_hut_connection" >
      <img src="led_hut_connection.jpg" style='width: 25em'/>
 </div>
 
-Connect motor cables to the Hut. Right motor corresponds to the right space in the hut. There’s only one possible orientation for the cable connection, don’t force it. 
+Connect motor cables to the Hut. Right motor corresponds to the right space in the hut. There’s only one possible orientation for the cable connection, don’t force it.
 
 <div figure-id="fig:motor_cables_dbbeta" >
      <img src="motor_cables_dbbeta.jpg" style='width: 25em'/>
@@ -619,14 +618,14 @@ Connect the back bumper cables to the main Duckiebot
      <img src="back_bumper_dbbeta.jpg" style='width: 25em'/>
 </div>
 
-Place the back bumper using 2x or 4x metal screws. 
+Place the back bumper using 2x or 4x metal screws.
 
 <div figure-id="fig:hut_spacer_iso" >
      <img src="hut_spacer_iso.jpg" style='width: 25em'/>
 </div>
 
 Connect Front bumper to the Duckiebot
- 
+
 <div figure-id="fig:front_bumper_cables" >
      <img src="front_bumper_cables.jpg" style='width: 25em'/>
 </div>
@@ -653,7 +652,7 @@ Gently loosen the front screws connecting the top plate and bottom plate. Lift t
      <img src="camera_attached3.jpg" style='width: 25em'/>
 </div>
 
-Screw the top plate back. 
+Screw the top plate back.
 
 
 <div figure-id="fig:front_bumper_dbbeta" >
@@ -667,15 +666,15 @@ Needed:
 - 1x Fan
 - 4x M3x12 metal screws (longer screws)
 - 2x Battery Cables (1x short black cable, 1x short white cable)
-- 1x Duckie 
+- 1x Duckie
 
-Screw the fan on top of the heatsink of the Jetson Nano using the long M3x12 metal screws. 
+Screw the fan on top of the heatsink of the Jetson Nano using the long M3x12 metal screws.
 
 <div figure-id="fig:finished_view_iso" >
      <img src="finished_view_iso.jpg" style='width: 25em'/>
 </div>
 
-Connect the fan pins to the bottom pins under the hut (pair of pins closest to the back bumper). 
+Connect the fan pins to the bottom pins under the hut (pair of pins closest to the back bumper).
 
 Warning: Make sure the black cable is connected to GND and the red one to VCC (5V).
 
@@ -683,7 +682,7 @@ Warning: Make sure the black cable is connected to GND and the red one to VCC (5
      <img src="fan_connection.jpg" style='width: 25em'/>
 </div>
 
-Voila! Final result should look something like this: 
+Voila! Final result should look something like this:
 
 
 <div figure-id="fig:final_result_topview" >

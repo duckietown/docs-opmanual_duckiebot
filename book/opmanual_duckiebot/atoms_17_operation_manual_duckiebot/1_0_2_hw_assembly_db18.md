@@ -1,23 +1,23 @@
-# Assembling the `DB18` Duckiebot {#assembling-duckiebot-db18 status=ready}
+# Assemblying the Duckiebot `DB18` {#assembling-duckiebot-db18 status=ready}
 
-This page is for the `DB18` configuration used in classes in 2018 and 2019. For the instructions from 2017 see [the `DB17` Duckiebot operation manual](https://docs.duckietown.org/DT17/).
+This page is for the `DB18` configuration used in classes in 2018 and 2019.
+For the instructions from 2017 see the [`DB17` Duckiebot](https://docs.duckietown.org/DT17/) operation manual.
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB18` parts. The acquisition process is explained in [](#duckiebot-configurations).
+Requires: Duckiebot `DB18` parts. You may want to check out the different configurations [here](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot).
 
-Requires: Time: about 1-1.5 hours (45 minutes for an experienced Duckiebot builder).
+Requires: 1.5 hours of assembly time.
 
-Results: An assembled Duckiebot in configuration `DB18`.
+Result: An assembled Duckiebot in configuration `DB18`.
 
 </div>
 
-Note: The [FAQ](#op-faq-db18) section at the bottom of this page may already answer some of you comments, questions or doubts.
+Note: Make sure you visit the [FAQ](#op-faq-db18) section at the bottom of this page. This may already answer your comments, questions or doubts.
 
-There are 9 parts in this procedure. Most parts build upon previous steps, so make
-sure to follow them in the following order:
+The complete assembly process is divided into 9 subparts. Make sure to complete them in the following order:
 
 - [Part 1: What is in the box?](#howto-bom-db18)
 - [Part 2: Motors](#howto-motors-db18)
@@ -33,7 +33,7 @@ sure to follow them in the following order:
 
 All the pieces in your Duckiebox are shown in [](#fig:duckiebot-components-db18). Note that the battery and camera calibration pattern are not shown in the picture.
 
-Moreover, you might have slightly different components than those shown. For example, different USB power cables, or slightly different sets of screws, or a camera mount or backplate of a different color, and so on. Do not worry, these instructions can be followed anyway.
+Moreover, you might have slightly different components than those shown: for example, different USB power cables, slightly different sets of screws or a camera mount and backplate of different colors. Do not worry, these instructions can be followed anyway.
 
 <div figure-id="fig:duckiebot-components-db18" figure-caption="Components in Duckiebot package (Duckiebox).">
      <img src="Whats-in-the-box-ks-db18-v1.png" style='width: 37em' />
@@ -44,30 +44,28 @@ Some of the components in your Duckiebox will not be used at this stage, e.g., t
 
 Finally, you should have several spares, especially for the mechanical bits (nuts and screws). These are included just in case you drop a few and can't find them anymore (especially the tiny nylon ones like to hide in the cracks!).
 
-### Preliminary Steps
+## Preliminary Steps
 
-#### Step A
-Unbox all of your components, and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on.
+### Unboxing
+Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on.
 
 Although not necessary, you might find useful getting a small (M2.5) wrench to ease some of the passages.
 
-#### Step B
+### Do the bumper braces fit?
 Take the rear bumper bracers and the back bumper. The back bumper will be mounted in the last steps as a press fit to the rear bumper bracers. Try to fit the bracers into the holes of the back bumper.
 
 Some bumper bracers have a plastic protective film which is a residue of the manufacturing process. If you struggle in the press fitting, peel off the plastic cover from *one* side of the bracer. If this does not help, peel off the plastic cover from both sides.
 
-#### Step C
+### Plastic cover
 Peel the plastic cover from all the chassis parts (except the bumper bracers) on both sides.
 
-#### Step D
+### Screws
 Note that a few among all of your metal screws are special. They are "countersunk" screws. Keep these aside. They will be needed in [Part 7: Back bumper](#howto-back-bumper-db18).
 
-<div figure-id="fig:countersunk-screws-db18" figure-caption="Countersunk screws have a tapered head.">
-     <img src="countersunk-screws-db18.jpg" style='width: 25em'/>
+<div figure-id="fig:countersunk_screw_db18" figure-caption="Countersunk screws have a tapered head.">
+     <img src="countersunk_screw.png" style='width: 20em'/>
 </div>
 
-
-#### Step E
 Every time you read M3x8 screw, a M3x10 will do the same trick. You can exchange them at will.
 
 Do not exchange metal and nylon screws though. The latter are not electrically conductive and are passive protections to potential short circuits that can damage your Duckiebot beyond repair. This is especially true for - [Part 3: Bottom chassis](#howto-bottom-chassis-db18); make sure you use the correct nylon screws at that step.
@@ -81,7 +79,7 @@ If regardless of this foreword you still choose to try and figure it out yoursel
 
 From the Duckiebox package take the following components:
 
-- Chassis-bottom (1x)
+- Bottom plate (1x)
 - Yellow dc motors (2x)
 - Motor holders (4x)
 - M3x30 screw (4x)
@@ -101,7 +99,7 @@ Put one motor between the holders as shown in [](#fig:db18-step_1b).
   <img src="db18-step_1b.png" style='width: 25em'/>
 </div>
 
-Note: Orient the motors that their wires are inwards (i.e., towards the center of the plate).
+Note: Orient the motors that their wires are pointing to the inside (i.e., towards the center of the plate).
 
 Note: Use your screwdriver.
 
