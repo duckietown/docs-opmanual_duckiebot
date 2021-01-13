@@ -6,8 +6,6 @@
 
 Note: This section is still under construction!!!
 
-Assembly instructions for the configuration of the Duckiebot for the MOOC.
-
 
 <div class='requirements' markdown="1">
 
@@ -22,11 +20,8 @@ Result: An assembled Duckiebot in configuration `DB-MOOC`.
 </div>
 
 Overview of all parts in your Duckiebox:
-TODO: make overview picture of the DB21 Parts
 
-<div figure-id="fig:duckiebot-components-db21m" figure-caption="Components in the Duckiebox.">
-     <img src="Whats-in-the-box-ks-db18-v1.png" style='width: 40em' />
-</div>
+TODO: make overview picture of the DB21 Parts
 
 The assembly process is divided into 9 sub parts. They must be completed in the following order:
 

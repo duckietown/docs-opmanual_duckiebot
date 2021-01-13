@@ -1,17 +1,17 @@
-# Assembling the Duckiebot `DB-19` {#assembling-duckiebot-db19 status=ready}
+# Assembling the Duckiebot `DB19` {#assembling-duckiebot-db19 status=ready}
 
-This page is for the `DB-19` configuration used in classes in 2018 and 2019.
+This page is for the `DB19` configuration used in classes in 2018 and 2019.
 This instructions are basically the same as the [instructions for the DB18](#assembling-duckiebot-db18). However this version uses other dc motors with a built-in encoder. For older instructions from 2017 see the [`DB17` Duckiebot](https://docs.duckietown.org/DT17/) operation manual.
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB-19` parts. You may want to check out the different configurations [here](#duckiebot-configurations).
+Requires: Duckiebot `DB19` parts. You may want to check out the different configurations [here](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot).
 
 Requires: 1.5 hours of assembly time.
 
-Result: An assembled Duckiebot in configuration `DB-19`.
+Result: An assembled Duckiebot in configuration `DB19`.
 
 </div>
 

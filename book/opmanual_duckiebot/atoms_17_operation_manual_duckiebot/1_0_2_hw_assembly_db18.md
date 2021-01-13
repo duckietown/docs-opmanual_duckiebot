@@ -1,17 +1,17 @@
-# Assemblying the Duckiebot `DB-18` {#assembling-duckiebot-db18 status=ready}
+# Assemblying the Duckiebot `DB18` {#assembling-duckiebot-db18 status=ready}
 
-This page is for the `DB-18` configuration used in classes in 2018 and 2019.
+This page is for the `DB18` configuration used in classes in 2018 and 2019.
 For the instructions from 2017 see the [`DB17` Duckiebot](https://docs.duckietown.org/DT17/) operation manual.
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB-18` parts. You may want to check out the different configurations [here](#duckiebot-configurations).
+Requires: Duckiebot `DB18` parts. You may want to check out the different configurations [here](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot).
 
 Requires: 1.5 hours of assembly time.
 
-Result: An assembled Duckiebot in configuration `DB-18`.
+Result: An assembled Duckiebot in configuration `DB18`.
 
 </div>
 
