@@ -54,9 +54,11 @@ The basic options are:
     --type             The type of your device. Types are `duckiebot` (default), 
                        `watchtower`, `traffic_light`.
     --configuration    The configuration of your robot. This is associated with 
-                       `--type` option. E.g. `DB-beta`, `DB20`, `DB19`, or `DB18`.
+                       `--type` option. E.g. `DB21M`, `DB19`, or `DB18`.
 
 Note: the default username and password for all duckiebots are "duckie" and "quackquack", respectively. 
+
+Note: for the "Self-Driving Cars with Duckietown" online course on edX, the robot configuration to choose is `DB21M`.
 
 If you plan on connecting with the Duckiebot over different networks (e.g. at home and in class), you can list them like that (note there should be no space after the commas):
 
