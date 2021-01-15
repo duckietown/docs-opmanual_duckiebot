@@ -1,4 +1,4 @@
-# Assemblying the Duckiebot `DB-MOOC` {#assembling-duckiebot-db21 status=ready}
+# Assemblying the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
 <div figure-id="fig:Duckiebook-Banner" figure-caption="Components in the Duckiebox.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
@@ -9,19 +9,19 @@ Note: This section is still under construction!!!
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB-MOOC` parts. Here is an [overview of all existing configurations](#duckiebot-configurations).
+Requires: Duckiebot `DB21M` parts. Here is an [overview of all existing configurations](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 
 Requires: 2 hours of assembly time.
 
-Result: An assembled Duckiebot in configuration `DB-MOOC`.
+Result: An assembled Duckiebot in configuration `DB21M`.
 
 </div>
 
 Overview of all parts in your Duckiebox:
 
-TODO: make overview picture of the DB21 Parts
+TODO: produce part overview of the DB21M
 
 The assembly process is divided into 9 sub parts. They must be completed in the following order:
 
@@ -45,23 +45,20 @@ Although not necessary, you might find useful getting a small (M2.5) wrench to e
 ### Plastic cover
 Peel the plastic cover from all the chassis parts (except the bumper bracers) on both sides.
 
-TODO: add picture for removing plastic cover
-
 ### Screws, Nuts and Stand-offs
 Each type of screw, nut and stand-off has its own number. You will find the corresponding number on the picture of each step. Make sure to always use the right parts (e.g. nylon screws prevent electrical short circuits). Otherwise, your Duckiebot may not be fully functional.
 
+<div figure-id="fig:db21-part_indices" figure-caption="Overview of interlocking parts">
+     <img src="db21-part_indices.png" style='width: 40em' />
+</div>
+
 Remember that instructions are your friend! At least at this stage, try to follow them precisely. The [FAQ](#op-faq-db21) section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
-
-
-If regardless of this foreword you still choose to try and figure it out yourself, it's ok, but for the love of what is precious, *do not plug the battery in until you have performed a visual inspection* [here](#db21-visual-inspection).  
 
 
 ## Driving Units {#howto-driving-unit-db21m}
 From the Duckiebox package take the following components:
 
-TODO: add picture for part overview of steps 1-12
-
-In the following steps 1 to 12 you will build this first part of your Duckiebot `DB-MOOC`:
+In the following steps 1 to 12 you will build this first part of your Duckiebot `DB21M`:
 
 <div figure-id="fig:db21-overview-step_01-12">
      <img src="db21-overview-step_01-12.png" style='width: 30em' />
@@ -496,7 +493,7 @@ Take the shortest 4-pin cable (length = 50mm) and connect one end to the plug on
 
 
 ## Interactive Cover {#howto-interactive-cover-db21m}
-The following steps 57 to 64 show the assembly of the interactive top of the `DB-MOOC` containing a button and a screen.
+The following steps 57 to 64 show the assembly of the interactive top of the `DB21M` containing a button and a screen.
 
 <div figure-id="fig:db21-overview-step_57-59">
      <img src="db21-overview-step_57-59.png" style='width: 30em' />
@@ -582,7 +579,7 @@ Finally, take the last black USB cable that has not been connected yet. Connect 
 </div>
 
 ### Step 68
-At that point, your Duckiebot is fully assembled! To power it on, push the button of the battery on the side of the robot.
+At that point, your Duckiebot is fully assembled! To power it on, push the button of the battery on the side of the robot. ONLY do this if a flashed SD card is inserted.
 
 <div figure-id="fig:db21-step_68">
      <img src="db21-step_68.png" style='width: 40em' />
@@ -598,11 +595,15 @@ At that point, your Duckiebot is fully assembled! To power it on, push the butto
 
 ## Check the outcome
 
-TODO: define steps for checking
+<div class='requirements' markdown="1">
 
-## Visual inspection {#db21-visual-inspection}
+Checking: Look at the [Overview of interlocking parts](#fig:db21-part_indices) and make sure you have used each type at least once.
 
-TODO: define steps for visual inspection
+Checking: Have a look at all cable connectors and make sure they are plugged in completely.
+
+Checking: DO NOT power the Duckiebot (plug in all black USB cables and push the button on the battery) when there is no flashed SD card inside.
+
+</div>
 
 ## FAQ {#op-faq-db21}
 

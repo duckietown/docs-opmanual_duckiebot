@@ -1,6 +1,6 @@
-# Assembling the Duckiebot `DB-beta` {#assembling-duckiebot-db-beta status=ready}
+# Assembling the Duckiebot `DB19-beta` {#assembling-duckiebot-db-beta status=ready}
 
-This page is for the `DB-beta` configuration used in the AMoD class at ETH Zurich in 2020. The hardware used in this Duckiebot model is very similar to the hardware of the `DB19`. The major difference between these models is the replacement of the Raspberry Pi 3 by a Jetson Nano Nvidia board which lead to other minor hardware changes like a new camera, a cooling fan, layout, etc.
+This page is for the `DB19-beta` configuration used in the AMoD class at ETH Zurich in 2020. The hardware used in this Duckiebot model is very similar to the hardware of the `DB19`. The major difference between these models is the replacement of the Raspberry Pi 3 by a Jetson Nano Nvidia board which lead to other minor hardware changes like a new camera, a cooling fan, layout, etc.
 
 <div class='requirements' markdown="1">
 
@@ -8,7 +8,7 @@ Requires: Be enrolled in ETHZ’s AMoD 2020 course and have picked up your Ducki
 
 Requires: Time: about 1-1.5 hours (45 minutes for an experienced Duckiebot builder).
 
-Results: An assembled Duckiebot in configuration `DB-beta`.
+Results: An assembled Duckiebot in configuration `DB19-beta`.
 
 </div>
 
