@@ -16,23 +16,29 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 
 </div>
 
+<!--
+
 Overview of all parts in your Duckiebox:
 
 TODO: produce part overview of the DB21M
 
-The assembly process is divided into 9 sub parts. They must be completed in the following order:
+-->
+
+The assembly process is divided into 9 parts. They must be completed in the following order:
 
 - [Part 1: Preliminary Steps](#howto-preliminary-db21m)
 - [Part 2: Driving Units](#howto-driving-unit-db21m)
 - [Part 3: Upper Frame](#howto-upper-frame-db21m)
-- [Part 4: Computation Unit and Rear Assembly](#howto-comp-unit-db21m)
+- [Part 4: Computational Unit and Rear Assembly](#howto-comp-unit-db21m)
 - [Part 5: Cable Management](#howto-cables-db21m)
 - [Part 6: Front Assembly](#howto-front-assembly-db21m)
-- [Part 7: Interactive Cover](#howto-interactive-cover-db21m)
+- [Part 7: Top Plate Assembly](#howto-interactive-cover-db21m)
 - [Part 8: Power your Duckiebot](#howto-power-db21m)
+
 <!--
 - [Part 9: Optional Parts](#howto-optional-parts-db21m)
 -->
+
 ## Preliminary Steps {#howto-preliminary-db21m}
 
 ### Unboxing
@@ -169,7 +175,11 @@ The following steps (13 to 18) guide through the *Duckibattery* assembly:
      <img src="db21-overview-step_13-18.png" style='width: 30em' />
 </div>
 
+<!--
+
 Note: We are very proud of the Duckiebattery. It was custom designed to provide nice features difficult to find in existing power banks. We'll explore these features at a later stage, but let us boast a little here!
+
+-->
 
 ### Step 13
 Take the upper plate (`01`) and 8 metal M3 nuts (`N3`). Compare the hole in the green circles with the hole position on your plate and make sure they agree (if the number `01` is visible on top, you are good to go!).
@@ -647,8 +657,28 @@ Checking: DO NOT power the Duckiebot (plug in all black USB cables and push the 
 
 </div>
 
-## FAQ {#op-faq-db21}
+## Troubleshooting {#op-faq-db21}
 
-Q: CAMERA CABLE: I had to twist the cable of the camera by 180 degrees in order to make the pins on the cable matching the pins in the connector (facing the back side of the robot). Is this normal?
+Symptom: Camera cable needs to be twisted to make the pins on the cable matching those in the connector. Is this normal?
 
-A: Yes this is normal! It might look a little nicer if you wire the camera cable around the metal stand-off next to the plug.
+Resolution: Yes this is normal. It might look a little nicer if you wire the camera cable around the metal stand-off next to the plug.
+
+Symptom: The Duckiebattery does not fit flush in the compartment.
+
+Resolution: Position it as it fits (at an angle). It will make the assembly a little trickier but everything will work out in the end.
+
+Symptom: I don't have enough screws of a specific type.
+
+Resolution: Each package has enough screws of each type, plus spares. It might happen to inadvertently using one type instead of the correct one, which will result in shortages towards the final stages. Following the instructions carefully will prevent this from happening.
+
+Symptom: I can't screw the omni-directional wheel right; the screws don't fit all the way in the standoffs.
+
+Resolution: Sometimes manufacturing inefficiencies make the thread inside the standoff shorter than it should. This happens only occasionally and it is not the norm. The solution is to orient, in case of need, the shorter threaded standoff side towards above, on the side of the chassis.
+
+Symptom: A piece broke while I was trying to assemble it!
+
+Resolution: Mistakes happen. Some damages will not influence the functionality of the robot, others will be fixable at home with some tools, others could be showstoppers. Please take a picture of the damage and send an email to hardware@duckietown.com.
+
+Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
+
+Resolution: You forgot to put a duckie on top your Duckiebot.
