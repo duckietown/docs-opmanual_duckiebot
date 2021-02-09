@@ -659,6 +659,10 @@ Checking: DO NOT power the Duckiebot (plug in all black USB cables and push the 
 
 ## Troubleshooting {#op-faq-db21}
 
+Symptom: I can't find the blue chassis.
+
+Resolution: It's *under* the white foam in the Duckiebox. Remove the inner packaging to access it. 
+
 Symptom: Camera cable needs to be twisted to make the pins on the cable matching those in the connector. Is this normal?
 
 Resolution: Yes this is normal. It might look a little nicer if you wire the camera cable around the metal stand-off next to the plug.
