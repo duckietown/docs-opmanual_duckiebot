@@ -1,4 +1,4 @@
-# Assemblying the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
+# Assembling the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
 <div figure-id="fig:Duckiebook-Banner" figure-caption="Components in the Duckiebox.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
@@ -160,7 +160,7 @@ Mount the omni-wheel to the stand-offs using two of the metal M3x8 screws (`B3`)
      <img src="db21-step_12.png" style='width: 40em' />
 </div>
 
-Note: if you note the screws don't go all the way, try flipping the standoff.
+Note: If you note the screws don't go all the way, try flipping the standoff.
 
 ### Verify the assembly
 
@@ -242,7 +242,7 @@ Take the lower half of the Duckiebot from steps 1 to 12 again and mount it direc
      <img src="db21-step_19.png" style='width: 40em' />
 </div>
 
-Note: this is a tricky step and might require a few tries to get it right. Remember that the Roboticist is patient and welcomes challenges with joy and determination!
+Note: This is a tricky step and might require a few tries to get it right. Remember that the Roboticist is patient and welcomes challenges with joy and determination!
 
 ### Step 20
 Check the routing path of the two motor cables again from step 10 and wire them through the holes in the upper plate.
@@ -259,7 +259,7 @@ Do a similar procedure for the cable of the IMU unit.
 </div>
 
 ### Step 22
-Take the two yellow driving wheels and push them to the motors using one distance disk (index *S4*) between each of them.
+Take the two yellow driving wheels and push them to the motors using one distance disk (`S4`) between each of them.
 
 <div figure-id="fig:db21-step_22">
      <img src="db21-step_22.png" style='width: 40em' />
@@ -299,7 +299,7 @@ Tighten the Jetson Nano with the 6 brass stand-offs (`S2`). Put two stand-offs o
 </div>
 
 ### Step 27
-Take the side cover carrying the number `05R`. Insert a nylon M2.5 nut (`N2`) and a metal M3 nut (`N3`) into the plate (note the engraving: `N2` and `N3` on the plate itself) similarly to step 24. Then screw the plate to the frame using two metal M3x8 screws (`B3*`).
+Take the side cover carrying the number `05R`. Insert a nylon M2.5 nut (`N2`) and a metal M3 nut (`N3`) into the plate (note the engraving: `N2` and `N3` on the plate itself) similarly to step 24. Then screw the plate to the frame using two metal M3x8 screws (`B3`).
 
 <div figure-id="fig:db21-step_27">
      <img src="db21-step_27.png" style='width: 40em' />
@@ -362,14 +362,14 @@ When attaching the back bumper board to the chassis, make sure the pins of the l
 </div>
 
 ### Step 35
-Take the plate carrying the number `06` and press two nylon M2.5 nuts (index `N2`) into the corresponding slits.
+Take the plate carrying the number `06` and press two nylon M2.5 nuts (`N2`) into the corresponding slits.
 
 <div figure-id="fig:db21-step_35">
      <img src="db21-step_35.png" style='width: 40em' />
 </div>
 
 ### Step 36
-Mount the plate number `06` to the back of the chassis using two metal M3x8 screws (index `B3`).
+Mount the plate number `06` to the back of the chassis using two metal M3x8 screws (`B3`).
 
 Note: the `06` is not symmetric and the orientation matters. If the number `06` is pointing towards the Duckiebot, we are good to go!
 
@@ -448,21 +448,21 @@ Open the plug of the camera and push one side of the camera (length = 100mm) int
 </div>
 
 ### Step 46
-Wire the camera cable through the 3D printed camera mount starting from the front. Then use 4 nylon M2x8 screws (index `B1`) and 4 nylon M2 nuts (index `N1`) on the other side to tighten the camera to the mount.
+Wire the camera cable through the 3D printed camera mount starting from the front. Then use 4 nylon M2x8 screws (`B1`) and 4 nylon M2 nuts (`N1`) on the other side to tighten the camera to the mount.
 
 <div figure-id="fig:db21-step_46">
      <img src="db21-step_46.png" style='width: 40em' />
 </div>
 
 ### Step 47
-Mount the camera part to the front bumper board using only one metal M3x8 screw (index `B3`) and one metal M3 nut (index `N3`).
+Mount the camera part to the front bumper board using only one metal M3x8 screw (`B3`) and one metal M3 nut (`N3`).
 
 <div figure-id="fig:db21-step_47">
      <img src="db21-step_47.png" style='width: 40em' />
 </div>
 
 ### Step 48
-Mount the single nylon M3x5 stand-off (index `S1`) with a metal M3x8 screw (index `B3`) from the other side.
+Mount the single nylon M3x5 stand-off (`S1`) with a metal M3x8 screw (`B3`) from the other side.
 
 <div figure-id="fig:db21-step_48">
      <img src="db21-step_48.png" style='width: 40em' />
@@ -513,7 +513,7 @@ Note: the orientation of the cable should be such that the copper pins on the ca
 </div>
 
 ### Step 55
-Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (index `N4`).
+Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (`N4`).
 
 <div figure-id="fig:db21-step_55">
      <img src="db21-step_55.png" style='width: 40em' />
@@ -546,7 +546,7 @@ Once the button is pushed in completely, tighten it again with the flat nut.
 </div>
 
 ### Step 58
-Mount the screen to the plate in a way the pins of the screen are pointing towards the button. Use 4 nylon M2.5 screws (index `B2`) and 4 nylon M2.5 nuts (index `N2`) for this.
+Mount the screen to the plate in a way the pins of the screen are pointing towards the button. Use 4 nylon M2.5 screws (`B2`) and 4 nylon M2.5 nuts (`N2`) for this.
 
 <div figure-id="fig:db21-step_58">
      <img src="db21-step_58.png" style='width: 40em' />
@@ -583,14 +583,14 @@ Gently place the cover plate on the chassis. Make sure the screws of the fan and
 </div>
 
 ### Step 63
-Tighten the cover part using two nylon M2.5x10 screws (index `B2`).
+Tighten the cover part using two nylon M2.5x10 screws (`B2`).
 
 <div figure-id="fig:db21-step_63">
      <img src="db21-step_63.png" style='width: 40em' />
 </div>
 
 ### Step 64
-Then, tighten the cover using two nylon M2.5 nuts (index `N2`).
+Then, tighten the cover using two nylon M2.5 nuts (`N2`).
 
 <div figure-id="fig:db21-step_64">
      <img src="db21-step_64.png" style='width: 40em' />
