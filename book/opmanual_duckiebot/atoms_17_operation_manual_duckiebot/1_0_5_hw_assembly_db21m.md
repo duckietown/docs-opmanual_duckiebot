@@ -44,6 +44,8 @@ The assembly process is divided into 9 parts. They must be completed in the foll
 ### Unboxing
 Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on.
 
+Note: Your Duckiebot chassis are under the white protection foam. To get your duckiebot chassis, pull out the white protection foam in the box after remove everything.
+
 Although not necessary, a small (M2.5) wrench will ease some of the next passages.
 
 ### Plastic cover
