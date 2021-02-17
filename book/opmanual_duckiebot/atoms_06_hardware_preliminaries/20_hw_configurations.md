@@ -20,7 +20,7 @@ The `DB21M` is the first Duckiebot equipped with a NVIDIA Jetson Nano 2 GB compu
    <img src="db21m.jpg" style='width: 25em'/>
 </div>
 
-The `DB21M` is readily recognized by its blue chassis and triple-decker configuration. It is equipped with a sensor suite including: camera, time-of-flight sensor, inertial measurement unit (IMU) and wheel encoders. Moreover, the `DB21M` features new electronics (HUT v3.1, front and back bumpers), a screen, a button and a custom designed Duckiebattery (`v2`, to distinguish it from the [Duckie-power-bank](#db-opmanual-dtbattery-v1)).
+The `DB21M` is readily recognized by its blazing blue chassis and triple-decker configuration. It is equipped with a sensor suite including: camera, time-of-flight sensor, inertial measurement unit (IMU) and wheel encoders. Moreover, the `DB21M` features new electronics (HUT v3.1, front and back bumpers), a screen, a button and a custom designed Duckiebattery (`v2`, not to be confused with the [Duckie-power-bank](#db-opmanual-dtbattery-v1)).
 
 To assemble a `DB21M` Duckiebot, follow [these](#assembling-duckiebot-db21) instructions.
 
