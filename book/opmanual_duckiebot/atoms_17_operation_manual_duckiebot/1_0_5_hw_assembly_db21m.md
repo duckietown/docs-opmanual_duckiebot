@@ -643,7 +643,7 @@ At that point, your Duckiebot is fully assembled! To power it on, push the butto
 ## Additional Parts {#howto-additional-parts-db21m}
 
 ### Step 69
-If you have an april tag take some glue and put it in between the two nylon screws on the top of you Duckiebot.
+If you have an April tag take some glue and put it in between the two nylon screws on the top of you Duckiebot.
 
 <div figure-id="fig:db21-step_69">
      <img src="db21-step_69.png" style='width: 40em' />
