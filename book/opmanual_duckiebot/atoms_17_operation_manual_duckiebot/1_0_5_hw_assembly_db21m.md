@@ -25,7 +25,7 @@ Overview of all parts in your Duckiebox:
 </div>
 
 
-The assembly process is divided into 9 parts. They must be completed in the following order:
+The assembly process is divided in 9 parts. They must be completed in the following order:
 
 - [Part 1: Preliminary Steps](#howto-preliminary-db21m)
 - [Part 2: Drive Train](#howto-drive-train-db21m)
