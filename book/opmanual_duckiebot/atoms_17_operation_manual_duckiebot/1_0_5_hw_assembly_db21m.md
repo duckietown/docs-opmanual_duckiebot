@@ -17,32 +17,32 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 </div>
 
 <!--
-
+-->
 Overview of all parts in your Duckiebox:
 
-TODO: produce part overview of the DB21M
+<div figure-id="fig:db21-parts-overview">
+     <img src="db21-parts-overview.png" style='width: 40em' />
+</div>
 
--->
 
 The assembly process is divided into 9 parts. They must be completed in the following order:
 
 - [Part 1: Preliminary Steps](#howto-preliminary-db21m)
-- [Part 2: Driving Units](#howto-driving-unit-db21m)
-- [Part 3: Upper Frame](#howto-upper-frame-db21m)
+- [Part 2: Drive Train](#howto-drive-train-db21m)
+- [Part 3: Battery Pack Installation](#howto-battery-pack-installation-db21m)
 - [Part 4: Computational Unit and Rear Assembly](#howto-comp-unit-db21m)
 - [Part 5: Cable Management](#howto-cables-db21m)
 - [Part 6: Front Assembly](#howto-front-assembly-db21m)
 - [Part 7: Top Plate Assembly](#howto-interactive-cover-db21m)
 - [Part 8: Power your Duckiebot](#howto-power-db21m)
 
-<!--
-- [Part 9: Optional Parts](#howto-optional-parts-db21m)
--->
+- [Part 9: Additional Parts](#howto-additional-parts-db21m)
+
 
 ## Preliminary Steps {#howto-preliminary-db21m}
 
 ### Unboxing
-Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on.
+Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on. Do not show any violence to the Duckiebot pieces or they might break.
 
 Note: Your Duckiebot chassis are under the white protection foam. To get your duckiebot chassis, pull out the white protection foam in the box after remove everything.
 
@@ -58,11 +58,11 @@ Each type of screw, nut and stand-off is labeled with an index. You will find co
      <img src="db21-part_indices.png" style='width: 40em' />
 </div>
 
-Note: These instructions are your friend, follow them carefully, especially if it's the first time you assemble a `DB21M`! Small variations might cause big effects (e.g., don't flip your battery over!).
+Note: These instructions are your friend, follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your battery over!).
 
 The [FAQ](#op-faq-db21) section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
 
-## Driving Units {#howto-driving-unit-db21m}
+## Drive Train {#howto-drive-train-db21m}
 In the following steps (1 to 12) you will build the base plate assembly.
 
 <div figure-id="fig:db21-overview-step_01-12">
@@ -79,7 +79,7 @@ It might appear tricky at first to make the nuts fit. Once on the inset, gently 
      <img src="db21-step_01.png" style='width: 40em' />
 </div>
 
-Note: Occasionally manufacturing tolerances (on the nut and the laser cut chassis) might prevent a flush fit. Trying a different nut might solve the problem.
+Note: Occasionally manufacturing tolerances (on the nut and the laser cut chassis) might prevent a flush fit. Trying a different nut or changing the insert direction might solve the problem.
 
 ### Step 2
 Check the hole pattern in the middle of the plate to make sure you are holding it the right orientation, then insert two of the motor plates in the base plate.
@@ -121,14 +121,14 @@ Insert the other two motor plates into the base plate, similarly to step 2.
 </div>
 
 ### Step 7
-Tighten the second motor with two M3x30 metal screws (`B5`) and two metal M3 nuts (`N3`) and place the cable similarly to steps 3 and 4.
+Tighten the second motor with two M3x30 metal screws (`B5`) and two metal M3 nuts (`N3`) and place the cable, similarly to steps 3 and 4.
 
 <div figure-id="fig:db21-step_07">
      <img src="db21-step_07.png" style='width: 40em' />
 </div>
 
 ### Step 8
-Connect one of the three long 4-pin cables (length = 260mm) to the white connector of the IMU (Inertial Measurement Unit) board.
+Connect one of the longest 4-pin cables to the white connector of the IMU (Inertial Measurement Unit) board.
 
 <div figure-id="fig:db21-step_08">
      <img src="db21-step_08.png" style='width: 40em' />
@@ -162,7 +162,7 @@ Mount the omni-wheel to the stand-offs using two of the metal M3x8 screws (`B3`)
      <img src="db21-step_12.png" style='width: 40em' />
 </div>
 
-Note: If you note the screws don't go all the way, try flipping the standoff.
+Note: If you note the screws don't go all the way, try flipping the stand-off.
 
 ### Verify the assembly
 
@@ -170,7 +170,7 @@ Before proceeding, verify that no component is wiggling. The only things moving 
 
 Congratulations, you just built the base plate Duckiebot assembly!
 
-## Upper Frame {#howto-upper-frame-db21m}
+## Battery Pack Installation {#howto-battery-pack-installation-db21m}
 The following steps (13 to 18) guide through the *Duckibattery* assembly:
 
 <div figure-id="fig:db21-overview-step_13-18">
@@ -184,7 +184,7 @@ Note: We are very proud of the Duckiebattery. It was custom designed to provide 
 -->
 
 ### Step 13
-Take the upper plate (`01`) and 8 metal M3 nuts (`N3`). Compare the hole in the green circles with the hole position on your plate and make sure they agree (if the number `01` is visible on top, you are good to go!).
+Take the upper plate (`01`) and 8 metal M3 nuts (`N3`). Compare the hole in the green circles with the hole position on your plate and make sure they agree (if the number `01` is visible on top, you are good to go).
 
 <div figure-id="fig:db21-step_13">
      <img src="db21-step_13.png" style='width: 40em' />
@@ -231,7 +231,7 @@ Take the two small plates labeled `07` and lock the battery in place.
 
 
 ## Computation Unit and Rear Assembly {#howto-comp-unit-db21m}
-At this point, we are starting to see the final shape of the Duckiebot! The following steps (19 to 27) will help assemble the lower frame and mount the NVIDIA Jetson Nano:
+At this point, we are starting to see the final shape of the Duckiebot! The following steps (19 to 27) will help assemble the lower frame and mount the NVIDIA Jetson Nano board:
 
 <div figure-id="fig:db21-overview-step_19-27">
      <img src="db21-overview-step_19-27.png" style='width: 30em' />
@@ -287,21 +287,21 @@ You may need to lift the Jetson Nano a little to fit the side cover plate under 
 </div>
 
 ### Step 25
-Place the 4 (`S5`) spacers on the nylon screws holding the NVIDIA Jetson Nano board.
+Place 4 of the (`S5`) spacers on the nylon screws holding the NVIDIA Jetson Nano board.
 
 <div figure-id="fig:db21-step_25">
      <img src="db21-step_25.png" style='width: 40em' />
 </div>
 
 ### Step 26
-Tighten the Jetson Nano with the 6 brass stand-offs (`S2`). Put two stand-offs on each of the front (closer to the wheels) screws, but only one each on the back (closer to the omni-wheel).
+Tighten the NVIDIA Jetson Nano board with the 6 brass stand-offs (`S2`). Put two stand-offs on each of the front screws but only one each on the back.
 
 <div figure-id="fig:db21-step_26">
      <img src="db21-step_26.png" style='width: 40em' />
 </div>
 
 ### Step 27
-Take the side cover carrying the number `05R`. Insert a nylon M2.5 nut (`N2`) and a metal M3 nut (`N3`) into the plate (note the engraving: `N2` and `N3` on the plate itself) similarly to step 24. Then screw the plate to the frame using two metal M3x8 screws (`B3`).
+Take the side cover carrying the number `05R`. Insert a nylon M2.5 nut (`N2`) and a metal M3 nut (`N3`) into the plate, similarly to step 24 (note the engraving: `N2` and `N3` on the plate itself). Then screw the plate to the frame using two metal M3x8 screws (`B3`).
 
 <div figure-id="fig:db21-step_27">
      <img src="db21-step_27.png" style='width: 40em' />
@@ -316,7 +316,7 @@ Take the USB cable that has three connectors. Connect the Duckiebattery and the 
      <img src="db21-step_28.png" style='width: 40em' />
 </div>
 
-Note: The micro USB connector should not be connected at that stage!
+Note: The micro USB connector must not be connected at that stage!
 
 ### Step 29
 
@@ -343,7 +343,7 @@ Connect the Wi-Fi dongle to the upper USB-A port on the NVIDIA Jetson Nano board
 </div>
 
 ### Step 32
-Take the back bumper board and connect the 4-pin cable (length = 120mm) to the white plug on the board.
+Take the back bumper board and connect the 4-pin cable of medium length to the white plug on the board.
 
 <div figure-id="fig:db21-step_32">
      <img src="db21-step_32.png" style='width: 40em' />
@@ -382,6 +382,8 @@ Note: the `06` is not symmetric and the orientation matters. If the number `06` 
 ### Step 37
 Take the fan and mount it on top of the heat sink of the NVIDIA Jetson Nano board using 4 metal M3x12 screws (`B4`). Make sure the cable of the fan is pointing to the back right side (it might be necessary to use a little force on these screws, as the thread has to cut it's way through the heat sink the first time).
 
+Note: You don't need to tighten the screws completely but the fan must sit tight.
+
 <div figure-id="fig:db21-step_37">
      <img src="db21-step_37.png" style='width: 40em' />
 </div>
@@ -390,7 +392,7 @@ Take the fan and mount it on top of the heat sink of the NVIDIA Jetson Nano boar
 Take the printed circuit board with the Duckietown logo on it (further called `HUT`) and plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).
 
 <div figure-id="fig:db21-step_38">
-     <img src="db21-step_38.png" style='width: 20em' />
+     <img src="db21-step_38.png" style='width: 40em' />
 </div>
 
 ### Step 39
@@ -443,7 +445,7 @@ The following steps 45 to 52 will guide you through the assembly of the camera u
 </div>
 
 ### Step 45
-Open the plug of the camera and push one side of the camera (length = 100mm) into the plug. Make sure that the blue are is facing the direction of the camera lens and then close the plug completely.
+If not already done, open the plug of the camera and push one side of the camera cable in. The orientation of the cable should be such that the copper pins on the camera cable face the camera plate. Then close the plug completely.
 
 <div figure-id="fig:db21-step_45">
      <img src="db21-step_45.png" style='width: 40em' />
@@ -471,7 +473,7 @@ Mount the single nylon M3x5 stand-off (`S1`) with a metal M3x8 screw (`B3`) from
 </div>
 
 ### Step 49
-Take a 4-pin cable (length = 260mm) and connect it to the front bumper board as shown.
+Take one of the longest 4-pin cables and connect it to the front bumper board as shown.
 
 <div figure-id="fig:db21-step_49">
      <img src="db21-step_49.png" style='width: 40em' />
@@ -485,7 +487,7 @@ Wire the cable that you have just connected (step 49) through the upper plate an
 </div>
 
 ### Step 51
-Take another 4-pin cable (length = 260mm) and connect it to the front bumper board, similarly to step 49.
+Take the last of the longest 4-pin cables and connect it to the front bumper board, similarly to step 49.
 
 <div figure-id="fig:db21-step_51">
      <img src="db21-step_51.png" style='width: 40em' />
@@ -499,16 +501,16 @@ Again, wire this cable through the upper plate and connect it to the `HUT`, simi
 </div>
 
 ### Step 53
-Mount the front bumper board to the upper and lower plate. Make sure they are locked in place correctly.
+Mount the front bumper board to the upper and lower plate using three metal M3x8 screws (`B3`). Make sure they are locked in place correctly.
 
 <div figure-id="fig:db21-step_53">
      <img src="db21-step_53.png" style='width: 40em' />
 </div>
 
 ### Step 54
-Open the camera slit on the NVIDIA Jetson Nano by raising it on the sides (with care), and put in the other end of the camera cable.
+Open the camera slit on the NVIDIA Jetson Nano board by raising it on the sides (with care), and put in the other end of the camera cable.
 
-Note: the orientation of the cable should be such that the copper pins on the camera cable face the NVIDIA Jetson board (i.e., facing towards the rear end of the Duckiebot).
+Note: The orientation of the cable should be such that the blue part of the cable faces the camera (i.e., facing towards the front end of the Duckiebot).
 
 <div figure-id="fig:db21-step_54">
      <img src="db21-step_54.png" style='width: 40em' />
@@ -522,7 +524,7 @@ Attach the small blue distance sensor to the stand-off on the front bumper and t
 </div>
 
 ### Step 56
-Take the shortest 4-pin cable (length = 50mm) and connect the bottom of the time of flight sensor to the front bumper, as shown below.
+Take the shortest 4-pin cable and connect the bottom of the time of flight sensor to the front bumper, as shown below.
 
 <div figure-id="fig:db21-step_56">
      <img src="db21-step_56.png" style='width: 40em' />
@@ -539,7 +541,7 @@ The following steps 57 to 64 show the assembly of the top plate of the `DB21M`, 
 ### Step 57
 Remove the nut from the button, if necessary, and wire the button cables through the hole on the top plate  (marked as `03`).
 
-Note: mind the orientation; if the number is pointing downwards, we are good to go!
+Note: Mind the orientation; if the number is pointing downwards, we are good to go!
 
 Once the button is pushed in completely, tighten it again with the flat nut.
 
@@ -607,7 +609,7 @@ Note: in this step we will plug the various power cables to the `HUT`. One port 
 </div>
 
 
-Warning: *always* plug and unplug USB cables from the `HUT` with care!
+Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 
 ### Step 65
 Take the black USB cable that you have marked in step 29 and connect it to the second micro USB connector on the `HUT` counting from the back.
@@ -637,15 +639,23 @@ At that point, your Duckiebot is fully assembled! To power it on, push the butto
      <img src="db21-step_68.png" style='width: 40em' />
 </div>
 
-<!--
 
-## Optional Parts {#howto-optional-parts-db21m}
+## Additional Parts {#howto-additional-parts-db21m}
 
-### Step 69 (microphone and speakers?)
+### Step 69
+If you have an april tag take some glue and put it in between the two nylon screws on the top of you Duckiebot.
 
-### Step 70 (front bumper and line following sensors)
+<div figure-id="fig:db21-step_69">
+     <img src="db21-step_69.png" style='width: 40em' />
+</div>
 
--->
+### Step 70
+If you have a circle pattern put it on the back plate of your Duckiebot again using some glue.
+
+<div figure-id="fig:db21-step_70">
+     <img src="db21-step_70.png" style='width: 40em' />
+</div>
+
 
 ## Check the outcome
 
@@ -655,7 +665,7 @@ Checking: Look at the [Overview of interlocking parts](#fig:db21-part_indices) a
 
 Checking: Have a look at all cable connectors and make sure they are plugged in completely.
 
-Checking: DO NOT power the Duckiebot (plug in all black USB cables and push the button on the battery) when there is no flashed SD card inside.
+Checking: check if all USB cables are plugged in completely. If you have already inserted a flashed SD card you are allowed to push the magic button on the battery.
 
 </div>
 
@@ -663,7 +673,7 @@ Checking: DO NOT power the Duckiebot (plug in all black USB cables and push the 
 
 Symptom: I can't find the blue chassis.
 
-Resolution: It's *under* the white foam in the Duckiebox. Remove the inner packaging to access it. 
+Resolution: It's *under* the white foam in the Duckiebox. Remove the inner packaging to access it.
 
 Symptom: Camera cable needs to be twisted to make the pins on the cable matching those in the connector. Is this normal?
 
@@ -679,7 +689,7 @@ Resolution: Each package has enough screws of each type, plus spares. It might h
 
 Symptom: I can't screw the omni-directional wheel right; the screws don't fit all the way in the standoffs.
 
-Resolution: Sometimes manufacturing inefficiencies make the thread inside the standoff shorter than it should. This happens only occasionally and it is not the norm. The solution is to orient, in case of need, the shorter threaded standoff side towards above, on the side of the chassis.
+Resolution: Sometimes manufacturing inefficiencies make the thread inside the standoff shorter than it should. This happens only occasionally and it is not the norm. The solution is to orient, in case of need, the shorter threaded stand-off side towards above, on the side of the chassis.
 
 Symptom: A piece broke while I was trying to assemble it!
 
@@ -687,4 +697,4 @@ Resolution: Mistakes happen. Some damages will not influence the functionality o
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
 
-Resolution: You forgot to put a duckie on top your Duckiebot.
+Resolution: You forgot to put a duckie on top of your Duckiebot.
