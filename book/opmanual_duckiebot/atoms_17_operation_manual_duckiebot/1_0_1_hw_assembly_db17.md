@@ -1,4 +1,4 @@
-# Assembling the `DB17` Duckiebot {#assembling-duckiebot-db17 status=ready}
+# Assembling the Duckiebot `DB17` {#assembling-duckiebot-db17 status=ready}
 
 This page is for the `DB17` configuration used in classes in 2017. The docker based software stack of 2018 is currently not guaranteed to work out of the box with the `DB17` hardware configurations.
 

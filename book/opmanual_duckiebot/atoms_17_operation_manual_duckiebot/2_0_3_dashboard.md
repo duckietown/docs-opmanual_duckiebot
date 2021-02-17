@@ -37,7 +37,7 @@ You can find your duckietown dashboard at:
 
 If the above address does not work, remove the `.local` part and just do `http://![YOUR_DUCKIEBOT_NAME]/`
 
-Note: if `.local` does not work, that means your router's default domain name is set to something else. It will be helpful if you figure out what that is. And keep in mind that any instruction later that includes `.local` should be just ignored. 
+Note: if `.local` does not work, that means your router's default domain name is set to something else. It will be helpful if you figure out what that is. And keep in mind that any instruction later that includes `.local` should be just ignored.
 
 ### Steps 1, 2
 
@@ -135,29 +135,29 @@ We will discuss the functionalities offered by each page in the next sections.
 To see all the available components within the dashboard, you will need to first login to the dashboard. Inside the dashboard, you will see a navigation panel on your left hand side. There are 7 subpages of dashboard. They are:
 
     PAGE NAME           DESCRIPTION
-    Portainer           A nice GUI tool for seeing all containers running on duckiebot
+    Portainer           A nice GUI tool for seeing all containers running on a Duckiebot
     Robot               A summary page for the robot status
-    Users               Advanced Feature: Allow multiple student using one duckiebot
+    Users               Advanced Feature: Allow multiple student using one Duckiebot
     Profile             Information for your duckietown account
-    Package Store       A package store contain all available packages for your duckiebot
-    Settings            Advanced Feature: Change configuration of your duckiebot dashboard manually
+    Package Store       A package store contain all available packages for your Duckiebot
+    Settings            Advanced Feature: Change configuration of your Duckiebot dashboard manually
     Restful API         Advanced Feature: A description of restful API.
 
 ## Portainer {#dashboard-portainer status=ready}
 
-Portainer is a provided tool for managing all the docker containers that are running on the duckiebot. Using portainer tools, you can quickly see the status of the containers on your duckiebot.
+Portainer is a provided tool for managing all the docker containers that are running on the Duckiebot. Using portainer tools, you can quickly see the status of the containers on your Duckiebot.
 
 <div figure-id="fig:dashboard-portainer" figure-caption="">
   <img src="dashboard-portainer.png" style='width: 35em'/>
 </div>
 
-You can select `containers` to see all the containers on the duckiebot.
+You can select `containers` to see all the containers on the Duckiebot.
 
 For more information about portainer, you can find them in [this](#docker-setup-portainer-interface) page.
 
 ## Robot Page {#dashboard-robot status=ready}
 
-In this page you will find several subpage that helps you see and understand the duckiebot status. The default page is `Info`.
+In this page you will find several subpage that helps you see and understand the Duckiebot status. The default page is `Info`.
 
 ### Info {#dashboard-robot-overview status=ready}
 
@@ -175,7 +175,7 @@ This is the Mission Control page.
   <img src="dashboard_mission_control_auto.png" style='width: 35em'/>
 </div>
 
-In this page you can see what the duckiebot sees and you can see lateral and angular speed of your robot, and a plot of left and right motor speed.It is the page that lets you monitor and control your Duckiebot. The top of the page should be similar to the following image,
+In this page you can see what the Duckiebot sees and you can see lateral and angular speed of your robot, and a plot of left and right motor speed.It is the page that lets you monitor and control your Duckiebot. The top of the page should be similar to the following image,
 
 Note: If you do not see the camera view, make sure you are accessing the dashboard using `https://ROBOT_HOSTNAME.local/` instead of directly accessing the dashboard using robot IP address.
 
@@ -202,7 +202,7 @@ This is the Architecture Page. It will allow you to visualize all the published 
 
 ### Software {#dashboard-tutorial-software status=ready}
 
-This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dashboard) for more information about keeping your duckiebot up to date.
+This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dashboard) for more information about keeping your Duckiebot up to date.
 
 <div figure-id="fig:dashboard-software" figure-caption="">
   <img src="dashboard-software.png" style='width: 35em'/>
@@ -212,7 +212,7 @@ This is the software page. You can use this page to monitor your container statu
 
 This is the files page. You can access your calibration result directly through this tab. You calibration are stored under `/config/calibration`. If you do not want to recalibrate everytime you re-flahsed your SD card, it is recommended to save these calibration results.
 
-Additionally, you can access configuration files duckiebot uses in this tab.
+Additionally, you can access configuration files Duckiebot uses in this tab.
 
 <div figure-id="fig:dashboard-files" figure-caption="">
   <img src="dashboard-files.png" style='width: 35em'/>
@@ -220,7 +220,7 @@ Additionally, you can access configuration files duckiebot uses in this tab.
 
 ## Dashboard Package Store {#dashboard-update status=beta}
 
-## Drive your duckiebot via mission control {#drive-dashboard status=draft}
+## Drive your Duckiebot via mission control {#drive-dashboard status=draft}
 
 You can remotely drive your Duckiebot through mission control page.
 

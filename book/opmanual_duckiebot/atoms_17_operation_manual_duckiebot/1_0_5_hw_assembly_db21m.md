@@ -1,6 +1,6 @@
 # Assembling the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
-<div figure-id="fig:Duckiebook-Banner" figure-caption="Components in the Duckiebox.">
+<div figure-id="fig:Duckiebook-Banner" figure-caption="The `DB21M` Duckiebot, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
 </div>
 
@@ -10,7 +10,7 @@ Requires: Duckiebot `DB21M` parts. Here is an [overview of all existing configur
 
 Requires: A microSD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 
-Requires: 2 hours of assembly time.
+Requires: 3 hours of assembly time.
 
 Result: An assembled Duckiebot in configuration `DB21M`.
 
@@ -44,7 +44,7 @@ The assembly process is divided into 9 parts. They must be completed in the foll
 ### Unboxing
 Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on.
 
-Note: Your Duckiebot chassis are under the white protection foam. To get your duckiebot chassis, pull out the white protection foam in the box after remove everything.
+Note: Your Duckiebot chassis is under the white protection foam. To find it, pull out the inner white protection foam.
 
 Although not necessary, a small (M2.5) wrench will ease some of the next passages.
 
@@ -663,7 +663,7 @@ Checking: DO NOT power the Duckiebot (plug in all black USB cables and push the 
 
 Symptom: I can't find the blue chassis.
 
-Resolution: It's *under* the white foam in the Duckiebox. Remove the inner packaging to access it. 
+Resolution: It's *under* the white foam in the Duckiebox. Remove the inner packaging to access it.
 
 Symptom: Camera cable needs to be twisted to make the pins on the cable matching those in the connector. Is this normal?
 

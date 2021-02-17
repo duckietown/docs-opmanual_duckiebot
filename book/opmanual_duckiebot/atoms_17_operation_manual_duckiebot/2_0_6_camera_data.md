@@ -1,8 +1,8 @@
-# See what your Duckiebot sees {#read-camera-data status=ready}
+# Seeing what your Duckiebot sees {#read-camera-data status=ready}
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` or `DB-beta` configuration.
+Requires: A Duckiebot in `DB18` or above configuration.
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
@@ -23,7 +23,7 @@ To see it, run a base image on your laptop with:
 
     laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
-Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
 
 The container will start. At the prompt, run:
 
@@ -121,5 +121,3 @@ of the camera block.
 
 Note: If you see a black image in the camera block, make sure that you
 removed the protective cap that covers the camera lens of your Duckiebot.
-
-
