@@ -1,4 +1,4 @@
-# Getting a Ubuntu Environment {#USB-ubuntu status=beta}
+# Getting an Ubuntu Environment {#USB-ubuntu status=beta}
 
 This page instructs you how to get a Ubuntu Environment that is installed on a USB stick.
 
@@ -22,15 +22,15 @@ Results: A laptop that has Ubuntu 20.04 installed.
 
 If you never have Ubuntu installed on your computer, typically you will have four options available to you.
 
-You can create a new partition and dual boot your system. However, sometimes if you have a laptop with a small hardrive, it might be hard to create a designated partition just for Ubuntu. However, if you have the leisure of splitting your current partition in half, we strongly recommend you to create a dual boot machine. 
+You can create a new partition and dual boot your system. However, sometimes if you have a laptop with a small hardrive, it might be hard to create a designated partition just for Ubuntu. However, if you have the leisure of splitting your current partition in half, we strongly recommend you to create a dual boot machine.
 
 Note: If you want to install a dual boot machine, it is recommended for you to install Windows(Mac) first then Linux. If you do the other way, often time windows will not recognize the Ubuntu boot option and you have to later manually configure the boot options.
 
 Warning: Always pay extra attention when you try to reconfigure your computer's partition as you don't want to lose any precious data.
 
-You can also use virtual machine, to have duckietown environment installed in that. The problem is that with the added layer of virtual machine virtual networking, trouble shooting become a bit tedious. Virtual Machine also typically don't support hardware acceleration very well. 
+You can also use virtual machine, to have duckietown environment installed in that. The problem is that with the added layer of virtual machine virtual networking, trouble shooting become a bit tedious. Virtual Machine also typically don't support hardware acceleration very well.
 
-Similarly to virtual machine approach, WSL, Windows Subsystem for Linux also has its challenge for both the hardware support (Not very well supporting Nvidia GPU acceleration as of writing this article in September 2020) as well as the network support. 
+Similarly to virtual machine approach, WSL, Windows Subsystem for Linux also has its challenge for both the hardware support (Not very well supporting Nvidia GPU acceleration as of writing this article in September 2020) as well as the network support.
 
 Using a USB Stick is the recommended method from us, as you do not need to have the risk of changing your pre-existing partition, nor worry about dual boot and Grub. Your computer hardware will get fully utilized just like when you install Ubuntu dual boot.
 
@@ -45,7 +45,7 @@ In this tutorial we will focus on installing Ubuntu on a USB stick
 * Create the bootable USB drive, disconnect the USB then reconnect to your computer.
 * Restart your computer
     - If your computer simply boots into the existing operating system you need to change the boot order in your BIOS.
-    - Restart your computer again and press the button during startup which lets you into the BIOS. It may say on your computer what this button is but you may need to Google depending on your laptop model. 
+    - Restart your computer again and press the button during startup which lets you into the BIOS. It may say on your computer what this button is but you may need to Google depending on your laptop model.
     - Look for an option to change boot order and put priority on your USB drive.
 * Your computer should now boot into Ubuntu installation and you can follow the instructions for dual boot.
 
@@ -68,7 +68,7 @@ Before you can boot into your stick you first need to take care of a few things:
 
 NOTE: Typically, the BIOS menu key is F2,F12, or Del button, somtimes it can also be F1. For selecting Boot menu, it typically is F10 or F11.
 
-NOTE: If you want to follow along, we suggest you open this tutorial on a mobile device or another computer. 
+NOTE: If you want to follow along, we suggest you open this tutorial on a mobile device or another computer.
 
 NOTE: If you have the option to boot using UEFI, you should use that for better compatibility as well as security.
 
@@ -96,5 +96,4 @@ Before booting starts you may be prompted to choose between different actions th
 
 - On first boot Ubuntu will want to configure itself. Follow through the GUI and choose the language etc. you want your system to run.
 
-- At the end of all of this you should have a fresh Ubuntu interface ready to go. 
-
+- At the end of all of this you should have a fresh Ubuntu interface ready to go.

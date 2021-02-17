@@ -131,7 +131,7 @@ If this is on your laptop, that means when you setup your enviornment you did no
 
     laptop $ sudo adduser `whoami` docker
 
-Log out and in again and it should be fixed. 
+Log out and in again and it should be fixed.
 
 ### I stopped all the containers and now Portainer or other basic containers are not available
 
@@ -187,7 +187,7 @@ despite not being very descriptive typically means that there is a mismatch betw
 
 ## Recreate all container at once {#dt-manualupdate status=beta}
 
-Instead of automagically updating the container using `dts`, you can also update the container manually using docker commands. SSH into your duckiebot, and then run:
+Instead of automagically updating the container using `dts`, you can also update the container manually using docker commands. SSH into your Duckiebot, and then run:
 
     duckiebot $ dt-autoboot
 

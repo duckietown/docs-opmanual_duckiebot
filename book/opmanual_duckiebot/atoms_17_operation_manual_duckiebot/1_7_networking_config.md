@@ -33,26 +33,25 @@ which will try to download the Google homepage. If it is successful, you should 
     <A HREF="http://www.google.com/">here</A>.
     </BODY></HTML>
 
-## Option 1: Connect your Duckiebot to the internet through a Wifi router that you control
+## Option 1: Connect your Duckiebot to the internet through a WiFi router that you control
 
-If you are working from your home, for example, you simply need to make the Duckiebot connect to your home network. You may have input the proper SSID and pwd when you initialized the SD card, in which case, your Duckiebot should be connected to the internet already.
+If you are working from your home, for example, you simply need to make the Duckiebot connect to your home network. You may have input the proper SSID and password when you initialized the SD card, in which case, your Duckiebot should be connected to the internet already.
 
-If you didn't enter the right SSID and password for your network or you want to change you need to connect to your robot somehow (e.g. with ethernet) and then edit the file `/etc/wpa_supplicant/wpa_supplicant.conf` as explained in the [Duckiebot initialization procedure](#burn-sd-card).
+If you didn't enter the right SSID and password for your network or you want to change you need to connect to your robot somehow (e.g. with Ethernet) and then edit the file `/etc/wpa_supplicant/wpa_supplicant.conf` as explained in the [Duckiebot initialization procedure](#burn-sd-card).
 
 This is the best option.
 
-## Option 2: Bridge the internet connection through your laptop with ethernet
+## Option 2: Bridge the internet connection through your laptop with Ethernet
 
-This method assumes that you can connect your laptop to a network but it is one that you don't control or is not open. For example, on campus many networks are more protected, e.g. with PEAP. In that case, it can be difficult to get your configurations right on the Duckiebot. An alternative is bridge the connection between your laptop and your Duckiebot whenever you need internet access on the robot.
+This method assumes that you can connect your laptop to a network but it is one that you don't control or is not open. For example, on campus many networks are more protected, e.g., with `PEAP`. In that case, it can be difficult to get your configurations right on the Duckiebot. An alternative is bridge the connection between your laptop and your Duckiebot whenever you need internet access on the robot.
 
 ### Ubuntu
 
 1. Connect your laptop to a wireless network.
-2. Connect the Duckiebot to your laptop via an ethernet cable.
+2. Connect the Duckiebot to your laptop via an Ethernet cable.
+3. Make a new Ethernet connection:
 
-3. Make a new ethernet connection:
-
-4. 1. Network Settings… (or run the command `nm-connection-editor`)
+   1. Network Settings… (or run the command `nm-connection-editor`)
    2. Click "Add"
    3. Type -> Ethernet
    4. Connection Name: "Shared to Duckiebot"
@@ -107,7 +106,7 @@ duckiebot $ docker run ...
 
 note that you will need to pull onto your laptop and push to your Duckiebot in order to load the latest version of the image.
 
-## Common Troubleshooting
+## Troubleshooting
 
 ### I cannot ping the Duckiebot
 
