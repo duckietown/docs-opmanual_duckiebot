@@ -21,7 +21,7 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 Overview of all parts in your Duckiebox:
 
 <div figure-id="fig:db21-parts-overview">
-     <img src="db21-parts-overview.png" style='width: 40em' />
+     <img src="db21-parts-overview.jpg" style='width: 40em' />
 </div>
 
 
