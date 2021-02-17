@@ -17,7 +17,7 @@ All Duckiebot configurations from `DB18` onward can be obtained [here](https://g
 The `DB21M` is the first Duckiebot equipped with a NVIDIA Jetson Nano 2 GB computational unit instead of a Raspberry Pi. The `DB21M` debuts in 2021 with the "[Self-Driving Cars with Duckietown](https://www.edx.org/course/self-driving-cars-with-duckietown)" massive open online course, hosted on the edX platform.
 
 <div figure-id="fig:db21m" figure-caption="The Duckiebot version `DB21M`.">
-   <img src="db21m.jpg" style='width: 25em'/>
+   <img src="db21m.jpg" style='width: 20em'/>
 </div>
 
 The `DB21M` is readily recognized by its blazing blue chassis and triple-decker configuration. It is equipped with a sensor suite including: camera, time-of-flight sensor, inertial measurement unit (IMU) and wheel encoders. Moreover, the `DB21M` features new electronics (HUT v3.1, front and back bumpers), a screen, a button and a custom designed Duckiebattery (`v2`, not to be confused with the [Duckie-power-bank](#db-opmanual-dtbattery-v1)).
@@ -29,13 +29,13 @@ To assemble a `DB21M` Duckiebot, follow [these](#assembling-duckiebot-db21) inst
 The `DB19` is the latest version of the Duckiebot. You have a `DB19` Duckiebot for sure if you have the blue motors shown in figure [](#fig:dc-motor-db19).
 
 <div figure-id="fig:dc-motor-db19" figure-caption="The motors for the version `DB19`.">
-   <img src="dc-motor-db19.png" style='width: 25em'/>
+   <img src="dc-motor-db19.png" style='width: 20em'/>
 </div>
 
 Apart from the new motors and another HUT (v. 2.1), the `DB19` is identical with the `DB18`. A complete version can be seen here:
 
 <div figure-id="fig:db19-complete-cad" figure-caption="The complete Duckiebot 19">
-   <img src="db19-complete-cad.png" style='width: 25em'/>
+   <img src="db19-complete-cad.png" style='width: 20em'/>
 </div>
 
 To assemble a `DB19` Duckiebot, follow [these](#assembling-duckiebot-db19) instructions.
@@ -55,11 +55,11 @@ The `DB18` supports different power bank models depending on the geographical re
 You can recognize a `DB18` from previous versions for having only one board in addition to the Raspberry Pi, a backplate, and the computational stack mounted in the bottom deck.
 
 <div figure-id="fig:db18-battery1" figure-caption="A Duckiebot DB18 assembly.">
-   <img src="howto_assemble_finish_milestone.jpg" style='width: 25em'/>
+   <img src="howto_assemble_finish_milestone.jpg" style='width: 20em'/>
 </div>
 
 <div figure-id="fig:db18-battery2" figure-caption="Another Duckiebot DB18 assembly, with a different battery.">
-   <img src="howto_assemble_finish_milestone-2.jpg" style='width: 25em'/>
+   <img src="howto_assemble_finish_milestone-2.jpg" style='width: 20em'/>
 </div>
 
 To assemble a `DB18` Duckiebot, follow [these](#assembling-duckiebot-db18) instructions.

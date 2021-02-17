@@ -5,7 +5,7 @@ For the instructions from 2017 see the [`DB17` Duckiebot](https://docs.duckietow
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB18` parts. You may want to check out the different configurations [here](#duckiebot-configurations).
+Requires: Duckiebot `DB18` parts (get them [here](https://get.duckietown.com/)). You may want to check out the different configurations [here](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image already on it. This procedure is explained [here](#setup-duckiebot).
 

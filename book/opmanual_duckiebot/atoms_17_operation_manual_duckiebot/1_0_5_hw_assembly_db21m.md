@@ -1,12 +1,12 @@
 # Assembling the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
-<div figure-id="fig:Duckiebook-Banner" figure-caption="The `DB21M` Duckiebot, powered by NVIDIA Jetson Nano.">
+<div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
 </div>
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB21M` parts. Here is an [overview of all existing configurations](#duckiebot-configurations).
+Requires: Duckiebot `DB21M` parts (get them [here](https://get.duckietown.com/)). Here is an [overview of all existing configurations](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 
