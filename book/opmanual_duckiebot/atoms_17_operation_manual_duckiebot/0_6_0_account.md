@@ -1,7 +1,7 @@
 # Required Accounts {#dt-account status=ready}
 
-This section describes how to register for the Duckietown account
-and set up the authentication token and which other accounts you will need.
+This section describes how to register your Duckietown account
+and set up the Duckietown authentication token, as well as other accounts you will need.
 
 <div class='requirements' markdown='1'>
 
@@ -9,7 +9,7 @@ Requires: Internet connection.
 
 Requires: About 10 minutes.
 
-Requires: Laptop with Duckietown Shell command installed and setup.
+Requires: Laptop with Duckietown Shell command installed and correctly setup.
 
 Results: Duckietown token correctly set up.
 
@@ -21,7 +21,7 @@ To register on the Duckietown website, go to:
 
 > [`https://www.duckietown.org/site/register`](https://www.duckietown.org/site/register)
 
-and click through to pick a community. 
+and click through to pick a community.
 
 Note: If you are a student, please use your official student email address, so that you can be sorted in the right group.
 
@@ -71,12 +71,12 @@ You have to completely reinstall `dts` and its commands. Do that by:
 3. Reinstall `dts` by following the procedure in [Laptop Setup](#laptop-setup)
 
 
-## Other Accounts
+## Other Accounts {#dt-other-accounts}
 
-### Github
+### Github {#dt-account-github}
 
 You will find it useful to have an acount on Github if you don't have one already. Get one [here](https://github.com/join).
 
-### DockerHub
+### DockerHub {#dt-account-dockerhub}
 
-You may also need an account on the DockerHub registry for some things. Get one [here](https://hub.docker.com/signup) if you don't already have one. 
+You may also need an account on the DockerHub registry for some things. Get one [here](https://hub.docker.com/signup) if you don't already have one.

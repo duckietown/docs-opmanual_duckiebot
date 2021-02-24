@@ -1,4 +1,4 @@
-# Assembling the `DB17` Duckiebot {#assembling-duckiebot-db17 status=ready}
+# Assembling the Duckiebot `DB17` {#assembling-duckiebot-db17 status=ready}
 
 This page is for the `DB17` configuration used in classes in 2017. The docker based software stack of 2018 is currently not guaranteed to work out of the box with the `DB17` hardware configurations.
 
@@ -1128,7 +1128,7 @@ Peel protective layer off of all parts on all sides.
 
 #### Disassembly the spacers between the both chassis
 
-The backside of duckiebot before assemblying the bumpers looks as [](#fig:before_bumpers):
+The backside of Duckiebot before assemblying the bumpers looks as [](#fig:before_bumpers):
 <div figure-id="fig:before_bumpers" figure-caption= "The configuration before assemblying the bumpers">
     <img src="before_bumpers.jpg" style='width:30em; height:auto'/>
 </div>
@@ -1153,7 +1153,7 @@ Back View, fully assembled:
     <img src="back_view_fully_assembled.jpg" style='width:30em; height:auto'/>
 </div>
 
-Note: For the ETH students, the M3*10 nylon screws for attaching the rear spacers with chassis were already distributed during the duckiebot ceremony and not included in second distribution. Please reuse them!
+Note: For the ETH students, the M3*10 nylon screws for attaching the rear spacers with chassis were already distributed during the Duckiebot ceremony and not included in second distribution. Please reuse them!
 
 #### Mount Rear Bumper
 

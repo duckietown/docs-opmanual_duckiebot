@@ -4,13 +4,13 @@ This page is for Duckiebots in `DB18` configuration and above (including Jetson 
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` or `DB-beta` configuration.
+Requires: A Duckiebot in `DB18` or above configuration.
 
-Requires: Laptop configured, according to [](#laptop-setup).
+Requires: Laptop configured according to [](#laptop-setup).
 
 Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
-Results: You can make your robot move.
+Results: You can make your Duckiebot move.
 
 </div>
 
@@ -29,7 +29,7 @@ If you would like to move your robot using your laptop, you can run:
 
 which, after startup should open the interface window that looks like:
 
-Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
 
 <figure>
     <figcaption>The keyboard control graphical user interface</figcaption>
@@ -53,11 +53,11 @@ The following keys control the Duckiebot:
     <span>Toggle Anti-instagram</span>
 </col2>
 
-Warning: This does not currently work on Mac OSX
+Warning: This does not currently work on Mac OSX.
 
 Symptom: You receive an error about `X Error of failed request:  GLXBadContext ...`
 
-Resolution: Debugging NVIDIA drivers can be very tricky. One thing that has worked is to install `libnvidia-gl-430:i386` on your laptop (with `sudo apt`) and then restart your laptop and retry. The other option is to forego this GUI and try the no-window way or the dashboard (see below). 
+Resolution: Debugging NVIDIA drivers can be tricky. One thing that has worked is to install `libnvidia-gl-430:i386` on your laptop (with `sudo apt`) and then restart your laptop and retry. The other option is to forego this GUI and try the no-window way or the dashboard (see below).
 
 ### The no-window way with duckietown shell (For Mac Users)
 

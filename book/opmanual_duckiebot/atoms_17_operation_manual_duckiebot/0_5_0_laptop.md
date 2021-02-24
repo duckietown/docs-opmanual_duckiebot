@@ -1,14 +1,17 @@
 # Laptop Setup {#laptop-setup status=ready}
 
+<!--
 This page is for the Duckiebot `DB18` configuration.
 
 For previous year's instructions, see [here](https://docs.duckietown.org/DT17/).
 
+-->
+
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in configuration `DB18` or above.
+Requires: A Duckiebot in configuration `DB18` or above. For previous year's instructions, see [here](https://docs.duckietown.org/DT17/).
 
-Requires: A Ubuntu 18.04 or 20.04 environment with free disk space.
+Requires: A Ubuntu 18.04 or 20.04 environment with sufficient free disk space (recommended 100 GB).
 
 Requires: Internet connection.
 
@@ -51,10 +54,10 @@ See: For instructions, see for example [this online tutorial][tutorial].
 Installs pip3, git, git-lfs, curl, wget:
 
     laptop $ sudo apt install -y python3-pip git git-lfs curl wget
-    
+
 Symptom: You see this output `E: Unable to locate package python3-pip`
 
-Resolution: You will need to do `sudo apt update` 
+Resolution: You will need to do `sudo apt update`
 
 ### Docker {#laptop-setup-ubuntu-18-docker}
 
