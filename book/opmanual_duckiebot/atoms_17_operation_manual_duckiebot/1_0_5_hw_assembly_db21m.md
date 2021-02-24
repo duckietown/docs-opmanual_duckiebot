@@ -52,13 +52,24 @@ Peel the plastic cover from all the chassis parts on both sides.
 ### Screws, Nuts and Stand-offs
 Each type of screw, nut and stand-off is labeled with an index. You will find corresponding labels on the pictures at each step. Using the right parts at each step will prevent undesirable effects (e.g., nylon screws prevent electrical shorts).
 
-<div figure-id="fig:db21-part_indices" figure-caption="Overview of interlocking parts">
-     <img src="db21-part_indices.png" style='width: 40em' />
+<div figure-id="fig:db21-parts_indices" figure-caption="Overview of interlocking parts">
+     <img src="db21-parts_indices.png" style='width: 40em' />
 </div>
 
 Note: These instructions are your friend, follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your battery over!).
 
 The [FAQ](#op-faq-db21) section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
+
+### Step 0
+This step must be done before you start with step 1 of the assembling process. Connect the battery to the third connector (counting from the left) on the `HUT` electronics board with the appropriate USB cable. Additionally plug in the external charging cable to the second connector (counting from the left) on the `HUT` electronics board.
+
+<div figure-id="fig:db21-step_00">
+     <img src="db21-step_00.png" style='width: 40em' />
+</div>
+
+Note: After 20-30 mins, the LEDs on the battery should start blinking. This indicates that your battery is fully functional and charging.
+
+Note: Leave this setup until the battery is fully charged (this may take up to 5 hours).
 
 ## Drive Train {#howto-drive-train-db21m}
 In the following steps (1 to 12) you will build the base plate assembly.
@@ -394,7 +405,7 @@ Take the printed circuit board with the Duckietown logo on it (further called `H
 </div>
 
 ### Step 39
-Gently press the pin connector of the `HUT` on the pins on the NVIDIA Jetson Nano board and tighten it with two nylon M2.5 nuts (`N2`). Make sure both motor cables are routed through the slit in the `HUT` board.
+Gently press the pin connector of the `HUT` on the pins on the NVIDIA Jetson Nano board. Make sure both motor cables are routed through the slit in the `HUT` board.
 
 <div figure-id="fig:db21-step_39">
      <img src="db21-step_39.png" style='width: 40em' />
@@ -600,7 +611,7 @@ Then, tighten the cover using two nylon M2.5 nuts (`N2`).
 
 ## Power your Duckiebot {#howto-power-db21m}
 
-Note: in this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
+Note: In this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
 
 <div figure-id="fig:db21-how2charge">
      <img src="db21-how2charge.png" style='width: 40em' />
@@ -610,21 +621,21 @@ Note: in this step we will plug the various power cables to the `HUT`. One port 
 Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 
 ### Step 65
-Take the black USB cable that you have marked in step 29 and connect it to the second micro USB connector on the `HUT` counting from the back.
+Take the black USB cable that you have marked in step 29 and connect it to the third micro USB connector on the `HUT` counting from the left.
 
 <div figure-id="fig:db21-step_65">
      <img src="db21-step_65.png" style='width: 40em' />
 </div>
 
 ### Step 66
-Take the black USB cable that is routed through the same hole as the one you have just connected in the previous step 65. Connect it to the back micro USB connector on the `HUT` as shown.
+Take the black USB cable that has been routed through the same hole as the one you have just connected. Connect it to the first micro USB connector on the `HUT` counting from the left.
 
 <div figure-id="fig:db21-step_66">
      <img src="db21-step_66.png" style='width: 40em' />
 </div>
 
 ### Step 67
-Finally, take the last black USB cable that has not been connected yet. Connect it to the front micro USB connector on the `HUT`.
+Finally, take the last black USB cable that has not been connected yet. Connect it to the fourth micro USB connector on the `HUT` counting from the left.
 
 <div figure-id="fig:db21-step_67">
      <img src="db21-step_67.png" style='width: 40em' />
@@ -648,18 +659,18 @@ If you have an april tag take some glue and put it in between the two nylon scre
 </div>
 
 ### Step 70
-If you have a circle pattern put it on the back plate of your Duckiebot again using some glue.
+If you have a circle pattern put it on the back plate of your Duckiebot.
 
 <div figure-id="fig:db21-step_70">
      <img src="db21-step_70.png" style='width: 40em' />
-</div>
+</div>        
 
 
 ## Check the outcome
 
 <div class='requirements' markdown="1">
 
-Checking: Look at the [Overview of interlocking parts](#fig:db21-part_indices) and make sure you have used each type at least once.
+Checking: Look at the [Overview of interlocking parts](#fig:db21-parts_indices) and make sure you have used each type at least once.
 
 Checking: Have a look at all cable connectors and make sure they are plugged in completely.
 
