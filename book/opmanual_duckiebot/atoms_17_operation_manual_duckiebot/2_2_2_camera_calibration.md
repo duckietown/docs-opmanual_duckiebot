@@ -7,7 +7,7 @@ This section describes the instrinsics and extrinsics calibration procedures.
 Requires: You can see the camera image on the laptop. The procedure is documented in
 [](#read-camera-data).
 
-Results: That your camera intrinsics and extrinsics are calibrated and stored on the duckiebot.
+Results: That your camera intrinsics and extrinsics are calibrated and stored on the Duckiebot.
 
 </div>
 
@@ -36,7 +36,7 @@ Warning: If the pattern is not rigid the calibration will be useless. You can pr
 ### Optional material
 
 You will also need a "lane" during the extrinsics calibration procedure.
-This is not 100% necessary.
+This is not necessary.
 
 
 ## Intrinsic Calibration
@@ -50,8 +50,8 @@ The procedure is basically a wrapper around the [ROS camera calibration tool](ht
 Next you can launch the intrinsic calibration program with:
 
     laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
-    
-Warning: Note that in here you input Duckiebot hostname, do not include `.local` part. 
+
+Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
@@ -59,7 +59,7 @@ You should see a display screen open on the laptop ([](#fig:intrinsic_callibrati
      <img src="intrinsic_callibration_pre.png" style='width: 30em'/>
 </div>
 
-Note: If you only see a window with black screen during the startup, try to resize the window manually using cursor, and you should see the window content correctly. 
+Note: If you only see a window with black screen during the startup, try to resize the window manually using cursor, and you should see the window content correctly.
 
 ### Calibration dance
 
@@ -152,9 +152,9 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 Run:
 
-    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] 
+    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME]
 
-First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>. 
+First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>.
 If all goes well the program will complete.
 
 This will automatically save the calibration results on your Duckiebot:
@@ -163,14 +163,14 @@ This will automatically save the calibration results on your Duckiebot:
 /data/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml
 ```
 
-If you are running the file server through docker you can view or download the calibration file at the address: 
+If you are running the file server through docker you can view or download the calibration file at the address:
 
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
 
 
 #### Troubleshooting
 
-Symptom: You see a long complicated error message that ends with something about `findChessBoardCorners failed`. 
+Symptom: You see a long complicated error message that ends with something about `findChessBoardCorners failed`.
 
 Resolution: Your camera is not viewing the full checkerboard pattern. You can verify this by going to the file `http://![DUCKIEBOT_NAME].local:8082` and navigate into the folder `out-calibrate-extrinsics-![DUCKIEBOT_NAME]-20...` and click on `all.jpg` to see the pictures that were taken. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
 
@@ -212,7 +212,7 @@ are not square. This is the rectification used in the lane localization pipeline
 
 By default, the extrinsic calibration pipeline will now ask you to put your robot on a lane to complete a verification step.
 
-This step needs a Duckietown lane. If you don't have it, skip it by add `--no_verification` to the `dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] ... ` command above. 
+This step needs a Duckietown lane. If you don't have it, skip it by add `--no_verification` to the `dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] ... ` command above.
 
 To do the validation, place the robot in a lane when instructed.
 

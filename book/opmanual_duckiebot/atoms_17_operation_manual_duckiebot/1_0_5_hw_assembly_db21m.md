@@ -1,16 +1,16 @@
 # Assembling the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
-<div figure-id="fig:Duckiebook-Banner" figure-caption="Components in the Duckiebox.">
+<div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
 </div>
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB21M` parts. Here is an [overview of all existing configurations](#duckiebot-configurations).
+Requires: Duckiebot `DB21M` parts (get them [here](https://get.duckietown.com/)). Here is an [overview of all existing configurations](#duckiebot-configurations).
 
 Requires: A microSD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 
-Requires: 2 hours of assembly time.
+Requires: 3 hours of assembly time.
 
 Result: An assembled Duckiebot in configuration `DB21M`.
 
@@ -21,11 +21,11 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 Overview of all parts in your Duckiebox:
 
 <div figure-id="fig:db21-parts-overview">
-     <img src="db21-parts-overview.png" style='width: 40em' />
+     <img src="db21-parts-overview.jpg" style='width: 40em' />
 </div>
 
 
-The assembly process is divided into 9 parts. They must be completed in the following order:
+The assembly process is divided in 9 parts. They must be completed in the following order:
 
 - [Part 1: Preliminary Steps](#howto-preliminary-db21m)
 - [Part 2: Drive Train](#howto-drive-train-db21m)
@@ -44,7 +44,11 @@ The assembly process is divided into 9 parts. They must be completed in the foll
 ### Unboxing
 Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on. Do not show any violence to the Duckiebot pieces or they might break.
 
+<<<<<<< HEAD
 Note: Your Duckiebot chassis are under the white protection foam. To get your Duckiebot chassis, pull out the white protection foam in the box after remove everything.
+=======
+Note: Your Duckiebot chassis is under the white protection foam. To find it, pull out the inner white protection foam.
+>>>>>>> 97732045e735667bab3e665a3bd9203bfd889ac5
 
 Although not necessary, a small (M2.5) wrench will ease some of the next passages.
 
@@ -674,7 +678,7 @@ Once your Duckiebot is fully charged, you can press the button of the battery on
 ## Additional Parts {#howto-additional-parts-db21m}
 
 ### Step 69
-If you have an april tag take some glue and put it in between the two nylon screws on the top of you Duckiebot.
+If you have an April tag take some glue and put it in between the two nylon screws on the top of you Duckiebot.
 
 <div figure-id="fig:db21-step_69">
      <img src="db21-step_69.png" style='width: 40em' />

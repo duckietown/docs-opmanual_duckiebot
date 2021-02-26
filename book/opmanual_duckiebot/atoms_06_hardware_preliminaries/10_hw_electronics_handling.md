@@ -10,9 +10,9 @@ Results: Preliminary knowledge on circuits and power source properties useful in
 
 Duckiebots support several power bank models, although not any power will work. Here, we list properties of the supported models.
 
-## The Duckie-power-bank
+## The Duckie-power-bank (Duckiebattery `v1`) {#db-opmanual-dtbattery-v1}
 
-The Duckie-power-bank (or simply duckiebattery) is the standard power source for Duckiebots in `DB18` configuration. Duckiebatteries are easily recognizable.
+The Duckie-power-bank (or Duckiebattery version 1) is the standard power source for Duckiebots in `DB18` and `DB19` configurations. Duckiebatteries are easily recognizable.
 
 <div figure-id="fig:duckiebattery-front" figure-caption="The Duckie Power Bank">
      <img src="duckiebattery-front.png" style='width: 37em' />
@@ -20,7 +20,7 @@ The Duckie-power-bank (or simply duckiebattery) is the standard power source for
 
 ### Overview
 
-The duckiebattery is equipped with 2 USB type A outputs (port A and B) and 1 Micro USB connector for charging.
+The Duckiebattery is equipped with 2 USB type A outputs (port A and B) and 1 Micro USB connector for charging.
 
 <div figure-id="fig:duckiebattery-ports" figure-caption="The Duckie Power Bank ports">
      <img src="duckiebattery-ports.png" style='width: 37em' />
@@ -53,7 +53,7 @@ This is an unwanted effect which will cause the Raspberry Pi, if on, to reboot.
 
 Note: likewise, when disconnecting the charger, the outputs will turn OFF for 20ms causing the Raspberry Pi to reboot as well.
 
-Furthermore, while the duckiebattery supports pass-through (both outputs A and B will function while the duckiebattery is being charged), during charge the output voltage of port A and B will drop around 300mV which might cause an under voltage warring of the Raspberry Pi. This will put the Raspberry Pi in a throttling mode limiting its performance.
+Furthermore, while the Duckiebattery supports pass-through (both outputs A and B will function while the Duckiebattery is being charged), during charge the output voltage of port A and B will drop around 300mV which might cause an under voltage warring of the Raspberry Pi. This will put the Raspberry Pi in a throttling mode limiting its performance.
 
 ### Discharging
 
