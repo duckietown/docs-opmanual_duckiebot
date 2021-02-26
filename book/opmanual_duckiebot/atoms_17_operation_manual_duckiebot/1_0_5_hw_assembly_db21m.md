@@ -44,11 +44,7 @@ The assembly process is divided in 9 parts. They must be completed in the follow
 ### Unboxing
 Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on. Do not show any violence to the Duckiebot pieces or they might break.
 
-<<<<<<< HEAD
 Note: Your Duckiebot chassis are under the white protection foam. To get your Duckiebot chassis, pull out the white protection foam in the box after remove everything.
-=======
-Note: Your Duckiebot chassis is under the white protection foam. To find it, pull out the inner white protection foam.
->>>>>>> 97732045e735667bab3e665a3bd9203bfd889ac5
 
 Although not necessary, a small (M2.5) wrench will ease some of the next passages.
 
@@ -284,16 +280,6 @@ Take the two yellow driving wheels and push them to the motors using one distanc
 <div figure-id="fig:db21-step_22">
      <img src="db21-step_22.png" style='width: 40em' />
 </div>
-<!--
-You can try to mount the wheels even without the distance disks. But make sure that the wheels do not touch the frame of the Duckiebot when turning.
-
-<div figure-id="fig:db21-step_22B">
-     <img src="db21-step_22B.png" style='width: 40em' />
-</div>
-
--->
-
-
 
 ### Step 23
 Place the Jetson Nano on the 4 screws from step 14 but DO NOT tighten the Jetson with any nuts or stand-offs yet!
