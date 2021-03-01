@@ -44,7 +44,7 @@ The assembly process is divided in 9 parts. They must be completed in the follow
 ### Unboxing
 Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on. Do not show any violence to the Duckiebot pieces or they might break.
 
-Note: Your Duckiebot chassis is under the white protection foam. To find it, pull out the inner white protection foam.
+Note: Your Duckiebot chassis are under the white protection foam. To get your Duckiebot chassis, pull out the white protection foam in the box after remove everything.
 
 Although not necessary, a small (M2.5) wrench will ease some of the next passages.
 
@@ -62,14 +62,14 @@ Note: These instructions are your friend, follow them carefully, especially if i
 
 The [FAQ](#op-faq-db21) section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
 
-### Step 0
+### Testing the `HUT` electronics board and battery
 This step must be done before you start with step 1 of the assembling process. Connect the battery to the third connector (counting from the left) on the `HUT` electronics board with the appropriate USB cable. Additionally plug in the external charging cable to the second connector (counting from the left) on the `HUT` electronics board.
 
 <div figure-id="fig:db21-step_00">
      <img src="db21-step_00.png" style='width: 40em' />
 </div>
 
-Note: After 20-30 mins, the LEDs on the battery should start blinking. This indicates that your battery is fully functional and charging.
+Note: After 20-30 minutes, the LEDs on the battery should start blinking. This indicates that your battery is fully functional and charging.
 
 Note: Leave this setup until the battery is fully charged (this may take up to 5 hours).
 
@@ -189,8 +189,11 @@ The following steps (13 to 18) guide through the *Duckibattery* assembly:
 </div>
 
 <!--
+You can try to mount the wheels even without the distance disks. But make sure that the wheels do not touch the frame of the Duckiebot when turning.
 
-Note: We are very proud of the Duckiebattery. It was custom designed to provide nice features difficult to find in existing power banks. We'll explore these features at a later stage, but let us boast a little here!
+<div figure-id="fig:db21-step_22B">
+     <img src="db21-step_22B.png" style='width: 40em' />
+</div>
 
 -->
 
@@ -456,7 +459,7 @@ The following steps 45 to 52 will guide you through the assembly of the camera u
 </div>
 
 ### Step 45
-If not already done, open the plug of the camera and push one side of the camera cable in. The orientation of the cable should be such that the copper pins on the camera cable face the camera plate. Then close the plug completely.
+If not already done, open the plug of the camera and push one side of the camera cable in. The orientation of the cable should be such that the copper pins on the camera cable face the camera plate. Then close the plug completely. Make sure to take off the plastic cap from the lens.
 
 <div figure-id="fig:db21-step_45">
      <img src="db21-step_45.png" style='width: 40em' />
@@ -528,7 +531,7 @@ Note: The orientation of the cable should be such that the blue part of the cabl
 </div>
 
 ### Step 55
-Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (`N4`).
+Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (`N4`). Make sure to take off the small transparent cover from the sensor.
 
 <div figure-id="fig:db21-step_55">
      <img src="db21-step_55.png" style='width: 40em' />
@@ -623,31 +626,38 @@ Note: In this step we will plug the various power cables to the `HUT`. One port 
 Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 
 ### Step 65
-Take the black USB cable that you have marked in step 29 and connect it to the third micro USB connector on the `HUT` counting from the left.
+Take the black USB cable that you have marked in step 29 and connect it to the third micro USB connector on the `HUT`, counting from the left (This is the cable the experienced roboticist has labeled earlier).
 
 <div figure-id="fig:db21-step_65">
      <img src="db21-step_65.png" style='width: 40em' />
 </div>
 
 ### Step 66
-Take the black USB cable that has been routed through the same hole as the one you have just connected. Connect it to the first micro USB connector on the `HUT` counting from the left.
+Take the black USB cable that has been routed through the same hole as the one you have just connected. Connect it to the first micro USB connector on the `HUT`, counting from the left.
 
 <div figure-id="fig:db21-step_66">
      <img src="db21-step_66.png" style='width: 40em' />
 </div>
 
 ### Step 67
-Finally, take the last black USB cable that has not been connected yet. Connect it to the fourth micro USB connector on the `HUT` counting from the left.
+Finally, take the last black USB cable that has not been connected yet. Connect it to the fourth micro USB connector on the `HUT`, counting from the left.
 
 <div figure-id="fig:db21-step_67">
      <img src="db21-step_67.png" style='width: 40em' />
 </div>
 
 ### Step 68
-At that point, your Duckiebot is fully assembled! To power it on, push the button of the battery on the side of the robot. ONLY do this if a flashed SD card is inserted.
+At that point, your Duckiebot is fully assembled!
+For charging, connect the charging cable to the last free micro USB connector on the `HUT`. To avoid putting additional stress on the connector, you can leave this cable plugged in and store it somewhere under the blue top lid.
 
-<div figure-id="fig:db21-step_68">
-     <img src="db21-step_68.png" style='width: 40em' />
+<div figure-id="fig:db21-step_68A">
+     <img src="db21-step_68A.png" style='width: 40em' />
+</div>
+
+Once your Duckiebot is fully charged, you can press the button of the battery on the side to power it up (do this ONLY if a flashed SD card has been inserted).
+
+<div figure-id="fig:db21-step_68B">
+     <img src="db21-step_68B.png" style='width: 40em' />
 </div>
 
 
@@ -705,6 +715,10 @@ Resolution: Sometimes manufacturing inefficiencies make the thread inside the st
 Symptom: A piece broke while I was trying to assemble it!
 
 Resolution: Mistakes happen. Some damages will not influence the functionality of the robot, others will be fixable at home with some tools, others could be showstoppers. Please take a picture of the damage and send an email to hardware@duckietown.com.
+
+Symptom: The wheels tend to fall off the motors.
+
+Resolution: You may remove the distance disks you put in step 22. But make sure that the wheels are still not touching the screws of the motor mounts.
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
 
