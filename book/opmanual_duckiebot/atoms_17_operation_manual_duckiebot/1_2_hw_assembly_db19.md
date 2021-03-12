@@ -1,4 +1,4 @@
-# Assembling the Duckiebot `DB19` {#assembling-duckiebot-db19 status=ready}
+# Assembling Duckiebot `DB19` {#assembling-duckiebot-db19 status=ready}
 
 This page is for the `DB19` Duckiebot configuration, used in classes worldwide in 2018 and 2019.
 
@@ -529,16 +529,20 @@ Now place a Duckie on top of your brand new Duckiebot, but be careful not to hur
 
 Note: As a final check, verify that no cable is touching the wheels. You can use the provided zip ties to ensure that cables stay out of the way.
 
-## FAQ {#op-faq-db19}
+## Troubleshooting {#op-faq-db19}
 
-Q: I found it hard to mount the omni-directional wheel / the back bumper / the Raspberry Pi because the holes weren't lining up.
+Symptom: The omni-directional wheel, the back bumper or the Raspberry Pi are challenging to mount.
 
-A: Sometimes in life you have to push a little to make things happen. (But don't push too much or things will break!)
+Resolution: Sometimes in life you have to push a little to make things happen. (But don't push too much or things will break!)
 
-Q: I have a different color of the back patter plate, do I get the wrong one?
+Symptom: I have a different color of the back patter plate. Do I get the wrong one?
 
-A: The color of this part can be of any and all are functionally equivalent.
+Resolution: The color of this part can be of any and all are functionally equivalent.
 
-Q: My battery is different from the one shown in the pictures! Did I get the wrong box?
+Symptom: My battery is different from the one shown in the pictures! Did I get the wrong box?
 
-A: If there is a duckie in or on your box, you most probably got the right one. We support different battery models. All supported models are functionally equivalent, although the form factor varies.
+Resolution: If there is a duckie in or on your box, you most probably got the right one. We support different battery models. All supported models are functionally equivalent, although the form factor varies.
+
+Symptom: The robot doesn't move in the right direction or moves backwards instead of forward.
+
+Resolution: You have attached the motor wires in the wrong sockets. You will have to open the robot, fix that and test again.

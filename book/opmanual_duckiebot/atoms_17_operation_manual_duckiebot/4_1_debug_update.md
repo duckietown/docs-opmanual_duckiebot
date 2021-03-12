@@ -1,16 +1,16 @@
-# Keeping your Duckiebot up to date {#duckiebot-autoupdate status=ready}
+# Debug - Duckiebot Update {#duckiebot-autoupdate status=ready}
 
 <div class='requirements' markdown="1">
 
 Requires: A Duckiebot that has been initialized
 
-Requires: A computer with a **Ubuntu OS**,
-
-Requires: an internet connection to the Duckiebot, configured as in [](#duckiebot-network).
+Requires: A computer with an **Ubuntu OS**,
 
 Requires: Duckietown Shell, Docker, etc., as configured in [](#laptop-setup).
 
 Requires: Duckietown Token set up as in [](#dt-account).
+
+Requires: An internet connection to the Duckiebot, configured as in [](#duckiebot-network).
 
 Results: An up to date Duckiebot!
 
@@ -20,7 +20,7 @@ Results: An up to date Duckiebot!
 
 The update method described in this page will allow you to receive an **On The Air** (OTA) update within the distribution you so choose (e.g., `daffy`), and it can improve your Duckiebot performance. Note that this is different from using the `init_sd_card` tool: Using the `init_sd_card` tool will only provide the latest release version, not the latest Duckiebot software version.
 
-## Update Duckiebot container using `dts` command {#dt-autoupdate-dts status=beta}
+## Update Duckiebot container using `dts` command {#dt-autoupdate-dts status=ready}
 
 If your Duckiebot has not been used for a while and a new image has been released, you don't necessarily need to re-flash the Duckiebot image as described in [the initialization procedure](#setup-duckiebot). Instead, you can use `dts duckiebot update` command to update your Duckiebot.
 

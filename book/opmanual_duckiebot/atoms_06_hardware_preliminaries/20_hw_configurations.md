@@ -20,7 +20,7 @@ The `DB21M` is the first Duckiebot equipped with a NVIDIA Jetson Nano 2 GB compu
    <img src="db21m.jpg" style='width: 20em'/>
 </div>
 
-The `DB21M` is readily recognized by its blazing blue chassis and triple-decker configuration. It is equipped with a sensor suite including: camera, time-of-flight sensor, inertial measurement unit (IMU) and wheel encoders. Moreover, the `DB21M` features new electronics (HUT v3.1, front and back bumpers), a screen, a button and a custom designed Duckiebattery (`v2`, not to be confused with the [Duckie-power-bank](#db-opmanual-dtbattery-v1)).
+The `DB21M` is readily recognized by its blazing blue chassis and triple-decker configuration. It is equipped with a sensor suite including: camera, time-of-flight sensor, inertial measurement unit (IMU) and wheel encoders. Moreover, the `DB21M` features new electronics (HUT v3.1, front and back bumpers), a screen, a button and a custom designed [Duckiebattery](#db-opmanual-dtbattery-v2) (not to be confused with the [Duckie-power-bank](#db-opmanual-dtbattery-v1)).
 
 To assemble a `DB21M` Duckiebot, follow [these](#assembling-duckiebot-db21) instructions.
 
@@ -78,43 +78,6 @@ If you are interested in obtaining `DB18-Robotarium` Duckiebots, or in building 
    <img src="a-glimpse-in-the-robotariums.png" style='width: 25em'/>
 </div>
 
-## Duckiebot versions 2017, or `DB17` {#duckiebot-config-db17}
+## Older Duckiebot versions {#duckiebot-config-db17}
 
-In the  `DB17` version, we had several several different configurations.
-
-The configurations are defined with a root: `DB17-`, indicating the "bare bones" Duckiebot used in the Fall 2017 synchronized course, and an appendix `y` which can be the union (in any order) of any or all of the elements of the optional hardware set $\aset{O} = \{$`w`, `j`, `d`, `p`, `l`, `c`$\}$.
-
-A `DB17` Duckiebot can navigate autonomously in a Duckietown, but cannot communicate with other Duckiebots.
-
-The elements of $\aset{O}$ are labels identifying optional hardware that aids in the development phase and enables the Duckiebot to talk to other Duckiebots. The labels stand for:
-
-- `w`: 5 GHz **w**ireless adapter to facilitate streaming of images;
-
-- `j`: wireless **j**oypad that facilitates manual remote control;
-
-- `d`: USB **d**rive for additional storage space;
-
-- `c`: a different **c**astor wheel to _replace_ the preexisting omni-directional wheel;
-
-- `p`: **P**WM hat for convenient powering of the DC motor hat;
-
-- `l`: includes **L**EDs, LED hat, bumpers and the necessary mechanical bits to set the bumpers in place. Note that the installation of the bumpers induces the _replacement_ of a few `DB17` components;
-
-Note: During the Fall 2017 course, three Duckietown Engineering Co. branches (Zurich, Montreal, Chicago) are using these configuration naming conventions. Moreover, all institutions release hardware to their Engineers in training in two phases.
-
-<!--
-For information on acquiring the parts for these older configurations please see [`DB17-wjd`](https://docs.duckietown.org/DT17/opmanual_duckiebot/out/acquiring_parts_c0.html) or [`DB17-wjdlc`](https://docs.duckietown.org/DT17/opmanual_duckiebot/out/acquiring_parts_c1.html).
--->
-
-It may be convenient at times to refer to hybrid configurations including any of the `DB17-jwcd` in conjunction with a _subset_ of the `DB17-l` components. In order to disambiguate, we define partial upgrades as:
-
-- `DB17-l1`: _adds_ a PWM hat to `DB17`, in addition to a short USB angled power cable and a M-M power wire;
-- `DB17-l2`: _adds_ a bumpers set to `DB17`, in addition to the mechanical bits to assemble it;
-- `DB17-l3`: _adds_ a LED hat and 5 RGB LEDs to `DB17-l1l2`, in addition to the F-F wires to connect the LEDs to the LED board.
-
-Note: introducing the PWM hat in `DB17-l1` induces a _replacement_ of the [spliced cable](#assembling-duckiebot-db17-cable-splitting) powering solution for the DC motor hat. Details can be found in [](#assembling-duckiebot-db17).
-
-
-- **Functions**: `DB17-l` is the necessary configuration to enable communication between Duckiebots, hence fleet behaviors (e.g., negotiating the crossing of an intersection). Subset configurations are sometimes used in a standalone way for: (`DB17-l1`) avoid using a sliced power cable to power the DC motor hat in `DB17`, and (`DB17-l2`) for purely aesthetic reasons.
-
-To assemble a `DB17` Duckiebot, follow [these](#assembling-duckiebot-db17) instructions.
+For other Duckiebots, see [older versions](https://docs.duckietown.org/) of the book.

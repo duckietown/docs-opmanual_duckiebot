@@ -1,4 +1,4 @@
-# Duckiebot SD Card Initialization {#setup-duckiebot status=ready}
+# Duckiebot SD Card Setup {#setup-duckiebot status=ready}
 
 This page is for the `DB18` configuration and above (including Jetson Nano configurations).
 

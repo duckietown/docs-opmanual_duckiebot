@@ -1,4 +1,4 @@
-# Assembling the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
+# Assembling Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
 <div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
@@ -18,6 +18,8 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 
 <!--
 -->
+These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your battery over!).
+
 Overview of all parts in your Duckiebox:
 
 <div figure-id="fig:db21-parts-overview">
@@ -35,9 +37,11 @@ The assembly process is divided in 9 parts. They must be completed in the follow
 - [Part 6: Front Assembly](#howto-front-assembly-db21m)
 - [Part 7: Top Plate Assembly](#howto-interactive-cover-db21m)
 - [Part 8: Power your Duckiebot](#howto-power-db21m)
-
 - [Part 9: Additional Parts](#howto-additional-parts-db21m)
 
+- [FAQ](#op-faq-db21)
+
+The FAQ section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
 
 ## Preliminary Steps {#howto-preliminary-db21m}
 
@@ -58,22 +62,18 @@ Each type of screw, nut and stand-off is labeled with an index. You will find co
      <img src="db21-parts_indices.png" style='width: 40em' />
 </div>
 
-Note: These instructions are your friend, follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your battery over!).
 
-The [FAQ](#op-faq-db21) section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
+## Drive Train {#howto-drive-train-db21m}
 
-### Testing the `HUT` electronics board and battery
-This step must be done before you start with step 1 of the assembling process. Connect the battery to the third connector (counting from the left) on the `HUT` electronics board with the appropriate USB cable. Additionally plug in the external charging cable to the second connector (counting from the left) on the `HUT` electronics board.
+### Step 0 - Charge battery via `HUT`
+- Connect the battery and the HUT board as shown and make sure a green LED on the HUT is lit.
+- Wait 30 minutes and then push the button on the battery.
+- Check that the state of charge LEDs on the battery start blinking.
+- Leave this setup until the battery is fully charged. This may take up to 5 hours.
 
 <div figure-id="fig:db21-step_00">
      <img src="db21-step_00.png" style='width: 40em' />
 </div>
-
-Note: After 20-30 minutes, the LEDs on the battery should start blinking. This indicates that your battery is fully functional and charging.
-
-Note: Leave this setup until the battery is fully charged (this may take up to 5 hours).
-
-## Drive Train {#howto-drive-train-db21m}
 In the following steps (1 to 12) you will build the base plate assembly.
 
 <div figure-id="fig:db21-overview-step_01-12">
@@ -100,7 +100,7 @@ Check the hole pattern in the middle of the plate to make sure you are holding i
 </div>
 
 ### Step 3
-Place one of the motors between the two plates and tighten it with two M3x30 screws (`B5`) and two metal M3 nuts (`N3`). Tighten the screws enough so that the final assembly does not wobble. Don't use excessive force to avoid getting hurt (or braking something).
+Connect one of the 6-pin motor cable to the blue motor.
 
 <div figure-id="fig:db21-step_03">
      <img src="db21-step_03.png" style='width: 40em' />
@@ -109,7 +109,7 @@ Place one of the motors between the two plates and tighten it with two M3x30 scr
 Note: It might be easier if you place the base plate on a flat surface so hold the motor plates. Use one hand to hold the nut, and the other to drive the screwdriver.
 
 ### Step 4
-Connect the first 6-pin motor cable to the motor you have just mounted and pass it through the cable management inset on the chassis, as shown in the picture.
+Place the motor between the two plates and tighten it with two M3x30 screws (`B5`) and two metal M3 nuts (`N3`). Tighten the screws enough so that the final assembly does not wobble. Don't use excessive force to avoid getting hurt (or braking something).
 
 <div figure-id="fig:db21-step_04">
      <img src="db21-step_04.png" style='width: 40em' />
@@ -121,7 +121,7 @@ Note: Pre-bend the cable before carefully passing it through the cable managemen
 Connect the second 6-pin motor cable to the second motor.
 
 <div figure-id="fig:db21-step_05">
-     <img src="db21-step_05.png" style='width: 40em' />
+     <img src="db21-step_05.png" style='width: 30em' />
 </div>
 
 ### Step 6
@@ -282,7 +282,9 @@ Take the two yellow driving wheels and push them to the motors using one distanc
 </div>
 
 ### Step 23
-Place the Jetson Nano on the 4 screws from step 14 but DO NOT tighten the Jetson with any nuts or stand-offs yet!
+1. Insert the SD card to the slot on the NVIDIA Jetson Nano board. Make sure the metal pins of the SD card are facing the heat sink.
+
+2. Place the Jetson Nano on the 4 screws from step 14 but DO NOT tighten the Jetson with any nuts or stand-offs yet!
 
 <div figure-id="fig:db21-step_23">
      <img src="db21-step_23.png" style='width: 40em' />
@@ -297,7 +299,7 @@ Then secure the plate to the frame using two metal M3x8 screws (`B3`).
 You may need to lift the Jetson Nano a little to fit the side cover plate under the NVIDIA Jetson Nano board.
 
 <div figure-id="fig:db21-step_24">
-     <img src="db21-step_24.png" style='width: 40em' />
+     <img src="db21-step_24.jpg" style='width: 40em' />
 </div>
 
 ### Step 25
@@ -403,7 +405,13 @@ Note: You don't need to tighten the screws completely but the fan must sit tight
 </div>
 
 ### Step 38
-Take the printed circuit board with the Duckietown logo on it (further called `HUT`) and plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).
+Take the printed circuit board with the Duckietown logo on it (further called `HUT`).
+
+<div figure-id="fig:HUT_layout">
+     <img src="HUT_layout.jpg" style='width: 40em' />
+</div>
+
+Plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).
 
 <div figure-id="fig:db21-step_38">
      <img src="db21-step_38.png" style='width: 40em' />
@@ -501,7 +509,7 @@ Wire the cable that you have just connected (step 49) through the upper plate an
 </div>
 
 ### Step 51
-Take the last of the longest 4-pin cables and connect it to the front bumper board, similarly to step 49.
+Take the last of the long 4-pin cables and connect it to the front bumper board, similarly to step 49.
 
 <div figure-id="fig:db21-step_51">
      <img src="db21-step_51.png" style='width: 40em' />
@@ -616,7 +624,7 @@ Then, tighten the cover using two nylon M2.5 nuts (`N2`).
 
 ## Power your Duckiebot {#howto-power-db21m}
 
-Note: In this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
+In this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
 
 <div figure-id="fig:db21-how2charge">
      <img src="db21-how2charge.png" style='width: 40em' />
@@ -626,24 +634,24 @@ Note: In this step we will plug the various power cables to the `HUT`. One port 
 Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 
 ### Step 65
-Take the black USB cable that you have marked in step 29 and connect it to the third micro USB connector on the `HUT`, counting from the left (This is the cable the experienced roboticist has labeled earlier).
+Take the black USB cable that you have connected in step 29 and connect it to the micro USB connector on the `HUT` as shown.
 
 <div figure-id="fig:db21-step_65">
-     <img src="db21-step_65.png" style='width: 40em' />
+     <img src="db21-step_65.jpg" style='width: 40em' />
 </div>
 
 ### Step 66
-Take the black USB cable that has been routed through the same hole as the one you have just connected. Connect it to the first micro USB connector on the `HUT`, counting from the left.
+Similarly, connect the other USB cable (routed through the same hole) to the `HUT`.
 
 <div figure-id="fig:db21-step_66">
-     <img src="db21-step_66.png" style='width: 40em' />
+     <img src="db21-step_66.jpg" style='width: 40em' />
 </div>
 
 ### Step 67
-Finally, take the last black USB cable that has not been connected yet. Connect it to the fourth micro USB connector on the `HUT`, counting from the left.
+Finally, connect the last cable to the `HUT`.
 
 <div figure-id="fig:db21-step_67">
-     <img src="db21-step_67.png" style='width: 40em' />
+     <img src="db21-step_67.jpg" style='width: 40em' />
 </div>
 
 ### Step 68
@@ -692,9 +700,13 @@ Checking: check if all USB cables are plugged in completely. If you have already
 
 ## Troubleshooting {#op-faq-db21}
 
+<!--
+
 Symptom: I can't find the blue chassis.
 
 Resolution: It's *under* the white foam in the Duckiebox. Remove the inner packaging to access it.
+
+-->
 
 Symptom: Camera cable needs to be twisted to make the pins on the cable matching those in the connector. Is this normal?
 
@@ -719,6 +731,14 @@ Resolution: Mistakes happen. Some damages will not influence the functionality o
 Symptom: The wheels tend to fall off the motors.
 
 Resolution: You may remove the distance disks you put in step 22. But make sure that the wheels are still not touching the screws of the motor mounts.
+
+Symptom: One of the black USB cables is too short to connect it to the HUT.
+
+Resolution: The customized cables may undergo some manufacturing tolerances. If it does not fit, there is a second way to connect the cables. However, some minor functionalities might differ in that configuration (e.g. the fan might continue working when shutting down the NVIDIA Jetson Nano).
+
+<div figure-id="fig:db21-step_65-67">
+     <img src="db21-step_65-67.jpg" style='width: 40em' />
+</div>
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
 

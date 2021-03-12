@@ -9,8 +9,6 @@ For previous year's instructions, see [here](https://docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in configuration `DB18` or above. For previous year's instructions, see [here](https://docs.duckietown.org/DT17/).
-
 Requires: A Ubuntu 18.04 or 20.04 environment with sufficient free disk space (recommended 100 GB).
 
 Requires: Internet connection.
