@@ -1,4 +1,4 @@
-# Laptop Setup {#laptop-setup status=ready}
+# Setup - Laptop {#laptop-setup status=ready}
 
 <!--
 This page is for the Duckiebot `DB18` configuration.

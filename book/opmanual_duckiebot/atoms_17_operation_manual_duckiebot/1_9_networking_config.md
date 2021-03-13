@@ -1,4 +1,4 @@
-# Networking {#duckiebot-network status=ready}
+# Operation - Networking {#duckiebot-network status=ready}
 
 This page is for the `DB18` configuration used in classes in 2018. For last year's instructions see [here](https://docs.duckietown.org/DT17/).
 

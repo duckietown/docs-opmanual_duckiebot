@@ -1,4 +1,4 @@
-# Camera calibration {#camera-calib status=ready}
+# Calibration - Camera {#camera-calib status=ready}
 
 This section describes the instrinsics and extrinsics calibration procedures.
 
