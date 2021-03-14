@@ -2,9 +2,9 @@
 
 <div class='requirements' markdown='1'>
 
-Requires: [](#read-camera-data)
-
 Requires: [](#rc-control)
+
+Requires: [](#read-camera-data)
 
 Result: A verified log.
 

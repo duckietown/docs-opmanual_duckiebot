@@ -1,4 +1,4 @@
-# Required Accounts {#dt-account status=ready}
+# Account Setup {#dt-account status=ready}
 
 This section describes how to register your Duckietown account
 and set up the Duckietown authentication token, as well as other accounts you will need.

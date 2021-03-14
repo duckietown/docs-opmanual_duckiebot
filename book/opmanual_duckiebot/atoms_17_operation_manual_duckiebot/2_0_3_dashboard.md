@@ -1,4 +1,4 @@
-# Setting up the Dashboard {#duckiebot-dashboard-setup status=ready}
+# Dashboard Setup {#duckiebot-dashboard-setup status=ready}
 
 This section shows how to install the Duckietown dashboard on the Duckiebot using Docker.
 

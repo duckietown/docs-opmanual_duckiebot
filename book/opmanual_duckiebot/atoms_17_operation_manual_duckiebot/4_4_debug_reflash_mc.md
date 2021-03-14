@@ -1,4 +1,4 @@
-# Reflash-Microcontroller {#reflash-microcontroller status=ready}
+# Debug - Reflash Microcontroller {#reflash-microcontroller status=ready}
 
 Warning: You do not need to perform the following procedure unless you are specifically told to do in the book.
 

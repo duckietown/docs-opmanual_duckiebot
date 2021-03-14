@@ -10,7 +10,59 @@ Results: Preliminary knowledge on circuits and power source properties useful in
 
 Duckiebots support several power bank models, although not any power will work. Here, we list properties of the supported models.
 
-## The Duckie-power-bank (Duckiebattery `v1`) {#db-opmanual-dtbattery-v1}
+## The MOOC battery (DB-C-DBatt) {#db-opmanual-dtbattery-v2}
+This battery is the standard battery for the Duckiebot Founder's edition (DB21M).
+
+<div figure-id="fig:DB-C-DBatt_real" figure-caption="`DB-C-DBatt`">
+     <img src="DB-C-DBatt_real.jpg" style='width: 20em' />
+</div>
+
+### Technical specification
+- Capacity: 10'000mAh at 3.7V
+- Charging: Micro USB 5V at up to 2A
+- Output 2 x USB type A 5V at up to 4A (combined)
+- Charge time: 0-100% takes about 5h and 0-90% about 4h with a 2A power supply
+- Weight: 189g (fully charged)
+
+### DO's
+- If a battery has been subject to moisture and/or the case has been damaged eminently dispose of the battery pack.
+- In case of fire use a CO2 extinguisher.
+- Storage preferably in cool, dry and ventilated area which is subject to little temperature change.
+- Storage at high temperatures should be avoided.
+
+### DONT's
+- Do not connect a charge voltage greater than 5V.
+- Do not ocnnect an external voltage source to the USB output ports.
+- The battery should not be opened, destroyed or incinerated, since they may leak or rupture. They might then release to the environment the ingredients that is contained in the hermetically sealed container.
+- Do not short circuit terminals.
+- Do not crush or puncture the battery or immerse in liquid.
+- Do not place the battery near heating equipment, nor expose to direct sunlight for long periods.
+
+### LED description
+The battery has five LEDs used for indicating state of charge and Boot Mode.
+
+<div figure-id="fig:DB-C-DBatt_1" figure-caption="LED indication">
+     <img src="DB-C-DBatt_1.png" style='width: 25em' />
+</div>
+
+### Wake up battery
+Wake up the battery (enter Idle Mode) by clicking once on the button. The state of charge LEDs will stay on for 10 seconds.
+
+<div figure-id="fig:DB-C-DBatt_2" figure-caption="Starting the battery">
+     <img src="DB-C-DBatt_2.png" style='width: 30em' />
+</div>
+
+### Charge the battery
+Make sure the battery is in Idle Mode before connecting the charger. The LEDs will be flashing with 1Hz.
+
+<div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging">
+     <img src="DB-C-DBatt_3.png" style='width: 25em' />
+</div>
+
+### Battery protection mode
+The battery is equipped with dedicated hardware to protect its cell from low voltage discharge. This means at a certain voltage level the microcontroller together with all other active components inside the battery will be turned OFF except for the charger. In the battery protection mode the charger will "trickle" charge the battery cell until it has reached a certain safe voltage level where we will again turn on the microcontroller and LEDs. This means that for a period of up to 30 minutes the battery might not indicate a state of charge or that it is actually being charged.
+
+## The Duckie-power-bank {#db-opmanual-dtbattery-v1}
 
 The Duckie-power-bank (or Duckiebattery version 1) is the standard power source for Duckiebots in `DB18` and `DB19` configurations. Duckiebatteries are easily recognizable.
 
