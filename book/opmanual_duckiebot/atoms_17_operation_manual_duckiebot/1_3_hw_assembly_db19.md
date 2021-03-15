@@ -1,4 +1,4 @@
-# Assembling Duckiebot `DB19` {#assembling-duckiebot-db19 status=ready}
+# Assembly - Duckiebot `DB19` {#assembling-duckiebot-db19 status=ready}
 
 This page is for the `DB19` Duckiebot configuration, used in classes worldwide in 2018 and 2019.
 

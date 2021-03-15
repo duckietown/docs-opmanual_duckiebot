@@ -1,4 +1,4 @@
-# Seeing what your Duckiebot sees {#read-camera-data status=ready}
+# Operation - Make it see {#read-camera-data status=ready}
 
 <div class='requirements' markdown='1'>
 

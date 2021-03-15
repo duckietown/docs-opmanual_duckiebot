@@ -1,4 +1,4 @@
-# Assembling Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
+# Assembly - Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
 <div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />

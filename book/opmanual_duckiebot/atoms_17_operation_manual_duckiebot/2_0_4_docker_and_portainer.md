@@ -1,4 +1,4 @@
-# Docker Workflow Setup {#docker-setup status=ready}
+# Setup - Docker Workflow {#docker-setup status=ready}
 
 This section shows how to use the Docker functionality and introduces
 some monitoring tools and workflow tips. It is strongly recommended for you to take a read at [this](#preliminaries-docker-basics) section first.
