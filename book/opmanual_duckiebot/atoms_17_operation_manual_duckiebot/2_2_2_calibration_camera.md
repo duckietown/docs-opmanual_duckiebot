@@ -51,7 +51,9 @@ Next you can launch the intrinsic calibration program with:
 
     laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
 
+<!--
 Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
+-->
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
@@ -106,14 +108,12 @@ If you are satisfied with the calibration, you can save the results by pressing 
 This will automatically save the calibration results on your Duckiebot:
 
 ```
-/data/config/calibrations/camera_intrinsic/![hostname].yaml
+/data/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml
 ```
 
-If you are running the file server through docker (which runs by default) you can view or download the calibration file at the address:
+You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`.
+Read more [here](#dashboard-tutorial-files) about the `File Manager`.
 
-`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`
-
-Additionally, you can access your calibration files through dashboard. Read more [here](#dashboard-tutorial-files)
 
 ### Keeping your calibration valid
 
@@ -121,7 +121,7 @@ Warning: Do not change the focus during or after the calibration, otherwise your
 
 Warning: Do not use the lens cover anymore; removing the lens cover may change the focus.
 
-
+<!--
 ### Cleanup
 
 You can now stop the `demo_intrinsic_calibration` on the robot either through the portainer interface or by typing:
@@ -131,7 +131,7 @@ You can now stop the `demo_intrinsic_calibration` on the robot either through th
 
 ## Extrinsic Camera Calibration {#extrinsic-camera-calibration}
 
-
+-->
 ### Setup {#camera-calib-jan18-extrinsics-setup}
 
 Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). Note that the axis of the wheels should be aligned with the y-axis.
@@ -168,14 +168,21 @@ If you are running the file server through docker you can view or download the c
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
 
 
+You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`.
+Read more [here](#dashboard-tutorial-files) about the `File Manager`.
+
 #### Troubleshooting
 
 Symptom: You see a long complicated error message that ends with something about `findChessBoardCorners failed`.
 
-Resolution: Your camera is not viewing the full checkerboard pattern. You can verify this by going to the file `http://![DUCKIEBOT_NAME].local:8082` and navigate into the folder `out-calibrate-extrinsics-![DUCKIEBOT_NAME]-20...` and click on `all.jpg` to see the pictures that were taken. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
+Resolution: Your camera is not viewing the full checkerboard pattern. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
+
+<!--
+You can verify this by going to the file `http://![DUCKIEBOT_NAME].local:8082` and navigate into the folder `out-calibrate-extrinsics-![DUCKIEBOT_NAME]-20...` and click on `all.jpg` to see the pictures that were taken. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
+-->
 
 
-
+<!--
 ### Manual verification of the Results
 
 
@@ -206,7 +213,7 @@ the frame is filled entirely. Note the image is stretched - the April tags
 are not square. This is the rectification used in the lane localization pipeline. It doesn't matter that the image is stretched, because the homography learned will account for that deformation.
 
 2. In `rectified_full_ratio_auto` the image is not stretched. The camera matrix is preserved. This means that the aspect ratio is the same. In particular note the April tags are square. If you do something with April tags, you need this rectification.
-
+-->
 <!--
 ### Optional autonomic verification step
 
