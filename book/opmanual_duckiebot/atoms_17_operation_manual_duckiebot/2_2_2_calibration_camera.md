@@ -162,10 +162,12 @@ This will automatically save the calibration results on your Duckiebot:
 ```
 /data/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml
 ```
-
+<!--
 If you are running the file server through docker you can view or download the calibration file at the address:
 
 `http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
+
+-->
 
 
 You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`.
