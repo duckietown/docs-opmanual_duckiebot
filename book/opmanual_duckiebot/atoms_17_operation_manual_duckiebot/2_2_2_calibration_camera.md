@@ -51,9 +51,11 @@ Next you can launch the intrinsic calibration program with:
 
     laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
 
+
 <!--
 Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
 -->
+
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
@@ -130,8 +132,8 @@ You can now stop the `demo_intrinsic_calibration` on the robot either through th
 
 
 ## Extrinsic Camera Calibration {#extrinsic-camera-calibration}
-
 -->
+
 ### Setup {#camera-calib-jan18-extrinsics-setup}
 
 Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). Note that the axis of the wheels should be aligned with the y-axis.
@@ -162,6 +164,7 @@ This will automatically save the calibration results on your Duckiebot:
 ```
 /data/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml
 ```
+
 <!--
 If you are running the file server through docker you can view or download the calibration file at the address:
 
