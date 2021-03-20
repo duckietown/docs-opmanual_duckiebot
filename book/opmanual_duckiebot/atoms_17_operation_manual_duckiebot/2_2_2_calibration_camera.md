@@ -51,12 +51,6 @@ Next you can launch the intrinsic calibration program with:
 
     laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
 
-
-<!--
-Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
--->
-
-
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
 <div figure-id="fig:intrinsic_callibration_pre" figure-caption="">
@@ -123,16 +117,9 @@ Warning: Do not change the focus during or after the calibration, otherwise your
 
 Warning: Do not use the lens cover anymore; removing the lens cover may change the focus.
 
-<!--
-### Cleanup
-
-You can now stop the `demo_intrinsic_calibration` on the robot either through the portainer interface or by typing:
-
-     laptop $ docker -H ![DUCKIEBOT_NAME].local stop demo_intrinsic_calibration
-
 
 ## Extrinsic Camera Calibration {#extrinsic-camera-calibration}
--->
+
 
 ### Setup {#camera-calib-jan18-extrinsics-setup}
 
@@ -165,13 +152,6 @@ This will automatically save the calibration results on your Duckiebot:
 /data/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml
 ```
 
-<!--
-If you are running the file server through docker you can view or download the calibration file at the address:
-
-`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
-
--->
-
 
 You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`.
 Read more [here](#dashboard-tutorial-files) about the `File Manager`.
@@ -181,6 +161,7 @@ Read more [here](#dashboard-tutorial-files) about the `File Manager`.
 Symptom: You see a long complicated error message that ends with something about `findChessBoardCorners failed`.
 
 Resolution: Your camera is not viewing the full checkerboard pattern. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
+
 
 <!--
 You can verify this by going to the file `http://![DUCKIEBOT_NAME].local:8082` and navigate into the folder `out-calibrate-extrinsics-![DUCKIEBOT_NAME]-20...` and click on `all.jpg` to see the pictures that were taken. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
