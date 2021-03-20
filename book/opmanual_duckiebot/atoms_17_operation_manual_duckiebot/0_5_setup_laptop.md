@@ -9,7 +9,7 @@ For previous year's instructions, see [here](https://docs.duckietown.org/DT17/).
 
 <div class='requirements' markdown='1'>
 
-Requires: A Ubuntu 18.04 or 20.04 environment with sufficient free disk space (recommended 100 GB).
+Requires: An Ubuntu 20.04 environment with sufficient free disk space (recommended 100 GB).
 
 Requires: Internet connection.
 
@@ -37,11 +37,13 @@ Sometimes when running a VMware machine in a Mac OS host, it is neccessary to ha
 
 For more information about networking with VMware, see [here](https://wiki.ros.org/ROS/NetworkSetup)
 
-## Setup for Ubuntu 18.04 or 20.04 {#laptop-setup-ubuntu-18}
+## Setup for Ubuntu 20.04 {#laptop-setup-ubuntu-18}
 
 ### System installation {#laptop-setup-ubuntu-18-system}
 
-Install Ubuntu 18.04 or 20.04.
+Install Ubuntu 20.04.
+
+Note: *if you have a robot, you must install Ubuntu natively*.
 
 See: For instructions, see for example [this online tutorial][tutorial].
 
