@@ -69,7 +69,7 @@ After setting the battery in `idle` mode, we can charge it by connecting the cha
      <img src="DB-C-DBatt_3.png" style='width: 20em' />
 </div>
 
-### Battery protection mode
+### Battery protection mode {#db-opmanual-preliminaries-battery-protection status=ready}
 
 The battery is equipped with safety features to prevent damage to others and itself. In particular, it has dedicated hardware to protect its cell from low voltage discharge.
 
