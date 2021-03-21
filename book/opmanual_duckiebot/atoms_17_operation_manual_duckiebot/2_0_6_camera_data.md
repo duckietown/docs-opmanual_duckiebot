@@ -70,7 +70,7 @@ Sumptom: My image topic is not being published.
 
 Resolution: Check that the `duckiebot-interface` is running
 
-Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `duckiebot-interface`, using image `duckietown/dt-duckiebot-interface:daffy-arm32v7`.
+Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `duckiebot-interface`, using image `duckietown/dt-duckiebot-interface:daffy-arm32v7`.
 
 You call also determine this by running:
 

@@ -75,6 +75,7 @@ However, be careful not to delete something you might actually need. Keep in min
 
 If you want to look into the heart and soul of your images, you can use the commands `docker image history` and `docker image inspect` to get a detailed view.
 
+
 ## Working with containers {#basic-docker-commands-containers }
 
 Containers are the run-time equivalent of images. When you want to start a container, Docker picks up the image you specify, creates a file system from its layers, attaches all devices and directories you want, "boots" it up, sets up the environment up and starts a pre-determined process in this container. All that magic happens with you running a single command: `docker run`. You don't even need to have pulled the image beforehand, if Docker can't find it locally, it will look for it on DockerHub.
@@ -143,6 +144,7 @@ Imagine you are running a container in the background. The main process is runni
 
     laptop $ docker attach ![container name]
 
+
 ## Running images {#docker-running-options}
 
 Often we will ask you to run containers with more sophisticated options than what we saw before. Look at the following example: (don't try to run this, it will not do much).
@@ -199,6 +201,7 @@ Often we will ask you to run containers with more sophisticated options than wha
   <figcaption><code>docker run</code> options</figcaption>
 </div>
 
+
 ### Examples {nonumber}
 
 Set the container name to `joystick`:
@@ -252,3 +255,36 @@ Here are some resources you can look up:
 - [Docker official Get Started tutorial](https://docs.docker.com/get-started/);
 - [Docker Curriculum](https://docker-curriculum.com/);
 - *Docker Deep Dive*, by Nigel Poulton.
+
+
+## Docker common troubleshooting {#setup-troubleshooting-docker status=ready}
+
+
+### docker: Got permission denied while trying to connect to the Docker daemon socket
+
+If this is on your laptop, that means when you setup your enviornment you did not grant your user account right to do certain things. You can fix this by running:
+
+    laptop $ sudo adduser `whoami` docker
+
+Log out and in again and it should be fixed.
+
+
+### Container does not start {#setup-troubleshooting-docker-starting status=ready}
+
+Symptom: `docker: Error response from daemon: Conflict. The container name "/![container_name]" is already in use by container "![container_hash]". You have to remove (or rename) that container to be able to reuse that name.`
+
+Resolution: Stop the container (`docker stop ![container_name]`) if running and then remove (`docker rm ![container_name]`) the container with the
+
+
+### Docker exits with `tls: oversized record received`
+
+If Docker exits with the above error when running remote commands, the most likely reason is different versions of Docker on your computer and Duckiebot. You can check that by running `docker version` on both devices. If that is indeed the case, you need to upgrade the Docker binaries on your computer. To do that, follow the official instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+
+
+### I can't run a container because I get `exec user process caused "exec format error"`
+
+An error like this:
+
+`standard_init_linux.go:190: exec user process caused "exec format error"`
+
+despite not being very descriptive typically means that there is a mismatch between the container's processor architecture and the one on your computer. Different processor architectures have different instruction sets and hence binaries compiled for one are generally not executable on another. Raspberry Pis use ARM processors, while most of the laptops use x86 architecture which makes them incompatible. Still, there's hope. Most of the Duckietown Raspberry Pi containers have a piece of magic inside called Qemu which allows emulation of an ARM processor on a x86 machine. You can activate this emulator if you change the default entrypoint of the container by adding `--entrypoint=qemu3-arm-static` to options when running it.
