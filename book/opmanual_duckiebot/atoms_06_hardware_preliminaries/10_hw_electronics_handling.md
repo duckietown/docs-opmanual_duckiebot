@@ -79,6 +79,14 @@ Nonetheless, the charger will "trickle" charge the battery cell until it has rea
 
 The battery protection mode can last up to 30 minutes, during which the battery might not indicate a state of charge nor that it is actually being charged. This does not mean the battery is dead, just "hibernating".
 
+## USB outputs
+
+The battery have two separate 5V 2A USB type A output, namely USB OUT-1 (a.k.a the mussels ) and USB OUT-2 (a.k.a the brain)
+
+<div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging">
+     <img src="duckiebattery-outputs.png" style='width: 25em' />
+</div>
+
 ## The Duckie-power-bank {#db-opmanual-dtbattery-v1}
 
 The Duckie-power-bank (or Duckiebattery version 1) is the standard power source for Duckiebots in `DB18` and `DB19` configurations. Duckiebatteries are easily recognizable.
