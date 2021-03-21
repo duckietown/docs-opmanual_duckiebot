@@ -83,7 +83,7 @@ The battery protection mode can last up to 30 minutes, during which the battery 
 
 The battery have two separate 5V 2A USB type A output, namely USB OUT-1 (a.k.a. the muscles) and USB OUT-2 (a.k.a. the brains).
 
-<div figure-id="fig:DB-C-DBatt_3" figure-caption="Duckiebattery outputs behave differently.">
+<div figure-id="fig:DB-C-DBatt_4" figure-caption="Duckiebattery outputs behave differently.">
      <img src="duckiebattery-outputs.png" style='width: 25em' />
 </div>
 
@@ -99,8 +99,6 @@ Note: Always make sure the USB cable is not damaged and of good quality. Do not 
 <!--
 The internal wires should be of at least 0.14 sqmm (or 26AWG).
 -->
-
-
 
 Symptom: My battery does not charge.
 
