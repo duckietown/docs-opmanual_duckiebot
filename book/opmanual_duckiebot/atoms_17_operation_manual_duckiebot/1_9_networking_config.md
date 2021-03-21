@@ -18,6 +18,35 @@ By default on boot your robot will look for a network with a "`duckietown`" SSID
 
 This page describes how to get your robot connected to the wide-area network (internet).
 
+## Add WiFi Networks without reinitializing the SD card
+
+To add networks at a later stage or modify existing settings, edit the file `wpa_supplicant.conf` in the main partition of the SD card. 
+
+For robots based on Raspberry Pi, (e.g., ` DB17`, ` DB18`, ` DB19`), this file is located at `/etc/wpa_supplicant/wpa_supplicant.conf` in the `root` partition;
+For robots based on Nvidia Jetson Nano, (e.g., ` DB21M`), this file is located at `/etc/wpa_supplicant.conf` in the `APP` partition;
+
+New networks can be created by adding a new `network={}` paragraph, and then entering the network information. An example network configuration is shown below:
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=CH
+
+network={
+    id_str="network_1"
+    ssid="comnet23243"
+    psk="MSNDJWKE32"
+    key_mgmt=WPA-PSK
+}
+
+network={
+    id_str="network_2"
+    ssid="TPlink23432"
+    psk="ksnbn4wn3"
+    key_mgmt=WPA-PSK
+}
+```
+
 ## Testing if your Duckiebot is Connected to the Internet {#duckiebot-network-test}
 
 Some networks block pings from passing through, so a better way is to execute on your duckiebot:

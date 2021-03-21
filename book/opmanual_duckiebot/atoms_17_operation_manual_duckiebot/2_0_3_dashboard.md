@@ -47,15 +47,14 @@ retrieve yours by visiting the page:
 
 > [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
 
-Since we are not going to use Google Sign-In, you can click on **Skip**.
-This will let you skip the first two steps and move straight to **Step 3**.
+You should notice that the first two steps already appear to be completed. 
 Do not worry about creating an administrator account (Step 2) for now,
-the Duckietown package for \\compose\\ will create one for us as soon as we
-authenticate for the first time using our personal token.
+a new aministrator account will be automatically created the first time we login 
+using a Duckietown token.
 
 ### Step 3
 
-At this point, the **Step 3** tab should be open, as shown in the image below.
+**Step 3** is about configuring the dashboard.
 
 <div figure-id="fig:compose_first_setup_step3" figure-caption="">
   <img src="compose_first_setup_step3.png" style='width: 34em'/>
@@ -88,21 +87,14 @@ You should be able to see the login page, as shown below.
   <img src="dashboard_login_page.png" style='width: 34em'/>
 </div>
 
-Since we skipped the first two steps of the **First Setup** of \\compose\\
-([](#monitor-first-boot)), we cannot login using a Google account.
-As discussed above, the Duckietown package provides its own login system,
-which is based on the Duckietown personal token (Duckietoken).
-If you have not retrieved yours, it is now time to do so by visiting
-the page:
-
-> [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
-
 Note: Since your dashboard does not have an administrator account yet,
 the first user to login will be automatically assigned the role of
 administrator. If you have multiple tokens, make sure to keep note of
 which one you used for the first login.
 
-Once you have your personal token, you can go ahead and click on
+If you have not retrieved your personal Duckietown Token as described in [](#dt-account) yet, 
+it is now time to do so.
+Once you have your personal Duckietown token, go ahead and click on
 the button **Sign in with Duckietown**.
 You should now see a dialog like the one shown below,
 
@@ -118,14 +110,9 @@ be redirected to your profile page, similar to the one shown below.
   <img src="dashboard_profile_page_full.png" style='width: 35em'/>
 </div>
 
-As you might have noticed, the left hand side bar now shows many more pages. Some pages are
-accessible by all users, others only by administrators (e.g., Settings,
-Package Store, Debug).
-
-Also, you might have noticed that some Duckietown-specific pages are already
-there (e.g., Portainer, Mission Control, Duckietown). This is because we used
-a Docker image of \\compose\\ that comes with some Duckietown packages
-pre-installed.
+As you might have noticed, the side bar to the left now shows many more pages. Some pages are
+accessible by all users (e.g., Robot), others only by administrators (e.g., Settings,
+Package Store).
 
 Take your time to visit all the pages and get comfortable with the platform.
 We will discuss the functionalities offered by each page in the next sections.
@@ -136,12 +123,13 @@ To see all the available components within the dashboard, you will need to first
 
     PAGE NAME           DESCRIPTION
     Portainer           A nice GUI tool for seeing all containers running on a Duckiebot
+    File Manager        A file manager for managing the files on the robot
     Robot               A summary page for the robot status
-    Users               Advanced Feature: Allow multiple student using one Duckiebot
     Profile             Information for your duckietown account
     Package Store       A package store contain all available packages for your Duckiebot
+    Users               Advanced Feature: Allow multiple student using one Duckiebot
     Settings            Advanced Feature: Change configuration of your Duckiebot dashboard manually
-    Restful API         Advanced Feature: A description of restful API.
+    Restful API         Advanced Feature: Documentation to the RestAPI exposed by the Dashboard.
 
 ## Portainer {#dashboard-portainer status=ready}
 
@@ -200,25 +188,8 @@ This is the Architecture Page. It will allow you to visualize all the published 
   <img src="dashboard-architecture.png" style='width: 35em'/>
 </div>
 
-### Software {#dashboard-tutorial-software status=ready}
+TODO: (afdaniele) add screenshot of the File Manager page
 
-This is the software page. You can use this page to monitor your container status. You can select to update the containers you desired. See also [here](#dt-autoupdate-dashboard) for more information about keeping your Duckiebot up to date.
-
-<div figure-id="fig:dashboard-software" figure-caption="">
-  <img src="dashboard-software.png" style='width: 35em'/>
-</div>
-
-### Files {#dashboard-tutorial-files status=ready}
-
-This is the files page. You can access your calibration result directly through this tab. You calibration are stored under `/config/calibration`. If you do not want to recalibrate everytime you re-flahsed your SD card, it is recommended to save these calibration results.
-
-Additionally, you can access configuration files Duckiebot uses in this tab.
-
-<div figure-id="fig:dashboard-files" figure-caption="">
-  <img src="dashboard-files.png" style='width: 35em'/>
-</div>
-
-## Dashboard Package Store {#dashboard-update status=beta}
 
 ## Drive your Duckiebot via mission control {#drive-dashboard status=draft}
 
