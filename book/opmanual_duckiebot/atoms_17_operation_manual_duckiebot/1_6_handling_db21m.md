@@ -33,6 +33,6 @@ Result: Knowledge on standard protocols to turn on, turn off, charge, and update
 
 ## How to power on a `DB21` {#howto-db21-battery-update status=ready}
 
-<div figure-id="fig:howto-handle-db21">
+<div figure-id="fig:howto-battery-update-db21">
     <dtvideo src="vimeo:526718185"/>
 </div>
