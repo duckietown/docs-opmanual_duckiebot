@@ -1,4 +1,4 @@
-# Wheel calibration {#wheel-calibration status=ready}
+# Calibration - Wheels {#wheel-calibration status=ready}
 
 <div class='requirements' markdown='1'>
 

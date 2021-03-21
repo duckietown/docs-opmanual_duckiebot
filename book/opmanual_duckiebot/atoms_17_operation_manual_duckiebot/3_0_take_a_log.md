@@ -1,10 +1,10 @@
-# Taking and verifying a log {#take-a-log status=outdated}
+# Operation - Taking and verifying a log {#take-a-log status=outdated}
 
 <div class='requirements' markdown='1'>
 
-Requires: [](#read-camera-data)
-
 Requires: [](#rc-control)
+
+Requires: [](#read-camera-data)
 
 Result: A verified log.
 

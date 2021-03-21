@@ -1,4 +1,4 @@
-# Assembling the Duckiebot `DB17` {#assembling-duckiebot-db17 status=ready}
+# Assembly - Duckiebot `DB17` {#assembling-duckiebot-db17 status=ready}
 
 This page is for the `DB17` configuration used in classes in 2017. The docker based software stack of 2018 is currently not guaranteed to work out of the box with the `DB17` hardware configurations.
 
@@ -61,7 +61,6 @@ sure to follow them in the following order.
 - [Part XIII: Upgrade to `DB17-j`](#howto-upgrade-db17-j)
 - [Part XIV: Upgrade to `DB17-d`](#howto-upgrade-db17-d)
 
-You can also refer to [this](https://docs.duckietown.org/DT17/opmanual_duckiebot/out/index.html) book for more informtaion on robot with this configuration.
 
 ### Motors {#howto-mount-motors}
 
@@ -732,6 +731,8 @@ Duckiebot to the configuration DB17-d.">
 
 - Mount your USB drive.
 
+TODO: re-add instructions from 2017 Duckiebook version.
+
 ### FAQ {#op-assembly-db17wjd-faq}
 
 Q: If we have the bumpers, at what point should we add them?
@@ -1128,7 +1129,7 @@ Peel protective layer off of all parts on all sides.
 
 #### Disassembly the spacers between the both chassis
 
-The backside of Duckiebot before assemblying the bumpers looks as [](#fig:before_bumpers):
+The backside of duckiebot before assemblying the bumpers looks as [](#fig:before_bumpers):
 <div figure-id="fig:before_bumpers" figure-caption= "The configuration before assemblying the bumpers">
     <img src="before_bumpers.jpg" style='width:30em; height:auto'/>
 </div>
@@ -1153,7 +1154,7 @@ Back View, fully assembled:
     <img src="back_view_fully_assembled.jpg" style='width:30em; height:auto'/>
 </div>
 
-Note: For the ETH students, the M3*10 nylon screws for attaching the rear spacers with chassis were already distributed during the Duckiebot ceremony and not included in second distribution. Please reuse them!
+Note: For the ETH students, the M3*10 nylon screws for attaching the rear spacers with chassis were already distributed during the duckiebot ceremony and not included in second distribution. Please reuse them!
 
 #### Mount Rear Bumper
 

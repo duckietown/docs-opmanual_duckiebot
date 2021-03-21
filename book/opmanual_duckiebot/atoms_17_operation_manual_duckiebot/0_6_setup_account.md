@@ -1,4 +1,4 @@
-# Required Accounts {#dt-account status=ready}
+# Setup - Account {#dt-account status=ready}
 
 This section describes how to register your Duckietown account
 and set up the Duckietown authentication token, as well as other accounts you will need.
@@ -76,7 +76,3 @@ You have to completely reinstall `dts` and its commands. Do that by:
 ### Github {#dt-account-github}
 
 You will find it useful to have an acount on Github if you don't have one already. Get one [here](https://github.com/join).
-
-### DockerHub {#dt-account-dockerhub}
-
-You may also need an account on the DockerHub registry for some things. Get one [here](https://hub.docker.com/signup) if you don't already have one.

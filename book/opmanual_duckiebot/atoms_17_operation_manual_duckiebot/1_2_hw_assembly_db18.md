@@ -1,4 +1,4 @@
-# Assembling the Duckiebot `DB18` {#assembling-duckiebot-db18 status=ready}
+# Assembly - Duckiebot `DB18` {#assembling-duckiebot-db18 status=ready}
 
 This page is for the `DB18` configuration used in classes in 2018 and 2019.
 For the instructions from 2017 see the [`DB17` Duckiebot](https://docs.duckietown.org/DT17/) operation manual.
@@ -527,16 +527,64 @@ Now place a Duckie on top of your brand new Duckiebot, but be careful not to hur
 
 Note: As a final check, verify that no cable is touching the wheels. You can use the provided zip ties to ensure that cables stay out of the way.
 
-## FAQ {#op-faq-db18}
+## Hardware verification {#setup-troubleshooting-hw-test-db18 status=ready}
 
-Q: I found it hard to mount the omni-directional wheel / the back bumper / the Raspberry Pi because the holes weren't lining up.
+If you have assembled your Duckiebot `DB18` but you are not sure if you did it correctly, you can use this tool test that. These steps are not mandatory but do serve as a good troubleshooting tool. It takes about 20 minutes.
 
-A: Sometimes in life you have to push a little to make things happen. (But don't push too much or things will break!)
+Note: The procedure consists of downloading and flashing a test image on an SD card. If you have only one SD card, you might want to do that before you do the steps in [](#setup-duckiebot).
 
-Q: I have a different color of the back patter plate, do I get the wrong one?
 
-A: The color of this part can be of any and all are functionally equivalent.
+1. Download this SD card [image](https://duckietown-public-storage.s3.amazonaws.com/disk_image/DB18_hw_test_image_13_07_2020_shrunk.img.gz)
 
-Q: My battery is different from the one shown in the pictures! Did I get the wrong box?
+2. Extract the `.img` image from the archive.
 
-A: If there is a duckie in or on your box, you most probably got the right one. We support different battery models. All supported models are functionally equivalent, although the form factor varies.
+3. Flash the image on an SD card. If you use Ubuntu, you can use the USB Image Writer tool that it comes with.
+
+    Note: Make sure you write it to the right device! You can damage your system if you select a different device!
+
+4. Now put the SD card in the assembled robot and power it up.
+
+5. Put the robot on the ground.
+
+If everything is successful within 30 to 60 seconds you should your robot's lights start to change. If your robot is assembled correctly you should observe the following behavior:
+
+1. All LEDs are __green__ for 2 seconds.
+
+2. All LEDs are __red__ for 2 seconds.
+
+3. The LEDs on the __right__ side of the robot will be __red__, the rest are white, and the robot is turning __right__ (i.e _into_ the direction of the red LEDs).
+
+4. The LEDs on the __left__ side of the robot will be __red__, the rest are white, and the robot is turning __left__ (i.e _into_ the direction of the red LEDs).
+
+5. The robot stops.
+
+6. After a few seconds all LEDs are green.
+
+7. End of the test. Everything appears to be assembled correct.
+
+This is a video of what you should observe if your robot is assembled correctly:
+
+<dtvideo src="vimeo:438103873"/>  
+
+
+## Troubleshooting {#op-faq-db18}
+
+Symptom: The omni-directional wheel, the back bumper or the Raspberry Pi are challenging to mount.
+
+Resolution: Sometimes in life you have to push a little to make things happen. (But don't push too much or things will break!)
+
+Symptom: I have a different color of the back patter plate. Do I get the wrong one?
+
+Resolution: The color of this part can be of any and all are functionally equivalent.
+
+Symptom: My battery is different from the one shown in the pictures! Did I get the wrong box?
+
+Resolution: If there is a duckie in or on your box, you most probably got the right one. We support different battery models. All supported models are functionally equivalent, although the form factor varies.
+
+Symptom: The robot doesn't move in the right direction or moves backwards instead of forward.
+
+Resolution: You have attached the motor wires in the wrong sockets. You will have to open the robot, fix that and test again.
+
+Symptom: At the end of the procedure the LEDs don't turn green and the LED under the camera is red.
+
+Resolution: This means that the test procedure could not obtain an image from the camera. Check that your camera cable is attached correctly at both ends and that your camera is not broken.

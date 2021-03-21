@@ -1,4 +1,4 @@
-# Assembling the Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
+# Assembly - Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
 <div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
@@ -18,6 +18,8 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 
 <!--
 -->
+These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your battery over!).
+
 Overview of all parts in your Duckiebox:
 
 <div figure-id="fig:db21-parts-overview">
@@ -35,16 +37,18 @@ The assembly process is divided in 9 parts. They must be completed in the follow
 - [Part 6: Front Assembly](#howto-front-assembly-db21m)
 - [Part 7: Top Plate Assembly](#howto-interactive-cover-db21m)
 - [Part 8: Power your Duckiebot](#howto-power-db21m)
-
 - [Part 9: Additional Parts](#howto-additional-parts-db21m)
 
+- [FAQ](#op-faq-db21)
+
+The FAQ section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
 
 ## Preliminary Steps {#howto-preliminary-db21m}
 
 ### Unboxing
 Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on. Do not show any violence to the Duckiebot pieces or they might break.
 
-Note: Your Duckiebot chassis is under the white protection foam. To find it, pull out the inner white protection foam.
+Note: Your Duckiebot chassis are under the white protection foam. To get your Duckiebot chassis, pull out the white protection foam in the box after remove everything.
 
 Although not necessary, a small (M2.5) wrench will ease some of the next passages.
 
@@ -54,15 +58,22 @@ Peel the plastic cover from all the chassis parts on both sides.
 ### Screws, Nuts and Stand-offs
 Each type of screw, nut and stand-off is labeled with an index. You will find corresponding labels on the pictures at each step. Using the right parts at each step will prevent undesirable effects (e.g., nylon screws prevent electrical shorts).
 
-<div figure-id="fig:db21-part_indices" figure-caption="Overview of interlocking parts">
-     <img src="db21-part_indices.png" style='width: 40em' />
+<div figure-id="fig:db21-parts_indices" figure-caption="Overview of interlocking parts">
+     <img src="db21-parts_indices.png" style='width: 40em' />
 </div>
 
-Note: These instructions are your friend, follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your battery over!).
-
-The [FAQ](#op-faq-db21) section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
 
 ## Drive Train {#howto-drive-train-db21m}
+
+### Step 0 - Charge battery via `HUT`
+- Connect the battery and the HUT board as shown and make sure a green LED on the HUT is lit.
+- Wait 30 minutes and then push the button on the battery.
+- Check that the state of charge LEDs on the battery start blinking.
+- Leave this setup until the battery is fully charged. This may take up to 5 hours.
+
+<div figure-id="fig:db21-step_00">
+     <img src="db21-step_00.png" style='width: 40em' />
+</div>
 In the following steps (1 to 12) you will build the base plate assembly.
 
 <div figure-id="fig:db21-overview-step_01-12">
@@ -89,7 +100,7 @@ Check the hole pattern in the middle of the plate to make sure you are holding i
 </div>
 
 ### Step 3
-Place one of the motors between the two plates and tighten it with two M3x30 screws (`B5`) and two metal M3 nuts (`N3`). Tighten the screws enough so that the final assembly does not wobble. Don't use excessive force to avoid getting hurt (or braking something).
+Connect one of the 6-pin motor cable to the blue motor.
 
 <div figure-id="fig:db21-step_03">
      <img src="db21-step_03.png" style='width: 40em' />
@@ -98,7 +109,7 @@ Place one of the motors between the two plates and tighten it with two M3x30 scr
 Note: It might be easier if you place the base plate on a flat surface so hold the motor plates. Use one hand to hold the nut, and the other to drive the screwdriver.
 
 ### Step 4
-Connect the first 6-pin motor cable to the motor you have just mounted and pass it through the cable management inset on the chassis, as shown in the picture.
+Place the motor between the two plates and tighten it with two M3x30 screws (`B5`) and two metal M3 nuts (`N3`). Tighten the screws enough so that the final assembly does not wobble. Don't use excessive force to avoid getting hurt (or braking something).
 
 <div figure-id="fig:db21-step_04">
      <img src="db21-step_04.png" style='width: 40em' />
@@ -110,7 +121,7 @@ Note: Pre-bend the cable before carefully passing it through the cable managemen
 Connect the second 6-pin motor cable to the second motor.
 
 <div figure-id="fig:db21-step_05">
-     <img src="db21-step_05.png" style='width: 40em' />
+     <img src="db21-step_05.png" style='width: 30em' />
 </div>
 
 ### Step 6
@@ -178,8 +189,11 @@ The following steps (13 to 18) guide through the *Duckibattery* assembly:
 </div>
 
 <!--
+You can try to mount the wheels even without the distance disks. But make sure that the wheels do not touch the frame of the Duckiebot when turning.
 
-Note: We are very proud of the Duckiebattery. It was custom designed to provide nice features difficult to find in existing power banks. We'll explore these features at a later stage, but let us boast a little here!
+<div figure-id="fig:db21-step_22B">
+     <img src="db21-step_22B.png" style='width: 40em' />
+</div>
 
 -->
 
@@ -268,7 +282,9 @@ Take the two yellow driving wheels and push them to the motors using one distanc
 </div>
 
 ### Step 23
-Place the Jetson Nano on the 4 screws from step 14 but DO NOT tighten the Jetson with any nuts or stand-offs yet!
+1. Insert the SD card to the slot on the NVIDIA Jetson Nano board. Make sure the metal pins of the SD card are facing the heat sink.
+
+2. Place the Jetson Nano on the 4 screws from step 14 but DO NOT tighten the Jetson with any nuts or stand-offs yet!
 
 <div figure-id="fig:db21-step_23">
      <img src="db21-step_23.png" style='width: 40em' />
@@ -283,7 +299,7 @@ Then secure the plate to the frame using two metal M3x8 screws (`B3`).
 You may need to lift the Jetson Nano a little to fit the side cover plate under the NVIDIA Jetson Nano board.
 
 <div figure-id="fig:db21-step_24">
-     <img src="db21-step_24.png" style='width: 40em' />
+     <img src="db21-step_24.jpg" style='width: 40em' />
 </div>
 
 ### Step 25
@@ -389,14 +405,20 @@ Note: You don't need to tighten the screws completely but the fan must sit tight
 </div>
 
 ### Step 38
-Take the printed circuit board with the Duckietown logo on it (further called `HUT`) and plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).
+Take the printed circuit board with the Duckietown logo on it (further called `HUT`).
+
+<div figure-id="fig:HUT_layout">
+     <img src="HUT_layout.jpg" style='width: 40em' />
+</div>
+
+Plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).
 
 <div figure-id="fig:db21-step_38">
      <img src="db21-step_38.png" style='width: 40em' />
 </div>
 
 ### Step 39
-Gently press the pin connector of the `HUT` on the pins on the NVIDIA Jetson Nano board and tighten it with two nylon M2.5 nuts (`N2`). Make sure both motor cables are routed through the slit in the `HUT` board.
+Gently press the pin connector of the `HUT` on the pins on the NVIDIA Jetson Nano board. Make sure both motor cables are routed through the slit in the `HUT` board.
 
 <div figure-id="fig:db21-step_39">
      <img src="db21-step_39.png" style='width: 40em' />
@@ -445,7 +467,7 @@ The following steps 45 to 52 will guide you through the assembly of the camera u
 </div>
 
 ### Step 45
-If not already done, open the plug of the camera and push one side of the camera cable in. The orientation of the cable should be such that the copper pins on the camera cable face the camera plate. Then close the plug completely.
+If not already done, open the plug of the camera and push one side of the camera cable in. The orientation of the cable should be such that the copper pins on the camera cable face the camera plate. Then close the plug completely. Make sure to take off the plastic cap from the lens.
 
 <div figure-id="fig:db21-step_45">
      <img src="db21-step_45.png" style='width: 40em' />
@@ -487,7 +509,7 @@ Wire the cable that you have just connected (step 49) through the upper plate an
 </div>
 
 ### Step 51
-Take the last of the longest 4-pin cables and connect it to the front bumper board, similarly to step 49.
+Take the last of the long 4-pin cables and connect it to the front bumper board, similarly to step 49.
 
 <div figure-id="fig:db21-step_51">
      <img src="db21-step_51.png" style='width: 40em' />
@@ -517,7 +539,7 @@ Note: The orientation of the cable should be such that the blue part of the cabl
 </div>
 
 ### Step 55
-Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (`N4`).
+Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (`N4`). Make sure to take off the small transparent cover from the sensor.
 
 <div figure-id="fig:db21-step_55">
      <img src="db21-step_55.png" style='width: 40em' />
@@ -602,7 +624,7 @@ Then, tighten the cover using two nylon M2.5 nuts (`N2`).
 
 ## Power your Duckiebot {#howto-power-db21m}
 
-Note: in this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
+In this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
 
 <div figure-id="fig:db21-how2charge">
      <img src="db21-how2charge.png" style='width: 40em' />
@@ -612,31 +634,38 @@ Note: in this step we will plug the various power cables to the `HUT`. One port 
 Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 
 ### Step 65
-Take the black USB cable that you have marked in step 29 and connect it to the second micro USB connector on the `HUT` counting from the back.
+Take the black USB cable that you have connected in step 29 and connect it to the micro USB connector on the `HUT` as shown.
 
 <div figure-id="fig:db21-step_65">
-     <img src="db21-step_65.png" style='width: 40em' />
+     <img src="db21-step_65.jpg" style='width: 40em' />
 </div>
 
 ### Step 66
-Take the black USB cable that is routed through the same hole as the one you have just connected in the previous step 65. Connect it to the back micro USB connector on the `HUT` as shown.
+Similarly, connect the other USB cable (routed through the same hole) to the `HUT`.
 
 <div figure-id="fig:db21-step_66">
-     <img src="db21-step_66.png" style='width: 40em' />
+     <img src="db21-step_66.jpg" style='width: 40em' />
 </div>
 
 ### Step 67
-Finally, take the last black USB cable that has not been connected yet. Connect it to the front micro USB connector on the `HUT`.
+Finally, connect the last cable to the `HUT`.
 
 <div figure-id="fig:db21-step_67">
-     <img src="db21-step_67.png" style='width: 40em' />
+     <img src="db21-step_67.jpg" style='width: 40em' />
 </div>
 
 ### Step 68
-At that point, your Duckiebot is fully assembled! To power it on, push the button of the battery on the side of the robot. ONLY do this if a flashed SD card is inserted.
+At that point, your Duckiebot is fully assembled!
+For charging, connect the charging cable to the last free micro USB connector on the `HUT`. To avoid putting additional stress on the connector, you can leave this cable plugged in and store it somewhere under the blue top lid.
 
-<div figure-id="fig:db21-step_68">
-     <img src="db21-step_68.png" style='width: 40em' />
+<div figure-id="fig:db21-step_68A">
+     <img src="db21-step_68A.png" style='width: 40em' />
+</div>
+
+Once your Duckiebot is fully charged, you can press the button of the battery on the side to power it up (do this ONLY if a flashed SD card has been inserted).
+
+<div figure-id="fig:db21-step_68B">
+     <img src="db21-step_68B.png" style='width: 40em' />
 </div>
 
 
@@ -650,18 +679,18 @@ If you have an April tag take some glue and put it in between the two nylon scre
 </div>
 
 ### Step 70
-If you have a circle pattern put it on the back plate of your Duckiebot again using some glue.
+If you have a circle pattern put it on the back plate of your Duckiebot.
 
 <div figure-id="fig:db21-step_70">
      <img src="db21-step_70.png" style='width: 40em' />
-</div>
+</div>        
 
 
 ## Check the outcome
 
 <div class='requirements' markdown="1">
 
-Checking: Look at the [Overview of interlocking parts](#fig:db21-part_indices) and make sure you have used each type at least once.
+Checking: Look at the [Overview of interlocking parts](#fig:db21-parts_indices) and make sure you have used each type at least once.
 
 Checking: Have a look at all cable connectors and make sure they are plugged in completely.
 
@@ -671,9 +700,13 @@ Checking: check if all USB cables are plugged in completely. If you have already
 
 ## Troubleshooting {#op-faq-db21}
 
+<!--
+
 Symptom: I can't find the blue chassis.
 
 Resolution: It's *under* the white foam in the Duckiebox. Remove the inner packaging to access it.
+
+-->
 
 Symptom: Camera cable needs to be twisted to make the pins on the cable matching those in the connector. Is this normal?
 
@@ -694,6 +727,18 @@ Resolution: Sometimes manufacturing inefficiencies make the thread inside the st
 Symptom: A piece broke while I was trying to assemble it!
 
 Resolution: Mistakes happen. Some damages will not influence the functionality of the robot, others will be fixable at home with some tools, others could be showstoppers. Please take a picture of the damage and send an email to hardware@duckietown.com.
+
+Symptom: The wheels tend to fall off the motors.
+
+Resolution: You may remove the distance disks you put in step 22. But make sure that the wheels are still not touching the screws of the motor mounts.
+
+Symptom: One of the black USB cables is too short to connect it to the HUT.
+
+Resolution: The customized cables may undergo some manufacturing tolerances. If it does not fit, there is a second way to connect the cables. However, some minor functionalities might differ in that configuration (e.g. the fan might continue working when shutting down the NVIDIA Jetson Nano).
+
+<div figure-id="fig:db21-step_65-67">
+     <img src="db21-step_65-67.jpg" style='width: 40em' />
+</div>
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
 

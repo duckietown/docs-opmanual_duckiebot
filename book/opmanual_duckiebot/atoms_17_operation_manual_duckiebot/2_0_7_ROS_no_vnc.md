@@ -1,4 +1,4 @@
-# Using `start_gui_tools`, ROS tools and `no-vnc` {#using-no-vnc status=ready}
+# Operation - Using `start_gui_tools`, ROS tools and `no-vnc` {#using-no-vnc status=ready}
 
 ## A note on start_gui_tools {#start_gui_tools status=ready}
 

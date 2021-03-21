@@ -2,7 +2,7 @@
 
 <div class='requirements' markdown="1">
 
-Requires: Knowledge of [Duckiebot hardware configurations](#duckiebot-configurations)
+Requires: Knowledge of [Duckiebot hardware configurations](duckiebot-configurations)
 
 Results: Parts to assemble a Duckiebot.
 
