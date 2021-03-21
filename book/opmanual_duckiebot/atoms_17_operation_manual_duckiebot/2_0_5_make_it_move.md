@@ -21,11 +21,21 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
 
 Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and you should be able to use it right away
 
+
 ## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
+
+### Virtual Joystick - Video
+
+The following video shows how to drive a Duckiebot using the Duckietown Shell.
+
+<dtvideo src="vimeo:526584868"/>
+
+
+### Virtual Joystick - Step-by-Step Instructions
 
 If you would like to move your robot using your laptop, you can run:
 
-    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
+    $ dts duckiebot keyboard_control ![ROBOT_NAME]
 
 which, after startup should open the interface window that looks like:
 
@@ -111,9 +121,9 @@ You can also use the menu button of each block to resize them.
 
 Symptom: Duckiebot goes backwards, even though I command it to go forward.
 
-Resolution: Revert the polarities (plus and minus cables) that go to the motor driver for both motors.
+Resolution: If you have a `DB17` or `DB18`, revert the polarities (plus and minus cables) that go to the motor driver for both motors.
 
-Symptom: I can `ssh` into my Duckiebot and run the joystick demo but the joystick does not move the wheels.
+Symptom: I can run the joystick demo but the joystick does not move the wheels.
 
 Resolution: Check that the red indicator on the joystick stopped blinking.
 
@@ -163,20 +173,15 @@ Symptom: The robot doesn't move
 
 Resolution: Check that the `duckiebot-interface` is running
 
-Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
 
 You can also determine this by running:
 
-    $ docker -H ![DUCKIEBOT_NAME].local ps
+    $ docker -H ![ROBOT_NAME].local ps
 
 and look at the output to find the Duckiebot interface container and verify that it is running.
 
 Resolution: One of the base images is out of date
+Update your Duckiebot with the command
 
-Pull the base images on the Duckiebot:
-
-    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:daffy-arm32v7
-
-and on the laptop:
-
-    $ docker pull duckietown/dt-core:daffy-amd64
+    laptop $ dts duckiebot update ![ROBOT_NAME]
