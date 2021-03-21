@@ -742,4 +742,4 @@ Resolution: The customized cables may undergo some manufacturing tolerances. If 
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
 
-Resolution: You forgot to put a duckie on top of your Duckiebot.
+Resolution: You forgot to put a duckie on top of your Duckiebot!

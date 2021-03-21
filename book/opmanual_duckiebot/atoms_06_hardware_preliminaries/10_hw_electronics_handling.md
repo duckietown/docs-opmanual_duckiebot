@@ -79,13 +79,52 @@ Nonetheless, the charger will "trickle" charge the battery cell until it has rea
 
 The battery protection mode can last up to 30 minutes, during which the battery might not indicate a state of charge nor that it is actually being charged. This does not mean the battery is dead, just "hibernating".
 
-## USB outputs
+### USB outputs
 
-The battery have two separate 5V 2A USB type A output, namely USB OUT-1 (a.k.a the mussels ) and USB OUT-2 (a.k.a the brain)
+The battery have two separate 5V 2A USB type A output, namely USB OUT-1 (a.k.a. the muscles) and USB OUT-2 (a.k.a. the brains).
 
 <div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging">
      <img src="duckiebattery-outputs.png" style='width: 25em' />
 </div>
+
+- USB OUT-1: Connect this output to a non sensitive power load, i.e., motor or LEDs. This output will experience short power drops when plugging and unplugging the charger cable.    
+
+- USB OUT-2: this is an uninterrupted 5V 2A USB output that should be connected to the computing unit (i.e., NVIDIA Jetson Nano or Raspberry Pi). It will not cause the onboard computer to restart when plugging or unplugging the charger.  
+
+Contrary to other battery packs this output will stay ON independent of the status of USB OUT-1 or if the unit is being charged.  
+
+### Troubleshooting
+The most common fault is not related to the battery pack itself but the connection between the pack and the charger and/or the load.
+
+Note: Always make sure the USB cable is not damaged and of good quality. Do not use a cable longer then 30cm. A faulty cable can cause excessive voltage drops between the battery pack and load, leading to low voltage issues.
+
+<!--
+The internal wires should be of at least 0.14 sqmm (or 26AWG).
+-->
+
+
+
+Symptom: My battery does not charge.
+
+Resolution: There can be several reasons why a charge is not being accepted. Below are the most common issue.
+
+- The input voltage is too low or too high. Make sure you are apply 5V via the micro USB connector
+
+- The battery is in battery protection mode and does not look like it's charging, but it is. Come back in >30 minutes and press the button once to enter `idle` mode.
+
+- The battery is in a fault state. This can be caused by over temperature on the battery cell and/or its internal PCB. Leave the battery to cool down for 1h then attempt to charge it again.
+
+Symptom: One or both USB output are not working
+
+Resolution: There can be several reasons why the USB output is not working. Below are the most common issue.
+
+- The battery is not on `idle` mode. Press the battery button once.
+
+- The battery is in battery protection mode. Remove all loads, put in charge and wait >30mins to have the battery exit protection mode. Then enter wake up the battery by pressing the button _once_.
+
+- The USB output is in over current/temperature mode. Disconnect all loads, enter `idle` mode and let the battery rest for 30 minutes.
+
+- A external voltage was applied to the USB (output) port(s). This is a big no no (refer to DO's and DONT's above). Disconnect all loads and enter `idle` mode.
 
 ## The Duckie-power-bank {#db-opmanual-dtbattery-v1}
 
