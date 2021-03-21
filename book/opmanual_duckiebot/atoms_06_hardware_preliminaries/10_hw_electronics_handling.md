@@ -56,7 +56,7 @@ The battery has five LEDs on the top, used for indicating state of charge.
      <img src="DB-C-DBatt_1.png" style='width: 25em' />
 </div>
 
-To see the battery state of charge, click _once_ on the button. The state of charge LEDs will stay on for 10 seconds. In this case, the battery is in `idle` state, " waking up" the battery.
+Note: To see the battery state of charge, click _once_ on the button. The state of charge LEDs will stay on for 10 seconds and the battery set in `idle` state, " waking up" the battery.
 
 <div figure-id="fig:DB-C-DBatt_2" figure-caption="Wake up the battery by pressing the button once.">
      <img src="DB-C-DBatt_2.png" style='width: 30em' />
@@ -65,8 +65,8 @@ To see the battery state of charge, click _once_ on the button. The state of cha
 ### Charge the battery
 After setting the battery in `idle` mode, we can charge it by connecting the charger. The LEDs will be flashing at 1Hz, showing the battery is receiving charge.
 
-<div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging">
-     <img src="DB-C-DBatt_3.png" style='width: 25em' />
+<div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging the Duckiebattery.">
+     <img src="DB-C-DBatt_3.png" style='width: 20em' />
 </div>
 
 ### Battery protection mode
@@ -83,15 +83,13 @@ The battery protection mode can last up to 30 minutes, during which the battery 
 
 The battery have two separate 5V 2A USB type A output, namely USB OUT-1 (a.k.a. the muscles) and USB OUT-2 (a.k.a. the brains).
 
-<div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging">
+<div figure-id="fig:DB-C-DBatt_3" figure-caption="Duckiebattery outputs behave differently.">
      <img src="duckiebattery-outputs.png" style='width: 25em' />
 </div>
 
 - USB OUT-1: Connect this output to a non sensitive power load, i.e., motor or LEDs. This output will experience short power drops when plugging and unplugging the charger cable.    
 
-- USB OUT-2: this is an uninterrupted 5V 2A USB output that should be connected to the computing unit (i.e., NVIDIA Jetson Nano or Raspberry Pi). It will not cause the onboard computer to restart when plugging or unplugging the charger.  
-
-Contrary to other battery packs this output will stay ON independent of the status of USB OUT-1 or if the unit is being charged.  
+- USB OUT-2: this is an 5V 2A USB output, uninterrupted by the charging process or the status of USB OUT-1. This port should be connected to the computing unit (i.e., NVIDIA Jetson Nano or Raspberry Pi) to allow the unit not to restart when plugging or unplugging the charger of the battery.
 
 ### Troubleshooting
 The most common fault is not related to the battery pack itself but the connection between the pack and the charger and/or the load.
