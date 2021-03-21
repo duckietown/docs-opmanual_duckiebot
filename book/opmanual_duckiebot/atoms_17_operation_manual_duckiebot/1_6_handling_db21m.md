@@ -13,7 +13,7 @@ Result: Knowledge on standard protocols to turn on, turn off, charge, and update
 ## Video Tutorial {#tutorial-handling-db21-video}
 
 <div figure-id="fig:howto-handle-db21">
-    <dtvideo src="vimeo:526718185"/>
+    <dtvideo src="vimeo:527038785"/>
 </div>
 
 
@@ -32,3 +32,7 @@ Result: Knowledge on standard protocols to turn on, turn off, charge, and update
 
 
 ## How to power on a `DB21` {#howto-db21-battery-update status=ready}
+
+<div figure-id="fig:howto-handle-db21">
+    <dtvideo src="vimeo:526718185"/>
+</div>
