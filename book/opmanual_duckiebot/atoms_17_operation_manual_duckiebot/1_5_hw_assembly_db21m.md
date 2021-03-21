@@ -1,8 +1,12 @@
 # Assembly - Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
+<!--
+
 <div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
 </div>
+
+-->
 
 <div class='requirements' markdown="1">
 
@@ -405,7 +409,8 @@ Note: You don't need to tighten the screws completely but the fan must sit tight
 </div>
 
 ### Step 38
-Take the printed circuit board with the Duckietown logo on it (further called `HUT`).
+
+Take the PCB with the Duckietown logo on it (we'll call it the `HUT` from now on. A `DB21M` is equipped with a `HUT` v3.1).  
 
 <div figure-id="fig:HUT_layout">
      <img src="HUT_layout.jpg" style='width: 40em' />
@@ -742,4 +747,4 @@ Resolution: The customized cables may undergo some manufacturing tolerances. If 
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
 
-Resolution: You forgot to put a duckie on top of your Duckiebot.
+Resolution: You forgot to put a duckie on top of your Duckiebot!

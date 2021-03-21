@@ -11,56 +11,116 @@ Results: Preliminary knowledge on circuits and power source properties useful in
 Duckiebots support several power bank models, although not any power will work. Here, we list properties of the supported models.
 
 ## The MOOC battery (DB-C-DBatt) {#db-opmanual-dtbattery-v2}
-This battery is the standard battery for the Duckiebot Founder's edition (DB21M).
+This battery is the standard battery for the Duckiebot Founder's edition (`DB21M`).
 
-<div figure-id="fig:DB-C-DBatt_real" figure-caption="`DB-C-DBatt`">
+<div figure-id="fig:DB-C-DBatt_real" figure-caption="The Duckiebattery (`DB-C-DBatt`)">
      <img src="DB-C-DBatt_real.jpg" style='width: 20em' />
 </div>
 
 ### Technical specification
-- Capacity: 10'000mAh at 3.7V
+
+- Capacity: 10Ah at 3.7V
 - Charging: Micro USB 5V at up to 2A
 - Output 2 x USB type A 5V at up to 4A (combined)
 - Charge time: 0-100% takes about 5h and 0-90% about 4h with a 2A power supply
 - Weight: 189g (fully charged)
 
-### DO's
-- If a battery has been subject to moisture and/or the case has been damaged eminently dispose of the battery pack.
+Lithium Ion batteries, like the Duckiebattery, are potentially dangerous and must be handled with care. Here are some do's and don't. Please do not skip this section.
+
+### Handling: DO's
+
+- If a battery has been subject to moisture and/or the case has been damaged eminently, dispose of the battery pack.
 - In case of fire use a CO2 extinguisher.
 - Storage preferably in cool, dry and ventilated area which is subject to little temperature change.
 - Storage at high temperatures should be avoided.
 
 ### DONT's
+
 - Do not connect a charge voltage greater than 5V.
-- Do not ocnnect an external voltage source to the USB output ports.
-- The battery should not be opened, destroyed or incinerated, since they may leak or rupture. They might then release to the environment the ingredients that is contained in the hermetically sealed container.
+- Do not connect an external voltage source to the USB output ports.
+- The battery must not be opened, destroyed or incinerated, since it may leak or rupture, releasing in the environment it's hermetically sealed chemicals.
 - Do not short circuit terminals.
-- Do not crush or puncture the battery or immerse in liquid.
+- Do not crush or puncture the battery, or immerse it in liquid.
 - Do not place the battery near heating equipment, nor expose to direct sunlight for long periods.
 
-### LED description
-The battery has five LEDs used for indicating state of charge and Boot Mode.
+<!--
+### Battery modes
 
-<div figure-id="fig:DB-C-DBatt_1" figure-caption="LED indication">
+The Duckiebattery has several operation modes, the most relevant of which are described below.
+-->
+
+### LED description
+The battery has five LEDs on the top, used for indicating state of charge.
+
+<div figure-id="fig:DB-C-DBatt_1" figure-caption="LEDs indicate the state of charge of the Duckiebattery.">
      <img src="DB-C-DBatt_1.png" style='width: 25em' />
 </div>
 
-### Wake up battery
-Wake up the battery (enter Idle Mode) by clicking once on the button. The state of charge LEDs will stay on for 10 seconds.
+Note: To see the battery state of charge, click _once_ on the button. The state of charge LEDs will stay on for 10 seconds and the battery set in `idle` state, " waking up" the battery.
 
-<div figure-id="fig:DB-C-DBatt_2" figure-caption="Starting the battery">
+<div figure-id="fig:DB-C-DBatt_2" figure-caption="Wake up the battery by pressing the button once.">
      <img src="DB-C-DBatt_2.png" style='width: 30em' />
 </div>
 
 ### Charge the battery
-Make sure the battery is in Idle Mode before connecting the charger. The LEDs will be flashing with 1Hz.
+After setting the battery in `idle` mode, we can charge it by connecting the charger. The LEDs will be flashing at 1Hz, showing the battery is receiving charge.
 
-<div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging">
-     <img src="DB-C-DBatt_3.png" style='width: 25em' />
+<div figure-id="fig:DB-C-DBatt_3" figure-caption="Charging the Duckiebattery.">
+     <img src="DB-C-DBatt_3.png" style='width: 20em' />
 </div>
 
 ### Battery protection mode
-The battery is equipped with dedicated hardware to protect its cell from low voltage discharge. This means at a certain voltage level the microcontroller together with all other active components inside the battery will be turned OFF except for the charger. In the battery protection mode the charger will "trickle" charge the battery cell until it has reached a certain safe voltage level where we will again turn on the microcontroller and LEDs. This means that for a period of up to 30 minutes the battery might not indicate a state of charge or that it is actually being charged.
+
+The battery is equipped with safety features to prevent damage to others and itself. In particular, it has dedicated hardware to protect its cell from low voltage discharge.
+
+When a certain low cell voltage level is detected, the battery micro-controller, together with all other active components will be turned off, except the charger. When a Duckiebattery enters protection mode, it will look unresponsive.
+
+Nonetheless, the charger will "trickle" charge the battery cell until it has reached a safe voltage level, exiting the battery protection mode.
+
+The battery protection mode can last up to 30 minutes, during which the battery might not indicate a state of charge nor that it is actually being charged. This does not mean the battery is dead, just "hibernating".
+
+### USB outputs
+
+The battery have two separate 5V 2A USB type A output, namely USB OUT-1 (a.k.a. the muscles) and USB OUT-2 (a.k.a. the brains).
+
+<div figure-id="fig:DB-C-DBatt_4" figure-caption="Duckiebattery outputs behave differently.">
+     <img src="duckiebattery-outputs.png" style='width: 25em' />
+</div>
+
+- USB OUT-1: Connect this output to a non sensitive power load, i.e., motor or LEDs. This output will experience short power drops when plugging and unplugging the charger cable.    
+
+- USB OUT-2: this is an 5V 2A USB output, uninterrupted by the charging process or the status of USB OUT-1. This port should be connected to the computing unit (i.e., NVIDIA Jetson Nano or Raspberry Pi) to allow the unit not to restart when plugging or unplugging the charger of the battery.
+
+### Troubleshooting
+The most common fault is not related to the battery pack itself but the connection between the pack and the charger and/or the load.
+
+Note: Always make sure the USB cable is not damaged and of good quality. Do not use a cable longer then 30cm. A faulty cable can cause excessive voltage drops between the battery pack and load, leading to low voltage issues.
+
+<!--
+The internal wires should be of at least 0.14 sqmm (or 26AWG).
+-->
+
+Symptom: My battery does not charge.
+
+Resolution: There can be several reasons why a charge is not being accepted. Below are the most common issue.
+
+- The input voltage is too low or too high. Make sure you are apply 5V via the micro USB connector
+
+- The battery is in battery protection mode and does not look like it's charging, but it is. Come back in >30 minutes and press the button once to enter `idle` mode.
+
+- The battery is in a fault state. This can be caused by over temperature on the battery cell and/or its internal PCB. Leave the battery to cool down for 1h then attempt to charge it again.
+
+Symptom: One or both USB output are not working
+
+Resolution: There can be several reasons why the USB output is not working. Below are the most common issue.
+
+- The battery is not on `idle` mode. Press the battery button once.
+
+- The battery is in battery protection mode. Remove all loads, put in charge and wait >30mins to have the battery exit protection mode. Then enter wake up the battery by pressing the button _once_.
+
+- The USB output is in over current/temperature mode. Disconnect all loads, enter `idle` mode and let the battery rest for 30 minutes.
+
+- A external voltage was applied to the USB (output) port(s). This is a big no no (refer to DO's and DONT's above). Disconnect all loads and enter `idle` mode.
 
 ## The Duckie-power-bank {#db-opmanual-dtbattery-v1}
 
