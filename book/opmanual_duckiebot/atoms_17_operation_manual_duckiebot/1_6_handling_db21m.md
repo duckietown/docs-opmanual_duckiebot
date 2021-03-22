@@ -12,7 +12,7 @@ Result: Knowledge on standard protocols to turn on, turn off, charge, and update
 
 ## Duckiebot `DB21` handling tutorial video {#tutorial-handling-db21-video}
 
-<div figure-id="fig:howto-handle-db21">
+<div figure-id="fig:howto-handle-db21" figure-caption="Duckiebattery power on, shutdown and charging protocols.">
     <dtvideo src="vimeo:527038785"/>
 </div>
 
@@ -57,7 +57,7 @@ To update the software running on the micro-controller in the Duckiebattery, or 
 - Watch this tutorial video:
 
 
-<div figure-id="fig:howto-battery-update-db21" figure-caption=" ">
+<div figure-id="fig:howto-battery-update-db21" figure-caption="Duckiebattery software upgrade tutorial.">
     <dtvideo src="vimeo:526718185"/>
 </div>
 
@@ -65,7 +65,7 @@ To update the software running on the micro-controller in the Duckiebattery, or 
 - Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list.
 
 
-- Open a terminal on the laptop and run `dts duckiebot battery upgrade ![hostname]`, where `![hostname]` is the name of the Duckiebot to which the battery is plugged in. 
+- Open a terminal on the laptop and run `dts duckiebot battery upgrade ![hostname]`, where `![hostname]` is the name of the Duckiebot to which the battery is plugged in.
 
 
 If a Duckiebattery is detected, the prompt will show the currently installed version of the software as well as the latest one available.
