@@ -47,18 +47,14 @@ Use the command
 
 and follow the prompt.
 
-Then the following command should work:
+Verify your token was successfully set by running the shell command,
 
-    laptop $ dts challenges info
+    laptop $ dts tok status
 
-and give a similar output to:
+You should see a message like the following,
 
-    You are succesfully authenticated.
+    dts :  Correctly identified as uid = ***
 
-       name: ![Your name]
-      login: ![username]
-
-        uid: ![user ID]
 
 ## Troubleshooting
 
@@ -75,4 +71,4 @@ You have to completely reinstall `dts` and its commands. Do that by:
 
 ### Github {#dt-account-github}
 
-You will find it useful to have an acount on Github if you don't have one already. Get one [here](https://github.com/join).
+You will find it useful to have an acount on Github if you don't have one already. You can get one [here](https://github.com/join).

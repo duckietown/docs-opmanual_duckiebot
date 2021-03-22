@@ -1,10 +1,8 @@
 # Operation - Make it move {#rc-control status=ready}
 
-This page is for Duckiebots in `DB18` configuration and above (including Jetson Nano configurations).
-
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` or above configuration.
+Requires: A Duckiebot in `DB18` or later configurations (including `DB21M`).
 
 Requires: Laptop configured according to [](#laptop-setup).
 
@@ -14,27 +12,41 @@ Results: You can make your Duckiebot move.
 
 </div>
 
+This section describes how to make your Duckiebot move.
+
 <!--Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).-->
+
+<!--
 
 ## Option 0 - With a joystick
 
 Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and you should be able to use it right away
 
-## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
+-->
 
-If you would like to move your robot using your laptop, you can run:
+## Keyboard control {#make-it-move_shell status=ready}
 
-    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME]
+The easiest way to move a Duckiebot is by keyboard control. This video shows how to drive a Duckiebot using the keyboard, through the Duckietown Shell.
 
-which, after startup should open the interface window that looks like:
+<div figure-id="fig:howto-virtual" figure-caption="Duckiebot keyboard control.">
+<dtvideo src="vimeo:526584868"/>
+</div>
 
-Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
+### Duckietown Shell
+
+To move your Duckiebot using your computer's keyboard open a terminal and run:
+
+    $ dts duckiebot keyboard_control ![ROBOT_NAME]
+
+which, after startup, will open an arrows interface window:
 
 <figure>
     <figcaption>The keyboard control graphical user interface</figcaption>
     <img style='width:8em' src="keyboard_gui.png"/>
 </figure>
+
+Note: input Duckiebot hostname, do not include `.local` part.
 
 The following keys control the Duckiebot:
 
@@ -55,19 +67,15 @@ The following keys control the Duckiebot:
 
 Warning: This does not currently work on Mac OSX.
 
-Symptom: You receive an error about `X Error of failed request:  GLXBadContext ...`
+### The no-window way with Duckietown shell (For Mac Users)
 
-Resolution: Debugging NVIDIA drivers can be tricky. One thing that has worked is to install `libnvidia-gl-430:i386` on your laptop (with `sudo apt`) and then restart your laptop and retry. The other option is to forego this GUI and try the no-window way or the dashboard (see below).
+For some reason messages published on Mac inside the container don't make it all the way to the robot.
 
-### The no-window way with duckietown shell (For Mac Users)
-
-There is some weird reason that messages published on Mac inside the container don't make it all the way to the robot.
-
-For those that don't want or can't do the above where a window pops up, do the following (which will run directly on the robot):
+When the popup arrow window is not responsive, running the stack directly on the Duckiebot might help:
 
     laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
-## Option 2: Using the dashboard {#setup-ros-websocket-image status=draft}
+## Option 2: Using the Dashboard {#setup-ros-websocket-image status=draft}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
@@ -111,9 +119,10 @@ You can also use the menu button of each block to resize them.
 
 Symptom: Duckiebot goes backwards, even though I command it to go forward.
 
-Resolution: Revert the polarities (plus and minus cables) that go to the motor driver for both motors.
+Resolution: If you have a `DB17` or `DB18`, revert the polarities (plus and minus cables) that go to the motor driver for both motors.
 
-Symptom: I can `ssh` into my Duckiebot and run the joystick demo but the joystick does not move the wheels.
+
+Symptom: I plugged in a gamepad, I found and run the unduckumented joystick demo but the joystick does not move the wheels.
 
 Resolution: Check that the red indicator on the joystick stopped blinking.
 
@@ -161,22 +170,17 @@ Resolution: The controller might be connected to another Duckiebot nearby. Turn 
 
 Symptom: The robot doesn't move
 
-Resolution: Check that the `duckiebot-interface` is running
+Resolution: Check that the `duckiebot-interface` container is running
 
-Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
 
 You can also determine this by running:
 
-    $ docker -H ![DUCKIEBOT_NAME].local ps
+    $ docker -H ![ROBOT_NAME].local ps
 
 and look at the output to find the Duckiebot interface container and verify that it is running.
 
 Resolution: One of the base images is out of date
+Update your Duckiebot with the command
 
-Pull the base images on the Duckiebot:
-
-    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:daffy-arm32v7
-
-and on the laptop:
-
-    $ docker pull duckietown/dt-core:daffy-amd64
+    laptop $ dts duckiebot update ![ROBOT_NAME]
