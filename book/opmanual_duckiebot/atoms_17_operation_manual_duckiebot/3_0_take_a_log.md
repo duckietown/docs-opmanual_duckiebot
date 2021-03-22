@@ -46,7 +46,15 @@ or `demo_make_log_full_docker` as the case may be. You can also do this through 
 
 ### Download through browser (Recommended)
 
-Using the dashboard file tab, you can access files on your duckiebot. For more information about the files tab, see [here](#dashboard-tutorial-files). Go to `/logs` and you should see all your logs there. Simply click on the log you want to transfer to your computer and it will download through your browser.
+Using the dashboard file tab, you can access files on your Duckiebot.
+
+<!--
+
+For more information about the files tab, see [here](#dashboard-tutorial-files).
+
+-->
+
+Go to `/logs` and you should see all your logs there. Simply click on the log you want to transfer to your computer and it will download through your browser.
 
 If for some reason you are having trouble accesing dashboard, you can directly specify the webpage at `http://![hostname].local:8082/logs/`.
 
