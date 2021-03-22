@@ -634,7 +634,7 @@ Then, tighten the cover using two nylon M2.5 nuts (`N2`).
 In this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
 
 <div figure-id="fig:db21-how2charge">
-     <img src="db21-how2charge.png" style='width: 40em' />
+     <img src="db21-how2charge.png" style='width: 30em' />
 </div>
 
 
@@ -644,21 +644,21 @@ Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 Take the black USB cable that you have connected in step 29 and connect it to the micro USB connector on the `HUT` as shown.
 
 <div figure-id="fig:db21-step_65">
-     <img src="db21-step_65.jpg" style='width: 40em' />
+     <img src="db21-step_65.png" style='width: 40em' />
 </div>
 
 ### Step 66
 Similarly, connect the other USB cable (routed through the same hole) to the `HUT`.
 
 <div figure-id="fig:db21-step_66">
-     <img src="db21-step_66.jpg" style='width: 40em' />
+     <img src="db21-step_66.png" style='width: 40em' />
 </div>
 
 ### Step 67
 Finally, connect the last cable to the `HUT`.
 
 <div figure-id="fig:db21-step_67">
-     <img src="db21-step_67.jpg" style='width: 40em' />
+     <img src="db21-step_67.png" style='width: 40em' />
 </div>
 
 ### Step 68
