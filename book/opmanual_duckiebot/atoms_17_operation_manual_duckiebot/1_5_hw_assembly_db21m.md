@@ -752,7 +752,7 @@ Symptom: I don't understand what's going on with the connections
 Resolution: This simplified block diagram of data and electrical connections of the `DB21` might help:
 
 <div figure-id="fig:db21-block-diagram" figure-caption="`DB21` block diagram of electrical and data connections.">
-     <img src="db21-shcematics-block-diagram.png" style='width: 20em'/>
+     <img src="db21-shcematics-block-diagram.png" style='width: 30em'/>
 </div>
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
