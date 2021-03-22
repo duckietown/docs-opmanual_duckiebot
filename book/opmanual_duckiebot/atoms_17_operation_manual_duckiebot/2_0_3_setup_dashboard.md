@@ -1,7 +1,5 @@
 # Setup - Dashboard {#duckiebot-dashboard-setup status=ready}
 
-This section shows how to install the Duckietown Dashboard on the Duckiebot.
-
 <div class='requirements' markdown='1'>
 
 Requires: Laptop configured, according to [](#laptop-setup).
@@ -9,6 +7,10 @@ Requires: Laptop configured, according to [](#laptop-setup).
 Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
 </div>
+
+
+This section shows how to install the Duckietown Dashboard on the Duckiebot.
+
 
 ## The \compose\ platform {#compose-platform}
 
@@ -50,9 +52,9 @@ retrieve yours by visiting the page:
 
 > [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
 
-You should notice that the first two steps already appear to be completed. 
+You should notice that the first two steps already appear to be completed.
 Do not worry about creating an administrator account (Step 2) for now,
-a new aministrator account will be automatically created the first time we login 
+a new aministrator account will be automatically created the first time we login
 using a Duckietown token.
 
 #### Step 3
@@ -95,7 +97,7 @@ the first user to login will be automatically assigned the role of
 administrator. If you have multiple tokens, make sure to keep note of
 which one you used for the first login.
 
-If you have not retrieved your personal Duckietown Token as described in [](#dt-account) yet, 
+If you have not retrieved your personal Duckietown Token as described in [](#dt-account) yet,
 it is now time to do so.
 Once you have your personal Duckietown token, go ahead and click on
 the button **Sign in with Duckietown**.
