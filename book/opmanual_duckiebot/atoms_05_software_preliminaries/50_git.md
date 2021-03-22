@@ -1,5 +1,7 @@
 # Version Control with Git {#preliminaries-git status=ready}
 
+<dtvideo src="vimeo:526923344"/>
+
 ## Background reading
 
 See: [Github tutorial](https://guides.github.com/activities/hello-world/)
@@ -16,7 +18,7 @@ Additional utilities for `git` are installed using:
 
     $ sudo apt install git-extras
 
-This include the `git-ignore` utility, which comes in handy when you have files that you don't 
+This include the `git-ignore` utility, which comes in handy when you have files that you don't
 actually want to push to the remote branch (such as temporary files).
 
 
@@ -32,18 +34,18 @@ Use these commands to tell Git who you are:
 
 ### Fork a repository
 
-To fork (creating a copy of a repository, that does not belong to you), you simply have to go 
+To fork (creating a copy of a repository, that does not belong to you), you simply have to go
 to the repository's webpage dashboard and click fork on the upper right corner.
 
 ### Clone a repository
 
-To clone a repository, copy either the HTTPS or SSH link from the repository's webpage. 
-The following command will download the git repository in a new directory on the local computer 
+To clone a repository, copy either the HTTPS or SSH link from the repository's webpage.
+The following command will download the git repository in a new directory on the local computer
 (starting from the current working directory).
 
     $ git clone git@github.com:USERNAME/REPOSITORY
 
-If you have SSH setup properly, you can directly download it. 
+If you have SSH setup properly, you can directly download it.
 If you are using the HTTPS then github will ask for your credentials.
 
 ### Move between branches
@@ -65,12 +67,12 @@ To see which branch you are working on you can either use both of these commands
     $ git branch
     $ git status
 
-The latter provides more information on which files you might have changed, which are staged 
+The latter provides more information on which files you might have changed, which are staged
 for a new commit or that you are up-to-date (everything is ok).
 
 ### Commit and Push changes
 
-After you edited some files, you want to push your changes from the local to the remote location. 
+After you edited some files, you want to push your changes from the local to the remote location.
 Check the changes that need to be committed/pushed with the command,
 
     $ git status
@@ -79,7 +81,7 @@ Use the following command to mark a `![file]` as ready to be committed,
 
     $ git add ![file]
 
-Once you marked all the files you want to include in the next commit, complete the commit with 
+Once you marked all the files you want to include in the next commit, complete the commit with
 a commit message to let collaborators know what you have changed,
 
     $ git commit -m "![commit-message]"
