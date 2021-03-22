@@ -18,29 +18,31 @@ problems might be harder to understand if you rely blindly on the shortcuts.
 
 Instead of using
 
-    $ ssh ![username]@![robot name].local
+    $ ssh duckie@![ROBOT].local
 
 You can set up SSH so that you can use:
 
-    $ ssh my-robot
+    $ ssh ![ROBOT]
 
-During your init_sd_card process described later in the book, the command will automagically setup `~/.ssh/config` . If you are having trouble to use it, you can follow the below instructions.
+During your init_sd_card process described later in the book, 
+the command will automatically setup `~/.ssh/config` . 
+If you are having trouble using it, you can follow the instructions
+below.
 
-To manually create an SSH alias, create a host section in `~/.ssh/config` on your laptop with the following
-contents:
+To manually create an SSH alias, create a host section in 
+`~/.ssh/config` on your laptop with the following contents:
 
-    Host my-robot
-        User ![username]
-        Hostname ![robot name].local
-
-Here, you can choose any other string in place of "`my-robot`".
+    Host ![ROBOT]
+        User duckie
+        Hostname ![ROBOT].local
 
 
-Note that you **cannot** do
+Note that this does **not** let you do
 
-    $ ping my-robot
+    $ ping ![ROBOT]
 
 You haven't created another hostname, just an alias for SSH.
 
 However, you can use the alias with all the tools that rely
 on SSH, including `rsync` and `scp`.
+

@@ -3,5 +3,5 @@
 
 
 * [](#preliminaries): What you need to know before you start. 
-* [](#building-duckiebot-c0): Setting up your Duckeibot 
+* [](#building-duckiebot-c0): Setting up your Duckiebot 
 * [](#demos): Running the demos. 
