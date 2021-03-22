@@ -4,7 +4,7 @@
 
 Requires: An assembled `DB21M`. Find the assembly instructions [here](#assembling-duckiebot-db21m).
 
-Requires: An initialized `DB21M` with image version at least 1.2.2. Find the assembly instructions [here](#assembling-duckiebot-db21m).
+Requires: An initialized `DB21M` with **image version at least 1.2.2**. Find the initialization instructions [here](#setup-duckiebot). [Check your current firmware version](#duckiebot-dashboard-use) before proceeding.
 
 Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21M`.
 
