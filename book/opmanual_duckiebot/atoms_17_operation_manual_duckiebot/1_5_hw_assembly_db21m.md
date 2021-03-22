@@ -627,7 +627,7 @@ Then, tighten the cover using two nylon M2.5 nuts (`N2`).
 In this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
 
 <div figure-id="fig:db21-how2charge">
-     <img src="db21-how2charge.png" style='width: 40em' />
+     <img src="db21-how2charge.png" style='width: 30em' />
 </div>
 
 
