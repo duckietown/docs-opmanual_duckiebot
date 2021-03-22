@@ -1,6 +1,9 @@
 # Docker basics {#preliminaries-docker-basics status=ready}
 
-<dtvideo src="vimeo:527006910"/>
+
+<div figure-id="fig:tutorial-docker-video" figure-caption="An introduction to containerization.">
+    <dtvideo src="vimeo:527006910"/>
+</div>
 
 ## What is Docker? {#basic-docker-what-is}
 

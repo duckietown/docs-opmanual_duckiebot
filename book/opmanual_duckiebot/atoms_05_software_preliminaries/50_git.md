@@ -1,6 +1,10 @@
 # Version Control with Git {#preliminaries-git status=ready}
 
-<dtvideo src="vimeo:526923344"/>
+<div figure-id="fig:tutorial-git-video" figure-caption="An introduction to version control with Git.">
+    <dtvideo src="vimeo:526923344"/>
+</div>
+
+
 
 ## Background reading
 
