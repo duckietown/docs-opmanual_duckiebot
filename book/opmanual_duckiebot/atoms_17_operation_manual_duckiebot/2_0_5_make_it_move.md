@@ -12,6 +12,8 @@ Results: You can make your Duckiebot move.
 
 </div>
 
+This section describes how to make your Duckiebot move.
+
 <!--Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).-->
 
@@ -23,24 +25,21 @@ Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you
 
 -->
 
-## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
+## Keyboard control {#make-it-move_shell status=ready}
 
-### Virtual Joystick - Video
-
-This video shows how to drive a Duckiebot using the Duckietown Shell.
+The easiest way to move a Duckiebot is by keyboard control. This video shows how to drive a Duckiebot using the keyboard, through the Duckietown Shell.
 
 <div figure-id="fig:howto-virtual" figure-caption="Duckiebot keyboard control.">
 <dtvideo src="vimeo:526584868"/>
 </div>
 
+### Duckietown Shell
 
-### Virtual Joystick - Step-by-Step Instructions
-
-To move your robot using your laptop, you can run:
+To move your Duckiebot using your computer's keyboard open a terminal and run:
 
     $ dts duckiebot keyboard_control ![ROBOT_NAME]
 
-which, after startup, will open an interface window:
+which, after startup, will open an arrows interface window:
 
 <figure>
     <figcaption>The keyboard control graphical user interface</figcaption>
@@ -68,19 +67,15 @@ The following keys control the Duckiebot:
 
 Warning: This does not currently work on Mac OSX.
 
-Symptom: You receive an error about `X Error of failed request:  GLXBadContext ...`
+### The no-window way with Duckietown shell (For Mac Users)
 
-Resolution: Debugging NVIDIA drivers can be tricky. One thing that has worked is to install `libnvidia-gl-430:i386` on your laptop (with `sudo apt`) and then restart your laptop and retry. The other option is to forego this GUI and try the no-window way or the dashboard (see below).
+For some reason messages published on Mac inside the container don't make it all the way to the robot.
 
-### The no-window way with duckietown shell (For Mac Users)
-
-There is some weird reason that messages published on Mac inside the container don't make it all the way to the robot.
-
-For those that don't want or can't do the above where a window pops up, do the following (which will run directly on the robot):
+When the popup arrow window is not responsive, running the stack directly on the Duckiebot might help:
 
     laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
-## Option 2: Using the dashboard {#setup-ros-websocket-image status=draft}
+## Option 2: Using the Dashboard {#setup-ros-websocket-image status=draft}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
@@ -126,7 +121,8 @@ Symptom: Duckiebot goes backwards, even though I command it to go forward.
 
 Resolution: If you have a `DB17` or `DB18`, revert the polarities (plus and minus cables) that go to the motor driver for both motors.
 
-Symptom: I can run the joystick demo but the joystick does not move the wheels.
+
+Symptom: I plugged in a gamepad, I found and run the unduckumented joystick demo but the joystick does not move the wheels.
 
 Resolution: Check that the red indicator on the joystick stopped blinking.
 
@@ -174,7 +170,7 @@ Resolution: The controller might be connected to another Duckiebot nearby. Turn 
 
 Symptom: The robot doesn't move
 
-Resolution: Check that the `duckiebot-interface` is running
+Resolution: Check that the `duckiebot-interface` container is running
 
 Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
 
