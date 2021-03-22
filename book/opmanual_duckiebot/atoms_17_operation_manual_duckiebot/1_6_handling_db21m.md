@@ -20,7 +20,7 @@ Result: Knowledge on standard protocols to turn on, turn off, charge, and update
 
 To charge your Duckiebot, follow these steps:
 
-- Plug in the charging cable to the spare microUSB port on the `HUT`.
+- Plug in the charging cable to the free microUSB port on the `HUT`.
 
 Note: to minimize mechanical stress on the `HUT` we recommend plugging in the charging cable once, and leaving the USB port end free to plug and unplug from charging instead. You can arrange the cable under the `DB21` top plate during operations for cable management.
 
