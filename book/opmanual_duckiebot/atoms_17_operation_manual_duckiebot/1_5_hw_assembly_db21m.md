@@ -637,21 +637,21 @@ Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 Take the black USB cable that you have connected in step 29 and connect it to the micro USB connector on the `HUT` as shown.
 
 <div figure-id="fig:db21-step_65">
-     <img src="db21-step_65.jpg" style='width: 40em' />
+     <img src="db21-step_65.png" style='width: 40em' />
 </div>
 
 ### Step 66
 Similarly, connect the other USB cable (routed through the same hole) to the `HUT`.
 
 <div figure-id="fig:db21-step_66">
-     <img src="db21-step_66.jpg" style='width: 40em' />
+     <img src="db21-step_66.png" style='width: 40em' />
 </div>
 
 ### Step 67
 Finally, connect the last cable to the `HUT`.
 
 <div figure-id="fig:db21-step_67">
-     <img src="db21-step_67.jpg" style='width: 40em' />
+     <img src="db21-step_67.png" style='width: 40em' />
 </div>
 
 ### Step 68
