@@ -1,10 +1,8 @@
 # Operation - Make it move {#rc-control status=ready}
 
-This page is for Duckiebots in `DB18` configuration and above (including Jetson Nano configurations).
-
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` or above configuration.
+Requires: A Duckiebot in `DB18` or later configurations (including `DB21M`).
 
 Requires: Laptop configured according to [](#laptop-setup).
 
@@ -17,34 +15,39 @@ Results: You can make your Duckiebot move.
 <!--Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).-->
 
+<!--
+
 ## Option 0 - With a joystick
 
 Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and you should be able to use it right away
 
+-->
 
 ## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
 
 ### Virtual Joystick - Video
 
-The following video shows how to drive a Duckiebot using the Duckietown Shell.
+This video shows how to drive a Duckiebot using the Duckietown Shell.
 
+<div figure-id="fig:howto-virtual" figure-caption="Duckiebot keyboard control.">
 <dtvideo src="vimeo:526584868"/>
+</div>
 
 
 ### Virtual Joystick - Step-by-Step Instructions
 
-If you would like to move your robot using your laptop, you can run:
+To move your robot using your laptop, you can run:
 
     $ dts duckiebot keyboard_control ![ROBOT_NAME]
 
-which, after startup should open the interface window that looks like:
-
-Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
+which, after startup, will open an interface window:
 
 <figure>
     <figcaption>The keyboard control graphical user interface</figcaption>
     <img style='width:8em' src="keyboard_gui.png"/>
 </figure>
+
+Note: input Duckiebot hostname, do not include `.local` part.
 
 The following keys control the Duckiebot:
 

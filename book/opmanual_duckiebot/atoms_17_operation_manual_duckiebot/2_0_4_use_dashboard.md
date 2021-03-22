@@ -1,7 +1,5 @@
 # Operation - Use the Dashboard {#duckiebot-dashboard-use status=ready}
 
-This section shows how to use the Duckietown Dashboard on the Duckiebot.
-
 <div class='requirements' markdown='1'>
 
 Requires: Laptop configured, according to [](#laptop-setup).
@@ -11,6 +9,8 @@ Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot
 Requires: You have completed the Dashboard setup as documented in [](#duckiebot-dashboard-setup).
 
 </div>
+
+This section shows how to use the Duckietown Dashboard on the Duckiebot.
 
 ## What is in the Dashboard? {#dashboard-overview status=ready}
 
