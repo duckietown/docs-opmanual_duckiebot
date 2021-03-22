@@ -60,12 +60,12 @@ To update the software running on the micro-controller in the Duckiebattery, or 
 
 - Watch this tutorial video:
 
-<div figure-id="fig:howto-battery-update-db21">
+<div figure-id="fig:howto-battery-update-db21" figure-caption=" ">
     <dtvideo src="vimeo:526718185"/>
 </div>
 
 
-- Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and verifying your Duckiebot is on on the list.
+- Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list.
 
 - Open a terminal on the laptop and run:
 
