@@ -51,9 +51,10 @@ provide a path to a file, for example `/home/user/duckiebot_sd_card.img`. The pr
 proceed by creating a disk image on that file that you can later transfer to an SD card
 using any standard flashing tool, e.g., etcher, dd.
 
-Plug the SD card in your computer using an SD card reader. If your computer does not have one, you will find a USB to microSD card adapter in your Duckiebot kit.
-
 Note: If you are using a microSD to SD card adapter, make sure the adapter does not have the write protection enabled. Check [this link][sandisk_protection] to learn more.
+
+
+Plug the SD card in your computer using an SD card reader. If your computer does not have one, you will find a USB to microSD card adapter in your Duckiebot kit.
 
 [sandisk_protection]: https://kb.sandisk.com/app/answers/detail/a_id/1102/~/sd%2Fsdhc%2Fsdxc-memory-card-is-write-protected-or-locked
 
