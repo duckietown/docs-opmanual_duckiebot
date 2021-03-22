@@ -17,8 +17,9 @@ Requires: You have completed the Dashboard setup as documented in [](#duckiebot-
 The following video provides a brief tour of the most important features
 of the Duckietown Dashboard on your Duckiebot.
 
+<div figure-id="fig:howto-dashboard-use" figure-caption="Dashboard operation tutorial.">
 <dtvideo src="vimeo:527022343"/>
-
+</div>
 
 To see all the available components within the dashboard, you will need to first login to the dashboard. Inside the dashboard, you will see a navigation panel on your left hand side. There are 7 subpages of dashboard. They are:
 
@@ -64,7 +65,7 @@ This is the Mission Control tab.
   <img src="dashboard_mission_control_auto.png" style='width: 35em'/>
 </div>
 
-In this tab you can see what the Duckiebot sees and you can see lateral and angular speed of your robot, and a plot of left and right motor speed. 
+In this tab you can see what the Duckiebot sees and you can see lateral and angular speed of your robot, and a plot of left and right motor speed.
 This is the tab that lets you monitor and control your Duckiebot. The top of the page should be similar to the following image,
 
 Note: If you do not see the camera view, make sure you are accessing the dashboard using `https://ROBOT_HOSTNAME.local/` instead of directly accessing the dashboard using robot IP address.
