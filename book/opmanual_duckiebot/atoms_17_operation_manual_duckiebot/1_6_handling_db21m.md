@@ -36,11 +36,7 @@ The proper shutdown protocol for a `DB21` requires having Duckiebattery software
 
 To power off a powered on `DB21`, follow these steps:
 
-- Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running:
-
-    laptop $ dts fleet discover
-
-A green `Ready` message will indicate the Duckiebot has completed the booting process.  
+- Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate the Duckiebot has completed the booting process.  
 
 - Press the button on the top plate of the Duckiebot, near the screen, and keep it pressed for roughly 5 seconds before releasing it. The shutdown sequence will initiate with the blinking of the power button and a "Shutting down" message appearing on the screen.
 
@@ -60,6 +56,7 @@ To update the software running on the micro-controller in the Duckiebattery, or 
 
 - Watch this tutorial video:
 
+
 <div figure-id="fig:howto-battery-update-db21" figure-caption=" ">
     <dtvideo src="vimeo:526718185"/>
 </div>
@@ -67,13 +64,14 @@ To update the software running on the micro-controller in the Duckiebattery, or 
 
 - Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list.
 
-- Open a terminal on the laptop and run:
 
-    laptop $ dts duckiebot battery upgrade ![hostname]
+- Open a terminal on the laptop and run `dts duckiebot battery upgrade ![hostname]`, where `![hostname]` is the name of the Duckiebot to which the battery is plugged in. 
+
 
 If a Duckiebattery is detected, the prompt will show the currently installed version of the software as well as the latest one available.
 
 Note: if you wish to just check the software version of the code, press `n` now and abort the process.
+
 
 - To initiate the battery software upgrade procedure, type `y` and press <kbd>Enter</kbd>.  
 
