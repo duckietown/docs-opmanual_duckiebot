@@ -31,8 +31,9 @@ for further information about \\compose\\.
 
 ### Video Tutorial {#init-dashboard-video}
 
-<dtvideo src="vimeo:526989336"/>
-
+<div figure-id="fig:howto-dashboard-setup" figure-caption="Dashboard setup tutorial.">
+    <dtvideo src="vimeo:526989336"/>
+</div>
 
 ### Step-by-Step Instructions {#init-dashboard-steps}
 
