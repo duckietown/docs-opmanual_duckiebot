@@ -1,5 +1,7 @@
 # Docker basics {#preliminaries-docker-basics status=ready}
 
+<dtvideo src="vimeo:527006910"/>
+
 ## What is Docker? {#basic-docker-what-is}
 
 Docker is used to perform operating-system-level virtualization, something often referred to as "containerization". While Docker is not the only software that does this, it is by far the most popular one.
