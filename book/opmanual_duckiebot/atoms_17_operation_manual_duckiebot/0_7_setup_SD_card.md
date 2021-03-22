@@ -4,17 +4,15 @@ This page is for the `DB18` configuration and above (including Jetson Nano confi
 
 <div class='requirements' markdown="1">
 
-Requires: An SD card of size at least 32 GB.
+Requires: An SD card of size at least 32 GB
 
 Requires: A computer with **Ubuntu**
 
-Requires: At least 20 GB of free space on the computer.
+Requires: At least 20 GB of free space on the computer
 
 Requires: An internet connection
 
 Requires: SD card reader
-
-Requires: A computer with **Ubuntu** (for flashing the SD card), an internet connection, an SD card reader, and 20 GB of free space.
 
 Requires: Duckietown Shell, as configured in [](#laptop-setup-ubuntu-shell).
 
@@ -22,7 +20,9 @@ Requires: Docker, as configured in [](#laptop-setup-ubuntu-docker).
 
 Requires: Duckietown Token, as configured in [](#dt-account).
 
-Results: A correctly configured Duckiebot SD card, ready to be used to give life to your Duckiebot. 
+Requires: 2.5 hours on average (depends on internet connection and sd-card adapter used)
+
+Results: A correctly configured Duckiebot SD card, ready to be used to give life to your Duckiebot.
 
 </div>
 
@@ -68,7 +68,7 @@ where,
                         `watchtower`, `traffic_light`.
     --configuration     The model of your robot. This is associated with
                         `--type` option. E.g. `DB21M`, `DB19`, or `DB18`.
-    
+
 
 Other options are:
 
@@ -101,23 +101,23 @@ Additional options for `init_sd_card` exist. For a full list of the options, run
 
     laptop $ dts init_sd_card --help
 
-After you run the `dts init_sd_card` command, follow the instructions that appear on screen. 
+After you run the `dts init_sd_card` command, follow the instructions that appear on screen.
 
-Part of this procedure includes accepting the Duckietown Software License, Terms and Conditions 
+Part of this procedure includes accepting the Duckietown Software License, Terms and Conditions
 and Privacy Policy, as well as robot configuration-specific licenses due to the presence of third
 party software in the SD card.
 
 The next step is that of choosing among all the devices connected to your computer, which one
-represents the SD card that you want to flash for your Duckiebot. Given the danger of choosing a 
+represents the SD card that you want to flash for your Duckiebot. Given the danger of choosing a
 wrong device (from data loss to OS files corruption), the program will guide you through this step
 by asking the size of the SD card. Devices that do not match the given size will not be shown.
 
 Type in or copy-paste the device name from the list and press <kbd>Enter</kbd>.
 
-At this point, the SD card is being flashed. A verification step follows to make sure that 
+At this point, the SD card is being flashed. A verification step follows to make sure that
 the flashing went well.
 
-On successful end of the procedure, the drives will be automatically ejected and you can just 
+On successful end of the procedure, the drives will be automatically ejected and you can just
 remove the SD card from your laptop.
 
 
@@ -142,7 +142,7 @@ laptop $ dts fleet discover
 
 The command above (`fleet discover`) will show a list of all the Duckiebots
 reachable on your network. Leave this tool open, it will refresh automatically every
-second, so there is no need to manually restart it. 
+second, so there is no need to manually restart it.
 
 You should see your Duckiebot in a few minutes after you inserted your SD card and power on the robot.
 
@@ -152,8 +152,8 @@ The list will look like the following.
      <img src="fleet_discover.jpg" style='width: 34em'/>
 </div>
 
-During the first boot, the robot will automatically reboot several times. 
-Wait for the "Status" column to read "Ready" and turn solid green. 
+During the first boot, the robot will automatically reboot several times.
+Wait for the "Status" column to read "Ready" and turn solid green.
 
 Note: If the command above returns an error about the library `zeroconf` being
 missing, run `pip3 install zeroconf` and retry.
@@ -254,11 +254,11 @@ Then wait 20 seconds.
 Warning: If you disconnect the power before shutting down properly using `shutdown`,
 the system might get corrupted.
 
-If you have a Duckiebot that is powered by the official [DuckieBattery][#db-opmanual-dtbattery-v2], 
-e.g., DB21M, this procedure will shutdown the battery as well. 
+If you have a Duckiebot that is powered by the official [DuckieBattery][#db-opmanual-dtbattery-v2],
+e.g., DB21M, this procedure will shutdown the battery as well.
 This means that you do not need to manually disconnect any component from the battery.
 
-If you DO NOT have a Duckiebot that is powered by the official DuckieBattery, then disconnect 
+If you DO NOT have a Duckiebot that is powered by the official DuckieBattery, then disconnect
 the USB cable from the battery.
 
 Warning: If you disconnect frequently the cable at the computational unit's end, you might damage the port.

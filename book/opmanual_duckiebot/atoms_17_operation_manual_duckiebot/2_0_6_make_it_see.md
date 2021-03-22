@@ -12,20 +12,22 @@ Result: You can see the output of the camera.
 
 </div>
 
+This section describes how to see what your Duckiebot sees.
+
 ## Check the camera hardware
 
-It might be useful to do a quick camera hardware check as documented in [](#howto-camera-db18).
+If you have a `DB18` or `DB19`, it might be useful to do a quick camera hardware check as documented in [](#howto-camera-db18).
 
 ## Viewing an Image Stream on Your Laptop {#view-image-using-rqt-image-view}
 
 The imagery is streaming from your Duckiebot by default on startup.
-To see it, run a base image on your laptop with:
+To see it, open a terminal on your laptop and run:
 
     laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
 Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
 
-The container will start. At the prompt, run:
+This will start a container with access to the ROS messages of the Duckiebot. At the prompt, run:
 
     container $ rqt_image_view
 
@@ -50,7 +52,7 @@ Resolution: Remove the cap of the camera.
 
 Symptom: When I try to do `rqt_image_view`, I don't see the window on my machine.
 
-Resolution: Sometimes window does not successfully spawn on the first try. You can Ctrl+c to terminate the prcess first, and try running that process again.
+Resolution: Sometimes window does not successfully spawn on the first try. You can Ctrl+c to terminate the process first, and try running that process again.
 
 Symptom: `libGL error` when running `dts start_gui_tools`
 
@@ -62,15 +64,15 @@ This could occur on a computer that has two graphics cards: e.g. a discrete NVID
 
 Symptom: I don't see any image
 
-Reolution: use `rostopic hz /![hostname]/camera_node/image/compressed` and see if the image is being published. Typically, the image publish rate should be near 30hz.
+Resolution: use `rostopic hz /![hostname]/camera_node/image/compressed` and see if the image is being published. Typically, the image publish rate should be near 30hz.
 
 See also: For more information about `rostopic`, see [](#using-no-vnc).
 
-Sumptom: My image topic is not being published.
+Symptom: My image topic is not being published.
 
 Resolution: Check that the `duckiebot-interface` is running
 
-Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `duckiebot-interface`, using image `duckietown/dt-duckiebot-interface:daffy-arm32v7`.
+Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `duckiebot-interface`, using image `duckietown/dt-duckiebot-interface:daffy-arm32v7`.
 
 You call also determine this by running:
 

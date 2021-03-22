@@ -1,8 +1,12 @@
 # Assembly - Duckiebot `DB21M` {#assembling-duckiebot-db21 status=ready}
 
+<!--
+
 <div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
      <img src="Duckiebook_Banner.png" style='width: 40em' />
 </div>
+
+-->
 
 <div class='requirements' markdown="1">
 
@@ -18,7 +22,9 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 
 <!--
 -->
-These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your battery over!).
+These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your cables around!).
+
+The troubleshooting section
 
 Overview of all parts in your Duckiebox:
 
@@ -405,7 +411,8 @@ Note: You don't need to tighten the screws completely but the fan must sit tight
 </div>
 
 ### Step 38
-Take the printed circuit board with the Duckietown logo on it (further called `HUT`).
+
+Take the PCB with the Duckietown logo on it (we'll call it the `HUT` from now on. A `DB21M` is equipped with a `HUT` v3.1).  
 
 <div figure-id="fig:HUT_layout">
      <img src="HUT_layout.jpg" style='width: 40em' />
@@ -627,7 +634,7 @@ Then, tighten the cover using two nylon M2.5 nuts (`N2`).
 In this step we will plug the various power cables to the `HUT`. One port will remain free. You can use this port to charge the Duckiebot.
 
 <div figure-id="fig:db21-how2charge">
-     <img src="db21-how2charge.png" style='width: 40em' />
+     <img src="db21-how2charge.png" style='width: 30em' />
 </div>
 
 
@@ -637,21 +644,21 @@ Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 Take the black USB cable that you have connected in step 29 and connect it to the micro USB connector on the `HUT` as shown.
 
 <div figure-id="fig:db21-step_65">
-     <img src="db21-step_65.jpg" style='width: 40em' />
+     <img src="db21-step_65.png" style='width: 40em' />
 </div>
 
 ### Step 66
 Similarly, connect the other USB cable (routed through the same hole) to the `HUT`.
 
 <div figure-id="fig:db21-step_66">
-     <img src="db21-step_66.jpg" style='width: 40em' />
+     <img src="db21-step_66.png" style='width: 40em' />
 </div>
 
 ### Step 67
 Finally, connect the last cable to the `HUT`.
 
 <div figure-id="fig:db21-step_67">
-     <img src="db21-step_67.jpg" style='width: 40em' />
+     <img src="db21-step_67.png" style='width: 40em' />
 </div>
 
 ### Step 68
@@ -740,6 +747,14 @@ Resolution: The customized cables may undergo some manufacturing tolerances. If 
      <img src="db21-step_65-67.jpg" style='width: 40em' />
 </div>
 
+Symptom: I don't understand what's going on with the connections
+
+Resolution: This simplified block diagram of data and electrical connections of the `DB21` might help:
+
+<div figure-id="fig:db21-block-diagram" figure-caption="`DB21` block diagram of electrical and data connections.">
+     <img src="db21-shcematics-block-diagram.png" style='width: 30em'/>
+</div>
+
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
 
-Resolution: You forgot to put a duckie on top of your Duckiebot.
+Resolution: You forgot to put a duckie on top of your Duckiebot!

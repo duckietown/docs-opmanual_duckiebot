@@ -108,8 +108,12 @@ This will automatically save the calibration results on your Duckiebot:
 ```
 
 You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`.
+
+<!--
+
 Read more [here](#dashboard-tutorial-files) about the `File Manager`.
 
+-->
 
 ### Keeping your calibration valid
 
@@ -154,7 +158,12 @@ This will automatically save the calibration results on your Duckiebot:
 
 
 You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`.
+
+<!--
+
 Read more [here](#dashboard-tutorial-files) about the `File Manager`.
+
+-->
 
 #### Troubleshooting
 
