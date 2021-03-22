@@ -125,11 +125,9 @@ remove the SD card from your laptop.
 
 Now insert the SD card as shown in the video below into your robot and push the button on the battery to power up the Duckiebot.
 
+<dtvideo src="vimeo:527364179"/>
+
 Warning: Unless you are using a Duckiebattery (available in the `DB21M` Duckiebot), don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
-
-
-TODO: (afdaniele) add Vimeo ID of the How To Insert SD card video
-
 
 
 ## Monitoring the First Boot {#monitor-first-boot}
