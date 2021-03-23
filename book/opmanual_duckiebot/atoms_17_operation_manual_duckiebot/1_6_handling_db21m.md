@@ -52,10 +52,9 @@ After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs wil
 
 ## How to update a Duckiebattery {#howto-db21m-battery-update status=ready}
 
-To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow the following procedure.
+To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow this procedure.
 
 - Watch this tutorial video:
-
 
 <div figure-id="fig:howto-battery-update-db21m" figure-caption="Duckiebattery software upgrade tutorial.">
     <dtvideo src="vimeo:526718185"/>
