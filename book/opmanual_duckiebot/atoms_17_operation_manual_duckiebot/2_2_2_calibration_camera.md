@@ -49,7 +49,7 @@ The procedure is basically a wrapper around the [ROS camera calibration tool](ht
 
 Next you can launch the intrinsic calibration program with:
 
-    laptop $ dts duckiebot calibrate_intrinsics ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot calibrate_intrinsics ![hostname]
 
 You should see a display screen open on the laptop ([](#fig:intrinsic_callibration_pre)).
 
@@ -104,10 +104,10 @@ If you are satisfied with the calibration, you can save the results by pressing 
 This will automatically save the calibration results on your Duckiebot:
 
 ```
-/data/config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml
+/data/config/calibrations/camera_intrinsic/![hostname].yaml
 ```
 
-You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_intrinsic/![DUCKIEBOT_NAME].yaml`.
+You can view or download the calibration file using the Dashboard running at `http://![hostname].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_intrinsic/![hostname].yaml`.
 
 <!--
 
@@ -145,7 +145,7 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup2). N
 
 Run:
 
-    laptop $ dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME]
+    laptop $ dts duckiebot calibrate_extrinsics ![hostname]
 
 First the output will instruct you place your robot on the calibration box and press <kbd>Enter</kbd>.
 If all goes well the program will complete.
@@ -153,11 +153,11 @@ If all goes well the program will complete.
 This will automatically save the calibration results on your Duckiebot:
 
 ```
-/data/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml
+/data/config/calibrations/camera_extrinsic/![hostname].yaml
 ```
 
 
-You can view or download the calibration file using the Dashboard running at `http://[DUCKIEBOT_NAME].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`.
+You can view or download the calibration file using the Dashboard running at `http://![hostname].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/camera_extrinsic/![hostname].yaml`.
 
 <!--
 
@@ -173,7 +173,7 @@ Resolution: Your camera is not viewing the full checkerboard pattern. Most likel
 
 
 <!--
-You can verify this by going to the file `http://![DUCKIEBOT_NAME].local:8082` and navigate into the folder `out-calibrate-extrinsics-![DUCKIEBOT_NAME]-20...` and click on `all.jpg` to see the pictures that were taken. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
+You can verify this by going to the file `http://![hostname].local:8082` and navigate into the folder `out-calibrate-extrinsics-![hostname]-20...` and click on `all.jpg` to see the pictures that were taken. Most likely part of the chess board pattern is occluded. Possibly you didn't assemble your Duckiebot correctly or you did not put it on the calibration pattern properly.
 -->
 
 
@@ -183,16 +183,16 @@ You can verify this by going to the file `http://![DUCKIEBOT_NAME].local:8082` a
 
 You can view or download the files at
 
-`http://![DUCKIEBOT_NAME].local:8082/`
+`http://![hostname].local:8082/`
 
 
 In that directory there are the results of the testing and the actual calibration files. The calibration file is at
 
-`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/camera_extrinsic/![DUCKIEBOT_NAME].yaml`
+`http://![hostname].local:8082/config/calibrations/camera_extrinsic/![hostname].yaml`
 
 You can also see the output of the diagnostics at
 
-`http://![DUCKIEBOT_NAME].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/`
+`http://![hostname].local:8082/out-calibrate-extrinsics-YYYYMMDDHHMMSS/`
 
 
 It should look like [](#fig:calibrate_extrinsics1).
@@ -214,7 +214,7 @@ are not square. This is the rectification used in the lane localization pipeline
 
 By default, the extrinsic calibration pipeline will now ask you to put your robot on a lane to complete a verification step.
 
-This step needs a Duckietown lane. If you don't have it, skip it by add `--no_verification` to the `dts duckiebot calibrate_extrinsics ![DUCKIEBOT_NAME] ... ` command above.
+This step needs a Duckietown lane. If you don't have it, skip it by add `--no_verification` to the `dts duckiebot calibrate_extrinsics ![hostname] ... ` command above.
 
 To do the validation, place the robot in a lane when instructed.
 
@@ -224,7 +224,7 @@ The output will be useful to check that everything is ok.
 
 You can see the output of the diagnostics at
 
-    http://![DUCKIEBOT_NAME].local:8082/out-pipeline-![DUCKIEBOT_NAME]-YYYYMMDDHHMMSS/
+    http://![hostname].local:8082/out-pipeline-![hostname]-YYYYMMDDHHMMSS/
 
 [](#fig:oneshot1_all) is an example in which the calibration was correct, and the robot
 localizes perfectly.
