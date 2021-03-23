@@ -1,28 +1,28 @@
-# Handling - Duckiebot `DB21M` {#handling-duckiebot-db21 status=ready}
+# Handling - Duckiebot `DB21M` {#handling-duckiebot-db21m status=ready}
 
 <div class='requirements' markdown="1">
 
-Requires: An assembled `DB21`. Find the assembly instructions [here](#assembling-duckiebot-db21).
+Requires: An assembled `DB21M`. Find the assembly instructions [here](#assembling-duckiebot-db21m).
 
-Requires: An initialized `DB21` with image version at least 1.2.2. Find the assembly instructions [here](#assembling-duckiebot-db21).
+Requires: An initialized `DB21M` with **image version at least 1.2.2**. Find the initialization instructions [here](#setup-duckiebot). [Check your current firmware version](#duckiebot-dashboard-use) before proceeding.
 
-Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21`.
+Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21M`.
 
 </div>
 
-## Duckiebot `DB21` handling tutorial video {#tutorial-handling-db21-video}
+## Duckiebot `DB21M` handling tutorial video {#tutorial-handling-db21m-video}
 
-<div figure-id="fig:howto-handle-db21" figure-caption="Duckiebattery power on, shutdown and charging protocols.">
+<div figure-id="fig:howto-handle-db21m" figure-caption="Duckiebattery power on, shutdown and charging protocols.">
     <dtvideo src="vimeo:527038785"/>
 </div>
 
-## How to charge a `DB21` {#howto-db21-charge status=ready}
+## How to charge a `DB21M` {#howto-db21m-charge status=ready}
 
 To charge your Duckiebot, follow these steps:
 
-- Plug in the charging cable to the spare microUSB port on the `HUT`.
+- Plug in the charging cable to the free microUSB port on the `HUT`.
 
-Note: to minimize mechanical stress on the `HUT` we recommend plugging in the charging cable once, and leaving the USB port end free to plug and unplug from charging instead. You can arrange the cable under the `DB21` top plate during operations for cable management.
+Note: to minimize mechanical stress on the `HUT` we recommend plugging in the charging cable once, and leaving the USB port end free to plug and unplug from charging instead. You can arrange the cable under the `DB21M` top plate during operations for cable management.
 
 - Plug in the charger to a 5V 2A source.
 
@@ -30,11 +30,11 @@ Note: the battery can draw up to 2A. Feeding a higher amperage will not be a pro
 
 - If the Duckiebot is turned on when charging, a battery charge indicator will appear on the top right of the screen. If the Duckiebot is turned off, the LEDs will turns on. In both cases, a small LED on the `HUT` near the charger port will turn green, indicating incoming power.
 
-## How to power off a `DB21` {#howto-db21-shutdown status=ready}
+## How to power off a `DB21M` {#howto-db21m-shutdown status=ready}
 
-The proper shutdown protocol for a `DB21` requires having Duckiebattery software version 2.0. To check the version of your battery, follow the instruction on [how to update a Duckiebattery](#howto-db21-battery-update).  
+The proper shutdown protocol for a `DB21M` requires having Duckiebattery software version 2.0. To check the version of your battery, follow the instruction on [how to update a Duckiebattery](#howto-db21m-battery-update).  
 
-To power off a powered on `DB21`, follow these steps:
+To power off a powered on `DB21M`, follow these steps:
 
 - Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate the Duckiebot has completed the booting process.  
 
@@ -42,22 +42,21 @@ To power off a powered on `DB21`, follow these steps:
 
 The shutdown sequence will first turn off the LEDs, then the screen, then computational unit, and finally the fan. Note that this is a "soft" shutdown procedure, which correctly terminates the processes running on the Jetson Nano board.  
 
-## How to power on a `DB21` {#howto-db21-poweron status=ready}
+## How to power on a `DB21M` {#howto-db21m-poweron status=ready}
 
 To power on a Founder Edition Duckiebot, press the button on the battery _once_.
 
 The Duckiebot LEDs, as well as the Jetson Nano board booting LED will turn on.
 
-After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs will then turn to a steady white color, followed by the button and screen on the top plate powering on, as shown in the [tutorial video](#fig:howto-handle-db21).   
+After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs will then turn to a steady white color, followed by the button and screen on the top plate powering on, as shown in the [tutorial video](#fig:howto-handle-db21m).   
 
-## How to update a Duckiebattery {#howto-db21-battery-update status=ready}
+## How to update a Duckiebattery {#howto-db21m-battery-update status=ready}
 
-To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow the following procedure.
+To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow this procedure.
 
 - Watch this tutorial video:
 
-
-<div figure-id="fig:howto-battery-update-db21" figure-caption="Duckiebattery software upgrade tutorial.">
+<div figure-id="fig:howto-battery-update-db21m" figure-caption="Duckiebattery software upgrade tutorial.">
     <dtvideo src="vimeo:526718185"/>
 </div>
 
@@ -76,7 +75,11 @@ Note: if you wish to just check the software version of the code, press `n` now 
 - To initiate the battery software upgrade procedure, type `y` and press <kbd>Enter</kbd>.  
 
 
-- The terminal will then prompt to press the button on the Duckiebattery _twice_. This operation will trigger a special `boot` mode for the battery, necessary to update its software. Do so, then go back to the terminal and press <kbd>Enter</kbd>.
+- The terminal will then prompt to press the button on the Duckiebattery _twice_.
+
+Note: make sure to "double-click" _quickly_ on the battery button when prompted to do so to have the battery enter boot mode.
+
+This operation will trigger a special `boot` mode for the battery, necessary to update its software. Do so, then go back to the terminal and press <kbd>Enter</kbd>.
 
 Note: the Duckiebot will not give any visible sign of the battery having entered boot mode. Do not worry if you are unsure if you actually pressed the button twice or not, as the battery upgrade process will verify this.
 

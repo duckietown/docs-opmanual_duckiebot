@@ -4,17 +4,15 @@ This page is for the `DB18` configuration and above (including Jetson Nano confi
 
 <div class='requirements' markdown="1">
 
-Requires: An SD card of size at least 32 GB.
+Requires: An SD card of size at least 32 GB
 
 Requires: A computer with **Ubuntu**
 
-Requires: At least 20 GB of free space on the computer.
+Requires: At least 20 GB of free space on the computer
 
 Requires: An internet connection
 
 Requires: SD card reader
-
-Requires: A computer with **Ubuntu** (for flashing the SD card), an internet connection, an SD card reader, and 20 GB of free space.
 
 Requires: Duckietown Shell, as configured in [](#laptop-setup-ubuntu-shell).
 
@@ -42,12 +40,24 @@ A valid `hostname` satisfies all the following requirements:
 
 ### Video Tutorial {#burn-sd-card-video}
 
-<dtvideo src="vimeo:526698325"/>
+<div figure-id="fig:howto-init-sd-card" figure-caption="How to burn a Duckiebot SD card.">
+    <dtvideo src="vimeo:526698325"/>
+</div>
+
 
 ### Step-by-Step Instructions {#burn-sd-card-instructions}
-Plug the SD card in your computer using an SD card reader. If your computer does not have one, you will find a USB to microSD card adapter in your Duckiebot kit.
+
+NOTE: Though the suggested operating system for this operation is Ubuntu 20.04, this
+should work on any Unix-like operating system. If you are using dts through WSL or experience
+any issues while performing this procedure, when prompted to enter the device name, simply
+provide a path to a file, for example `/home/user/duckiebot_sd_card.img`. The program will
+proceed by creating a disk image on that file that you can later transfer to an SD card
+using any standard flashing tool, e.g., etcher, dd.
 
 Note: If you are using a microSD to SD card adapter, make sure the adapter does not have the write protection enabled. Check [this link][sandisk_protection] to learn more.
+
+
+Plug the SD card in your computer using an SD card reader. If your computer does not have one, you will find a USB to microSD card adapter in your Duckiebot kit.
 
 [sandisk_protection]: https://kb.sandisk.com/app/answers/detail/a_id/1102/~/sd%2Fsdhc%2Fsdxc-memory-card-is-write-protected-or-locked
 
@@ -119,11 +129,9 @@ remove the SD card from your laptop.
 
 Now insert the SD card as shown in the video below into your robot and push the button on the battery to power up the Duckiebot.
 
+<dtvideo src="vimeo:527364179"/>
+
 Warning: Unless you are using a Duckiebattery (available in the `DB21M` Duckiebot), don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
-
-
-TODO: (afdaniele) add Vimeo ID of the How To Insert SD card video
-
 
 
 ## Monitoring the First Boot {#monitor-first-boot}
