@@ -40,13 +40,16 @@ A valid `hostname` satisfies all the following requirements:
 
 ### Video Tutorial {#burn-sd-card-video}
 
-<dtvideo src="vimeo:526698325"/>
+<div figure-id="fig:howto-init-sd-card" figure-caption="How to burn a Duckiebot SD card.">
+    <dtvideo src="vimeo:526698325"/>
+</div>
+
 
 ### Step-by-Step Instructions {#burn-sd-card-instructions}
 
 NOTE: Though the suggested operating system for this operation is Ubuntu 20.04, this
 should work on any Unix-like operating system. If you are using dts through WSL or experience
-any issues while performing this procedure, when prompted to enter the device name, simply 
+any issues while performing this procedure, when prompted to enter the device name, simply
 provide a path to a file, for example `/home/user/duckiebot_sd_card.img`. The program will
 proceed by creating a disk image on that file that you can later transfer to an SD card
 using any standard flashing tool, e.g., etcher, dd.

@@ -33,7 +33,7 @@ The token is a string of letters and numbers that looks something like this:
 
     dt1-7vEuJsaxeXXXXX-43dzqWFnWd8KBa1yev1g3UKnzVxZkkTbfSJnxzuJjWaANeMf4y6XSXBWTpJ7vWXXXX
 
-To find your token, first login to duckietown.org, then open the page:
+To find your token, first [login to duckietown.org](https://www.duckietown.org/pm_login), then open the page:
 
 > [`https://www.duckietown.org/site/your-token`](https://www.duckietown.org/site/your-token)
 

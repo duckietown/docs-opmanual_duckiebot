@@ -57,6 +57,8 @@ In this tab, you can find information for your robot, including your robot name,
   <img src="dashboard_info.png" style='width: 35em'/>
 </div>
 
+Note: from this page you can read the Duckiebot's firmware version, i.e., the version of the base image used during [initialization](#setup-duckiebot). This might inform if a re-initialization is needed, e.g., to perform the `DB21` [battery update](#howto-db21m-battery-update).
+
 ### Mission Control {#dashboard-mission-control status=ready}
 
 This is the Mission Control tab.
