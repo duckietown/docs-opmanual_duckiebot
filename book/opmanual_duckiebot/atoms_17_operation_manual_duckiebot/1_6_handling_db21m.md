@@ -60,7 +60,6 @@ To update the software running on the micro-controller in the Duckiebattery, or 
     <dtvideo src="vimeo:526718185"/>
 </div>
 
-Note: make sure to "double-click" _quickly_ on the battery button when prompted to do so to have the battery enter boot mode.
 
 - Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list.
 
@@ -76,7 +75,11 @@ Note: if you wish to just check the software version of the code, press `n` now 
 - To initiate the battery software upgrade procedure, type `y` and press <kbd>Enter</kbd>.  
 
 
-- The terminal will then prompt to press the button on the Duckiebattery _twice_. This operation will trigger a special `boot` mode for the battery, necessary to update its software. Do so, then go back to the terminal and press <kbd>Enter</kbd>.
+- The terminal will then prompt to press the button on the Duckiebattery _twice_.
+
+Note: make sure to "double-click" _quickly_ on the battery button when prompted to do so to have the battery enter boot mode.
+
+This operation will trigger a special `boot` mode for the battery, necessary to update its software. Do so, then go back to the terminal and press <kbd>Enter</kbd>.
 
 Note: the Duckiebot will not give any visible sign of the battery having entered boot mode. Do not worry if you are unsure if you actually pressed the button twice or not, as the battery upgrade process will verify this.
 
