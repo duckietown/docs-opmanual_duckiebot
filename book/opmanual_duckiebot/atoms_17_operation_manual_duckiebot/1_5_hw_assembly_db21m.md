@@ -12,7 +12,7 @@
 
 Requires: Duckiebot `DB21M` parts ([get a `DB21M`](https://get.duckietown.com/)). If you are unsure what version of Duckiebot you have, check this overview of all existing [Duckiebot configurations](#duckiebot-configurations).
 
-Requires: A microSD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
+Requires: A micro SD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 
 Requires: 3 hours of assembly time.
 
@@ -24,14 +24,11 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 -->
 These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your cables around!).
 
-The troubleshooting section
-
-Overview of all parts in your Duckiebox:
-
-<div figure-id="fig:db21m-parts-overview">
+<div figure-id="fig:db21m-parts-overview" figure-caption="Overview of all parts in your Duckiebox">
      <img src="db21-parts-overview.jpg" style='width: 40em' />
 </div>
 
+Note: The current `DB21M` software supports only NVIDIA Jetson Nano 2GB, not 4GB.
 
 The assembly process is divided in 9 parts. They must be completed in the following order:
 
@@ -415,7 +412,7 @@ Note: You don't need to tighten the screws completely but the fan must sit tight
 Take the PCB with the Duckietown logo on it (we'll call it the `HUT` from now on. A `DB21M` is equipped with a `HUT` v3.1).  
 
 <div figure-id="fig:HUT_layout">
-     <img src="HUT_layout.jpg" style='width: 40em' />
+     <img src="hutv31-layout.png" style='width: 40em' />
 </div>
 
 Plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).
