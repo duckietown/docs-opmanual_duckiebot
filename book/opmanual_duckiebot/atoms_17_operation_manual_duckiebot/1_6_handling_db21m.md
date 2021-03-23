@@ -60,6 +60,7 @@ To update the software running on the micro-controller in the Duckiebattery, or 
     <dtvideo src="vimeo:526718185"/>
 </div>
 
+Note: make sure to "double-click" _quickly_ on the battery button when prompted to do so to have the battery enter boot mode.
 
 - Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list.
 
