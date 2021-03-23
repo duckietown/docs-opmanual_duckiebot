@@ -10,9 +10,9 @@
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB21M` parts (get them [here](https://get.duckietown.com/)). Here is an [overview of all existing configurations](#duckiebot-configurations).
+Requires: Duckiebot `DB21M` parts ([get a `DB21M`](https://get.duckietown.com/)). If you are unsure what version of Duckiebot you have, check this overview of all existing [Duckiebot configurations](#duckiebot-configurations).
 
-Requires: A microSD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
+Requires: A micro SD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 
 Requires: 3 hours of assembly time.
 
@@ -22,16 +22,17 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 
 <!--
 -->
-These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your cables around!).
+## Foreword
 
-The troubleshooting section
+These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your cables!).
 
-Overview of all parts in your Duckiebox:
+## Overview
 
-<div figure-id="fig:db21m-parts-overview">
+A Duckiebox contains the following components:
+
+<div figure-id="fig:db21m-parts-overview" figure-caption="Overview of all parts in your Duckiebox">
      <img src="db21-parts-overview.jpg" style='width: 40em' />
 </div>
-
 
 The assembly process is divided in 9 parts. They must be completed in the following order:
 
@@ -47,21 +48,26 @@ The assembly process is divided in 9 parts. They must be completed in the follow
 
 - [FAQ](#op-faq-db21m)
 
-The FAQ section at the bottom of this page might be the first thing to visit if something is not clear. This may already answer your comments, questions or doubts.
+The FAQ section at the bottom of this page provides resolutions to common symptoms.
 
 ## Preliminary Steps {#howto-preliminary-db21m}
 
 ### Unboxing
-Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on. Do not show any violence to the Duckiebot pieces or they might break.
 
-Note: Your Duckiebot chassis are under the white protection foam. To get your Duckiebot chassis, pull out the white protection foam in the box after remove everything.
+Unbox all of your components and lay them out on a flat surface. Ensure that you have well lit, uncluttered space to work on.
 
-Although not necessary, a small (M2.5) wrench will ease some of the next passages.
+Note: "The Duckiebox hides but does not steal". Your Duckiebot chassis is under the white protection foam. To get to the chassis, pull out the white foam from the box after removing everything. Mind that the upper part of the inside foam has several side pockets in addition to a main compartment where components are located.
+
+Although not necessary, a small (M2.5) wrench might ease some of the next passages.
+
+Note: we currently support the NVIDIA Jetson Nano 2GB developer kit, not 4GB. 
 
 ### Plastic cover
+
 Peel the plastic cover from all the chassis parts on both sides.
 
 ### Screws, Nuts and Stand-offs
+
 Each type of screw, nut and stand-off is labeled with an index. You will find corresponding labels on the pictures at each step. Using the right parts at each step will prevent undesirable effects (e.g., nylon screws prevent electrical shorts).
 
 <div figure-id="fig:db21m-parts_indices" figure-caption="Overview of interlocking parts">
@@ -415,7 +421,7 @@ Note: You don't need to tighten the screws completely but the fan must sit tight
 Take the PCB with the Duckietown logo on it (we'll call it the `HUT` from now on. A `DB21M` is equipped with a `HUT` v3.1).  
 
 <div figure-id="fig:HUT_layout">
-     <img src="HUT_layout.jpg" style='width: 40em' />
+     <img src="hutv31-layout.png" style='width: 40em' />
 </div>
 
 Plug in the fan cable to the two pins as shown (note the orientation of the black and red cables!).

@@ -4,7 +4,7 @@
 
 Requires: An assembled `DB21M`. Find the assembly instructions [here](#assembling-duckiebot-db21m).
 
-Requires: An initialized `DB21M` with image version at least 1.2.2. Find the assembly instructions [here](#assembling-duckiebot-db21m).
+Requires: An initialized `DB21M` with **image version at least 1.2.2**. Find the initialization instructions [here](#setup-duckiebot). [Check your current firmware version](#duckiebot-dashboard-use) before proceeding.
 
 Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21M`.
 
@@ -59,10 +59,9 @@ After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs wil
 
 ## How to update a Duckiebattery {#howto-db21m-battery-update status=ready}
 
-To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow the following procedure.
+To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow this procedure.
 
 - Watch this tutorial video:
-
 
 <div figure-id="fig:howto-battery-update-db21m" figure-caption="Duckiebattery software upgrade tutorial.">
     <dtvideo src="vimeo:526718185"/>
@@ -83,7 +82,11 @@ Note: if you wish to just check the software version of the code, press `n` now 
 - To initiate the battery software upgrade procedure, type `y` and press <kbd>Enter</kbd>.  
 
 
-- The terminal will then prompt to press the button on the Duckiebattery _twice_. This operation will trigger a special `boot` mode for the battery, necessary to update its software. Do so, then go back to the terminal and press <kbd>Enter</kbd>.
+- The terminal will then prompt to press the button on the Duckiebattery _twice_.
+
+Note: make sure to "double-click" _quickly_ on the battery button when prompted to do so to have the battery enter boot mode.
+
+This operation will trigger a special `boot` mode for the battery, necessary to update its software. Do so, then go back to the terminal and press <kbd>Enter</kbd>.
 
 Note: the Duckiebot will not give any visible sign of the battery having entered boot mode. Do not worry if you are unsure if you actually pressed the button twice or not, as the battery upgrade process will verify this.
 
