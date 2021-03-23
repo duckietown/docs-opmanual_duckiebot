@@ -42,7 +42,7 @@ You have three ways to power off your Duckiebot:
 - From the terminal run:
 
     laptop $ dts duckiebot shutdown ![DUCKIEBOT_NAME]
-    
+
 - From the dashboard, running at `http://![DUCKIEBOT_NAME].local`, select the tab `ROBOT` from the sidebar on the left, click the button `Power` and select `shutdown` on the top right corner.
 
 
