@@ -79,7 +79,7 @@ You can also use the menu button of each block to resize them.
 
 ### Health {#dashboard-robot-health status=ready}
 
-This is the Health Page. It will show you a plot of the robot's health status such as temperature, frequency, and CPU usage. It is a good debug too to watch your code's resource usage.
+This is the Health Page. It will show you a plot of the robot's health status such as temperature, frequency, and CPU usage. It is a good debug tool to watch your code's resource usage.
 
 <div figure-id="fig:dashboard-health" figure-caption="">
   <img src="dashboard-health.png" style='width: 35em'/>
@@ -87,7 +87,7 @@ This is the Health Page. It will show you a plot of the robot's health status su
 
 ### Architecture {#dashboard-robot-architecture status=ready}
 
-This is the Architecture Page. It will allow you to visualize all the published ROS topics and see their details. It is a useful tool to see what is running and what is not. You can also use this tool in replacement of `rqt-graph`. For more instructions on rqt-graph, you can see it [here](#rqt-graph-no-vnc)
+This is the Architecture Page. It will allow you to visualize all the published ROS topics and see their details. It is a useful tool to see what is running and what is not. You can also use this tool as a replacement of `rqt-graph`. For more instructions on rqt-graph, you can see it [here](#rqt-graph-no-vnc)
 
 <div figure-id="fig:dashboard-architecture" figure-caption="">
   <img src="dashboard-architecture.png" style='width: 35em'/>
