@@ -39,11 +39,9 @@ Make sure the Duckiebot has completed the booting process. You can verify this b
 You have three ways to power off your Duckiebot:
 
 - Press the button on the top plate of the Duckiebot, near the screen, and keep it pressed for roughly 5 seconds before releasing it. The shutdown sequence will initiate with the blinking of the power button and a "Shutting down" message appearing on the screen.
-- From the terminal run:
+- From the terminal run: `dts duckiebot shutdown ![hostname]`
 
-    laptop $ dts duckiebot shutdown ![DUCKIEBOT_NAME]
-
-- From the dashboard, running at `http://![DUCKIEBOT_NAME].local`, select the tab `ROBOT` from the sidebar on the left, click the button `Power` and select `shutdown` on the top right corner.
+- From the dashboard, running at `http://![hostname].local`, select the tab `ROBOT` from the sidebar on the left, click the button `Power` and select `shutdown` on the top right corner.
 
 
 The shutdown sequence will first turn off the LEDs, then the screen, then computational unit, and finally the fan. Note that this is a "soft" shutdown procedure, which correctly terminates the processes running on the Jetson Nano board.  
