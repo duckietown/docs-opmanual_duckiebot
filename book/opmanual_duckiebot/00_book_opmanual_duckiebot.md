@@ -2,6 +2,7 @@
 
 
 
-* [](#preliminaries): What you need to know before you start. 
-* [](#building-duckiebot-c0): Setting up your Duckiebot 
+* [](#preliminaries): The software basics to know before you start. 
+* [](#db-opmanual-hw-prel): The hardware basics to know before you start. 
+* [](#building-duckiebot-c0): Setting up your Duckiebot.
 * [](#demos): Running the demos. 

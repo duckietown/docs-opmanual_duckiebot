@@ -43,13 +43,11 @@ In the Docker world images get organized by their repository name, image name an
 
 An image stored on DockerHub has a name of the form:
 
-    duckietown/rpi-ros-kinetic-base:master18
+    duckietown/![IMAGE_NAME]:![VERSION-NAME]-![ARCH-NAME]
 
-Here the repository name is `duckietown`, the image name is `rpi-ros-kinetic-base`, and the tag is `master18`.
+All Duckietown-related images are in the `duckietown` repository. The images themselves can be very different for various applications.
 
-All Duckietown-related images are in the `duckietown` repository. The images themselves can be very different and for various applications.
-
-Sometimes a certain image might need to have several different versions. These can be designated with *tags*. For example, the `master18` tag means that this is the image to be used with the `DT18` version of Duckietown.
+Sometimes a certain image might need to have several different versions. These can be designated with *tags*. For example, the `daffy` tag means that this is the image to be used with the `daffy` version of Duckietown.
 
 It is not necessary to specify a tag. If you don't, Docker assumes you are interested in the image with `latest` tag, should such an image exist.
 
@@ -152,9 +150,7 @@ Imagine you are running a container in the background. The main process is runni
 
 ## Running images {#docker-running-options}
 
-Often we will ask you to run containers with more sophisticated options than what we saw before. Look at the following example: (don't try to run this, it will not do much).
-
-    laptop $ docker -H hostname.local run -dit --privileged --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
+There are many command line arguments that can be passed to the `docker run` command. 
 
 [](#tab:docker-run-tab) shows a summary of the options we use most often in Duckietown. Below, we give some examples
 
@@ -206,6 +202,7 @@ Often we will ask you to run containers with more sophisticated options than wha
   <figcaption><code>docker run</code> options</figcaption>
 </div>
 
+Note that most of this is hidden from the Duckietown user because it is contained within the Duckietown Shell. 
 
 ### Examples {nonumber}
 
