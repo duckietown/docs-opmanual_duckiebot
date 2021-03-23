@@ -109,7 +109,7 @@ You will also need the latest version of XQuartz.
 
 You can install using `brew` as follows:
 
-    laptop $ brew cask install xquartz
+    laptop $ brew install xquartz
 
 Or, download from [here](https://www.xquartz.org/) and follow the instructions.
 
