@@ -34,7 +34,7 @@ Note: the battery can draw up to 2A. Feeding a higher amperage will not be a pro
 
 The proper shutdown protocol for a `DB21M` requires having Duckiebattery software version 2.0. To check the version of your battery, follow the instruction on [how to update a Duckiebattery](#howto-db21m-battery-update).  
 
-Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate the Duckiebot has completed the booting process.
+Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate that the Duckiebot has completed the booting process.
 
 You have three ways to power off your Duckiebot:
 
