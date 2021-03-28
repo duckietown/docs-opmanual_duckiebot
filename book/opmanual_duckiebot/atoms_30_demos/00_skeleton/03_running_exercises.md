@@ -54,9 +54,15 @@ This contains information about the exercise. Example:
 agent_base: "duckietown_baseline" # currently not implemented, the agent base image to use
 ws_dir: "exercise_ws" # directory that contains the code
 agent_run_cmd: "run_all.sh" # the script in "launchers" to run the agent with
-```
+notebooks:
+    - notebook:
+        package_name: "encoder_pose"
+        name: "odometry_activity"
+    - notebook:
+        package_name: "lane_controller"
+        name: "control_activity"
 
-TODO: Vincenzo add the configuration for notebooks. 
+```
 
 The `agent_base` indicates which image to use as a baseline to build from. The mappings are listed [here](https://github.com/duckietown/duckietown-shell-commands/blob/daffy/utils/exercise_utils.py). Many of the existing exercises are build on the `duckietown_baseline` image which contains all of the code in the [`dt-core` repository](https://github.com/duckietown/dt-core). 
 
@@ -66,6 +72,8 @@ The `ws_dir` indicates the name of the subdirectory that contains the code that 
 
 The `agent_run_cmd` indicates the command that should be run when the container is run to start things. 
 
+The `notebooks` contains the list of the notebooks that have to be converted to python scripts.
+For each notebook must be specified the name of the notebook `name`, and the name of the package where the generated script has to be copied `package_name`. Multiple notebooks can be listed.
 
 ### `exercise_ws`
 
@@ -87,13 +95,27 @@ Note: You can specify different launchers to run depending on whether you are te
 
 ### `notebooks`
 
-The `notebooks` folder contains pedagogical notebooks that can be run. 
+The `notebooks` folder contains pedagogical notebooks that can be run. Some parts of the notebooks indeed are dedicated to tests, to check if the code is working properly before starting the simulation or testing on the Duckiebot.
 
-TODO: Vincenzo how to run the notebooks. 
+Before running the test cells make sure you run also the cells with the code. There are different ways to run a cell:
+
+1. click on the `play` button on the top left of the cell.
+2. pressing `crtl`+`enter`.
 
 The code in the notebooks can also be compiled and become accessible inside the code in the `exercise_ws` directory. 
 
-TODO: Vincenzo more details on this. 
+In order to do so, from inside the exercise folder run:
+
+
+     laptop $ dts exercises build
+
+
+This command convert the notebook into a python script and place it inside the package in `exercise_ws` directory specified in the `config.yaml` file.
+
+The same is when running the `run` command, with the difference that in this case the ROS workspace is not built:
+
+     laptop $ dts exercises run ![options]
+
 
 ### `requirements.txt` 
 
