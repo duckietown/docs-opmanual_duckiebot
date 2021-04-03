@@ -256,7 +256,7 @@ Then wait 20 seconds.
 Warning: If you disconnect the power before shutting down properly using `shutdown`,
 the system might get corrupted.
 
-If you have a Duckiebot that is powered by the official [DuckieBattery][#db-opmanual-dtbattery-v2],
+If you have a Duckiebot that is powered by the official [DuckieBattery](#db-opmanual-dtbattery-v2),
 e.g., DB21M, this procedure will shutdown the battery as well.
 This means that you do not need to manually disconnect any component from the battery.
 
