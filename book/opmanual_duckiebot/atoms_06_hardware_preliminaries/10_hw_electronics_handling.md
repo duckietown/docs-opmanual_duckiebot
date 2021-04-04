@@ -15,7 +15,7 @@ Duckiebots support several power bank models, although not any power will work. 
 This battery is the standard battery for the Duckiebot Founder's edition (`DB21M`).
 
 <div figure-id="fig:DB-C-DBatt_real" figure-caption="The Duckiebattery (`DB-C-DBatt`)">
-     <img src="DB-C-DBatt_real.jpg" style='width: 20em' />
+     <img src="DB-C-DBatt_real2.jpg" style='width: 20em' />
 </div>
 
 ### Technical specification

@@ -28,7 +28,7 @@ These instructions are your friend. Follow them carefully, especially if it's th
 
 ## Video tutorial {#db21m-assembly-video}
 
-<div figure-id="fig:howto-assemble-db21m" figure-caption="`DB21M` box unpacking and assembly.">
+<div figure-id="fig:howto-assemble-db21m-video" figure-caption="DB21M: What's in the box and assembly.">
     <dtvideo src="vimeo:528621827"/>
 </div>
 
@@ -744,7 +744,7 @@ Resolution: Position it as it fits (at an angle). It will make the assembly a li
 
 Symptom: I don't have enough screws of a specific type.
 
-Resolution: Each package has enough screws of each type, plus spares of some. It might happen to inadvertently use one type instead of the correct one, which will result in shortages towards the final stages. Following the instructions carefully will prevent this from happening. 
+Resolution: Each package has enough screws of each type, plus spares of some. It might happen to inadvertently use one type instead of the correct one, which will result in shortages towards the final stages. Following the instructions carefully will prevent this from happening.
 
 Symptom: I can't screw the omni-directional wheel right; the screws don't fit all the way in the standoffs.
 
