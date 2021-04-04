@@ -65,6 +65,8 @@ The following keys control the Duckiebot:
     <span>Toggle Anti-instagram</span>
 </col2>
 
+The <kbd>a</kbd>, <kbd>s</kbd>, <kbd>i</kbd> function require the [lane following demo](#demo-lane-following) to be running.
+
 Warning: This does not currently work on Mac OSX.
 
 ### The no-window way with Duckietown shell (For Mac Users)

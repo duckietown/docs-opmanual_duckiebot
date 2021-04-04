@@ -25,14 +25,15 @@ To see it, open a terminal on your laptop and run:
 
     laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
 
-Warning: Note that in here you input Duckiebot hostname, do not include `.local` part.
+Warning: Note that in here you input Duckiebot ![hostname], do not include `.local` part.
 
 This will start a container with access to the ROS messages of the Duckiebot. At the prompt, run:
 
     container $ rqt_image_view
 
-The command should open a window where you can view the image.
-You have to select the right topic from the dropdown menu:
+The command will open a window where you can view the image.
+
+You have to select the right topic from the drop-down menu:
 
 <figure>
     <figcaption>The rqt image view window with dropdown menu</figcaption>
@@ -52,7 +53,7 @@ Resolution: Remove the cap of the camera.
 
 Symptom: When I try to do `rqt_image_view`, I don't see the window on my machine.
 
-Resolution: Sometimes window does not successfully spawn on the first try. You can Ctrl+c to terminate the process first, and try running that process again.
+Resolution: Sometimes the window does not successfully spawn on the first try. You can <kbd>Ctrl</kbd>+<kbd>c</kbd> to terminate the process before trying again.
 
 Symptom: `libGL error` when running `dts start_gui_tools`
 
@@ -60,13 +61,15 @@ Resolution: If you have an error like that when running `dts start_gui_tools` or
 
 `libGL error: No matching fbConfigs or visuals found libGL error: failed to load driver: swrast nvidia docker`
 
-This could occur on a computer that has two graphics cards: e.g. a discrete NVIDIA GPU, and an integrated Intel card. In order to run these commands you will have to switch to the Intel card. Please follow the official guidelines for your OS and graphics card to find out how to do that.
+This could occur on a computer that has two graphics cards, e.g., a NVIDIA GPU and an integrated Intel card. Switch to the Intel card by following the official guidelines for your OS and graphics card.
 
-Symptom: I don't see any image
+Symptom: I don't see any image.
 
-Resolution: use `rostopic hz /![hostname]/camera_node/image/compressed` and see if the image is being published. Typically, the image publish rate should be near 30hz.
+Resolution: use `rostopic hz /![hostname]/camera_node/image/compressed` and see if the image is being published. Images should be published at roughly 30 Hz.
 
 See also: For more information about `rostopic`, see [](#using-no-vnc).
+
+See also: you can see the images as your robot sees them with `rostopic echo /![hostname]/camera_node/image/compressed`. <kbd>Ctrl</kbd>+<kbd>c</kbd> on the terminal once you've seen enough.
 
 Symptom: My image topic is not being published.
 
@@ -86,14 +89,17 @@ To manually start the `duckiebot-interface`, do:
 
     laptop $ docker -H ![DUCKIEBOT_NAME].local run --name duckiebot-interface -v /data:/data --privileged --network=host -dit --restart unless-stopped duckietown/dt-duckiebot-interface:daffy-arm32v7
 
-Symptom: The camera is not detected from duckiebot
+Symptom: The camera is not detected from Duckiebot
 
-Resolution: remove the battery pack and check the camera cable for damage. Some people bent the cable too much breaking it.
+Resolution: (`DB18`, `DB19` only) remove the battery pack and check the camera cable for damage.
 
-Symptom: Cannot change camera focus
+Symptom: The images are out of focus.
 
-Resolution: Need to break the glue
-Some picams come with the lens glued in place. Apply a bit more force the first time you adjust the lens.
+The camera focus can be _manually_ adjusted by rotating the lens of the image sensor. As always with dealing with hardware, exercise care and do not use force.  
+
+Symptom: I cannot rotate the lens and change the camera focus.
+
+Resolution: You need to break the glue. Very occasionally cameras come with the lens glued in place. Apply a bit more force the first time you adjust the lens to break the glue's adhesion.
 
 
 ## Viewing the image in no-vnc {#image-novnc status=ready}
