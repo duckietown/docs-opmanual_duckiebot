@@ -26,6 +26,13 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 
 These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your cables!).
 
+## Video tutorial {#db21m-assembly-video}
+
+<div figure-id="fig:howto-assemble-db21m" figure-caption="`DB21M` box unpacking and assembly.">
+    <dtvideo src="vimeo:528621827"/>
+</div>
+
+
 ## Overview
 
 A Duckiebox contains the following components:
@@ -60,7 +67,7 @@ Note: "The Duckiebox hides but does not steal". Your Duckiebot chassis is under 
 
 Although not necessary, a small (M2.5) wrench might ease some of the next passages.
 
-Note: we currently support the NVIDIA Jetson Nano 2GB developer kit, not 4GB. 
+Note: we currently support the NVIDIA Jetson Nano 2GB developer kit, not 4GB.
 
 ### Plastic cover
 
