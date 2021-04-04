@@ -34,13 +34,17 @@ Note: the battery can draw up to 2A. Feeding a higher amperage will not be a pro
 
 The proper shutdown protocol for a `DB21M` requires having Duckiebattery software version 2.0. To check the version of your battery, follow the instruction on [how to update a Duckiebattery](#howto-db21m-battery-update).  
 
-To power off a powered on `DB21M`, follow these steps:
+Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate that the Duckiebot has completed the booting process.
 
-- Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate the Duckiebot has completed the booting process.  
+You have three ways to power off your Duckiebot:
 
 - Press the button on the top plate of the Duckiebot, near the screen, and keep it pressed for roughly 5 seconds before releasing it. The shutdown sequence will initiate with the blinking of the power button and a "Shutting down" message appearing on the screen.
+- From the terminal run: `dts duckiebot shutdown ![hostname]`
+- From the dashboard, running at `http://![hostname].local`, select the tab `ROBOT` from the sidebar on the left, click the button `Power` on the top right corner and select `shutdown`.
+
 
 The shutdown sequence will first turn off the LEDs, then the screen, then computational unit, and finally the fan. Note that this is a "soft" shutdown procedure, which correctly terminates the processes running on the Jetson Nano board.  
+
 
 ## How to power on a `DB21M` {#howto-db21m-poweron status=ready}
 
