@@ -11,6 +11,7 @@ Results: Preliminary knowledge on circuits and power source properties useful in
 Duckiebots support several power bank models, although not any power will work. Here, we list properties of the supported models.
 
 ## The MOOC battery (DB-C-DBatt) {#db-opmanual-dtbattery-v2}
+
 This battery is the standard battery for the Duckiebot Founder's edition (`DB21M`).
 
 <div figure-id="fig:DB-C-DBatt_real" figure-caption="The Duckiebattery (`DB-C-DBatt`)">
@@ -25,7 +26,7 @@ This battery is the standard battery for the Duckiebot Founder's edition (`DB21M
 - Charge time: 0-100% takes about 5h and 0-90% about 4h with a 2A power supply
 - Weight: 189g (fully charged)
 
-Lithium Ion batteries, like the Duckiebattery, are potentially dangerous and must be handled with care. Here are some do's and don't. Please do not skip this section.
+Warning: Lithium Ion batteries, like the Duckiebattery, are potentially dangerous and must be handled with care. Here are some do's and don't. Please do not skip this section.
 
 ### Handling: DO's
 
