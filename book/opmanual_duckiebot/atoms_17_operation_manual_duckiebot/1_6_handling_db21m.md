@@ -10,6 +10,8 @@ Result: Knowledge on standard protocols to turn on, turn off, charge, and update
 
 </div>
 
+Note: the above box contains important information on the requirements. Make sure to read and follow them before proceeding.
+
 ## Duckiebot `DB21M` handling tutorial video {#tutorial-handling-db21m-video}
 
 <div figure-id="fig:howto-handle-db21m" figure-caption="Duckiebattery power on, shutdown and charging protocols.">
@@ -32,18 +34,19 @@ Note: the battery can draw up to 2A. Feeding a higher amperage will not be a pro
 
 ## How to power off a `DB21M` {#howto-db21m-shutdown status=ready}
 
-The proper shutdown protocol for a `DB21M` requires having Duckiebattery software version 2.0. To check the version of your battery, follow the instruction on [how to update a Duckiebattery](#howto-db21m-battery-update).  
+Warning: The proper shutdown protocol for a `DB21M` requires having Duckiebattery software version 2.0. To check the version of your battery, follow the instruction on [how to update a Duckiebattery](#howto-db21m-battery-update).  
 
 Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate that the Duckiebot has completed the booting process.
 
 You have three ways to power off your Duckiebot:
 
 - Press the button on the top plate of the Duckiebot, near the screen, and keep it pressed for roughly 5 seconds before releasing it. The shutdown sequence will initiate with the blinking of the power button and a "Shutting down" message appearing on the screen.
-- From the terminal run: `dts duckiebot shutdown ![hostname]`
-- From the dashboard, running at `http://![hostname].local`, select the tab `ROBOT` from the sidebar on the left, click the button `Power` on the top right corner and select `shutdown`.
-
+- From the terminal run: `dts duckiebot shutdown ![hostname]`. This will not show a message on the Duckiebot screen, nor make the button blink.
+- From the Dashboard, running at `http://![hostname].local`, select the tab `ROBOT` from the sidebar on the left, click the button `Power` on the top right corner and select `shutdown`.
 
 The shutdown sequence will first turn off the LEDs, then the screen, then computational unit, and finally the fan. Note that this is a "soft" shutdown procedure, which correctly terminates the processes running on the Jetson Nano board.  
+
+A "hard" power shutdown of the `DB21M` requires unplugging the micro USB cable from the port marked as `5Vraspi` on the `HUT`. This procedure should be used only as last resort as it might lead to software and hardware issues.  
 
 
 ## How to power on a `DB21M` {#howto-db21m-poweron status=ready}
