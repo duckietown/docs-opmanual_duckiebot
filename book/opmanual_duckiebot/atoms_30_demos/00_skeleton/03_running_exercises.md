@@ -32,7 +32,7 @@ Enter the `dt-exercises` folder that you just cloned do:
  
     laptop $ cd dt-exercises
 
-In here you will see a number of foldrers. Each folder corresponds to an exercise. 
+In here you will see a number of folders. Each folder corresponds to an exercise. 
 It is recommended that you install the requirements (this can be in a `virtualenv` if you prefer of course):
 
     laptop $ pip install -r requirements.txt
