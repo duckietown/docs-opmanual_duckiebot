@@ -106,15 +106,13 @@ The code in the notebooks can also be compiled and become accessible inside the 
 
 In order to do so, from inside the exercise folder run:
 
-
-     laptop $ dts exercises build
-
+    laptop $ dts exercises build
 
 This command convert the notebook into a python script and place it inside the package in `exercise_ws` directory specified in the `config.yaml` file.
 
 The same is when running the `run` command, with the difference that in this case the ROS workspace is not built:
 
-     laptop $ dts exercises run ![options]
+    laptop $ dts exercises run ![options]
 
 
 ### `requirements.txt` 
@@ -154,7 +152,7 @@ With `dts exercises test` you can test your agent:
 
 You can run your current solution in the gym simulator with:
  
-     laptop $ dts exercises test --sim
+    laptop $ dts exercises test --sim
      
 Then you can look at what's happening by looking through the "novnc" browser at http://localhost:8087 .
 
@@ -205,7 +203,7 @@ In this case, when all of the containers other than the agent have started, you 
 Note: If you are running an exercise based on the `duckeitown_baseline` image, the first time you will have to start the "interface" part of the agent. To do this run 
 
     laptop container $ launchers/run_interface.sh. 
-    
+
 You will see some output of some ros nodes starting. At the end, if you push ENTER you will get your command line back. 
 Then you can run the lane_following demo using your lane_controller by running 
 
@@ -221,8 +219,3 @@ Note: There is a timeout on the simulator, so if you do CTRL-C and then spend a 
 You can get out of your terminal by typing 
 
     laptop container $ exit
-
-
-  
-
-
