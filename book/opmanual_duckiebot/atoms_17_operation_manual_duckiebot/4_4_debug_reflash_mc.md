@@ -1,5 +1,17 @@
 # Debug - Reflash Microcontroller {#reflash-microcontroller status=ready}
 
+This page is only for the DB18 and DB19 configuration (not the DB21M).
+
+<div class='requirements' markdown="1">
+
+Requires: A Duckiebot DB18 or DB19.
+
+Requires: A stable network connection to your Duckiebot.
+
+Result: A flashed microcontroller (not SD card) on the HUT board with the latest code.
+
+</div>
+
 Warning: You do not need to perform the following procedure unless you are specifically told to do in the book.
 
 The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:

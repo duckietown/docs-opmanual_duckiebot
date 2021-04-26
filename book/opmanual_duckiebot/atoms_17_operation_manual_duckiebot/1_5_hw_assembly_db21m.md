@@ -559,10 +559,16 @@ Note: The orientation of the cable should be such that the blue part of the cabl
 </div>
 
 ### Step 55
-Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (`N4`). Make sure to take off the small transparent cover from the sensor.
+Attach the small blue distance sensor to the stand-off on the front bumper and tighten it with a nylon M3 nut (`N4`).
 
 <div figure-id="fig:db21m-step_55">
      <img src="db21-step_55.png" style='width: 40em' />
+</div>
+
+Make sure to take off the small transparent cover from the sensor.
+
+<div figure-id="fig:db21m-step_55A">
+     <img src="db21-step_55A.png" style='width: 15em' />
 </div>
 
 ### Step 56
