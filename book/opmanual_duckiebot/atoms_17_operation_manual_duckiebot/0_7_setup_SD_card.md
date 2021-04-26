@@ -188,6 +188,9 @@ Symptom: The SD card process seems extremely fast, and there is no data on my SD
 
 Resolution: Check if your SD card has a write protection switch or it is in read-only mode.
 
+Resolution: make sure you inputted the correct drive name during the initialization procedure.
+
+
 Symptom: The flashing procedure fails with a `Bad archive` error.
 
 Resolution: This happens when the downloaded compressed disk image file appears corrupted. You can force the re-download by adding the option `--no-cache` to the `init_sd_card` command.
@@ -235,7 +238,7 @@ Next, try to log in using SSH, using
 
     laptop $ ssh duckie@![hostname].local
 
-This should succeed without password.
+This should succeed without password. The default password is `quackquack`.
 
 ## Rebooting the Duckiebot {#setup-duckiebot-reboot}
 
@@ -256,13 +259,12 @@ Then wait 20 seconds.
 Warning: If you disconnect the power before shutting down properly using `shutdown`,
 the system might get corrupted.
 
-If you have a Duckiebot that is powered by the official [DuckieBattery][#db-opmanual-dtbattery-v2],
-e.g., DB21M, this procedure will shutdown the battery as well.
-This means that you do not need to manually disconnect any component from the battery.
+If you have a Duckiebot that is powered by the official [Duckiebattery](#db-opmanual-dtbattery-v2),
+e.g., `DB21M`, this procedure will shutdown the battery as well.
+This means that you do not need to manually disconnect any component from the battery. Learn more about handling the Duckiebattery in the `DB21` [handling instructions](#handling-duckiebot-db21m).
 
-If you DO NOT have a Duckiebot that is powered by the official DuckieBattery, then disconnect
-the USB cable from the battery.
+If you DO NOT have a Duckiebot that is powered by the official Duckiebattery, disconnect the USB cable from the battery.
 
 Warning: If you disconnect frequently the cable at the computational unit's end, you might damage the port.
 
-Warning: Pressing the battery button does not shut down the power to the Duckiebot, it only activates the battery. If not in use anymore, disconnect the cables. The battery will automatically shut down if no load is detected over a period of 10 mins.
+Warning: (`DB18` and `DB19`) Pressing the battery button does not shut down the power to the Duckiebot, it only activates the battery. If not in use anymore, disconnect the cables. The battery will automatically shut down if no load is detected over a period of 10 mins.

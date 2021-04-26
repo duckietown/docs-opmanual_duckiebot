@@ -46,7 +46,7 @@ which, after startup, will open an arrows interface window:
     <img style='width:8em' src="keyboard_gui.png"/>
 </figure>
 
-Note: input Duckiebot hostname, do not include `.local` part.
+Note: input Duckiebot ![hostname], do not include `.local` part.
 
 The following keys control the Duckiebot:
 
@@ -64,6 +64,8 @@ The following keys control the Duckiebot:
     <span>i</span>
     <span>Toggle Anti-instagram</span>
 </col2>
+
+The <kbd>a</kbd>, <kbd>s</kbd>, <kbd>i</kbd> function require the [lane following demo](#demo-lane-following) to be running.
 
 Warning: This does not currently work on Mac OSX.
 
@@ -119,7 +121,27 @@ You can also use the menu button of each block to resize them.
 
 Symptom: Duckiebot goes backwards, even though I command it to go forward.
 
-Resolution: If you have a `DB17` or `DB18`, revert the polarities (plus and minus cables) that go to the motor driver for both motors.
+Resolution: If you have a `DB17` or `DB18`, revert the polarities (plus and minus cables) of the cables that go to the motor driver (`HUT`) for both motors.
+
+Symptom: The robot doesn't move
+
+Resolution: Check that the `duckiebot-interface` container is running
+
+Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+
+You can also determine this by running:
+
+    $ docker -H ![ROBOT_NAME].local ps
+
+and look at the output to find the Duckiebot interface container and verify that it is running.
+
+Resolution: One of the base images is out of date
+Update your Duckiebot with the command
+
+    laptop $ dts duckiebot update ![ROBOT_NAME]
+
+
+<!--
 
 
 Symptom: I plugged in a gamepad, I found and run the unduckumented joystick demo but the joystick does not move the wheels.
@@ -168,19 +190,6 @@ If the numbers do not change while using the joystick then follow this guide at 
 
 Resolution: The controller might be connected to another Duckiebot nearby. Turn off the controller, go to a room with no other Duckiebots around and turn the controller back on. Retry.
 
-Symptom: The robot doesn't move
 
-Resolution: Check that the `duckiebot-interface` container is running
 
-Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
-
-You can also determine this by running:
-
-    $ docker -H ![ROBOT_NAME].local ps
-
-and look at the output to find the Duckiebot interface container and verify that it is running.
-
-Resolution: One of the base images is out of date
-Update your Duckiebot with the command
-
-    laptop $ dts duckiebot update ![ROBOT_NAME]
+-->

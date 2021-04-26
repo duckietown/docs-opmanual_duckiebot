@@ -26,6 +26,13 @@ Result: An assembled Duckiebot in configuration `DB21M`.
 
 These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a `DB21M`. Small variations might cause big effects (e.g., don't flip your cables!).
 
+## Video tutorial {#db21m-assembly-video}
+
+<div figure-id="fig:howto-assemble-db21m-video" figure-caption="DB21M: What's in the box and assembly.">
+    <dtvideo src="vimeo:528621827"/>
+</div>
+
+
 ## Overview
 
 A Duckiebox contains the following components:
@@ -707,15 +714,21 @@ If you have a circle pattern put it on the back plate of your Duckiebot.
 
 ## Check the outcome
 
-<div class='requirements' markdown="1">
 
-Checking: Look at the [Overview of interlocking parts](#fig:db21m-parts_indices) and make sure you have used each type at least once.
 
-Checking: Have a look at all cable connectors and make sure they are plugged in completely.
+* Look at the [Overview of interlocking parts](#fig:db21m-parts_indices) and make sure you have used each type at least once.
 
-Checking: check if all USB cables are plugged in completely. If you have already inserted a flashed SD card you are allowed to push the magic button on the battery.
+* Check all cable connectors and make sure they are plugged in completely. Do not use force on the Duckiebot, it is (almost) never useful and it might lead to undesirable outcomes.
 
-</div>
+* Make sure all USB cables to the Jetson Nano and the `HUT` are plugged in completely, and in the correct order. Several configurations exist for which the Duckiebot will do _something_, but only one, described above, is the correct one.
+
+* Make sure you have flashed your SD card with the latest version of the Duckiebot `DB21M` image.
+
+Note: Version 1.2.2 is the minimum requirement for enabling battery code updates. Make sure you have at least this version (>22 March 2021).
+
+* Make sure the SD card is inserted in Jetson Nano in the dedicated SD card slot under the main board. Do not plug it in the adapter and in a USB port. If you have already inserted a flashed SD card, you are allowed to push the magic button on the battery.
+
+
 
 ## Troubleshooting {#op-faq-db21m}
 
@@ -737,7 +750,7 @@ Resolution: Position it as it fits (at an angle). It will make the assembly a li
 
 Symptom: I don't have enough screws of a specific type.
 
-Resolution: Each package has enough screws of each type, plus spares. It might happen to inadvertently using one type instead of the correct one, which will result in shortages towards the final stages. Following the instructions carefully will prevent this from happening.
+Resolution: Each package has enough screws of each type, plus spares of some. It might happen to inadvertently use one type instead of the correct one, which will result in shortages towards the final stages. Following the instructions carefully will prevent this from happening.
 
 Symptom: I can't screw the omni-directional wheel right; the screws don't fit all the way in the standoffs.
 

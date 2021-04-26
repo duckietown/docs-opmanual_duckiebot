@@ -23,7 +23,7 @@ Follow instructions in [](#sec:rc-control) to make your robot movable either wit
 
 Now you need another container to run so that you can edit the calibrations and see the results. To get a base container with a command line you can run:
 
-    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME]
+    laptop $ dts start_gui_tools ![hostname]
 
 ## Step 3: Perform the calibration
 
@@ -32,7 +32,7 @@ Now you need another container to run so that you can edit the calibrations and 
 
 The trim parameter is set to $0.00$ by default, under the assumption that both motors and wheels are perfectly identical. You can change the value of the trim parameter by running the command:
 
-    duckiebot-container $ rosparam set /![DUCKIEBOT_NAME]/kinematics_node/trim ![trim value]
+    duckiebot-container $ rosparam set /![hostname]/kinematics_node/trim ![trim value]
 
 Use some tape to create a straight line on the floor ([](#fig:wheel_calibration_line)).
 
@@ -66,12 +66,12 @@ If the Duckiebot drifted by less than $10$ centimeters you can stop calibrating 
 
 If the Duckiebot drifted to the left side of the tape, decrease the value of $r$, by running, for example:
 
-    duckiebot-container $ rosparam set /![DUCKIEBOT_NAME]/kinematics_node/trim -0.1
+    duckiebot-container $ rosparam set /![hostname]/kinematics_node/trim -0.1
 
 If the Duckiebot drifted to the right side of the tape, increase the value of
 $r$, by running, for example:
 
-    duckiebot-container $ rosparam set /![DUCKIEBOT_NAME]/kinematics_node/trim 0.1
+    duckiebot-container $ rosparam set /![hostname]/kinematics_node/trim 0.1
 
 
 
@@ -84,7 +84,7 @@ Repeat this process until the robot drives straight
 The gain parameter is set to $1.00$ by default. You can change its value by
 running the command:
 
-    duckiebot-container $ rosparam set /![DUCKIEBOT_NAME]/kinematics_node/gain ![gain value]
+    duckiebot-container $ rosparam set /![hostname]/kinematics_node/gain ![gain value]
 
 <!-- You won't really know if it's right until you verify it though! onto the next section
 
@@ -137,19 +137,21 @@ You should see your robot drive down the lane. If it is calibrated properly, you
 
 When you are all done, save the parameters by running:
 
-    duckiebot-container $ rosservice call /![DUCKIEBOT_NAME]/kinematics_node/save_calibration
+    duckiebot-container $ rosservice call /![hostname]/kinematics_node/save_calibration
 
 The first time you save the parameters, this command will create the file
 
 
 ### Final check to make sure it's stored
 
+The calibration result is saved on your Duckiebot:
 
-Assuming your are running an HTTP server, point your browser to
+```
+/data/config/calibrations/kinematics/![hostname].yaml
+```
 
-`http://![DUCKIEBOT_NAME].local:8082/config/calibrations/kinematics/![DUCKIEBOT_NAME].yaml`
 
-Additionally, you can access your calibration files through dashboard.
+You can view or download the calibration file using the Dashboard running at `http://![hostname].local` under `File Manager` in the sidebar on the left, navigating to `config/calibrations/kinematics/![hostname].yaml`.
 
 <!--
 
