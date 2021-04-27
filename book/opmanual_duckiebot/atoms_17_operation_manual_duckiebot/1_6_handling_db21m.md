@@ -79,20 +79,20 @@ To update the software running on the micro-controller in the Duckiebattery, or 
 
 When reporting issues on StackOverflow, please include the step number, e.g. _Step 4.i.b_, the actions performed, and a description of the unexpected/unknown outcome.
 
-> ***Important:***
-> 1. ***Before the battery upgrade, please make sure the battery has at least 15% of charge.***
-> 2. ***Run all following commands on the desktop/laptop***
+***Important:***
+
+1. Before the battery upgrade, please make sure the battery has at least 15% of charge.
+2. Run all following commands on the desktop/laptop
 
 Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list. 
 
-> All following `![hostname]` refers to the name of the Duckiebot to which the battery is plugged in.
+All following `![hostname]` refers to the name of the Duckiebot to which the battery is plugged in.
 
-### Battery Upgrade Procedures
 
 1. Please update the `duckietown-shell` utility:
-   1. `pip3 install --user --upgrade --no-cache-dir duckietown-shell`
-   1. `dts update`
-   1. `dts desktop update`
+    1. `pip3 install --user --upgrade --no-cache-dir duckietown-shell`
+    2. `dts update`
+    3. `dts desktop update`
 2. Update the Duckiebot:
     1. ```dts duckiebot update ![hostname]```
 3. Reboot the Duckiebot:
@@ -104,13 +104,7 @@ Make sure the Duckiebot is powered on and connected to the network. You can veri
         1. Note: When prompted to "double-click" on the battery button, make sure to _quickly_ click twice the _battery_ button.
         2. Note: Do not worry if you are unsure if you actually pressed the button twice or not, as the battery upgrade process will verify this.
         3. Follow the instructions in the terminal.
-    2. If the command finished with the error below, please try flashing again with: <br>`dts duckiebot battery upgrade --force ![hostname]` <br> The error:
-   ```
-   SAM-BA operation failed
-   INFO:UpgradeHelper:An error occurred while flashing the battery.
-   ERROR:dts:The battery reported the status 'GENERIC_ERROR'
-   ```
-      
+    2. If the command finished with the error: ```SAM-BA operation failed INFO:UpgradeHelper:An error occurred while flashing the battery. ERROR:dts:The battery reported the status 'GENERIC_ERROR'```, please try flashing again with: `dts duckiebot battery upgrade --force ![hostname]`
     3. If the command finished with any other error: **single** press the battery button, and start from _step 3_ again one more time. If there are still errors, please report on StackOverflow.
 5. Prepare for post-upgrade checks
     1. If the battery indicates the charging states correctly, and shows the percentage number as normal, proceed to _step 6_
