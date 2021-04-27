@@ -34,19 +34,34 @@ Note: the battery can draw up to 2A. Feeding a higher amperage will not be a pro
 
 ## How to power off a `DB21M` {#howto-db21m-shutdown status=ready}
 
-Warning: The proper shutdown protocol for a `DB21M` requires having Duckiebattery software version 2.0. To check the version of your battery, follow the instruction on [how to update a Duckiebattery](#howto-db21m-battery-update).  
+Warning: The proper shutdown protocol for a `DB21M` requires having Duckiebattery software version >=2.0.0. To check the version of your battery, follow the instruction to "Verify current battery version" on [how to update a Duckiebattery](#howto-db21m-battery-update).  
 
 Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate that the Duckiebot has completed the booting process.
 
-You have three ways to power off your Duckiebot:
+Note: There are three methods to poweroff a DB21M (recommended method: "With the TOP button"):
+1. With the **TOP** button:
+    1. Press the **TOP** button (NOT the battery button) for 5 seconds and release.
+    1. What to expect:
+        1. The user should see the TOP button blinks for 3 seconds
+        1. the Duckiebot front and back LEDs should be turned off
+        1. Then in about *10* seconds, the Jetson and fan should stop.
+    1. Troubleshooting: If the display just switched to the next page and the TOP button did not blink, try again and push harder on the top button during the 5 seconds.
+1. With `duckietown-shell`:
+    1. `dts duckiebot shutdown ![hostname]`
+    2. What to expect:
+        1. The Jetson and fan should stop in about *10* seconds.
+        1. If the charging cable is not attached, the front and back LEDs should also be turned off.
+1. With the Duckiebot dashboard:
+    1. Open a browser
+    1. Navigate to `http://![hostname].local`
+    1. In the Top-Right corner, click on the `Power` options, and choose "`Shutdown`". Then confirm the action.
+    1. What to expect: the same as the `duckietown-shell` method.
 
-- Press the button on the top plate of the Duckiebot, near the screen, and keep it pressed for roughly 5 seconds before releasing it. The shutdown sequence will initiate with the blinking of the power button and a "Shutting down" message appearing on the screen.
-- From the terminal run: `dts duckiebot shutdown ![hostname]`. This will not show a message on the Duckiebot screen, nor make the button blink.
-- From the Dashboard, running at `http://![hostname].local`, select the tab `ROBOT` from the sidebar on the left, click the button `Power` on the top right corner and select `shutdown`.
+Warning: The following "hard" power shutdown should be only be used if the three methods above failed to shutdown the Duckiebot, because it might lead to software and hardware issues. 
 
-The shutdown sequence will first turn off the LEDs, then the screen, then computational unit, and finally the fan. Note that this is a "soft" shutdown procedure, which correctly terminates the processes running on the Jetson Nano board.  
-
-A "hard" power shutdown of the `DB21M` requires unplugging the micro USB cable from the port marked as `5Vraspi` on the `HUT`. This procedure should be used only as last resort as it might lead to software and hardware issues.  
+As a last resort, one could still perform a "hard" power shutdown of the `DB21M`:
+- `ssh duckie@![hostname].local sudo poweroff`
+- unplugging the micro USB cable from the port marked as `5Vraspi` on the `HUT`.   
 
 
 ## How to power on a `DB21M` {#howto-db21m-poweron status=ready}
@@ -61,58 +76,57 @@ After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs wil
 
 To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow this procedure.
 
-- Watch this tutorial video:
-
-<div figure-id="fig:howto-battery-update-db21m" figure-caption="Duckiebattery software upgrade tutorial.">
-    <dtvideo src="vimeo:526718185"/>
-</div>
-
-
-- Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list.
-
-
-- Open a terminal on the laptop and run `dts duckiebot battery upgrade ![hostname]`, where `![hostname]` is the name of the Duckiebot to which the battery is plugged in.
-
-
-If a Duckiebattery is detected, the prompt will show the currently installed version of the software as well as the latest one available.
-
-Note: if you wish to just check the software version of the code, press `n` now and abort the process.
-
-
-- To initiate the battery software upgrade procedure, type `y` and press <kbd>Enter</kbd>.  
-
-
-- The terminal will then prompt to press the button on the Duckiebattery _twice_.
-
-Note: make sure to "double-click" _quickly_ on the battery button when prompted to do so to have the battery enter boot mode.
-
-This operation will trigger a special `boot` mode for the battery, necessary to update its software. Do so, then go back to the terminal and press <kbd>Enter</kbd>.
-
-Note: the Duckiebot will not give any visible sign of the battery having entered boot mode. Do not worry if you are unsure if you actually pressed the button twice or not, as the battery upgrade process will verify this.
-
-- Wait until the procedure is complete.
-
-Congratulations, your battery software is up to date!
-
-
 <!--
-
-The program is now talking to the battery to figure out whether an update is necessary.
-
-As we can see, in this case the battery is running the software version 1.0 while the version 2.0 is available. We will be asked if we want to update now, and we confirm by typing "y" and pressing ENTER.
-
-The program is now ready to transfer the new software to the battery, but we have to tell the battery to get ready for an incoming update.
-
- We can do so by putting the battery into the so-called "Boot Mode" by pressing the button on the battery twice in a row.
-
-When we are done, we press ENTER on the terminal.
-
- Do not worry if you are not sure the double press was done properly, the program will tell us if we need to try again.
-
-
-The message "Updating battery" is telling us that the battery is now receiving the new code, let's wait.
-
-Well done, the battery is now updated and ready to go back to work.
-
-
+- Watch this tutorial video:
 -->
+<!--div figure-id="fig:howto-battery-update-db21m" figure-caption="Duckiebattery software upgrade tutorial.">
+    <dtvideo src="vimeo:526718185"/>
+</div-->
+When reporting issues on StackOverflow, please include the step number, e.g. `Step <4.i.b>`, the actions performed, and a description of the unexpected/unknown outcome.
+
+> ***IMPORTANT:***
+> 1. ***Before the battery upgrade, please make sure the battery has at least 15% of charge.***
+>2. ***Run all following commands on the desktop/laptop***
+
+Make sure the Duckiebot is powered on and connected to the network. You can verify the latter by launching, e.g., `dts fleet discover` and finding that your Duckiebot is on the list. 
+
+> All following `![hostname]` refers to the name of the Duckiebot to which the battery is plugged in.
+
+### Battery Upgrade Procedures
+1. Please update the `duckietown-shell` utility:
+   1. `pip3 install --user --upgrade --no-cache-dir duckietown-shell`
+   1. `dts update`
+   1. `dts desktop update`
+2. Update the Duckiebot:
+    1. ```dts duckiebot update ![hostname]```
+3. Reboot the Duckiebot:
+    1. `ssh duckie@![hostname].local sudo reboot`
+    2. Wait until the Duckiebot reboots and the display shows information (especially about the battery).
+    3. You could verify the battery related software is up and running by checking  whether the display reacts correctly to charging states when a charging cable is plugged in and unplugged. 
+4. Upgrade the battery firmware:
+    1. `dts duckiebot battery upgrade ![hostname]`
+        1. Note: When prompted to "double-click" on the battery button, make sure to _QUICKLY_ click twice the BATTERY button.
+        2. Note: Do not worry if you are unsure if you actually pressed the button twice or not, as the battery upgrade process will verify this.
+        3. Follow the instructions in the terminal.
+    2. If the command finished with the error below, please try flashing again with: <br>`dts duckiebot battery upgrade --force ![hostname]` <br> The error:
+   ```
+   SAM-BA operation failed
+   INFO:UpgradeHelper:An error occurred while flashing the battery.
+   ERROR:dts:The battery reported the status 'GENERIC_ERROR'
+   ```
+      
+    3. If the command finished with any other error: **SINGLE** press the battery button, and start from ***step <3>*** again one more time. If there are still errors, please report on StackOverflow.
+5. Prepare for post-upgrade checks
+    1. If the battery indicates the charging states correctly, and shows the percentage number as normal, proceed to ***step <6>***
+    2. If the display shows "`NoBT`" (No battery detected), then **SINGLE** press the battery button, and run:
+        1. `ssh duckie@![hostname].local sudo reboot`
+        2. Wait for the reboot (as described in step <3>)
+        3. Then proceed to step<6>
+6. Verify current battery version:
+    1. Method 1:
+        1. `dts duckiebot battery check_firmware ![hostname]`
+        2. Verify the battery version should be `"2.0.2"`
+    2. Method 2:
+        1. Open a browser window
+        2. Navigate to `http://![hostname].local/health/battery/info`
+        3. Verify the battery version should be `"2.0.2"`
