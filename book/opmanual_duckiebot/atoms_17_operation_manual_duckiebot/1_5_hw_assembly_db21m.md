@@ -472,6 +472,8 @@ Connect the second 6-pin motor cable of the right motor to the other connector.
      <img src="db21-step_43.png" style='width: 40em' />
 </div>
 
+Note: If you swap the motor cables, you Duckiebot will probably drive backwards when it is supposed to drive forwards :)
+
 ### Step 44
 Connect the 4-pin cable from the IMU to the corresponding plug shown in the picture.
 
@@ -763,6 +765,10 @@ Resolution: Mistakes happen. Some damages will not influence the functionality o
 Symptom: The wheels tend to fall off the motors.
 
 Resolution: You may remove the distance disks you put in step 22. But make sure that the wheels are still not touching the screws of the motor mounts.
+
+Symptom: My Duckiebot is driving backwards when pressing the key for straight forward.
+
+Resolution: You have swapped the motor cables. Please check the steps 42 and 43 again and make sure you connected the cables the right way.
 
 Symptom: One of the black USB cables is too short to connect it to the HUT.
 
