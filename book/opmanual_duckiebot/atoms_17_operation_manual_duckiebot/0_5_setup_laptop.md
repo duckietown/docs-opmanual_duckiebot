@@ -132,7 +132,9 @@ Alternatively, you can run them each time before you want to use `X11` forwardin
 
 ### Docker {#laptop-setup-mac-docker}
 
-Follow [these instructions](https://docs.docker.com/docker-for-mac/install/).
+- (For Linux): Follow [these instructions](https://docs.docker.com/engine/install/ubuntu/);
+- (For Mac): Follow [these instructions](https://docs.docker.com/docker-for-mac/install/);
+- (Important): Follow [post-install instructions](https://docs.docker.com/engine/install/linux-postinstall/);
 
 ### Duckietown Shell {#laptop-setup-mac-shell}
 
