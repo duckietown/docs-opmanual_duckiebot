@@ -9,13 +9,9 @@ The Github repository for this demo can be found on https://github.com/duckietow
 
 <div class='requirements' markdown="1">
 
-Requires: [ROS-Desktop-Full][ROS-installation] installed
+Requires: [ROS-Desktop-Full](http://wiki.ros.org/ROS/Installation) installed
 
-[ROS-installation]:http://wiki.ros.org/ROS/Installation
-
-Requires: [duckietown-world][duckietown-world] installed
-
-[duckietown-world]: https://github.com/duckietown/duckietown-world/
+Requires: [duckietown-world](https://github.com/duckietown/duckietown-world/) installed
 
 </div>
 
