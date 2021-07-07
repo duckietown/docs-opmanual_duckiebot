@@ -32,7 +32,7 @@ To run this demo, you can setup a quite complex Duckietown. The demo supports no
 
 ## Duckiebot setup notes {#demo-indefinite-navigation-duckiebot-setup}
 
-One (or possibly more) Duckiebot in configuration [DB18](#duckiebot-configurations).
+One (or possibly more) Duckiebot in configuration [DB19](#duckiebot-configurations)/[DB21M](#duckiebot-configurations) .
 
 ## Pre-flight checklist {#demo-indefinite-navigation-pre-flight}
 
@@ -42,18 +42,12 @@ Check that every Duckiebot has sufficient battery charge and that they are all p
 
 ### Start the demo containers
 
-Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. As these span 3 Docker images (`dt-duckiebot-interface`, `dt-car-interface`, and `dt-core`). The `dt-duckiebot-interface` and `dt-car-interface` container typically starts with robot startup. You will need to start `dt-core` manually.
-
-First, check to make sure that `dt-duckiebot-interface` and `dt-car-interface` are running on your duckiebot via portainer, if not, do:
-
-    laptop $ dts duckiebot demo --demo_name duckiebot-interface --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckiebot_interface --image duckietown/dt-duckiebot-interface:daffy-arm32v7
-
-    laptop $ dts duckiebot demo --demo_name car-interface --duckiebot_name ![DUCKIEBOT_NAME] --package_name car_interface --image duckietown/dt-car-interface:daffy-arm32v7
+Running this demo requires almost all of the main Duckietown ROS nodes to be up and running. Make sure that `ros`, `car-interface` and `duckiebot-interface` are running.
 
 Then, we are ready to start the high-level pipeline for indefinite navigation:
 
-    laptop $ dts duckiebot demo --demo_name indefinite_navigation --duckiebot_name ![DUCKIEBOT_NAME] --package_name duckietown_demos
-
+    laptop $ dts duckiebot demo --demo_name indefinite_navigation --duckiebot_name ![DUCKIEBOT_NAME] 
+    
 You have to wait a while for everything to start working. While you wait, you can check in Portainer if all the containers started successfully and in their logs for any possible issues.
 
 ### Make your Duckiebot drive autonomously!
@@ -64,10 +58,10 @@ If you have a joystick you can skip this next command, otherwise we need to run 
 
 | Controls             | Joystick |   Keyboard   |
 | -------------------- | :------: | :----------: |
-| Start Lane Following |  **R1**  | <kbd>a</kbd> |
-| Stop Lane Following  |  **L1**  | <kbd>s</kbd> |
+| Start Ind Navigation |  **R1**  | <kbd>a</kbd> |
+| Stop Ind Navigation  |  **L1**  | <kbd>s</kbd> |
 
-Start the lane following. The Duckiebot should drive autonomously in the lane. Intersections and red lines are neglected and the Duckiebot will drive across them like it is a normal lane. You can regain control of the bot at any moment by stopping the lane following and using the (virtual) joystick. Resuming the demo is as easy as pressing the corresponding start button.
+Start indefinite navigation by pressing the above controls. The Duckiebot should drive autonomously in the lane. Intersections and red lines are taken into consideration and the Duckiebot will stop at the red lines. You can regain control of the bot at any moment by stopping the indefinite navigation and using the (virtual) joystick. Resuming the demo is as easy as pressing the corresponding start button.
 
 Et voilà! We are ready to drive around autonomously.
 
