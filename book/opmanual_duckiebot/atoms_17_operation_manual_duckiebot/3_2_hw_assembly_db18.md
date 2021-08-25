@@ -108,7 +108,7 @@ Use *2* M3x30 screws and *2* M3 nuts to secure the motor to the motor supports. 
 Note: You might find aligning the holes to be a little bit hard. It is easier to first get the top screw aligned and place the screw in, and then push in the side support piece in to place. If that still doesn't work, get the bottom screw and the side support in first, align it, and secure with nuts. Then try to push the top screw through. You might have to use the screw to expand the hole a bit.
 
 ### Step 2
-Do the same for the second motor as well as shown in [](#fig:db18-step_2a) and [](#fig:db18-step_2b)
+Do the same for the second motor as shown in [](#fig:db18-step_2a) and [](#fig:db18-step_2b)
 
 <div figure-id="fig:db18-step_2a" figure-caption="How to mount the second motor supports">
   <img src="db18-step_2a.png" style='width: 25em'/>
@@ -141,14 +141,14 @@ From the Duckiebox package take the following components:
 - M3x10 nylon screws (2x)
 
 ### Step 4
-Assemble the omni-directional wheel as shown in figure [](#fig:db18-step_4).
+Assemble the omni-directional wheel.
 
 <div figure-id="fig:db18-step_4" figure-caption="Assembly of the omni-directional wheel">
      <img src="db18-step_4.png" style='width: 25em'/>
 </div>
 
 ### Step 5
-Then mount it to the bottom plate of the Duckiebot as shown in figure [](#fig:db18-step_5).
+Then mount it to the bottom plate of the Duckiebot.
 
 <div figure-id="fig:db18-step_5" figure-caption="Mounting the omni-directional wheel">
      <img src="db18-step_5.png" style='width: 25em'/>
