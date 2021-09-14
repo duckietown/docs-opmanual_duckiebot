@@ -1,5 +1,10 @@
 # Docker basics {#preliminaries-docker-basics status=ready}
 
+
+<div figure-id="fig:tutorial-docker-video" figure-caption="An introduction to containerization.">
+    <dtvideo src="vimeo:527006910"/>
+</div>
+
 ## What is Docker? {#basic-docker-what-is}
 
 Docker is used to perform operating-system-level virtualization, something often referred to as "containerization". While Docker is not the only software that does this, it is by far the most popular one.
@@ -38,13 +43,11 @@ In the Docker world images get organized by their repository name, image name an
 
 An image stored on DockerHub has a name of the form:
 
-    duckietown/rpi-ros-kinetic-base:master18
+    duckietown/![IMAGE_NAME]:![VERSION-NAME]-![ARCH-NAME]
 
-Here the repository name is `duckietown`, the image name is `rpi-ros-kinetic-base`, and the tag is `master18`.
+All Duckietown-related images are in the `duckietown` repository. The images themselves can be very different for various applications.
 
-All Duckietown-related images are in the `duckietown` repository. The images themselves can be very different and for various applications.
-
-Sometimes a certain image might need to have several different versions. These can be designated with *tags*. For example, the `master18` tag means that this is the image to be used with the `DT18` version of Duckietown.
+Sometimes a certain image might need to have several different versions. These can be designated with *tags*. For example, the `daffy` tag means that this is the image to be used with the `daffy` version of Duckietown.
 
 It is not necessary to specify a tag. If you don't, Docker assumes you are interested in the image with `latest` tag, should such an image exist.
 
@@ -74,6 +77,7 @@ Sometimes you might have a lot of images you are not using. You can easily remov
 However, be careful not to delete something you might actually need. Keep in mind that you can't remove images that a container is using. To do that, you will have to stop the container, remove it, and then you can remove the related images.
 
 If you want to look into the heart and soul of your images, you can use the commands `docker image history` and `docker image inspect` to get a detailed view.
+
 
 ## Working with containers {#basic-docker-commands-containers }
 
@@ -143,11 +147,10 @@ Imagine you are running a container in the background. The main process is runni
 
     laptop $ docker attach ![container name]
 
+
 ## Running images {#docker-running-options}
 
-Often we will ask you to run containers with more sophisticated options than what we saw before. Look at the following example: (don't try to run this, it will not do much).
-
-    laptop $ docker -H hostname.local run -dit --privileged --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
+There are many command line arguments that can be passed to the `docker run` command. 
 
 [](#tab:docker-run-tab) shows a summary of the options we use most often in Duckietown. Below, we give some examples
 
@@ -198,6 +201,8 @@ Often we will ask you to run containers with more sophisticated options than wha
   </col3>
   <figcaption><code>docker run</code> options</figcaption>
 </div>
+
+Note that most of this is hidden from the Duckietown user because it is contained within the Duckietown Shell. 
 
 ### Examples {nonumber}
 
@@ -252,3 +257,36 @@ Here are some resources you can look up:
 - [Docker official Get Started tutorial](https://docs.docker.com/get-started/);
 - [Docker Curriculum](https://docker-curriculum.com/);
 - *Docker Deep Dive*, by Nigel Poulton.
+
+
+## Docker common troubleshooting {#setup-troubleshooting-docker status=ready}
+
+
+### docker: Got permission denied while trying to connect to the Docker daemon socket
+
+If this is on your laptop, that means when you setup your enviornment you did not grant your user account right to do certain things. You can fix this by running:
+
+    laptop $ sudo adduser `whoami` docker
+
+Log out and in again and it should be fixed.
+
+
+### Container does not start {#setup-troubleshooting-docker-starting status=ready}
+
+Symptom: `docker: Error response from daemon: Conflict. The container name "/![container_name]" is already in use by container "![container_hash]". You have to remove (or rename) that container to be able to reuse that name.`
+
+Resolution: Stop the container (`docker stop ![container_name]`) if running and then remove (`docker rm ![container_name]`) the container with the
+
+
+### Docker exits with `tls: oversized record received`
+
+If Docker exits with the above error when running remote commands, the most likely reason is different versions of Docker on your computer and Duckiebot. You can check that by running `docker version` on both devices. If that is indeed the case, you need to upgrade the Docker binaries on your computer. To do that, follow the official instructions [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).
+
+
+### I can't run a container because I get `exec user process caused "exec format error"`
+
+An error like this:
+
+`standard_init_linux.go:190: exec user process caused "exec format error"`
+
+despite not being very descriptive typically means that there is a mismatch between the container's processor architecture and the one on your computer. Different processor architectures have different instruction sets and hence binaries compiled for one are generally not executable on another. Raspberry Pis use ARM processors, while most of the laptops use x86 architecture which makes them incompatible. Still, there's hope. Most of the Duckietown Raspberry Pi containers have a piece of magic inside called Qemu which allows emulation of an ARM processor on a x86 machine. You can activate this emulator if you change the default entrypoint of the container by adding `--entrypoint=qemu3-arm-static` to options when running it.
