@@ -12,25 +12,25 @@ Result: A flashed microcontroller (not SD card) on the HUT board with the latest
 
 </div>
 
-Warning: You must not procede with the following instructions unless you are in one of the following cases:
-    1. The motors of the robot are not working.
-    2. The LEDs are not white when the robot is switched on.
-    3. You know what are you doing, or you have been asked to flash the microcontroller by someone who knows what the consequences can be.
+Warning: You must not proceed with the following instructions unless you are in one of the following cases:
+1. The motors of the robot are not working.
+2. The LEDs are not white when the robot is on.
+3. You know what you are doing, or you have been asked to flash the microcontroller by someone who knows what the consequences can be.
 
-first of all ssh into your Duckiebot running:
+First of all, ssh into your Duckiebot running:
 
     laptop $ ssh duckie@DUCKIEBOT_NAME.local
 
-Procede installing the packages needed to compile the firmware:
+Proceed to install the packages needed to compile the firmware:
 
     duckiebot $ sudo apt-get update
     duckiebot $ sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
 
-If you are running a Duckiebot with an NVIDIA Jetson Nano board clone the firmware for the microcontroller using the following command:
+If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
 
     duckiebot $ git clone -b jetson-nano https://github.com/duckietown/fw-device-hut.git
 
-else, if you have a Raspberri Pi based Duckiebot use:
+else, if you have a Raspberry Pi based Duckiebot, use:
 
     duckiebot $ git clone -b raspberry-pi https://github.com/duckietown/fw-device-hut.git
 
@@ -39,11 +39,11 @@ Navigate inside the repository you cloned and copy the avrdude config file in th
     duckiebot $ cd fw-device-hut
     duckiebot $ sudo cp _avrdudeconfig/avrdude.conf /etc/avrdude.conf
 
-Then test the avrdude and set the fuses (these are some low-level settings, which just have to be set once) with:
+Then test the avrdude and set the fuses (these are some low-level settings, which are set only once) with:
 
     duckiebot $ make fuses
 
-If the command was successful, namely, the connection to the microcontroller works and the fuses were written, the output looks like: 
+If the command is successful, the connection to the microcontroller works, and the fuses are written. The output looks like this: 
 
     avrdude: verifying …
     avrdude: 1 bytes of efuse verified
@@ -57,7 +57,7 @@ While in the case you see the `message make: warning: Clock skew detected. Your 
 
     duckiebot $ find -exec touch \{\} \;
 
-After that retry running the `make fuses` command.
+After that, retry running the `make fuses` command.
 
 Continue removing all temporary files, so everything has to be compiled freshly by running:
 
@@ -67,7 +67,7 @@ Then compile the firmware and upload it to the microcontroller by running:
 
     duckiebot $ make
 
-the output should look like:
+The resulting output prints the following text:
 
     .....
 
@@ -103,7 +103,7 @@ the output should look like:
 
     avrdude done.  Thank you.
 
-Finally remove the the repository to free up space on the robot and reboot the Duckiebot:
+Finally, remove the repository to free up space on the robot and reboot the Duckiebot:
 
     duckiebot $ cd .. && rm -rf fw-device-hut
     duckiebot $ sudo reboot
