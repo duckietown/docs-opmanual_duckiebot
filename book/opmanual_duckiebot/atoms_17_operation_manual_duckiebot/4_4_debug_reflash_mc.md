@@ -4,7 +4,7 @@ This page is only for the DB18 and DB19 configuration (not the DB21M).
 
 <div class='requirements' markdown="1">
 
-Requires: A Duckiebot DB18 or DB19.
+Requires: A Duckiebot.
 
 Requires: A stable network connection to your Duckiebot.
 
@@ -12,32 +12,38 @@ Result: A flashed microcontroller (not SD card) on the HUT board with the latest
 
 </div>
 
-Warning: You do not need to perform the following procedure unless you are specifically told to do in the book.
+Warning: You must not proceed with the following instructions unless you are in one of the following cases:
+1. The motors of the robot are not working.
+2. The LEDs are not white when the robot is on.
+3. You know what you are doing, or you have been asked to flash the microcontroller by someone who knows what the consequences can be.
 
-The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:
+First of all, ssh into your Duckiebot running:
 
-`ssh` into your robot and clone the Duckietown Software repository with:
+    laptop $ ssh duckie@DUCKIEBOT_NAME.local
 
-    duckiebot $ git clone https://github.com/duckietown/Software.git ~/Software
-
-install avrdude and gcc with:
+Proceed to install the packages needed to compile the firmware:
 
     duckiebot $ sudo apt-get update
-    duckiebot $ sudo apt-get install bison autoconf flex
-    duckiebot $ sudo apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
-    duckiebot $ sudo apt-get install build-essential
+    duckiebot $ sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
 
-Copy the avrdude config file with:
+If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
 
-    duckiebot $ cd ~/Software/hardware/software/_avrdudeconfig
-    duckiebot $ sudo cp avrdude.conf /etc/avrdude.conf
+    duckiebot $ git clone -b jetson-nano https://github.com/duckietown/fw-device-hut.git
 
-Test avrdude and set fuses with:
+else, if you have a Raspberry Pi based Duckiebot, use:
 
-    duckiebot $ cd ~/Software/hardware/software
+    duckiebot $ git clone -b raspberry-pi https://github.com/duckietown/fw-device-hut.git
+
+Navigate inside the repository you cloned and copy the avrdude config file in the `/etc` folder of the Duckiebot:
+
+    duckiebot $ cd fw-device-hut
+    duckiebot $ sudo cp _avrdudeconfig/avrdude.conf /etc/avrdude.conf
+
+Then test the avrdude and set the fuses (these are some low-level settings, which are set only once) with:
+
     duckiebot $ make fuses
 
-if the output of `make fuses` is at the end like
+If the command is successful, the connection to the microcontroller works, and the fuses are written. The output looks like this: 
 
     avrdude: verifying …
     avrdude: 1 bytes of efuse verified
@@ -47,27 +53,23 @@ if the output of `make fuses` is at the end like
 
     avrdude done.  Thank you.
 
-the connection to the microcontroller works and the fuses could be written. The fuses are some low lowlevel settings, which just have to be set once. If this succeeded, jump the next step.
-
-If there is the message "make: warning: Clock skew detected. Your build may be incomplete." or the make process is not stopping and many debugging messages are showed, try the following:
-Press <kbd>Ctrl</kbd>-<kbd>C</kbd> to stop the current command. Then run:
+While in the case you see the `message make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
 
     duckiebot $ find -exec touch \{\} \;
 
-This ensures that the modification time of all files is set to the current time. Make decides, which files have to be compiled by comparing the source file time with the executable file time. If the executable file time lies in the future regarding the current system time, not all modified files are compiled. This could happen when the clock of the Raspberry Pi is not set correctly and the file timestamps of, e.g., a github pull are used.
+After that, retry running the `make fuses` command.
 
-Next up, remove all temporary files, so everything has to be compiled freshly by running:
+Continue removing all temporary files, so everything has to be compiled freshly by running:
 
     duckiebot $ make clean
 
-Compile the programm and download it to the microcontroller by running:
+Then compile the firmware and upload it to the microcontroller by running:
 
     duckiebot $ make
 
-the output should look like:
+The resulting output prints the following text:
 
-    Errors: none
-    -------- end --------
+    .....
 
     sudo avrdude -p attiny861 -c linuxgpio -P  -q -U flash:w:main.hex
 
@@ -101,8 +103,9 @@ the output should look like:
 
     avrdude done.  Thank you.
 
-With that, the microcontroller should work. To change the microcontroller programm, just edit the files, e.g with vim. With `make` you can compile and download the programm to the microcontroller again.
+Finally, remove the repository to free up space on the robot and reboot the Duckiebot:
 
-In the end, make sure to delete the Software repository to free up the space again. This is done by running:
+    duckiebot $ cd .. && rm -rf fw-device-hut
+    duckiebot $ sudo reboot
 
-    duckiebot $ rm -rf ~/Software
+
