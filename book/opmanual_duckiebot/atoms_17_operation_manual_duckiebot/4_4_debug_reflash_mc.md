@@ -1,4 +1,4 @@
-# Debug - Reflash Microcontroller {#reflash-microcontroller status=ready}
+# Debug - Re-flash Microcontroller {#reflash-microcontroller status=ready}
 
 <div class='requirements' markdown="1">
 
