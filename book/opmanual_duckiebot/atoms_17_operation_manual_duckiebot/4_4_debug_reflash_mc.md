@@ -2,7 +2,7 @@
 
 <div class='requirements' markdown="1">
 
-Requires: A Duckiebot of [configuration](#duckiebot-configuration) `DB18` or above.
+Requires: A Duckiebot of [configuration](#duckiebot-configurations) `DB18` or above.
 
 Requires: A stable network connection to your Duckiebot.
 
@@ -22,16 +22,16 @@ This procedure will not be useful to fix problems such as one motor working and 
 
 ## How to flash the microcontroller {#reflash-microcontroller-how}
 
-1. Ssh into your Duckiebot by running:
+* Ssh into your Duckiebot by running:
 
     laptop $ ssh duckie@DUCKIEBOT_NAME.local
 
-2. Install the packages needed to compile the microcontroller firmware:
+* Install the packages needed to compile the microcontroller firmware:
 
     duckiebot $ sudo apt-get update
     duckiebot $ sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
 
-3. If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
+* If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
 
     duckiebot $ git clone -b jetson-nano https://github.com/duckietown/fw-device-hut.git
 
@@ -39,12 +39,12 @@ else, if you have a Raspberry Pi based Duckiebot, use:
 
     duckiebot $ git clone -b raspberry-pi https://github.com/duckietown/fw-device-hut.git
 
-4. Navigate inside the repository you cloned and copy the `avrdude config` file in the `/etc` folder of the Duckiebot:
+* Navigate inside the repository you cloned and copy the `avrdude config` file in the `/etc` folder of the Duckiebot:
 
     duckiebot $ cd fw-device-hut
     duckiebot $ sudo cp _avrdudeconfig/avrdude.conf /etc/avrdude.conf
 
-5. Then test the `avrdude` and set the low-level configuration with:
+* Then test the `avrdude` and set the low-level configuration with:
 
     duckiebot $ make fuses
 
@@ -64,11 +64,11 @@ If you see the message `make: warning: Clock skew detected. Your build may be in
 
 And then retry running the `make fuses` command.
 
-6. Remove all temporary files by running:
+* Remove all temporary files by running:
 
     duckiebot $ make clean
 
-7. Compile the firmware and upload it to the microcontroller:
+* Compile the firmware and upload it to the microcontroller:
 
     duckiebot $ make
 
@@ -108,11 +108,11 @@ The resulting output should be:
 
     avrdude done.  Thank you.
 
-8. Remove the cloned repository to free up space:
+* Remove the cloned repository to free up space:
 
     duckiebot $ cd .. && rm -rf fw-device-hut
 
-9. and finally reboot the Duckiebot:
+* and finally reboot the Duckiebot:
 
     duckiebot $ sudo reboot
 
