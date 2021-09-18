@@ -1,32 +1,37 @@
 # Debug - Reflash Microcontroller {#reflash-microcontroller status=ready}
 
-This page is only for the DB18 and DB19 configuration (not the DB21M).
-
 <div class='requirements' markdown="1">
 
-Requires: A Duckiebot.
+Requires: A Duckiebot of [configuration](#duckiebot-configuration) `DB18` or above.
 
 Requires: A stable network connection to your Duckiebot.
 
-Result: A flashed microcontroller (not SD card) on the HUT board with the latest code.
+Result: A flashed microcontroller (not SD card) on the HUT board, with the latest code version.
 
 </div>
 
-Warning: You must not proceed with the following instructions unless you are in one of the following cases:
-1. The motors of the robot are not working.
-2. The LEDs are not white when the robot is on.
-3. You know what you are doing, or you have been asked to flash the microcontroller by someone who knows what the consequences can be.
+Warning: this procedure is needed for Duckietown HUT version `3.15`, but not for other models. Although often unnecessary, it is safe to perform on any HUT of version `2.0` and above.   
 
-First of all, ssh into your Duckiebot running:
+## When and why should I run this procedure? {#reflash-microcontroller-when}
+
+This procedure flashes the microcontroller on the Duckietown HUT. This microcontroller is responsible for translating the duty cycle commands from the onboard computer to actual `PWM` signals that control the motors and the LEDs (because they are "addressable" LEDs) of the Duckiebots.
+
+A typical example of when is necessary to flash the microcontroller is when commands are sent to the motors, e.g., through keyboard control, the motors signals on the dashboard/mission control show that signals are correctly being sent, but the Duckiebot does not move.  
+
+This procedure will not be useful to fix problems such as one motor working and not the other, or LEDs showing unexpected colors when the motors work.
+
+## How to flash the microcontroller {#reflash-microcontroller-how}
+
+1. Ssh into your Duckiebot by running:
 
     laptop $ ssh duckie@DUCKIEBOT_NAME.local
 
-Proceed to install the packages needed to compile the firmware:
+2. Install the packages needed to compile the microcontroller firmware:
 
     duckiebot $ sudo apt-get update
     duckiebot $ sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
 
-If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
+3. If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
 
     duckiebot $ git clone -b jetson-nano https://github.com/duckietown/fw-device-hut.git
 
@@ -34,16 +39,16 @@ else, if you have a Raspberry Pi based Duckiebot, use:
 
     duckiebot $ git clone -b raspberry-pi https://github.com/duckietown/fw-device-hut.git
 
-Navigate inside the repository you cloned and copy the avrdude config file in the `/etc` folder of the Duckiebot:
+4. Navigate inside the repository you cloned and copy the `avrdude config` file in the `/etc` folder of the Duckiebot:
 
     duckiebot $ cd fw-device-hut
     duckiebot $ sudo cp _avrdudeconfig/avrdude.conf /etc/avrdude.conf
 
-Then test the avrdude and set the fuses (these are some low-level settings, which are set only once) with:
+5. Then test the `avrdude` and set the low-level configuration with:
 
     duckiebot $ make fuses
 
-If the command is successful, the connection to the microcontroller works, and the fuses are written. The output looks like this: 
+A successful outcome looks like:
 
     avrdude: verifying …
     avrdude: 1 bytes of efuse verified
@@ -53,21 +58,21 @@ If the command is successful, the connection to the microcontroller works, and t
 
     avrdude done.  Thank you.
 
-While in the case you see the `message make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
+If you see the message `make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
 
     duckiebot $ find -exec touch \{\} \;
 
-After that, retry running the `make fuses` command.
+And then retry running the `make fuses` command.
 
-Continue removing all temporary files, so everything has to be compiled freshly by running:
+6. Remove all temporary files by running:
 
     duckiebot $ make clean
 
-Then compile the firmware and upload it to the microcontroller by running:
+7. Compile the firmware and upload it to the microcontroller:
 
     duckiebot $ make
 
-The resulting output prints the following text:
+The resulting output should be:
 
     .....
 
@@ -103,9 +108,12 @@ The resulting output prints the following text:
 
     avrdude done.  Thank you.
 
-Finally, remove the repository to free up space on the robot and reboot the Duckiebot:
+8. Remove the cloned repository to free up space:
 
     duckiebot $ cd .. && rm -rf fw-device-hut
+
+9. and finally reboot the Duckiebot:
+
     duckiebot $ sudo reboot
 
-
+After reboot your Duckiebot should move normally and LEDs respond nominally. The Dashboard / components page will show a green status for the HUT, too.  
