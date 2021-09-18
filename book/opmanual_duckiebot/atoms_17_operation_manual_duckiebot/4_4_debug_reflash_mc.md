@@ -24,31 +24,43 @@ This procedure will not be useful to fix problems such as one motor working and 
 
 * Ssh into your Duckiebot by running:
 
-    laptop $ ssh duckie@DUCKIEBOT_NAME.local
+        laptop $ ssh duckie@![DUCKIEBOT_NAME].local
 
 * Install the packages needed to compile the microcontroller firmware:
 
-    duckiebot $ sudo apt-get update
-    duckiebot $ sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
+
+      duckiebot &#36; sudo apt-get update
+
+      duckiebot &#36; sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
+
 
 * If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
 
-    duckiebot $ git clone -b jetson-nano https://github.com/duckietown/fw-device-hut.git
+
+    duckiebot &#36; git clone -b jetson-nano https://github.com/duckietown/fw-device-hut.git
+
 
 else, if you have a Raspberry Pi based Duckiebot, use:
 
-    duckiebot $ git clone -b raspberry-pi https://github.com/duckietown/fw-device-hut.git
+
+    duckiebot &#36; git clone -b raspberry-pi https://github.com/duckietown/fw-device-hut.git
+
 
 * Navigate inside the repository you cloned and copy the `avrdude config` file in the `/etc` folder of the Duckiebot:
 
-    duckiebot $ cd fw-device-hut
-    duckiebot $ sudo cp _avrdudeconfig/avrdude.conf /etc/avrdude.conf
+
+    duckiebot &#36; cd fw-device-hut
+    duckiebot &#36; sudo cp _avrdudeconfig/avrdude.conf /etc/avrdude.conf
+
 
 * Then test the `avrdude` and set the low-level configuration with:
 
-    duckiebot $ make fuses
+
+    duckiebot &#36; make fuses
+
 
 A successful outcome looks like:
+
 
     avrdude: verifying …
     avrdude: 1 bytes of efuse verified
@@ -60,17 +72,23 @@ A successful outcome looks like:
 
 If you see the message `make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
 
-    duckiebot $ find -exec touch \{\} \;
+
+    duckiebot &#36; find -exec touch \{\} \;
+
 
 And then retry running the `make fuses` command.
 
 * Remove all temporary files by running:
 
-    duckiebot $ make clean
+
+    duckiebot &#36; make clean
+
 
 * Compile the firmware and upload it to the microcontroller:
 
-    duckiebot $ make
+
+    duckiebot &#36; make
+
 
 The resulting output should be:
 
@@ -110,10 +128,14 @@ The resulting output should be:
 
 * Remove the cloned repository to free up space:
 
-    duckiebot $ cd .. && rm -rf fw-device-hut
+
+    duckiebot &#36; cd .. && rm -rf fw-device-hut
+
 
 * and finally reboot the Duckiebot:
 
-    duckiebot $ sudo reboot
+
+    duckiebot &#36; sudo reboot
+
 
 After reboot your Duckiebot should move normally and LEDs respond nominally. The Dashboard / components page will show a green status for the HUT, too.  
