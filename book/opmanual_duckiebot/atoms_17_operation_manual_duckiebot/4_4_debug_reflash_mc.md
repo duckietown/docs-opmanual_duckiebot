@@ -32,19 +32,22 @@ Install the packages needed to compile the microcontroller firmware:
     duckiebot $ sudo apt-get update
     duckiebot $ sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
 
-If you are running a Duckiebot with an NVIDIA Jetson Nano board, clone the firmware for the microcontroller using the following command:
+Clone the firmware for the microcontroller using the following command:
 
-    duckiebot $ git clone -b jetson-nano https://github.com/duckietown/fw-device-hut.git
+    duckiebot $ git clone https://github.com/duckietown/fw-device-hut.git
 
-else, if you have a Raspberry Pi based Duckiebot, use:
-
-    duckiebot $ git clone -b raspberry-pi https://github.com/duckietown/fw-device-hut.git
-
-Navigate inside the repository you cloned and copy the `avrdude config` file in the `/etc` folder of the Duckiebot:
+Navigate inside the repository you cloned :
 
     duckiebot $ cd fw-device-hut
-    duckiebot $ sudo cp _avrdudeconfig/avrdude.conf /etc/avrdude.conf
 
+Copy the `avrdude.conf` file in the `/etc` folder of the robot. If you are running a Duckiebot with an NVIDIA Jetson Nano board run:
+
+    duckiebot $ sudo cp _avrdudeconfig_jetson_nano/avrdude.conf /etc/avrdude.conf
+    
+else, if you have a Raspberry Pi based Duckiebot, use:
+
+    duckiebot $ sudo cp _avrdudeconfig_raspberry_pi/avrdude.conf /etc/avrdude.conf
+    
 Then test the `avrdude` and set the low-level configuration with:
 
     duckiebot $ make fuses
