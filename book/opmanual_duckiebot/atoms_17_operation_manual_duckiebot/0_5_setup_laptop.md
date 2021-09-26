@@ -117,7 +117,7 @@ After installing XQuartz, run it in the command line with:
 
     laptop $ open -a XQuartz
 
-Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set. Now close XQuartz.
+Go to "Preferences" and in the "Security" tab make sure that the checkbox next to "Allow connections from network clients" is set. Now close XQuartz.
 
 You may want to add the following lines to your `.bashrc` file:
 
@@ -132,7 +132,9 @@ Alternatively, you can run them each time before you want to use `X11` forwardin
 
 ### Docker {#laptop-setup-mac-docker}
 
-Follow [these instructions](https://docs.docker.com/docker-for-mac/install/).
+- (For Linux): Follow [these instructions](https://docs.docker.com/engine/install/ubuntu/);
+- (For Mac): Follow [these instructions](https://docs.docker.com/docker-for-mac/install/);
+- (Important): Follow [post-install instructions](https://docs.docker.com/engine/install/linux-postinstall/);
 
 ### Duckietown Shell {#laptop-setup-mac-shell}
 
