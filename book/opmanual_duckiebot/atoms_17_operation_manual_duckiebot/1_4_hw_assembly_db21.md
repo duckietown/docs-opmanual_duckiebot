@@ -10,7 +10,7 @@
 
 <div class='requirements' markdown="1">
 
-Requires: Duckiebot `DB21` parts ([get a `DB21`](https://get.duckietown.com/)). If you are unsure what version of Duckiebot you have, check this overview of all existing [Duckiebot configurations](#duckiebot-configurations).
+Requires: Duckiebot `DB21` parts ([get a `DB21`](https://get.duckietown.com/)). If you are unsure what version of Duckiebot you have, check the overview of existing [Duckiebot configurations](#duckiebot-configurations).
 
 Requires: A micro SD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 

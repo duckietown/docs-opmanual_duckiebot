@@ -1,4 +1,4 @@
-# Understanding Duckiebot Configurations {#duckiebot-configurations status=ready}
+# Duckiebot Configurations {#duckiebot-configurations status=ready}
 
 <div class='requirements' markdown="1">
 
@@ -8,14 +8,13 @@ Results: Knowledge of Duckiebot configuration naming conventions and their respe
 
 </div>
 
-We define different Duckiebot configurations depending on their time of use and hardware components.
+We define the different Duckiebot configurations, from the first `DB17` used in the MIT course 2.166 in 2017 to the latest available.  
 
-All Duckiebot configurations from `DB18` onward can be obtained [here](https://get.duckietown.com/).
-
+Duckiebots `DB18` onwards can be obtained from the [Duckietown project store](https://get.duckietown.com/). 
 
 ## Overview
 
-| Model 	|  Computation  	|              Sensing             	|             Actuation             	| Memory 	|       Power       	|       Notes      	|
+| Model |  Computation  |              Sensing|             Actuation| Memory |       Power |       Notes   |
 |-------	|:-------------:	|:--------------------------------:	|:---------------------------------:	|:------:	|:-----------------:	|:----------------:	|
 | [DB17](#duckiebot-config-db17)   	|      RPI3     	|              Camera              	|     2x DC motors, 5x RGB LEDs     	|  32GB  	|   Off-the-shelf   	|                  	|
 | [DB18](#duckiebot-config-db18)   	|     RPI3B+    	|              Camera              	|     2x DC motors, 5x RGB LEDs     	|  32GB  	| [Duckie-power bank]({#db-opmanual-dtbattery-v1}) 	| addressable LEDs 	|
