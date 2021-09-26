@@ -12,9 +12,43 @@ We define different Duckiebot configurations depending on their time of use and 
 
 All Duckiebot configurations from `DB18` onward can be obtained [here](https://get.duckietown.com/).
 
+
+## Overview
+
+| Model 	|  Computation  	|              Sensing             	|             Actuation             	| Memory 	|       Power       	|       Notes      	|
+|-------	|:-------------:	|:--------------------------------:	|:---------------------------------:	|:------:	|:-----------------:	|:----------------:	|
+| [DB17](#duckiebot-config-db17)   	|      RPI3     	|              Camera              	|     2x DC motors, 5x RGB LEDs     	|  32GB  	|   Off-the-shelf   	|                  	|
+| [DB18](#duckiebot-config-db18)   	|     RPI3B+    	|              Camera              	|     2x DC motors, 5x RGB LEDs     	|  32GB  	| [Duckie-power bank]({#db-opmanual-dtbattery-v1}) 	| addressable LEDs 	|
+| [DB19](#duckiebot-config-db19)   	|     RPI3B+    	|      Camera, Wheel Encoders      	|     2x DC motors, 5x RGB LEDs     	|  32GB  	| [Duckie-power bank]({#db-opmanual-dtbattery-v1}) 	|                  	|
+| [DB21M](#duckiebot-config-db21m) 	|     JN2GB     	| Camera, Wheel Encoders, ToF, IMU 	| 2x DC motors, 4x RGB LEDs, Screen 	|  32GB  	|   [Duckiebattery]({#db-opmanual-dtbattery-v2})    	|    Chassis v1    	|
+| [DB21](#duckiebot-config-db21)  	| JN2GB / JN4GB 	| Camera, Wheel Encoders, ToF, IMU 	| 2x DC motors, 4x RGB LEDs, Screen 	|  64GB  	|   [Duckiebattery]({#db-opmanual-dtbattery-v2})   	|    Chassis v2    	|
+
+Legend:
+- "JN": NVIDIA Jetson Nano
+- "RPI": Raspberry Pi
+- "ToF": Time of flight
+- "IMU": Inertial Measurement Unit (Accelerometer, Gyroscope)
+
+## Duckiebot version 2021, or `DB21` {#duckiebot-config-db21}
+
+The Duckiebot `DB21` debuted with the "[Self-Driving Cars with Duckietown](https://www.duckietown.org/mooc)" massive open online course, as version [`DB21M`](#duckiebot-config-db21m).
+
+Later revisions, referred to under the broader label `DB21`, improve the `DB21M` by:
+
+- expanding the onboard memory from 32GB to 64GB;
+- tweaking the chassis design (v1.0 -> v2.0) for reduced complexity and increased stiffness;
+- introducing a newer version of the `HUT` (v3.15); which is backwards compatible and removes the need for an additional resistor on the top button;
+- downgrades the IMU version from `MPU-9250` to `MPU-6050` due to global chip shortages (2021-2022 chip crisis).
+
+To assemble a `DB21` Duckiebot, follow [these](#assembling-duckiebot-db21m) instructions.
+
+You can obtain a `DB21` Duckiebot from the [Duckietown project shop](https://get.duckietown.com/products/duckiebot-db21).  
+
 ## Duckiebot MOOC Founder's edition, or `DB21M` {#duckiebot-config-db21m}
 
-The `DB21M` is the first Duckiebot equipped with a NVIDIA Jetson Nano 2 GB computational unit instead of a Raspberry Pi. The `DB21M` debuts in 2021 with the "[Self-Driving Cars with Duckietown](https://www.edx.org/course/self-driving-cars-with-duckietown)" massive open online course, hosted on the edX platform.
+The `DB21M` is the first Duckiebot equipped with a NVIDIA Jetson Nano 2 GB computational unit instead of a Raspberry Pi.
+
+The `DB21M` debuts in 2021 with the [first edition](https://www.edx.org/course/self-driving-cars-with-duckietown) of the massive open online course, hosted on the edX platform.
 
 <div figure-id="fig:db21m" figure-caption="The Duckiebot version `DB21M`.">
    <img src="db21m.jpg" style='width: 20em'/>
@@ -23,6 +57,8 @@ The `DB21M` is the first Duckiebot equipped with a NVIDIA Jetson Nano 2 GB compu
 The `DB21M` is readily recognized by its blazing blue chassis and triple-decker configuration. It is equipped with a sensor suite including: camera, time-of-flight sensor, inertial measurement unit (IMU) and wheel encoders. Moreover, the `DB21M` features new electronics (HUT v3.1, front and back bumpers), a screen, a button and a custom designed [Duckiebattery](#db-opmanual-dtbattery-v2) (not to be confused with the [Duckie-power-bank](#db-opmanual-dtbattery-v1)).
 
 To assemble a `DB21M` Duckiebot, follow [these](#assembling-duckiebot-db21m) instructions.
+
+You can obtain a `DB21M` Duckiebot from the [Duckietown project shop](https://get.duckietown.com/collections/dt-robots/products/duckiebot-db21-m).  
 
 ## Duckiebot version 2019, or `DB19` {#duckiebot-config-db19}
 
@@ -39,6 +75,8 @@ Apart from the new motors and another HUT (v. 2.1), the `DB19` is identical with
 </div>
 
 To assemble a `DB19` Duckiebot, follow [these](#assembling-duckiebot-db19) instructions.
+
+You can obtain a `DB19` Duckiebot from the [Duckietown project shop](https://get.duckietown.com/products/duckiebot-db19).  
 
 ## Duckiebot version 2018, or `DB18` {#duckiebot-config-db18}
 
@@ -63,6 +101,8 @@ You can recognize a `DB18` from previous versions for having only one board in a
 </div>
 
 To assemble a `DB18` Duckiebot, follow [these](#assembling-duckiebot-db18) instructions.
+
+You can obtain a `DB18` Duckiebot from the [Duckietown project shop](https://get.duckietown.com/products/duckiebot-db18).  
 
 ### The `DB18-Robotarium` configuration
 
