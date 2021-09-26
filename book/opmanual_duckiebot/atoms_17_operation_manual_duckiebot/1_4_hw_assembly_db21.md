@@ -503,7 +503,7 @@ Symptom: I don't understand what's going on with the connections
 
 Resolution: This simplified block diagram of data and electrical connections of the `DB21M` might help:
 
-<div figure-id="fig:db21m-rev1-block-diagram" figure-caption="`DB21M` block diagram of electrical and data connections.">
+<div figure-id="fig:db21m-rev1-block-diagram" figure-caption="Block diagram of electrical and data connections for the `DB21` and `DB21M`.">
      <img src="db21-rev1-schematics-block-diagram.png" style='width: 30em'/>
 </div>
 
