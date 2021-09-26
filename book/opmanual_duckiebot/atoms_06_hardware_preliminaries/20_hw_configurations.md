@@ -24,6 +24,7 @@ All Duckiebot configurations from `DB18` onward can be obtained [here](https://g
 | [DB21](#duckiebot-config-db21)  	| JN2GB / JN4GB 	| Camera, Wheel Encoders, ToF, IMU 	| 2x DC motors, 4x RGB LEDs, Screen 	|  64GB  	|   [Duckiebattery]({#db-opmanual-dtbattery-v2})   	|    Chassis v2    	|
 
 Legend:
+
 - "JN": NVIDIA Jetson Nano
 - "RPI": Raspberry Pi
 - "ToF": Time of flight

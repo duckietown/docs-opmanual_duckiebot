@@ -2,7 +2,7 @@
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` or later configurations (including `DB21M`).
+Requires: A Duckiebot in `DB18` or later configurations.
 
 Requires: Laptop configured according to [](#laptop-setup).
 
@@ -140,6 +140,11 @@ Update your Duckiebot with the command
 
     laptop $ dts duckiebot update ![ROBOT_NAME]
 
+Symptom: Everything seems fine, I can see the commands being sent to the Duckiebot (e.g., through the Dashboard > Mission Control), but the Duckiebot does not move. My Dashboard > Robot > Components page show a red alert for the `HUT`.
+
+Note: if you have a `HUT` v3.15 you will stumble on this problem the first time you try to move your Duckiebot.
+
+Resolution: Re-flash your `HUT` following the procedure described in [](#reflash-microcontroller). 
 
 <!--
 
