@@ -117,7 +117,7 @@ After installing XQuartz, run it in the command line with:
 
     laptop $ open -a XQuartz
 
-Go to "Preferences" and in the security tab make sure that the checkbox next to "Allow" connections from network clients is set. Now close XQuartz.
+Go to "Preferences" and in the "Security" tab make sure that the checkbox next to "Allow connections from network clients" is set. Now close XQuartz.
 
 You may want to add the following lines to your `.bashrc` file:
 
