@@ -414,11 +414,11 @@ The code is split into two sections:
 
 A successful intersection navigation entails:
 
-	- Following the path in a reasonable way: not crossing any lines, smooth trajectory.
+- Following the path in a reasonable way: not crossing any lines, smooth trajectory.
 
-	- Achieving the desired intersection end point within a range of +/-15 cm.
+- Achieving the desired intersection end point within a range of +/-15 cm.
 
-	- Navigating the intersection within the maximum time limit: 10 s for straight and left curve, 8 s for right curve.
+- Navigating the intersection within the maximum time limit: 10 s for straight and left curve, 8 s for right curve.
 
 * Navigation duration (until duckiebot is able to continue with the lane follower):
 

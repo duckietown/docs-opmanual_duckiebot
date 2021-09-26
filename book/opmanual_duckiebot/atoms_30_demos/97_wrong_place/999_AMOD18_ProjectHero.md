@@ -24,7 +24,7 @@ template-submission
 │   submission.yaml
 ```
 
-The Dockerfile and the Makefile are standard and need not be changed unless you want to add more than your source code. The solution.py file is the entry point for the code you want to submit to the test. You can write whatever code you want into the run function of hte Solver class, but the in the end you should `call cis.set_solution_output_dict(dict)` where dict is a dictionary containing all the data you want to output from your code to the evaluator. An example of this can be found bellow. 
+The Dockerfile and the Makefile are standard and need not be changed unless you want to add more than your source code. The solution.py file is the entry point for the code you want to submit to the test. You can write whatever code you want into the run function of hte Solver class, but the in the end you should `call cis.set_solution_output_dict(dict)` where dict is a dictionary containing all the data you want to output from your code to the evaluator. An example of this can be found bellow.
 
 ```
 #!/usr/bin/env python
@@ -34,14 +34,14 @@ from duckietown_challenges import wrap_solution, ChallengeSolution, ChallengeInt
 class Solver(ChallengeSolution):
     def run(self, cis):
         assert isinstance(cis, ChallengeInterfaceSolution)
-	#here is where your code comes in. EX:
-	import myalgorithm	
-	myclass = myalgorithm.MyClass()
-	input_from_evaluator = cis.get_challenge_parameters()
-	data = {'data': myclass.run_my_code(input_from_evaluator)}
-	
-	#Remember to set the solution output
-	cis.set_solution_output_dict(data)
+    #here is where your code comes in. EX:
+    import myalgorithm    
+    myclass = myalgorithm.MyClass()
+    input_from_evaluator = cis.get_challenge_parameters()
+    data = {'data': myclass.run_my_code(input_from_evaluator)}
+    
+    #Remember to set the solution output
+    cis.set_solution_output_dict(data)
 
 #Dont change this
 if __name__ == '__main__':
@@ -73,7 +73,7 @@ Information on how to define a challenge can be found here\(for now\):
 What follows now is a step by step guide to setting up a local server, defining a challenge, and making a submission to this challenge.
 
 ### Step 1 (the server)
-First we need to install the local server. You can get the server from 
+First we need to install the local server. You can get the server from
 
 [https://github.com/duckietown/duckietown-challenges-server](https://github.com/duckietown/duckietown-challenges-server)
 
@@ -81,7 +81,7 @@ If the process complains that you are missing duckietown-challenges or duckietow
 
 And now you should be able to navigate to [http://localhost:6544](http://localhost:6544) in your browser of choice. Open a new terminal before starting the next step.
 
-### Step 2 (the challenge) 
+### Step 2 (the challenge)
 
 Use the provided cookiecutter to create a challenge repository for your project. This is done by using the following commands:
 
@@ -121,14 +121,14 @@ Now you should have another directory inside submissions called `submission_*lib
 
     laptop $ make run_regression_local
 
-Now you should see a submission being made to the specified challenge. If everything is correct you should now be able to following how the evaluator is evaluating you challenge either in the terminal window where the evaluator is running or on [http://localhost:6544](http://localhost:6544). Once the process is done you should see that you have a new entry on the leaderboard of the defined challenge over on [http://localhost:6544](http://localhost:6544). 
+Now you should see a submission being made to the specified challenge. If everything is correct you should now be able to following how the evaluator is evaluating you challenge either in the terminal window where the evaluator is running or on [http://localhost:6544](http://localhost:6544). Once the process is done you should see that you have a new entry on the leaderboard of the defined challenge over on [http://localhost:6544](http://localhost:6544).
 
 If you see an error in the server window saying that a comparison has been made between a None and a Datetime in the `db_submission.py`, found inside the src folder on the challenge-server, add the following to the
 ```
     if subs_timestamp == None:
-	subs_timestamp = jobs_timestamp
+    subs_timestamp = jobs_timestamp
     if jobs_timestamp == None:
-	jobs_timestamp = subs_timestamp
+    jobs_timestamp = subs_timestamp
 ```
 
 in the `get_db_timestamp` function before the return statement.

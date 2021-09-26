@@ -1,41 +1,52 @@
-# Making your Duckiebot move {#rc-control status=ready}
-
-This page is for Duckiebots in `DB18` configuration. For previous year's instructions see [here](https://docs.duckietown.org/DT17/).
+# Operation - Make it move {#rc-control status=ready}
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot in `DB18` configuration.
+Requires: A Duckiebot in `DB18` or later configurations.
 
-Requires: Laptop configured, according to [](#laptop-setup).
+Requires: Laptop configured according to [](#laptop-setup).
 
 Requires: You have configured the Duckiebot as documented in [](#setup-duckiebot).
 
-Results: You can make your robot move.
+Results: You can make your Duckiebot move.
 
 </div>
 
+This section describes how to make your Duckiebot move.
 
 <!--Requires: You have created a Github account and configured public keys,
 both for the laptop and for the Duckiebot. The procedure is documented in [](+software_reference#github-access).-->
+
+<!--
 
 ## Option 0 - With a joystick
 
 Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and you should be able to use it right away
 
+-->
 
-## Option 1 - With the Duckietown Shell {#make-it-move_shell status=ready}
+## Keyboard control {#make-it-move_shell status=ready}
 
+The easiest way to move a Duckiebot is by keyboard control. This video shows how to drive a Duckiebot using the keyboard, through the Duckietown Shell.
 
-If you would like to move your robot using your laptop, you can run:
+<div figure-id="fig:howto-virtual" figure-caption="Duckiebot keyboard control.">
+<dtvideo src="vimeo:526584868"/>
+</div>
 
-    $ dts duckiebot keyboard_control ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
+### Duckietown Shell
 
-which, after startup should open the interface window that looks like:
+To move your Duckiebot using your computer's keyboard open a terminal and run:
+
+    $ dts duckiebot keyboard_control ![ROBOT_NAME]
+
+which, after startup, will open an arrows interface window:
 
 <figure>
     <figcaption>The keyboard control graphical user interface</figcaption>
     <img style='width:8em' src="keyboard_gui.png"/>
 </figure>
+
+Note: input Duckiebot ![hostname], do not include `.local` part.
 
 The following keys control the Duckiebot:
 
@@ -54,68 +65,19 @@ The following keys control the Duckiebot:
     <span>Toggle Anti-instagram</span>
 </col2>
 
-Warning: This does not currently work on Mac OSX - need to fix
+The <kbd>a</kbd>, <kbd>s</kbd>, <kbd>i</kbd> function require the [lane following demo](#demo-lane-following) to be running.
 
+Warning: This does not currently work on Mac OSX.
 
-## The no-window way  (For Mac Users) 
+### The no-window way with Duckietown shell (For Mac Users)
 
-There is some weird reason that messages published on Mac inside the container don't make it all the way to the robot. 
+For some reason messages published on Mac inside the container don't make it all the way to the robot.
 
-For those that don't want or can't do the above where a window pops up, do the following (which will run directly on the robot): 
+When the popup arrow window is not responsive, running the stack directly on the Duckiebot might help:
 
-    laptop $ dts duckiebot keyboard_control ![hostname] --cli --base_image duckietown/dt-core:daffy
+    laptop $ dts duckiebot keyboard_control ![hostname] --cli
 
-
-### Troubleshooting
-
-Symptom: The robot doesn't move
-
-Resolution: Check that the `duckiebot-interface` is running
-
-Open [the Portainer interface](#docker-setup-portainer-interface) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
-
-You call also determine this by running:
-
-    $ docker -H ![DUCKIEBOT_NAME].local ps
-
-and look at the output to find the Duckiebot interface container and verify that it is running.
-
-Resolution: One of the base images is out of date
-
-Pull the base images on the Duckiebot:
-
-    $ docker -H ![DUCKIEBOT_NAME].local pull duckietown/dt-core:daffy
-
-and on the laptop:
-
-    $ docker pull duckietown/dt-core:daffy-amd64
-
-
-<!--
-## Option 2 - with Docker  {#make-it-move_docker status=ready}
-
-
-Verify that the container is running by either using [the Portainer interface](#docker-setup-portainer-interface)
-or by using `docker ps`.
-
-
-### Run the joystick demo
-
-Use the following command to run the joystick demo:
-
-
-    laptop $ docker -H ![hostname].local run -dit --privileged --name joystick --network=host -v /data:/data duckietown/rpi-duckiebot-joystick-demo:master18
-
-
-### Controlling your robot with a joystick
-
-If you have a joystick, you can use it to make your robot move.
-
-Otherwise, you can use the following instructions to run the demo with
-keyboard control.
--->
-
-## Option 2: Using the dashboard {#setup-ros-websocket-image status=ready}
+## Option 2: Using the Dashboard {#setup-ros-websocket-image status=draft}
 
 If you followed the instructions in [](#duckiebot-dashboard-setup), you
 should have access to the Duckiebot dashboard.
@@ -155,3 +117,84 @@ The page contains 4 blocks by default.
 Feel free to drag them around and rearrange them as you please.
 You can also use the menu button of each block to resize them.
 
+## Troubleshooting
+
+Symptom: Duckiebot goes backwards, even though I command it to go forward.
+
+Resolution: If you have a `DB17` or `DB18`, revert the polarities (plus and minus cables) of the cables that go to the motor driver (`HUT`) for both motors.
+
+Symptom: The robot doesn't move
+
+Resolution: Check that the `duckiebot-interface` container is running
+
+Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+
+You can also determine this by running:
+
+    $ docker -H ![ROBOT_NAME].local ps
+
+and look at the output to find the Duckiebot interface container and verify that it is running.
+
+Resolution: One of the base images is out of date
+Update your Duckiebot with the command
+
+    laptop $ dts duckiebot update ![ROBOT_NAME]
+
+Symptom: Everything seems fine, I can see the commands being sent to the Duckiebot (e.g., through the Dashboard > Mission Control), but the Duckiebot does not move. My Dashboard > Robot > Components page show a red alert for the `HUT`.
+
+Note: if you have a `HUT` v3.15 you will stumble on this problem the first time you try to move your Duckiebot.
+
+Resolution: Re-flash your `HUT` following the procedure described in [](#reflash-microcontroller). 
+
+<!--
+
+
+Symptom: I plugged in a gamepad, I found and run the unduckumented joystick demo but the joystick does not move the wheels.
+
+Resolution: Check that the red indicator on the joystick stopped blinking.
+
+<div figure-id="fig:joystick_connection_status" figure-class="flow-subfigures">
+    <div figure-id="subfig:joystick_no_connection" figure-caption="Bad joystick status">
+        <p style='width:14em'>
+            <img src="joystick_no_connection.jpg" style='width:14em'/>
+        </p>
+    </div>
+
+    <div figure-id="subfig:joystick_good_connection" figure-caption="Bad joystick status">
+        <p style='width:14em'>
+            <img src="joystick_good_connection.jpg" style='width:14em'/>
+        </p>
+    </div>
+</div>    
+
+Symptom: The joystick is connected (as shown in [](#subfig:joystick_good_connection)) but
+the Duckiebot still does not move.
+
+Resolution: Make sure that the controller is connected to the Duckiebot and that the OS receives the data from it. Run
+
+    duckiebot $ jstest /dev/input/js0
+
+If you receive the error
+
+    jstest: No such file or directory
+
+it means that the USB receiver is not connected to the Raspberry Pi or is broken.
+
+If the command above shows something like the following
+
+    Driver version is 2.1.0.
+    Joystick (ShanWan PC/PS3/Android) has 8 axes (X, Y, Z, Rz, Gas, Brake, Hat0X, Hat0Y)
+    and 15 buttons (BtnX, BtnY, BtnZ, BtnTL, BtnTR, BtnTL2, BtnTR2, BtnSelect, BtnStart, BtnMode, BtnThumbL, BtnThumbR, ?, ?, ?).
+    Testing ... (interrupt to exit)
+    Axes:  0:     0  1:     0  2:     0  3:     0  4:-32767  5:-32767  6:     0  7:     0 Buttons:  0:off  1:off  2:off  3:off  4:off  5:off  6:off  7:off  8:off  9:off 10:off 11:off 12:off 13:off 14:off
+
+it means that the USB receiver is connected to the Raspberry Pi. Leave the terminal above open and use the joystick to command the Duckiebot. If you observe that the numbers shown in the terminal change according to the commands sent through the joystick than the problem is
+in ROS. Make sure that the joystick demo is launched. Restart the Duckiebot if needed and try again.
+
+If the numbers do not change while using the joystick then follow this guide at the next Resolution point.
+
+Resolution: The controller might be connected to another Duckiebot nearby. Turn off the controller, go to a room with no other Duckiebots around and turn the controller back on. Retry.
+
+
+
+-->
