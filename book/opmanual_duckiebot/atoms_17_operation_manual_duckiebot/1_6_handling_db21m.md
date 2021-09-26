@@ -1,4 +1,4 @@
-# Handling - Duckiebot `DB21M` {#handling-duckiebot-db21m status=ready}
+# Handling - Duckiebot `DB21`,`DB21M` {#handling-duckiebot-db21m status=ready}
 
 <div class='requirements' markdown="1">
 
@@ -30,7 +30,7 @@ Note: to minimize mechanical stress on the `HUT` we recommend plugging in the ch
 
 Note: the battery can draw up to 2A. Feeding a higher amperage will not be a problem, but wrong voltage will send the battery in [protection mode](#db-opmanual-preliminaries-battery-protection).
 
-- If the Duckiebot is turned on when charging, a battery charge indicator will appear on the top right of the screen. If the Duckiebot is turned off, the LEDs will turns on. In both cases, a small LED on the `HUT` near the charger port will turn green, indicating incoming power.
+- If the Duckiebot is turned on when charging, a battery charge indicator will appear on the top right of the screen. If the Duckiebot is turned off, the LEDs will turn on. In both cases, a small LED on the `HUT` near the charger port will turn green, indicating incoming power.
 
 ## How to power off a `DB21M` {#howto-db21m-shutdown status=ready}
 
@@ -58,7 +58,7 @@ Note: There are three methods to power off a DB21M (recommended method: "With th
     1. In the Top-Right corner, click on the `Power` options, and choose "`Shutdown`". Then confirm the action.
     1. What to expect: the same as the "With `duckietown-shell`" method.
 
-Warning: The following "hard" power shutdown should be only be used if the three methods above failed to shutdown the Duckiebot, because it might lead to software and hardware issues. 
+Warning: The following "hard" power shutdown should be only be used if the three methods above failed to shut down the Duckiebot, because it might lead to software and hardware issues. 
 
 As a last resort, one could still perform a "hard" power shutdown of the `DB21M`:
 - `ssh duckie@![hostname].local sudo poweroff`
@@ -71,7 +71,7 @@ To power on a Founder Edition Duckiebot, press the button on the battery _once_.
 
 The Duckiebot LEDs, as well as the Jetson Nano board booting LED will turn on.
 
-After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs will then turn to a steady white color, followed by the button and screen on the top plate powering on, as shown in the [tutorial video](#fig:howto-handle-db21m).   
+After a few seconds, the Wi-Fi dongle will start blinking. The Duckiebot LEDs will then turn to a steady white color, followed by the button and screen on the top plate powering on, as shown in the [tutorial video](#fig:howto-handle-db21m).   
 
 ## How to update a Duckiebattery {#howto-db21m-battery-update status=ready}
 
@@ -107,7 +107,7 @@ All following `![hostname]` refers to the name of the Duckiebot to which the bat
     2. If the command finished with the error: ```SAM-BA operation failed INFO:UpgradeHelper:An error occurred while flashing the battery. ERROR:dts:The battery reported the status 'GENERIC_ERROR'```, please try flashing again with: `dts duckiebot battery upgrade --force ![hostname]`
     3. If the command finished with any other error: **single** press the battery button, and start from _step 3_ again one more time. If there are still errors, please report on StackOverflow.
 5. Prepare for post-upgrade checks
-    1. If the battery indicates the charging states correctly, and shows the percentage number as normal, proceed to _step 6_
+    1. If the battery indicates the charging states correctly, and shows the percentage number normally, proceed to _step 6_
     2. If the display shows "`NoBT`" (No battery detected), then **single** press the battery button, and run:
         1. `ssh duckie@![hostname].local sudo reboot`
         2. Wait for the reboot (as described in _step 3_)
