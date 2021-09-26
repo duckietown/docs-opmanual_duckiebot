@@ -41,7 +41,7 @@ Later revisions, referred to under the broader label `DB21`, improve the `DB21M`
 - introducing a newer version of the `HUT` (v3.15); which is backwards compatible and removes the need for an additional resistor on the top button;
 - downgrades the IMU version from `MPU-9250` to `MPU-6050` due to global chip shortages (2021-2022 chip crisis).
 
-To assemble a `DB21` Duckiebot, follow [these](#assembling-duckiebot-db21m) instructions.
+To assemble a `DB21` Duckiebot, follow [these](#assembling-duckiebot-db21) instructions.
 
 You can obtain a `DB21` Duckiebot from the [Duckietown project shop](https://get.duckietown.com/products/duckiebot-db21).  
 
