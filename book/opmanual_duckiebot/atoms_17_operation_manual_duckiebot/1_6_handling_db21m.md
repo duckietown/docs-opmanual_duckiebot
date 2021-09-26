@@ -2,11 +2,11 @@
 
 <div class='requirements' markdown="1">
 
-Requires: An assembled `DB21M`. Find the assembly instructions [here](#assembling-duckiebot-db21m).
+Requires: An assembled `DB21` or `DB21M`. Find the assembly instructions [here](#assembling-duckiebot-db21m).
 
-Requires: An initialized `DB21M` with **image version at least 1.2.2**. Find the initialization instructions [here](#setup-duckiebot). [Check your current firmware version](#duckiebot-dashboard-use) before proceeding.
+Requires: An initialized `DB21` or `DB21M` with **image version at least 1.2.2**. Find the initialization instructions [here](#setup-duckiebot). [Check your current firmware version](#duckiebot-dashboard-use) before proceeding.
 
-Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21M`.
+Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21` or `DB21M`.
 
 </div>
 
@@ -38,7 +38,7 @@ Warning: The proper shutdown protocol for a `DB21M` requires having the Duckieba
 
 Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate that the Duckiebot has completed the booting process.
 
-Note: There are three methods to poweroff a DB21M (recommended method: "With the top button"):
+Note: There are three methods to power off a DB21M (recommended method: "With the top button"):
 
 1. With the **top** button:
     1. Press the **top** button (not the battery button) for 5 seconds and release.
@@ -77,7 +77,7 @@ After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs wil
 
 To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow this procedure.
 
-When reporting issues on StackOverflow, please include the step number, e.g. _Step 4.i.b_, the actions performed, and a description of the unexpected/unknown outcome.
+When reporting issues on Stack Overflow, please include the step number, e.g. _Step 4.i.b_, the actions performed, and a description of the unexpected/unknown outcome.
 
 ***Important:***
 
@@ -120,3 +120,10 @@ All following `![hostname]` refers to the name of the Duckiebot to which the bat
         1. Open a browser window
         2. Navigate to `http://![hostname].local/health/battery/info`
         3. Verify the battery version should be `"2.0.2"`
+
+
+## How to update a `HUT` {#howto-hut-update status=ready}
+
+Instructions on how to flash a Duckietown `HUT` board can be found [here](#reflash-microcontroller).
+
+Note: (re)flashing a `HUT` is typically not needed. A notable exception is for `HUT` version 3.15 which comes with `DB21`s. The `HUT` version can be read on the board itself. 
