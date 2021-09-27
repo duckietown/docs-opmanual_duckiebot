@@ -11,11 +11,11 @@ about: Use this form to report an issue with the hardware
 *Example: The Pi dose not boot when connecting 5V.*
 
 
-### Events 
+### Events
 
 *Describe the sequence of events that lead to the damaged PI.*
 
-*Example: I used an assembled duckiebot according to DB18 and was performing the calibration step.*
+*Example: I used an assembled Duckiebot according to DB18 and was performing the calibration step.*
 
 ### System information
 
@@ -50,4 +50,4 @@ What hardware was involved?
 
 *Describe what test you have performed after realizing the fault.*
 
-*Example: After realizing that the motors don’t turn I replaced the HAT and the motors were turning. I then put back the old HAT and the motors stopped working.* 
+*Example: After realizing that the motors don’t turn I replaced the HAT and the motors were turning. I then put back the old HAT and the motors stopped working.*
