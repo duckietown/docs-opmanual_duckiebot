@@ -76,7 +76,7 @@ You can also download a specific log instead of all by replacing `*` with the fi
 
 Note: This procedure requires ROSBAG to be installed. If you have not installed that already, you can do so via:
 
-    $ sudo apt-get install python-rosbag
+    $ sudo apt-get install python3-rosbag
 
 Either copy the log to your laptop or from within your container do
 
