@@ -1,12 +1,12 @@
-# Handling - Duckiebot `DB21M` {#handling-duckiebot-db21m status=ready}
+# Handling - Duckiebot `DB21`,`DB21M` {#handling-duckiebot-db21m status=ready}
 
 <div class='requirements' markdown="1">
 
-Requires: An assembled `DB21M`. Find the assembly instructions [here](#assembling-duckiebot-db21m).
+Requires: An assembled `DB21` or `DB21M`. Find the assembly instructions [here](#assembling-duckiebot-db21m).
 
-Requires: An initialized `DB21M` with **image version at least 1.2.2**. Find the initialization instructions [here](#setup-duckiebot). [Check your current firmware version](#duckiebot-dashboard-use) before proceeding.
+Requires: An initialized `DB21` or `DB21M` with **image version at least 1.2.2**. Find the initialization instructions [here](#setup-duckiebot). [Check your current firmware version](#duckiebot-dashboard-use) before proceeding.
 
-Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21M`.
+Result: Knowledge on standard protocols to turn on, turn off, charge, and update the Duckiebattery software version on a `DB21` or `DB21M`.
 
 </div>
 
@@ -30,7 +30,7 @@ Note: to minimize mechanical stress on the `HUT` we recommend plugging in the ch
 
 Note: the battery can draw up to 2A. Feeding a higher amperage will not be a problem, but wrong voltage will send the battery in [protection mode](#db-opmanual-preliminaries-battery-protection).
 
-- If the Duckiebot is turned on when charging, a battery charge indicator will appear on the top right of the screen. If the Duckiebot is turned off, the LEDs will turns on. In both cases, a small LED on the `HUT` near the charger port will turn green, indicating incoming power.
+- If the Duckiebot is turned on when charging, a battery charge indicator will appear on the top right of the screen. If the Duckiebot is turned off, the LEDs will turn on. In both cases, a small LED on the `HUT` near the charger port will turn green, indicating incoming power.
 
 ## How to power off a `DB21M` {#howto-db21m-shutdown status=ready}
 
@@ -38,7 +38,7 @@ Warning: The proper shutdown protocol for a `DB21M` requires having the Duckieba
 
 Make sure the Duckiebot has completed the booting process. You can verify this by checking the "Status" after running `dts fleet discover` on your laptop: a green `Ready` message will indicate that the Duckiebot has completed the booting process.
 
-Note: There are three methods to poweroff a DB21M (recommended method: "With the top button"):
+Note: There are three methods to power off a DB21M (recommended method: "With the top button"):
 
 1. With the **top** button:
     1. Press the **top** button (not the battery button) for 5 seconds and release.
@@ -58,7 +58,7 @@ Note: There are three methods to poweroff a DB21M (recommended method: "With the
     1. In the Top-Right corner, click on the `Power` options, and choose "`Shutdown`". Then confirm the action.
     1. What to expect: the same as the "With `duckietown-shell`" method.
 
-Warning: The following "hard" power shutdown should be only be used if the three methods above failed to shutdown the Duckiebot, because it might lead to software and hardware issues. 
+Warning: The following "hard" power shutdown should be only be used if the three methods above failed to shut down the Duckiebot, because it might lead to software and hardware issues. 
 
 As a last resort, one could still perform a "hard" power shutdown of the `DB21M`:
 - `ssh duckie@![hostname].local sudo poweroff`
@@ -71,13 +71,13 @@ To power on a Founder Edition Duckiebot, press the button on the battery _once_.
 
 The Duckiebot LEDs, as well as the Jetson Nano board booting LED will turn on.
 
-After a few seconds, the WiFi dongle will start blinking. The Duckiebot LEDs will then turn to a steady white color, followed by the button and screen on the top plate powering on, as shown in the [tutorial video](#fig:howto-handle-db21m).   
+After a few seconds, the Wi-Fi dongle will start blinking. The Duckiebot LEDs will then turn to a steady white color, followed by the button and screen on the top plate powering on, as shown in the [tutorial video](#fig:howto-handle-db21m).   
 
 ## How to update a Duckiebattery {#howto-db21m-battery-update status=ready}
 
 To update the software running on the micro-controller in the Duckiebattery, or just checking the current version of it, follow this procedure.
 
-When reporting issues on StackOverflow, please include the step number, e.g. _Step 4.i.b_, the actions performed, and a description of the unexpected/unknown outcome.
+When reporting issues on Stack Overflow, please include the step number, e.g. _Step 4.i.b_, the actions performed, and a description of the unexpected/unknown outcome.
 
 ***Important:***
 
@@ -107,7 +107,7 @@ All following `![hostname]` refers to the name of the Duckiebot to which the bat
     2. If the command finished with the error: ```SAM-BA operation failed INFO:UpgradeHelper:An error occurred while flashing the battery. ERROR:dts:The battery reported the status 'GENERIC_ERROR'```, please try flashing again with: `dts duckiebot battery upgrade --force ![hostname]`
     3. If the command finished with any other error: **single** press the battery button, and start from _step 3_ again one more time. If there are still errors, please report on StackOverflow.
 5. Prepare for post-upgrade checks
-    1. If the battery indicates the charging states correctly, and shows the percentage number as normal, proceed to _step 6_
+    1. If the battery indicates the charging states correctly, and shows the percentage number normally, proceed to _step 6_
     2. If the display shows "`NoBT`" (No battery detected), then **single** press the battery button, and run:
         1. `ssh duckie@![hostname].local sudo reboot`
         2. Wait for the reboot (as described in _step 3_)
@@ -120,3 +120,10 @@ All following `![hostname]` refers to the name of the Duckiebot to which the bat
         1. Open a browser window
         2. Navigate to `http://![hostname].local/health/battery/info`
         3. Verify the battery version should be `"2.0.2"`
+
+
+## How to update a `HUT` {#howto-hut-update status=ready}
+
+Instructions on how to flash a Duckietown `HUT` board can be found [here](#reflash-microcontroller).
+
+Note: (re)flashing a `HUT` is typically not needed. A notable exception is for `HUT` version 3.15 which comes with `DB21`s. The `HUT` version can be read on the board itself. 

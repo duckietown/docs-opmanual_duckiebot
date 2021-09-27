@@ -1,43 +1,58 @@
-# Debug - Reflash Microcontroller {#reflash-microcontroller status=ready}
-
-This page is only for the DB18 and DB19 configuration (not the DB21M).
+# Debug - Re-flash Microcontroller {#reflash-microcontroller status=ready}
 
 <div class='requirements' markdown="1">
 
-Requires: A Duckiebot DB18 or DB19.
+Requires: A Duckiebot of [configuration](#duckiebot-configurations) `DB18` or above.
 
 Requires: A stable network connection to your Duckiebot.
 
-Result: A flashed microcontroller (not SD card) on the HUT board with the latest code.
+Result: A flashed microcontroller (not SD card) on the HUT board, with the latest code version.
 
 </div>
 
-Warning: You do not need to perform the following procedure unless you are specifically told to do in the book.
+Warning: this procedure is needed for Duckietown HUT version `3.15`, but not for other models. Although often unnecessary, it is safe to perform on any HUT of version `2.0` and above.   
 
-The LEDs of the Duckiebot should light up in white as soon as you power the Duckiebot. If the LEDs turn on and shine in any different color than white, probably the code on the microcontroller is corrupted. You can reflash it using the following procedure:
+## When and why should I run this procedure? {#reflash-microcontroller-when}
 
-`ssh` into your robot and clone the Duckietown Software repository with:
+This procedure flashes the microcontroller on the Duckietown HUT. This microcontroller is responsible for translating the duty cycle commands from the onboard computer to actual `PWM` signals that control the motors and the LEDs (because they are "addressable" LEDs) of the Duckiebots.
 
-    duckiebot $ git clone https://github.com/duckietown/Software.git ~/Software
+A typical example of when is necessary to flash the microcontroller is when commands are sent to the motors, e.g., through keyboard control, the motors signals on the dashboard/mission control show that signals are correctly being sent, but the Duckiebot does not move.  
 
-install avrdude and gcc with:
+This procedure will not be useful to fix problems such as one motor working and not the other, or LEDs showing unexpected colors when the motors work.
+
+## How to flash the microcontroller {#reflash-microcontroller-how}
+
+Ssh into your Duckiebot by running:
+
+    laptop $ ssh duckie@![DUCKIEBOT_NAME].local
+
+
+Install the packages needed to compile the microcontroller firmware:
 
     duckiebot $ sudo apt-get update
-    duckiebot $ sudo apt-get install bison autoconf flex
-    duckiebot $ sudo apt-get install gcc-avr binutils-avr gdb-avr avr-libc avrdude
-    duckiebot $ sudo apt-get install build-essential
+    duckiebot $ sudo apt-get install bison autoconf flex gcc-avr binutils-avr gdb-avr avr-libc avrdude build-essential
 
-Copy the avrdude config file with:
+Clone the firmware for the microcontroller using the following command:
 
-    duckiebot $ cd ~/Software/hardware/software/_avrdudeconfig
-    duckiebot $ sudo cp avrdude.conf /etc/avrdude.conf
+    duckiebot $ git clone https://github.com/duckietown/fw-device-hut.git
 
-Test avrdude and set fuses with:
+Navigate inside the repository you cloned :
 
-    duckiebot $ cd ~/Software/hardware/software
+    duckiebot $ cd fw-device-hut
+
+Copy the `avrdude.conf` file in the `/etc` folder of the robot. If you are running a Duckiebot with an NVIDIA Jetson Nano board run:
+
+    duckiebot $ sudo cp _avrdudeconfig_jetson_nano/avrdude.conf /etc/avrdude.conf
+    
+else, if you have a Raspberry Pi based Duckiebot, use:
+
+    duckiebot $ sudo cp _avrdudeconfig_raspberry_pi/avrdude.conf /etc/avrdude.conf
+    
+Then test the `avrdude` and set the low-level configuration with:
+
     duckiebot $ make fuses
 
-if the output of `make fuses` is at the end like
+A successful outcome looks like:
 
     avrdude: verifying …
     avrdude: 1 bytes of efuse verified
@@ -47,27 +62,23 @@ if the output of `make fuses` is at the end like
 
     avrdude done.  Thank you.
 
-the connection to the microcontroller works and the fuses could be written. The fuses are some low lowlevel settings, which just have to be set once. If this succeeded, jump the next step.
-
-If there is the message "make: warning: Clock skew detected. Your build may be incomplete." or the make process is not stopping and many debugging messages are showed, try the following:
-Press <kbd>Ctrl</kbd>-<kbd>C</kbd> to stop the current command. Then run:
+If you see the message `make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
 
     duckiebot $ find -exec touch \{\} \;
 
-This ensures that the modification time of all files is set to the current time. Make decides, which files have to be compiled by comparing the source file time with the executable file time. If the executable file time lies in the future regarding the current system time, not all modified files are compiled. This could happen when the clock of the Raspberry Pi is not set correctly and the file timestamps of, e.g., a github pull are used.
+And then retry running the `make fuses` command.
 
-Next up, remove all temporary files, so everything has to be compiled freshly by running:
+Remove all temporary files by running:
 
     duckiebot $ make clean
 
-Compile the programm and download it to the microcontroller by running:
+Compile the firmware and upload it to the microcontroller:
 
     duckiebot $ make
 
-the output should look like:
+The resulting output should be:
 
-    Errors: none
-    -------- end --------
+    .....
 
     sudo avrdude -p attiny861 -c linuxgpio -P  -q -U flash:w:main.hex
 
@@ -101,8 +112,14 @@ the output should look like:
 
     avrdude done.  Thank you.
 
-With that, the microcontroller should work. To change the microcontroller programm, just edit the files, e.g with vim. With `make` you can compile and download the programm to the microcontroller again.
+Remove the cloned repository to free up space:
 
-In the end, make sure to delete the Software repository to free up the space again. This is done by running:
 
-    duckiebot $ rm -rf ~/Software
+    duckiebot $ cd .. && rm -rf fw-device-hut
+
+
+and finally reboot the Duckiebot:
+
+    duckiebot $ sudo reboot
+
+After reboot your Duckiebot should move normally and LEDs respond nominally. The Dashboard / components page will show a green status for the HUT, too.

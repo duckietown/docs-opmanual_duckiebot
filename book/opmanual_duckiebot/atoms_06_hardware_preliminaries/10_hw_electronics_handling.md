@@ -10,7 +10,7 @@ Results: Preliminary knowledge on circuits and power source properties useful in
 
 Duckiebots support several power bank models, although not any power will work. Here, we list properties of the supported models.
 
-## The MOOC battery (DB-C-DBatt) {#db-opmanual-dtbattery-v2}
+## The Duckiebattery (DB-C-DBatt) {#db-opmanual-dtbattery-v2}
 
 This battery is the standard battery for the Duckiebot Founder's edition (`DB21M`).
 
