@@ -4,7 +4,7 @@ This page instructs you how to get a Ubuntu Environment that is installed on a U
 
 <div class='requirements' markdown='1'>
 
-Requires: A USB Stick or SD Card with at least 32GB storage, recommended for 64GB.
+Requires: A USB Stick or SD Card with at least 32 GB capaciy, recommended for 64 GB.
 
 Requires: A laptop with free disk space.
 

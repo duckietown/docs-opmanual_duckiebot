@@ -97,10 +97,11 @@ Resolution: You can fix that by sourcing devel/setup.bash.
 
 Symptom: I cannot connect to ROS master.
 
-Resolution: Go to protainer of the robot to make sure the following containers are running without errors:
+Resolution: Go to Portainer of the robot to make sure the following containers are running without errors:
+
 
     ROS
     car-interface
     duckiebot-interface
 
-If they are not running, refer to [docker troubleshooting](#setup-troubleshooting-docker) to make sure those containers are running.
+If they are not running, refer to [Docker troubleshooting](#setup-troubleshooting-docker) to make sure those containers are running.
