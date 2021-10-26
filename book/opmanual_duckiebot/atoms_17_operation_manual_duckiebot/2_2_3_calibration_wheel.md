@@ -9,19 +9,15 @@ when you command it to. Set the maximum speed of the Duckiebot.
 
 </div>
 
-Want to learn more about odometry and odometry calibration? Check out our massive open online course resources: [video](videolink), [theory, activities and exercises](theorylink).
-
-[videolink]: https://vimeo.com/manage/videos/580764763
-
-[theorylink]: https://github.com/duckietown/mooc-exercises/tree/daffy/modcon
+Want to learn more about odometry and odometry calibration? Check out our massive open online course resources: [video][videolink], [theory, activities and exercises][theorylink].
 
 ## Step 1: Make your robot move
 
-Follow instructions in [](#sec:rc-control) to make your robot move, either with a joystick or the keyboard (preferred).
+Follow instructions in [](#sec:rc-control) to make your robot move with keyboard control, and keep the terminal open. 
 
 ## Step 2: See how the robot really moves
 
-There is a lot going on between pressing &#8593; on the keyboard and your Duckiebot moving. To get a better view of what is going on, we need a terminal where the action is happening:
+There is a lot going on between pressing &#8593; on the keyboard and your Duckiebot moving. To get a better view of what is going on, we need another terminal, but ran closer to where the action is happening:
 
     laptop $ dts start_gui_tools ![hostname]
 
@@ -29,11 +25,13 @@ Duckietown uses [ROS](https://www.ros.org/) to move data around. To determine if
 
     $ rostopic list
 
-If everything is right, you will see a list of ROS _topics_ currently active on your Duckiebot. If you know ROS, here you can use ROS commands at will. If you are not familiar with ROS, note that each of these _topics_ might carry _messages_, i.e., actual data. You can, e.g., "listen" to the data inside each topic. For example:
+You should see a list of ROS _topics_ currently active on your Duckiebot. If you know ROS, here you can use ROS commands at will. If you are not familiar with ROS, note that each of these _topics_ might carry _messages_, i.e., actual data. You can, e.g., "listen" to the data inside each topic. For example:
 
     $ rostopic echo /!hostname/camera_node/image/compressed
 
 will show you incoming images as the Duckiebot sees them!
+
+Keep this terminal open. We will use it to perform the wheel calibration.
 
 ## Step 3: Perform the calibration
 
@@ -85,7 +83,7 @@ $r$, by running, for example:
 
 Repeat this process until the robot drives straight.
 
-Want to learn more about odometry and odometry calibration? Check out our massive open online course resources: [video](videolink), [theory, activities and exercises](theorylink).
+Want to learn more about odometry and odometry calibration? Check out our massive open online course resources: [video][videolink], [theory, activities and exercises][theorylink].
 
 ### Calibrating the `gain` parameter
 
@@ -169,4 +167,8 @@ Read more [here](#dashboard-tutorial-files)
 
 ### Additional information
 
-There are additional parameters you can to play around with to get a better driving experience. You can learn about odometry and odometry calibration here: [video](videolink), [theory, activities and exercises](theorylink).
+There are additional parameters you can to play around with to get a better driving experience. You can learn about odometry and odometry calibration here: [video][videolink], [theory, activities and exercises][theorylink].
+
+
+[videolink]:https://vimeo.com/manage/videos/580764763
+[theorylink]:https://github.com/duckietown/mooc-exercises/tree/daffy/modcon
