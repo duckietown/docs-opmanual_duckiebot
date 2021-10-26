@@ -40,15 +40,17 @@ Navigate inside the repository you cloned :
 
     duckiebot $ cd fw-device-hut
 
-Copy the `avrdude.conf` file in the `/etc` folder of the robot. If you are running a Duckiebot with an NVIDIA Jetson Nano board run:
+Warning: read the next passages carefully. Do not just copy and paste every line of code!
+
+Copy the `avrdude.conf` file in the `/etc` folder of the robot. **If** you are running a Duckiebot with an NVIDIA Jetson Nano board run:
 
     duckiebot $ sudo cp _avrdudeconfig_jetson_nano/avrdude.conf /etc/avrdude.conf
     
-else, if you have a Raspberry Pi based Duckiebot, use:
+**else**, if you have a Raspberry Pi based Duckiebot, use:
 
     duckiebot $ sudo cp _avrdudeconfig_raspberry_pi/avrdude.conf /etc/avrdude.conf
     
-Then test the `avrdude` and set the low-level configuration with:
+**Then**, test the `avrdude` and set the low-level configuration with:
 
     duckiebot $ make fuses
 
