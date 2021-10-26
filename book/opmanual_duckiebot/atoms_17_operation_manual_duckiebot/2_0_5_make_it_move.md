@@ -21,7 +21,7 @@ both for the laptop and for the Duckiebot. The procedure is documented in [](+so
 
 ## Option 0 - With a joystick
 
-Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the usb dongle into the raspberry pi of your duckiebot and you should be able to use it right away
+Assuming that your Duckiebot is [properly initialized](#setup-duckiebot), if you have a gamepad then plug the USB dongle into the Raspberry Pi of your Duckiebot and you should be able to use it right away.
 
 -->
 

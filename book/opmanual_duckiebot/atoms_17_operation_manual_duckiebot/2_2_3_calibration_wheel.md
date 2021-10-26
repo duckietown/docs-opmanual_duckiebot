@@ -9,24 +9,33 @@ when you command it to. Set the maximum speed of the Duckiebot.
 
 </div>
 
+Want to learn more about odometry and odometry calibration? Check out our massive open online course resources: [video](videolink), [theory, activities and exercises](theorylink).
 
-For the theoretical treatment of the odometry calibration see [](+learning_materials#odometry_calibration).
+[videolink]: https://vimeo.com/manage/videos/580764763
 
+[theorylink]: https://github.com/duckietown/mooc-exercises/tree/daffy/modcon
 
 ## Step 1: Make your robot move
 
-Follow instructions in [](#sec:rc-control) to make your robot movable either with a joystick or the keyboard.
+Follow instructions in [](#sec:rc-control) to make your robot move, either with a joystick or the keyboard (preferred).
 
+## Step 2: See how the robot really moves
 
-## Step 2: Get a base container with a command line
-
-
-Now you need another container to run so that you can edit the calibrations and see the results. To get a base container with a command line you can run:
+There is a lot going on between pressing &#8593; on the keyboard and your Duckiebot moving. To get a better view of what is going on, we need a terminal where the action is happening:
 
     laptop $ dts start_gui_tools ![hostname]
 
-## Step 3: Perform the calibration
+Duckietown uses [ROS](https://www.ros.org/) to move data around. To determine if the command above worked, type:
 
+    $ rostopic list
+
+If everything is right, you will see a list of ROS _topics_ currently active on your Duckiebot. If you know ROS, here you can use ROS commands at will. If you are not familiar with ROS, note that each of these _topics_ might carry _messages_, i.e., actual data. You can, e.g., "listen" to the data inside each topic. For example:
+
+    $ rostopic echo /!hostname/camera_node/image/compressed
+
+will show you incoming images as the Duckiebot sees them!
+
+## Step 3: Perform the calibration
 
 ### Calibrating the `trim` parameter
 
@@ -39,7 +48,6 @@ Use some tape to create a straight line on the floor ([](#fig:wheel_calibration_
 <div figure-id="fig:wheel_calibration_line" figure-caption="Straight line useful for wheel calibration">
      <img src="wheel_calibration_line.jpg" style='width: 30em'/>
 </div>
-
 
 Place your Duckiebot on one end of the tape. Make sure that the Duckiebot is
 perfectly centered with respect to the line.
@@ -75,9 +83,9 @@ $r$, by running, for example:
 
 
 
-Repeat this process until the robot drives straight
+Repeat this process until the robot drives straight.
 
-
+Want to learn more about odometry and odometry calibration? Check out our massive open online course resources: [video](videolink), [theory, activities and exercises](theorylink).
 
 ### Calibrating the `gain` parameter
 
@@ -158,3 +166,7 @@ You can view or download the calibration file using the Dashboard running at `ht
 Read more [here](#dashboard-tutorial-files)
 
 -->
+
+### Additional information
+
+There are additional parameters you can to play around with to get a better driving experience. You can learn about odometry and odometry calibration here: [video](videolink), [theory, activities and exercises](theorylink).
