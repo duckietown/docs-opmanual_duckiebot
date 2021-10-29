@@ -1,20 +1,12 @@
 # Assembly - Duckiebot `DB21` {#assembling-duckiebot-db21 status=ready}
 
-<!--
-
-<div figure-id="fig:Duckiebook-Banner" figure-caption="The Duckiebot MOOC Founder's Edition, powered by NVIDIA Jetson Nano.">
-     <img src="Duckiebook_Banner.png" style='width: 40em' />
-</div>
-
--->
-
 <div class='requirements' markdown="1">
 
 Requires: Duckiebot `DB21` parts ([get a `DB21`](https://get.duckietown.com/)). If you are unsure what version of Duckiebot you have, check the overview of existing [Duckiebot configurations](#duckiebot-configurations).
 
 Requires: A micro SD card with the Duckiebot image on it. The procedure to flash the SD card is explained [here](#setup-duckiebot).
 
-Requires: 3 hours of assembly time.
+Requires: 3-4 hours of assembly time.
 
 Result: An assembled Duckiebot in configuration `DB21`.
 
@@ -25,11 +17,15 @@ Result: An assembled Duckiebot in configuration `DB21`.
 These instructions are your friend. Follow them carefully, especially if it's the first time you assemble a Duckiebot. Small variations might cause big effects (e.g., don't flip your cables!).
 
 <!--
+
+This is the old DB21M one. Needs re-do. 
+
 ## Video tutorial {#db21m-rev1-assembly-video}
 
 <div figure-id="fig:howto-assemble-db21m-rev1-video">
     <dtvideo src="vimeo:528621827"/>
 </div>
+
 -->
 
 ## Overview
@@ -37,8 +33,14 @@ These instructions are your friend. Follow them carefully, especially if it's th
 A Duckiebox contains the following components:
 
 <div figure-id="fig:db21m-rev1-parts-overview">
-     <img src="db21-rev1-parts-overview.jpg" style='width: 40em' />
+     <img src="images/DB21M/db21-allcomponents.jpg" style='width: 40em' />
 </div>
+
+<!--
+
+![](images/DB21M/db21-allcomponents.jpg)
+
+-->
 
 The assembly process is divided in 6 parts. They must be completed in the following order:
 
@@ -62,15 +64,15 @@ Note: "The Duckiebox hides but does not steal". Your Duckiebot chassis might be 
 
 Although not necessary, a small (M2.5) wrench might ease some passages.
 
-Note: both NVIDIA Jetson Nano 2 GB and 4 GB are supported, but the sd-cards must be initialized differently: [](#setup-duckiebot).
+Note: both NVIDIA Jetson Nano 2 GB and 4 GB are supported, but the sd-cards must be initialized differently, as described in [](#setup-duckiebot).
 
 ### Plastic cover
 
-Peel the plastic cover from all the chassis parts on both sides.
+Peel the plastic cover from all the chassis parts, on both sides.
 
 ### Screws, Nuts and Stand-offs
 
-Verify each connecting part before using them. This will prevent undesirable effects (e.g., nylon screws prevent electrical shorts; bigger screws might damage the chassis).
+Verify each connecting part before using them. This will prevent undesirable effects (e.g., nylon screws prevent electrical shorts; bigger screws might damage the chassis). 
 
 <div figure-id="fig:db21m-rev1-parts-indices">
      <img src="db21-rev1-parts-indices.png" style='width: 40em' />
@@ -90,7 +92,7 @@ This preliminary step allows us to start charging the battery while confirming t
      <img src="db21-rev1-step_00.png" style='width: 40em' />
 </div>
 
-You can get familiar with how the Duckiebattery works by reading its [handling instructions](#db-opmanual-dtbattery-v2). 
+You can familiarize with how the Duckiebattery works by reading its [handling instructions](#db-opmanual-dtbattery-v2). 
 
 ## Base-plate {#howto-base-plate-db21}
 
@@ -457,7 +459,7 @@ This top facing April Tag enables localization in [Duckietown Autolabs](+opmanua
 
 * Check all cable connectors and make sure they are plugged in completely. Do not use force on the Duckiebot, it is (almost) never useful, and it might lead to undesirable outcomes.
 
-* Make sure you have flashed your SD card with the latest version of the Duckiebot `DB21` image.
+* Make sure you have flashed your SD card with the latest version of the Duckiebot image (configuration `DB21M` if using a Jetson Nano 2 GB, `DB21J` if using a Jetson Nano 4 GB).
 
 Note: Version 1.2.2 is the minimum requirement for enabling battery code updates. Make sure you have at least this version (>22 March 2021).
 
@@ -485,26 +487,42 @@ Resolution: Each package has enough screws of each type, plus spares of some. It
 
 Symptom: I can't screw the omni-directional wheel right; the screws don't fit all the way in the standoffs.
 
-Resolution: Sometimes manufacturing inefficiencies make the thread inside the standoff shorter than it should. This happens only occasionally, and it is not the norm. The solution is to orient, in case of need, the shorter threaded stand-off side towards above, on the side of the chassis.
+Resolution: Occasionally the standoffs are not fully threaded due to manufacturing inefficiencies. The solution is to orient, in case of need, the shorter threaded stand-off side towards above, on the side of the chassis. Alternatively, shorter screws (provided in the package) can be used. If everything else fails, a "dirty" but effective solution is to use two spare nuts to mitigate tolerances, as shown in the picture below:
+
+<div figure-id="db21-omni-dirtysolution">
+     <img src="db21-omni-dirtysolution.jpg" style='width: 40em' />
+</div>
 
 Symptom: A piece broke while I was trying to assemble it!
 
-Resolution: Mistakes happen. Some damages will not influence the functionality of the robot, others will be fixable at home with some tools, others could be showstoppers. Please take a picture of the damage and email hardware@duckietown.com.
+Resolution: Mistakes happen. Some damages will not influence the functionality of the robot, others will be fixable at home with some tools, others could be showstoppers. Please take a picture of the damage and email hardware@duckietown.com for assistance.
 
-Symptom: The wheels tend to fall off the motors.
+Symptom: The wheels wiggle and/or fall off the motors.
 
-Resolution: This is due to manufacturing tolerances. You may remove the distance disks used in the assembly between motors and wheels, but make sure that the wheels are still not touching the screws of the motor mounts. In worst cases, glue can be used to keep the wheels in place (not recommended). 
+Resolution: This is due to manufacturing tolerances. You may remove the distance disks used in the assembly between motors and wheels, but make sure the wheels are not touching the screws of the motor mounts. Alternatively, screws are provided to fix the wheels to the motor axles. Make sure not to tighten the screws too hard, or they will add resistance to the spinning of the wheels (you can find the sweet spot by turning the wheel by hand and feeling the resistance torque).
+
+<div figure-id="db21-wheel-screws" figure-caption="Screws will keep the wheels in place. Do not tighten too hard!">
+     <img src="db21-wheel-screws.jpg" style='width: 40em' />
+</div>
 
 Symptom: My Duckiebot is driving backwards when pressing the key for straight forward.
 
-Resolution: You have swapped the motor cables. Double-check the motor cables are connected to their respective ports as indicated in the assembly instructions above. 
+Resolution: Try swapping the motor cables on the HUT connectors. Double-check the motor cables are connected to their respective ports as indicated above. 
 
-Symptom: I don't understand what's going on with the connections
+Symptom: I don't understand what's going on with the connections!
 
 Resolution: This simplified block diagram of data and electrical connections of the `DB21M` might help:
 
 <div figure-id="fig:db21m-rev1-block-diagram" figure-caption="Block diagram of electrical and data connections for the `DB21` and `DB21M`.">
      <img src="db21-rev1-schematics-block-diagram.png" style='width: 30em'/>
+</div>
+
+Symptom: I have a non-functional sticker with weird symbols left over. What to do with it?
+
+Resolution: Duckiebots are FCC and CE certified, which means they comply with (and surpass) material quality (e.g., RoHS 2.0) and electrical interference standards (FCC, CE). You should place the sticker somewhere on the Duckiebot. We suggest a position out of sight (of other Duckiebots) to prevent detection issues in more advanced applications. For example, under the wheels:
+
+<div figure-id="fig:db21-fcc-ce-sticker" figure-caption="Place the sticker somewhere a human can read it, but another Duckiebot cannot.">
+     <img src="db21-fcc-ce-sticker.jpg" style='width: 30em'/>
 </div>
 
 Symptom: I followed the instruction to the letter, but there is something off I can't quite put my finger on.
