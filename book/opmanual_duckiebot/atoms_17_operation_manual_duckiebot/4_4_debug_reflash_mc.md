@@ -64,7 +64,7 @@ A successful outcome looks like:
 
     avrdude done.  Thank you.
 
-If you see the message `make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
+**If** you see the message `make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
 
     duckiebot $ find -exec touch \{\} \;
 
