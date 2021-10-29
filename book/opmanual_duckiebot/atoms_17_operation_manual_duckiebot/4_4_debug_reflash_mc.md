@@ -10,7 +10,7 @@ Result: A flashed microcontroller (not SD card) on the HUT board, with the lates
 
 </div>
 
-Warning: this procedure is needed for Duckietown HUT version `3.15`, but not for other models. Although often unnecessary, it is safe to perform on any HUT of version `2.0` and above.   
+Warning: this procedure is needed only if your Duckiebot does not recognize the HUT (Dashboard > Robot > Components). Although often unnecessary, it is safe to perform on any HUT of version `2.0` and above.   
 
 ## When and why should I run this procedure? {#reflash-microcontroller-when}
 
