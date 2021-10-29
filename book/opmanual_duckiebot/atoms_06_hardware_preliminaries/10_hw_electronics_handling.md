@@ -32,7 +32,7 @@ Warning: Lithium Ion batteries, like the Duckiebattery, are potentially dangerou
 
 - If a battery has been subject to moisture and/or the case has been damaged eminently, dispose of the battery pack.
 - In case of fire use a CO2 extinguisher.
-- Storage preferably in cool, dry and ventilated area which is subject to little temperature change.
+- Store preferably in cool, dry and ventilated area which is subject to little temperature change.
 - Storage at high temperatures should be avoided.
 
 ### DONT's
