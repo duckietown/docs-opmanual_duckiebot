@@ -489,8 +489,8 @@ Symptom: I can't screw the omni-directional wheel right; the screws don't fit al
 
 Resolution: Occasionally the standoffs are not fully threaded due to manufacturing inefficiencies. The solution is to orient, in case of need, the shorter threaded stand-off side towards above, on the side of the chassis. Alternatively, shorter screws (provided in the package) can be used. If everything else fails, a "dirty" but effective solution is to use two spare nuts to mitigate tolerances, as shown in the picture below:
 
-<div figure-id="db21-omni-dirtysolution">
-     <img src="db21-omni-dirtysolution.jpg" style='width: 40em' />
+<div figure-id="fig:db21-omni-dirtysolution">
+     <img src="db21-omni-dirtysolution.jpg" style='width: 100%' />
 </div>
 
 Symptom: A piece broke while I was trying to assemble it!
@@ -501,8 +501,8 @@ Symptom: The wheels wiggle and/or fall off the motors.
 
 Resolution: This is due to manufacturing tolerances. You may remove the distance disks used in the assembly between motors and wheels, but make sure the wheels are not touching the screws of the motor mounts. Alternatively, screws are provided to fix the wheels to the motor axles. Make sure not to tighten the screws too hard, or they will add resistance to the spinning of the wheels (you can find the sweet spot by turning the wheel by hand and feeling the resistance torque).
 
-<div figure-id="db21-wheel-screws" figure-caption="Screws will keep the wheels in place. Do not tighten too hard!">
-     <img src="db21-wheel-screws.jpg" style='width: 40em' />
+<div figure-id="fig:db21-wheel-screws">
+     <img src="db21-wheel-screws.jpg" style='width: 100%' />
 </div>
 
 Symptom: My Duckiebot is driving backwards when pressing the key for straight forward.
