@@ -15,7 +15,7 @@ Duckiebots `DB18` onwards can be obtained from the [Duckietown project store](ht
 ## Overview
 
 | Model |  Computation  |              Sensing|             Actuation| Memory |       Power |       Notes   |
-|-------	|:-------------:	|:--------------------------------:	|:---------------------------------:	|:------:	|:-----------------:	|:----------------:	|
+|-------|:-------------:|:--------------------------------:|:---------------------------------:|:------:|:-----------------:|:----------------:|
 | [DB17](#duckiebot-config-db17)   	|      RPI3     	|              Camera              	|     2x DC motors, 5x RGB LEDs     	|  32GB  	|   Off-the-shelf   	|                  	|
 | [DB18](#duckiebot-config-db18)   	|     RPI3B+    	|              Camera              	|     2x DC motors, 5x RGB LEDs     	|  32GB  	| [Duckie-power bank]({#db-opmanual-dtbattery-v1}) 	| addressable LEDs 	|
 | [DB19](#duckiebot-config-db19)   	|     RPI3B+    	|      Camera, Wheel Encoders      	|     2x DC motors, 5x RGB LEDs     	|  32GB  	| [Duckie-power bank]({#db-opmanual-dtbattery-v1}) 	|                  	|

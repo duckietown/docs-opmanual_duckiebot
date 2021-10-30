@@ -10,7 +10,7 @@ Result: A flashed microcontroller (not SD card) on the HUT board, with the lates
 
 </div>
 
-Warning: this procedure is needed for Duckietown HUT version `3.15`, but not for other models. Although often unnecessary, it is safe to perform on any HUT of version `2.0` and above.   
+Warning: this procedure is needed only if your Duckiebot does not recognize the HUT (Dashboard > Robot > Components). Although often unnecessary, it is safe to perform on any HUT of version `2.0` and above.   
 
 ## When and why should I run this procedure? {#reflash-microcontroller-when}
 
@@ -40,15 +40,17 @@ Navigate inside the repository you cloned :
 
     duckiebot $ cd fw-device-hut
 
-Copy the `avrdude.conf` file in the `/etc` folder of the robot. If you are running a Duckiebot with an NVIDIA Jetson Nano board run:
+Warning: read the next passages carefully. Do not just copy and paste every line of code!
+
+Copy the `avrdude.conf` file in the `/etc` folder of the robot. **If** you are running a Duckiebot with an NVIDIA Jetson Nano board run:
 
     duckiebot $ sudo cp _avrdudeconfig_jetson_nano/avrdude.conf /etc/avrdude.conf
     
-else, if you have a Raspberry Pi based Duckiebot, use:
+**else**, if you have a Raspberry Pi based Duckiebot, use:
 
     duckiebot $ sudo cp _avrdudeconfig_raspberry_pi/avrdude.conf /etc/avrdude.conf
     
-Then test the `avrdude` and set the low-level configuration with:
+**Then**, test the `avrdude` and set the low-level configuration with:
 
     duckiebot $ make fuses
 
@@ -62,7 +64,7 @@ A successful outcome looks like:
 
     avrdude done.  Thank you.
 
-If you see the message `make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
+**If** you see the message `make: warning: Clock skew detected. Your build may be incomplete.` or the process is not stopping, stop the process pressing <kbd>Ctrl</kbd>-<kbd>C</kbd> and run:
 
     duckiebot $ find -exec touch \{\} \;
 
