@@ -16,7 +16,7 @@ Requires: That you are able to to submit a challenge according to [](+AIDO#cm-fi
 
 ## Video Tutorial
 
-<div figure-id="fig:howto-dt-exercises" figure-caption="Learn how to use the dt-exercises infrastructure.">
+<div figure-id="fig:howto-dt-exercises" figure-caption="Learn how to use the exercises infrastructure.">
     <dtvideo src="vimeo:534777903"/>
 </div>
 
@@ -25,19 +25,19 @@ Requires: That you are able to to submit a challenge according to [](+AIDO#cm-fi
 ## Getting Started
 
 
-Fork the [`dt-exercices`](https://github.com/duckietown/dt-exercises) repository and clone it onto your computer.
+Fork the [`dt-exercices`](https://github.com/duckietown/mooc-exercises) repository and clone it onto your computer.
 
 Set up an upstream remote. From inside the directory you just cloned:
 
-    laptop $ git remote add upstream git@github.com:duckietown/dt-exercises.git
+    laptop $ git remote add upstream git@github.com:duckietown/mooc-exercises.git
 
 Now to pull anything new from the original repository you can do:
 
     laptop $ git pull upstream daffy
 
-Enter the `dt-exercises` folder that you just cloned do:
+Enter the `mooc-exercises` folder that you just cloned do:
 
-    laptop $ cd dt-exercises
+    laptop $ cd mooc-exercises
 
 In here you will see a number of folders. Each folder corresponds to an exercise.
 
