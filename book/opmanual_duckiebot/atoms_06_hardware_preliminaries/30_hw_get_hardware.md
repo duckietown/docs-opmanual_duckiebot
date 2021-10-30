@@ -14,17 +14,22 @@ You can acquire Duckiebots in two ways.
 
 * **Do it yourself** (`DB17`): the `DB17` Duckiebot configuration is made of components that you can source independently.
 
-* **"One click" solution** (`DB18` and above): you can source complete hardware kits on [the Duckietown project online store](https://get.duckietown.com/).
-
-## Acquiring the parts for a `DB18` {#db-opmanual-get-db18 status=ready}
+* **"One click" solution** (`DB18` and above): you can source complete hardware kits on [the Duckietown project online store](https://get.duckietown.com/). These kits are tested to work with Duckietown software, and guaranteed to work.
 
 <!--
 
+## Acquiring the parts for a `DB18` {#db-opmanual-get-db18 status=ready}
+
+
 Note that This hardware can be acquired by contacting directly the [Duckietown project](https://www.duckietown.org/about/hardware).
 
--->
+
 
 The `DB18` configuration has the same functionalities of a fully equipped `DB17-l` Duckiebot.
+
+The `DB18` production has been discontinued in 2020.
+
+-->
 
 ## Acquiring the parts for a `DB17` {#db-opmanual-get-db17 status=ready}
 
