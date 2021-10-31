@@ -1,16 +1,15 @@
-# General Exercise Running Procedure {#running-exercies status=ready}
+# General Exercise Running Procedure {#running-exercises status=ready}
 
 
-This page describes the exercises infrastructure. This infrastructure affords a seamless method to build on existing baselines, test them in simulation, test them on robot hardware either remotely or locally, and then evaluate and submit them as challenges with the [AIDO challenges infrastructure](+AIDO#book).
+This page describes the exercises' infrastructure. This infrastructure affords a seamless method to build on existing baselines, test them in simulation, test them on robot hardware either remotely or locally, and then evaluate and submit them as challenges with the [AIDO challenges infrastructure](+AIDO#book).
 
 <div class='requirements' markdown='1'>
 
-Requires: A Duckiebot  that is initalized
+Requires: A Duckiebot that is initialized
 
 Requires: Laptop configured, according to [](#laptop-setup).
 
-Requires: That you are able to to submit a challenge according to [](+AIDO#cm-first).
-
+Requires: That you are able to submit a challenge according to [](+AIDO#cm-first).
 
 </div>
 
