@@ -24,7 +24,7 @@ Requires: That you are able to submit a challenge according to [](+AIDO#cm-first
 ## Getting Started
 
 
-Fork the [`dt-exercices`](https://github.com/duckietown/mooc-exercises) repository and clone it onto your computer.
+Fork the [`mooc-exercices`](https://github.com/duckietown/mooc-exercises) repository and clone it onto your computer.
 
 Set up an upstream remote. From inside the directory you just cloned:
 
