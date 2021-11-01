@@ -18,7 +18,7 @@ These instructions are your friend. Follow them carefully, especially if it's th
 
 <!--
 
-This is the old DB21M one. Needs re-do. 
+This is the old DB21M one. Needs re-do.
 
 ## Video tutorial {#db21m-rev1-assembly-video}
 
@@ -72,7 +72,7 @@ Peel the plastic cover from all the chassis parts, on both sides.
 
 ### Screws, Nuts and Stand-offs
 
-Verify each connecting part before using them. This will prevent undesirable effects (e.g., nylon screws prevent electrical shorts; bigger screws might damage the chassis). 
+Verify each connecting part before using them. This will prevent undesirable effects (e.g., nylon screws prevent electrical shorts; bigger screws might damage the chassis).
 
 <div figure-id="fig:db21m-rev1-parts-indices">
      <img src="db21-rev1-parts-indices.png" style='width: 40em' />
@@ -92,7 +92,7 @@ This preliminary step allows us to start charging the battery while confirming t
      <img src="db21-rev1-step_00.png" style='width: 40em' />
 </div>
 
-You can familiarize with how the Duckiebattery works by reading its [handling instructions](#db-opmanual-dtbattery-v2). 
+You can familiarize with how the Duckiebattery works by reading its [handling instructions](#db-opmanual-dtbattery-v2).
 
 ## Base-plate {#howto-base-plate-db21}
 
@@ -202,11 +202,11 @@ You can try to mount the wheels even without the distance disks. But make sure t
 </div>
 
 <div figure-id="fig:db21m-rev1-step_20">
-     <img src="db21-rev1-step_20.jpg" style='width: 100%' />
+     <img src="db21-rev1-step_20.png" style='width: 100%' />
 </div>
 
 <div figure-id="fig:db21m-rev1-step_21">
-     <img src="db21-rev1-step_21.jpg" style='width: 100%' />
+     <img src="db21-rev1-step_21.png" style='width: 100%' />
 </div>
 
 <div figure-id="fig:db21m-rev1-step_22">
@@ -214,11 +214,11 @@ You can try to mount the wheels even without the distance disks. But make sure t
 </div>
 
 <div figure-id="fig:db21m-rev1-step_23">
-     <img src="db21-rev1-step_23.jpg" style='width: 100%' />
+     <img src="db21-rev1-step_23.png" style='width: 100%' />
 </div>
 
 <div figure-id="fig:db21m-rev1-step_24">
-     <img src="db21-rev1-step_24.jpg" style='width: 100%' />
+     <img src="db21-rev1-step_24.png" style='width: 100%' />
 </div>
 
 Now connect it to the base-plate (i.e, the rest of the chassis assembled in steps 1 to 16). Verify the chassis components are locked correctly.
@@ -409,7 +409,7 @@ One of the USB ports on the HUT will remain free. You can use this port to charg
 
 Warning: *Always* plug and unplug USB cables from the `HUT` with care!
 
-Once your Duckiebot is fully charged, you can press the button of the battery on the side to power it up (do this ONLY if a flashed SD card has been inserted). It is important to make sure the battery is charged to prevent undesired shutdown during the first boot, which will compromise the initialization sequence and require the sd card to be re-flashed. 
+Once your Duckiebot is fully charged, you can press the button of the battery on the side to power it up (do this ONLY if a flashed SD card has been inserted). It is important to make sure the battery is charged to prevent undesired shutdown during the first boot, which will compromise the initialization sequence and require the sd card to be re-flashed.
 
 <div figure-id="fig:db21m-rev1-step_63">
      <img src="db21-rev1-step_63.jpg" style='width: 100%' />
@@ -419,7 +419,7 @@ Congratulations, your Duckiebot `DB21M` is now completely assembled.
 
 ## Additional Parts {#howto-additional-parts-db21}
 
-These additional parts are not always necessary. 
+These additional parts are not always necessary.
 
 ### Back Pattern
 
@@ -507,7 +507,7 @@ Resolution: This is due to manufacturing tolerances. You may remove the distance
 
 Symptom: My Duckiebot is driving backwards when pressing the key for straight forward.
 
-Resolution: Try swapping the motor cables on the HUT connectors. Double-check the motor cables are connected to their respective ports as indicated above. 
+Resolution: Try swapping the motor cables on the HUT connectors. Double-check the motor cables are connected to their respective ports as indicated above.
 
 Symptom: I don't understand what's going on with the connections!
 
