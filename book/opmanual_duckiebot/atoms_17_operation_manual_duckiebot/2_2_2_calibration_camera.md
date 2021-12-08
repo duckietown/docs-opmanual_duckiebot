@@ -16,7 +16,7 @@ Results: That your camera intrinsics and extrinsics are calibrated and stored on
 
 If you do not have one already, download and print a PDF of the calibration checkerboard:
 
-- [A3-format](https://github.com/duckietown/Software/blob/master18/catkin_ws/src/00-infrastructure/duckietown/config/baseline/calibration/camera_intrinsic/calibration_pattern.pdf).
+- [A3-format](https://github.com/duckietown/duckietown-mplan/blob/a025c99e218687685d80bd72a7f90996572a55c7/hardware/camera_calibration_pattern_A3.pdf).
 
 
 
