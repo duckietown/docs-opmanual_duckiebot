@@ -264,7 +264,7 @@ Here are some resources you can look up:
 
 ### docker: Got permission denied while trying to connect to the Docker daemon socket
 
-If this is on your laptop, that means when you setup your enviornment you did not grant your user account right to do certain things. You can fix this by running:
+If this is on your laptop, that means when you setup your environment you did not grant your user account right to do certain things. You can fix this by running:
 
     laptop $ sudo adduser `whoami` docker
 
