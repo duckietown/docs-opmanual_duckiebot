@@ -67,8 +67,6 @@ Note: "The Duckiebox hides but does not steal". Your Duckiebot chassis is under 
 
 Although not necessary, a small (M2.5) wrench might ease some of the next passages.
 
-Note: we currently support the NVIDIA Jetson Nano 2GB developer kit, not 4GB.
-
 ### Plastic cover
 
 Peel the plastic cover from all the chassis parts on both sides.
