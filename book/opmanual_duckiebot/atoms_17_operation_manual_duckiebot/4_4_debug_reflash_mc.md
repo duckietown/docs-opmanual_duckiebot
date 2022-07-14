@@ -70,7 +70,8 @@ A successful outcome looks like:
 
 And then retry running the `make fuses` command.
 
-Remove all temporary files by running:
+
+To complete the procedure (in all cases, whether or not a warning was issued), remove all temporary files by running:
 
     duckiebot $ make clean
 
