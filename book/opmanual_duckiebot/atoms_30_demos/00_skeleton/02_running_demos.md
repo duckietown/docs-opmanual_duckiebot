@@ -13,7 +13,7 @@ Requires: Other requirements are demo specific, see the specific pages
 </div>
 
 ## Start demos
-In the [Duckietown software repo](https://github.com/duckietown/Software), there are two main types of launch files: node-specific (nuclear) ones, and demo launch files. A node launch file handles only a single node and its parameters. A demo launch file combines multiple of node launch files and adds the neccessary connections in order to stage demos that use dozens of nodes.
+In the [Duckietown dt-core](https://github.com/duckietown/dt-core/tree/daffy/packages), some ROS packages serve as building blocks for complex demos. Each package contains node-specific launch files. The `duckietown_demos` package contains demo launch files that combine multiple node launch files and adds the necessary connections to stage demos that use dozens of nodes.
 
 The launch procedure for both types is very similar. The generic command is:
 
