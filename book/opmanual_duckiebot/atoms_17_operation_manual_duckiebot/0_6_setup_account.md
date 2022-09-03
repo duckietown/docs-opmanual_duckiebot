@@ -56,6 +56,54 @@ You should see a message like the following,
     dts :  Correctly identified as uid = ***
 
 
+Also make sure to tell the "challenges API" (needed if you are going to make submissions to the challenge server)  about your docker config:
+
+    > dts challenges config --docker-username yourusername --docker-password yourpassword
+
+
+## Verify everything is correct
+
+Before we go on, this is a checkpoint to make sure you have installed everything.
+
+If some of these commands don’t work, please go back and fix it before continuing.
+
+If the Docker installation went well, then you can run the following command:
+
+    laptop $ docker run hello-world
+    Hello from Docker!
+    This message shows that your installation appears to be working correctly.
+
+If you set up a Github account and private key, you should be able to run this command successfully:
+
+    laptop $ ssh -T git@github.com
+    Hi GITHUB_USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+    
+If you have a valid DockerHub account then you can login as follows.
+
+    laptop $ docker login -u DOCKER_USERNAME
+    Password:
+
+If the Duckietown Shell was installed, then you can run a command like this:
+
+    laptop $ dts version
+
+If you correctly configured the token, then this command should work:
+
+    laptop $ dts challenges info
+    ~        You are successfully authenticated:
+    ~
+    ~                     ID: YOUR ID
+    ~                   name: YOUR NAME
+    ~                  login: YOUR DUCKIETOWN ACCOUNT 
+    ~
+    ~         You can find the list of your submissions at the page:
+    ~
+    ~              https://challenges.duckietown.org/v4/humans/users/YOUR ID
+
+If there is something not working, please stop here. Ask for help on Stack Overflow.
+
+
+
 ## Troubleshooting
 
 ### "DTShell object has no attribute sprint" when using `dts tok set`

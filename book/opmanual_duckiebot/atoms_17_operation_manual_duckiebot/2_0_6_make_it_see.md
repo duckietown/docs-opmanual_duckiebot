@@ -1,4 +1,4 @@
-# Operation - Make it see {#read-camera-data status=ready}
+# Operation - Make it See {#read-camera-data status=ready}
 
 <div class='requirements' markdown='1'>
 
