@@ -1,4 +1,4 @@
-# Operation - Make it move {#rc-control status=ready}
+# Operation - Make it Move {#rc-control status=ready}
 
 <div class='requirements' markdown='1'>
 
@@ -127,20 +127,20 @@ Symptom: The robot doesn't move
 
 Resolution: Check that the `duckiebot-interface` container is running
 
-Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one called `dt18_03_roscore_duckiebot-interface_1`.
+Open [the Portainer interface](#sub:dashboard-portainer) and check the running containers. You should see one that has a name that contains `duckiebot-interface` (exact container name will depend on your robot version).
 
 You can also determine this by running:
 
     $ docker -H ![ROBOT_NAME].local ps
 
-and look at the output to find the Duckiebot interface container and verify that it is running.
+and look at the output to find the `duckiebot-interface` container and verify that it is running.
 
 Resolution: One of the base images is out of date
 Update your Duckiebot with the command
 
     laptop $ dts duckiebot update ![ROBOT_NAME]
 
-Symptom: Everything seems fine, I can see the commands being sent to the Duckiebot (e.g., through the Dashboard > Mission Control), but the Duckiebot does not move. My Dashboard > Robot > Components page show a red alert for the `HUT`.
+Symptom: Everything seems fine, I can see the commands being sent to the Duckiebot (e.g., through the Dashboard > Mission Control), but the Duckiebot does not move. My Dashboard > Robot > Components page shows a red alert for the `HUT`.
 
 Note: if you have a `HUT` v3.15 you will stumble on this problem the first time you try to move your Duckiebot.
 
@@ -189,8 +189,8 @@ If the command above shows something like the following
     Axes:  0:     0  1:     0  2:     0  3:     0  4:-32767  5:-32767  6:     0  7:     0 Buttons:  0:off  1:off  2:off  3:off  4:off  5:off  6:off  7:off  8:off  9:off 10:off 11:off 12:off 13:off 14:off
 
 it means that the USB receiver is connected to the Raspberry Pi. Leave the terminal above open and use the joystick to command the Duckiebot. If you observe that the numbers shown in the terminal change according to the commands sent through the joystick than the problem is
-in ROS. Make sure that the joystick demo is launched. Restart the Duckiebot if needed and try again.
-
+in ROS. Make sure that the joystick demo is launched. Restart the Duckiebot if needed and try again
+.
 If the numbers do not change while using the joystick then follow this guide at the next Resolution point.
 
 Resolution: The controller might be connected to another Duckiebot nearby. Turn off the controller, go to a room with no other Duckiebots around and turn the controller back on. Retry.

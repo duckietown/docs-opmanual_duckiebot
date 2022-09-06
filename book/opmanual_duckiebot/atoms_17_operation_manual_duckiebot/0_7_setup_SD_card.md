@@ -71,19 +71,19 @@ where,
     --type              The type of your device. Types are `duckiebot` (default),
                         `watchtower`, `traffic_light`.
     --configuration     The model of your robot. This is associated with
-                        `--type` option. E.g. `DB21M`, `DB19`, or `DB18`.
+                        `--type` option. E.g. `DB21J`, `DB21M`, `DB19`, or `DB18`.
 
 
 Other options are:
 
-    --wifi              A comma-separated list of WiFi networks, each network is passed in the format ![wifi_name]:![wifi_password]
+    --wifi              A comma-separated list of WiFi networks, aeach network is passed in the format ![wifi_name]:![wifi_password]
                         default: duckietown:quackquack
     --country           Country code.
                         default: US
 
 Note: the default username and password for all Duckiebots are "duckie" and "quackquack", respectively.
 
-Warning: for the ["Self-Driving Cars with Duckietown"](https://www.edx.org/course/self-driving-cars-with-duckietown) online course on edX, the robot configuration to choose is `DB21M`.
+Warning: for the ["Self-Driving Cars with Duckietown"](https://www.edx.org/course/self-driving-cars-with-duckietown) online course on edX, the robot configuration to choose is `DB21M` if you have the 2GB Jetson Nano and `DB21J` if you have the 4GB Jetson Nano.
 
 If you plan on connecting with the Duckiebot over different networks (e.g., at home and in class), you can list them like this:
 
@@ -131,14 +131,14 @@ Now insert the SD card as shown in the video below into your robot and push the 
 
 <dtvideo src="vimeo:527364179"/>
 
-Warning: Unless you are using a Duckiebattery (available in the `DB21M` Duckiebot), don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
+Warning: Unless you are using a Duckiebattery (available in the `DB21M` and `DB21J` Duckiebots), don't charge the battery while you are doing the initialization (or in general when the Duckiebot is turned on). The external power supply might not be able to provide sufficient current and the Raspberry Pi will reboot. Should that happen during the initialization procedure, you will likely have to burn the SD card again.
 
 
 ## Monitoring the First Boot {#monitor-first-boot}
 
 You know that your Raspberry Pi, or NVIDIA Jetson Nano, has successfully booted when you see it using the `dts fleet discover` utility. Open a terminal and run the command:
 
-```
+``` 
 laptop $ dts fleet discover
 ```
 
