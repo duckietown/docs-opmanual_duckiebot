@@ -74,7 +74,7 @@ notebooks:
 
 ```
 
-The `agent_base` indicates which image to use as a baseline to build from. The mappings are listed [here](https://github.com/duckietown/duckietown-shell-commands/blob/daffy/utils/exercise_utils.py). Many of the existing exercises are build on the `duckietown_baseline` image which contains all of the code in the [`dt-core` repository](https://github.com/duckietown/dt-core).
+The `agent_base` indicates which image to use as a baseline to build from. The mappings are listed [here](https://github.com/duckietown/duckietown-shell-commands/blob/daffy/utils/exercises_utils.py). Many of the existing exercises are build on the `duckietown_baseline` image which contains all of the code in the [`dt-core` repository](https://github.com/duckietown/dt-core).
 
 Note: In the case that you are using the `duckietown_baseline`, any package/node that you create in the `exercise_ws` directory will be run instead of the one in the [`dt-core` repository](https://github.com/duckietown/dt-core) if the package name and node name match. This is achieved through [workspace overlaying](http://wiki.ros.org/catkin/Tutorials/workspace_overlaying).
 
