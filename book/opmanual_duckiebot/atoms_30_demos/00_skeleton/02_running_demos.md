@@ -17,12 +17,10 @@ In the [Duckietown dt-core](https://github.com/duckietown/dt-core/tree/daffy/pac
 
 The launch procedure for both types is very similar. The generic command is:
 
-    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name ![PACKAGE_NAME] --image duckietown/![IMAGE]:daffy-arm32v7
+    laptop $ dts duckiebot demo --duckiebot_name ![DUCKIEBOT_NAME] --demo_name ![DEMO_NAME] --package_name ![PACKAGE_NAME] --image duckietown/![IMAGE]:daffy
     
-This command will start the `DEMO_NAME.launch` launch file in the `PACKAGE_NAME` package from the `duckietown/![IMAGE]:daffy-arm32v7` Docker image on the `DUCKIEBOT_NAME` Duckiebot.
-
-Warning: If you want the image to run on your computer, you should use `:daffy-amd64` tag, if you want to run it on duckiebot, you should use `:daffy-arm32v7` as the images are architect dependent
-
+This command will start the `DEMO_NAME.launch` launch file in the `PACKAGE_NAME` package from the `duckietown/![IMAGE]:daffy` Docker image on the `DUCKIEBOT_NAME` Duckiebot.
+ 
 Note: Currently `daffy` is the development branch and the `dts` commands work by default with the `master19` version. That is why you should __always__ specify the image with the `daffy` tag!
 
 You can find the specific command for each demo in the corresponding part of the book. 
