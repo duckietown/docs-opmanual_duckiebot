@@ -136,6 +136,8 @@ Alternatively, you can run them each time before you want to use `X11` forwardin
 - (For Mac): Follow [these instructions](https://docs.docker.com/docker-for-mac/install/);
 - (Important): Follow [post-install instructions](https://docs.docker.com/engine/install/linux-postinstall/);
 
+Note: If you are using Docker Desktop for Mac, you will need to specify the amount of memory for Docker to use in order to run the Duckietown containers. Open the Docker menu and go to "Preferences" then "Advanced". Use the slider in the Advanced tab to increase Memory to a minimum of 4.5GB.
+
 ### Duckietown Shell {#laptop-setup-mac-shell}
 
 Follow [these instructions](https://github.com/duckietown/duckietown-shell).
