@@ -61,6 +61,8 @@ Installs pip3, git, git-lfs, curl, wget:
 
 Install Docker by following the instructions [here][docker_install].
 
+Note: If you already have docker installed, it is strongly recommended that you upgrade your version of docker to the latest one by reinstalling based on these instructions. If you later see an error that you don't have the sufficient version of _buildx_ this is the root cause.   
+
 [docker_install]: https://docs.docker.com/install/linux/docker-ce/ubuntu/
 
 Adds user to "docker" group:
