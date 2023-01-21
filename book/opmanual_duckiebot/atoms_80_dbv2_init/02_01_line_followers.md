@@ -40,7 +40,7 @@ To validate that the calibration worked, do the following:
 
 **Step 2**: Start GUI tools on your computer using Duckietown Shell:
 
-    $ dts start_gui_tools ![duckiebot name] --base_image duckietown/dt-core:daffy-amd64
+    $ dts start_gui_tools ![duckiebot name] --base_image duckietown/dt-core:daffy
 
 **Step 3**: Within GUI tools, run the command `rqt_plot`. A plot window should open.
 

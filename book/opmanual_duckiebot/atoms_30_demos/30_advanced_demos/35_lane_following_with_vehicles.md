@@ -129,7 +129,7 @@ From here, you can enable visualizations by setting `verbose` to `true`:
    
 Run below command to start noVNC:
    
-    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy-amd64
+    laptop $ dts start_gui_tools ![DUCKIEBOT_NAME] --base_image duckietown/dt-core:daffy
 
 Log into noVNC by going to [http://localhost:6901/vnc.html](http://localhost:6901/vnc.html) and using the password `quackquack`. Once in noVNC, open up terminal and run:
 

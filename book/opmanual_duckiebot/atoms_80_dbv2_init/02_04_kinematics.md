@@ -16,7 +16,7 @@ performance.
 
 **Step 2**: Open GUI tools:
 
-    $ dts start_gui_tools ![duckiebot name] --base_image duckietown/dt-core:daffy-amd64
+    $ dts start_gui_tools ![duckiebot name] --base_image duckietown/dt-core:daffy
 
 **Step 3**: Within GUI tools, run the command `rqt_plot &amp;`, and add the following topics:
 
