@@ -69,11 +69,17 @@ Adds user to "docker" group:
 
 Note: you need to _log out and back in_ for the group change to take effect.
 
-Warning: If you missed this step, you will later run into docker permission issues.
-
 Make sure you have docker-compose installed:
 
     laptop $ sudo apt-get install docker-compose
+    
+Make sure the Docker version is `v.0.8.0+` and `buildx` version `v1.4.0+` through:
+
+    docker --version
+
+    docker buildx --version
+    
+Warning: If you missed this step, you will later run into docker permission issues.
 
 ### Duckietown Shell {#laptop-setup-ubuntu-shell}
 
