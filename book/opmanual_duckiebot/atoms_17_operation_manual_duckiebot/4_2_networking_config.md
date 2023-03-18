@@ -22,7 +22,7 @@ This page describes how to get your robot connected to the wide-area network (in
 
 To add networks at a later stage or modify existing settings, edit the file `wpa_supplicant.conf` in the main partition of the SD card. 
 
-For robots based on Raspberry Pi, (e.g., ` DB17`, ` DB18`, ` DB19`), this file is located at `/etc/wpa_supplicant/wpa_supplicant.conf` in the `root` partition;
+For robots based on Raspberry Pi, (e.g., ` DB17`, ` DB18`, ` DB19`), this file is located at `/etc/wpa_supplicant.conf` in the `root` partition;
 For robots based on Nvidia Jetson Nano, (e.g., ` DB21M`), this file is located at `/etc/wpa_supplicant.conf` in the `APP` partition;
 
 New networks can be created by adding a new `network={}` paragraph, and then entering the network information. An example network configuration is shown below:
